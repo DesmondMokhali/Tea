@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tangren Herbal Teas — Traditional Chinese Wellness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --f:#1b3a28;--fm:#2a5040;--fl:#3a6852;
+  --g:#c8a06e;--gl:#dab882;--gp:#f0e0c4;
+  --c:#f7f2e6;--cd:#e8e0cc;
+  --s:#6a9970;--sl:#9abf9d;
+  --t:#182415;--tm:#3d5c44;--tl:#7a9280;
+  --w:#fff;
+  --sh0:0 2px 12px rgba(27,58,40,.07);
+  --sh1:0 4px 28px rgba(27,58,40,.13);
+  --sh2:0 12px 56px rgba(27,58,40,.2);
+  --r:12px;--tr:.24s cubic-bezier(.4,0,.2,1)
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-height:1.6;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;background:var(--f);height:66px;padding:0 clamp(14px,4vw,52px);display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 24px rgba(0,0,0,.25)}
+.nlogo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nmark{width:34px;height:34px;background:var(--g);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.ntext{line-height:1.1}
+.ntext b{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--gl);letter-spacing:.04em;display:block}
+.ntext small{font-size:9.5px;color:var(--sl);letter-spacing:.14em;text-transform:uppercase}
+.nlinks{display:flex;gap:24px}
+.nlinks a{color:rgba(255,255,255,.65);text-decoration:none;font-size:12.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;transition:color var(--tr)}
+.nlinks a:hover{color:var(--gl)}
+.nright{display:flex;align-items:center;gap:14px}
+.swrap{position:relative}
+.swrap input{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:7px 14px 7px 34px;color:#fff;font-size:13px;font-family:'DM Sans',sans-serif;width:190px;outline:none;transition:all var(--tr)}
+.swrap input::placeholder{color:rgba(255,255,255,.38)}
+.swrap input:focus{background:rgba(255,255,255,.15);border-color:var(--g);width:220px}
+.sico{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.38);font-size:14px;pointer-events:none}
+.cbtn{background:var(--g);border:none;border-radius:22px;padding:7px 16px;color:var(--f);font-family:'DM Sans',sans-serif;font-size:12.5px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all var(--tr)}
+.cbtn:hover{background:var(--gl);transform:translateY(-1px)}
+.cct{background:var(--f);color:var(--g);width:17px;height:17px;border-radius:50%;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(140deg,#0e2018 0%,var(--f) 55%,var(--fm) 100%);padding:clamp(44px,7vw,90px) clamp(14px,5vw,80px);display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:center;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;top:-120px;right:-80px;width:480px;height:480px;background:radial-gradient(circle,rgba(200,160,110,.1) 0%,transparent 70%);pointer-events:none}
+.hbadge{display:inline-flex;align-items:center;gap:6px;background:rgba(200,160,110,.13);border:1px solid rgba(200,160,110,.28);border-radius:20px;padding:5px 14px;font-size:11.5px;color:var(--gl);letter-spacing:.09em;text-transform:uppercase;margin-bottom:18px}
+.htitle{font-family:'Playfair Display',serif;font-size:clamp(30px,3.8vw,50px);font-weight:700;color:#fff;line-height:1.15;margin-bottom:8px}
+.htitle em{color:var(--gl);font-style:italic}
+.hsub{font-size:clamp(13px,1.4vw,16px);color:rgba(255,255,255,.6);margin-bottom:22px;max-width:460px;line-height:1.75}
+.hprow{display:flex;align-items:center;gap:18px;margin-bottom:18px}
+.hprice{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--gl)}
+.hrat{display:flex;align-items:center;gap:6px;font-size:13px;color:rgba(255,255,255,.55)}
+.stars{color:#f4b840;letter-spacing:2px}
+.hchips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:26px}
+.hchip{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);border-radius:18px;padding:5px 12px;font-size:11.5px;color:rgba(255,255,255,.68)}
+.hbtns{display:flex;gap:10px}
+.btnp{background:var(--g);color:var(--f);border:none;border-radius:8px;padding:13px 26px;font-family:'DM Sans',sans-serif;font-size:14.5px;font-weight:700;cursor:pointer;transition:all var(--tr);letter-spacing:.02em}
+.btnp:hover{background:var(--gl);transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,160,110,.4)}
+.btno{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.28);border-radius:8px;padding:12px 20px;font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:500;cursor:pointer;transition:all var(--tr)}
+.btno:hover{border-color:rgba(255,255,255,.65);background:rgba(255,255,255,.05)}
+.himg-wrap{display:flex;justify-content:center;align-items:center;position:relative}
+.hring{width:clamp(220px,28vw,360px);height:clamp(220px,28vw,360px);border-radius:50%;background:radial-gradient(circle at 38% 38%,rgba(200,160,110,.18),rgba(107,153,112,.1));border:2px solid rgba(200,160,110,.2);display:flex;align-items:center;justify-content:center;position:relative}
+.hring::before{content:'';position:absolute;inset:12px;border-radius:50%;border:1px dashed rgba(200,160,110,.22)}
+.himg{width:75%;height:75%;object-fit:cover;border-radius:50%;display:block;position:relative;z-index:1}
+.hfallback{width:72%;height:72%;border-radius:50%;background:linear-gradient(135deg,var(--fl),var(--s));display:flex;align-items:center;justify-content:center;font-size:60px;display:none;z-index:1}
+
+/* ── TRUST BAR ── */
+.tbar{background:var(--cd);border-bottom:1px solid rgba(27,58,40,.09);padding:13px clamp(14px,4vw,52px);display:flex;align-items:center;justify-content:center;gap:clamp(12px,3vw,44px);flex-wrap:wrap}
+.titem{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--tm);font-weight:500;white-space:nowrap}
+
+/* ── FILTERS ── */
+.fsec{padding:28px clamp(14px,4vw,52px) 0}
+.fhead{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+.ftitle{font-family:'Playfair Display',serif;font-size:21px;color:var(--f)}
+.fcount{font-size:12.5px;color:var(--tl)}
+.fbar{display:flex;gap:7px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
+.fbar::-webkit-scrollbar{display:none}
+.fchip{flex-shrink:0;background:var(--w);border:1.5px solid var(--cd);border-radius:22px;padding:7px 16px;font-size:12.5px;font-family:'DM Sans',sans-serif;font-weight:500;color:var(--tm);cursor:pointer;transition:all var(--tr);white-space:nowrap}
+.fchip:hover{border-color:var(--s);color:var(--f)}
+.fchip.on{background:var(--f);border-color:var(--f);color:#fff}
+
+/* ── GRID ── */
+.gsec{padding:22px clamp(14px,4vw,52px) 64px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(236px,1fr));gap:18px}
+
+/* ── CARD ── */
+.card{background:var(--w);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh0);cursor:pointer;transition:all var(--tr);display:flex;flex-direction:column;animation:fu .4s ease both;position:relative}
+.card:hover{transform:translateY(-5px);box-shadow:var(--sh2)}
+@keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.cbadge{position:absolute;top:10px;left:10px;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:3px 10px;border-radius:10px;z-index:2}
+.cbadge.bs{background:var(--g);color:var(--f)}
+.cbadge.nw{background:var(--s);color:#fff}
+.cbadge.pr{background:var(--f);color:var(--gl)}
+.cimgw{width:100%;aspect-ratio:1;overflow:hidden;background:linear-gradient(135deg,#e4eee5,#cce0cf);position:relative}
+.cimg{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;display:block}
+.card:hover .cimg{transform:scale(1.05)}
+.cfall{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px;background:linear-gradient(135deg,#e4eee5,#c8dccb)}
+.cbody{padding:14px 15px;display:flex;flex-direction:column;flex:1}
+.ccat{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--s);margin-bottom:5px}
+.cname{font-family:'Playfair Display',serif;font-size:15.5px;font-weight:600;color:var(--t);line-height:1.3;margin-bottom:3px}
+.ctag{font-size:11.5px;color:var(--tl);margin-bottom:9px;line-height:1.55;flex:1}
+.crat{display:flex;align-items:center;gap:5px;margin-bottom:10px;font-size:11.5px;color:var(--tl)}
+.cstars{color:#f4b840;font-size:10.5px}
+.cfoot{display:flex;align-items:center;justify-content:space-between;padding-top:10px;border-top:1px solid var(--cd)}
+.cprice{font-family:'Playfair Display',serif;font-size:17.5px;font-weight:700;color:var(--f)}
+.catcbtn{background:var(--f);color:#fff;border:none;border-radius:6px;padding:6px 13px;font-size:11.5px;font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;transition:all var(--tr)}
+.catcbtn:hover{background:var(--fm)}
+.catcbtn.ok{background:var(--s)}
+.nores{text-align:center;padding:60px 24px;grid-column:1/-1;color:var(--tl)}
+.nores h3{font-family:'Playfair Display',serif;font-size:22px;color:var(--tm);margin-bottom:8px}
+
+/* ── MODAL ── */
+.mov{position:fixed;inset:0;background:rgba(8,22,14,.6);backdrop-filter:blur(5px);z-index:200;display:flex;align-items:center;justify-content:center;padding:14px;opacity:0;pointer-events:none;transition:opacity var(--tr)}
+.mov.on{opacity:1;pointer-events:all}
+.modal{background:var(--w);border-radius:16px;width:100%;max-width:860px;max-height:92vh;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;transform:translateY(24px) scale(.97);transition:transform var(--tr);position:relative}
+.mov.on .modal{transform:none}
+.mcls{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.18);border:none;cursor:pointer;font-size:17px;color:#fff;display:flex;align-items:center;justify-content:center;transition:background var(--tr);z-index:10}
+.mcls:hover{background:rgba(0,0,0,.36)}
+.mimgcol{background:linear-gradient(135deg,#daeede,#b8d4be);position:relative;display:flex;align-items:center;justify-content:center;min-height:420px}
+.mimg{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.mfall{font-size:72px;z-index:1}
+.mcol{overflow-y:auto;padding:28px 26px;max-height:92vh}
+.mcat{font-size:10.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--s);margin-bottom:7px}
+.mtitle{font-family:'Playfair Display',serif;font-size:clamp(18px,2.4vw,26px);font-weight:700;color:var(--t);line-height:1.2;margin-bottom:5px}
+.mtag{font-size:13.5px;color:var(--tl);margin-bottom:13px;line-height:1.6}
+.mratrow{display:flex;align-items:center;gap:9px;margin-bottom:14px;font-size:12.5px;color:var(--tm)}
+.mprow{display:flex;align-items:baseline;gap:10px;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--cd);flex-wrap:wrap}
+.mprice{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--f)}
+.mbags{font-size:12.5px;color:var(--tl)}
+.mstock{font-size:11.5px;color:#c07820;font-weight:600;background:#fef8f0;padding:3px 10px;border-radius:10px;border:1px solid #edd8b0;margin-left:auto}
+.mchips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:17px}
+.mchip{background:var(--c);border:1px solid var(--cd);border-radius:14px;padding:4px 11px;font-size:11.5px;color:var(--fm);font-weight:500}
+.matcrow{margin-bottom:20px}
+.maddcart{width:100%;background:var(--f);color:#fff;border:none;border-radius:8px;padding:13px;font-family:'DM Sans',sans-serif;font-size:14.5px;font-weight:700;cursor:pointer;transition:all var(--tr);letter-spacing:.02em}
+.maddcart:hover{background:var(--fm)}
+.maddcart.ok{background:var(--s)}
+.tabs{display:flex;border-bottom:2px solid var(--cd);margin-bottom:15px;gap:0;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tbtn{background:none;border:none;padding:9px 14px;font-family:'DM Sans',sans-serif;font-size:12.5px;font-weight:500;color:var(--tl);cursor:pointer;position:relative;transition:color var(--tr);white-space:nowrap}
+.tbtn::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:var(--f);transform:scaleX(0);transition:transform var(--tr)}
+.tbtn.on{color:var(--f);font-weight:600}
+.tbtn.on::after{transform:scaleX(1)}
+.tpanel{display:none}
+.tpanel.on{display:block}
+.ilist{list-style:none;display:flex;flex-direction:column;gap:7px}
+.iitem{display:flex;align-items:flex-start;gap:9px;font-size:12.5px;padding:7px 11px;background:var(--c);border-radius:7px;color:var(--tm);line-height:1.5}
+.idot{width:7px;height:7px;border-radius:50%;background:var(--s);flex-shrink:0;margin-top:5px}
+.blist{list-style:none;display:flex;flex-direction:column;gap:5px}
+.bitem{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--tm);padding:3px 0;line-height:1.55}
+.bchk{color:var(--s);font-size:13px;flex-shrink:0;margin-top:1px}
+.ubox{background:var(--c);border-left:3px solid var(--g);border-radius:0 7px 7px 0;padding:14px 15px;font-size:12.5px;color:var(--tm);line-height:1.75}
+.whobox{font-size:12.5px;color:var(--tm);line-height:1.75}
+.testibox{background:var(--c);border-radius:8px;padding:13px 15px;font-size:12.5px;color:var(--tm);line-height:1.65;font-style:italic;margin-top:14px}
+.testiaut{font-style:normal;font-weight:600;color:var(--t);font-size:11.5px;margin-top:7px}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:22px;right:22px;background:var(--f);color:#fff;padding:12px 18px;border-radius:9px;font-size:13.5px;font-weight:500;box-shadow:var(--sh2);transform:translateY(70px);opacity:0;transition:all .3s cubic-bezier(.4,0,.2,1);z-index:300;display:flex;align-items:center;gap:9px}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* ── FOOTER ── */
+footer{background:var(--f);color:rgba(255,255,255,.55);padding:44px clamp(14px,4vw,52px);text-align:center}
+.flogo{font-family:'Playfair Display',serif;font-size:22px;color:var(--gl);margin-bottom:7px}
+.fsubt{font-size:13px;margin-bottom:20px;max-width:380px;margin-left:auto;margin-right:auto;line-height:1.7}
+.flinks{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;font-size:12.5px;margin-bottom:24px}
+.flinks a{color:rgba(255,255,255,.48);text-decoration:none;transition:color var(--tr)}
+.flinks a:hover{color:var(--gl)}
+.fdis{font-size:10.5px;color:rgba(255,255,255,.28);max-width:620px;margin:0 auto;line-height:1.65}
+
+/* ── RESPONSIVE ── */
+@media(max-width:780px){
+  .hero{grid-template-columns:1fr}
+  .himg-wrap{display:none}
+  .modal{grid-template-columns:1fr}
+  .mimgcol{display:none}
+  .nlinks{display:none}
+  .swrap input{width:130px}
+  .swrap input:focus{width:155px}
+}
+@media(max-width:460px){
+  .mcol{padding:18px}
+  .mprow{gap:6px}
+  .mstock{margin-left:0}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nlogo" href="#">
+    <div class="nmark">🍃</div>
+    <div class="ntext"><b>Tangren</b><small>Herbal Teas</small></div>
+  </a>
+  <div class="nlinks">
+    <a href="#">Shop All</a>
+    <a href="#">Our Story</a>
+    <a href="#">Ingredients</a>
+    <a href="#">Contact</a>
+  </div>
+  <div class="nright">
+    <div class="swrap">
+      <span class="sico">🔍</span>
+      <input type="text" id="si" placeholder="Search teas…" oninput="doSearch(this.value)">
+    </div>
+    <button class="cbtn" onclick="showCart()">
+      🛒 Cart <span class="cct" id="cnt">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hbadge">✨ Featured Tea of the Season</div>
+    <h1 class="htitle">CASSIA TEA<br><em>Liver &amp; Eye Nourisher</em></h1>
+    <p class="hsub">Pure Chinese herb blend to detoxify, brighten, and support holistic wellness — formulated by renowned Chinese medicine specialists.</p>
+    <div class="hprow">
+      <span class="hprice">$14.99</span>
+      <div class="hrat"><span class="stars">★★★★★</span><span>4.8 · 210 reviews</span></div>
+    </div>
+    <div class="hchips">
+      <span class="hchip">🌿 Cleanses Liver</span>
+      <span class="hchip">✨ Supports Eye Health</span>
+      <span class="hchip">💪 Boosts Immunity</span>
+      <span class="hchip">🍵 Natural Green Tea Base</span>
+    </div>
+    <div class="hbtns">
+      <button class="btnp" onclick="openModal(8)">Shop Cassia Tea</button>
+      <button class="btno" onclick="document.getElementById('ga').scrollIntoView({behavior:'smooth'})">View All Teas ↓</button>
+    </div>
+  </div>
+  <div class="himg-wrap">
+    <div class="hring">
+      <img referrerpolicy="no-referrer" class="himg" id="himg" src="https://lh3.googleusercontent.com/sitesv/AA5AbUA1ommzYY4cQjcuJlV-Ab3KMKFiid_dN5gV3PhthvTPLVdXqn_nLWM58GK3Jhk6mYRGCbspsvnDOFR-4jH_TXvZk8PVkbVm1nwP8BZEXHxz9ynlVGNOPuNHG5VW6Bn8uQy46kIbgrGw1xJfU86VsSo9ueNQfWnPV8gymZFdDRnmMvNnXJfJ1iRVKhD-DjHaTvGEBZt4DAAe7M_MYqN80xm9M7hgFzPw1QI=w1280" alt="Cassia Tea" onerror="this.style.display='none';document.getElementById('hfall').style.display='flex'">
+      <div class="hfallback" id="hfall">🍵</div>
+    </div>
+  </div>
+</section>
+
+<div class="tbar">
+  <div class="titem">🌿 100% Natural Herbs</div>
+  <div class="titem">🏆 Specialist Formulated</div>
+  <div class="titem">📦 Free Shipping Over $50</div>
+  <div class="titem">🔬 Scientifically Researched</div>
+  <div class="titem">♻️ Eco-Friendly Packaging</div>
+</div>
+
+<div class="fsec" id="ga">
+  <div class="fhead">
+    <h2 class="ftitle">Our Collection</h2>
+    <span class="fcount" id="fc">49 teas</span>
+  </div>
+  <div class="fbar" id="fb"></div>
+</div>
+<div class="gsec"><div class="grid" id="pg"></div></div>
+
+<!-- MODAL -->
+<div class="mov" id="mo" onclick="ovClick(event)">
+  <div class="modal">
+    <button class="mcls" onclick="closeModal()">✕</button>
+    <div class="mimgcol">
+      <img referrerpolicy="no-referrer" class="mimg" id="mi" src="" alt="" onerror="this.style.display='none';document.getElementById('mf').style.display='flex'">
+      <div class="mfall" id="mf" style="display:none">🍵</div>
+    </div>
+    <div class="mcol">
+      <div class="mcat" id="mcat"></div>
+      <h2 class="mtitle" id="mtt"></h2>
+      <p class="mtag" id="mtag"></p>
+      <div class="mratrow"><span class="stars" id="mst"></span><span id="mrav"></span></div>
+      <div class="mprow">
+        <span class="mprice" id="mpr"></span>
+        <span class="mbags">/ 30 bags</span>
+        <span class="mstock" id="mstk"></span>
+      </div>
+      <div class="mchips" id="mch"></div>
+      <div class="matcrow">
+        <button class="maddcart" id="mac" onclick="addFromModal()">🛒 Add to Cart</button>
+      </div>
+      <div class="tabs" id="mtabs">
+        <button class="tbtn on" data-tab="ing" onclick="tab('ing',this)">Ingredients</button>
+        <button class="tbtn" data-tab="ben" onclick="tab('ben',this)">Benefits</button>
+        <button class="tbtn" data-tab="use" onclick="tab('use',this)">How to Use</button>
+        <button class="tbtn" data-tab="who" onclick="tab('who',this)">Who It's For</button>
+      </div>
+      <div class="tpanel on" id="tp-ing"><ul class="ilist" id="il"></ul></div>
+      <div class="tpanel" id="tp-ben"><ul class="blist" id="bl"></ul></div>
+      <div class="tpanel" id="tp-use"><div class="ubox" id="ub"></div></div>
+      <div class="tpanel" id="tp-who"><div class="whobox" id="wb"></div><div class="testibox" id="tb"><div id="tq"></div><div class="testiaut" id="ta"></div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">✅ <span id="tmsg">Added to cart!</span></div>
+
+<footer>
+  <div class="flogo">Tangren Herbal Teas</div>
+  <p class="fsubt">Rooted in centuries of Chinese medicine wisdom. Crafted for modern wellness.</p>
+  <div class="flinks">
+    <a href="#">Shop All</a><a href="#">Our Story</a>
+    <a href="#">Ingredient Glossary</a><a href="#">Blog</a>
+    <a href="#">Contact</a><a href="#">Privacy Policy</a>
+  </div>
+  <p class="fdis">* These statements have not been evaluated by the Food and Drug Administration. These products are not intended to diagnose, treat, cure, or prevent any disease. Consult your healthcare provider before starting any herbal supplement.</p>
+</footer>
+
+<script>
+const CATS=[
+  {id:'all',l:'All Teas'},
+  {id:'detox',l:'🌿 Detox & Cleanse'},
+  {id:'heart',l:'❤️ Heart Health'},
+  {id:'weight',l:'⚖️ Weight Management'},
+  {id:'immunity',l:'🛡️ Immunity'},
+  {id:'women',l:'🌸 Women\'s Wellness'},
+  {id:'men',l:'💪 Men\'s Wellness'},
+  {id:'sleep',l:'🌙 Sleep & Calm'},
+  {id:'resp',l:'🌬️ Respiratory'},
+  {id:'digest',l:'🌾 Digestive'},
+];
+const TESTIS=[
+  ['"My skin improved visibly after 3 weeks on this blend — remarkable quality."','— Sarah K.'],
+  ['"I felt real results in under a month. Whole family drinks it now."','— James T.'],
+  ['"Such a gentle yet effective blend. I look forward to it every morning."','— Michelle L.'],
+  ['"The finest herbal tea I\'ve ever tried. Noticeable difference in energy."','— David W.'],
+  ['"Tastes wonderful and my wellness has genuinely improved since starting."','— Priya M.'],
+  ['"A calming ritual I can\'t imagine my evenings without now."','— Lisa C.'],
+  ['"I feel lighter and more energised. The quality of herbs is exceptional."','— Amanda R.'],
+];
+const P=[
+  {n:'ANI-CANCER TEA',t:'Immune-Fortifying Herbal Shield',cat:'immunity',p:16.99,r:4.4,rv:72,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUBEBsNHsjNk4e7ekozjOKfklsceITLwSQ-0k4U0iqqJjwrZF06Hk-OI5BGuPcuLy3pWd_abSpYnZCyKyVixxWwvAhRrq4B0xL9Gmqdi5Xck1XChq_FOBfIxrgXHf7jIxljLjxgOHk4eHF3EmpYDv-Io_Qlj0j6obhXQh8C6JR70onj3XZNmkDDmD0hia3ywrxSwt-xw5lMjJ2ubIadxZntfnqmTDxziRTCNFJs=w1280',
+   ing:['Akebia Fruit','Oldenlandia','Chinese Lobelia','Licorice','Oolong Tea','Cape Jasmine Fruit','Green Tea'],
+   ben:['Supports immune defence','Anti-inflammatory properties','Clears heat and toxins','Rich in antioxidants','Promotes cellular health'],
+   ind:'For those seeking to strengthen immune resilience and support overall cellular wellbeing through traditional Chinese herbalism.',
+   use:'Steep 1 bag in hot water (90–95°C) for 5–7 minutes. Drink warm. 1–2 times daily. Consistent daily use recommended.',
+   ch:['Immune Support','Antioxidant','Detox','Herbal Blend']},
+
+  {n:'ANTI-STRESS SLEEPING TEA',t:'Calm Your Mind, Sleep Deeply',cat:'sleep',p:16.99,r:4.7,rv:188,b:'Bestseller',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUDA0iGCmvY_0kJaGfvnlRIQ5329ZalpXU_2j7nkzozjldHRDbJTpCj2wleAshtXetm1sNrcxL_8T2a4sThKVlBto3jObL71d9tTyftp4eV0GsPKHLiL1eW20YWgByOVINR3_Xum2tcEs1vsvmnMcSO3GPL_O0ghWwer4R8mi-eXmb-3Hgoqtrs1Fwepo_nu4B9i38Uw9sXv57DPy70WY6Gy9R_dUbYWcZKT=w1280',
+   ing:['Ganoderma lucidum','Tuber Fleece Flower Stem','Blighted Wheat','Red Dates','Licorice','Glossy Privet Fruit'],
+   ben:['Calms the mind and spirit','Reduces insomnia','Eases mental stress','Promotes deep restful sleep','Balances the nervous system'],
+   ind:'Suitable for people with mental stress and difficulty falling asleep. Can be used nightly as a bedtime ritual.',
+   use:'Take 1 bag, 1–2 times per day. Best enjoyed warm, 30–60 minutes before bedtime. Steep for 5 minutes.',
+   ch:['Deep Sleep','Stress Relief','Calm Mind','Anti-Insomnia']},
+
+  {n:'ANTI-VIRUS TEA',t:'Fortify Your Natural Defences',cat:'immunity',p:15.99,r:4.6,rv:142,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUD9lYp01SdoUPuGBqHKebS_7QO5ThDNRRuGpHd9lYp01SdoUPuGBqHKebS_7QO5ThDNRRuGpBVoQcH9tNZLMh4pHwd5G-QOmj1QWj1t8ier64O6KVBBV1ko-IcYtQmiw6JthKhMnX8R0FuwJvHkelYBRRemc8187jsFYhUEwv75MtqKwh2d1vOeCTHPGXyUsWE32QoQ53QDg6FqGS5vxfkIa56Hs9CMHyeqNzJAhRdvlf-GuHbk7dp8n997fJXRShDJmjUfnsc=w1280',
+   ing:['Honeysuckle Flower','Dandelion','Isatidis Root','Astragalus Root','Reed Rhizome','Licorice','Green Tea'],
+   ben:['Antiviral & antibacterial action','Boosts immune system','Clears heat and toxins','Reduces inflammation','Supports upper respiratory health'],
+   ind:'Ideal for those seeking to strengthen immunity year-round, especially during cold and flu season.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm, 1–2 times daily. Especially beneficial during illness-prone seasons.',
+   ch:['Antiviral','Immune Boost','Detox','Green Tea Base']},
+
+  {n:'BALSAM PEAR TEA',t:'Blood Sugar Balance & Detox',cat:'weight',p:14.99,r:4.5,rv:163,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUCOQqpZCJ3EIR1XCFpLxdVyEKH7JOPiRyZyMaQM1HTOmgyJQ2Q93VKAwWFPrvLk7KtQeX-1Nz10ey52Ke3P1emSCUt74KmZrMn_gIP9lMN4pxSHv6OCYZnIbClwkN5kaxGZfBrA9SdGCdihpB-nuav003dsZ8dCTTQTyecghkn3x6fxfSBT8CxnouyC1rKXypThW3sv1w1GKTo9UITqty21iEM4iT58A85-Lio=w1280',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUDA0iGCmvY_0kJaGfvnlRIQ5329ZalpXU_2j7nkzozjldHRDbJTpCj2wleAshtXetm1sNrcxL_8T2a4sThKVlBto3jObL71d9tTyftp4eV0GsPKHLiL1eW20YWgByOVINR3_Xum2tcEs1vsvmnMcSO3GPL_O0ghWwer4R8mi-eXmb-3Hgoqtrs1Fwepo_nu4B9i38Uw9sXv57DPy70WY6Gy9R_dUbYWcZKT=w1280',
+   ing:['Bitter Melon (Balsam Pear)'],
+   ben:['Helps regulate blood sugar levels','Supports cancer-fighting properties','Reduces cholesterol','Aids healthy weight management','Clears heat and detoxifies','Nourishes eyes and reduces bad breath'],
+   ind:'Suitable for those managing blood sugar, weight, or cholesterol. Low in calories and high in fibre. Ideal for health-conscious individuals.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm or chilled. 1–2 times daily, preferably before meals.',
+   ch:['Blood Sugar','Detox','Weight Support','Anti-Cancer']},
+
+  {n:'BARLEY GRASS JUICE',t:'Green Superfood Nutrient Boost',cat:'immunity',p:22.99,r:4.6,rv:97,b:'New',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUD9lYp01SdoUPuGBqHKebS_7QO5ThDNRRuGpBVoQcH9tNZLMh4pHwd5G-QOmj1QWj1t8ier64O6KVBBV1ko-IcYtQmiw6JthKhMnX8R0FuwJvHkelYBRRemc8187jsFYhUEwv75MtqKwh2d1vOeCTHPGXyUsWE32QoQ53QDg6FqGS5vxfkIa56Hs9CMHyeqNzJAhRdvlf-GuHbk7dp8n997fJXRShDJmjUfnsc=w1280',
+   ing:['Young Barley Grass (powder)'],
+   ben:['Rich in vitamins A, B1, B2, B3, B6, C, E, K','Strengthens immune system','Cleanses and detoxifies the body','Supports healthy blood sugar levels','Promotes heart health','Aids healthy weight management'],
+   ind:'Suitable for all ages seeking a natural green superfood. Ideal before or after meals. Mix as a drink, not steeped.',
+   use:'Empty 1 sachet into a cup. Add 150–200 ml warm water (50°C) and stir well. Take 1–2 times per day, before or after meals.',
+   ch:['Superfood','Detox','Immune Boost','Blood Sugar']},
+
+  {n:'BLACK TEA',t:'Antioxidant-Rich Classic Brew',cat:'heart',p:12.99,r:4.5,rv:241,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUDQe8P72wGEjKyRC6xHbY_SxhkxTTNV17MjeluadIn8lIt9M09IblXgbV9vXh0C_YP3Hdfy5cW4gVKdnnWupfQEswRRSbdeXg6SyzTF4Sbb4SnLQFHXjkU3dsxnQZ0MUWyBgF2pT0UzBgxYy5Dp1RHbhdsYS08foyk9iYSJ4aLZ04fQ5lZPCaZJst93C_ED5QCEnLbwXHbDK7XwWnW25SdbbG6YFnzuxdCYbCU=w1280',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUCOQqpZCJ3EIR1XCFpLxdVyEKH7JOPiRyZyMaQM1HTOmgyJQ2Q93VKAwWFPrvLk7KtQeX-1Nz10ey52Ke3P1emSCUt74KmZrMn_gIP9lMN4pxSHv6OCYZnIbClwkN5kaxGZfBrA9SdGCdihpB-nuav003dsZ8dCTTQTyecghkn3x6fxfSBT8CxnouyC1rKXypThW3sv1w1GKTo9UITqty21iEM4iT58A85-Lio=w1280',
+   ing:['Camellia sinensis (Black Tea Leaves)'],
+   ben:['Strong antioxidant properties','Supports heart health','Lowers LDL cholesterol','Improves gut microbiome','Reduces blood pressure','Lowers blood sugar levels','Anti-ageing benefits'],
+   ind:'Suitable for all ages. One of the world\'s most consumed beverages, ideal as a daily health-supporting brew.',
+   use:'Steep 1 bag in freshly boiled water for 3–5 minutes. Can be enjoyed with or without milk. Up to 3 cups daily.',
+   ch:['Antioxidant','Heart Health','Anti-Ageing','Gut Health']},
+
+  {n:'BLOOD CLEANING TEA',t:'Detoxify & Revitalise Your Blood',cat:'detox',p:15.99,r:4.5,rv:119,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUBvPZSRQEP4psV_CUiNdcfM5J1xdWWdMTiB9Frwp-Gv9rOD4WlFGBb5zVf82GgRPpbPS5_59Zfe7-QqrKesLOazEGxzEKCQP2E0AT9WGrHpsNgxOg1LbASUE3rKaDXIBlCATLzdXfSIbe7YBf5jjggBHZNmfIlCBbEulpZSIE430O3g-wNzWGyAnj3KdwhgSvu9nYP-e8PmGI1AAJR5wL46GngR4dXz2uIR4na5wtY=w1280',
+   ing:['Rhubarb','Immature Bitter Orange','Chrysanthemum Flower','Tree Peony Bark'],
+   ben:['Detoxifies and clears heat','Promotes healthy blood circulation','Removes blood stasis','Strengthens immune system','Supports healthy metabolism'],
+   ind:'Used for fatigue, weak immunity, joint and muscle pain, constipation, dark urine, and acne caused by internal heat.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Best taken in the morning.',
+   ch:['Blood Detox','Circulation','Immunity','Anti-Acne']},
+
+  {n:'BLOOD TONIC TEA',t:'Nourish & Replenish Your Blood',cat:'women',p:16.99,r:4.7,rv:145,b:'Bestseller',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUBnjIboO69p08zr5-LrpgZJkd1Ix09QIEveJcchmZ2VlDjpF1GtnWcbFJnAowSzAuoHzABNmfbww6ExhEBKTSUHixRMqSNi7cyUjjZEwfwUKZ_sEhUdPeBViv_BoJKQcVEfRhx2bda5pUOfrSazk9--EaIKnbhBs9bzfmqjUSkiSVUIfgDX7xVPGKxEc4-fLnI46atAboyON9T201RvjN7Z97iHXNb7v13ryIo=w1280',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUDQe8P72wGEjKyRC6xHbY_SxhkxTTNV17MjeluadIn8lIt9M09IblXgbV9vXh0C_YP3Hdfy5cW4gVKdnnWupfQEswRRSbdeXg6SyzTF4Sbb4SnLQFHXjkU3dsxnQZ0MUWyBgF2pT0UzBgxYy5Dp1RHbhdsYS08foyk9iYSJ4aLZ04fQ5lZPCaZJst93C_ED5QCEnLbwXHbDK7XwWnW25SdbbG6YFnzuxdCYbCU=w1280',
+   ing:['Angelica Root','Rhizoma Chuanxiong','Radix Angelicae Dahuricae','Prepared Rehmannia Root','Red Date','Codonopsis Root','Green Tea'],
+   ben:['Nourishes and replenishes blood','Supports healthy circulation','Strengthens Qi and energy','Traditional blood tonic formula','Promotes vitality and wellbeing'],
+   ind:'Ideal for those experiencing fatigue, blood deficiency, or those recovering from illness. Particularly beneficial for women.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily, best taken in the morning or afternoon.',
+   ch:['Blood Tonic','Qi Support','Energy','Women\'s Health']},
+
+  {n:'CASSIA TEA',t:'Liver Nourisher & Eye Brightener',cat:'detox',p:14.99,r:4.8,rv:210,b:'Bestseller',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUBvPZSRQEP4psV_CUiNdcfM5J1xdWWdMTiB9Frwp-Gv9rOD4WlFGBb5zVf82GgRPpbPS5_59Zfe7-QqrKesLOazEGxzEKCQP2E0AT9WGrHpsNgxOg1LbASUE3rKaDXIBlCATLzdXfSHbZ9jjggBHZNmfIlCBbEulpZSIE430O3g-wNzWGyAnj3KdwhgSvu9nYP-e8PmGI1AAJR5wL46GngR4dXz2uIR4na5wtY=w1280',
+   ing:['Cassia Seeds','Chrysanthemum Flower','Honeysuckle Flower','Green Tea'],
+   ben:['Cleanses liver & detoxifies','Nourishes and brightens eyes','Lowers cholesterol','Softens blood vessels','Controls water retention','Strengthens immune system','Supports healthy bowel movement'],
+   ind:'Ideal for those prone to hypertension, puffiness, constipation, or those looking to support liver and eye health with regular use.',
+   use:'Steep 1 bag in hot water (95°C) for 5–7 minutes. Drink warm. 1–2 times daily. Best taken in the morning.',
+   ch:['Liver Cleanse','Eye Health','Cholesterol','Green Tea Base']},
+
+  {n:'CHRYSANTHEMUM PLUS TEA',t:'Cool, Cleanse & Clear Heat',cat:'detox',p:13.99,r:4.4,rv:88,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUBnjIboO69p08zr5-LrpgZJkd1Ix09QIEveJcchmZ2VlDjpF1GtnWcbFJnAowSzAuoHzABNmfbww6ExhEBKTSUHixRMqSNi7cyUjjZEwfwUKZ_sEhUdPeBViv_BoJKQcVEfRhx2bda5pUOfrSazk9--EaIKnbhBs9bzfmqjUSkiSVUIfgDX7xVPGKxEc4-fLnI46atAboyON9T201RvjN7Z97iHXNb7v13ryIo=w1280',
+   ing:['Chrysanthemum Flower','Selfheal Spike Flower','Mulberry Leaves'],
+   ben:['Clears heat and detoxifies','Removes internal dampness','Prevents sunstroke','Soothes sore throat and bitter mouth','Improves acne and skin boils'],
+   ind:'People with excess heat in the body, bitter mouth, sore throat, skin boils, or acne. Suitable in warm climates or summer months.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Can also be brewed cool for a refreshing summer drink. 1–2 times daily.',
+   ch:['Heat Clearing','Detox','Skin Health','Anti-Sunstroke']},
+
+  {n:'CONSTIPATION TEA',t:'Gentle Bowel Relief & Cleanse',cat:'digest',p:14.99,r:4.6,rv:176,b:'Bestseller',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUDCOaJFqjVF9hAehXrrQgpufx9KDQiE4p-MZ8y2tfuwrzCejrvWjSG_XTzHc1vgVFFH33fddI4Th4BNR05V2TOMrAvFvjbCLcWmwffogQXHVSt26TQ3QuHFcWvQDvP-N0jPqnb8FJfdSVuIwGKRN5d0q6VKZgGyq9eXZPu_AJlTWyXuXAJTnUvIu3nS6rUZEnwQeYsv07o46tT9QF7E7vo_LLlYAFL5RjDbO2o=w1280',
+   ing:['Cistanche','Cassia Seed','Radish Seed','Green Tea'],
+   ben:['Moistens the intestines','Relieves constipation gently','Clears heat and detoxifies','Soothes dry, hard stools','Freshens breath'],
+   ind:'For middle-aged and older adults experiencing heat-type constipation, including hard dry stools, dark urine, or dry bad-smelling mouth.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1 time daily, preferably in the evening before bed.',
+   ch:['Constipation Relief','Bowel Health','Gentle Detox','Green Tea']},
+
+  {n:'COOLING TEA',t:'Expel Heat & Refresh from Within',cat:'detox',p:13.99,r:4.5,rv:134,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUDSR1e50x178TR6Zrg7i4VrJ9dtF0YNGM9728hFd8k_8xb4eklUg1yle3ZGcoE9-hpk8QGLqSl8YQlre95MY0efH1b-qjIomRqpimYwHHgbhkuqzIVjH1jWqzWJ2YmVSekVyYSG97IxoNnUU1_Hp3ZGw5oxFq1JSXbMbulyAPfHg6nfReVbgtIKueahmfHNN6wOJfPaNcCfB4H-3Rc1rYgEzb-Gk6Mb0CK6v8c=w1280',
+   ing:['Lotus Seeds','Bamboo Leaves','Chrysanthemum Flower','Dandelion','Honeysuckle Flower','Cassia Seed'],
+   ben:['Detoxifies and expels internal heat','Prevents sunstroke','Relieves thirst','Soothes sore throat','Prevents arteriosclerosis','Strengthens immunity to respiratory illness'],
+   ind:'Ideal for hot weather, spring/autumn throat discomfort, internal heat, or anyone seeking a refreshing detox drink.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Can be served chilled. 1–2 times daily. Excellent as a summer daily tea.',
+   ch:['Cooling','Detox','Sunstroke Prevention','Sore Throat']},
+
+  {n:'COUGHING TEA',t:'Soothe Your Lungs, Calm the Cough',cat:'resp',p:14.99,r:4.4,rv:93,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUAVwGU5MN64xTf1hEZPytXu0HVXLJ8f9kWgMuHFZFN06t6qtLQH9ssgYtUZDQ8e-d_B28sTAMlkZJWo1cAZcRbEsG__V-Vzsax7sZ1LpHx_Dqcfdbcm_z85SnSQ59NbSBuYj2YgBoOr7yczGaAFs6JZ7ISIz_wq3MSi1Z_thFrjOhKzmaG7hiArRLwfVEw2-c5JT14dVU41oe6CKpcrI1lOLfYtyXF0F5PIxRU=w1280',
+   ing:['Radix Pseudostellariae','Perilla Leaves','Winter Mulberry Leaf','Perillae Stem'],
+   ben:['Promotes dispersing function of the lung','Reduces phlegm','Relieves cough and asthma','Soothes respiratory tract','Suitable for all ages'],
+   ind:'For people of any age experiencing cough, excess phlegm, mild asthma, or respiratory discomfort. Gentle enough for children.',
+   use:'Steep 1 bag in hot water for 5 minutes. Drink warm. 2–3 times daily during cough episodes, or 1 time daily for prevention.',
+   ch:['Cough Relief','Lung Health','Phlegm Reduction','All Ages']},
+
+  {n:'DEALCOHOLIC TEA',t:'Protect Your Liver After Alcohol',cat:'detox',p:15.99,r:4.3,rv:58,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUBjjg3WHZ_tOnaSfhSCLYO6MgWrT9JbOkDCvLX-HZfp3l7zEshj1kj2-Zp-gS3h7ijwuot2ziDzJUUqnoHBwN_HXsE2LHY6gTuOgqL95RrYAbH_ICvx4roMrNVthR8zzGNt90d3EBn14JWQNKw-w-mmM05SBQJi1fm54Imffy0UOXHgLOeqAqcICnpwGfa6niOb54xdJa3kiWIidFTtMSPfJPoIhOcI1AO3Sgc=w1280',
+   ing:['Hangzhou Chrysanthemum','Wild Radix Puerariae','Mulberry Seed','Cassia Seed','Green Tea'],
+   ben:['Decomposes alcohol in the body','Protects the liver from alcohol damage','Reduces side effects of drinking','Clears liver heat','Supports detoxification'],
+   ind:'Ideal for those who drink alcohol regularly or occasionally. Best taken before or after drinking to support liver health.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. Take 1 bag before or after drinking. Also suitable for daily liver support.',
+   ch:['Liver Protection','After-Alcohol','Detox','Green Tea']},
+
+  {n:'DETOX TEA',t:'Deep Cleanse from the Inside Out',cat:'detox',p:14.99,r:4.7,rv:232,b:'Bestseller',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUCGZJSu7jLa5N0JfXcxJQNNGkgcUXMZXtqxjkyX89szQSs3sK6feI5-XqDDBaI30b3xCSI7CDGxuFotrbtsZOxvIe9qVoIG1379RniMw8oRaJiUPQc6Y5-cvxP0nItPfIy5RSNji3R3rq1TsnRQQDm9wy1oAFR6EIKnxO7D79-jnAAC2gBaedMNxXVjWaF0RmP7wUPDVM0cnG3cIcjrhc4Y8Rj2iEEefVd2=w1280',
+   ing:['Pharbitis Seed','Cassia Seed','Radish Seed','Lotus Seed','Rhubarb','Senna Leaves','Green Tea'],
+   ben:['Cleanses intestines deeply','Detoxifies and purifies','Nourishes facial skin','Clears stomach and intestinal heat','Eliminates bad breath','Relieves bloating'],
+   ind:'For those experiencing internal toxin build-up, bad breath, bloating, dull skin, or digestive sluggishness.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. Start with 1 time daily. Not for prolonged daily use — use for 7–14 day cycles.',
+   ch:['Deep Detox','Gut Cleanse','Skin Glow','Breath Freshener']},
+
+  {n:'DIGESTIVE TEA',t:'Gentle Post-Meal Digestive Aid',cat:'digest',p:12.99,r:4.3,rv:76,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUBjjg3WHZ_tOnaSfhSCLYO6MgWrT9JbOkDCvLX-HZfp3l7zEshj1kj2-Zp-gS3h7ijwuot2ziDzJUUqnoHBwN_HXsE2LHY6gTuOgqL95RrYAbH_ICvx4roMrNVthR8zzGNt90d3EBn14JWQNKw-w-mmM05SBQJi1fm54Imffy0UOXHgLOeqAqcICnpwGfa6niOb54xdJa3kiWIidFTtMSPfJPoIhOcI1AO3Sgc=w1280',
+   ing:['Parched Malt','Parched Hawthorn Fruit','Parched Medicated Leaven'],
+   ben:['Aids digestion after heavy meals','Reduces bloating and discomfort','Stimulates digestive enzymes','Suitable for all ages','Gentle and effective'],
+   ind:'For people of any age experiencing digestive discomfort, bloating, or heaviness after meals. Safe for daily use.',
+   use:'Steep 1 bag in hot water for 5 minutes. Drink warm after meals. 1–2 times daily, particularly after lunch or dinner.',
+   ch:['Digestion Aid','Post-Meal','Bloating Relief','All Ages']},
+
+  {n:'FEMALE INFLAMMATION TEA',t:'Soothe Female Inflammatory Conditions',cat:'women',p:17.99,r:4.5,rv:108,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUDMU_T51XGBBgM991qWUqIktQ_MtuquwGTVHHVc47L62XAPm5WLW7lv4Co9D05AqCUlMZM3wq6vDP0_AIsmHOkudL5qds3wBfdb9rMIssWOGuOuBzYKj3bBRdsW_DnsaEgBnouux8lykYZLwE1gn0gHRoPt_3uv32QllN641i6eC5jmL--ZJuXGqlTyZBp1i4Rmlmgz2ib7n9VqvdnenTjNzM4do1kGdSJULL8=w1280',
+   ing:['Scabrous Gentian Root','Angelica Root','Amur Cork-Tree Bark','Atractylodis Rhizome','Atractylodis Lancea','Tangerine Peel','Green Tea'],
+   ben:['Reduces female inflammation','Clears internal dampness','Supports pelvic health','Anti-inflammatory action','Strengthens female reproductive system'],
+   ind:'For women experiencing inflammation, pelvic discomfort, or related conditions. Formulated specifically for female health concerns.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Consult a practitioner for chronic conditions.',
+   ch:['Women\'s Health','Anti-Inflammatory','Pelvic Health','Green Tea']},
+
+  {n:'FIVE SEEDS TEA',t:'Natural Seeds Blend for Skin & Gut',cat:'digest',p:13.99,r:4.4,rv:82,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUDfAAJK954zrOtynwqW99KbnHw8mvo9qG7FOosI9xFN9pVjSKszuqB4D1diHDD7YNSxwVyjkLUe3hSSzNs4DiknQVNHASnXXfTby_lV5QutFTGJ5zBNBgsb29fT9exRt5TKqK_604WiaMBEfWmu_SFU4MVqUJvsLt6MMgGlUVlUXUb7eMZAAz3hgBdUtJZQmAzvkVak_tKVvx_OrTVkKtIbMhZ1auZAAHSjZMo=w1280',
+   ing:['Perilla Seeds','Radish Seeds','Cassia Seeds','Raisin Tree Seeds','Muskmelon Seeds'],
+   ben:['Relieves constipation naturally','Nourishes and brightens skin','Detoxifies the body','Reduces bad breath','Clears acne and pigmentation','Reduces abdominal distension'],
+   ind:'For people with constipation causing bad breath, abdominal distension, acne, pigmentation, or pimples.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1 time daily, best in the morning on an empty stomach.',
+   ch:['Constipation Relief','Skin Nourishing','Detox','Acne Support']},
+
+  {n:'ABDOMEN SLIMMING TEA',t:'Targeted Abdominal Fat Reduction',cat:'weight',p:15.99,r:4.5,rv:156,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUCnDpi6L-ErodxLB8fdtWWc3A8GdHGocrfjH3YkCr5gMHrKQ_s5NgoMAfox43_-pjgFYf0CzOQZzWPuS3VBsoVJUbHQ-fRJsWcs3TV_-z4wp1ZR7AoN_VOdSV_kBXSDmQ7qtoCDy_vgAXtKNuUSArGzjnYaHLkujk-7Ev1T8LOIY4TPFe38qFXwY_X_2ILVlxjW0NoC8p2IAsjRuZi0gvK_YdepStO9sEVaiWM=w1280',
+   ing:['Tangerine Peel','Hawthorn Fruits','Wax Gourd Rind','Fried Cassia Seeds','Rhizoma Alismatis','Radix Polygoni Multiflori','Fructus Ligustri Lucidi','Lotus Leaves','Green Tea'],
+   ben:['Targets abdominal fat specifically','Lowers blood lipid levels','Supports healthy weight loss','Improves metabolism','Rich in traditional slimming herbs','Reduces water retention'],
+   ind:'For those with simple obesity, particularly belly fat, and hyperlipidaemia. Works best alongside a balanced diet.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily, best before meals for optimal effect.',
+   ch:['Belly Fat','Weight Loss','Lipid Reduction','Green Tea']},
+
+  {n:'GINKGO TEA',t:'Brain, Heart & Circulation Support',cat:'heart',p:17.99,r:4.7,rv:187,b:'Bestseller',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUBnR1gWmkXKAici5SeR_9JMak7L6bsbPEnJRNQV9p0cCE1HmUOFyWjEakyrOSujGktk6wOkWyTgUNwHRhUAzQYkIyq8tgpusXwXU8IiDV1dtqspcRSF-igBYYcmZ6mIp83Vam4strGKtZlb4brMmCGY6enq_sRa0QxYFqmiQVqHJhEMQV7L2Bx1W0VAZpDV0Cvf7mMqDLKgJt8BXqdDsbmRzQ5jC_jGg-2HoPo=w1280',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUBnR1gWmkXKAici5SeR_9JMak7L6bsbPEnJRNQV9p0cCE1HmUYJk6mYRGCbspsvnDOFR-4jH_TXvZk8PVkbVm1nwP8BZEXHxz9ynlVGNOPuNHG5VW6Bn8uQy46kIbgrGw1xJfU86VsSo9ueNQfWnPV8gymZFdDRnmMvNnXJfJ1iRVKhD-DjHaTvGEBZt4DAAe7M_MYqN80xm9M7hgFzPw1QI=w1280',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUDfAAJK954zrOtynwqW99KbnHw8mvo9qG7FOosI9xFN9pVjSKszuqB4D1diHDD7YNSxwVyjkLUe3hSSzNs4DiknQVNHASnXXfTby_lV5QutFTGJ5zBNBgsb29fT9exRt5TKqK_604WiaMBEfWmu_SFU4MVqUJvsLt6MMgGlUVlUXUb7eMZAAz3hgBdUtJZQmAzvkVak_tKVvx_OrTVkKtIbMhZ1auZAAHSjZMo=w1280',
+   ing:['Ginkgo Leaves','Cassia Seed','Green Tea'],
+   ben:['Reduces blood lipids','Lowers cholesterol','Softens blood vessels','Reduces blood pressure','Promotes blood circulation to heart and brain','Strengthens immune system','Improves memory and concentration'],
+   ind:'For improving and preventing heart problems, stroke, brain thrombus, memory loss, and Alzheimer\'s dementia. Ideal for middle-aged and older adults.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Best taken consistently over several weeks.',
+   ch:['Brain Health','Heart Health','Memory','Cholesterol']},
+
+  {n:'GINSENG DATE TEA',t:'Qi & Blood Nourishing Blend',cat:'immunity',p:18.99,r:4.6,rv:112,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUBMTy5lqB2Mqj_bGl745XTU2iP6WuU2Ge6_W126DNqh8xpU1jX_PPi5oOiTw_yNoaIoc3GboFnTVye5pmrxX8OpH_Ubq-8YOd2DPDMPkbWiszm9Fnm8eNYkGS5PPL_VhwsOgSG9HGHSoeSjDXNiKUhOAGgR8kuFl6B6WifAgFaW8NvnoKNjGaD5FTiX1iOC9jCOqp4Sp1lHUA7saJmLKA024iuUfRXHevZw=w1280',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUCnDpi6L-ErodxLB8fdtWWc3A8GdHGocrfjH3YkCr5gMHrKQ_s5NgoMAfox43_-pjgFYf0CzOQZzWPuS3VBsoVJUbHQ-fRJsWcs3TV_-z4wp1ZR7AoN_VOdSV_kBXSDmQ7qtoCDy_vgAXtKNuUSArGzjnYaHLkujk-7Ev1T8LOIY4TPFe38qFXwY_X_2ILVlxjW0NoC8p2IAsjRuZi0gvK_YdepStO9sEVaiWM=w1280',
+   ing:['Ginseng Root','Astragalus Root','Wolfberry Fruit','Red Date'],
+   ben:['Nourishes Qi and blood','Strengthens the body','Enhances immune function','Boosts energy and vitality','Combats fatigue','Supports adrenal health'],
+   ind:'Ideal for elderly or weakened individuals, those fatigued from work, or anyone experiencing low energy and immunity.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Excellent as a daily energy-supporting morning tea.',
+   ch:['Energy Boost','Qi Nourishing','Immunity','Fatigue Relief']},
+
+  {n:'GINSENG TEA (SACHETS)',t:'Honeyed Ginseng for Vitality',cat:'immunity',p:22.99,r:4.8,rv:143,b:'Premium',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUBnR1gWmkXKAici5SeR_9JMak7L6bsbPEnJRNQV9p0cCE1HmUOFyWjEakyrOSujGktk6wOkWyTgUNwHRhUAzQYkIyq8tgpusXwXU8IiDV1dtqspcRSF-igBYYcmZ6mIp83Vam4strGKtZlb4brMmCGY6enq_sRa0QxYFqmiQVqHJhEMQV7L2Bx1W0VAZpDV0Cvf7mMqDLKgJt8BXqdDsbmRzQ5jC_jGg-2HoPo=w1280',
+   ing:['Panax Ginseng','Radix Ophiopogonis','Cane Sugar','Honey'],
+   ben:['Strengthens immunity','Enhances mental and physical function','Improves erectile dysfunction','Increases general sense of wellbeing','Rich and honeyed flavour'],
+   ind:'For those seeking a premium immunity boost, enhanced mental clarity, physical stamina, or general sense of vitality.',
+   use:'Mix 1 sachet with 300–500 ml boiling water and drink warmly. 1–2 times daily. Can be served hot or chilled.',
+   ch:['Premium Ginseng','Vitality','Immunity','Mental Clarity']},
+
+  {n:'GINSENG TEA (TEA BAGS)',t:'Classic Ginseng for Energy & Immunity',cat:'immunity',p:19.99,r:4.7,rv:167,b:'Bestseller',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUAweKP8FdlaD8jCw10l3wwPLL2Q7Nn0jwag2BOeEI2ombzr54LmK2ffG7ogNS7OIgomj2mU2jO0yegQayrBYTeiMPr2x9g_ba9p0EUkXU5xk9xReixZWo6IK5o8TTD_SP_AY02ZC7PqDDvD7seqesXTwi95oIxTgi8uTSKPli3QzNA5Kkba1YX_4DfUdTQYB5K2RbuyCfU2PRu8k-Ug0jFqisAqsw25wQl2=w1280',
+   ing:['Ginseng Root','Milkvetch Root','Chinese Angelica'],
+   ben:['Stimulates mental and physical activity','Nourishes blood','Strengthens immune system','Relieves fatigue','Improves appetite and energy'],
+   ind:'For fatigue, poor appetite, weak immunity, shortness of breath, night sweats, cold extremities, and chronic fatigue.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Consistent use for best results.',
+   ch:['Ginseng','Energy','Immune Boost','Blood Nourishing']},
+
+  {n:'GREEN TEA',t:'4,000 Years of Proven Wellness',cat:'immunity',p:11.99,r:4.6,rv:312,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUBMTy5lqB2Mqj_bGl745XTU2iP6WuU2Ge6_W126DNqh8xpU1jX_PPi5oOiTw_yNoaIoc3GboFnTVye5pmrxX8OpH_Ubq-8YOd2DPDMPkbWiszm9Fnm8eNYkGS5PPL_VhwsOgSG9HGHSoeSjDXNiKUhOAGgR8kuFl6B6WifAgFaW8NvnoKNjGaD5FTiX1iOC9jCOqp4Sp1lHUA7saJmLKA024iuUfRXHevZw=w1280',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUCJuNbqvpIXsCND4L6n5CEpK3HNXTkK3YAVoFSKayUnj32_MQym7qfRML97ZmpA4_i5UDOhb-CND4L6n5CEpK3HNXTkK3YAVoFSKayUnj32_MQym7qfRML97ZmpA4_i5UDOhb-CFy0TfOCCrWTUoNjQGvvwf3keBpXLqtJUBkSvBVUSrM0t1iy5oKJv5XCuuXkb2IQr6v8zQJuGlBTXh1lxRvL7lfFf-kW0sLZ=w1280',
+   ing:['Camellia sinensis (Green Tea Leaves)'],
+   ben:['Reduces risk of esophageal cancer','Inhibits cancer cell growth','Lowers LDL cholesterol','Improves HDL to LDL ratio','Supports cardiovascular health','Boosts immune function','Anti-inflammatory'],
+   ind:'Suitable for all ages. One of the world\'s most researched health-supporting beverages. Ideal as a daily wellness tea.',
+   use:'Steep 1 bag in water at 80°C (not boiling) for 2–3 minutes. Avoid over-steeping. 2–3 cups daily recommended.',
+   ch:['Antioxidant','Heart Health','Cancer Support','All Ages']},
+
+  {n:'GUAVA TEA',t:'Blood Sugar Balance & Gut Health',cat:'heart',p:15.99,r:4.4,rv:67,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUAweKP8FdlaD8jCw10l3wwPLL2Q7Nn0jwag2BOeEI2ombzr54LmK2ffG7ogNS7OIgomj2mU2jO0yegQayrBYTeiMPr2x9g_ba9p0EUkXU5xk9xReixZWo6IK5o8TTD_SP_AY02ZC7PqDDvD7seqesXTwi95oIxTgi8uTSKPli3QzNA5Kkba1YX_4DfUdTQYB5K2RbuyCfU2PRu8k-Ug0jFqisAqsw25wQl2=w1280',
+   ing:['Guava Leaf','Bitter Gourd','Ophiopogon Tuber','Green Tea'],
+   ben:['Supports blood sugar regulation','Promotes gut health','Anti-diabetic properties','Reduces inflammation','Rich in antioxidants'],
+   ind:'Ideal for those managing blood sugar levels or seeking gut health support. Safe for regular daily use.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily, ideally after meals.',
+   ch:['Blood Sugar','Gut Health','Anti-Diabetic','Green Tea']},
+
+  {n:'GYNOSTEMMA TEA',t:'Heart & Artery Protection',cat:'heart',p:15.99,r:4.6,rv:99,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUBWZKkWSrzM2yzxjJn-mht8Z2Q-I6rCiwTXfke2pUskkgCfUCJrcUct8tIMynHNmA85sQWDtlmM-gUuvKxngdZJ7y-m2-lMn7PgrSqCWrsy_okNTjPpnYSaUsCmQ8DT2ikOM23VARhOWl7zb6doMsULRItkfMaqmZawo5trd-2XYDXeBfPLk_pDXPhZOJ67EKlHxolgrSloklsLugCYazUBPhMm--aE4IjT_w0=w1280',
+   ing:['Gynostemma Pentaphyllum'],
+   ben:['Contains 3x the active compounds of ginseng','Lowers lipid peroxide levels','Increases myocardial antioxidant enzymes','Protects cardiac muscle','Reduces arteriosclerosis plaque formation'],
+   ind:'For heart health, cardiovascular protection, and those seeking to prevent arteriosclerosis. Suitable for middle-aged and older adults.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily for sustained cardiovascular benefits.',
+   ch:['Heart Protection','Arteries','Antioxidant','Pure Herb']},
+
+  {n:'HEART CARE TEA',t:'Complete Cardiac Support Formula',cat:'heart',p:18.99,r:4.7,rv:138,b:'Bestseller',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUBvU1Zb5R-FmilSHip7AD_d4zjbqPIv4txIkdY4yQkm1QKSnHNLu0som9zbRRToMxcbAx0hu4jiq5ufhiS9uDdt_-MdzHcX-VpIQgjlzcvgPdILclktu_1_UEgY6-1cHAPCqsz4LTbnT8Z8wcH41pwvQeHPSdzGOY7yM7GgpDoJHxDmmoDG1qpz8NhARijkWelmNRpVhWcLOf7_NDFGk9p25W5MCDaSYADipho=w1280',
+   ing:['Salvia Miltiorrhiza','Panax Ginseng','Panax Notoginseng Flower','Rhizoma Chuanxiong','Green Tea'],
+   ben:['Comprehensive heart care formula','Promotes healthy blood circulation','Strengthens cardiac muscle','Reduces blood viscosity','Supports heart rhythm','Prevents coronary artery disease'],
+   ind:'For those with heart health concerns, cardiovascular risk, or those seeking to maintain strong heart function as they age.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Consistent use over weeks recommended.',
+   ch:['Cardiac Care','Circulation','Heart Muscle','Green Tea']},
+
+  {n:'HYPERTENSION TEA',t:'Naturally Lower Blood Pressure',cat:'heart',p:15.99,r:4.6,rv:198,b:'Bestseller',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUAH0PvHjTNCFEvCeXXjvxqogq1CQDewYrtU6m7iE98RI4KrgEsRpD9xIxCJ4Zu98NP9rVPNFhwAFbpgdXRFMduWyUDO58gvq6tIDB8H5bHs8uZaA5UzJjDUy9oUfH5ys4FgzL_bg-Opn4FMucBiVnG4o58EoYER7POMznKh_XvIr70N5d8fgSDDO5IX-YnF-MFZS0cIIjI-kpWe33BJxA1N2BvXLaekA0h_vko=w1280',
+   ing:['Cassia Seed','Hawthorn Fruit','Lotus Leaves','Chrysanthemum Flower','Green Tea'],
+   ben:['Lowers blood pressure effectively','Reduces serum cholesterol','Inhibits fat absorption in intestine','Reduces fat synthesis in liver','Prevents cholesterol accumulation in vessels'],
+   ind:'For middle-aged and older people with hypertension or high blood lipids. Long-lasting effect with regular use.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Best results with consistent long-term use.',
+   ch:['Blood Pressure','Cholesterol','Heart Health','Green Tea']},
+
+  {n:'JOINT CARE TEA',t:'Soothe Joints, Restore Movement',cat:'men',p:17.99,r:4.5,rv:87,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUBvU1Zb5R-FmilSHip7AD_d4zjbqPIv4txIkdY4yQkm1QKSnHNLu0som9zbRRToMxcbAx0hu4jiq5ufhiS9uDdt_-MdzHcX-VpIQgjlzcvgPdILclktu_1_UEgY6-1cHAPCqsz4LTbnT8Z8wcH41pwvQeHPSdzGOY7yM7GgpDoJHxDmmoDG1qpz8NhARijkWelmNRpVhWcLOf7_NDFGk9p25W5MCDaSYADipho=w1280',
+   ing:['Rhizoma Cibotii','Acanthopanacis Root Bark','Radix Millettiae Speciosae','Flemingia prostrata','Scurf Pea Berry','Fennel Fruit','Salted Eucommia Bark','Green Tea'],
+   ben:['Relieves joint pain and stiffness','Strengthens tendons and bones','Improves joint mobility','Reduces inflammation in joints','Supports connective tissue'],
+   ind:'For those experiencing joint pain, stiffness, arthritis, or mobility issues. Suitable for active individuals and older adults.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Allow 2–4 weeks to notice sustained benefits.',
+   ch:['Joint Pain','Arthritis','Bone Health','Mobility']},
+
+  {n:'KIDNEY CARE TEA',t:'Strengthen & Warm the Kidneys',cat:'men',p:18.99,r:4.6,rv:104,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUAfjpqJFm5pL-xPAenZkMbO7vIfyjBvGCmnC7Jm_KFMfj2jUL0YSz9_pf8zjPWZrDASr2E7X2yfNxCvFfQcygj-C4GLCtW9kJ7UEUyAio9tLD-d5FNPQrrDixoZI3W6OQJg-AEpxT5tgEKHE4eEg4iiPaJvpaSR-I3_BQRaXcbZrWKOwJ3FsPTOGoz-WOIffLR9R0q3bWB5QF0WRFUkz44JAwdZcZ2ZaSDwA0s=w1280',
+   ing:['Morinda Root','Cistanche','Salted Eucommia Bark','Psoraliae Fruit','Epimedium','Cinnamon Bark','Fried Ginger','Green Tea'],
+   ben:['Strengthens kidney Yang','Warms the kidneys','Improves energy and vitality','Supports adrenal function','Reduces cold extremities','Improves lower back strength'],
+   ind:'For those with kidney Yang deficiency, fatigue, cold limbs, lower back weakness, or reduced vitality.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Best taken in the morning.',
+   ch:['Kidney Yang','Vitality','Warm Energy','Men\'s Health']},
+
+  {n:'KUDING TEA',t:'The Bitter Brain & Blood Tonic',cat:'heart',p:14.99,r:4.5,rv:122,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUAgIMIQRdrUMuoVtmmrN4kIXyN7nFuH4srQCDB2NtPVTAoCF3HxmQ3Zfa8tPC06KjgSM-ZMglcpI3e2oDOsGD4Yt3sCK7SFrmC_mpg2K9hZLMjCkB9VTHR4NbBrmkUX-lJ-G8hKZ6-kcPLLLkYghsxOAJAJ3dPpMrbdZaIJMKAuW_fhAa4Rnh8NO2-RetztTf8qISMT9_n3ojDDRSzsSP_PRuPHUpgjEdftulY=w1280',
+   ing:['Broadleaf Holly Leaf'],
+   ben:['Promotes blood circulation','Lowers blood pressure','Lowers blood lipids including cholesterol','Disperses wind-heat','Clears eyes and head','Resolves toxin','Calms fidgets','Transforms phlegm and alleviates cough','Improves mental focus and memory','Maintains healthy body weight'],
+   ind:'For preventing heart and brain deterioration, maintaining body weight, treating colds, rhinitis, itching eyes, headache, and bronchitis.',
+   use:'Steep 1 bag in hot water for 3–5 minutes. Caution: very bitter taste. Start with short steeping time. 1–2 times daily.',
+   ch:['Brain Clarity','Blood Pressure','Memory','Pure Herb']},
+
+  {n:'LIBIDO UP TEA',t:'Natural Vitality & Desire Support',cat:'men',p:18.99,r:4.4,rv:63,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUAfjpqJFm5pL-xPAenZkMbO7vIfyjBvGCmnC7Jm_KFMfj2jUL0YSz9_pf8zjPWZrDASr2E7X2yfNxCvFfQcygj-C4GLCtW9kJ7UEUyAio9tLD-d5FNPQrrDixoZI3W6OQJg-AEpxT5tgEKHE4eEg4iiPaJvpaSR-I3_BQRaXcbZrWKOwJ3FsPTOGoz-WOIffLR9R0q3bWB5QF0WRFUkz44JAwdZcZ2ZaSDwA0s=w1280',
+   ing:['Salt Fried Chive Seed','Psoraliae Fruit','Complanate Astragalus Seed','Rosa Laevigata','Salted Fenugreek Seed','Chinese Dodder Seeds','Alpinia Fruit','Green Tea'],
+   ben:['Increases libido naturally','Strengthens kidney Yang','Supports sexual health','Improves stamina and energy','Nourishes Qi and essence'],
+   ind:'For those experiencing reduced libido, fatigue, or weakened vitality. Safe traditional herbal formula for adults.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Best results with consistent use over 4+ weeks.',
+   ch:['Libido','Vitality','Men\'s Health','Kidney Yang']},
+
+  {n:'LIVER CARE TEA',t:'Protect & Strengthen Your Liver',cat:'detox',p:15.99,r:4.6,rv:153,b:'Bestseller',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUAgIMIQRdrUMuoVtmmrN4kIXyN7nFuH4srQCDB2NtPVTAoCF3HxmQ3Zfa8tPC06KjgSM-ZMglcpI3e2oDOsGD4Yt3sCK7SFrmC_mpg2K9hZLMjCkB9VTHR4NbBrmkUX-lJ-G8hKZ6-kcPLLLkYghsxOAJAJ3dPpMrbdZaIJMKAuW_fhAa4Rnh8NO2-RetztTf8qISMT9_n3ojDDRSzsSP_PRuPHUpgjEdftulY=w1280',
+   ing:['Chinese Date','Oriental Wormwood','Green Tea'],
+   ben:['Cleans liver heat','Dispels stagnation','Protects and strengthens the liver','Prevents hepatitis with regular use','Suitable for both men and women'],
+   ind:'For all ages and genders to protect and strengthen the liver. Ideal for those exposed to alcohol, medications, or environmental toxins.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Safe for regular long-term use.',
+   ch:['Liver Protection','Detox','Anti-Hepatitis','Green Tea']},
+
+  {n:'LUNG CLEANING TEA',t:'Clear Phlegm, Soothe Respiratory Tract',cat:'resp',p:14.99,r:4.5,rv:118,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUBN3TVziRjr_u6khpJBwo-7VaiCk9PCLERtqrMlG3IuYasTklZrsPmKoWNhJ8F6O0QTLeNqbdKrQ8VT9ncZaE0kEiAFrKEro-fyG7i-a7u1bzjoPQyzEVXYUMd0UAK6AnWOczGX8dRH4f2FYGzRik_wYWNIES3g-RVyfUVTNUuVl2Wc4mb62nlGLd5eeNzsZG7ATFsnnxfPJgSTX9bi2y6Gs2ijyWvbgcJFXSk=w1280',
+   ing:['Bamboo Leaves','Loquat Leaves','Honeysuckle Flower','Reed Rhizome','Platycodon Root','Green Tea'],
+   ben:['Clears lung heat','Reduces phlegm','Stops coughing','Produces saliva and slakes thirst','Relieves dysphoria','Soothes throat'],
+   ind:'For lung heat, excessive phlegm, persistent cough, throat irritation, or general respiratory discomfort.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 2–3 times daily during acute symptoms, 1 time for maintenance.',
+   ch:['Lung Cleanse','Phlegm','Cough Relief','Green Tea']},
+
+  {n:'MENOPAUSE TEA',t:'Hormonal Balance & Calm During Transition',cat:'women',p:18.99,r:4.6,rv:131,b:'Bestseller',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUBso6dcOfOPSI25hKNJtk741tVK9egeZ2T4P4LruoCU9-KUSBu71rcsFhu-tjgBf7IWPhJtSh4uunbC8uqOPxyWKFM1VlEgiAaEk08hpwlvxYzWDn-Nlh07-xuVeef6Kt_9xahpHoT6HLmQqEC1UsSG7C6WcjBzXcf7KsPzL_fR7jTVl7mQI2ytYuHADMTh-p-F-CM-1A7TTp-XK0b9zvSeTgS9Zu16f1aX=w1280',
+   ing:['Angelica Root','Anemarrhena Rhizome','Baical Skullcap Root','White Peony Root','Bupleurum Root','Radix Ophiopogonis','Green Tea'],
+   ben:['Balances oestrogen levels','Reduces stress and irritability','Improves mental clarity','Eases hot flushes','Supports emotional wellbeing','Reduces menopause-related discomfort'],
+   ind:'For women going through perimenopause or menopause experiencing stress, irritability, hot flushes, or mood changes.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Consistent use over weeks recommended.',
+   ch:['Menopause','Hormonal Balance','Stress Relief','Women\'s Health']},
+
+  {n:'MENSTRUATION REGULATING TEA',t:'Harmonise Your Cycle Naturally',cat:'women',p:16.99,r:4.5,rv:109,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUAbbKMguObHsFkbhHpVWEqUJaWbxKynqqoa4IYMZA0bd86gnnj_lDiCWQipstE1nmdaeRClaJic59st5kjpnSS3kwwmuPv9RcS-H42mvsZaGwKvGpp-ntIaFBXpPgeSRDnu2a-3kmkNGRjWNwCp6idf0c4fHcqiXvbYRI3KaXxijGn8eGLlqdWBKFyERSeit7WgqmlmPGRQOVCJh9ym2OFO-V0rSz43WBZUGbE=w1280',
+   ing:['Rose','Rosa Chinensis','Angelica Root','Chuanxiong','Motherwort','Jasmine Tea'],
+   ben:['Regulates menstruation','Promotes healthy blood circulation','Relieves period pain','Supports hormonal balance','Fragrant floral flavour'],
+   ind:'For women with irregular periods (menoxenia), painful periods (dysmenorrhea), or scanty menstrual flow (hypomenorrhea).',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily, especially in the 2 weeks before your cycle.',
+   ch:['Period Regulation','Pain Relief','Circulation','Women\'s Health']},
+
+  {n:'MORINGA TEA',t:'The Miracle Tree in Your Cup',cat:'immunity',p:16.99,r:4.5,rv:95,b:'New',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUBN3TVziRjr_u6khpJBwo-7VaiCk9PCLERtqrMlG3IuYasTklZrsPmKoWNhJ8F6O0QTLeNqbdKrQ8VT9ncZaE0kEiAFrKEro-fyG7i-a7u1bzjoPQyzEVXYUMd0UAK6AnWOczGX8dRH4f2FYGzRik_wYWNIES3g-RVyfUVTNUuVl2Wc4mb62nlGLd5eeNzsZG7ATFsnnxfPJgSTX9bi2y6Gs2ijyWvbgcJFXSk=w1280',
+   ing:['Moringa Oleifeva Leaves','Green Tea'],
+   ben:['Rich source of protein and amino acids','Contains important minerals and vitamins','Rich in beta-carotene','Antioxidant-rich phenolics','Strengthens immune system','Supports energy and vitality'],
+   ind:'Suitable for all ages seeking a nutrient-dense superfood tea. Known as the "Miracle Tree" for its exceptional nutritional profile.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Can be enjoyed at any time of day.',
+   ch:['Superfood','Protein-Rich','Immune Boost','Nutrient Dense']},
+
+  {n:'OOLONG TEA',t:'Semi-Fermented Balance of Green & Black',cat:'weight',p:12.99,r:4.4,rv:174,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUBso6dcOfOPSI25hKNJtk741tVK9egeZ2T4P4LruoCU9-KUSBu71rcsFhu-tjgBf7IWPhJtSh4uunbC8uqOPxyWKFM1VlEgiAaEk08hpwlvxYzWDn-Nlh07-xuVeef6Kt_9xahpHoT6HLmQqEC1UsSG7C6WcjBzXcf7KsPzL_fR7jTVl7mQI2ytYuHADMTh-p-F-CM-1A7TTp-XK0b9zvSeTgS9Zu16f1aX=w1280',
+   ing:['Oolong Tea Leaves'],
+   ben:['Anti-fatigue and energising','Supports weight loss','Anti-cancer properties','Lowers blood lipids','Anti-ageing benefits','Balances metabolism'],
+   ind:'Suitable for all ages. A special semi-fermented Chinese tea that bridges the benefits of green and black tea.',
+   use:'Steep 1 bag in hot water at 90°C for 3–5 minutes. Can be re-steeped 2–3 times. 2–3 cups daily.',
+   ch:['Weight Loss','Anti-Ageing','Energy','Blood Lipids']},
+
+  {n:'PROSTATE CARE TEA',t:'Natural Prostate Health Support',cat:'men',p:18.99,r:4.5,rv:96,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUAbbKMguObHsFkbhHpVWEqUJaWbxKynqqoa4IYMZA0bd86gnnj_lDiCWQipstE1nmdaeRClaJic59st5kjpnSS3kwwmuPv9RcS-H42mvsZaGwKvGpp-ntIaFBXpPgeSRDnu2a-3kmkNGRjWNwCp6idf0c4fHcqiXvbYRI3KaXxijGn8eGLlqdWBKFyERSeit7WgqmlmPGRQOVCJh9ym2OFO-V0rSz43WBZUGbE=w1280',
+   ing:['Plantago Seeds','Cyathula Root','Ophiopogon Tuber','Vaccaria Seeds','Tree Peony Root Bark','Notoginseng Root','Licorice Root','Green Tea'],
+   ben:['Supports prostate health','Promotes healthy urinary flow','Reduces prostate inflammation','Nourishes kidney Yin','Improves urinary comfort'],
+   ind:'For men experiencing prostate-related discomfort, urinary flow issues, or those seeking prostate health maintenance.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Consistent use over 4+ weeks for best results.',
+   ch:['Prostate Health','Urinary Flow','Men\'s Wellness','Green Tea']},
+
+  {n:'QUIT SMOKING TEA',t:'Restore Lung Health After Smoking',cat:'resp',p:16.99,r:4.3,rv:72,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUApCOwGVJIiCfYsEjS6m1bckqDyJ2ztOHmK_Vp5zjtfA4XUm1Ff26puUf2CgqdIFO8xMOSTEcNpNI_yHvqEb4pYQcts4vMLzVO477Matg8v-Mx7-_VRNNOROjjBEoLfw_t3PiMsUuOhgYYn7FJjba2IgWaF9zn8t7CZ5-tPWGDwUsdV3sQvGvTz4gkHyT6ac-YWf5cI8CVFSGGZfaJLOHSYImBOt1bkD2Q=w1280',
+   ing:['Wax Gourd Seeds','Perilla Leaf','White Mustard Seeds','Thinleaf Milkwort Root','Lily Bulbs','Platycodon Root','Common Coltsfoot Flower','Ganoderma Lucidum'],
+   ben:['Calms mind and relieves dysphoria','Promotes fluid production','Nourishes the lung','Repairs lung damage from smoking','Suitable for air pollution exposure'],
+   ind:'For smokers or those regularly exposed to air pollution. Supports lung recovery and soothes respiratory irritation.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Best results with consistent use over several weeks.',
+   ch:['Lung Repair','Quit Smoking','Air Pollution','Respiratory']},
+
+  {n:'RED FLOWER GREEN TEA',t:'Promote Circulation & Prevent Clots',cat:'heart',p:16.99,r:4.5,rv:84,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUDH3BYZA-81Z0RlI0ksbABDjiUWhfILoaHPpZzj2g_UCdbOyGae3hkrSPoaU0lgo0bIDgcsAWZYBM6Ez63UBpNu8ZXXsfCe8M6VIjL14h3uNte4P8hpf_rrmJpyEj2JUnyqB_bvzj5yJVTpdNTmvw3sFuSnDbWIIqbJ5sAht7o0Tt2Roi18vklepEapxklOwcmmBx2kRAtUwjt4DQjOO7Bgs3kds8L2_OQU=w1280',
+   ing:['Safflower','Green Tea','Chinese Angelica','Salvia Root','Ligusticum wallichii'],
+   ben:['Promotes blood circulation','Dispels blood stasis','Softens blood vessels','Prevents thrombus formation','Sweet natural herbal fragrance'],
+   ind:'For those with hyperlipidaemia, hypertension, history of stroke, or poor circulation. Pleasant sweet floral flavour.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Can be enjoyed for its pleasant flavour daily.',
+   ch:['Circulation','Anti-Thrombosis','Vessel Health','Blood Stasis']},
+
+  {n:'SEX TEA',t:'Nourish Kidney & Strengthen Vigour',cat:'men',p:17.99,r:4.3,rv:53,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUDFbx6ZzLONao3OJkOdYeSIjwQ57Fq-_uewDtqfAH52B5g2y9edgZHHcfJy9uf-MdRT43x_z3aX3xKpftusRqV_wL9tcrLXQ7O-OkfTG6t8j-KWo4M5p0mbgCv-PRLOFMD4-4wLTECHzz3IGTDcWwsb9aWrtd8-IKX3EF-04Nxij6Z1k0RdvqbOobzZYwsEoenBe0YY3B7tshlIUA8D2OAv06Eg8HVX-gqMh6g=w1280',
+   ing:['Platycodon Root','Cynomorium','Epimedium Root','Black Tea'],
+   ben:['Nourishes the kidneys','Produces vigour and vitality','Strengthens Yang energy','Improves male sexual activity','Traditional kidney tonic formula'],
+   ind:'For weak sexual activity, impotence, and early ejaculation. Traditional Chinese medicine formula for male sexual health.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1 time daily. Consistent use over 4+ weeks recommended.',
+   ch:['Male Vitality','Kidney Tonic','Yang Energy','Black Tea Base']},
+
+  {n:'SKIN LIGHTENING TEA',t:'Radiant, Even-Toned Complexion',cat:'women',p:17.99,r:4.7,rv:192,b:'Bestseller',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUAujp3b9HSHHIVyO2ZJJi1gjngQGuI54AdZ3nsEhD4Q_asZn-hwNIH_8PZD7hUNPDymzemV1yrAriOLHQtp2U3241zQ7wx9FmunuY5Ic5Bd7vjgNUmsUQjtix_kWVGjknRDc4wWBQRTYwM12RCcWUPQEei5I9l7X6sSPy7yPC0Ffa9ajfaisEgJBtZ1TkZ9TZJM53PaRRzM9wVqcv68ztsvlKh4CMqQUEAFnQI=w1280',
+   ing:['Peach Flower','Rose Flower','Angelica Root','Fragrant Solomon\'s Seal Root','Green Tea'],
+   ben:['Lightens and brightens skin tone','Promotes blood circulation to skin','Nourishes and moisturises','Anti-ageing properties','Fragrant floral aroma','Reduces pigmentation and spots'],
+   ind:'For women seeking a brighter, more even skin tone, or those with pigmentation, dull skin, or signs of ageing.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Best results visible after 4–6 weeks of consistent use.',
+   ch:['Skin Brightening','Anti-Pigmentation','Anti-Ageing','Floral Blend']},
+
+  {n:'SLIM TEA',t:'Accelerate Fat Burning & Tone Skin',cat:'weight',p:15.99,r:4.5,rv:178,b:'Bestseller',
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUBjW7UIhD5_pT6r7ioVjoaeZz9jQUgaGHSGVQeffsKuM9jR52wlFFH07Go3FYUhjPwtSkF7_vD2co6NH_u83H0wPRkkVhdRz__z3hno6Q__9ZLMpQR5byawDtCFzRsPZSiL5iipy_9wA9jQORfc5bIIBFtUtXKWmblm03uS4hHOstjUM4_DccVjrb2opyuAXcyfZyHtCweOkCU91QrUTvpG6x50bxnBZmz5GxU=w1280',
+   ing:['Cassia Seed','Hawthorn Fruit','Perilla Fruit','Hangzhou Chrysanthemum Flower','Cyclocarya Leaves','Green Tea'],
+   ben:['Contains lipid decomposition enzyme','Accelerates fat decomposition','Reduces body weight and blood lipids','Nourishes skin as weight reduces','Prevents wrinkles during weight loss','Aids digestion of high-fat food'],
+   ind:'For those who are overweight or have high blood lipid levels. Unique formula that also nourishes skin while slimming.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily, best before meals. Combine with balanced diet.',
+   ch:['Fat Burning','Weight Loss','Skin Toning','Lipid Reduction']},
+
+  {n:'SUGAR BALANCE TEA',t:'Pancreas Support & Insulin Function',cat:'heart',p:17.99,r:4.6,rv:142,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUDFbx6ZzLONao3OJkOdYeSIjwQ57Fq-_uewDtqfAH52B5g2y9edgZHHcfJy9uf-MdRT43x_z3aX3xKpftusRqV_wL9tcrLXQ7O-OkfTG6t8j-KWo4M5p0mbgCv-PRLOFMD4-4wLTECHzz3IGtDcWwsb9aWrtd8-IKX3EF-04Nxij6Z1k0RdvqbOobzZYwsEoenBe0YY3B7tshlIUA8D2OAv06Eg8HVX-gqMh6g=w1280',
+   ing:['Milkvetch Root','Cyclocarya Leaves','Chinese Yam','Green Tea'],
+   ben:['Defends and supports pancreatic function','Activates Islet cells','Improves Islet function','Enhances insulin secretion','Promotes glucose utilisation','Strengthens kidney, spleen, and lung'],
+   ind:'Effective for diabetes patients. Suitable for long-term use as a comprehensive blood sugar management support.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. For diabetes, use alongside prescribed medication.',
+   ch:['Blood Sugar','Diabetes Support','Pancreas','Insulin']},
+
+  {n:'THREE FLOWERS TEA',t:'Heart-Clearing Triple Floral Blend',cat:'immunity',p:13.99,r:4.5,rv:116,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUAujp3b9HSHHIVyO2ZJJi1gjngQGuI54AdZ3nsEhD4Q_asZn-hwNIH_8PZD7hUNPDymzemV1yrAriOLHQtp2U3241zQ7wx9FmunuY5Ic5Bd7vjgNUmsUQjtix_kWVGjknRDc4wWBQRTYwM12RCcWUPQEei5I9l7X6sSPy7yPC0Ffa9ajfaisEgJBtZ1TkZ9TZJM53PaRRzM9wVqcv68ztsvlKh4CMqQUEAFnQI=w1280',
+   ing:['Wild Chrysanthemum Flower','Honeysuckle Flower','Fructus Gardeniae','Cane Sugar'],
+   ben:['Clears the heart and detoxifies','Relieves sore throat','Prevents flu and colds','Lowers blood pressure','Refreshing and fragrant taste'],
+   ind:'Suitable for any age. Ideal as a daily wellness tea for throat care, immunity, and general health maintenance.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm or chilled. 1–2 times daily. Naturally sweet flavour.',
+   ch:['Detox','Sore Throat','Flu Prevention','All Ages']},
+
+  {n:'WALNUT TEA',t:'Nourish Heart & Brain for Peak Function',cat:'heart',p:16.99,r:4.5,rv:123,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUCzCceL58A7uCLRILVbkRKzF3CGcLDTKjdpMH2qMMwDqo9rnrc8Wx_x7eTgO96EekvxdaqvrdRpt_U2AtrVkIXKkPCzCHrcwieApAz4SHH-3LIy091xyCY6HWk6KlEYaJjrj6nZxtyCtxLdwz3DfXNqTcxQI0DWolINb_eYydWclCXerXrCjKjrM0NoZHmimsbf-jBxCRSMYTy87haJunSArr14d-LsblFB=w1280',
+   ing:['Walnut Kernel','Gynostemma Pentaphyllum','Green Tea'],
+   ben:['Nourishes heart function','Supports brain health and memory','Rich in energy and health-benefiting nutrients','Contains minerals, antioxidants and vitamins','Promotes mental clarity'],
+   ind:'For those seeking to nourish heart and brain function, improve memory, or boost mental and physical energy levels.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. An excellent morning tea for mental focus.',
+   ch:['Brain Health','Heart Nourishing','Memory','Energy']},
+
+  {n:'WHITE GOURD SLIM TEA',t:'Weight Loss & Lipid Reduction',cat:'weight',p:14.99,r:4.4,rv:88,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUCBhy491qsK0r_YW7Y1HVhA2ZjgYM12airfn2nhgy3woSlgDqV0iYNEJcLzj6EeMHAgGDOf2ea2AcN0xCJfibVDYS0CZw75uYq0e7lQoDR1QyhQ-F72eFHkGH4d64cYiFg_2M8g7Eaogeq09oDvmnoZTjuek7soOhNOgV5BbZnei8umfXJ4_TjzG7k2lWPzBqhBjDKBjIj9dq7uKpEenLkZhCEAWL0aZv2Y0E0=w1280',
+   ing:['Fleeceflower Root','White Gourd Peel','Pagodatree Pod','Hawthorn Fruit','Oolong Tea'],
+   ben:['Promotes weight loss','Lowers blood lipid levels','Reduces water retention','Supports healthy metabolism','Gentle cleansing action'],
+   ind:'For those with simple obesity or hyperlipidaemia. A gentler slimming option with natural gourd and fleeceflower.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily, best before meals.',
+   ch:['Weight Loss','Lipid Reduction','Slimming','Oolong Base']},
+
+  {n:'WOMB CARE TEA',t:'Nurture & Protect the Womb',cat:'women',p:17.99,r:4.6,rv:127,b:null,
+   img:'https://lh3.googleusercontent.com/sitesv/AA5AbUD9QuF_cf2gC3hEl0jX8IYeNSKEYYa1Rq1xTf2wd3J_4PlyrIBYXoyt16FrhNtGR-7wmRNeB1NjB6sAvRmYfkYnrB2ZfMSBuE5TOX4QmkTfVij-bzgVpgn574uDQgl9ZflTxZJndngUkPNUvJLp_oh4v066oUtGikvQL2Wlfhpy7dtczlxFSOlIkqy3GJbATacfVx_Ujz-D7XS9PS5wUnozU3-5Jy-v9p5oIO0=w1280',
+   ing:['Asian Motherwort','Angelica Root','Rhizoma Chuanxiong','Licorice Root','Green Tea'],
+   ben:['Nourishes and protects the uterus','Promotes healthy circulation in pelvic area','Regulates menstruation','Reduces menstrual cramping','Strengthens female reproductive health'],
+   ind:'For women seeking to support uterine health, ease menstrual discomfort, or maintain healthy reproductive function.',
+   use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Best taken consistently over several weeks.',
+   ch:['Uterine Health','Pelvic Circulation','Menstrual Support','Women\'s Wellness']},
+];
+
+// ── STATE ──────────────────────────────────────────────────────────────────
+let activeCat='all', searchQ='', cart=[], openIdx=null;
+
+// ── INIT ───────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded',()=>{
+  buildFilters();
+  renderGrid();
+});
+
+function buildFilters(){
+  const fb=document.getElementById('fb');
+  fb.innerHTML=CATS.map(c=>`<button class="fchip${c.id==='all'?' on':''}" onclick="setFilter('${c.id}')">${c.l}</button>`).join('');
+}
+
+function setFilter(id){
+  activeCat=id;
+  document.querySelectorAll('.fchip').forEach((c,i)=>c.classList.toggle('on',CATS[i].id===id));
+  renderGrid();
+}
+
+function doSearch(q){searchQ=q.toLowerCase().trim();renderGrid()}
+
+function filtered(){
+  return P.filter(p=>{
+    const inCat=activeCat==='all'||p.cat===activeCat;
+    const inQ=!searchQ||p.n.toLowerCase().includes(searchQ)||p.t.toLowerCase().includes(searchQ)||p.ing.some(i=>i.toLowerCase().includes(searchQ))||(p.ch&&p.ch.some(c=>c.toLowerCase().includes(searchQ)));
+    return inCat&&inQ;
+  });
+}
+
+function starsStr(r){
+  const full=Math.floor(r),half=r-full>=0.5;
+  return '★'.repeat(full)+(half?'½':'')+'☆'.repeat(5-full-(half?1:0));
+}
+
+function catLabel(id){return CATS.find(c=>c.id===id)?.l.replace(/^[^a-zA-Z]+/,'').trim()||id}
+
+function renderGrid(){
+  const items=filtered();
+  const pg=document.getElementById('pg');
+  document.getElementById('fc').textContent=`${items.length} tea${items.length!==1?'s':''}`;
+  if(!items.length){pg.innerHTML='<div class="nores"><h3>No teas found</h3><p>Try a different search or filter.</p></div>';return;}
+  pg.innerHTML=items.map((p,i)=>{
+    const idx=P.indexOf(p);
+    const delay=Math.min(i*35,400);
+    return `<div class="card" style="animation-delay:${delay}ms" onclick="openModal(${idx})">
+      ${p.b?`<span class="cbadge ${p.b==='Bestseller'?'bs':p.b==='New'?'nw':'pr'}">${p.b}</span>`:''}
+      <div class="cimgw">
+        <img referrerpolicy="no-referrer" class="cimg" src="${p.img}" alt="${p.n}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="cfall" style="display:none">🍵</div>
+      </div>
+      <div class="cbody">
+        <div class="ccat">${catLabel(p.cat)}</div>
+        <div class="cname">${p.n}</div>
+        <div class="ctag">${p.t}</div>
+        <div class="crat"><span class="cstars">${'★'.repeat(Math.round(p.r))}</span><span>${p.r} (${p.rv})</span></div>
+        <div class="cfoot">
+          <span class="cprice">$${p.p.toFixed(2)}</span>
+          <button class="catcbtn" id="cb${idx}" onclick="addCard(event,${idx})">Add to Cart</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── MODAL ──────────────────────────────────────────────────────────────────
+function openModal(idx){
+  const p=P[idx];openIdx=idx;
+  const miEl=document.getElementById('mi');miEl.referrerPolicy='no-referrer';miEl.src=p.img;
+  document.getElementById('mi').style.display='block';
+  document.getElementById('mf').style.display='none';
+  document.getElementById('mcat').textContent=catLabel(p.cat);
+  document.getElementById('mtt').textContent=p.n;
+  document.getElementById('mtag').textContent=p.t;
+  document.getElementById('mst').textContent='★'.repeat(Math.round(p.r));
+  document.getElementById('mrav').textContent=`${p.r} · ${p.rv} reviews`;
+  document.getElementById('mpr').textContent=`$${p.p.toFixed(2)}`;
+  const stocks=[14,7,23,11,19,8,31,16];
+  document.getElementById('mstk').textContent=`Only ${stocks[idx%stocks.length]} left!`;
+  document.getElementById('mch').innerHTML=(p.ch||[]).map(c=>`<span class="mchip">${c}</span>`).join('');
+  document.getElementById('il').innerHTML=p.ing.map(i=>`<li class="iitem"><div class="idot"></div><span>${i}</span></li>`).join('');
+  document.getElementById('bl').innerHTML=p.ben.map(b=>`<li class="bitem"><span class="bchk">✓</span><span>${b}</span></li>`).join('');
+  document.getElementById('ub').innerHTML=p.use;
+  document.getElementById('wb').innerHTML=p.ind;
+  const ti=TESTIS[idx%TESTIS.length];
+  document.getElementById('tq').textContent=ti[0];
+  document.getElementById('ta').textContent=ti[1];
+  const mac=document.getElementById('mac');
+  mac.textContent=cart.includes(idx)?'✓ Added to Cart':'🛒 Add to Cart';
+  mac.classList.toggle('ok',cart.includes(idx));
+  tab('ing',null);
+  document.getElementById('mo').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('mo').classList.remove('on');document.body.style.overflow='';}
+function ovClick(e){if(e.target===document.getElementById('mo'))closeModal();}
+
+function tab(id,btn){
+  document.querySelectorAll('#mtabs .tbtn').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.tpanel').forEach(p=>p.classList.remove('on'));
+  const target=btn||document.querySelector(`#mtabs [data-tab="${id}"]`);
+  if(target)target.classList.add('on');
+  document.getElementById('tp-'+id).classList.add('on');
+}
+
+// ── CART ───────────────────────────────────────────────────────────────────
+function addCard(e,idx){
+  e.stopPropagation();
+  addToCart(idx);
+  const btn=document.getElementById('cb'+idx);
+  if(btn){btn.textContent='✓ Added';btn.classList.add('ok');}
+}
+function addFromModal(){
+  addToCart(openIdx);
+  const mac=document.getElementById('mac');
+  mac.textContent='✓ Added to Cart';mac.classList.add('ok');
+}
+function addToCart(idx){
+  if(!cart.includes(idx))cart.push(idx);
+  document.getElementById('cnt').textContent=cart.length;
+  showToast(`${P[idx].n} added to cart!`);
+}
+function showCart(){showToast(`${cart.length} item${cart.length!==1?'s':''} in cart — checkout coming soon!`);}
+
+let toastTimer;
+function showToast(msg){
+  clearTimeout(toastTimer);
+  const t=document.getElementById('toast');
+  document.getElementById('tmsg').textContent=msg;
+  t.classList.add('show');
+  toastTimer=setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+// keyboard close
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+</script>
+</body>
+</html>
