@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tangren Herbal Teas — Traditional Chinese Wellness</title>
+<title>Tangren Herbal Teas & Pills — Traditional Chinese Wellness</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/lucide-static@latest/font/lucide.css">
@@ -75,6 +75,28 @@ nav{position:sticky;top:0;z-index:100;background:var(--f);height:66px;padding:0 
 .tbar{background:var(--cd);border-bottom:1px solid rgba(27,58,40,.09);padding:13px clamp(14px,4vw,52px);display:flex;align-items:center;justify-content:center;gap:clamp(12px,3vw,44px);flex-wrap:wrap}
 .titem{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--tm);font-weight:500;white-space:nowrap}
 
+/* ── PRODUCT TYPE TABS ── */
+.type-btn {
+  background: transparent;
+  border: none;
+  border-radius: 16px;
+  padding: 6px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--tm);
+  cursor: pointer;
+  transition: all var(--tr);
+}
+.type-btn:hover {
+  color: var(--f);
+}
+.type-btn.on {
+  background: var(--f);
+  color: var(--w);
+  font-weight: 600;
+  box-shadow: var(--sh0);
+}
 /* ── FILTERS ── */
 .fsec{padding:28px clamp(14px,4vw,52px) 0}
 .fhead{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px}
@@ -485,7 +507,7 @@ footer{background:var(--f);color:rgba(255,255,255,.55);padding:44px clamp(14px,4
 <nav>
   <a class="nlogo" href="#">
     <div class="nmark"><i data-lucide="leaf" style="width:17px;height:17px"></i></div>
-    <div class="ntext"><b>Tangren</b><small>Herbal Teas</small></div>
+    <div class="ntext"><b>Tangren</b><small>Herbal Teas &amp; Pills</small></div>
   </a>
   <div class="nlinks">
     <a href="#">Shop All</a>
@@ -544,7 +566,12 @@ footer{background:var(--f);color:rgba(255,255,255,.55);padding:44px clamp(14px,4
 <div class="fsec" id="ga">
   <div class="fhead">
     <h2 class="ftitle">Our Collection</h2>
-    <span class="fcount" id="fc">49 teas</span>
+    <div style="display:flex;gap:8px;background:var(--cd);padding:4px;border-radius:20px;align-items:center;">
+      <button class="type-btn on" id="type-all" onclick="setType('all')">All Products</button>
+      <button class="type-btn" id="type-teas" onclick="setType('teas')">Herbal Teas</button>
+      <button class="type-btn" id="type-pills" onclick="setType('pills')">Herbal Pills</button>
+    </div>
+    <span class="fcount" id="fc">0 products</span>
   </div>
   <div class="fbar" id="fb"></div>
 </div>
@@ -1097,10 +1124,749 @@ const P=[
    ind:'For women seeking to support uterine health, ease menstrual discomfort, or maintain healthy reproductive function.',
    use:'Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Best taken consistently over several weeks.',
    ch:['Uterine Health','Pelvic Circulation','Menstrual Support','Women\'s Wellness']},
+,
+
+  {n:'AN SHEN BU XIN WAN (CALM SHEN/SPIRIT)',t:'CALM SHEN/SPIRIT',cat:'sleep',p:95.99,r:4.5,rv:114,b:null,
+   img:'images/AN_SHEN_BU_XIN_WAN_(CALM_SHENSPIRIT).png',
+   ing:['AN SHEN BU XIN WAN'],
+   ben:['Calms the mind & spirit', 'Restores normal sleep rhythm', 'Nourishes Heart Yin & blood', 'Alleviates irritability'],
+   ind:'calms the spirit and restores normal sleep rhythm by nourishing Heart Yin and blood.  feeling of your heart pounding and having a hard time falling asleep are common symptoms. It is also used for mood...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Sleep Support'],
+   isPill:true},
+
+  {n:'BA ZHEN WAN (EIGHT TONIC PILLS)',t:'EIGHT TONIC PILLS',cat:'digest',p:95.99,r:4.9,rv:94,b:null,
+   img:'images/BA_ZHEN_WAN_(EIGHT_TONIC_PILLS).png',
+   ing:['BA ZHEN WAN'],
+   ben:['Aids digestion', 'Removes food stagnation', 'Harmonizes the stomach', 'Relieves bloating & reflux'],
+   ind:'It nourishes both Blood and Qi. It is used for deficiency of Qi and Blood, sallow complexion, poor appetite, weak arms and legs, hypermenorrhea.',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Digest Support'],
+   isPill:true},
+
+  {n:'BA ZHENG WAN (Clean Urine)',t:'Clean Urine',cat:'heart',p:85.99,r:4.7,rv:132,b:null,
+   img:'images/BA_ZHENG_WAN_(Clean_Urine).png',
+   ing:['BA ZHENG WAN'],
+   ben:['Promotes blood circulation', 'Softens blood vessels', 'Relieves joint & back pain', 'Supports normal blood pressure'],
+   ind:'It can clear Heat, purge Fire and support urine flow. It is used for the Lin Syndrome presenting with urgent urination, difficulty and pain in micturition，scanty dark and turbid urine, heavy feeling i...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Heart Support'],
+   isPill:true},
+
+  {n:'BAN LONG WAN (Tonify Prime Yang)',t:'Tonify Prime Yang',cat:'men',p:90.99,r:4.5,rv:18,b:null,
+   img:'images/BAN_LONG_WAN_(Tonify_Prime_Yang).png',
+   ing:['BAN LONG WAN'],
+   ben:['Tonifies Kidney Yang', 'Supports male reproductive health', 'Boosts energy & performance', 'Strengthens bones and tendons'],
+   ind:'It warms and nourishes primary/Yuan Yang, prolong life. It is used for deficiency of Yuan Yang, symptoms include back and knee ache, impotence and early ejaculation, increased urination, tinnitus, fat...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Men Support'],
+   isPill:true},
+
+  {n:'BAO HE WAN (Digestion Aid)',t:'Digestion Aid',cat:'digest',p:90.99,r:4.4,rv:73,b:null,
+   img:'images/BAO_HE_WAN_(Digestion_Aid).png',
+   ing:['BAO HE WAN'],
+   ben:['Aids digestion', 'Removes food stagnation', 'Harmonizes the stomach', 'Relieves bloating & reflux'],
+   ind:'It helps to digest food, transmit stagnation, and harmonize stomach. It is used for food stagnation, abdominal distention, esophageal reflux, and no appetite for food.',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Digest Support'],
+   isPill:true},
+
+  {n:'BAN XIA XIE XIN WAN (Harmonize Stomach)',t:'Harmonize Stomach',cat:'digest',p:75.99,r:4.4,rv:25,b:'Bestseller',
+   img:'images/BAN_XIA_XIE_XIN_WAN_(Harmonize_Stomach).png',
+   ing:['BAN XIA XIE XIN WAN'],
+   ben:['Aids digestion', 'Removes food stagnation', 'Harmonizes the stomach', 'Relieves bloating & reflux'],
+   ind:'Ban Xia Xie Xin Tang Pill is used for “Pi syndrome" (痞症disharmony between the stomach and the spleen) marked by the focal distention or fullness in the stomach, along with various stomach discomforts....',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Digest Support'],
+   isPill:true},
+
+  {n:'Bi Yan Wan (Rhinitis Pills)',t:'Rhinitis Pills',cat:'resp',p:75.99,r:4.5,rv:130,b:null,
+   img:'images/Bi_Yan_Wan_(Rhinitis_Pills).png',
+   ing:['Bi Yan Wan'],
+   ben:['Clears nasal passages', 'Expels wind and heat toxins', 'Transforms phlegm & stops cough', 'Supports respiratory health'],
+   ind:'helps the nasal airflow by dispersing Wind and expelling toxins. Moreover, it transforms mucus. It can be used for Rhinitis, Allergic Rhinitis, Chronic Rhinitis and Nasosinusitis.',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Resp Support'],
+   isPill:true},
+
+  {n:'BU ZHONG YI QI WAN (Tonify Center Qi)',t:'Tonify Center Qi',cat:'women',p:95.99,r:4.8,rv:109,b:null,
+   img:'images/BU_ZHONG_YI_QI_WAN_(Tonify_Center_Qi).png',
+   ing:['BU ZHONG YI QI WAN'],
+   ben:['Nourishes Spleen & Blood', 'Regulates menstruation', 'Alleviates period pain', 'Supports gynecological health'],
+   ind:'can nourish the spleen and promote Qi due to the Qi deficiency. The central Qi provides the vital energy of the body including the internal organs and physical activities. When Qi is weak, the organs ...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Women Support'],
+   isPill:true},
+
+  {n:'CHAI HU SHU GAN WAN (Liver Harmonize)',t:'Liver Harmonize',cat:'women',p:75.99,r:4.7,rv:20,b:null,
+   img:'images/CHAI_HU_SHU_GAN_WAN_(Liver_Harmonize).png',
+   ing:['CHAI HU SHU GAN WAN'],
+   ben:['Nourishes Spleen & Blood', 'Regulates menstruation', 'Alleviates period pain', 'Supports gynecological health'],
+   ind:'It is used for Liver Qi stagnation, includes distending discomfort along the sides of the body, deep breathing, short temper, chest distention, and frequent belching. It can be used for premenstrual s...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Women Support'],
+   isPill:true},
+
+  {n:'CHUAN XIN LIAN KANG YAN WAN (Anti-Inflammation)',t:'Anti-Inflammation',cat:'resp',p:75.99,r:4.4,rv:65,b:'Bestseller',
+   img:'images/CHUAN_XIN_LIAN_KANG_YAN_WAN_(Anti-Inflammation).png',
+   ing:['CHUAN XIN LIAN KANG YAN WAN'],
+   ben:['Clears nasal passages', 'Expels wind and heat toxins', 'Transforms phlegm & stops cough', 'Supports respiratory health'],
+   ind:'It clears heat, resolves toxin, cools blood, disperses swelling, supports the body\'s immune function.  It is for San Jiao Heat, acute toxin inflammations on the blood, lymph, or organ level. It can be...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Resp Support'],
+   isPill:true},
+
+  {n:'CHUAN XIONG CHA TIAO WAN (Head Clear)',t:'Head Clear',cat:'heart',p:85.99,r:4.9,rv:62,b:null,
+   img:'images/CHUAN_XIONG_CHA_TIAO_WAN_(Head_Clear).png',
+   ing:['CHUAN XIONG CHA TIAO WAN'],
+   ben:['Promotes blood circulation', 'Softens blood vessels', 'Relieves joint & back pain', 'Supports normal blood pressure'],
+   ind:'It is indicated for conditions in which external Wind has disrupted the flow of Qi energy in the channels or meridians and thus obstructs the clear Yang Qi and causes discomfort. It drives wind from t...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Heart Support'],
+   isPill:true},
+
+  {n:'DA BU YIN WAN (Nourish Yin Plus)',t:'Nourish Yin Plus',cat:'sleep',p:85.99,r:4.3,rv:32,b:null,
+   img:'images/DA_BU_YIN_WAN_(Nourish_Yin_Plus).png',
+   ing:['DA BU YIN WAN'],
+   ben:['Calms the mind & spirit', 'Restores normal sleep rhythm', 'Nourishes Heart Yin & blood', 'Alleviates irritability'],
+   ind:'It can nourish Yin and clear fire. It is used for Yin deficient heat, symptoms include tidal fever and night sweat, cough, tinnitus.',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Sleep Support'],
+   isPill:true},
+
+  {n:'DANG GUI WAN (Angelica Pills)',t:'Angelica Pills',cat:'women',p:80.99,r:4.4,rv:81,b:null,
+   img:'images/DANG_GUI_WAN_(Angelica_Pills).png',
+   ing:['DANG GUI WAN'],
+   ben:['Nourishes Spleen & Blood', 'Regulates menstruation', 'Alleviates period pain', 'Supports gynecological health'],
+   ind:'It can activate blood and tonify blood, regulate menstruation and stop pain. It is used for blood deficiency, irregular menstruation and period pain.',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Women Support'],
+   isPill:true},
+
+  {n:'DU HUO JI SHENG WAN (Joint & Back Aid)',t:'Joint & Back Aid',cat:'sleep',p:80.99,r:4.7,rv:36,b:null,
+   img:'images/DU_HUO_JI_SHENG_WAN_(Joint_&_Back_Aid).png',
+   ing:['DU HUO JI SHENG WAN'],
+   ben:['Calms the mind & spirit', 'Restores normal sleep rhythm', 'Nourishes Heart Yin & blood', 'Alleviates irritability'],
+   ind:'It nourishes the Blood, soothes the sinews, and expels Wind and Dampness. | It acts to expel wind and remove dampness, remove obstruction in Qi and blood circulation. It is used for chronic lower back...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Sleep Support'],
+   isPill:true},
+
+  {n:'ER CHEN WAN (Phlegm/Dampness)',t:'Phlegm/Dampness',cat:'resp',p:75.99,r:4.8,rv:45,b:'Bestseller',
+   img:'images/ER_CHEN_WAN_(PhlegmDampness).png',
+   ing:['ER CHEN WAN'],
+   ben:['Clears nasal passages', 'Expels wind and heat toxins', 'Transforms phlegm & stops cough', 'Supports respiratory health'],
+   ind:'It can dry dampness and dissolve phlegm, regulate Qi and harmonize stomach. It is used for Damp-Phlegm syndrome, symptoms include a large amount of Phlegm, nausea, vomiting, uncomfortable stomach, hea...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Resp Support'],
+   isPill:true},
+
+  {n:'FANG FENG TONG SHENG WAN (Clear Heat)',t:'Clear Heat',cat:'sleep',p:80.99,r:4.7,rv:76,b:null,
+   img:'images/FANG_FENG_TONG_SHENG_WAN_(Clear_Heat).png',
+   ing:['FANG FENG TONG SHENG WAN'],
+   ben:['Calms the mind & spirit', 'Restores normal sleep rhythm', 'Nourishes Heart Yin & blood', 'Alleviates irritability'],
+   ind:'It disperses wind, releases the exterior, drains heat and unblocks the bowels. It is used for external cold with internal heat, excess syndrome at exterior and interior, fear cold, high fever, headach...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Sleep Support'],
+   isPill:true},
+
+  {n:'FU ZHENG FANG (Immune Aid)',t:'Immune Aid',cat:'digest',p:80.99,r:4.7,rv:76,b:null,
+   img:'images/FU_ZHENG_FANG_(Immune_Aid).png',
+   ing:['FU ZHENG FANG'],
+   ben:['Aids digestion', 'Removes food stagnation', 'Harmonizes the stomach', 'Relieves bloating & reflux'],
+   ind:'It nourishes Qi and Yin, strengthen Spleen and harmonize Stomach, removes tumor and stasis, and helps to strengthen Zheng Qi (immunity). It is mainly used for cancer, viral or bacterial infections and...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Digest Support'],
+   isPill:true},
+
+  {n:'FU ZI LI ZHONG WAN (Warm Middle)',t:'Warm Middle',cat:'digest',p:75.99,r:4.6,rv:75,b:'Bestseller',
+   img:'images/FU_ZI_LI_ZHONG_WAN_(Warm_Middle).png',
+   ing:['FU ZI LI ZHONG WAN'],
+   ben:['Aids digestion', 'Removes food stagnation', 'Harmonizes the stomach', 'Relieves bloating & reflux'],
+   ind:'It warms the "Middle Energizer" and strengthens the Spleen, stop diarrhea and pain. It is used for deficiency cold of spleen and stomach, cold pain in the abdomen, vomit and diarrhea, cold hands and f...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Digest Support'],
+   isPill:true},
+
+  {n:'GAN MAO LING (Common Cold)',t:'Common Cold',cat:'resp',p:85.99,r:4.5,rv:122,b:null,
+   img:'images/GAN_MAO_LING_(Common_Cold).png',
+   ing:['GAN MAO LING'],
+   ben:['Clears nasal passages', 'Expels wind and heat toxins', 'Transforms phlegm & stops cough', 'Supports respiratory health'],
+   ind:'It can clear heat and remove toxicity, dispel wind-heat. It used for wind-heat type common cold and early stage of febrile disease. It can also be used for supporting the health of the immune, nervous...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Resp Support'],
+   isPill:true},
+
+  {n:'GUAN JIE YAN WAN (Joint Health)',t:'Joint Health',cat:'heart',p:90.99,r:4.8,rv:93,b:null,
+   img:'images/GUAN_JIE_YAN_WAN_(Joint_Health).png',
+   ing:['GUAN JIE YAN WAN'],
+   ben:['Promotes blood circulation', 'Softens blood vessels', 'Relieves joint & back pain', 'Supports normal blood pressure'],
+   ind:'It tonifies Qi and Blood, dispels Wind, Cold and Dampness, and supports a healthy knee function. It is used for of Bi syndrome, which manifest as soreness or stiffness of the knees and loin, or limite...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Heart Support'],
+   isPill:true},
+
+  {n:'GUI PI WAN (Spleen Aid)',t:'Spleen Aid',cat:'sleep',p:95.99,r:4.5,rv:114,b:null,
+   img:'images/GUI_PI_WAN_(Spleen_Aid).png',
+   ing:['GUI PI WAN'],
+   ben:['Calms the mind & spirit', 'Restores normal sleep rhythm', 'Nourishes Heart Yin & blood', 'Alleviates irritability'],
+   ind:'It strengthens the Spleen and the Heart. It is used to nourish the Blood, replenish Qi, and calm the mind in cases of overwork or stress. Heart and Spleen deficiency signs are: 1. difficulty in stayin...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Sleep Support'],
+   isPill:true},
+
+  {n:'GUI ZHI FU LING WAN (Uterus Stagnation)',t:'Uterus Stagnation',cat:'women',p:80.99,r:4.6,rv:91,b:null,
+   img:'images/GUI_ZHI_FU_LING_WAN_(Uterus_Stagnation).png',
+   ing:['GUI ZHI FU LING WAN'],
+   ben:['Nourishes Spleen & Blood', 'Regulates menstruation', 'Alleviates period pain', 'Supports gynecological health'],
+   ind:'It helps for promoting Blood circulation, removes Blood Stasis and eliminating mass.  It is used for uterine fibroids, polyps, ovarian cysts, endometriosis and pelvic inflammatory disease. It is mostl...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Women Support'],
+   isPill:true},
+
+  {n:'HUAI JIAO WAN (Sophora Fruit Pills)',t:'Sophora Fruit Pills',cat:'heart',p:85.99,r:4.5,rv:42,b:null,
+   img:'images/HUAI_JIAO_WAN_(Sophora_Fruit_Pills).png',
+   ing:['HUAI JIAO WAN'],
+   ben:['Promotes blood circulation', 'Softens blood vessels', 'Relieves joint & back pain', 'Supports normal blood pressure'],
+   ind:'It stops itching and pain, subsides swell, expels damp toxin, cleans intestine and expels wind, colds the Blood and stops bleeding. It is used for intestinal wind and hematochezia, bleeding hemorrhoid...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Heart Support'],
+   isPill:true},
+
+  {n:'HUO XIANG ZHENG QI WAN (Regulate Stomach)',t:'Regulate Stomach',cat:'digest',p:75.99,r:4.6,rv:35,b:'Bestseller',
+   img:'images/HUO_XIANG_ZHENG_QI_WAN_(Regulate_Stomach).png',
+   ing:['HUO XIANG ZHENG QI WAN'],
+   ben:['Aids digestion', 'Removes food stagnation', 'Harmonizes the stomach', 'Relieves bloating & reflux'],
+   ind:'It can relieve the exterior syndrome, transform dampness, regulate Qi, and harmonize the middle Jiao. It is used to regulate the digestive system and maintain normal bowel functions. It can also be us...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Digest Support'],
+   isPill:true},
+
+  {n:'JIA WEI XIAO YAO WAN (Ease Life Plus)',t:'Ease Life Plus',cat:'women',p:95.99,r:4.9,rv:54,b:null,
+   img:'images/JIA_WEI_XIAO_YAO_WAN_(Ease_Life_Plus).png',
+   ing:['JIA WEI XIAO YAO WAN'],
+   ben:['Nourishes Spleen & Blood', 'Regulates menstruation', 'Alleviates period pain', 'Supports gynecological health'],
+   ind:'It can smooth Liver, clear heat, tonify Spleen and nourish blood. It is used for Live Qi stagnation, blood deficiency, Liver- Spleen disharmony , symptoms include hypochondrium distending pain, dizzin...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Women Support'],
+   isPill:true},
+
+  {n:'JIANG DAN GU CHUAN WAN (Lower Cholesterol)',t:'Lower Cholesterol',cat:'heart',p:90.99,r:4.7,rv:28,b:null,
+   img:'images/JIANG_DAN_GU_CHUAN_WAN_(Lower_Cholesterol).png',
+   ing:['JIANG DAN GU CHUAN WAN'],
+   ben:['Promotes blood circulation', 'Softens blood vessels', 'Relieves joint & back pain', 'Supports normal blood pressure'],
+   ind:'It helps removing blood stasis and dredging collaterals. It is used for maintaining healthy cholesterol and triglycerides within the normal range.',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Heart Support'],
+   isPill:true},
+
+  {n:'JIANG YA WAN (Hypertension Pills)',t:'Hypertension Pills',cat:'sleep',p:95.99,r:4.9,rv:134,b:null,
+   img:'images/JIANG_YA_WAN_(Hypertension_Pills).png',
+   ing:['JIANG YA WAN'],
+   ben:['Calms the mind & spirit', 'Restores normal sleep rhythm', 'Nourishes Heart Yin & blood', 'Alleviates irritability'],
+   ind:'It helps to calm the liver, subdue the Yang, enrich the Yin, and support healthy blood pressure. It is used for treating hypertension, chronic headache and migraine, dizziness and vertigo, eye redness...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Sleep Support'],
+   isPill:true},
+
+  {n:'JIE GENG WAN (Platycodon Pills)',t:'Platycodon Pills',cat:'resp',p:75.99,r:4.2,rv:95,b:'Bestseller',
+   img:'images/JIE_GENG_WAN_(Platycodon_Pills).png',
+   ing:['JIE GENG WAN'],
+   ben:['Clears nasal passages', 'Expels wind and heat toxins', 'Transforms phlegm & stops cough', 'Supports respiratory health'],
+   ind:'It eliminates phlegm and pus, clears deficiency fire, and clears toxins. It is used for Phlegm Stagnation in the chest with Deficiency Fire Rising. Symptoms include, Coughing, Swelling and pain of the...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Resp Support'],
+   isPill:true},
+
+  {n:'JIN GUI SHEN QI WAN (Kidney Yang)',t:'Kidney Yang',cat:'sleep',p:75.99,r:4.9,rv:30,b:null,
+   img:'images/JIN_GUI_SHEN_QI_WAN_(Kidney_Yang).png',
+   ing:['JIN GUI SHEN QI WAN'],
+   ben:['Calms the mind & spirit', 'Restores normal sleep rhythm', 'Nourishes Heart Yin & blood', 'Alleviates irritability'],
+   ind:'It eliminates phlegm and pus, clears deficiency fire, and clears toxins. It is used for Phlegm Stagnation in the chest with Deficiency Fire Rising. Symptoms include, Coughing, Swelling and pain of the...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Sleep Support'],
+   isPill:true},
+
+  {n:'JIN SUO GU JING WAN (Control Emission)',t:'Control Emission',cat:'women',p:80.99,r:4.3,rv:56,b:null,
+   img:'images/JIN_SUO_GU_JING_WAN_(Control_Emission).png',
+   ing:['JIN SUO GU JING WAN'],
+   ben:['Nourishes Spleen & Blood', 'Regulates menstruation', 'Alleviates period pain', 'Supports gynecological health'],
+   ind:'It is specific for male sexual dysfunction, including premature ejaculation, impotence, and nocturnal emissions. It works by strengthening the deepest reserves of energy in the body – those of the Kid...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Women Support'],
+   isPill:true},
+
+  {n:'JIU WEI QIANG HUO WAN (Dispel Wind-Cold)',t:'Dispel Wind-Cold',cat:'heart',p:85.99,r:4.2,rv:127,b:null,
+   img:'images/JIU_WEI_QIANG_HUO_WAN_(Dispel_Wind-Cold).png',
+   ing:['JIU WEI QIANG HUO WAN'],
+   ben:['Promotes blood circulation', 'Softens blood vessels', 'Relieves joint & back pain', 'Supports normal blood pressure'],
+   ind:'It dispels Wind, relieve exterior syndrome, expel Cold and dispel Dampness. It is used for fear of Cold, fever without sweating, head heaviness and ache and painful limbs caused by Wind-Cold and Dampn...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Heart Support'],
+   isPill:true},
+
+  {n:'KANG GU ZENG SHENG WAN (Anti Hyperosteogeny)',t:'Anti Hyperosteogeny',cat:'sleep',p:80.99,r:4.8,rv:101,b:null,
+   img:'images/KANG_GU_ZENG_SHENG_WAN_(Anti_Hyperosteogeny).png',
+   ing:['KANG GU ZENG SHENG WAN'],
+   ben:['Calms the mind & spirit', 'Restores normal sleep rhythm', 'Nourishes Heart Yin & blood', 'Alleviates irritability'],
+   ind:'It tonifies liver and kidneys, strengthens tendons and bones, dispels wind-damp, invigorates the blood, unblocks the channels and collaterals. It is used for Hyperosteogeny in elderly people.  It can ...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Sleep Support'],
+   isPill:true},
+
+  {n:'LI DAN PAI SHI WAN (Gallstone)',t:'Gallstone',cat:'digest',p:85.99,r:4.2,rv:87,b:'New',
+   img:'images/LI_DAN_PAI_SHI_WAN_(Gallstone).png',
+   ing:['LI DAN PAI SHI WAN'],
+   ben:['Aids digestion', 'Removes food stagnation', 'Harmonizes the stomach', 'Relieves bloating & reflux'],
+   ind:'It can clear heat and dampness, clean gallbladder and expel stone. It is used for hypochondriac pain caused by damp-heat toxin and Qi stagnation, swollen gallbladder and pain, fever, yellow urine, con...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Digest Support'],
+   isPill:true},
+
+  {n:'LI DAN WAN (Gallbladder Heat)',t:'Gallbladder Heat',cat:'detox',p:90.99,r:4.9,rv:38,b:null,
+   img:'images/LI_DAN_WAN_(Gallbladder_Heat).png',
+   ing:['LI DAN WAN'],
+   ben:['Dispels wind-heat', 'Clears head & eyes', 'Detoxifies the body', 'Restores balance'],
+   ind:'It clears heat from the Gallbladder. It is used for cholecystitis and cholelithiasis.',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Detox Support'],
+   isPill:true},
+
+  {n:'LI ZHONG WAN (Regulate Middle)',t:'Regulate Middle',cat:'digest',p:80.99,r:4.7,rv:76,b:null,
+   img:'images/LI_ZHONG_WAN_(Regulate_Middle).png',
+   ing:['LI ZHONG WAN'],
+   ben:['Aids digestion', 'Removes food stagnation', 'Harmonizes the stomach', 'Relieves bloating & reflux'],
+   ind:'It can warm the middle Jiao and expel cold, tonify Qi and Spleen. It is used for deficiency and Cold in Spleen and Stomach, vomiting and stomach ache, no appetite, cold stomach and gastroenteritis, in...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Digest Support'],
+   isPill:true},
+
+  {n:'LIAN QIAO BAI DU WAN (Skin Detox)',t:'Skin Detox',cat:'heart',p:90.99,r:4.4,rv:33,b:null,
+   img:'images/LIAN_QIAO_BAI_DU_WAN_(Skin_Detox).png',
+   ing:['LIAN QIAO BAI DU WAN'],
+   ben:['Promotes blood circulation', 'Softens blood vessels', 'Relieves joint & back pain', 'Supports normal blood pressure'],
+   ind:'It clears heat, removes toxicity, relieves swelling and pain, cools the Blood, and stops itching. It is used for boil and furunculosis, inflammation or suppuration of the skin, heat and fever, suppura...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Heart Support'],
+   isPill:true},
+
+  {n:'LIU WEI DI HUANG WAN (Nourish Yin)',t:'Nourish Yin',cat:'men',p:80.99,r:4.8,rv:21,b:null,
+   img:'images/LIU_WEI_DI_HUANG_WAN_(Nourish_Yin).png',
+   ing:['LIU WEI DI HUANG WAN'],
+   ben:['Tonifies Kidney Yang', 'Supports male reproductive health', 'Boosts energy & performance', 'Strengthens bones and tendons'],
+   ind:'helps for the Yin deficiency of the kidney, liver and spleen with the symptom of weakness and soreness of the loins and the limbs, emission and sweating, impotence, burning soles or palms, lightheaded...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Men Support'],
+   isPill:true},
+
+  {n:'LONG DAN XIE GAN WAN (Purge Damp-Heat)',t:'Purge Damp-Heat',cat:'women',p:95.99,r:4.8,rv:69,b:null,
+   img:'images/LONG_DAN_XIE_GAN_WAN_(Purge_Damp-Heat).png',
+   ing:['LONG DAN XIE GAN WAN'],
+   ben:['Nourishes Spleen & Blood', 'Regulates menstruation', 'Alleviates period pain', 'Supports gynecological health'],
+   ind:'It can clear excess heat from the Liver and Gallbladder and purge Damp-Heat. | It is used for Damp-Heat syndrome, symptoms include dizziness, red eyes, tinnitus, deafness, flank pain, bitter taste in ...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Women Support'],
+   isPill:true},
+
+  {n:'MAI WEI DI HUANG WAN (Nourish Lung & Kidney)',t:'Nourish Lung & Kidney',cat:'sleep',p:95.99,r:4.2,rv:79,b:null,
+   img:'images/MAI_WEI_DI_HUANG_WAN_(Nourish_Lung_&_Kidney).png',
+   ing:['MAI WEI DI HUANG WAN'],
+   ben:['Calms the mind & spirit', 'Restores normal sleep rhythm', 'Nourishes Heart Yin & blood', 'Alleviates irritability'],
+   ind:'It nourishes the Kidney and Lung. It can be used for Yin deficiency of Lung and Kidney, tidal fever and night sweating, dry throat, dizziness and tinnitus, soreness and weakness of waist and knees. It...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Sleep Support'],
+   isPill:true},
+
+  {n:'MING MU DI HUANG WAN (Eye Bright)',t:'Eye Bright',cat:'detox',p:95.99,r:4.5,rv:74,b:null,
+   img:'images/MING_MU_DI_HUANG_WAN_(Eye_Bright).png',
+   ing:['MING MU DI HUANG WAN'],
+   ben:['Dispels wind-heat', 'Clears head & eyes', 'Detoxifies the body', 'Restores balance'],
+   ind:'supports eye health and supports vision and restores and strengthens Kidney and Liver Yin. It is used for blurred vision and other eye discomforts, such as increased sensitivity to light, becoming tea...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Detox Support'],
+   isPill:true},
+
+  {n:'MU XIANG SHUN QI WAN (Reduce Bloating)',t:'Reduce Bloating',cat:'digest',p:85.99,r:4.8,rv:37,b:null,
+   img:'images/MU_XIANG_SHUN_QI_WAN_(Reduce_Bloating).png',
+   ing:['MU XIANG SHUN QI WAN'],
+   ben:['Aids digestion', 'Removes food stagnation', 'Harmonizes the stomach', 'Relieves bloating & reflux'],
+   ind:'It can move Qi and resolve dampness, strengthen the Spleen and harmonize the Stomach. It is used to treat Pi symptoms in the chest, abdominal distention and ache, vomiting and nausea, belching and poo...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Digest Support'],
+   isPill:true},
+
+  {n:'PIAN TOU TONG WAN (Migraine Pill)',t:'Migraine Pill',cat:'heart',p:80.99,r:4.4,rv:81,b:null,
+   img:'images/PIAN_TOU_TONG_WAN_(Migraine_Pill).png',
+   ing:['PIAN TOU TONG WAN'],
+   ben:['Promotes blood circulation', 'Softens blood vessels', 'Relieves joint & back pain', 'Supports normal blood pressure'],
+   ind:'is a herbal formula helps to expel Wind and supports normal head comfort. It is used for migraine and headache. It can also helps for joint pain.',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Heart Support'],
+   isPill:true},
+
+  {n:'QI JU DI HUANG WAN (Nourish Yin & Eye)',t:'Nourish Yin & Eye',cat:'heart',p:75.99,r:4.5,rv:130,b:null,
+   img:'images/QI_JU_DI_HUANG_WAN_(Nourish_Yin_&_Eye).png',
+   ing:['QI JU DI HUANG WAN'],
+   ben:['Promotes blood circulation', 'Softens blood vessels', 'Relieves joint & back pain', 'Supports normal blood pressure'],
+   ind:'It nourishes Liver Yin and Blood, nourishes Kidney Yin, benefits the eyes. It is used for dry eyes with diminished vision, tearing with exposure to wind, photophobia, eye pain.',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Heart Support'],
+   isPill:true},
+
+  {n:'QIAN LIE SHU WAN (Prostate Health)',t:'Prostate Health',cat:'men',p:90.99,r:4.3,rv:128,b:null,
+   img:'images/QIAN_LIE_SHU_WAN_(Prostate_Health).png',
+   ing:['QIAN LIE SHU WAN'],
+   ben:['Tonifies Kidney Yang', 'Supports male reproductive health', 'Boosts energy & performance', 'Strengthens bones and tendons'],
+   ind:'It tonifies the Kidneys and supports prostate and urinary health, clears deficiency heat, drains dampness and promotes urination. It can be used for chronic prostatitis, benign prostatic hyperplasia a...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Men Support'],
+   isPill:true},
+
+  {n:'QING QI HUA TAN WAN (Phlegm Clear)',t:'Phlegm Clear',cat:'sleep',p:85.99,r:4.4,rv:17,b:null,
+   img:'images/QING_QI_HUA_TAN_WAN_(Phlegm_Clear).png',
+   ing:['QING QI HUA TAN WAN'],
+   ben:['Calms the mind & spirit', 'Restores normal sleep rhythm', 'Nourishes Heart Yin & blood', 'Alleviates irritability'],
+   ind:'It clears heat from the lung and dissolves phlegm, direct Qi downward and calm the respiratory tract. It is used for clearing phlegm and supporting respiratory health, for cases that the tongue is red...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Sleep Support'],
+   isPill:true},
+
+  {n:'QING RE AN CHUANG WAN (Acne & Boil)',t:'Acne & Boil',cat:'digest',p:95.99,r:4.8,rv:29,b:null,
+   img:'images/QING_RE_AN_CHUANG_WAN_(Acne_&_Boil).png',
+   ing:['QING RE AN CHUANG WAN'],
+   ben:['Aids digestion', 'Removes food stagnation', 'Harmonizes the stomach', 'Relieves bloating & reflux'],
+   ind:'It can clear heat and detoxify, cool blood and remove stasis, purge fire and move bowels. It is used for treating acne, boil, furuncle, etc.',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Digest Support'],
+   isPill:true},
+
+  {n:'SHAO FU ZHU YU WAN (Abdominal Stasis)',t:'Abdominal Stasis',cat:'women',p:95.99,r:4.7,rv:84,b:null,
+   img:'images/SHAO_FU_ZHU_YU_WAN_(Abdominal_Stasis).png',
+   ing:['SHAO FU ZHU YU WAN'],
+   ben:['Nourishes Spleen & Blood', 'Regulates menstruation', 'Alleviates period pain', 'Supports gynecological health'],
+   ind:'It circulation and Qi flow to resolve blood stasis. It is for warming the uterus, expelling the source of external cold, and promoting blood. It removes blood stasis in the lower abdomen and warms men...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Women Support'],
+   isPill:true},
+
+  {n:'SHEN JING SHUAI RUO WAN (Brain Tonic Pills)',t:'Brain Tonic Pills',cat:'sleep',p:90.99,r:4.3,rv:128,b:null,
+   img:'images/SHEN_JING_SHUAI_RUO_WAN_(Brain_Tonic_Pills).png',
+   ing:['SHEN JING SHUAI RUO WAN'],
+   ben:['Calms the mind & spirit', 'Restores normal sleep rhythm', 'Nourishes Heart Yin & blood', 'Alleviates irritability'],
+   ind:'This formula can tonify the Kidney and essence, reinforce intelligence and calm mind. It is used for impaired concentration, dizziness, insomnia, dreaminess, upset, tiredness and faintness.',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Sleep Support'],
+   isPill:true},
+
+  {n:'SHEN LING BAI ZHU WAN (Consolidate Digestion)',t:'Consolidate Digestion',cat:'sleep',p:85.99,r:4.5,rv:42,b:null,
+   img:'images/SHEN_LING_BAI_ZHU_WAN_(Consolidate_Digestion).png',
+   ing:['SHEN LING BAI ZHU WAN'],
+   ben:['Calms the mind & spirit', 'Restores normal sleep rhythm', 'Nourishes Heart Yin & blood', 'Alleviates irritability'],
+   ind:'It helps to tonify Spleen and Stomach, enhance Lung Qi. It is used for Spleen and Stomach Qi Deficiency, poor appetite, diarrhea, short breath and cough, weak extremities and fatigue. Chronic Fatigue ...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Sleep Support'],
+   isPill:true},
+
+  {n:'SHENG MAI WAN (Generate Pulse)',t:'Generate Pulse',cat:'sleep',p:85.99,r:4.6,rv:107,b:null,
+   img:'images/SHENG_MAI_WAN_(Generate_Pulse).png',
+   ing:['SHENG MAI WAN'],
+   ben:['Calms the mind & spirit', 'Restores normal sleep rhythm', 'Nourishes Heart Yin & blood', 'Alleviates irritability'],
+   ind:'It can tonify Qi, nourish Yin and generate body fluid. It is used for Qi and Yin deficiency, palpitation, short breath and spontaneous sweating. It can also support physical power, and suit for exerci...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Sleep Support'],
+   isPill:true},
+
+  {n:'SHOU WU WAN ( Fo Ti Hair Tonic)',t:'Fo Ti Hair Tonic',cat:'heart',p:75.99,r:4.8,rv:125,b:'Bestseller',
+   img:'images/SHOU_WU_WAN_(_Fo_Ti_Hair_Tonic).png',
+   ing:['SHOU WU WAN'],
+   ben:['Promotes blood circulation', 'Softens blood vessels', 'Relieves joint & back pain', 'Supports normal blood pressure'],
+   ind:'He Shou Wu may support hair growth, support hair original color, and support bones and muscles associated with aging. This formulation is used to further enhance the action of He Shou Wu. It can nouri...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Heart Support'],
+   isPill:true},
+
+  {n:'SI JUN ZI WAN (Four Gentlemen)',t:'Four Gentlemen',cat:'digest',p:80.99,r:4.4,rv:41,b:null,
+   img:'images/SI_JUN_ZI_WAN_(Four_Gentlemen).png',
+   ing:['SI JUN ZI WAN'],
+   ben:['Aids digestion', 'Removes food stagnation', 'Harmonizes the stomach', 'Relieves bloating & reflux'],
+   ind:'It can tonify Qi and Spleen. It is used for Qi Deficiency in Stomach and Spleen, symptoms include sallow complexion, weak voice, short breath and fatigue, poor appetite and loose stool, pale tongue, w...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Digest Support'],
+   isPill:true},
+
+  {n:'SI MIAO WAN (Clear Dampness)',t:'Clear Dampness',cat:'heart',p:95.99,r:4.6,rv:19,b:null,
+   img:'images/SI_MIAO_WAN_(Clear_Dampness).png',
+   ing:['SI MIAO WAN'],
+   ben:['Promotes blood circulation', 'Softens blood vessels', 'Relieves joint & back pain', 'Supports normal blood pressure'],
+   ind:'It clears Heat and eliminates Dampness, helps to regulate blood flow in the lower extremities, metabolize fluids and support normal joint function. It is used for damp-heat in lower body, such as stif...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Heart Support'],
+   isPill:true},
+
+  {n:'SI WU TANG WAN (Nourish Blood)',t:'Nourish Blood',cat:'women',p:80.99,r:4.4,rv:121,b:null,
+   img:'images/SI_WU_TANG_WAN_(Nourish_Blood).png',
+   ing:['SI WU TANG WAN'],
+   ben:['Nourishes Spleen & Blood', 'Regulates menstruation', 'Alleviates period pain', 'Supports gynecological health'],
+   ind:'Si Wu Tang has the effect of nourishing Blood and regulating menstruation. It is widely used in Blood Deficiency and Blood Stasis Syndromes. It is used for anemia, hypermenorrhea, irregular menstruati...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Women Support'],
+   isPill:true},
+
+  {n:'TAO HONG SI WU WAN (Blood Deficiency & Stagnation)',t:'Blood Deficiency & Stagnation',cat:'sleep',p:80.99,r:4.2,rv:31,b:null,
+   img:'images/TAO_HONG_SI_WU_WAN_(Blood_Deficiency_&_Stagnation).png',
+   ing:['TAO HONG SI WU WAN'],
+   ben:['Calms the mind & spirit', 'Restores normal sleep rhythm', 'Nourishes Heart Yin & blood', 'Alleviates irritability'],
+   ind:'It tonifies and invigorates the blood, regulates blood circulation, breaks up blood stagnation, regulates menstruation, alleviates pain. It can be used for inflammation, hyperlipidemia, anemia, fatigu...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Sleep Support'],
+   isPill:true},
+
+  {n:'TE XIAO BI MIN GAN WAN (Nasal Allergy)',t:'Nasal Allergy',cat:'resp',p:80.99,r:4.2,rv:111,b:'New',
+   img:'images/TE_XIAO_BI_MIN_GAN_WAN_(Nasal_Allergy).png',
+   ing:['TE XIAO BI MIN GAN WAN'],
+   ben:['Clears nasal passages', 'Expels wind and heat toxins', 'Transforms phlegm & stops cough', 'Supports respiratory health'],
+   ind:'Nasal Allergy is specially formulated for supporting clear and healthy nasal passages. It disperses Wind and expels toxins. The herbs in this special formula dissolve phlegm, clear discharge and suppo...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Resp Support'],
+   isPill:true},
+
+  {n:'TE XIAO JING ZHUI TONG WAN (Neck Relief)',t:'Neck Relief',cat:'heart',p:80.99,r:4.9,rv:126,b:null,
+   img:'images/TE_XIAO_JING_ZHUI_TONG_WAN_(Neck_Relief).png',
+   ing:['TE XIAO JING ZHUI TONG WAN'],
+   ben:['Promotes blood circulation', 'Softens blood vessels', 'Relieves joint & back pain', 'Supports normal blood pressure'],
+   ind:'It helps to improve Qi (energy) flow, relax muscles and tendons and activate the energy channels (meridians). It is used to support the muscles and tendons around the neck, relief neck pain.',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Heart Support'],
+   isPill:true},
+
+  {n:'TIAN MA GOU TENG WAN (Liver Wind Clear)',t:'Liver Wind Clear',cat:'sleep',p:95.99,r:4.4,rv:89,b:null,
+   img:'images/TIAN_MA_GOU_TENG_WAN_(Liver_Wind_Clear).png',
+   ing:['TIAN MA GOU TENG WAN'],
+   ben:['Calms the mind & spirit', 'Restores normal sleep rhythm', 'Nourishes Heart Yin & blood', 'Alleviates irritability'],
+   ind:'It calms the liver and extinguishes wind. It alleviates symptoms associated with internal liver wind. It can be used for dizziness, hypertension, headache, eyelid twitch, vertigo, stroke, neurasthenia...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Sleep Support'],
+   isPill:true},
+
+  {n:'TIAN WANG BU XIN WAN (Nourish Heart Yin)',t:'Nourish Heart Yin',cat:'sleep',p:95.99,r:4.4,rv:49,b:null,
+   img:'images/TIAN_WANG_BU_XIN_WAN_(Nourish_Heart_Yin).png',
+   ing:['TIAN WANG BU XIN WAN'],
+   ben:['Calms the mind & spirit', 'Restores normal sleep rhythm', 'Nourishes Heart Yin & blood', 'Alleviates irritability'],
+   ind:'It helps for nourishing Yin and blood, and tonifying the heart to tranquilize the mind. It is used to replenish the Blood and Yin, and support Heart functions. It calms the mind and supports a restful...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Sleep Support'],
+   isPill:true},
+
+  {n:'TIAO JING CU YUN WAN (Fertility Aid)',t:'Fertility Aid',cat:'women',p:90.99,r:4.9,rv:38,b:null,
+   img:'images/TIAO_JING_CU_YUN_WAN_(Fertility_Aid).png',
+   ing:['TIAO JING CU YUN WAN'],
+   ben:['Nourishes Spleen & Blood', 'Regulates menstruation', 'Alleviates period pain', 'Supports gynecological health'],
+   ind:'It warms the kidney and invigorate the spleen, and regulate menstruation. It is used for infertility,  irregular menstruation, dysmenorrhea, amenorrhea and sterility caused by yang deficiency in the s...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Women Support'],
+   isPill:true},
+
+  {n:'TONG JING WAN (Period Pain Pills)',t:'Period Pain Pills',cat:'women',p:80.99,r:4.2,rv:31,b:null,
+   img:'images/TONG_JING_WAN_(Period_Pain_Pills).png',
+   ing:['TONG JING WAN'],
+   ben:['Nourishes Spleen & Blood', 'Regulates menstruation', 'Alleviates period pain', 'Supports gynecological health'],
+   ind:'It can warm channels and expel cold, invigorate blood circulation and remove stasis. It is used for period pain and support a smooth menstruation.',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Women Support'],
+   isPill:true},
+
+  {n:'WEN JING WAN (Warm Mense)',t:'Warm Mense',cat:'women',p:85.99,r:4.6,rv:107,b:null,
+   img:'images/WEN_JING_WAN_(Warm_Mense).png',
+   ing:['WEN JING WAN'],
+   ben:['Nourishes Spleen & Blood', 'Regulates menstruation', 'Alleviates period pain', 'Supports gynecological health'],
+   ind:'It can promote blood circulation and remove blood stasis, warm and unblock meridians, regulate Qi and relieve pain. It is used for period pain and irregular menstruation with Cold syndrome. Symptoms i...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Women Support'],
+   isPill:true},
+
+  {n:'WU JI BAI FENG WAN (Lady's Tonic)',t:'Lady's Tonic',cat:'women',p:95.99,r:4.7,rv:124,b:null,
+   img:'images/WU_JI_BAI_FENG_WAN_(Lady's_Tonic).png',
+   ing:['WU JI BAI FENG WAN'],
+   ben:['Nourishes Spleen & Blood', 'Regulates menstruation', 'Alleviates period pain', 'Supports gynecological health'],
+   ind:'It replenishes the body\'s Qi, nourishes the blood, and supports the normal menstrual cycle. It is the most popular herbal supplement used by women in China to maintain overall health. It helps for wea...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Women Support'],
+   isPill:true},
+
+  {n:'WU LING WAN (Edema Relief)',t:'Edema Relief',cat:'heart',p:80.99,r:4.6,rv:51,b:'New',
+   img:'images/WU_LING_WAN_(Edema_Relief).png',
+   ing:['WU LING WAN'],
+   ben:['Promotes blood circulation', 'Softens blood vessels', 'Relieves joint & back pain', 'Supports normal blood pressure'],
+   ind:'It can clear dampness and promote diuresis. It is used for stagnated fluid syndrome. It can be used for acute and chronic nephritis, edema, ascites due to cirrhosis, cardiac edema, acute enteritis, re...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Heart Support'],
+   isPill:true},
+
+  {n:'WU ZI YAN ZONG WAN (Men's Fertility)',t:'Men's Fertility',cat:'women',p:85.99,r:4.6,rv:107,b:null,
+   img:'images/WU_ZI_YAN_ZONG_WAN_(Men's_Fertility).png',
+   ing:['WU ZI YAN ZONG WAN'],
+   ben:['Nourishes Spleen & Blood', 'Regulates menstruation', 'Alleviates period pain', 'Supports gynecological health'],
+   ind:'is indicated in China Pharmacopoeia1 for tonifying the kidney and nourishing Jing. It is suitable for use in the case of the kidney deficiency presented with lower back weakness, dribbling in urinatio...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Women Support'],
+   isPill:true},
+
+  {n:'XIANG SHA LIU JUN WAN (Stomach Harmonize)',t:'Stomach Harmonize',cat:'digest',p:85.99,r:4.2,rv:47,b:null,
+   img:'images/XIANG_SHA_LIU_JUN_WAN_(Stomach_Harmonize).png',
+   ing:['XIANG SHA LIU JUN WAN'],
+   ben:['Aids digestion', 'Removes food stagnation', 'Harmonizes the stomach', 'Relieves bloating & reflux'],
+   ind:'It can strengthen the Spleen, harmonize the Stomach, and tonify Qi. It is used for Spleen and Stomach Qi deficiency with damp-cold stagnation affecting the middle jiao (middle burner). Signs and sympt...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Digest Support'],
+   isPill:true},
+
+  {n:'XIANG SHA YANG WEI WAN (Stomach Tonic)',t:'Stomach Tonic',cat:'digest',p:95.99,r:4.3,rv:24,b:null,
+   img:'images/XIANG_SHA_YANG_WEI_WAN_(Stomach_Tonic).png',
+   ing:['XIANG SHA YANG WEI WAN'],
+   ben:['Aids digestion', 'Removes food stagnation', 'Harmonizes the stomach', 'Relieves bloating & reflux'],
+   ind:'warms the Middle Energizer to harmonize the Stomach. | It is for warming Stomach and regulating Stomach Qi | It improves the functionality of the digestive system. | It can be used for acid reflux, fu...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Digest Support'],
+   isPill:true},
+
+  {n:'XIAO CHAI HU TANG WAN (Shaoyang Harmonize)',t:'Shaoyang Harmonize',cat:'digest',p:80.99,r:4.7,rv:36,b:null,
+   img:'images/XIAO_CHAI_HU_TANG_WAN_(Shaoyang_Harmonize).png',
+   ing:['XIAO CHAI HU TANG WAN'],
+   ben:['Aids digestion', 'Removes food stagnation', 'Harmonizes the stomach', 'Relieves bloating & reflux'],
+   ind:'This product is used for ShaoYang pattern, with symptoms include a feeling of both chills and heat, a feeling of rib-sides fullness, a bitter taste in the mouth, reduced appetite, and short temper.',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Digest Support'],
+   isPill:true},
+
+  {n:'XIAO HUO LUO WAN (Unblock Meridian)',t:'Unblock Meridian',cat:'resp',p:80.99,r:4.4,rv:121,b:null,
+   img:'images/XIAO_HUO_LUO_WAN_(Unblock_Meridian).png',
+   ing:['XIAO HUO LUO WAN'],
+   ben:['Clears nasal passages', 'Expels wind and heat toxins', 'Transforms phlegm & stops cough', 'Supports respiratory health'],
+   ind:'It invigorates the blood, unblocks the channels, dispels wind and dampness and transforms phlegm to relieve numbness and discomfort. It can be used for windstroke, Osteoarthritis, Peripheral nerve dis...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Resp Support'],
+   isPill:true},
+
+  {n:'XIAO YAO WAN (Ease Life)',t:'Ease Life',cat:'women',p:90.99,r:4.5,rv:18,b:null,
+   img:'images/XIAO_YAO_WAN_(Ease_Life).png',
+   ing:['XIAO YAO WAN'],
+   ben:['Nourishes Spleen & Blood', 'Regulates menstruation', 'Alleviates period pain', 'Supports gynecological health'],
+   ind:'It nourishes the Liver and smooth Liver Qi. It is used for irregular, late or lack of menstruation, premenstrual tension, PMS, infertility, low libido and many other diseases including depression. It ...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Women Support'],
+   isPill:true},
+
+  {n:'XUE FU ZHU YU WAN (Blood Stasis)',t:'Blood Stasis',cat:'sleep',p:85.99,r:4.8,rv:37,b:null,
+   img:'images/XUE_FU_ZHU_YU_WAN_(Blood_Stasis).png',
+   ing:['XUE FU ZHU YU WAN'],
+   ben:['Calms the mind & spirit', 'Restores normal sleep rhythm', 'Nourishes Heart Yin & blood', 'Alleviates irritability'],
+   ind:'It helps for promoting Blood circulation and removing Blood Stasis, moving Qi and relieving pain. It was originally intended to treat cardiovascular system disorders. Now it is widely used in various ...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Sleep Support'],
+   isPill:true},
+
+  {n:'YANG XUE SHENG FA WAN (Hair Grow Pills)',t:'Hair Grow Pills',cat:'sleep',p:80.99,r:4.9,rv:126,b:null,
+   img:'images/YANG_XUE_SHENG_FA_WAN_(Hair_Grow_Pills).png',
+   ing:['YANG XUE SHENG FA WAN'],
+   ben:['Calms the mind & spirit', 'Restores normal sleep rhythm', 'Nourishes Heart Yin & blood', 'Alleviates irritability'],
+   ind:'It can nourish the Blood, expel Wind, tonify Kidney and replenish Essence. It is used for hair loss due to deficiency of blood and kidney essence, symptoms include loose hair root or sparse hair loss,...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Sleep Support'],
+   isPill:true},
+
+  {n:'YOU GUI WAN (Tonify Kidney Yang)',t:'Tonify Kidney Yang',cat:'men',p:75.99,r:4.9,rv:70,b:null,
+   img:'',
+   ing:['YOU GUI WAN'],
+   ben:['Tonifies Kidney Yang', 'Supports male reproductive health', 'Boosts energy & performance', 'Strengthens bones and tendons'],
+   ind:'It can warm and tonify Kidney Yang, replenish sperm and stop  spermatorrhea. It is used for Kidney Yang deficiency, Life-gate fire deficiency, symptoms include cold and sore in waist and knee, lassitu...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Men Support'],
+   isPill:true},
+
+  {n:'YU PING FENG WAN (Protective Screen)',t:'Protective Screen',cat:'immunity',p:90.99,r:4.5,rv:98,b:null,
+   img:'images/YU_PING_FENG_WAN_(Protective_Screen).png',
+   ing:['YU PING FENG WAN'],
+   ben:['Clears heat & toxins', 'Cools blood & dispels swelling', 'Supports immune system defence', 'Anti-inflammatory action'],
+   ind:'It can tonify Qi (vital energy), consolidate the body\'s external surface, and stop perspiration. It is used for weak external body, spontaneous sweating, susceptibility to Wind evils, , and pale compl...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Immunity Support'],
+   isPill:true},
+
+  {n:'ZHEN ZHU AN CHUANG WAN (Pearl Skin)',t:'Pearl Skin',cat:'detox',p:75.99,r:4.5,rv:90,b:null,
+   img:'images/ZHEN_ZHU_AN_CHUANG_WAN_(Pearl_Skin).png',
+   ing:['ZHEN ZHU AN CHUANG WAN'],
+   ben:['Dispels wind-heat', 'Clears head & eyes', 'Detoxifies the body', 'Restores balance'],
+   ind:'It is suitable for a range of skin issues that manifest in itching, redness. The redness is related to heat, and the tendency to present with a greasy complexion and pustules is associated with dampne...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Detox Support'],
+   isPill:true},
+
+  {n:'ZHI BAI DI HUANG WAN (Yin Deficiency & Heat)',t:'Yin Deficiency & Heat',cat:'sleep',p:85.99,r:4.2,rv:127,b:null,
+   img:'images/ZHI_BAI_DI_HUANG_WAN_(Yin_Deficiency_&_Heat).png',
+   ing:['ZHI BAI DI HUANG WAN'],
+   ben:['Calms the mind & spirit', 'Restores normal sleep rhythm', 'Nourishes Heart Yin & blood', 'Alleviates irritability'],
+   ind:'It nourishes Yin and clears heat. It is used for Yin deficiency with heat, hot flashes and night sweat, dry mouth and thirsty, scanty dark urine. It can be used for menopause-associated night sweats o...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Sleep Support'],
+   isPill:true},
+
+  {n:'ZHI KE DING CHUAN WAN (Wheeze & Cough)',t:'Wheeze & Cough',cat:'resp',p:95.99,r:4.8,rv:109,b:null,
+   img:'images/ZHI_KE_DING_CHUAN_WAN_(Wheeze_&_Cough).png',
+   ing:['ZHI KE DING CHUAN WAN'],
+   ben:['Clears nasal passages', 'Expels wind and heat toxins', 'Transforms phlegm & stops cough', 'Supports respiratory health'],
+   ind:'It disseminates Lung Qi and relieves cough, clears Heat Phlegm and replenishes Lung and Spleen. It is suitable for chronic cough, bronchitis and asthma, accompanied by the symptoms of thick yellow phl...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Resp Support'],
+   isPill:true},
+
+  {n:'ZHI YANG WAN (Anti Itching)',t:'Anti Itching',cat:'detox',p:95.99,r:4.3,rv:64,b:null,
+   img:'images/ZHI_YANG_WAN_(Anti_Itching).png',
+   ing:['ZHI YANG WAN'],
+   ben:['Dispels wind-heat', 'Clears head & eyes', 'Detoxifies the body', 'Restores balance'],
+   ind:'It can moisten skin and stop itching. It can be used for itch skin, neurodermatitis, seborrheic dermatitis, eczema, etc.',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Detox Support'],
+   isPill:true},
+
+  {n:'ZHUANG YANG WAN (Tonify Yang)',t:'Tonify Yang',cat:'men',p:95.99,r:4.6,rv:59,b:null,
+   img:'images/ZHUANG_YANG_WAN_(Tonify_Yang).png',
+   ing:['ZHUANG YANG WAN'],
+   ben:['Tonifies Kidney Yang', 'Supports male reproductive health', 'Boosts energy & performance', 'Strengthens bones and tendons'],
+   ind:'It can tonify Yang energy and support male vitality. It is used for deficiency of the Kidney Yang, symptoms include low-back and knee weakness, cold limbs, impotency and premature ejaculation. It also...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Men Support'],
+   isPill:true},
+
+  {n:'ZHUANG YAO JIAN SHEN WAN (Strengthen Waist)',t:'Strengthen Waist',cat:'sleep',p:90.99,r:4.9,rv:118,b:null,
+   img:'',
+   ing:['ZHUANG YAO JIAN SHEN WAN'],
+   ben:['Calms the mind & spirit', 'Restores normal sleep rhythm', 'Nourishes Heart Yin & blood', 'Alleviates irritability'],
+   ind:'It nourishes the Kidneys, strengthens the muscles and strengthens the bones. It is used for chronic waist, leg or joint pain caused by a Deficiency of Kidney Qi. It is commonly seen in elderly people ...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Sleep Support'],
+   isPill:true},
+
+  {n:'ZUO GU SHEN JING TONG WAN (Sciatic Pain)',t:'Sciatic Pain',cat:'sleep',p:85.99,r:4.3,rv:112,b:null,
+   img:'images/ZUO_GU_SHEN_JING_TONG_WAN_(Sciatic_Pain).png',
+   ing:['ZUO GU SHEN JING TONG WAN'],
+   ben:['Calms the mind & spirit', 'Restores normal sleep rhythm', 'Nourishes Heart Yin & blood', 'Alleviates irritability'],
+   ind:'It is specifically formulated to support sciatic nerve function. | It works by dredging the meridians and removing obstructions from the channels while relaxing the tendons and muscles, strengthening ...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Sleep Support'],
+   isPill:true},
+
+  {n:'ZUO GUI WAN (Nourish Kidney Yin)',t:'Nourish Kidney Yin',cat:'sleep',p:90.99,r:4.3,rv:48,b:null,
+   img:'',
+   ing:['ZUO GUI WAN'],
+   ben:['Calms the mind & spirit', 'Restores normal sleep rhythm', 'Nourishes Heart Yin & blood', 'Alleviates irritability'],
+   ind:'It can nourish Yin and tonify Kidney. It is used for Kidney Yin deficiency, symptoms include weakness of the loins and the knees, tidal fever, night sweating, lassitude, dry mouth. It can also support...',
+   use:'Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.',
+   ch:['Traditional Herbs', 'Concentrated Pills', 'Sleep Support'],
+   isPill:true}
 ];
 
 // ── STATE ──────────────────────────────────────────────────────────────────
-let activeCat='all', searchQ='', cart=[], openIdx=null;
+let activeType='all', activeCat='all', searchQ='', cart=[], openIdx=null;
 
 // ── INIT ───────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded',()=>{
@@ -1120,13 +1886,31 @@ function setFilter(id){
   renderGrid();
 }
 
+function setType(type){
+  activeType=type;
+  document.getElementById('type-all').classList.toggle('on', type === 'all');
+  document.getElementById('type-teas').classList.toggle('on', type === 'teas');
+  document.getElementById('type-pills').classList.toggle('on', type === 'pills');
+  
+  // Reset category filter to 'all' to avoid showing empty categories
+  setFilter('all'); 
+  renderGrid();
+}
+
 function doSearch(q){searchQ=q.toLowerCase().trim();renderGrid()}
 
 function filtered(){
   return P.filter(p=>{
-    const inCat=activeCat==='all'||p.cat===activeCat;
-    const inQ=!searchQ||p.n.toLowerCase().includes(searchQ)||p.t.toLowerCase().includes(searchQ)||p.ing.some(i=>i.toLowerCase().includes(searchQ))||(p.ch&&p.ch.some(c=>c.toLowerCase().includes(searchQ)));
-    return inCat&&inQ;
+    const matchesType = activeType === 'all' || 
+                        (activeType === 'teas' && !p.isPill) || 
+                        (activeType === 'pills' && p.isPill);
+    const inCat = activeCat === 'all' || p.cat === activeCat;
+    const inQ = !searchQ || 
+                p.n.toLowerCase().includes(searchQ) || 
+                p.t.toLowerCase().includes(searchQ) || 
+                p.ing.some(i => i.toLowerCase().includes(searchQ)) || 
+                (p.ch && p.ch.some(c => c.toLowerCase().includes(searchQ)));
+    return matchesType && inCat && inQ;
   });
 }
 
@@ -1140,7 +1924,8 @@ function catLabel(id){return CATS.find(c=>c.id===id)?.l.replace(/^[^a-zA-Z]+/,''
 function renderGrid(){
   const items=filtered();
   const pg=document.getElementById('pg');
-  document.getElementById('fc').textContent=`${items.length} tea${items.length!==1?'s':''}`;
+  const typeWord = activeType === 'teas' ? 'tea' : (activeType === 'pills' ? 'pill' : 'product');
+  document.getElementById('fc').textContent=`${items.length} ${typeWord}${items.length!==1?'s':''}`;
   if(!items.length){pg.innerHTML='<div class="nores"><h3>No teas found</h3><p>Try a different search or filter.</p></div>';return;}
   pg.innerHTML=items.map((p,vi)=>{
     const i=vi;
