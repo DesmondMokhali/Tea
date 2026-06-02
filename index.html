@@ -500,9 +500,57 @@ footer{background:var(--f);color:rgba(255,255,255,.55);padding:44px clamp(14px,4
   .mprow{gap:6px}
   .mstock{margin-left:0}
 }
+
+/* ── ANTIGRAVITY SHIPPING BAR ── */
+.ag-bar{position:fixed;bottom:0;left:0;right:0;z-index:180;background:var(--f);padding:11px clamp(14px,4vw,40px);box-shadow:0 -4px 28px rgba(27,58,40,.28);transform:translateY(110%);transition:transform .45s cubic-bezier(.4,0,.2,1);pointer-events:none}
+.ag-bar.visible{transform:translateY(0);pointer-events:all}
+.ag-bar.unlocked{background:linear-gradient(90deg,#1a5c35 0%,#2d8c55 100%)}
+.ag-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.ag-msg{font-size:12.5px;color:rgba(255,255,255,.82);flex:1;min-width:180px;line-height:1.4}
+.ag-msg strong{color:#fff}
+.ag-msg.celebrate{font-size:13px;font-weight:600;color:#fff;animation:agPop .5s ease both}
+@keyframes agPop{0%{transform:scale(.95)}50%{transform:scale(1.04)}100%{transform:scale(1)}}
+.ag-track-wrap{flex:1;min-width:120px;max-width:260px}
+.ag-track{height:6px;background:rgba(255,255,255,.18);border-radius:99px;overflow:hidden}
+.ag-fill{height:100%;background:var(--g);border-radius:99px;transition:width .55s cubic-bezier(.4,0,.2,1)}
+.ag-bar.unlocked .ag-fill{background:#58d68d}
+.ag-cta{background:var(--g);color:var(--f);border:none;border-radius:20px;padding:7px 16px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:all var(--tr);flex-shrink:0}
+.ag-cta:hover{background:var(--gl);transform:translateY(-1px)}
+.ag-x{background:none;border:none;color:rgba(255,255,255,.38);cursor:pointer;font-size:16px;flex-shrink:0;padding:2px 6px;transition:color var(--tr);line-height:1}
+.ag-x:hover{color:#fff}
+
+/* ── SYNERGY PAIRING WIDGET ── */
+.syn-sec{padding:14px 20px;border-top:1.5px dashed var(--cd);background:linear-gradient(135deg,#f2f8f4 0%,#eaf2ec 100%)}
+.syn-hd{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--s);margin-bottom:10px;display:flex;align-items:center;gap:5px}
+.syn-card{background:#fff;border-radius:10px;padding:10px 12px;margin-bottom:8px;display:flex;align-items:center;gap:10px;box-shadow:0 1px 8px rgba(27,58,40,.07);border:1px solid rgba(106,153,112,.15);transition:box-shadow var(--tr)}
+.syn-card:last-child{margin-bottom:0}
+.syn-card:hover{box-shadow:0 3px 14px rgba(27,58,40,.13)}
+.syn-imgs{display:flex;align-items:center;flex-shrink:0;position:relative;width:56px;height:36px}
+.syn-img{width:34px;height:34px;border-radius:6px;object-fit:contain;background:var(--c);border:1.5px solid var(--cd);position:absolute}
+.syn-img:first-child{left:0;z-index:1}
+.syn-img:last-child{left:20px;z-index:2}
+.syn-info{flex:1;min-width:0}
+.syn-badge{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--s);margin-bottom:2px}
+.syn-names{font-size:10.5px;font-weight:600;color:var(--t);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.syn-price{font-size:10px;color:var(--tl);margin-top:1px}
+.syn-btn{background:var(--f);color:#fff;border:none;border-radius:7px;padding:6px 11px;font-family:'DM Sans',sans-serif;font-size:10.5px;font-weight:700;cursor:pointer;white-space:nowrap;transition:all var(--tr);flex-shrink:0}
+.syn-btn:hover{background:var(--fm);transform:translateY(-1px)}
+.syn-btn.added{background:var(--s)}
 </style>
 </head>
 <body>
+
+<!-- ── ANTIGRAVITY FLOATING SHIPPING BAR ── -->
+<div class="ag-bar" id="ag-bar" role="status" aria-live="polite">
+  <div class="ag-inner">
+    <span class="ag-msg" id="ag-msg">🚚 Add <strong id="ag-amount">$50.00</strong> more for <strong>FREE Delivery!</strong></span>
+    <div class="ag-track-wrap">
+      <div class="ag-track"><div class="ag-fill" id="ag-fill" style="width:0%"></div></div>
+    </div>
+    <button class="ag-cta" onclick="document.getElementById('ga').scrollIntoView({behavior:'smooth'})">Shop Now</button>
+    <button class="ag-x" id="ag-x" onclick="document.getElementById('ag-bar').classList.remove('visible')" title="Dismiss">✕</button>
+  </div>
+</div>
 
 <nav>
   <a class="nlogo" href="#">
@@ -556,7 +604,7 @@ footer{background:var(--f);color:rgba(255,255,255,.55);padding:44px clamp(14px,4
 <div class="tbar">
   <div class="titem"><i data-lucide="leaf" style="width:15px;height:15px;color:var(--s)"></i> 100% Natural Herbs</div>
   <div class="titem"><i data-lucide="award" style="width:15px;height:15px;color:var(--g)"></i> Specialist Formulated</div>
-  <div class="titem"><i data-lucide="truck" style="width:15px;height:15px;color:var(--s)"></i> Free Shipping Over R300</div>
+  <div class="titem"><i data-lucide="truck" style="width:15px;height:15px;color:var(--s)"></i> Free Delivery Over $50</div>
   <div class="titem"><i data-lucide="flask-conical" style="width:15px;height:15px;color:var(--g)"></i> Scientifically Researched</div>
   <div class="titem"><i data-lucide="recycle" style="width:15px;height:15px;color:var(--s)"></i> Eco-Friendly Packaging</div>
 </div>
@@ -632,6 +680,11 @@ footer{background:var(--f);color:rgba(255,255,255,.55);padding:44px clamp(14px,4
   </div>
   <div class="cart-items" id="cart-items-list">
     <!-- Items dynamically rendered here -->
+  </div>
+  <!-- SYNERGY PAIRING WIDGET -->
+  <div class="syn-sec" id="synergy-widget" style="display:none">
+    <div class="syn-hd">✨ Frequently Paired Together</div>
+    <div id="syn-cards"></div>
   </div>
   <div class="cart-ftr" id="cart-footer-actions">
     <div class="cart-row">
@@ -2036,9 +2089,12 @@ function updateCart() {
       </div>
     `;
     lucide.createIcons({nameAttr:'data-lucide',attrs:{class:''},nodes:[list]});
-    subtotalVal.textContent = 'R0.00';
-    totalVal.textContent = 'R0.00';
+    subtotalVal.textContent = '$0.00';
+    totalVal.textContent = '$0.00';
     footerActions.style.display = 'none';
+    document.getElementById('synergy-widget').style.display = 'block';
+    renderSynergy();
+    updateAntigravityBar(0);
   } else {
     footerActions.style.display = 'block';
     list.innerHTML = cart.map(item => {
@@ -2050,7 +2106,7 @@ function updateCart() {
           <img class="cart-item-img" src="${p.img}" alt="${p.n}" onerror="this.src='';this.style.background='var(--c)'">
           <div class="cart-item-info">
             <div class="cart-item-name">${p.n}</div>
-            <div class="cart-item-price">R${p.p.toFixed(2)}</div>
+            <div class="cart-item-price">$${p.p.toFixed(2)}</div>
             <div class="cart-item-ctrls">
               <button class="qty-btn" onclick="changeQty(${item.idx}, -1)">-</button>
               <span class="qty-val">${item.qty}</span>
@@ -2061,27 +2117,28 @@ function updateCart() {
         </div>
       `;
     }).join('');
-    
-    // Free Shipping Over R300 logic
-    const SHIPPING_THRESHOLD = 300;
-    const SHIPPING_COST = 49.99;
+
+    // Free Delivery: $5 flat rate, free over $50
+    const SHIPPING_THRESHOLD = 50;
+    const SHIPPING_COST = 5;
     const shippingEl = document.getElementById('cart-shipping-status');
     let shipping = 0;
     if (subtotal >= SHIPPING_THRESHOLD) {
-      shippingEl.textContent = 'FREE';
+      shippingEl.textContent = 'FREE 🎉';
       shippingEl.style.color = 'var(--s)';
       shippingEl.style.fontWeight = '600';
       shipping = 0;
     } else {
-      const remaining = (SHIPPING_THRESHOLD - subtotal).toFixed(2);
-      shippingEl.textContent = `R${SHIPPING_COST.toFixed(2)}`;
+      shippingEl.textContent = `$${SHIPPING_COST.toFixed(2)}`;
       shippingEl.style.color = '';
       shippingEl.style.fontWeight = '';
       shipping = SHIPPING_COST;
     }
-    subtotalVal.textContent = `R${subtotal.toFixed(2)}`;
-    totalVal.textContent = `R${(subtotal + shipping).toFixed(2)}`;
+    subtotalVal.textContent = `$${subtotal.toFixed(2)}`;
+    totalVal.textContent = `$${(subtotal + shipping).toFixed(2)}`;
     lucide.createIcons({nameAttr:'data-lucide',attrs:{class:''},nodes:[list]});
+    renderSynergy();
+    updateAntigravityBar(subtotal);
   }
 
   // Update button states on the main grid dynamically
@@ -2175,23 +2232,30 @@ function openCheckout() {
     `;
   }).join('');
   
-  // Free Shipping Over R300 logic for checkout
-  const SHIP_THRESH = 300;
-  const SHIP_COST = 49.99;
+  // Free Delivery: $5 flat rate, free over $50
+  const SHIP_THRESH = 50;
+  const SHIP_COST = 5;
   let chkShipping = 0;
   if (subtotal >= SHIP_THRESH) {
-    document.getElementById('chk-shipping').textContent = 'FREE';
+    document.getElementById('chk-shipping').textContent = 'FREE 🎉';
     document.getElementById('chk-shipping').style.color = 'var(--s)';
     document.getElementById('chk-shipping').style.fontWeight = '600';
     chkShipping = 0;
   } else {
-    document.getElementById('chk-shipping').textContent = `R${SHIP_COST.toFixed(2)}`;
+    document.getElementById('chk-shipping').textContent = `$${SHIP_COST.toFixed(2)}`;
     document.getElementById('chk-shipping').style.color = '';
     document.getElementById('chk-shipping').style.fontWeight = '';
     chkShipping = SHIP_COST;
   }
-  document.getElementById('chk-subtotal').textContent = `R${subtotal.toFixed(2)}`;
-  document.getElementById('chk-total').textContent = `R${(subtotal + chkShipping).toFixed(2)}`;
+  document.getElementById('chk-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+  document.getElementById('chk-total').textContent = `$${(subtotal + chkShipping).toFixed(2)}`;
+  
+  // also update order line items currency
+  summary.innerHTML = cart.map(item => {
+    const p = P[item.idx];
+    const total = p.p * item.qty;
+    return `<div class="order-summary-item"><span>${p.n} (x${item.qty})</span><span>$${total.toFixed(2)}</span></div>`;
+  }).join('');
   
   document.getElementById('chk-mo').classList.add('on');
   document.body.style.overflow = 'hidden';
@@ -2236,6 +2300,117 @@ document.addEventListener('keydown',e=>{
     toggleCart(false);
   }
 });
+
+// ── ANTIGRAVITY BAR ──
+const AG_THRESHOLD = 50;
+const AG_SHIP_COST = 5;
+
+function updateAntigravityBar(subtotal) {
+  const bar = document.getElementById('ag-bar');
+  const msg = document.getElementById('ag-msg');
+  const fill = document.getElementById('ag-fill');
+  if (!bar || !msg || !fill) return;
+  const pct = Math.min((subtotal / AG_THRESHOLD) * 100, 100);
+  fill.style.width = pct + '%';
+  if (subtotal >= AG_THRESHOLD) {
+    bar.classList.add('unlocked');
+    msg.className = 'ag-msg celebrate';
+    msg.innerHTML = '🎉 <strong>Congratulations!</strong> You\u2019ve unlocked FREE Delivery!';
+  } else {
+    bar.classList.remove('unlocked');
+    msg.className = 'ag-msg';
+    const remaining = (AG_THRESHOLD - subtotal).toFixed(2);
+    msg.innerHTML = `🚚 Add <strong>$${remaining}</strong> more for <strong>FREE Delivery!</strong>`;
+  }
+  bar.classList.toggle('visible', subtotal > 0);
+}
+
+// ── SYNERGY PAIRING ──
+const SYNERGY_BUNDLES = [
+  {
+    label: '😴 Sleep & Calm',
+    tag: 'Complete Sleep Routine',
+    teaQ: 'ANTI-STRESS SLEEPING',
+    pillQ: 'AN SHEN BU XIN'
+  },
+  {
+    label: '🌿 Detox & Cleanse',
+    tag: 'Complete Cleansing Routine',
+    teaQ: 'BLOOD CLEAN',
+    pillQ: 'BA ZHENG'
+  },
+  {
+    label: '⚡ Vitality & Energy',
+    tag: 'Complete Energy Routine',
+    teaQ: 'GINSENG DATE',
+    pillQ: 'BAN LONG'
+  }
+];
+
+function findPIdx(partial) {
+  const q = partial.toLowerCase();
+  return P.findIndex(p => p.n.toLowerCase().includes(q));
+}
+
+function renderSynergy() {
+  const sw = document.getElementById('synergy-widget');
+  const sc = document.getElementById('syn-cards');
+  if (!sw || !sc) return;
+  const bundles = SYNERGY_BUNDLES.map(b => {
+    return { b, ti: findPIdx(b.teaQ), pi: findPIdx(b.pillQ) };
+  }).filter(({ ti, pi }) => ti !== -1 && pi !== -1);
+  if (bundles.length === 0) { sw.style.display = 'none'; return; }
+  sw.style.display = 'block';
+  sc.innerHTML = bundles.map(({ b, ti, pi }) => {
+    const tea = P[ti], pill = P[pi];
+    const combined = (tea.p + pill.p).toFixed(2);
+    const bothAdded = cart.some(i => i.idx === ti) && cart.some(i => i.idx === pi);
+    const shortTea = tea.n.split(' ').slice(0, 4).join(' ');
+    const shortPill = pill.n.split(' ').slice(0, 3).join(' ');
+    return `
+      <div class="syn-card">
+        <div class="syn-imgs">
+          <img class="syn-img" src="${tea.img}" alt="${tea.n}" onerror="this.style.opacity='.35'">
+          <img class="syn-img" src="${pill.img}" alt="${pill.n}" onerror="this.style.opacity='.35'">
+        </div>
+        <div class="syn-info">
+          <div class="syn-badge">${b.label}</div>
+          <div class="syn-names">${shortTea} + ${shortPill}</div>
+          <div class="syn-price">Bundle: $${combined}</div>
+        </div>
+        <button class="syn-btn${bothAdded ? ' added' : ''}" onclick="addBundle(${ti},${pi},this)">
+          ${bothAdded ? '\u2713 Added' : 'Add Both'}
+        </button>
+      </div>
+    `;
+  }).join('');
+}
+
+function addBundle(ti, pi, btn) {
+  addToCart(ti);
+  addToCart(pi);
+  if (btn) { btn.textContent = '\u2713 Added'; btn.classList.add('added'); }
+  showToast(`Bundle added to cart!`);
+}
+
+// Show AG bar when user scrolls past the hero
+window.addEventListener('scroll', () => {
+  const agBar = document.getElementById('ag-bar');
+  if (!agBar) return;
+  const heroBottom = document.querySelector('.hero') ? document.querySelector('.hero').getBoundingClientRect().bottom : 300;
+  if (heroBottom < 0 && cart.length === 0) {
+    // tease bar even with empty cart, one time
+    if (!agBar._teased) {
+      agBar._teased = true;
+      const fill = document.getElementById('ag-fill');
+      const msg = document.getElementById('ag-msg');
+      if (fill) fill.style.width = '0%';
+      if (msg) { msg.className = 'ag-msg'; msg.innerHTML = '🚚 Add <strong>$50.00</strong> more for <strong>FREE Delivery!</strong>'; }
+      agBar.classList.add('visible');
+      setTimeout(() => { if (cart.length === 0) agBar.classList.remove('visible'); }, 4000);
+    }
+  }
+}, { passive: true });
 
 // Initialize Lucide Icons
 if(typeof lucide!=='undefined') lucide.createIcons();
