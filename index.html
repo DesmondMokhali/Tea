@@ -501,23 +501,7 @@ footer{background:var(--f);color:rgba(255,255,255,.55);padding:44px clamp(14px,4
   .mstock{margin-left:0}
 }
 
-/* ── ANTIGRAVITY SHIPPING BAR ── */
-.ag-bar{position:fixed;bottom:0;left:0;right:0;z-index:180;background:var(--f);padding:11px clamp(14px,4vw,40px);box-shadow:0 -4px 28px rgba(27,58,40,.28);transform:translateY(110%);transition:transform .45s cubic-bezier(.4,0,.2,1);pointer-events:none}
-.ag-bar.visible{transform:translateY(0);pointer-events:all}
-.ag-bar.unlocked{background:linear-gradient(90deg,#1a5c35 0%,#2d8c55 100%)}
-.ag-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.ag-msg{font-size:12.5px;color:rgba(255,255,255,.82);flex:1;min-width:180px;line-height:1.4}
-.ag-msg strong{color:#fff}
-.ag-msg.celebrate{font-size:13px;font-weight:600;color:#fff;animation:agPop .5s ease both}
-@keyframes agPop{0%{transform:scale(.95)}50%{transform:scale(1.04)}100%{transform:scale(1)}}
-.ag-track-wrap{flex:1;min-width:120px;max-width:260px}
-.ag-track{height:6px;background:rgba(255,255,255,.18);border-radius:99px;overflow:hidden}
-.ag-fill{height:100%;background:var(--g);border-radius:99px;transition:width .55s cubic-bezier(.4,0,.2,1)}
-.ag-bar.unlocked .ag-fill{background:#58d68d}
-.ag-cta{background:var(--g);color:var(--f);border:none;border-radius:20px;padding:7px 16px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:all var(--tr);flex-shrink:0}
-.ag-cta:hover{background:var(--gl);transform:translateY(-1px)}
-.ag-x{background:none;border:none;color:rgba(255,255,255,.38);cursor:pointer;font-size:16px;flex-shrink:0;padding:2px 6px;transition:color var(--tr);line-height:1}
-.ag-x:hover{color:#fff}
+
 
 /* ── SYNERGY PAIRING WIDGET ── */
 .syn-sec{padding:14px 20px;border-top:1.5px dashed var(--cd);background:linear-gradient(135deg,#f2f8f4 0%,#eaf2ec 100%)}
@@ -540,17 +524,7 @@ footer{background:var(--f);color:rgba(255,255,255,.55);padding:44px clamp(14px,4
 </head>
 <body>
 
-<!-- ── ANTIGRAVITY FLOATING SHIPPING BAR ── -->
-<div class="ag-bar" id="ag-bar" role="status" aria-live="polite">
-  <div class="ag-inner">
-    <span class="ag-msg" id="ag-msg">🚚 Add <strong id="ag-amount">$50.00</strong> more for <strong>FREE Delivery!</strong></span>
-    <div class="ag-track-wrap">
-      <div class="ag-track"><div class="ag-fill" id="ag-fill" style="width:0%"></div></div>
-    </div>
-    <button class="ag-cta" onclick="document.getElementById('ga').scrollIntoView({behavior:'smooth'})">Shop Now</button>
-    <button class="ag-x" id="ag-x" onclick="document.getElementById('ag-bar').classList.remove('visible')" title="Dismiss">✕</button>
-  </div>
-</div>
+
 
 <nav>
   <a class="nlogo" href="#">
@@ -2089,12 +2063,11 @@ function updateCart() {
       </div>
     `;
     lucide.createIcons({nameAttr:'data-lucide',attrs:{class:''},nodes:[list]});
-    subtotalVal.textContent = '$0.00';
-    totalVal.textContent = '$0.00';
+    subtotalVal.textContent = 'R0.00';
+    totalVal.textContent = 'R0.00';
     footerActions.style.display = 'none';
     document.getElementById('synergy-widget').style.display = 'block';
     renderSynergy();
-    updateAntigravityBar(0);
   } else {
     footerActions.style.display = 'block';
     list.innerHTML = cart.map(item => {
@@ -2106,7 +2079,7 @@ function updateCart() {
           <img class="cart-item-img" src="${p.img}" alt="${p.n}" onerror="this.src='';this.style.background='var(--c)'">
           <div class="cart-item-info">
             <div class="cart-item-name">${p.n}</div>
-            <div class="cart-item-price">$${p.p.toFixed(2)}</div>
+            <div class="cart-item-price">R${p.p.toFixed(2)}</div>
             <div class="cart-item-ctrls">
               <button class="qty-btn" onclick="changeQty(${item.idx}, -1)">-</button>
               <span class="qty-val">${item.qty}</span>
@@ -2118,9 +2091,9 @@ function updateCart() {
       `;
     }).join('');
 
-    // Free Delivery: $5 flat rate, free over $50
-    const SHIPPING_THRESHOLD = 50;
-    const SHIPPING_COST = 5;
+    // Shipping: R75 flat rate, free over R500
+    const SHIPPING_THRESHOLD = 500;
+    const SHIPPING_COST = 75;
     const shippingEl = document.getElementById('cart-shipping-status');
     let shipping = 0;
     if (subtotal >= SHIPPING_THRESHOLD) {
@@ -2129,16 +2102,15 @@ function updateCart() {
       shippingEl.style.fontWeight = '600';
       shipping = 0;
     } else {
-      shippingEl.textContent = `$${SHIPPING_COST.toFixed(2)}`;
+      shippingEl.textContent = `R${SHIPPING_COST.toFixed(2)}`;
       shippingEl.style.color = '';
       shippingEl.style.fontWeight = '';
       shipping = SHIPPING_COST;
     }
-    subtotalVal.textContent = `$${subtotal.toFixed(2)}`;
-    totalVal.textContent = `$${(subtotal + shipping).toFixed(2)}`;
+    subtotalVal.textContent = `R${subtotal.toFixed(2)}`;
+    totalVal.textContent = `R${(subtotal + shipping).toFixed(2)}`;
     lucide.createIcons({nameAttr:'data-lucide',attrs:{class:''},nodes:[list]});
     renderSynergy();
-    updateAntigravityBar(subtotal);
   }
 
   // Update button states on the main grid dynamically
@@ -2221,9 +2193,9 @@ function openCheckout() {
   const summary = document.getElementById('chk-summary');
   let subtotal = 0;
   
-  // Free Delivery: $5 flat rate, free over $50
-  const SHIP_THRESH = 50;
-  const SHIP_COST = 5;
+  // Shipping: R75 flat rate, free over R500
+  const SHIP_THRESH = 500;
+  const SHIP_COST = 75;
   
   summary.innerHTML = cart.map(item => {
     const p = P[item.idx];
@@ -2232,7 +2204,7 @@ function openCheckout() {
     return `
       <div class="order-summary-item">
         <span>${p.n} (x${item.qty})</span>
-        <span>$${total.toFixed(2)}</span>
+        <span>R${total.toFixed(2)}</span>
       </div>
     `;
   }).join('');
@@ -2244,13 +2216,13 @@ function openCheckout() {
     document.getElementById('chk-shipping').style.fontWeight = '600';
     chkShipping = 0;
   } else {
-    document.getElementById('chk-shipping').textContent = `$${SHIP_COST.toFixed(2)}`;
+    document.getElementById('chk-shipping').textContent = `R${SHIP_COST.toFixed(2)}`;
     document.getElementById('chk-shipping').style.color = '';
     document.getElementById('chk-shipping').style.fontWeight = '';
     chkShipping = SHIP_COST;
   }
-  document.getElementById('chk-subtotal').textContent = `$${subtotal.toFixed(2)}`;
-  document.getElementById('chk-total').textContent = `$${(subtotal + chkShipping).toFixed(2)}`;
+  document.getElementById('chk-subtotal').textContent = `R${subtotal.toFixed(2)}`;
+  document.getElementById('chk-total').textContent = `R${(subtotal + chkShipping).toFixed(2)}`;
   
   document.getElementById('chk-mo').classList.add('on');
   document.body.style.overflow = 'hidden';
@@ -2296,29 +2268,7 @@ document.addEventListener('keydown',e=>{
   }
 });
 
-// ── ANTIGRAVITY BAR ──
-const AG_THRESHOLD = 50;
-const AG_SHIP_COST = 5;
 
-function updateAntigravityBar(subtotal) {
-  const bar = document.getElementById('ag-bar');
-  const msg = document.getElementById('ag-msg');
-  const fill = document.getElementById('ag-fill');
-  if (!bar || !msg || !fill) return;
-  const pct = Math.min((subtotal / AG_THRESHOLD) * 100, 100);
-  fill.style.width = pct + '%';
-  if (subtotal >= AG_THRESHOLD) {
-    bar.classList.add('unlocked');
-    msg.className = 'ag-msg celebrate';
-    msg.innerHTML = '🎉 <strong>Congratulations!</strong> You\u2019ve unlocked FREE Delivery!';
-  } else {
-    bar.classList.remove('unlocked');
-    msg.className = 'ag-msg';
-    const remaining = (AG_THRESHOLD - subtotal).toFixed(2);
-    msg.innerHTML = `🚚 Add <strong>$${remaining}</strong> more for <strong>FREE Delivery!</strong>`;
-  }
-  bar.classList.toggle('visible', subtotal > 0);
-}
 
 // ── SYNERGY PAIRING ──
 const SYNERGY_BUNDLES = [
@@ -2371,7 +2321,7 @@ function renderSynergy() {
         <div class="syn-info">
           <div class="syn-badge">${b.label}</div>
           <div class="syn-names">${shortTea} + ${shortPill}</div>
-          <div class="syn-price">Bundle: $${combined}</div>
+          <div class="syn-price">Bundle: R${combined}</div>
         </div>
         <button class="syn-btn${bothAdded ? ' added' : ''}" onclick="addBundle(${ti},${pi},this)">
           ${bothAdded ? '\u2713 Added' : 'Add Both'}
@@ -2388,24 +2338,7 @@ function addBundle(ti, pi, btn) {
   showToast(`Bundle added to cart!`);
 }
 
-// Show AG bar when user scrolls past the hero
-window.addEventListener('scroll', () => {
-  const agBar = document.getElementById('ag-bar');
-  if (!agBar) return;
-  const heroBottom = document.querySelector('.hero') ? document.querySelector('.hero').getBoundingClientRect().bottom : 300;
-  if (heroBottom < 0 && cart.length === 0) {
-    // tease bar even with empty cart, one time
-    if (!agBar._teased) {
-      agBar._teased = true;
-      const fill = document.getElementById('ag-fill');
-      const msg = document.getElementById('ag-msg');
-      if (fill) fill.style.width = '0%';
-      if (msg) { msg.className = 'ag-msg'; msg.innerHTML = '🚚 Add <strong>$50.00</strong> more for <strong>FREE Delivery!</strong>'; }
-      agBar.classList.add('visible');
-      setTimeout(() => { if (cart.length === 0) agBar.classList.remove('visible'); }, 4000);
-    }
-  }
-}, { passive: true });
+
 
 // Initialize Lucide Icons
 if(typeof lucide!=='undefined') lucide.createIcons();
