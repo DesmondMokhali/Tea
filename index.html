@@ -2294,7 +2294,7 @@ const SYNERGY_BUNDLES = [
 
 function findPIdx(partial) {
   const q = partial.toLowerCase();
-  return P.findIndex(p => p.n.toLowerCase().includes(q));
+  return P.findIndex(p => p && p.n && p.n.toLowerCase().includes(q));
 }
 
 function renderSynergy() {
