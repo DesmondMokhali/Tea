@@ -2220,6 +2220,11 @@ function openCheckout() {
   // Render Summary
   const summary = document.getElementById('chk-summary');
   let subtotal = 0;
+  
+  // Free Delivery: $5 flat rate, free over $50
+  const SHIP_THRESH = 50;
+  const SHIP_COST = 5;
+  
   summary.innerHTML = cart.map(item => {
     const p = P[item.idx];
     const total = p.p * item.qty;
@@ -2227,14 +2232,11 @@ function openCheckout() {
     return `
       <div class="order-summary-item">
         <span>${p.n} (x${item.qty})</span>
-        <span>R${total.toFixed(2)}</span>
+        <span>$${total.toFixed(2)}</span>
       </div>
     `;
   }).join('');
   
-  // Free Delivery: $5 flat rate, free over $50
-  const SHIP_THRESH = 50;
-  const SHIP_COST = 5;
   let chkShipping = 0;
   if (subtotal >= SHIP_THRESH) {
     document.getElementById('chk-shipping').textContent = 'FREE 🎉';
@@ -2249,13 +2251,6 @@ function openCheckout() {
   }
   document.getElementById('chk-subtotal').textContent = `$${subtotal.toFixed(2)}`;
   document.getElementById('chk-total').textContent = `$${(subtotal + chkShipping).toFixed(2)}`;
-  
-  // also update order line items currency
-  summary.innerHTML = cart.map(item => {
-    const p = P[item.idx];
-    const total = p.p * item.qty;
-    return `<div class="order-summary-item"><span>${p.n} (x${item.qty})</span><span>$${total.toFixed(2)}</span></div>`;
-  }).join('');
   
   document.getElementById('chk-mo').classList.add('on');
   document.body.style.overflow = 'hidden';
