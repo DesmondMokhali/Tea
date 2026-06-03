@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Herbalist Insights — Wellness Blog | The Herbalist</title>
+<meta name="description" content="Explore expert articles on herbal wellness, traditional Chinese medicine, sleep, detox, and natural vitality from The Herbalist blog.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/lucide-static@latest/font/lucide.css">
+<style>
+/* ── RESET & ROOT ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  /* Brand palette (matches main site) */
+  --f:#1b3a28;--fm:#2a5040;--fl:#3a6852;
+  --g:#c8a06e;--gl:#dab882;--gp:#f0e0c4;
+  --s:#6a9970;--sl:#9abf9d;
+  --t:#182415;--tm:#3d5c44;--tl:#7a9280;
+  --w:#fff;
+  --c:#f7f2e6;--cd:#e8e0cc;
+  /* Blog-specific */
+  --bg:#f9fafb;
+  --card:#ffffff;
+  --text:#1a1a1a;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --green:#2e7d32;
+  --green-light:#e8f5e9;
+  --green-mid:#4caf50;
+  --radius:16px;
+  --shadow:0 2px 16px rgba(0,0,0,.07);
+  --shadow-hover:0 8px 40px rgba(0,0,0,.13);
+  --tr:.24s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+
+/* ── NAV (matches main site) ── */
+nav{position:sticky;top:0;z-index:100;background:var(--f);height:66px;padding:0 clamp(14px,4vw,52px);display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 24px rgba(0,0,0,.25)}
+.nlogo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nmark{width:34px;height:34px;background:var(--g);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;color:var(--f)}
+.nmark svg{width:17px;height:17px;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.ntext{line-height:1.1}
+.ntext b{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--gl);letter-spacing:.04em;display:block}
+.ntext small{font-size:9.5px;color:var(--sl);letter-spacing:.14em;text-transform:uppercase}
+.nlinks{display:flex;gap:24px}
+.nlinks a{color:rgba(255,255,255,.65);text-decoration:none;font-size:12.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;transition:color var(--tr)}
+.nlinks a:hover,.nlinks a.active{color:var(--gl)}
+.nlinks a.active{border-bottom:2px solid var(--g);padding-bottom:2px}
+.nblog-cta{background:var(--g);border:none;border-radius:20px;padding:7px 18px;color:var(--f);font-family:'DM Sans',sans-serif;font-size:12.5px;font-weight:700;cursor:pointer;text-decoration:none;transition:all var(--tr)}
+.nblog-cta:hover{background:var(--gl);transform:translateY(-1px)}
+@media(max-width:640px){.nlinks{display:none}}
+
+/* ── BLOG HERO ── */
+.blog-hero{
+  background:linear-gradient(135deg,var(--f) 0%,#254d38 50%,#1a5c35 100%);
+  padding:80px clamp(20px,6vw,80px) 100px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.blog-hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+}
+.blog-hero-inner{position:relative;z-index:1;max-width:680px;margin:0 auto}
+.blog-hero-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(200,160,110,.18);border:1px solid rgba(200,160,110,.3);border-radius:99px;padding:5px 14px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gl);margin-bottom:20px}
+.blog-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:700;color:#fff;line-height:1.2;margin-bottom:16px}
+.blog-hero h1 em{color:var(--gl);font-style:italic}
+.blog-hero p{font-size:16px;color:rgba(255,255,255,.72);max-width:500px;margin:0 auto 32px;line-height:1.7}
+.blog-search-wrap{display:flex;align-items:center;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:99px;padding:8px 8px 8px 18px;gap:8px;max-width:420px;margin:0 auto;backdrop-filter:blur(8px)}
+.blog-search-wrap input{flex:1;background:none;border:none;outline:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px}
+.blog-search-wrap input::placeholder{color:rgba(255,255,255,.45)}
+.blog-search-wrap button{background:var(--g);border:none;border-radius:99px;padding:8px 20px;color:var(--f);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;transition:all var(--tr)}
+.blog-search-wrap button:hover{background:var(--gl)}
+.blog-hero-stats{display:flex;justify-content:center;gap:36px;margin-top:40px;flex-wrap:wrap}
+.bstat{text-align:center}
+.bstat-num{font-size:28px;font-weight:700;color:#fff;font-family:'Playfair Display',serif}
+.bstat-lbl{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
+.hero-wave{position:absolute;bottom:-1px;left:0;right:0;height:60px}
+.hero-wave svg{display:block;width:100%;height:100%}
+
+/* ── FEATURED ARTICLE ── */
+.featured-wrap{max-width:1200px;margin:-60px auto 0;padding:0 clamp(16px,4vw,40px);position:relative;z-index:2}
+.featured-card{
+  background:var(--card);
+  border-radius:20px;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  box-shadow:0 16px 60px rgba(0,0,0,.12);
+  border:1px solid var(--border);
+}
+.featured-img-wrap{position:relative;overflow:hidden;min-height:320px}
+.featured-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.featured-card:hover .featured-img-wrap img{transform:scale(1.04)}
+.featured-overlay{position:absolute;top:16px;left:16px;display:flex;gap:8px}
+.featured-badge{background:var(--green);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:99px}
+.featured-label{background:rgba(0,0,0,.55);color:#fff;font-size:10.5px;font-weight:600;padding:4px 10px;border-radius:99px;backdrop-filter:blur(4px)}
+.featured-content{padding:40px 44px;display:flex;flex-direction:column;justify-content:center}
+.feat-cat-pill{display:inline-flex;align-items:center;gap:5px;background:var(--green-light);color:var(--green);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:99px;margin-bottom:16px;width:fit-content}
+.featured-content h2{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:700;color:var(--text);line-height:1.3;margin-bottom:14px}
+.featured-content p{font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:24px}
+.feat-meta{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.feat-avatar{width:34px;height:34px;background:var(--green-light);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.feat-avatar svg{width:16px;height:16px;stroke:var(--green);stroke-width:2;fill:none}
+.feat-author{font-size:13px;color:var(--text);font-weight:600}
+.feat-date{font-size:12px;color:var(--muted)}
+.feat-readtime{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--muted);margin-left:auto}
+.feat-readtime svg{width:13px;height:13px;stroke:var(--muted);stroke-width:2;fill:none}
+.read-btn{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:12px 24px;border-radius:99px;transition:all var(--tr);width:fit-content}
+.read-btn svg{width:15px;height:15px;stroke:currentColor;stroke-width:2;fill:none;transition:transform var(--tr)}
+.read-btn:hover{background:#1b5e20;transform:translateY(-2px);box-shadow:0 6px 24px rgba(46,125,50,.3)}
+.read-btn:hover svg{transform:translateX(4px)}
+@media(max-width:768px){
+  .featured-card{grid-template-columns:1fr}
+  .featured-img-wrap{min-height:220px}
+  .featured-content{padding:28px 24px}
+}
+
+/* ── FILTER SECTION ── */
+.filter-section{max-width:1200px;margin:60px auto 0;padding:0 clamp(16px,4vw,40px)}
+.filter-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px}
+.filter-header h2{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--text)}
+.filter-header h2 span{color:var(--green)}
+.article-count{font-size:13px;color:var(--muted);background:var(--green-light);color:var(--green);padding:4px 12px;border-radius:99px;font-weight:600}
+
+.filter-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
+.ftab{
+  display:inline-flex;align-items:center;gap:6px;
+  background:#fff;border:1.5px solid var(--border);
+  border-radius:99px;padding:9px 20px;
+  font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:500;
+  color:var(--muted);cursor:pointer;transition:all var(--tr);
+  white-space:nowrap;
+}
+.ftab svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none}
+.ftab:hover{border-color:var(--green);color:var(--green);background:var(--green-light)}
+.ftab.active{background:var(--green);color:#fff;border-color:var(--green);box-shadow:0 4px 16px rgba(46,125,50,.25)}
+.ftab .tab-count{background:rgba(255,255,255,.22);font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:99px;min-width:22px;text-align:center}
+.ftab:not(.active) .tab-count{background:var(--border);color:var(--muted)}
+
+/* ── ARTICLE GRID ── */
+.article-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+  margin-bottom:60px;
+}
+@media(max-width:900px){.article-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.article-grid{grid-template-columns:1fr;gap:20px}}
+
+/* ── ARTICLE CARD ── */
+.art-card{
+  background:var(--card);
+  border-radius:var(--radius);
+  overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  display:flex;flex-direction:column;
+  transition:transform var(--tr),box-shadow var(--tr);
+  animation:cardIn .4s ease both;
+}
+.art-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover)}
+@keyframes cardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.art-card.hidden{display:none}
+
+.card-img-wrap{position:relative;overflow:hidden;height:200px;background:var(--green-light)}
+.card-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .55s ease;display:block}
+.art-card:hover .card-img-wrap img{transform:scale(1.07)}
+.card-cat-badge{
+  position:absolute;top:12px;left:12px;
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  padding:4px 11px;border-radius:99px;
+  backdrop-filter:blur(8px);
+}
+.badge-sleep{background:rgba(63,81,181,.85);color:#fff}
+.badge-detox{background:rgba(46,125,50,.85);color:#fff}
+.badge-vitality{background:rgba(245,124,0,.85);color:#fff}
+.card-readtime{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.55);color:#fff;font-size:10.5px;font-weight:500;padding:3px 9px;border-radius:99px;backdrop-filter:blur(4px);display:flex;align-items:center;gap:4px}
+.card-readtime svg{width:11px;height:11px;stroke:rgba(255,255,255,.8);stroke-width:2;fill:none}
+
+.card-body{padding:22px 22px 20px;flex:1;display:flex;flex-direction:column}
+.card-cat-text{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.cat-sleep{color:#3f51b5}
+.cat-detox{color:var(--green)}
+.cat-vitality{color:#e65100}
+
+.card-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--text);line-height:1.4;margin-bottom:10px;transition:color var(--tr)}
+.art-card:hover .card-title{color:var(--green)}
+.card-excerpt{font-size:13.5px;color:var(--muted);line-height:1.7;margin-bottom:18px;flex:1}
+.card-divider{height:1px;background:var(--border);margin-bottom:16px}
+.card-footer{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.card-author-row{display:flex;align-items:center;gap:8px}
+.card-avatar{width:28px;height:28px;background:var(--green-light);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.card-avatar svg{width:13px;height:13px;stroke:var(--green);stroke-width:2;fill:none}
+.card-meta-text{display:flex;flex-direction:column;line-height:1.2}
+.card-author{font-size:12px;font-weight:600;color:var(--text)}
+.card-date{font-size:11px;color:var(--muted)}
+.card-read-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--green-light);color:var(--green);
+  font-size:12.5px;font-weight:700;
+  padding:8px 16px;border-radius:99px;
+  text-decoration:none;white-space:nowrap;
+  transition:all var(--tr);border:none;cursor:pointer;font-family:'DM Sans',sans-serif;
+}
+.card-read-btn svg{width:13px;height:13px;stroke:currentColor;stroke-width:2;fill:none;transition:transform var(--tr)}
+.card-read-btn:hover{background:var(--green);color:#fff;box-shadow:0 4px 16px rgba(46,125,50,.25)}
+.card-read-btn:hover svg{transform:translateX(4px)}
+
+/* ── LOAD MORE ── */
+.load-more-wrap{text-align:center;margin-bottom:80px}
+.load-more-btn{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--border);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;padding:13px 32px;border-radius:99px;cursor:pointer;transition:all var(--tr)}
+.load-more-btn svg{width:15px;height:15px;stroke:currentColor;stroke-width:2;fill:none;transition:transform var(--tr)}
+.load-more-btn:hover{border-color:var(--green);color:var(--green);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.08)}
+.load-more-btn:hover svg{transform:rotate(90deg)}
+
+/* ── NEWSLETTER BANNER ── */
+.newsletter{
+  background:linear-gradient(135deg,var(--f) 0%,#254d38 100%);
+  padding:70px clamp(20px,6vw,80px);
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.newsletter::after{content:'🌿';position:absolute;right:60px;top:20px;font-size:80px;opacity:.07;pointer-events:none}
+.newsletter::before{content:'🌿';position:absolute;left:60px;bottom:10px;font-size:60px;opacity:.06;pointer-events:none;transform:scaleX(-1)}
+.newsletter-inner{position:relative;z-index:1;max-width:520px;margin:0 auto}
+.newsletter h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;color:#fff;margin-bottom:10px}
+.newsletter p{font-size:15px;color:rgba(255,255,255,.7);margin-bottom:28px;line-height:1.6}
+.nl-form{display:flex;gap:8px;max-width:400px;margin:0 auto;flex-wrap:wrap}
+.nl-form input{flex:1;min-width:180px;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.2);border-radius:99px;padding:12px 20px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:all var(--tr)}
+.nl-form input::placeholder{color:rgba(255,255,255,.45)}
+.nl-form input:focus{background:rgba(255,255,255,.18);border-color:var(--g)}
+.nl-form button{background:var(--g);border:none;border-radius:99px;padding:12px 24px;color:var(--f);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all var(--tr);white-space:nowrap}
+.nl-form button:hover{background:var(--gl);transform:translateY(-1px)}
+.nl-privacy{font-size:11px;color:rgba(255,255,255,.4);margin-top:12px}
+
+/* ── FOOTER ── */
+footer{background:var(--f);color:rgba(255,255,255,.55);text-align:center;padding:28px 20px;font-size:13px;border-top:1px solid rgba(255,255,255,.06)}
+footer a{color:var(--gl);text-decoration:none}
+
+/* ── NO RESULTS ── */
+.no-results{text-align:center;padding:60px 20px;grid-column:1/-1}
+.no-results-icon{font-size:48px;margin-bottom:12px}
+.no-results h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--text);margin-bottom:8px}
+.no-results p{color:var(--muted);font-size:14px}
+
+/* ── SCROLL TO TOP ── */
+.scroll-top{position:fixed;bottom:28px;right:28px;width:42px;height:42px;background:var(--green);color:#fff;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(46,125,50,.4);opacity:0;transform:translateY(12px);transition:all var(--tr);z-index:50}
+.scroll-top.visible{opacity:1;transform:translateY(0)}
+.scroll-top:hover{background:#1b5e20;transform:translateY(-2px)}
+.scroll-top svg{width:18px;height:18px;stroke:currentColor;stroke-width:2.5;fill:none}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nlogo" href="index.html">
+    <div class="nmark">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4H7l5-8v4h4l-5 8z" stroke-width="1.5"/></svg>
+    </div>
+    <div class="ntext"><b>The Herbalist</b><small>Traditional Chinese Wellness</small></div>
+  </a>
+  <div class="nlinks">
+    <a href="index.html">Shop</a>
+    <a href="blog.html" class="active">Blog</a>
+    <a href="index.html#ga">Our Teas</a>
+    <a href="index.html#ga">Our Pills</a>
+  </div>
+  <a href="index.html" class="nblog-cta">Shop Now →</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <div class="blog-hero-eyebrow">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+      Herbalist Insights
+    </div>
+    <h1>Ancient Wisdom.<br><em>Modern Wellbeing.</em></h1>
+    <p>Expert guides on herbal teas, traditional Chinese medicine, and natural remedies — crafted to help you live more vibrantly.</p>
+    <div class="blog-search-wrap">
+      <input type="text" id="search-input" placeholder="Search articles — e.g. 'sleep tea', 'detox'…" oninput="filterArticles()">
+      <button onclick="filterArticles()">Search</button>
+    </div>
+  </div>
+  <div class="blog-hero-stats">
+    <div class="bstat"><div class="bstat-num">6</div><div class="bstat-lbl">Articles</div></div>
+    <div class="bstat"><div class="bstat-num">3</div><div class="bstat-lbl">Topics</div></div>
+    <div class="bstat"><div class="bstat-num">5 min</div><div class="bstat-lbl">Avg. Read</div></div>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#f9fafb"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ── FEATURED ARTICLE ── -->
+<div class="featured-wrap">
+  <article class="featured-card" id="featured">
+    <div class="featured-img-wrap">
+      <img src="assets/images/blog_sleep_tea.png" alt="The Blueprint for Deep Sleep" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#c8e6c9,#a5d6a7)';this.style.display='block'">
+      <div class="featured-overlay">
+        <span class="featured-badge">Featured</span>
+        <span class="featured-label">🌙 Sleep & Anxiety</span>
+      </div>
+    </div>
+    <div class="featured-content">
+      <div class="feat-cat-pill">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        Sleep &amp; Anxiety
+      </div>
+      <h2>The Blueprint for Deep Sleep: Why Tea and Herbs Work Faster Together</h2>
+      <p>Science now confirms what Traditional Chinese Medicine has known for centuries — combining adaptogenic herbs with bedtime rituals dramatically shortens the time to fall asleep and deepens REM cycles. Discover the exact synergy behind our Anti-Stress Sleeping blend.</p>
+      <div class="feat-meta">
+        <div class="feat-avatar">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <div>
+          <div class="feat-author">Dr. Lin Wei</div>
+          <div class="feat-date">2 June 2025</div>
+        </div>
+        <div class="feat-readtime">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          7 min read
+        </div>
+      </div>
+      <a href="#" class="read-btn">
+        Read Article
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </article>
+</div>
+
+<!-- ── FILTER & GRID ── -->
+<section class="filter-section" id="articles">
+  <div class="filter-header">
+    <h2>All <span>Articles</span></h2>
+    <span class="article-count" id="article-count">6 articles</span>
+  </div>
+
+  <div class="filter-tabs" role="tablist" aria-label="Article categories">
+    <button class="ftab active" id="tab-all" onclick="setFilter('all')" role="tab" aria-selected="true">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      All
+      <span class="tab-count">6</span>
+    </button>
+    <button class="ftab" id="tab-detox" onclick="setFilter('detox')" role="tab" aria-selected="false">
+      <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm0 4v8m-4-4h8"/></svg>
+      Detox &amp; Cleanse
+      <span class="tab-count">2</span>
+    </button>
+    <button class="ftab" id="tab-sleep" onclick="setFilter('sleep')" role="tab" aria-selected="false">
+      <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      Sleep &amp; Anxiety
+      <span class="tab-count">2</span>
+    </button>
+    <button class="ftab" id="tab-vitality" onclick="setFilter('vitality')" role="tab" aria-selected="false">
+      <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      Vitality &amp; Energy
+      <span class="tab-count">2</span>
+    </button>
+  </div>
+
+  <!-- ARTICLE GRID -->
+  <div class="article-grid" id="article-grid">
+
+    <!-- Card 1: Detox -->
+    <article class="art-card" data-cat="detox" data-tags="detox cleanse liver blood tea">
+      <div class="card-img-wrap">
+        <img src="assets/images/blog_detox_water.png" alt="5-Day Herbal Reset" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#c8e6c9,#a5d6a7)'">
+        <div class="card-cat-badge badge-detox">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z"/></svg>
+          Detox &amp; Cleanse
+        </div>
+        <div class="card-readtime">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          5 min
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-cat-text cat-detox">Detox &amp; Cleanse</div>
+        <h3 class="card-title">The 5-Day Herbal Reset: How Blood-Cleansing Tea Flushes Toxins Naturally</h3>
+        <p class="card-excerpt">Most detox plans ignore the liver — the body's primary filter. This guided 5-day protocol uses Traditional Chinese herbs to gently support your liver and gut, leaving you energised and clear-headed.</p>
+        <div class="card-divider"></div>
+        <div class="card-footer">
+          <div class="card-author-row">
+            <div class="card-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg></div>
+            <div class="card-meta-text">
+              <span class="card-author">Dr. Lin Wei</span>
+              <span class="card-date">28 May 2025</span>
+            </div>
+          </div>
+          <a href="#" class="card-read-btn">
+            Read Article
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 2: Sleep -->
+    <article class="art-card" data-cat="sleep" data-tags="anxiety stress calm mind herbs">
+      <div class="card-img-wrap">
+        <img src="assets/images/blog_anxiety_ritual.png" alt="Evening Ritual" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#e8eaf6,#c5cae9)'">
+        <div class="card-cat-badge badge-sleep">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          Sleep &amp; Anxiety
+        </div>
+        <div class="card-readtime">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          6 min
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-cat-text cat-sleep">Sleep &amp; Anxiety</div>
+        <h3 class="card-title">Build Your Evening Ritual: 4 Herbal Habits That Crush Anxiety Before Bed</h3>
+        <p class="card-excerpt">Anxiety at bedtime is one of the most common — and most treatable — health complaints. Learn how four simple herbal routines, rooted in TCM, can rewire your nervous system for calm.</p>
+        <div class="card-divider"></div>
+        <div class="card-footer">
+          <div class="card-author-row">
+            <div class="card-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg></div>
+            <div class="card-meta-text">
+              <span class="card-author">Mei Huang, MHSc</span>
+              <span class="card-date">22 May 2025</span>
+            </div>
+          </div>
+          <a href="#" class="card-read-btn">
+            Read Article
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 3: Vitality -->
+    <article class="art-card" data-cat="vitality" data-tags="ginseng energy fatigue qi vitality">
+      <div class="card-img-wrap">
+        <img src="assets/images/blog_vitality_herbs.png" alt="Ginseng Energy" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#fff3e0,#ffe0b2)'">
+        <div class="card-cat-badge badge-vitality">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Vitality &amp; Energy
+        </div>
+        <div class="card-readtime">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          4 min
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-cat-text cat-vitality">Vitality &amp; Energy</div>
+        <h3 class="card-title">Ginseng + Red Date: The 2,000-Year-Old Energy Stack That Outperforms Coffee</h3>
+        <p class="card-excerpt">Modern science is finally catching up to what Chinese emperors knew — Ginseng and Jujube together produce a sustained, non-jittery energy boost that lasts all day without the afternoon crash.</p>
+        <div class="card-divider"></div>
+        <div class="card-footer">
+          <div class="card-author-row">
+            <div class="card-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg></div>
+            <div class="card-meta-text">
+              <span class="card-author">Dr. Lin Wei</span>
+              <span class="card-date">15 May 2025</span>
+            </div>
+          </div>
+          <a href="#" class="card-read-btn">
+            Read Article
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 4: Detox -->
+    <article class="art-card" data-cat="detox" data-tags="liver detox cleanse bitter melon balsam">
+      <div class="card-img-wrap">
+        <img src="assets/images/blog_liver_detox.png" alt="Liver Health" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#f1f8e9,#dcedc8)'">
+        <div class="card-cat-badge badge-detox">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z"/></svg>
+          Detox &amp; Cleanse
+        </div>
+        <div class="card-readtime">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          5 min
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-cat-text cat-detox">Detox &amp; Cleanse</div>
+        <h3 class="card-title">Your Liver Works While You Sleep: The Case for a Nightly Herbal Cleanse</h3>
+        <p class="card-excerpt">Between 1–3 AM, your liver enters peak regeneration mode according to TCM's organ clock theory — and what you drink before bed directly impacts this process. Here's what the research says.</p>
+        <div class="card-divider"></div>
+        <div class="card-footer">
+          <div class="card-author-row">
+            <div class="card-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg></div>
+            <div class="card-meta-text">
+              <span class="card-author">Mei Huang, MHSc</span>
+              <span class="card-date">10 May 2025</span>
+            </div>
+          </div>
+          <a href="#" class="card-read-btn">
+            Read Article
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 5: Sleep -->
+    <article class="art-card" data-cat="sleep" data-tags="insomnia sleep ganoderma reishi mushroom">
+      <div class="card-img-wrap">
+        <img src="assets/images/blog_sleep_tea.png" alt="Reishi and Sleep" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#e8eaf6,#c5cae9)'">
+        <div class="card-cat-badge badge-sleep">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          Sleep &amp; Anxiety
+        </div>
+        <div class="card-readtime">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          7 min
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-cat-text cat-sleep">Sleep &amp; Anxiety</div>
+        <h3 class="card-title">Reishi Mushroom &amp; Insomnia: What 3 Clinical Studies Actually Found</h3>
+        <p class="card-excerpt">Ganoderma lucidum — the "Mushroom of Immortality" — is a core ingredient in our bestselling Sleep Tea. We review three peer-reviewed clinical trials showing measurable improvements in sleep quality.</p>
+        <div class="card-divider"></div>
+        <div class="card-footer">
+          <div class="card-author-row">
+            <div class="card-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg></div>
+            <div class="card-meta-text">
+              <span class="card-author">Dr. Lin Wei</span>
+              <span class="card-date">3 May 2025</span>
+            </div>
+          </div>
+          <a href="#" class="card-read-btn">
+            Read Article
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 6: Vitality -->
+    <article class="art-card" data-cat="vitality" data-tags="energy barley grass superfood qi immunity">
+      <div class="card-img-wrap">
+        <img src="assets/images/blog_energy_ginseng.png" alt="Barley Grass Superfood" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#fff3e0,#ffe0b2)'">
+        <div class="card-cat-badge badge-vitality">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Vitality &amp; Energy
+        </div>
+        <div class="card-readtime">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          5 min
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-cat-text cat-vitality">Vitality &amp; Energy</div>
+        <h3 class="card-title">Barley Grass Juice: The Green Superfood That Naturally Rebuilds Your Energy Reserves</h3>
+        <p class="card-excerpt">Young barley grass contains 11× more calcium than milk, 5× more iron than spinach, and a dense spectrum of vitamins A through K. Here's exactly why it's become a staple in modern herbal wellness.</p>
+        <div class="card-divider"></div>
+        <div class="card-footer">
+          <div class="card-author-row">
+            <div class="card-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg></div>
+            <div class="card-meta-text">
+              <span class="card-author">Mei Huang, MHSc</span>
+              <span class="card-date">25 Apr 2025</span>
+            </div>
+          </div>
+          <a href="#" class="card-read-btn">
+            Read Article
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- No Results -->
+    <div class="no-results" id="no-results" style="display:none">
+      <div class="no-results-icon">🌿</div>
+      <h3>No articles found</h3>
+      <p>Try a different search term or browse another category.</p>
+    </div>
+
+  </div><!-- /article-grid -->
+
+  <div class="load-more-wrap">
+    <button class="load-more-btn" onclick="this.textContent='More articles coming soon ✨';this.disabled=true;this.style.opacity='.55'">
+      <svg viewBox="0 0 24 24"><path d="M12 2v10m0 0l-3-3m3 3l3-3M4 14s.5 6 8 6 8-6 8-6"/></svg>
+      Load More Articles
+    </button>
+  </div>
+</section>
+
+<!-- ── NEWSLETTER ── -->
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <h2>Get Weekly Wellness Wisdom</h2>
+    <p>Join 4,200+ readers who get our best herbal insights delivered every Friday morning.</p>
+    <form class="nl-form" onsubmit="handleNewsletter(event)">
+      <input type="email" id="nl-email" placeholder="your@email.com" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="nl-privacy">No spam, ever. Unsubscribe in one click.</p>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>© 2025 <a href="index.html">The Herbalist</a> · Traditional Chinese Wellness · All rights reserved.</p>
+</footer>
+
+<!-- ── SCROLL TO TOP ── -->
+<button class="scroll-top" id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<script>
+// ── FILTER STATE ──
+let activeFilter = 'all';
+let searchQuery = '';
+
+function setFilter(cat) {
+  activeFilter = cat;
+  // Update tabs
+  document.querySelectorAll('.ftab').forEach(t => {
+    t.classList.remove('active');
+    t.setAttribute('aria-selected','false');
+  });
+  const tab = document.getElementById('tab-' + cat);
+  if (tab) { tab.classList.add('active'); tab.setAttribute('aria-selected','true'); }
+  filterArticles();
+}
+
+function filterArticles() {
+  searchQuery = (document.getElementById('search-input').value || '').toLowerCase().trim();
+  const cards = document.querySelectorAll('.art-card');
+  let visible = 0;
+
+  cards.forEach((card, i) => {
+    const cat = card.getAttribute('data-cat');
+    const tags = card.getAttribute('data-tags') || '';
+    const titleEl = card.querySelector('.card-title');
+    const excerptEl = card.querySelector('.card-excerpt');
+    const title = titleEl ? titleEl.textContent.toLowerCase() : '';
+    const excerpt = excerptEl ? excerptEl.textContent.toLowerCase() : '';
+
+    const catMatch = activeFilter === 'all' || cat === activeFilter;
+    const searchMatch = !searchQuery ||
+      title.includes(searchQuery) ||
+      excerpt.includes(searchQuery) ||
+      tags.includes(searchQuery);
+
+    const show = catMatch && searchMatch;
+    card.classList.toggle('hidden', !show);
+    if (show) {
+      visible++;
+      // Stagger animation on filter change
+      card.style.animationDelay = (visible * 60) + 'ms';
+      card.style.animation = 'none';
+      card.offsetHeight; // reflow
+      card.style.animation = '';
+    }
+  });
+
+  const noResults = document.getElementById('no-results');
+  noResults.style.display = visible === 0 ? 'block' : 'none';
+
+  const countEl = document.getElementById('article-count');
+  if (countEl) countEl.textContent = visible + ' article' + (visible !== 1 ? 's' : '');
+}
+
+// ── NEWSLETTER ──
+function handleNewsletter(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  const input = document.getElementById('nl-email');
+  btn.textContent = '✓ You\'re subscribed!';
+  btn.style.background = '#4caf50';
+  input.value = '';
+  input.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Subscribe';
+    btn.style.background = '';
+    input.disabled = false;
+  }, 4000);
+}
+
+// ── SCROLL TO TOP ──
+const scrollTopBtn = document.getElementById('scroll-top');
+window.addEventListener('scroll', () => {
+  scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+}, { passive: true });
+</script>
+</body>
+</html>
