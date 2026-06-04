@@ -624,6 +624,15 @@ footer{background:var(--f);color:rgba(255,255,255,.55);padding:44px clamp(14px,4
     <a href="blog.html">Blog</a>
     <a href="index.html#contact">Contact Us</a>
   </div>
+  <div class="nright">
+    <div class="swrap">
+      <span class="sico"><i data-lucide="search" style="width:14px;height:14px"></i></span>
+      <input type="text" id="si" placeholder="Search products…" oninput="doSearch(this.value)">
+    </div>
+    <button class="cbtn" onclick="showCart()">
+      <i data-lucide="shopping-cart" style="width:15px;height:15px"></i> Cart <span class="cct" id="cnt">0</span>
+    </button>
+  </div>
 </nav>
 
 <!-- HERO -->
