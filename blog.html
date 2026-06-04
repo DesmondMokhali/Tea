@@ -400,27 +400,25 @@ footer a{color:var(--gl);text-decoration:none}
 
 
 
+
 <!-- ── FILTER & GRID ── -->
 <section class="filter-section" id="articles">
   <div class="filter-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px;">
     <div>
       <h2>All <span>Articles</span></h2>
-      <span class="article-count" id="article-count">14 articles</span>
+      <span class="article-count" id="article-count">8 articles</span>
     </div>
     
     <div class="blog-filter-dropdown">
       <label for="category-select" style="font-size:12px; font-weight:600; color:var(--muted); text-transform:uppercase; margin-right:8px;">Filter by Goal:</label>
       <select id="category-select" onchange="setFilter(this.value)" style="padding:10px 16px; border:1px solid var(--border); border-radius:8px; font-family:inherit; font-size:14px; font-weight:600; color:var(--text); background:var(--card); cursor:pointer; outline:none; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
         <option value="all">All Goals & Articles</option>
-        <option value="bone-&-joint">Bone & Joint</option>
-<option value="children's-health">Children's Health</option>
-<option value="heart-&-blood">Heart & Blood</option>
-<option value="herbal-education">Herbal Education</option>
+        <option value="children's-health">Children's Health</option>
+<option value="fluid-retention">Fluid Retention</option>
 <option value="immunity-shielding">Immunity Shielding</option>
 <option value="maternity-care">Maternity Care</option>
 <option value="men's-health">Men's Health</option>
 <option value="pain-&-muscles">Pain & Muscles</option>
-<option value="sleep-&-anxiety">Sleep & Anxiety</option>
 <option value="weight-management">Weight Management</option>
 <option value="women's-health">Women's Health</option>
       </select>
@@ -429,118 +427,6 @@ footer a{color:var(--gl);text-decoration:none}
 
   <div class="article-grid" id="article-grid">
 
-    <article class="art-card" data-cat="sleep-&-anxiety" data-tags="sleep anxiety insomnia">
-      <div class="card-img-wrap">
-        <img src="assets/images/blog_sleep_tea.png" alt="The Blueprint for Deep Sleep: Why Tea and Herbs Work Faster Together" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#c8e6c9,#a5d6a7)'">
-        <div class="card-cat-badge badge-sleep-&-anxiety" style="background:var(--green); color:#fff; border:none; padding:4px 10px; border-radius:99px; font-size:10px; font-weight:700;">
-          Sleep & Anxiety
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="card-cat-text" style="color:var(--green); font-size:11px; font-weight:700; text-transform:uppercase; margin-bottom:8px;">Sleep & Anxiety</div>
-        <h3 class="card-title">The Blueprint for Deep Sleep: Why Tea and Herbs Work Faster Together</h3>
-        <p class="card-excerpt">Science now confirms what TCM has known for centuries — combining adaptogenic herbs with bedtime rituals deepens REM cycles.</p>
-        <div class="card-divider"></div>
-        <div class="card-footer">
-          <div class="card-author-row">
-            <div class="card-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg></div>
-            <div class="card-meta-text">
-              <span class="card-author">Dr. Lin Wei</span>
-              <span class="card-date">2 June 2025</span>
-            </div>
-          </div>
-          <a href="blog-deep-sleep.html" class="card-read-btn">
-            Read Article
-            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-    </article>
-    
-    <article class="art-card" data-cat="herbal-education" data-tags="education basic qi yin yang">
-      <div class="card-img-wrap">
-        <img src="assets/images/blog_detox_water.png" alt="TCM 101: A Beginner's Guide to Chinese Herbal Medicine" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#c8e6c9,#a5d6a7)'">
-        <div class="card-cat-badge badge-herbal-education" style="background:var(--green); color:#fff; border:none; padding:4px 10px; border-radius:99px; font-size:10px; font-weight:700;">
-          Herbal Education
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="card-cat-text" style="color:var(--green); font-size:11px; font-weight:700; text-transform:uppercase; margin-bottom:8px;">Herbal Education</div>
-        <h3 class="card-title">TCM 101: A Beginner's Guide to Chinese Herbal Medicine</h3>
-        <p class="card-excerpt">Discover the foundational principles of Traditional Chinese Medicine. Learn about Qi, Yin and Yang, and natural balance.</p>
-        <div class="card-divider"></div>
-        <div class="card-footer">
-          <div class="card-author-row">
-            <div class="card-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg></div>
-            <div class="card-meta-text">
-              <span class="card-author">Mei Huang, MHSc</span>
-              <span class="card-date">3 June 2025</span>
-            </div>
-          </div>
-          <a href="blog-tcm-101.html" class="card-read-btn">
-            Read Article
-            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-    </article>
-    
-    <article class="art-card" data-cat="herbal-education" data-tags="education formulas theory">
-      <div class="card-img-wrap">
-        <img src="assets/images/blog_vitality_herbs.png" alt="The Architecture of Healing: How TCM Formulas Are Built" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#c8e6c9,#a5d6a7)'">
-        <div class="card-cat-badge badge-herbal-education" style="background:var(--green); color:#fff; border:none; padding:4px 10px; border-radius:99px; font-size:10px; font-weight:700;">
-          Herbal Education
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="card-cat-text" style="color:var(--green); font-size:11px; font-weight:700; text-transform:uppercase; margin-bottom:8px;">Herbal Education</div>
-        <h3 class="card-title">The Architecture of Healing: How TCM Formulas Are Built</h3>
-        <p class="card-excerpt">Discover the ancient architecture of Chinese herbal formulas. Learn about the King, Minister, Assistant, and Courier herbs.</p>
-        <div class="card-divider"></div>
-        <div class="card-footer">
-          <div class="card-author-row">
-            <div class="card-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg></div>
-            <div class="card-meta-text">
-              <span class="card-author">Mei Huang, MHSc</span>
-              <span class="card-date">3 June 2025</span>
-            </div>
-          </div>
-          <a href="blog-herbal-formulas.html" class="card-read-btn">
-            Read Article
-            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-    </article>
-    
-    <article class="art-card" data-cat="herbal-education" data-tags="education science research">
-      <div class="card-img-wrap">
-        <img src="assets/images/blog_liver_detox.png" alt="The Science of Herbal Synergy: Evidence-Based Validation" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#c8e6c9,#a5d6a7)'">
-        <div class="card-cat-badge badge-herbal-education" style="background:var(--green); color:#fff; border:none; padding:4px 10px; border-radius:99px; font-size:10px; font-weight:700;">
-          Herbal Education
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="card-cat-text" style="color:var(--green); font-size:11px; font-weight:700; text-transform:uppercase; margin-bottom:8px;">Herbal Education</div>
-        <h3 class="card-title">The Science of Herbal Synergy: Evidence-Based Validation</h3>
-        <p class="card-excerpt">Explore the modern scientific research behind Traditional Chinese Medicine formulas and botanical synergy.</p>
-        <div class="card-divider"></div>
-        <div class="card-footer">
-          <div class="card-author-row">
-            <div class="card-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg></div>
-            <div class="card-meta-text">
-              <span class="card-author">Dr. Lin Wei</span>
-              <span class="card-date">3 June 2025</span>
-            </div>
-          </div>
-          <a href="blog-evidence-based.html" class="card-read-btn">
-            Read Article
-            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-    </article>
-    
     <article class="art-card" data-cat="weight-management" data-tags="weight fat metabolism diet">
       <div class="card-img-wrap">
         <img src="assets/images/SLIMMING_TEA.png" alt="The Post-Meal Metabolic Shield: Re-Engineering How Your Body Processes Fats" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#c8e6c9,#a5d6a7)'">
@@ -569,15 +455,15 @@ footer a{color:var(--gl);text-decoration:none}
       </div>
     </article>
     
-    <article class="art-card" data-cat="weight-management" data-tags="weight fluid water scale">
+    <article class="art-card" data-cat="fluid-retention" data-tags="weight fluid water scale">
       <div class="card-img-wrap">
         <img src="assets/images/SLIMMING_TEA.png" alt="The Fluid Retention Illusion: Why Scale Weight Isn’t Always Body Fat" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#c8e6c9,#a5d6a7)'">
-        <div class="card-cat-badge badge-weight-management" style="background:var(--green); color:#fff; border:none; padding:4px 10px; border-radius:99px; font-size:10px; font-weight:700;">
-          Weight Management
+        <div class="card-cat-badge badge-fluid-retention" style="background:var(--green); color:#fff; border:none; padding:4px 10px; border-radius:99px; font-size:10px; font-weight:700;">
+          Fluid Retention
         </div>
       </div>
       <div class="card-body">
-        <div class="card-cat-text" style="color:var(--green); font-size:11px; font-weight:700; text-transform:uppercase; margin-bottom:8px;">Weight Management</div>
+        <div class="card-cat-text" style="color:var(--green); font-size:11px; font-weight:700; text-transform:uppercase; margin-bottom:8px;">Fluid Retention</div>
         <h3 class="card-title">The Fluid Retention Illusion: Why Scale Weight Isn’t Always Body Fat</h3>
         <p class="card-excerpt">What modern wellness tracking labels as 'water weight' is recognized as fluid stagnation caused by an overworked Spleen-Qi.</p>
         <div class="card-divider"></div>
@@ -765,62 +651,6 @@ footer a{color:var(--gl);text-decoration:none}
       </div>
     </article>
     
-    <article class="art-card" data-cat="bone-&-joint" data-tags="bone joint knee spine">
-      <div class="card-img-wrap">
-        <img src="assets/images/unnamed(6).png" alt="Feeding Your Skeleton: How Herbs Protect Your Knees and Spine" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#c8e6c9,#a5d6a7)'">
-        <div class="card-cat-badge badge-bone-&-joint" style="background:var(--green); color:#fff; border:none; padding:4px 10px; border-radius:99px; font-size:10px; font-weight:700;">
-          Bone & Joint
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="card-cat-text" style="color:var(--green); font-size:11px; font-weight:700; text-transform:uppercase; margin-bottom:8px;">Bone & Joint</div>
-        <h3 class="card-title">Feeding Your Skeleton: How Herbs Protect Your Knees and Spine</h3>
-        <p class="card-excerpt">Traditional root extracts supply the deep nourishment needed to rebuild joint fluids and strengthen bone density.</p>
-        <div class="card-divider"></div>
-        <div class="card-footer">
-          <div class="card-author-row">
-            <div class="card-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg></div>
-            <div class="card-meta-text">
-              <span class="card-author">Clinic Team</span>
-              <span class="card-date">4 June 2025</span>
-            </div>
-          </div>
-          <a href="blog-bone-joint.html" class="card-read-btn">
-            Read Article
-            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-    </article>
-    
-    <article class="art-card" data-cat="heart-&-blood" data-tags="heart blood pressure circulation">
-      <div class="card-img-wrap">
-        <img src="assets/images/BLOOD_CLEANING_TEA.png" alt="The Oxygen Highway: Maximizing Clean Blood Flow and Cardiovascular Health" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#c8e6c9,#a5d6a7)'">
-        <div class="card-cat-badge badge-heart-&-blood" style="background:var(--green); color:#fff; border:none; padding:4px 10px; border-radius:99px; font-size:10px; font-weight:700;">
-          Heart & Blood
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="card-cat-text" style="color:var(--green); font-size:11px; font-weight:700; text-transform:uppercase; margin-bottom:8px;">Heart & Blood</div>
-        <h3 class="card-title">The Oxygen Highway: Maximizing Clean Blood Flow and Cardiovascular Health</h3>
-        <p class="card-excerpt">Vital for managing high cholesterol or fighting cold fingers and toes caused by poor daily circulation.</p>
-        <div class="card-divider"></div>
-        <div class="card-footer">
-          <div class="card-author-row">
-            <div class="card-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg></div>
-            <div class="card-meta-text">
-              <span class="card-author">Clinic Team</span>
-              <span class="card-date">4 June 2025</span>
-            </div>
-          </div>
-          <a href="blog-heart-health.html" class="card-read-btn">
-            Read Article
-            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-    </article>
-    
     <div class="no-results" id="no-results" style="display:none">
       <div class="no-results-icon">🌿</div>
       <h3>No articles found</h3>
@@ -828,6 +658,7 @@ footer a{color:var(--gl);text-decoration:none}
     </div>
   </div>
 </section>
+
 
 
 
