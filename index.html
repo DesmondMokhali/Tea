@@ -569,6 +569,36 @@ footer{background:var(--f);color:rgba(255,255,255,.55);padding:44px clamp(14px,4
 .nav-dropdown:hover .nav-dropdown-content {
   display: block;
 }
+
+/* ── PREMIUM BADGE ── */
+.hbadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.75);
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px);
+  padding: 7px 16px;
+  border-radius: 99px;
+  margin-bottom: 20px;
+}
+.hbadge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #7ecb8f;
+  box-shadow: 0 0 0 3px rgba(126,203,143,0.3);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(126,203,143,0.3); }
+  50% { box-shadow: 0 0 0 6px rgba(126,203,143,0.1); }
+}
 </style>
 
 </head>
@@ -584,33 +614,22 @@ footer{background:var(--f);color:rgba(255,255,255,.55);padding:44px clamp(14px,4
       <div class="nlinks">
     <a href="index.html">Home</a>
     <div class="nav-dropdown">
-      <a href="index.html" class="nav-dropbtn">Products ▼</a>
+      <a href="index.html?filter=all#ga" class="nav-dropbtn">Products &#9660;</a>
       <div class="nav-dropdown-content">
-        <a href="index.html#ga">Herbal Teas</a>
-        <a href="index.html#ga">Herbal Pills</a>
+        <a href="index.html?filter=all#ga">All Products</a>
+        <a href="index.html?filter=teas#ga">Herbal Teas</a>
+        <a href="index.html?filter=pills#ga">Herbal Pills</a>
       </div>
     </div>
     <a href="blog.html">Blog</a>
-    <a href="#contact">Contact Us</a>
-  </div>
-    </div>
-    <a href="index.html#ga">Our Teas</a>
-  </div>
-  <div class="nright">
-    <div class="swrap">
-      <span class="sico"><i data-lucide="search" style="width:14px;height:14px"></i></span>
-      <input type="text" id="si" placeholder="Search products…" oninput="doSearch(this.value)">
-    </div>
-    <button class="cbtn" onclick="showCart()">
-      <i data-lucide="shopping-cart" style="width:15px;height:15px"></i> Cart <span class="cct" id="cnt">0</span>
-    </button>
+    <a href="index.html#contact">Contact Us</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div>
-    <div class="hbadge"><i data-lucide="sparkles" style="width:14px;height:14px"></i> Featured Tea of the Season</div>
+    <div class="hbadge"><span class="hbadge-dot"></span> Practitioner's Choice &nbsp;·&nbsp; Winter 2025</div>
     <h1 class="htitle">CASSIA TEA<br><em>Liver &amp; Eye Nourisher</em></h1>
     <p class="hsub">Pure Chinese herb blend to detoxify, brighten, and support holistic wellness — formulated by renowned Chinese medicine specialists.</p>
     <div class="hprow">
@@ -625,7 +644,7 @@ footer{background:var(--f);color:rgba(255,255,255,.55);padding:44px clamp(14px,4
     </div>
     <div class="hbtns">
       <button class="btnp" onclick="openModal(8)">Shop Cassia Tea</button>
-      <button class="btno" onclick="document.getElementById('ga').scrollIntoView({behavior:'smooth'})">View All Teas ↓</button>
+      <button class="btno" onclick="document.getElementById('ga').scrollIntoView({behavior:'smooth'})">Browse All Teas ↓</button>
     </div>
   </div>
   <div class="himg-wrap">
@@ -1956,7 +1975,14 @@ let activeType='all', activeCat='all', searchQ='', cart=[], openIdx=null;
 // ── INIT ───────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded',()=>{
   buildFilters();
-  renderGrid();
+  // Read ?filter= param from URL and activate the correct tab
+  const urlParams = new URLSearchParams(window.location.search);
+  const filterParam = urlParams.get('filter');
+  if(filterParam === 'teas' || filterParam === 'pills' || filterParam === 'all') {
+    setType(filterParam);
+  } else {
+    renderGrid();
+  }
 });
 
 function buildFilters(){

@@ -316,20 +316,18 @@ footer a{color:var(--gl);text-decoration:none}
     </div>
     <div class="ntext"><b>The Herbalist</b><small>Traditional Chinese Wellness</small></div>
   </a>
-      <div class="nlinks">
+  <div class="nlinks">
     <a href="index.html">Home</a>
     <div class="nav-dropdown">
-      <a href="index.html" class="nav-dropbtn">Products ▼</a>
+      <a href="index.html#ga" class="nav-dropbtn">Products ▼</a>
       <div class="nav-dropdown-content">
-        <a href="index.html#ga">Herbal Teas</a>
-        <a href="index.html#ga">Herbal Pills</a>
+        <a href="index.html#ga" onclick="if(window.setType){setTimeout(()=>setType('all'),100)}">All Products</a>
+        <a href="index.html#ga" onclick="if(window.setType){setTimeout(()=>setType('teas'),100)}">Herbal Teas</a>
+        <a href="index.html#ga" onclick="if(window.setType){setTimeout(()=>setType('pills'),100)}">Herbal Pills</a>
       </div>
     </div>
     <a href="blog.html">Blog</a>
     <a href="#contact">Contact Us</a>
-  </div>
-    </div>
-    <a href="index.html#ga">Our Teas</a>
   </div>
   <a href="index.html" class="nblog-cta">Shop Now →</a>
 </nav>
