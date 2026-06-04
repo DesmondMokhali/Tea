@@ -432,7 +432,7 @@ footer a{color:var(--gl);text-decoration:none}
 .type-a-multi-tier { background: #fdfdfc; border-left: 4px solid var(--green); padding: 32px; margin: 40px 0; border-radius: 0 16px 16px 0; box-shadow: var(--shadow); }
 .tier-item { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px dashed var(--border); }
 .tier-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-.tier-img { width: 90px; height: 90px; border-radius: 12px; object-fit: cover; border: 1px solid var(--border); }
+.tier-img { width: 90px; height: 90px; border-radius: 12px; object-fit: contain; background: #fff; padding: 6px; border: 1px solid var(--border); }
 .tier-content h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--f); margin-bottom: 8px; }
 .tier-content p { font-size: 15px !important; margin-bottom: 6px !important; }
 .tier-outcome { font-size: 14px; font-weight: 600; color: var(--green); display: flex; align-items: center; gap: 6px; }
@@ -440,7 +440,7 @@ footer a{color:var(--gl);text-decoration:none}
 /* ── TYPE B: FAST NARRATIVE ── */
 .type-b-prose p { font-size: 18px; line-height: 1.7; margin-bottom: 28px; }
 .type-b-focus { background: linear-gradient(135deg, #1b3a28, #2a5040); color: #fff; border-radius: 20px; padding: 40px; margin: 48px 0; text-align: center; }
-.type-b-focus img { width: 120px; height: 120px; border-radius: 16px; margin-bottom: 20px; border: 2px solid rgba(255,255,255,0.2); object-fit: cover; }
+.type-b-focus img { width: 120px; height: 120px; border-radius: 16px; margin-bottom: 20px; border: 2px solid rgba(255,255,255,0.2); object-fit: contain; background: #fff; padding: 6px; }
 .type-b-focus h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--gl); margin-bottom: 16px; }
 .type-b-focus p { color: rgba(255,255,255,0.9) !important; font-size: 15px !important; text-align: left; }
 .type-b-outcome { background: rgba(255,255,255,0.1); padding: 16px; border-radius: 12px; margin-top: 24px; font-weight: 600; color: #fff; text-align: left; }
@@ -593,7 +593,7 @@ footer a{color:var(--gl);text-decoration:none}
     <button class="remedy-cta" onclick="addTargetedBundle('Joint Care', 'Du Huo')" style="width:100%;">
       Add Joint & Back Relief to Cart
     </button>
-            <p class="cart-logistics"><strong>Delivery Logistics:</strong> Building this complete daily wellness habit easily crosses the R600 threshold. Our system instantly activates, applying a FREE courier delivery voucher straight to your order, completely removing the standard R60 shipping fee anywhere in South Africa.</p>
+            
 </div>
 
 <div class="type-a-prose" style="margin-top:30px;">

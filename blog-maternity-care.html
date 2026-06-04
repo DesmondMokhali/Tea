@@ -432,7 +432,7 @@ footer a{color:var(--gl);text-decoration:none}
 .type-a-multi-tier { background: #fdfdfc; border-left: 4px solid var(--green); padding: 32px; margin: 40px 0; border-radius: 0 16px 16px 0; box-shadow: var(--shadow); }
 .tier-item { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px dashed var(--border); }
 .tier-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-.tier-img { width: 90px; height: 90px; border-radius: 12px; object-fit: cover; border: 1px solid var(--border); }
+.tier-img { width: 90px; height: 90px; border-radius: 12px; object-fit: contain; background: #fff; padding: 6px; border: 1px solid var(--border); }
 .tier-content h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--f); margin-bottom: 8px; }
 .tier-content p { font-size: 15px !important; margin-bottom: 6px !important; }
 .tier-outcome { font-size: 14px; font-weight: 600; color: var(--green); display: flex; align-items: center; gap: 6px; }
@@ -440,7 +440,7 @@ footer a{color:var(--gl);text-decoration:none}
 /* ── TYPE B: FAST NARRATIVE ── */
 .type-b-prose p { font-size: 18px; line-height: 1.7; margin-bottom: 28px; }
 .type-b-focus { background: linear-gradient(135deg, #1b3a28, #2a5040); color: #fff; border-radius: 20px; padding: 40px; margin: 48px 0; text-align: center; }
-.type-b-focus img { width: 120px; height: 120px; border-radius: 16px; margin-bottom: 20px; border: 2px solid rgba(255,255,255,0.2); object-fit: cover; }
+.type-b-focus img { width: 120px; height: 120px; border-radius: 16px; margin-bottom: 20px; border: 2px solid rgba(255,255,255,0.2); object-fit: contain; background: #fff; padding: 6px; }
 .type-b-focus h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--gl); margin-bottom: 16px; }
 .type-b-focus p { color: rgba(255,255,255,0.9) !important; font-size: 15px !important; text-align: left; }
 .type-b-outcome { background: rgba(255,255,255,0.1); padding: 16px; border-radius: 12px; margin-top: 24px; font-weight: 600; color: #fff; text-align: left; }
@@ -560,13 +560,13 @@ footer a{color:var(--gl);text-decoration:none}
 
 <div class="type-b-focus">
     <img src="assets/images/BLOOD_TONIC_TEA.png" alt="Blood Tonic Tea" style="width:100px;height:100px;object-fit:contain;margin-bottom:16px;" onerror="this.style.opacity='.3'">
-    <h3>The Maternal Sanctuary Option: BLOOD TONIC TEA</h3>
+    <h3>The Maternal Sanctuary Option: BLOOD TONIC TEA <span style="display:block;font-size:1.15rem;color:var(--gl);margin-top:6px;font-weight:700;">R70.99</span></h3>
     <p>A gentle, nourishing infusion of red dates and longan fruit to support blood replenishment, energy levels, and physical wellness during pregnancy and postpartum recovery.</p>
     <div style="font-size:12px;color:rgba(255,255,255,0.7);margin-top:8px;text-align:left;">*Disclaimer: Always consult with your OB-GYN or maternal healthcare provider before starting any new herbal routine during pregnancy.*</div>
     <button class="remedy-cta" onclick="addTargetedBundle('Blood Tonic', '')" style="width:100%;background:#fff;color:var(--f);margin-top:16px;">
       Add Blood Tonic Tea to Cart
     </button>
-            <p class="cart-logistics"><strong>Delivery Logistics:</strong> Building this complete daily wellness habit easily crosses the R600 threshold. Our system instantly activates, applying a FREE courier delivery voucher straight to your order, completely removing the standard R60 shipping fee anywhere in South Africa.</p>
+            
 </div>
 
 <div class="type-b-prose">
