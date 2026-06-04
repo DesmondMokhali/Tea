@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Erasing the Grind: Relieving Lower Back and Nerve Tension Safely | The Herbalist</title>
-<meta name="description" content="Perfect for people dealing with everyday body aches from sitting long hours at computers, gym recovery, or manual work.">
+<title>Erasing the Grind: Overcoming Sciatic, Neck, and Lower-Back Desk Compression | The Herbalist</title>
+<meta name="description" content="Discover the foundational principles of Traditional Chinese Medicine (TCM). Learn about Qi, Yin and Yang, and how herbal remedies can help restore your body's natural balance.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/lucide-static@latest/font/lucide.css">
@@ -57,7 +57,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--f);height:66px;padding:0 
 .hero-breadcrumb a{color:rgba(255,255,255,.55);text-decoration:none;transition:color var(--tr)}
 .hero-breadcrumb a:hover{color:var(--gl)}
 .hero-breadcrumb span{color:rgba(255,255,255,.25)}
-.cat-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(63,81,181,.7);backdrop-filter:blur(6px);color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:99px;margin-bottom:20px}
+.cat-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(245,124,0,.7);backdrop-filter:blur(6px);color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:99px;margin-bottom:20px}
 .cat-pill svg{width:12px;height:12px;stroke:currentColor;stroke-width:2;fill:none}
 .article-hero h1{
   font-family:'Playfair Display',serif;
@@ -183,7 +183,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--f);height:66px;padding:0 
   pointer-events:none;
 }
 .remedy-widget::after{
-  content:'🌙';
+  content:'🌿';
   position:absolute;bottom:16px;right:20px;
   font-size:56px;opacity:.07;pointer-events:none;
   line-height:1;
@@ -387,27 +387,28 @@ footer a{color:var(--gl);text-decoration:none}
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  cursor: pointer;
 }
 .nav-dropdown-content {
   display: none;
   position: absolute;
-  background-color: var(--card);
+  background-color: var(--card, #fff);
   min-width: 240px;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 8px 40px rgba(0,0,0,.12);
   border-radius: 12px;
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
   padding: 12px 0;
   z-index: 200;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border, #e5e7eb);
 }
 .nav-dropdown-content::before {
   content: ''; position: absolute; top: -6px; left: 50%; transform: translateX(-50%) rotate(45deg);
-  width: 12px; height: 12px; background: var(--card); border-top: 1px solid var(--border); border-left: 1px solid var(--border);
+  width: 12px; height: 12px; background: var(--card, #fff); border-top: 1px solid var(--border, #e5e7eb); border-left: 1px solid var(--border, #e5e7eb);
 }
 .nav-dropdown-content a {
-  color: var(--text) !important;
+  color: var(--text, #1a1a1a) !important;
   padding: 10px 20px;
   text-decoration: none;
   display: block;
@@ -415,17 +416,65 @@ footer a{color:var(--gl);text-decoration:none}
   font-weight: 600 !important;
   text-transform: none !important;
   letter-spacing: normal !important;
-  transition: all var(--tr);
+  transition: all 0.22s cubic-bezier(.4,0,.2,1);
 }
 .nav-dropdown-content a:hover {
-  background-color: var(--green-l);
-  color: var(--green) !important;
+  background-color: var(--green-l, #e8f5e9);
+  color: var(--green, #2e7d32) !important;
   padding-left: 24px;
 }
 .nav-dropdown:hover .nav-dropdown-content {
   display: block;
 }
+
+/* ── TYPE A: DEEP LEDGER ── */
+.type-a-prose p { margin-bottom: 24px; }
+.type-a-multi-tier { background: #fdfdfc; border-left: 4px solid var(--green); padding: 32px; margin: 40px 0; border-radius: 0 16px 16px 0; box-shadow: var(--shadow); }
+.tier-item { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px dashed var(--border); }
+.tier-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.tier-img { width: 90px; height: 90px; border-radius: 12px; object-fit: cover; border: 1px solid var(--border); }
+.tier-content h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--f); margin-bottom: 8px; }
+.tier-content p { font-size: 15px !important; margin-bottom: 6px !important; }
+.tier-outcome { font-size: 14px; font-weight: 600; color: var(--green); display: flex; align-items: center; gap: 6px; }
+
+/* ── TYPE B: FAST NARRATIVE ── */
+.type-b-prose p { font-size: 18px; line-height: 1.7; margin-bottom: 28px; }
+.type-b-focus { background: linear-gradient(135deg, #1b3a28, #2a5040); color: #fff; border-radius: 20px; padding: 40px; margin: 48px 0; text-align: center; }
+.type-b-focus img { width: 120px; height: 120px; border-radius: 16px; margin-bottom: 20px; border: 2px solid rgba(255,255,255,0.2); object-fit: cover; }
+.type-b-focus h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--gl); margin-bottom: 16px; }
+.type-b-focus p { color: rgba(255,255,255,0.9) !important; font-size: 15px !important; text-align: left; }
+.type-b-outcome { background: rgba(255,255,255,0.1); padding: 16px; border-radius: 12px; margin-top: 24px; font-weight: 600; color: #fff; text-align: left; }
+
+/* ── TYPE C: CHRONOLOGICAL SHIFT ── */
+.timeline { position: relative; padding-left: 30px; margin: 40px 0; }
+.timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--green-l); }
+.tl-item { position: relative; margin-bottom: 40px; }
+.tl-item::before { content: ''; position: absolute; left: -35px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--green); border: 2px solid #fff; }
+.tl-time { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--green-d); margin-bottom: 8px; }
+.tl-pivot { font-style: italic; color: var(--muted); font-size: 15px; margin-bottom: 12px; }
+.tl-support { font-size: 16px; color: var(--text); }
+.type-c-combo { display: flex; flex-direction: column; gap: 16px; background: #fafafa; padding: 32px; border-radius: 16px; border: 1px solid var(--border); margin: 40px 0; }
+
+/* ── TYPE D: DIALOGUE & MATRIX ── */
+.dialogue-wrap { background: #f9f9f9; padding: 32px; border-radius: 16px; margin: 40px 0; }
+.d-bubble { margin-bottom: 24px; }
+.d-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 4px; }
+.d-text { font-size: 17px; color: var(--text); padding-left: 16px; border-left: 2px solid var(--green-l); }
+.d-herbalist .d-label { color: var(--green); }
+.d-herbalist .d-text { border-left-color: var(--green); font-weight: 500; }
+
+.comp-matrix { width: 100%; border-collapse: collapse; margin: 40px 0; background: #fff; box-shadow: var(--shadow); border-radius: 12px; overflow: hidden; }
+.comp-matrix th, .comp-matrix td { padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--border); }
+.comp-matrix th { background: var(--f); color: #fff; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; }
+.comp-matrix tr:last-child td { border-bottom: none; }
+.comp-matrix td:first-child { font-weight: 600; color: var(--f); background: #fafafa; width: 25%; }
+.comp-matrix td:nth-child(2) { color: var(--muted); font-size: 14.5px; width: 35%; }
+.comp-matrix td:nth-child(3) { color: var(--green-d); font-weight: 500; font-size: 14.5px; width: 40%; background: var(--green-l); }
+
+/* Cart Logistics Callout */
+.cart-logistics { text-align: center; font-size: 14px; color: var(--muted); margin-top: 24px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6; }
 </style>
+
 
 </head>
 <body>
@@ -467,37 +516,36 @@ footer a{color:var(--gl);text-decoration:none}
       <span>›</span>
       <a href="blog.html">Blog</a>
       <span>›</span>
-      <span>Sleep &amp; Anxiety</span>
+      <span>Vitality &amp; Energy</span>
     </div>
-    <div class="cat-pill">Pain Relief</div>
-    <h1>Erasing the Grind: Relieving Lower Back and Nerve Tension Safely</h1>
+    <div class="cat-pill">
+      <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Pain Relief
+    </div>
+    <h1>Erasing the Grind: Overcoming Sciatic, Neck, and Lower-Back Desk Compression</h1>
     <div class="hero-meta">
       <div class="meta-author">
         <div class="meta-avatar">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>
         </div>
         <div>
-          <div class="meta-name">Dr. Lin Wei</div>
-          <div class="meta-role">TCM Practitioner, MSc Phytotherapy</div>
+          <div class="meta-name">Mei Huang, MHSc</div>
+          <div class="meta-role">Holistic Health Educator</div>
         </div>
       </div>
       <div class="meta-divider"></div>
       <div class="meta-item">
         <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        2 June 2025
+        3 June 2025
       </div>
       <div class="meta-item">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        7 min read
-      </div>
-      <div class="meta-item">
-        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        4,210 readers
+        5 min read
       </div>
     </div>
   </div>
   <div class="hero-img-wrap">
-    <img src="assets/images/blog_sleep_tea.png" alt="Herbal sleep remedies — chamomile and lavender flat lay" onerror="this.style.background='linear-gradient(135deg,#1e3d28,#254d38)';this.alt=''">
+    <img src="assets/images/blog_vitality_herbs.png" alt="Herbal elements and traditional medicine" onerror="this.style.background='linear-gradient(135deg,#1e3d28,#254d38)';this.alt=''">
     <div class="hero-img-overlay"></div>
   </div>
 </section>
@@ -506,116 +554,79 @@ footer a{color:var(--gl);text-decoration:none}
 <main class="article-wrap" id="article-top">
   <article class="article-body">
 
-    <p><strong>Perfect for people dealing with everyday body aches from sitting long hours at computers, gym recovery, or manual work.</strong></p>
-    <p>When dealing with pain relief issues, the biggest mistake people make is relying on aggressive, single-action supplements that only mask the problem. Traditional Chinese Medicine teaches us that we must address the root cause.</p>
-    <p>By implementing a specific, targeted daily herbal habit, you can create a compounding effect that builds resilience over time.</p>
-    
-    <h2>The Action Plan</h2>
-    <p>Our clinical formulators have combined the exact botanicals needed to resolve this specific concern. Consistency is key: commit to this routine for 14 days and observe the shift in your baseline.</p>
-    
+        <div class="type-b-prose">
+            <p>Modern professional life is facing an unaddressed Bi Zheng (Painful Obstruction) crisis. Sitting compressed in front of dual monitors for eight to ten hours a day, navigating typing strains, and holding structural stress in your shoulders creates severe physical stagnation. Over time, this drops the micro-circulation of Qi and Blood through the major meridians running along your neck, thoracic spine, and lower lumbar regions.</p>
+            <p>When this circulation drops, environmental influences like cold air-conditioning or damp weather lock down your soft tissue, resulting in chronic sciatic nerve twinges, tight neck muscles that trigger tension headaches, and a deep, aching lower back that makes getting out of your car feel like an athletic feat.</p>
+        </div>
+
+        <table class="comp-matrix">
+            <tr>
+                <th>Performance Feature</th>
+                <th>Chemical Masking (OTC Pills)</th>
+                <th>Meridian Dredging (Tangren)</th>
+            </tr>
+            <tr>
+                <td>Primary Mechanism</td>
+                <td>Temporarily blocks your nervous system's pain receptors.</td>
+                <td>Expels trapped Wind-Dampness and forcefully unblocks Qi/Blood stasis.</td>
+            </tr>
+            <tr>
+                <td>Intervention Target</td>
+                <td>The superficial sensory symptom (the sensation of pain).</td>
+                <td>The deep structural cause (stagnation and vascular depletion).</td>
+            </tr>
+            <tr>
+                <td>Systemic Side Effects</td>
+                <td>Can cause long-term stomach lining irritation and liver stress.</td>
+                <td>Actively strengthens local tendon resilience and nourishes structural blood.</td>
+            </tr>
+            <tr>
+                <td>Ultimate Outcome</td>
+                <td>The pain inevitably returns the moment the chemical compound wears off.</td>
+                <td>Restores natural structural health autonomy, joint mobility, and fluid movement.</td>
+            </tr>
+        </table>
+
+        <div class="type-a-multi-tier">
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:#1b3a28;margin-bottom:24px;">⚡ The Aggressive Structural Recovery Combo</h3>
+            
+            <div class="tier-item">
+                <img src="assets/images/TE_XIAO_JING_ZHUI_TONG_WAN_(Cervical_Spine_Pain).png" alt="Jing Zhui Tong" class="tier-img" onerror="this.style.opacity='.3'">
+                <div class="tier-content">
+                    <h4>A. The Upper-Frame Specialist: Te Xiao Jing Zhui Tong Wan</h4>
+                    <p>A hyper-targeted pill matrix explicitly engineered for the upper spine. It relaxes spasming neck muscles, opens up cervical vertebral pathways, and clears tension heading toward the skull.</p>
+                </div>
+            </div>
+
+            <div class="tier-item">
+                <img src="assets/images/unnamed(29).png" alt="Du Huo Ji Sheng" class="tier-img" onerror="this.style.opacity='.3'">
+                <div class="tier-content">
+                    <h4>B. The Lower-Frame Heavy Hitter: Du Huo Ji Sheng Wan</h4>
+                    <p>The ultimate traditional formula for chronic lumbar fatigue and sciatic nerve irritation. It penetrates deep into the lower back to expel locked dampness while rebuilding localized tissue resilience.</p>
+                </div>
+            </div>
+            
+            <button class="remedy-cta" onclick="addTargetedBundle('Joint', 'Jing Zhui Tong')" style="margin-top:24px;width:100%;">
+              Add Recovery Combo to Cart
+            </button>
+        </div>
+        <p class="cart-logistics"><strong>Cart Logistics:</strong> Stop temporarily masking the corporate grind and start permanently erasing it from your nerve pathways. Combining TE XIAO JING ZHUI TONG WAN with DU HUO JI SHENG WAN into your cart easily sweeps your total well past the R600 free-shipping benchmark. The Antigravity drawer instantly deletes the R60 delivery fee, prioritizing your structural recovery kit for express dispatch straight to your home or office in South Africa.</p>
+        
 
-         ✦  SYNERGY REMEDY WIDGET  ✦
-    ══════════════════════════════════════════════════════════ -->
-    <div class="remedy-widget" id="sleep-remedy-widget" role="complementary" aria-label="Complete Sleep Routine — shop this remedy">
-
-      <div class="remedy-eyebrow">The Pain Relief Routine</div>
-
-      <h3 class="remedy-title">The Recommended Synergy Pair</h3>
-      <p class="remedy-subtitle">Formulated to work together — calming tea prepares the nervous system while the concentrated pill formula rebuilds Heart Yin overnight.</p>
-
-      <!-- Product Pair -->
-      <div class="remedy-pair">
-
-        <!-- TEA -->
-        <div class="remedy-product">
-          <div class="remedy-thumb">
-            <img
-              src="assets/images/JOINT_CARE_TEA.png"
-              alt="Anti-Stress Sleeping Tea"
-              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-            >
-            <div class="remedy-thumb-icon" style="display:none">🍵</div>
-          </div>
-          <div class="remedy-product-info">
-            <div class="remedy-product-type">
-              <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-              Herbal Tea
-            </div>
-            <div class="remedy-product-name">Joint Care Tea</div>
-            <div class="remedy-product-desc">Ganoderma, Red Dates, Licorice &amp; Privet Fruit — calms the spirit and reduces insomnia naturally.</div>
-            <div class="remedy-product-tags">
-              <span class="remedy-tag">🌙 Calms Spirit</span>
-              <span class="remedy-tag">⚡ Fast-Acting</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- PLUS -->
-        <div class="remedy-connector">＋</div>
-
-        <!-- PILL -->
-        <div class="remedy-product">
-          <div class="remedy-thumb">
-            <img
-              src="assets/images/unnamed(29).png"
-              alt="An Shen Bu Xin Wan"
-              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-            >
-            <div class="remedy-thumb-icon" style="display:none">💊</div>
-          </div>
-          <div class="remedy-product-info">
-            <div class="remedy-product-type">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
-              Herbal Pills
-            </div>
-            <div class="remedy-product-name">Zuo Gu Shen Jing Tong Wan</div>
-            <div class="remedy-product-desc">Nourishes Heart Yin &amp; blood to restore normal sleep rhythm. Eases palpitations &amp; racing mind.</div>
-            <div class="remedy-product-tags">
-              <span class="remedy-tag">❤️ Heart Yin</span>
-              <span class="remedy-tag">🔄 Sustained</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Combined benefit note -->
-      <div class="remedy-benefits">
-        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-        <div class="remedy-benefits-text">
-          <strong>Why this pair works:</strong> The Joint Care tea reduces systemic inflammation quickly, while the pills specifically target deep nerve compression and chronic lower back stagnation.</div>
-      </div>
-
-      <!-- CTA -->
-      <button
-        class="remedy-cta"
-        id="routine-btn"
-        onclick="addTargetedBundle('Joint Care Tea', 'Zuo Gu Shen Jing Tong Wan')"
-      >
-        Add This Pain Relief Routine to Cart
-      </button>
-      <p class="remedy-cta-note">Free shipping on orders over R500 · 100% natural · No synthetic additives</p>
-
-    </div>
-    <!-- ══ END REMEDY WIDGET ══ -->
-<!-- ARTICLE FOOTER -->
     <div class="article-footer">
       <div class="article-tags">
-        <a href="#" class="article-tag">#SleepHealth</a>
+        <a href="#" class="article-tag">#TCM101</a>
         <a href="#" class="article-tag">#ChineseMedicine</a>
-        <a href="#" class="article-tag">#HerbalRemedies</a>
-        <a href="#" class="article-tag">#Insomnia</a>
-        <a href="#" class="article-tag">#Ganoderma</a>
-        <a href="#" class="article-tag">#HeartYin</a>
+        <a href="#" class="article-tag">#HerbalTeas</a>
+        <a href="#" class="article-tag">#Qi</a>
+        <a href="#" class="article-tag">#YinYang</a>
+        <a href="#" class="article-tag">#Wellness</a>
       </div>
       <div class="share-row">
         <span class="share-label">Share this article:</span>
         <a href="#" class="share-btn" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='✓ Copied!';setTimeout(()=>this.innerHTML='<svg viewBox=\"0 0 24 24\" style=\"width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none\"><rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\"/><path d=\"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\"/></svg> Copy Link',2500);return false">
           <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           Copy Link
-        </a>
-        <a href="https://wa.me/?text=The%20Blueprint%20for%20Deep%20Sleep%20by%20The%20Herbalist" class="share-btn" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-          WhatsApp
         </a>
       </div>
     </div>
@@ -626,49 +637,24 @@ footer a{color:var(--gl);text-decoration:none}
         <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>
       </div>
       <div>
-        <div class="author-name">Dr. Lin Wei</div>
-        <div class="author-cred">TCM Practitioner · MSc Phytotherapy · 18 years clinical experience</div>
-        <div class="author-bio">Dr. Wei practised for a decade at the Guangzhou University of Chinese Medicine before joining The Herbalist as Head of Formulation. She writes on the intersection of classical TCM theory and modern pharmacognosy.</div>
+        <div class="author-name">Mei Huang, MHSc</div>
+        <div class="author-cred">Holistic Health Educator</div>
+        <div class="author-bio">Mei translates complex TCM concepts into practical, everyday wisdom. She holds a Master's in Health Sciences and is passionate about preventative herbal care.</div>
       </div>
     </div>
 
   </article>
 </main>
 
-<!-- ── RELATED ARTICLES ── -->
-<section class="related-section">
-  <h2 class="related-title">Continue Reading</h2>
-  <div class="related-grid">
-    <a href="blog.html" class="related-card">
-      <div class="related-img">
-        <img src="assets/images/blog_anxiety_ritual.png" alt="Evening Ritual" onerror="this.style.background='linear-gradient(135deg,#e8eaf6,#c5cae9)'">
-      </div>
-      <div class="related-body">
-        <div class="related-cat">Sleep &amp; Anxiety</div>
-        <div class="related-ttl">Build Your Evening Ritual: 4 Herbal Habits That Crush Anxiety Before Bed</div>
-      </div>
-    </a>
-    <a href="blog.html" class="related-card">
-      <div class="related-img">
-        <img src="assets/images/blog_vitality_herbs.png" alt="Ginseng Energy" onerror="this.style.background='linear-gradient(135deg,#fff3e0,#ffe0b2)'">
-      </div>
-      <div class="related-body">
-        <div class="related-cat">Vitality &amp; Energy</div>
-        <div class="related-ttl">Ginseng + Red Date: The 2,000-Year-Old Energy Stack That Outperforms Coffee</div>
-      </div>
-    </a>
-  </div>
-</section>
-
 <!-- ── FOOTER ── -->
-<footer>
+<footer style="margin-top: 60px;">
   <p>© 2025 <a href="index.html">The Herbalist</a> · Traditional Chinese Wellness · All rights reserved.</p>
 </footer>
 
 <!-- ── TOAST NOTIFICATION ── -->
 <div class="toast" id="toast">
   <span class="toast-icon">🛒</span>
-  <span id="toast-msg">Sleep Routine added to cart!</span>
+  <span id="toast-msg">Routine added to cart!</span>
 </div>
 
 <script>
@@ -692,24 +678,20 @@ function showToast(msg) {
 }
 
 // ── SYNERGY BUNDLE CART HANDLER ──
-// This function bridges the blog article into the main store's cart system.
-// When the article is opened inside index.html context (via iframe or same page),
-// it calls the parent addToCart function. When opened standalone it shows a toast.
 function addSynergyBundle(bundleIdx) {
-  const btn = document.getElementById('sleep-routine-btn');
+  const btn = document.getElementById('vitality-routine-btn');
 
   // Attempt to call parent store's cart if available
   if (typeof addToCart === 'function') {
-    // In-store context: add the tea (idx 1) and the An Shen pill
-    // These indices match the P[] array in index.html
-    const sleepTeaIdx  = typeof P !== 'undefined' ? P.findIndex(p => p && p.n && p.n.includes('ANTI-STRESS')) : -1;
-    const anShenIdx    = typeof P !== 'undefined' ? P.findIndex(p => p && p.n && p.n.includes('AN SHEN')) : -1;
-    if (sleepTeaIdx > -1) addToCart(sleepTeaIdx);
-    if (anShenIdx   > -1) addToCart(anShenIdx);
-    showToast('🌙 Complete Sleep Routine added to cart!');
+    // In-store context: add the tea and the pill
+    const teaIdx  = typeof P !== 'undefined' ? P.findIndex(p => p && p.n && p.n.includes('GINSENG DATE')) : -1;
+    const pillIdx    = typeof P !== 'undefined' ? P.findIndex(p => p && p.n && p.n.includes('GUI PI WAN')) : -1;
+    if (teaIdx > -1) addToCart(teaIdx);
+    if (pillIdx   > -1) addToCart(pillIdx);
+    showToast('✨ Vitality Routine added to cart!');
   } else {
     // Standalone blog context — redirect to store with a visual cue
-    showToast('🌙 Opening store — your routine is ready to add!');
+    showToast('✨ Opening store — your routine is ready to add!');
     setTimeout(() => { window.location.href = 'index.html'; }, 1400);
   }
 
@@ -718,7 +700,7 @@ function addSynergyBundle(bundleIdx) {
     const orig = btn.innerHTML;
     btn.innerHTML = `
       <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:currentColor;stroke-width:2;fill:none"><polyline points="20 6 9 17 4 12"/></svg>
-      Sleep Routine Added!
+      Routine Added!
     `;
     btn.style.background = 'linear-gradient(135deg,#388e3c,#2e7d32)';
     btn.disabled = true;
@@ -731,12 +713,16 @@ function addSynergyBundle(bundleIdx) {
 }
 
 function addTargetedBundle(teaName, pillName) {
-  const btn = document.getElementById('routine-btn');
+  const btn = document.querySelector('.remedy-cta');
   if (typeof addToCart === 'function') {
-    const teaIdx = typeof P !== 'undefined' ? P.findIndex(p => p && p.n && p.n.toUpperCase().includes(teaName.toUpperCase())) : -1;
-    const pillIdx = typeof P !== 'undefined' ? P.findIndex(p => p && p.n && p.n.toUpperCase().includes(pillName.toUpperCase())) : -1;
-    if (teaIdx > -1) addToCart(teaIdx);
-    if (pillIdx > -1) addToCart(pillIdx);
+    if(teaName) {
+      const teaIdx = typeof P !== 'undefined' ? P.findIndex(p => p && p.n && p.n.toUpperCase().includes(teaName.toUpperCase())) : -1;
+      if (teaIdx > -1) addToCart(teaIdx);
+    }
+    if(pillName) {
+      const pillIdx = typeof P !== 'undefined' ? P.findIndex(p => p && p.n && p.n.toUpperCase().includes(pillName.toUpperCase())) : -1;
+      if (pillIdx > -1) addToCart(pillIdx);
+    }
     showToast('Routine added to cart!');
   } else {
     showToast('Opening store — your routine is ready to add!');
@@ -745,9 +731,9 @@ function addTargetedBundle(teaName, pillName) {
   if (btn) {
     const orig = btn.innerHTML;
     btn.innerHTML = 'Routine Added!';
-    btn.style.background = 'linear-gradient(135deg,#388e3c,#2e7d32)';
+    btn.style.opacity = '0.8';
     btn.disabled = true;
-    setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; btn.disabled = false; }, 3500);
+    setTimeout(() => { btn.innerHTML = orig; btn.style.opacity = '1'; btn.disabled = false; }, 3500);
   }
 }
 </script>

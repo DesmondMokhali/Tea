@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Post-Meal Metabolic Hack: Supporting Fast Fat Digestion Daily | The Herbalist</title>
-<meta name="description" content="Learn how to break down heavy fats and prevent weight storage right after lunch or dinner with this simple daily habit.">
+<title>The Post-Meal Metabolic Shield: Re-Engineering How Your Body Processes Fats | The Herbalist</title>
+<meta name="description" content="Discover the foundational principles of Traditional Chinese Medicine (TCM). Learn about Qi, Yin and Yang, and how herbal remedies can help restore your body's natural balance.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/lucide-static@latest/font/lucide.css">
@@ -57,7 +57,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--f);height:66px;padding:0 
 .hero-breadcrumb a{color:rgba(255,255,255,.55);text-decoration:none;transition:color var(--tr)}
 .hero-breadcrumb a:hover{color:var(--gl)}
 .hero-breadcrumb span{color:rgba(255,255,255,.25)}
-.cat-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(63,81,181,.7);backdrop-filter:blur(6px);color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:99px;margin-bottom:20px}
+.cat-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(245,124,0,.7);backdrop-filter:blur(6px);color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:99px;margin-bottom:20px}
 .cat-pill svg{width:12px;height:12px;stroke:currentColor;stroke-width:2;fill:none}
 .article-hero h1{
   font-family:'Playfair Display',serif;
@@ -183,7 +183,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--f);height:66px;padding:0 
   pointer-events:none;
 }
 .remedy-widget::after{
-  content:'🌙';
+  content:'🌿';
   position:absolute;bottom:16px;right:20px;
   font-size:56px;opacity:.07;pointer-events:none;
   line-height:1;
@@ -387,27 +387,28 @@ footer a{color:var(--gl);text-decoration:none}
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  cursor: pointer;
 }
 .nav-dropdown-content {
   display: none;
   position: absolute;
-  background-color: var(--card);
+  background-color: var(--card, #fff);
   min-width: 240px;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 8px 40px rgba(0,0,0,.12);
   border-radius: 12px;
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
   padding: 12px 0;
   z-index: 200;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border, #e5e7eb);
 }
 .nav-dropdown-content::before {
   content: ''; position: absolute; top: -6px; left: 50%; transform: translateX(-50%) rotate(45deg);
-  width: 12px; height: 12px; background: var(--card); border-top: 1px solid var(--border); border-left: 1px solid var(--border);
+  width: 12px; height: 12px; background: var(--card, #fff); border-top: 1px solid var(--border, #e5e7eb); border-left: 1px solid var(--border, #e5e7eb);
 }
 .nav-dropdown-content a {
-  color: var(--text) !important;
+  color: var(--text, #1a1a1a) !important;
   padding: 10px 20px;
   text-decoration: none;
   display: block;
@@ -415,17 +416,65 @@ footer a{color:var(--gl);text-decoration:none}
   font-weight: 600 !important;
   text-transform: none !important;
   letter-spacing: normal !important;
-  transition: all var(--tr);
+  transition: all 0.22s cubic-bezier(.4,0,.2,1);
 }
 .nav-dropdown-content a:hover {
-  background-color: var(--green-l);
-  color: var(--green) !important;
+  background-color: var(--green-l, #e8f5e9);
+  color: var(--green, #2e7d32) !important;
   padding-left: 24px;
 }
 .nav-dropdown:hover .nav-dropdown-content {
   display: block;
 }
+
+/* ── TYPE A: DEEP LEDGER ── */
+.type-a-prose p { margin-bottom: 24px; }
+.type-a-multi-tier { background: #fdfdfc; border-left: 4px solid var(--green); padding: 32px; margin: 40px 0; border-radius: 0 16px 16px 0; box-shadow: var(--shadow); }
+.tier-item { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px dashed var(--border); }
+.tier-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.tier-img { width: 90px; height: 90px; border-radius: 12px; object-fit: cover; border: 1px solid var(--border); }
+.tier-content h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--f); margin-bottom: 8px; }
+.tier-content p { font-size: 15px !important; margin-bottom: 6px !important; }
+.tier-outcome { font-size: 14px; font-weight: 600; color: var(--green); display: flex; align-items: center; gap: 6px; }
+
+/* ── TYPE B: FAST NARRATIVE ── */
+.type-b-prose p { font-size: 18px; line-height: 1.7; margin-bottom: 28px; }
+.type-b-focus { background: linear-gradient(135deg, #1b3a28, #2a5040); color: #fff; border-radius: 20px; padding: 40px; margin: 48px 0; text-align: center; }
+.type-b-focus img { width: 120px; height: 120px; border-radius: 16px; margin-bottom: 20px; border: 2px solid rgba(255,255,255,0.2); object-fit: cover; }
+.type-b-focus h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--gl); margin-bottom: 16px; }
+.type-b-focus p { color: rgba(255,255,255,0.9) !important; font-size: 15px !important; text-align: left; }
+.type-b-outcome { background: rgba(255,255,255,0.1); padding: 16px; border-radius: 12px; margin-top: 24px; font-weight: 600; color: #fff; text-align: left; }
+
+/* ── TYPE C: CHRONOLOGICAL SHIFT ── */
+.timeline { position: relative; padding-left: 30px; margin: 40px 0; }
+.timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--green-l); }
+.tl-item { position: relative; margin-bottom: 40px; }
+.tl-item::before { content: ''; position: absolute; left: -35px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--green); border: 2px solid #fff; }
+.tl-time { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--green-d); margin-bottom: 8px; }
+.tl-pivot { font-style: italic; color: var(--muted); font-size: 15px; margin-bottom: 12px; }
+.tl-support { font-size: 16px; color: var(--text); }
+.type-c-combo { display: flex; flex-direction: column; gap: 16px; background: #fafafa; padding: 32px; border-radius: 16px; border: 1px solid var(--border); margin: 40px 0; }
+
+/* ── TYPE D: DIALOGUE & MATRIX ── */
+.dialogue-wrap { background: #f9f9f9; padding: 32px; border-radius: 16px; margin: 40px 0; }
+.d-bubble { margin-bottom: 24px; }
+.d-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 4px; }
+.d-text { font-size: 17px; color: var(--text); padding-left: 16px; border-left: 2px solid var(--green-l); }
+.d-herbalist .d-label { color: var(--green); }
+.d-herbalist .d-text { border-left-color: var(--green); font-weight: 500; }
+
+.comp-matrix { width: 100%; border-collapse: collapse; margin: 40px 0; background: #fff; box-shadow: var(--shadow); border-radius: 12px; overflow: hidden; }
+.comp-matrix th, .comp-matrix td { padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--border); }
+.comp-matrix th { background: var(--f); color: #fff; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; }
+.comp-matrix tr:last-child td { border-bottom: none; }
+.comp-matrix td:first-child { font-weight: 600; color: var(--f); background: #fafafa; width: 25%; }
+.comp-matrix td:nth-child(2) { color: var(--muted); font-size: 14.5px; width: 35%; }
+.comp-matrix td:nth-child(3) { color: var(--green-d); font-weight: 500; font-size: 14.5px; width: 40%; background: var(--green-l); }
+
+/* Cart Logistics Callout */
+.cart-logistics { text-align: center; font-size: 14px; color: var(--muted); margin-top: 24px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6; }
 </style>
+
 
 </head>
 <body>
@@ -467,37 +516,36 @@ footer a{color:var(--gl);text-decoration:none}
       <span>›</span>
       <a href="blog.html">Blog</a>
       <span>›</span>
-      <span>Sleep &amp; Anxiety</span>
+      <span>Vitality &amp; Energy</span>
     </div>
-    <div class="cat-pill">Weight Management</div>
-    <h1>The Post-Meal Metabolic Hack: Supporting Fast Fat Digestion Daily</h1>
+    <div class="cat-pill">
+      <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Weight Management
+    </div>
+    <h1>The Post-Meal Metabolic Shield: Re-Engineering How Your Body Processes Fats</h1>
     <div class="hero-meta">
       <div class="meta-author">
         <div class="meta-avatar">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>
         </div>
         <div>
-          <div class="meta-name">Dr. Lin Wei</div>
-          <div class="meta-role">TCM Practitioner, MSc Phytotherapy</div>
+          <div class="meta-name">Mei Huang, MHSc</div>
+          <div class="meta-role">Holistic Health Educator</div>
         </div>
       </div>
       <div class="meta-divider"></div>
       <div class="meta-item">
         <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        2 June 2025
+        3 June 2025
       </div>
       <div class="meta-item">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        7 min read
-      </div>
-      <div class="meta-item">
-        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        4,210 readers
+        5 min read
       </div>
     </div>
   </div>
   <div class="hero-img-wrap">
-    <img src="assets/images/blog_sleep_tea.png" alt="Herbal sleep remedies — chamomile and lavender flat lay" onerror="this.style.background='linear-gradient(135deg,#1e3d28,#254d38)';this.alt=''">
+    <img src="assets/images/blog_vitality_herbs.png" alt="Herbal elements and traditional medicine" onerror="this.style.background='linear-gradient(135deg,#1e3d28,#254d38)';this.alt=''">
     <div class="hero-img-overlay"></div>
   </div>
 </section>
@@ -506,116 +554,72 @@ footer a{color:var(--gl);text-decoration:none}
 <main class="article-wrap" id="article-top">
   <article class="article-body">
 
-    <p><strong>Learn how to break down heavy fats and prevent weight storage right after lunch or dinner with this simple daily habit.</strong></p>
-    <p>When dealing with weight management issues, the biggest mistake people make is relying on aggressive, single-action supplements that only mask the problem. Traditional Chinese Medicine teaches us that we must address the root cause.</p>
-    <p>By implementing a specific, targeted daily herbal habit, you can create a compounding effect that builds resilience over time.</p>
-    
-    <h2>The Action Plan</h2>
-    <p>Our clinical formulators have combined the exact botanicals needed to resolve this specific concern. Consistency is key: commit to this routine for 14 days and observe the shift in your baseline.</p>
-    
+        <div class="type-a-prose">
+            <p>Your metabolism isn’t broken; it’s just working without a support crew. In the high-stakes environment of modern professional life, we’ve been conditioned to view weight management as a brutal battle of deprivation—a relentless cycle of restrictive fasting and punishing cardio. This perspective is fundamentally flawed because it completely ignores the structural logistics of your internal chemistry. Traditional Chinese Medicine (TCM) suggests a more sophisticated approach: stop punishing your body and start giving your digestion the tools to clean up the workspace before excess calories can be logged as long-term storage.</p>
+            <p>At the heart of your metabolic efficiency lies the Spleen, an organ system TCM identifies as the primary driver of Transformation and Transportation. While Western frameworks focus heavily on passive caloric burn, traditional systems evaluate the strength of the Spleen-Qi—the active vital energy responsible for extracting "food essence" and instantly converting it into the clean Qi and Blood that power your brain, muscles, and cellular repair. When your Spleen-Qi is robust, your body processes fats and nutrients with the precision of a world-class logistics firm.</p>
+            <p>However, the modern South African lifestyle is a direct assault on this internal CEO. Irregular eating habits, working through lunch breaks, high cortisol environments, and a diet rich in "Damp" inputs (processed sugars, heavy dairy, and hidden fats) completely overwhelm the Spleen. When the Spleen can no longer transform these inputs efficiently, it creates a massive metabolic backlog. In clinical terms, this stagnation is the true root cause of a seemingly "slow metabolism."</p>
+            
+            <h2>The Logistics of Languor</h2>
+            <p>Have you ever finished a meal and felt an immediate wave of brain fog, bloating, or heavy fatigue? This isn’t a natural "food coma"; it is a state of acute Food Stagnation (Ji Shi). In internal mechanics, the Stomach is a cauldron that "rots and ripens" food, while the Spleen is the active engine that moves that energy out into the system. When the engine fails, the cauldron overflows.</p>
+            <p>Food stagnation is an immediate structural health crisis for your daily performance. It causes the Stomach-Qi to flow upward (manifesting as reflux, acidity, or heavy belching) instead of smoothly downward, forcing the body to store the "untransformed" matter as dense metabolic sludge. This stagnation doesn't just sit passively in your gut; it actively blocks your body’s ability to access the energy you just consumed, leaving you craving "quick energy" simple sugars even though you’ve just finished a massive, heavy meal.</p>
+
+            <h2>The Dampness Trap: Why Fat is Frozen Fluid</h2>
+            <p>In the TCM diagnostic matrix, stubborn body fat is rarely viewed as a simple calorie equation; it is categorized as a physical manifestation of Dampness. Think of Dampness as a metabolic humidity that settles deep into the body’s Triple Burner—the internal network that regulates systemic fluid movement and thermal balance. When the Spleen is too weak to process everyday fluids, they become heavy, turbid, and stagnant.</p>
+            <p>Dampness is the ultimate metabolic inhibitor. It acts as a physical barrier to the smooth flow of Qi and Blood, causing your entire body to feel heavy, slow, and unmotivated. More importantly, Dampness is exceptionally "sticky" and notoriously difficult to clear. This is the exact reason why conventional weight loss efforts often hit a permanent wall; you are trying to burn a metabolic "fire" (fat) that is effectively encased in a thick insulation of "water" (dampness). To truly re-engineer your metabolism, you must first clear out the internal moisture to let the metabolic fire breathe.</p>
+            <p>Re-engineering this system is about intervention at the exact point of impact. Instead of waiting for the scale to move on Monday morning, the goal is to provide your body with a protective "Metabolic Shield" immediately following food intake. By utilizing targeted botanical formulas that actively Move the Qi and Clear the Damp, you prevent the post-meal backlog before it ever takes root, transforming digestion from a exhausting drag into an active performance state.</p>
+        </div>
+
+        <div class="type-a-multi-tier">
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:#1b3a28;margin-bottom:24px;">🛡️ The Ritual Bundle: The Post-Meal Metabolic Shield</h3>
+            
+            <div class="tier-item">
+                <img src="assets/images/unnamed(29).png" alt="Bao He Wan" class="tier-img" onerror="this.style.opacity='.3'">
+                <div class="tier-content">
+                    <h4>1. The Point-Of-Impact Accelerator: Bao He Wan</h4>
+                    <p>This legendary pill formulation is your primary shield against food stagnation. It is engineered to harmonize the stomach and break down heavy protein and fat accumulation immediately after eating.</p>
+                    <div class="tier-outcome"><i data-lucide="check-circle" style="width:14px;height:14px"></i> Erases the heavy, post-restaurant brick feeling in minutes.</div>
+                </div>
+            </div>
+
+            <div class="tier-item">
+                <img src="assets/images/ABDOMEN_SLIMMING_TEA.png" alt="Abdomen Slimming Tea" class="tier-img" onerror="this.style.opacity='.3'">
+                <div class="tier-content">
+                    <h4>2. The Targeted Visceral Track: Abdomen Slimming Tea</h4>
+                    <p>A direct-action botanical infusion designed to sweep through the gastrointestinal tract, promoting smooth downward Qi movement.</p>
+                    <div class="tier-outcome"><i data-lucide="check-circle" style="width:14px;height:14px"></i> Flattens post-meal expansion and bloating.</div>
+                </div>
+            </div>
+
+            <div class="tier-item">
+                <img src="assets/images/unnamed(3).png" alt="White Gourd Slim Tea" class="tier-img" onerror="this.style.opacity='.3'">
+                <div class="tier-content">
+                    <h4>3. The Long-Term Moisture Flush: White Gourd Slim Tea</h4>
+                    <p>Your deep-tissue logistics crew. Formulated to systematically drain the stubborn systemic "Dampness" that traps fat cells.</p>
+                    <div class="tier-outcome"><i data-lucide="check-circle" style="width:14px;height:14px"></i> Breaks down the fluid wall so metabolic fire can burn.</div>
+                </div>
+            </div>
+            
+            <button class="remedy-cta" onclick="addTargetedBundle('Abdomen Slimming', 'Bao He Wan')" style="margin-top:24px;width:100%;">
+              Add This Metabolic Shield to Cart
+            </button>
+            <p class="cart-logistics"><strong>Cart Logistics:</strong> Navigating the complexities of your internal chemistry shouldn't be matched by the complexity of your checkout. When you deploy this complete Metabolic Shield routine, your lifestyle upgrade safely glides past the R600 milestone. Our system instantly activates, dropping a FREE delivery voucher straight onto your order, completely wiping out the standard R60 shipping fee anywhere in South Africa. Stop managing your weight and start mastering your mechanics.</p>
+        </div>
+        
 
-         ✦  SYNERGY REMEDY WIDGET  ✦
-    ══════════════════════════════════════════════════════════ -->
-    <div class="remedy-widget" id="sleep-remedy-widget" role="complementary" aria-label="Complete Sleep Routine — shop this remedy">
-
-      <div class="remedy-eyebrow">The Weight Management Routine</div>
-
-      <h3 class="remedy-title">The Recommended Synergy Pair</h3>
-      <p class="remedy-subtitle">Formulated to work together — calming tea prepares the nervous system while the concentrated pill formula rebuilds Heart Yin overnight.</p>
-
-      <!-- Product Pair -->
-      <div class="remedy-pair">
-
-        <!-- TEA -->
-        <div class="remedy-product">
-          <div class="remedy-thumb">
-            <img
-              src="assets/images/SLIMMING_TEA.png"
-              alt="Anti-Stress Sleeping Tea"
-              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-            >
-            <div class="remedy-thumb-icon" style="display:none">🍵</div>
-          </div>
-          <div class="remedy-product-info">
-            <div class="remedy-product-type">
-              <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-              Herbal Tea
-            </div>
-            <div class="remedy-product-name">Slim Tea</div>
-            <div class="remedy-product-desc">Ganoderma, Red Dates, Licorice &amp; Privet Fruit — calms the spirit and reduces insomnia naturally.</div>
-            <div class="remedy-product-tags">
-              <span class="remedy-tag">🌙 Calms Spirit</span>
-              <span class="remedy-tag">⚡ Fast-Acting</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- PLUS -->
-        <div class="remedy-connector">＋</div>
-
-        <!-- PILL -->
-        <div class="remedy-product">
-          <div class="remedy-thumb">
-            <img
-              src="assets/images/unnamed(3).png"
-              alt="An Shen Bu Xin Wan"
-              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-            >
-            <div class="remedy-thumb-icon" style="display:none">💊</div>
-          </div>
-          <div class="remedy-product-info">
-            <div class="remedy-product-type">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
-              Herbal Pills
-            </div>
-            <div class="remedy-product-name">White Gourd Slim Tea</div>
-            <div class="remedy-product-desc">Nourishes Heart Yin &amp; blood to restore normal sleep rhythm. Eases palpitations &amp; racing mind.</div>
-            <div class="remedy-product-tags">
-              <span class="remedy-tag">❤️ Heart Yin</span>
-              <span class="remedy-tag">🔄 Sustained</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Combined benefit note -->
-      <div class="remedy-benefits">
-        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-        <div class="remedy-benefits-text">
-          <strong>Why this pair works:</strong> The Slim Tea helps break down complex lipids instantly after meals, while the White Gourd infusion provides sustained diuresis to reduce bloating overnight.</div>
-      </div>
-
-      <!-- CTA -->
-      <button
-        class="remedy-cta"
-        id="routine-btn"
-        onclick="addTargetedBundle('Slim Tea', 'White Gourd Slim Tea')"
-      >
-        Add This Weight Management Routine to Cart
-      </button>
-      <p class="remedy-cta-note">Free shipping on orders over R500 · 100% natural · No synthetic additives</p>
-
-    </div>
-    <!-- ══ END REMEDY WIDGET ══ -->
-<!-- ARTICLE FOOTER -->
     <div class="article-footer">
       <div class="article-tags">
-        <a href="#" class="article-tag">#SleepHealth</a>
+        <a href="#" class="article-tag">#TCM101</a>
         <a href="#" class="article-tag">#ChineseMedicine</a>
-        <a href="#" class="article-tag">#HerbalRemedies</a>
-        <a href="#" class="article-tag">#Insomnia</a>
-        <a href="#" class="article-tag">#Ganoderma</a>
-        <a href="#" class="article-tag">#HeartYin</a>
+        <a href="#" class="article-tag">#HerbalTeas</a>
+        <a href="#" class="article-tag">#Qi</a>
+        <a href="#" class="article-tag">#YinYang</a>
+        <a href="#" class="article-tag">#Wellness</a>
       </div>
       <div class="share-row">
         <span class="share-label">Share this article:</span>
         <a href="#" class="share-btn" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='✓ Copied!';setTimeout(()=>this.innerHTML='<svg viewBox=\"0 0 24 24\" style=\"width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none\"><rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\"/><path d=\"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\"/></svg> Copy Link',2500);return false">
           <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           Copy Link
-        </a>
-        <a href="https://wa.me/?text=The%20Blueprint%20for%20Deep%20Sleep%20by%20The%20Herbalist" class="share-btn" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-          WhatsApp
         </a>
       </div>
     </div>
@@ -626,49 +630,24 @@ footer a{color:var(--gl);text-decoration:none}
         <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>
       </div>
       <div>
-        <div class="author-name">Dr. Lin Wei</div>
-        <div class="author-cred">TCM Practitioner · MSc Phytotherapy · 18 years clinical experience</div>
-        <div class="author-bio">Dr. Wei practised for a decade at the Guangzhou University of Chinese Medicine before joining The Herbalist as Head of Formulation. She writes on the intersection of classical TCM theory and modern pharmacognosy.</div>
+        <div class="author-name">Mei Huang, MHSc</div>
+        <div class="author-cred">Holistic Health Educator</div>
+        <div class="author-bio">Mei translates complex TCM concepts into practical, everyday wisdom. She holds a Master's in Health Sciences and is passionate about preventative herbal care.</div>
       </div>
     </div>
 
   </article>
 </main>
 
-<!-- ── RELATED ARTICLES ── -->
-<section class="related-section">
-  <h2 class="related-title">Continue Reading</h2>
-  <div class="related-grid">
-    <a href="blog.html" class="related-card">
-      <div class="related-img">
-        <img src="assets/images/blog_anxiety_ritual.png" alt="Evening Ritual" onerror="this.style.background='linear-gradient(135deg,#e8eaf6,#c5cae9)'">
-      </div>
-      <div class="related-body">
-        <div class="related-cat">Sleep &amp; Anxiety</div>
-        <div class="related-ttl">Build Your Evening Ritual: 4 Herbal Habits That Crush Anxiety Before Bed</div>
-      </div>
-    </a>
-    <a href="blog.html" class="related-card">
-      <div class="related-img">
-        <img src="assets/images/blog_vitality_herbs.png" alt="Ginseng Energy" onerror="this.style.background='linear-gradient(135deg,#fff3e0,#ffe0b2)'">
-      </div>
-      <div class="related-body">
-        <div class="related-cat">Vitality &amp; Energy</div>
-        <div class="related-ttl">Ginseng + Red Date: The 2,000-Year-Old Energy Stack That Outperforms Coffee</div>
-      </div>
-    </a>
-  </div>
-</section>
-
 <!-- ── FOOTER ── -->
-<footer>
+<footer style="margin-top: 60px;">
   <p>© 2025 <a href="index.html">The Herbalist</a> · Traditional Chinese Wellness · All rights reserved.</p>
 </footer>
 
 <!-- ── TOAST NOTIFICATION ── -->
 <div class="toast" id="toast">
   <span class="toast-icon">🛒</span>
-  <span id="toast-msg">Sleep Routine added to cart!</span>
+  <span id="toast-msg">Routine added to cart!</span>
 </div>
 
 <script>
@@ -692,24 +671,20 @@ function showToast(msg) {
 }
 
 // ── SYNERGY BUNDLE CART HANDLER ──
-// This function bridges the blog article into the main store's cart system.
-// When the article is opened inside index.html context (via iframe or same page),
-// it calls the parent addToCart function. When opened standalone it shows a toast.
 function addSynergyBundle(bundleIdx) {
-  const btn = document.getElementById('sleep-routine-btn');
+  const btn = document.getElementById('vitality-routine-btn');
 
   // Attempt to call parent store's cart if available
   if (typeof addToCart === 'function') {
-    // In-store context: add the tea (idx 1) and the An Shen pill
-    // These indices match the P[] array in index.html
-    const sleepTeaIdx  = typeof P !== 'undefined' ? P.findIndex(p => p && p.n && p.n.includes('ANTI-STRESS')) : -1;
-    const anShenIdx    = typeof P !== 'undefined' ? P.findIndex(p => p && p.n && p.n.includes('AN SHEN')) : -1;
-    if (sleepTeaIdx > -1) addToCart(sleepTeaIdx);
-    if (anShenIdx   > -1) addToCart(anShenIdx);
-    showToast('🌙 Complete Sleep Routine added to cart!');
+    // In-store context: add the tea and the pill
+    const teaIdx  = typeof P !== 'undefined' ? P.findIndex(p => p && p.n && p.n.includes('GINSENG DATE')) : -1;
+    const pillIdx    = typeof P !== 'undefined' ? P.findIndex(p => p && p.n && p.n.includes('GUI PI WAN')) : -1;
+    if (teaIdx > -1) addToCart(teaIdx);
+    if (pillIdx   > -1) addToCart(pillIdx);
+    showToast('✨ Vitality Routine added to cart!');
   } else {
     // Standalone blog context — redirect to store with a visual cue
-    showToast('🌙 Opening store — your routine is ready to add!');
+    showToast('✨ Opening store — your routine is ready to add!');
     setTimeout(() => { window.location.href = 'index.html'; }, 1400);
   }
 
@@ -718,7 +693,7 @@ function addSynergyBundle(bundleIdx) {
     const orig = btn.innerHTML;
     btn.innerHTML = `
       <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:currentColor;stroke-width:2;fill:none"><polyline points="20 6 9 17 4 12"/></svg>
-      Sleep Routine Added!
+      Routine Added!
     `;
     btn.style.background = 'linear-gradient(135deg,#388e3c,#2e7d32)';
     btn.disabled = true;
@@ -731,12 +706,16 @@ function addSynergyBundle(bundleIdx) {
 }
 
 function addTargetedBundle(teaName, pillName) {
-  const btn = document.getElementById('routine-btn');
+  const btn = document.querySelector('.remedy-cta');
   if (typeof addToCart === 'function') {
-    const teaIdx = typeof P !== 'undefined' ? P.findIndex(p => p && p.n && p.n.toUpperCase().includes(teaName.toUpperCase())) : -1;
-    const pillIdx = typeof P !== 'undefined' ? P.findIndex(p => p && p.n && p.n.toUpperCase().includes(pillName.toUpperCase())) : -1;
-    if (teaIdx > -1) addToCart(teaIdx);
-    if (pillIdx > -1) addToCart(pillIdx);
+    if(teaName) {
+      const teaIdx = typeof P !== 'undefined' ? P.findIndex(p => p && p.n && p.n.toUpperCase().includes(teaName.toUpperCase())) : -1;
+      if (teaIdx > -1) addToCart(teaIdx);
+    }
+    if(pillName) {
+      const pillIdx = typeof P !== 'undefined' ? P.findIndex(p => p && p.n && p.n.toUpperCase().includes(pillName.toUpperCase())) : -1;
+      if (pillIdx > -1) addToCart(pillIdx);
+    }
     showToast('Routine added to cart!');
   } else {
     showToast('Opening store — your routine is ready to add!');
@@ -745,9 +724,9 @@ function addTargetedBundle(teaName, pillName) {
   if (btn) {
     const orig = btn.innerHTML;
     btn.innerHTML = 'Routine Added!';
-    btn.style.background = 'linear-gradient(135deg,#388e3c,#2e7d32)';
+    btn.style.opacity = '0.8';
     btn.disabled = true;
-    setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; btn.disabled = false; }, 3500);
+    setTimeout(() => { btn.innerHTML = orig; btn.style.opacity = '1'; btn.disabled = false; }, 3500);
   }
 }
 </script>
