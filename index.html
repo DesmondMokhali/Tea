@@ -569,7 +569,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
   50%{opacity: 1; color: #ff8e8e;}
 }
 
-/* Heading Font style changed to match Dischem (Montserrat font hierarchy) */
+/* Heading Font style (Montserrat font hierarchy) */
 .hero-slide h1 {
   font-family: 'Montserrat', 'DM Sans', sans-serif;
   font-size: clamp(26px, 3.2vw, 42px);
@@ -578,7 +578,16 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
   line-height: 1.15;
   margin-bottom: 15px;
   letter-spacing: -0.02em;
-  text-transform: uppercase;
+  text-transform: propercase;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5) !important;
+  position: absolute !important;
+  left: 50% !important;
+  bottom: 20px !important;            /* Adjust this value to set the exact height */
+  transform: translateX(-50%) !important;
+  text-transform: none !important;    /* This forces Proper Case instead of ALL CAPS */
+  text-align: center !important;
+  width: 90% !important;              /* Ensures it doesn't wrap awkwardly */
+  z-index: 10 !important;
 }
 .hero-slide h1 em { color: var(--gl); font-style: normal; font-weight: 800; }
 .hero-slide .hsub {
