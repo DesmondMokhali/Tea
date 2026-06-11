@@ -847,7 +847,8 @@ footer a{color:var(--gl);text-decoration:none}
   color: var(--green, #2e7d32) !important;
   padding-left: 24px;
 }
-.nav-dropdown:hover .nav-dropdown-content {
+.nav-dropdown:hover .nav-dropdown-content,
+.nav-dropdown.open .nav-dropdown-content {
   display: block;
 }
 
@@ -1376,6 +1377,34 @@ function toggleMobileMenu(isOpen) {
     }
   }
 }
+
+// Click toggle for dropdown
+document.addEventListener('DOMContentLoaded', () => { 
+  // Toggle nav dropdowns on click/tap (especially for touch screens)
+  document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+    const btn = dropdown.querySelector('.nav-dropbtn');
+    if (btn) {
+      btn.addEventListener('click', (e) => {
+        if (window.innerWidth <= 991 || ('ontouchstart' in window)) {
+          e.preventDefault();
+          e.stopPropagation();
+          const isOpen = dropdown.classList.contains('open');
+          document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+          if (!isOpen) {
+            dropdown.classList.add('open');
+          }
+        }
+      });
+    }
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+      dropdown.classList.remove('open');
+    });
+  });
+ });
 </script>
 
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js">

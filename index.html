@@ -1585,7 +1585,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
   color: var(--green, #2e7d32) !important;
   padding-left: 24px;
 }
-.nav-dropdown:hover .nav-dropdown-content {
+.nav-dropdown:hover .nav-dropdown-content,
+.nav-dropdown.open .nav-dropdown-content {
   display: block;
 }
 
@@ -3373,7 +3374,63 @@ document.addEventListener('DOMContentLoaded',()=>{
     if (searchInput) searchInput.value = searchParam;
     if (mobileSearchInput) mobileSearchInput.value = searchParam;
     doSearch(searchParam);
-  }});
+  }
+
+  // Toggle nav dropdowns on click/tap (especially for touch screens)
+  document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+    const btn = dropdown.querySelector('.nav-dropbtn');
+    if (btn) {
+      btn.addEventListener('click', (e) => {
+        // Toggle dropdown if we are on a touch-capable screen or mobile width
+        if (window.innerWidth <= 991 || ('ontouchstart' in window)) {
+          e.preventDefault();
+          e.stopPropagation();
+          const isOpen = dropdown.classList.contains('open');
+          document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+          if (!isOpen) {
+            dropdown.classList.add('open');
+          }
+        }
+      });
+    }
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+      dropdown.classList.remove('open');
+    });
+  });
+
+  // Intercept links with query filters to dynamically filter same-page without a reload
+  document.addEventListener('click', e => {
+    const link = e.target.closest('a');
+    if (link) {
+      try {
+        const url = new URL(link.href, window.location.href);
+        const onSamePage = url.pathname === window.location.pathname || 
+                           (url.pathname.endsWith('index.html') && window.location.pathname === '/') ||
+                           (window.location.pathname.endsWith('index.html') && url.pathname === '/');
+        if (onSamePage) {
+          const filter = url.searchParams.get('filter');
+          if (filter) {
+            e.preventDefault();
+            // Close dropdown and mobile menu drawer
+            document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+            if (typeof toggleMobileMenu === 'function') toggleMobileMenu(false);
+            
+            setType(filter);
+            // Scroll to grid (#ga)
+            const target = document.getElementById('ga');
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        }
+      } catch (err) {}
+    }
+  });
+});
 
 function buildFilters(){
   const fb=document.getElementById('fb');
