@@ -1304,6 +1304,23 @@ function setFilter(cat) {
   document.getElementById('article-count').textContent = count + (count === 1 ? ' article' : ' articles');
   document.getElementById('no-results').style.display = count === 0 ? 'flex' : 'none';
 }
+
+// ── MOBILE MENU FUNCTION ──
+function toggleMobileMenu(isOpen) {
+  const overlay = document.getElementById('mobile-menu-overlay');
+  const drawer = document.getElementById('mobile-menu-drawer');
+  if (overlay && drawer) {
+    if (isOpen) {
+      overlay.classList.add('on');
+      drawer.classList.add('on');
+      document.body.style.overflow = 'hidden';
+    } else {
+      overlay.classList.remove('on');
+      drawer.classList.remove('on');
+      document.body.style.overflow = '';
+    }
+  }
+}
 </script>
 
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js">

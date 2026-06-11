@@ -623,43 +623,48 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
 }
 .hero-slide .btno:hover { border-color:rgba(255,255,255,.8);background:rgba(255,255,255,.1); }
 
-/* Creative styling for Actual Product Images */
+/* Creative styling for Actual Product Images — Grid layout to avoid any overlap or obstruction */
 .hero-imgs {
-  position:relative;
-  z-index:1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height: 280px;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-areas:
+    "left right"
+    "badge badge";
+  justify-content: center;
+  align-items: end;
+  gap: 14px;
+  height: auto;
+  padding-bottom: 10px;
 }
-/* Stacked layout for creative positioning */
+.hero-imgs:has(.hero-img-stack-center) {
+  grid-template-columns: repeat(3, auto);
+  grid-template-areas:
+    "left center right"
+    "badge badge badge";
+}
 .hero-img-stack-left {
-  position: absolute;
-  left: 5%;
-  top: 15%;
-  z-index: 2;
-  transform: rotate(-6deg);
-  transition: transform 0.3s ease;
+  grid-area: left;
+  position: static;
+  transform: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .hero-img-stack-right {
-  position: absolute;
-  right: 5%;
-  bottom: 10%;
-  z-index: 3;
-  transform: rotate(8deg);
-  transition: transform 0.3s ease;
+  grid-area: right;
+  position: static;
+  transform: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .hero-img-stack-center {
-  position: absolute;
-  left: 35%;
-  top: 5%;
-  z-index: 4;
-  transform: scale(1.08) rotate(-2deg);
-  transition: transform 0.3s ease;
+  grid-area: center;
+  position: static;
+  transform: translateY(-8px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.hero-imgs:hover .hero-img-stack-left { transform: rotate(-12deg) scale(1.03); }
-.hero-imgs:hover .hero-img-stack-right { transform: rotate(15deg) scale(1.03); }
-.hero-imgs:hover .hero-img-stack-center { transform: scale(1.12) rotate(2deg); }
+.hero-imgs:hover .hero-img-stack-left { transform: translateY(-4px) scale(1.03); }
+.hero-imgs:hover .hero-img-stack-right { transform: translateY(-4px) scale(1.03); }
+.hero-imgs:hover .hero-img-stack-center { transform: translateY(-12px) scale(1.03); }
 
 .hero-img-box {
   width: 168px;
@@ -708,31 +713,140 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
   transform: scale(1.06) !important;
 }
 .hero-bundle-price-badge {
- display: none !important
+  grid-area: badge;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  border-radius: 50px;
+  background: rgba(20,20,30,0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: 'Montserrat', sans-serif;
+  white-space: nowrap;
+  margin-top: 10px;
 }
-.theme-metabolic .hero-bundle-price-badge {
-  background: transparent;
+/* Cohesive background color overrides with absolutely no borders or outline shadows */
+.hero-slide.theme-metabolic .hero-bundle-price-badge {
+  background: rgba(27, 61, 43, 0.08);
+  box-shadow: none;
+}
+.hero-slide.theme-metabolic .hero-bundle-price-badge .bundle-now-price {
   color: #1b3d2b;
-  border-color: rgba(27, 61, 43, 0.3);
 }
+.hero-slide.theme-metabolic .hero-bundle-price-badge .bundle-was-price {
+  color: rgba(27, 61, 43, 0.5);
+}
+
+.hero-slide.theme-drainage .hero-bundle-price-badge {
+  background: rgba(43, 31, 61, 0.65);
+  box-shadow: none;
+}
+.hero-slide.theme-cognitive .hero-bundle-price-badge {
+  background: rgba(61, 43, 31, 0.65);
+  box-shadow: none;
+}
+.hero-slide.theme-hormone .hero-bundle-price-badge {
+  background: rgba(68, 24, 42, 0.65);
+  box-shadow: none;
+}
+.hero-slide.theme-spinal .hero-bundle-price-badge {
+  background: rgba(17, 45, 61, 0.65);
+  box-shadow: none;
+}
+.hero-slide.theme-seasonal .hero-bundle-price-badge {
+  background: rgba(68, 53, 16, 0.65);
+  box-shadow: none;
+}
+
 .hero-bundle-price-badge .bundle-was-price {
   font-size: 10.5px;
   text-decoration: line-through;
-  opacity: 0.75;
+  color: rgba(255,255,255,0.55);
 }
 .hero-bundle-price-badge .bundle-now-price {
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 900;
+  color: #fff;
 }
 .hero-bundle-price-badge .bundle-save-badge {
   font-size: 9px;
   font-weight: 800;
-  background: #ff5c5c;
+  background: linear-gradient(135deg, #ff5c5c, #e53e3e);
   color: #fff;
-  padding: 2px 7px;
+  padding: 3px 8px;
   border-radius: 6px;
   text-transform: uppercase;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.3px;
+  box-shadow: 0 2px 6px rgba(229,62,62,0.4);
+}
+
+/* Stack names/labels under the prices */
+.hero-slide.theme-metabolic .hero-imgs::after {
+  content: "Metabolic Bundle · Digestive System";
+  grid-column: 1 / -1;
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(27, 61, 43, 0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+  margin-top: 4px;
+}
+.hero-slide.theme-drainage .hero-imgs::after {
+  content: "Fluid Drainage Bundle · Slim Support";
+  grid-column: 1 / -1;
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+  margin-top: 4px;
+}
+.hero-slide.theme-cognitive .hero-imgs::after {
+  content: "Cognitive Performance Stack · Spleen Qi";
+  grid-column: 1 / -1;
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+  margin-top: 4px;
+}
+.hero-slide.theme-hormone .hero-imgs::after {
+  content: "Women's Hormone Balance Protocol";
+  grid-column: 1 / -1;
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+  margin-top: 4px;
+}
+.hero-slide.theme-spinal .hero-imgs::after {
+  content: "Spinal & Joint Relief Protocol";
+  grid-column: 1 / -1;
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+  margin-top: 4px;
+}
+.hero-slide.theme-seasonal .hero-imgs::after {
+  content: "Seasonal Defense Stack · Immunity";
+  grid-column: 1 / -1;
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+  margin-top: 4px;
 }
 
 /* Carousel controls */
@@ -759,16 +873,38 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
 .hero-next { right:16px; }
 
 @media(max-width:991px){
-  .hero-slide { grid-template-columns:1fr; padding:40px 24px; gap: 30px; }
-  .hero-imgs { height: 280px; max-width: 480px; margin: 0 auto; }
-  .hero-img-box { width: 140px; padding: 10px; }
-  .hero-img-box img { height: 110px; width: 80%; }
+  .hero-slide { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px 20px;
+    gap: 16px;
+  }
+  .hero-text {
+    display: contents;
+  }
+  .hero-badge-clean { order: 1; margin-bottom: 0; }
+  .hero-urgency-clean { order: 1; margin-bottom: 0; }
+  .hero-slide h1 { order: 2; margin-top: 0; margin-bottom: 0; text-align: center; }
+  .hero-slide .hsub { order: 3; margin-top: 0; margin-bottom: 0; text-align: center; }
+  .hero-imgs { 
+    order: 4; 
+    height: auto; 
+    max-width: 100%; 
+    margin: 0 auto; 
+    padding-bottom: 0;
+    gap: 10px;
+  }
+  .hero-img-box { width: 130px; padding: 10px; }
+  .hero-img-box img { height: 100px; width: 80%; }
+  .hero-action-row { order: 5; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; width: 100%; margin-top: 10px; }
 }
 @media(max-width:480px){
-  .hero-imgs { height: 240px; }
-  .hero-img-box { width: 115px; padding: 8px; }
-  .hero-img-box img { height: 85px; }
-  .hero-img-desc { font-size: 9px; }
+  .hero-img-box { width: 105px; padding: 8px; }
+  .hero-img-box img { height: 80px; }
+  .hero-img-desc { font-size: 8.5px; }
+  .hero-img-label-under { font-size: 7.5px; }
 }
 
 /* ── TRUST BAR ── */
@@ -3318,9 +3454,18 @@ function renderGrid(){
 }
 
 function openProductDetailByName(name) {
-  const idx = P.findIndex(p => p.n.toUpperCase().includes(name.toUpperCase()));
+  if (!name) return;
+  const q = name.trim().toUpperCase();
+  // Try exact start match first (avoids TE XIAO BI MIN matching before TE XIAO JING ZHUI)
+  let idx = P.findIndex(p => p && p.n && p.n.trim().toUpperCase().startsWith(q));
+  // Fallback: any substring match
+  if (idx === -1) {
+    idx = P.findIndex(p => p && p.n && p.n.trim().toUpperCase().includes(q));
+  }
   if (idx !== -1) {
     openModal(idx);
+  } else {
+    console.warn('[Hero] Product not found for:', name);
   }
 }
 

@@ -1299,6 +1299,23 @@ function addTargetedBundle(teaName, pillName) {
     setTimeout(() => { btn.innerHTML = orig; btn.style.opacity = '1'; btn.disabled = false; }, 3500);
   }
 }
+
+// ── MOBILE MENU FUNCTION ──
+function toggleMobileMenu(isOpen) {
+  const overlay = document.getElementById('mobile-menu-overlay');
+  const drawer = document.getElementById('mobile-menu-drawer');
+  if (overlay && drawer) {
+    if (isOpen) {
+      overlay.classList.add('on');
+      drawer.classList.add('on');
+      document.body.style.overflow = 'hidden';
+    } else {
+      overlay.classList.remove('on');
+      drawer.classList.remove('on');
+      document.body.style.overflow = '';
+    }
+  }
+}
 </script>
 
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js">
