@@ -1263,12 +1263,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
   color: var(--f);
 }
 .cart-items {
-  flex: 1;
+  flex: 1 1 auto;
+  min-height: 250px;
   overflow-y: auto;
-  padding: 20px 24px;
+  padding: 14px 20px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 /* custom scrollbar */
 .cart-items::-webkit-scrollbar {
@@ -1287,7 +1288,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
 .cart-item {
   display: flex;
   gap: 12px;
-  padding-bottom: 16px;
+  padding-bottom: 12px;
   border-bottom: 1px dashed var(--cd);
   align-items: center;
 }
@@ -1523,20 +1524,23 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
 
 
 /* ── SYNERGY PAIRING WIDGET ── */
-.syn-sec{padding:14px 20px;border-top:1.5px dashed var(--cd);background:linear-gradient(135deg,#f2f8f4 0%,#eaf2ec 100%)}
-.syn-hd{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--s);margin-bottom:10px;display:flex;align-items:center;gap:5px}
-.syn-card{background:#fff;border-radius:10px;padding:10px 12px;margin-bottom:8px;display:flex;align-items:center;gap:10px;box-shadow:0 1px 8px rgba(27,58,40,.07);border:1px solid rgba(106,153,112,.15);transition:box-shadow var(--tr)}
-.syn-card:last-child{margin-bottom:0}
+.syn-sec{padding:10px 16px 14px 16px;border-top:1.5px dashed var(--cd);background:linear-gradient(135deg,#f2f8f4 0%,#eaf2ec 100%);flex-shrink:0}
+.syn-hd{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--s);margin-bottom:8px;display:flex;align-items:center;gap:5px}
+#syn-cards{display:flex;gap:12px;overflow-x:auto;padding:2px 2px 8px 2px;scroll-snap-type:x mandatory;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+#syn-cards::-webkit-scrollbar{height:4px}
+#syn-cards::-webkit-scrollbar-track{background:transparent}
+#syn-cards::-webkit-scrollbar-thumb{background:var(--cd);border-radius:2px}
+.syn-card{background:#fff;border-radius:10px;padding:8px 10px;display:flex;align-items:center;gap:10px;box-shadow:0 1px 8px rgba(27,58,40,.07);border:1px solid rgba(106,153,112,.15);transition:box-shadow var(--tr);flex:0 0 85%;scroll-snap-align:start;box-sizing:border-box}
 .syn-card:hover{box-shadow:0 3px 14px rgba(27,58,40,.13)}
-.syn-imgs{display:flex;align-items:center;flex-shrink:0;position:relative;width:56px;height:36px}
-.syn-img{width:34px;height:34px;border-radius:6px;object-fit:contain;background:var(--c);border:1.5px solid var(--cd);position:absolute}
+.syn-imgs{display:flex;align-items:center;flex-shrink:0;position:relative;width:52px;height:32px}
+.syn-img{width:30px;height:30px;border-radius:6px;object-fit:contain;background:var(--c);border:1.5px solid var(--cd);position:absolute}
 .syn-img:first-child{left:0;z-index:1}
-.syn-img:last-child{left:20px;z-index:2}
+.syn-img:last-child{left:18px;z-index:2}
 .syn-info{flex:1;min-width:0}
-.syn-badge{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--s);margin-bottom:2px}
+.syn-badge{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--s);margin-bottom:2px}
 .syn-names{font-size:10.5px;font-weight:600;color:var(--t);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.syn-price{font-size:10px;color:var(--tl);margin-top:1px}
-.syn-btn{background:var(--f);color:#fff;border:none;border-radius:7px;padding:6px 11px;font-family:'DM Sans',sans-serif;font-size:10.5px;font-weight:700;cursor:pointer;white-space:nowrap;transition:all var(--tr);flex-shrink:0}
+.syn-price{font-size:9.5px;color:var(--tl);margin-top:1px}
+.syn-btn{background:var(--f);color:#fff;border:none;border-radius:7px;padding:5px 9px;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;cursor:pointer;white-space:nowrap;transition:all var(--tr);flex-shrink:0}
 .syn-btn:hover{background:var(--fm);transform:translateY(-1px)}
 .syn-btn.added{background:var(--s)}
 
@@ -2112,14 +2116,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
 <div class="cart-drawer" id="cart-dr">
   <div class="cart-hdr">
     <h3>Shopping Cart</h3>
-    <button class="cart-close" onclick="toggleCart(false)">✕</button>
+    <button class="cart-close" onclick="toggleCart(false)"><i data-lucide="x" style="width:20px;height:20px"></i></button>
   </div>
   <div class="cart-items" id="cart-items-list">
     <!-- Items dynamically rendered here -->
   </div>
   <!-- SYNERGY PAIRING WIDGET -->
   <div class="syn-sec" id="synergy-widget" style="display:none">
-    <div class="syn-hd">✨ Frequently Paired Together</div>
+    <div class="syn-hd"><i data-lucide="sparkles" style="width:14px;height:14px;color:var(--s)"></i> Frequently Paired Together</div>
     <div id="syn-cards"></div>
   </div>
   <div class="cart-ftr" id="cart-footer-actions">
@@ -2142,7 +2146,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
 <!-- CHECKOUT MODAL -->
 <div class="mov" id="chk-mo" onclick="chkOvClick(event)">
   <div class="modal" style="max-width: 650px; grid-template-columns: 1fr; padding: 28px;">
-    <button class="mcls" onclick="closeCheckout()">✕</button>
+    <button class="mcls" onclick="closeCheckout()"><i data-lucide="x" style="width:20px;height:20px"></i></button>
     <div id="checkout-content">
       <h2 class="mtitle" style="margin-bottom: 20px;">Complete Your Order</h2>
       <div class="checkout-modal-body">
@@ -3357,14 +3361,29 @@ const P=[
 
 // ── STATE ──────────────────────────────────────────────────────────────────
 let activeType='all', activeCat='all', searchQ='', cart=[], openIdx=null;
+try {
+  const savedCart = localStorage.getItem('tangren_cart');
+  if (savedCart) {
+    cart = JSON.parse(savedCart);
+  }
+} catch (e) {
+  cart = [];
+}
 
 // ── INIT ───────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded',()=>{
   buildFilters();
+  updateCart();
+  
   // Read ?filter= param from URL and activate the correct tab
   const urlParams = new URLSearchParams(window.location.search);
   const filterParam = urlParams.get('filter');
   const searchParam = urlParams.get('search');
+  const showCartParam = urlParams.get('showCart');
+  
+  if (showCartParam) {
+    setTimeout(() => { showCart(); }, 150);
+  }
   
   if(filterParam === 'teas' || filterParam === 'pills' || filterParam === 'all') {
     setType(filterParam);
@@ -3622,12 +3641,16 @@ function updateCart() {
         <button class="btno" style="color: var(--f); border-color: var(--f);" onclick="toggleCart(false)">Start Shopping</button>
       </div>
     `;
-    lucide.createIcons({nameAttr:'data-lucide',attrs:{class:''},nodes:[list]});
     subtotalVal.textContent = 'R0.00';
     totalVal.textContent = 'R0.00';
     footerActions.style.display = 'none';
     document.getElementById('synergy-widget').style.display = 'block';
     renderSynergy();
+    
+    // Save to localStorage
+    localStorage.setItem('tangren_cart', JSON.stringify([]));
+    localStorage.setItem('tangren_cart_total', '0.00');
+    localStorage.setItem('tangren_cart_qty', '0');
   } else {
     footerActions.style.display = 'block';
     list.innerHTML = cart.map(item => {
@@ -3641,9 +3664,9 @@ function updateCart() {
             <div class="cart-item-name">${p.n}</div>
             <div class="cart-item-price">R${p.p.toFixed(2)}</div>
             <div class="cart-item-ctrls">
-              <button class="qty-btn" onclick="changeQty(${item.idx}, -1)">-</button>
+              <button class="qty-btn" onclick="changeQty(${item.idx}, -1)" title="Decrease quantity"><i data-lucide="minus" style="width:10px;height:10px"></i></button>
               <span class="qty-val">${item.qty}</span>
-              <button class="qty-btn" onclick="changeQty(${item.idx}, 1)">+</button>
+              <button class="qty-btn" onclick="changeQty(${item.idx}, 1)" title="Increase quantity"><i data-lucide="plus" style="width:10px;height:10px"></i></button>
             </div>
           </div>
           <button class="cart-item-del" onclick="removeFromCart(${item.idx})" title="Remove item"><i data-lucide="trash-2" style="width:14px;height:14px"></i></button>
@@ -3657,7 +3680,7 @@ function updateCart() {
     const shippingEl = document.getElementById('cart-shipping-status');
     let shipping = 0;
     if (subtotal >= SHIPPING_THRESHOLD) {
-      shippingEl.textContent = 'FREE 🎉';
+      shippingEl.innerHTML = 'FREE <i data-lucide="gift" style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-left:3px"></i>';
       shippingEl.style.color = 'var(--s)';
       shippingEl.style.fontWeight = '600';
       shipping = 0;
@@ -3670,9 +3693,21 @@ function updateCart() {
     subtotalVal.textContent = `R${subtotal.toFixed(2)}`;
     if (headerTotal) headerTotal.textContent = `R${subtotal.toFixed(2)}`;
     totalVal.textContent = `R${(subtotal + shipping).toFixed(2)}`;
-    lucide.createIcons({nameAttr:'data-lucide',attrs:{class:''},nodes:[list]});
+    
+    // Save to localStorage
+    localStorage.setItem('tangren_cart', JSON.stringify(cart));
+    localStorage.setItem('tangren_cart_total', subtotal.toFixed(2));
+    localStorage.setItem('tangren_cart_qty', totalQty.toString());
+    
     renderSynergy();
   }
+  
+  // Re-initialize all Lucide icons inside the cart drawer
+  const cartDrawer = document.getElementById('cart-dr');
+  if (cartDrawer) {
+    lucide.createIcons({nameAttr:'data-lucide',attrs:{class:''},nodes:[cartDrawer]});
+  }
+}
 
   // Update button states on the main grid dynamically
   document.querySelectorAll('.catcbtn').forEach(btn => {
@@ -3834,19 +3869,22 @@ document.addEventListener('keydown',e=>{
 // ── SYNERGY PAIRING ──
 const SYNERGY_BUNDLES = [
   {
-    label: '😴 Sleep & Calm',
+    label: 'Sleep & Calm',
+    icon: 'moon',
     tag: 'Complete Sleep Routine',
     teaQ: 'ANTI-STRESS SLEEPING',
     pillQ: 'AN SHEN BU XIN'
   },
   {
-    label: '🌿 Detox & Cleanse',
+    label: 'Detox & Cleanse',
+    icon: 'droplet',
     tag: 'Complete Cleansing Routine',
     teaQ: 'BLOOD CLEAN',
     pillQ: 'BA ZHENG'
   },
   {
-    label: '⚡ Vitality & Energy',
+    label: 'Vitality & Energy',
+    icon: 'zap',
     tag: 'Complete Energy Routine',
     teaQ: 'GINSENG DATE',
     pillQ: 'BAN LONG'
@@ -3880,12 +3918,12 @@ function renderSynergy() {
           <img class="syn-img" src="${pill.img}" alt="${pill.n}" onerror="this.style.opacity='.35'">
         </div>
         <div class="syn-info">
-          <div class="syn-badge">${b.label}</div>
+          <div class="syn-badge"><i data-lucide="${b.icon}" style="width:10px;height:10px;vertical-align:-1px;margin-right:3px"></i> ${b.label}</div>
           <div class="syn-names">${shortTea} + ${shortPill}</div>
           <div class="syn-price">Bundle: R${combined}</div>
         </div>
         <button class="syn-btn${bothAdded ? ' added' : ''}" onclick="addBundle(${ti},${pi},this)">
-          ${bothAdded ? '\u2713 Added' : 'Add Both'}
+          ${bothAdded ? '✓ Added' : 'Add Both'}
         </button>
       </div>
     `;

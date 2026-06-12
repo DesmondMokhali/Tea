@@ -1405,9 +1405,25 @@ function toggleMobileMenu(isOpen) {
   }
 }
 
+// ── CART PERSISTENCE & REDIRECT ──
+function showCart() {
+  window.location.href = 'index.html?showCart=1';
+}
+
 // Click toggle for dropdown
-document.addEventListener('DOMContentLoaded', () => { 
-  // Toggle nav dropdowns on click/tap (especially for touch screens)
+document.addEventListener('DOMContentLoaded', () => {
+  // Sync cart badge and total on load from localStorage
+  try {
+    const savedQty = localStorage.getItem('tangren_cart_qty') || '0';
+    const savedTotal = localStorage.getItem('tangren_cart_total') || '0.00';
+    const cntBadge = document.getElementById('cnt');
+    if (cntBadge) cntBadge.textContent = savedQty;
+    const headerTotal = document.getElementById('header-cart-total');
+    if (headerTotal) headerTotal.textContent = 'R' + parseFloat(savedTotal).toFixed(2);
+  } catch (e) {
+    console.error('Failed to load cart stats:', e);
+  }
+// Toggle nav dropdowns on click/tap (especially for touch screens)
   document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
     const btn = dropdown.querySelector('.nav-dropbtn');
     if (btn) {
