@@ -2197,6 +2197,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
 
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <script>
+// Initialize Lucide Icons
+if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+<script>
 const CATS=[
   {id:'all',l:'All Teas',ico:'grid-3x3'},
   {id:'detox',l:'Detox & Cleanse',ico:'leaf'},
@@ -3937,6 +3941,23 @@ function addBundleByNames() {
     setTimeout(function(){ showCart(); }, 500);
   } else {
     showToast('Opening store \u2014 bundle ready to add!');
+  }
+}
+
+// ── MOBILE MENU FUNCTION ──
+function toggleMobileMenu(isOpen) {
+  const overlay = document.getElementById('mobile-menu-overlay');
+  const drawer = document.getElementById('mobile-menu-drawer');
+  if (overlay && drawer) {
+    if (isOpen) {
+      overlay.classList.add('on');
+      drawer.classList.add('on');
+      document.body.style.overflow = 'hidden';
+    } else {
+      overlay.classList.remove('on');
+      drawer.classList.remove('on');
+      document.body.style.overflow = '';
+    }
   }
 }
 
