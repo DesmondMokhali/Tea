@@ -1,0 +1,86 @@
+name: Sync Inventory Stock
+
+on:
+  repository_dispatch:
+    types: [stock_sync, stock_update]
+
+permissions:
+  contents: write
+
+jobs:
+  update-stock:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Process Stock Sync Payload
+        id: process-payload
+        run: |
+          node -e '
+            const fs = require("fs");
+            
+            // Fetch client payload from GitHub Event Context
+            const payload = ${{ toJson(github.event.client_payload) }};
+            
+            if (!payload) {
+              console.error("Error: No payload found in the event.");
+              process.exit(1);
+            }
+            
+            const existingPath = "./products.json";
+            let products = [];
+            
+            if (fs.existsSync(existingPath)) {
+              products = JSON.parse(fs.readFileSync(existingPath, "utf8"));
+            }
+            
+            // Case 1: Make.com sends the entire updated products array
+            if (Array.isArray(payload)) {
+              console.log("Payload is an array. Writing directly to products.json...");
+              fs.writeFileSync(existingPath, JSON.stringify(payload, null, 2), "utf8");
+            } 
+            // Case 2: Make.com sends a key-value map or array of specific stock updates, e.g., { "ANTI-CANCER TEA": 50 } or [{ "n": "ANTI-CANCER TEA", "stock": 50 }]
+            else if (typeof payload === "object") {
+              console.log("Payload is an object. Merging stock updates...");
+              
+              const updates = Array.isArray(payload.updates) ? payload.updates : (Array.isArray(payload.products) ? payload.products : []);
+              
+              if (updates.length > 0) {
+                // Merge array updates: matching by name "n"
+                products.forEach(p => {
+                  const match = updates.find(u => u.n && u.n.toLowerCase() === p.n.toLowerCase());
+                  if (match && typeof match.stock !== "undefined") {
+                    p.stock = match.stock;
+                    console.log(`Updated stock for ${p.n} to ${p.stock}`);
+                  }
+                });
+              } else {
+                // Merge flat key-value updates: { "ANTI-CANCER TEA": 50 }
+                products.forEach(p => {
+                  if (typeof payload[p.n] !== "undefined") {
+                    p.stock = payload[p.n];
+                    console.log(`Updated stock for ${p.n} to ${p.stock}`);
+                  }
+                });
+              }
+              
+              fs.writeFileSync(existingPath, JSON.stringify(products, null, 2), "utf8");
+            } else {
+              console.error("Error: Unknown payload format.");
+              process.exit(1);
+            }
+          '
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add products.json
+          git commit -m "chore: sync stock via Make.com dispatch payload [skip ci]" || echo "No changes to commit"
+          git push
