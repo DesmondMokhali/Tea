@@ -5193,8 +5193,16 @@ async function loadDynamicCatalog() {
       throw new Error(`products.json must be a JSON array, got: ${typeof data}`);
     }
     
-    // Filter out any null or invalid entries (e.g. empty spreadsheet rows)
-    data = data.filter(item => item && typeof item === 'object');
+    // Filter out any null, invalid entries, header rows, or empty spreadsheet rows
+    data = data.filter(item => {
+      if (!item || typeof item !== 'object') return false;
+      const nameVal = item["Product"] || item["n"] || item["product"] || item[0];
+      if (typeof nameVal === 'string' && nameVal.toLowerCase().trim() === 'product') return false;
+      
+      // Also drop completely empty rows that have no valid string identifiers
+      const hasAnyValidString = Object.values(item).some(v => typeof v === 'string' && v.trim().length > 1);
+      return hasAnyValidString;
+    });
 
     if (data.length === 0) {
       throw new Error('products.json is an empty array — no products to display.');
@@ -5226,7 +5234,7 @@ async function loadDynamicCatalog() {
       
       // 4. Strip special characters like () for the image path to prevent 404s
       const safeNameForUrl = name.replace(/[^a-zA-Z0-9 -]/g, '').replace(/ /g, '_');
-      const imagePath = item.img || `assets/images/${safeNameForUrl}.png`;
+      const imagePath = `assets/images/${safeNameForUrl}.png`;
       
       // 4. Build the final clean product object for layout templates
       return {
