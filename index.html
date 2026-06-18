@@ -1931,8 +1931,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
           <span class="bundle-save-badge">Save R50</span>
         </div>
         <div class="hero-img-box hero-img-stack-right" onclick="openProductDetailByName('CHUAN XIN')" style="cursor: pointer;">
-          <img src="images/CHUAN_XIN_LI_AN_KANG_YAN_WAN_(Anti-Inflammation).png" alt="Chuan Xin Lian" onerror="this.style.opacity='.2'" style="display:none"> <!-- fallback support if name misspelled -->
-          <img src="images/CHUAN_XIN_LIAN_KANG_YAN_WAN_(Anti-Inflammation).png" alt="Chuan Xin Lian" onerror="this.style.opacity='.2'">
+          <img src="assets/images/CHUAN_XIN_LIAN_KANG_YAN_WAN.png" alt="Chuan Xin Lian" onerror="this.style.opacity='.2'">
           <div class="hero-img-desc">Chuan Xin Lian</div>
           <span class="hero-img-label-under">Defensive Pill</span>
         </div>
@@ -5221,7 +5220,14 @@ async function loadDynamicCatalog() {
         name = firstStringVal || "Unknown Product";
       }
       
-      // 2. Normalize the name for the lookup dictionary (forces UPPERCASE matching)
+      // 2. Normalize the name and fix known Make.com typos for flawless dictionary/image lookups
+      const aliases = {
+        'ANI-CANCER TEA': 'ANTI-CANCER TEA',
+        'BALSAM PEAR TEA (BITTER MELON TEA)': 'BALSAM PEAR TEA',
+        'FLOS CHRYSANTHEMI TEA': 'CHRYSANTHEMUM PLUS TEA'
+      };
+      name = aliases[name] || name;
+      
       const lookupKey = name.toUpperCase().trim();
       const details = (typeof tcmCatalogDetails !== 'undefined' && tcmCatalogDetails[lookupKey]) ? tcmCatalogDetails[lookupKey] : {};
 
