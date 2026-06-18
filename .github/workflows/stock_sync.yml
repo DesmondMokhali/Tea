@@ -2,7 +2,7 @@ name: Sync Inventory Stock
 
 on:
   repository_dispatch:
-    types: [stock_sync, stock_update]
+    types: [webhook_stock_sync] # ✅ FIX 1: Matches Make's event_type exactly
 
 permissions:
   contents: write
@@ -25,8 +25,8 @@ jobs:
           node -e '
             const fs = require("fs");
             
-            // Fetch client payload from GitHub Event Context
-            const payload = ${{ toJson(github.event.client_payload) }};
+            // ✅ FIX 2: Pass down only the target products content directly
+            const payload = ${{ toJson(github.event.client_payload.products) }};
             
             if (!payload) {
               console.error("Error: No payload found in the event.");
@@ -45,14 +45,13 @@ jobs:
               console.log("Payload is an array. Writing directly to products.json...");
               fs.writeFileSync(existingPath, JSON.stringify(payload, null, 2), "utf8");
             } 
-            // Case 2: Make.com sends a key-value map or array of specific stock updates, e.g., { "ANTI-CANCER TEA": 50 } or [{ "n": "ANTI-CANCER TEA", "stock": 50 }]
+            // Case 2: Make.com sends an object wrapping the updates
             else if (typeof payload === "object") {
               console.log("Payload is an object. Merging stock updates...");
               
-              const updates = Array.isArray(payload.updates) ? payload.updates : (Array.isArray(payload.products) ? payload.products : []);
+              const updates = Array.isArray(payload.updates) ? payload.updates : (Array.isArray(payload) ? payload : []);
               
               if (updates.length > 0) {
-                // Merge array updates: matching by name "n"
                 products.forEach(p => {
                   const match = updates.find(u => u.n && u.n.toLowerCase() === p.n.toLowerCase());
                   if (match && typeof match.stock !== "undefined") {
@@ -61,7 +60,6 @@ jobs:
                   }
                 });
               } else {
-                // Merge flat key-value updates: { "ANTI-CANCER TEA": 50 }
                 products.forEach(p => {
                   if (typeof payload[p.n] !== "undefined") {
                     p.stock = payload[p.n];
