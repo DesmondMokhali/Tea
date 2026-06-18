@@ -5239,7 +5239,7 @@ async function loadDynamicCatalog() {
       const cleanPrice = parseFloat(rawPrice) || 0;
       
       // 4. Strip special characters like () for the image path to prevent 404s
-      const safeNameForUrl = name.replace(/[()]/g, '_').replace(/[^a-zA-Z0-9 _-]/g, '').replace(/_+/g, '_');
+      const safeNameForUrl = name.replace(/[()]/g, '_').replace(/[^a-zA-Z0-9 _-]/g, '').replace(/ /g, '_').replace(/_+/g, '_');
       const imagePath = `assets/images/${safeNameForUrl}.png`;
       
       // 4. Build the final clean product object for layout templates
