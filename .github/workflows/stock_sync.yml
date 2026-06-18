@@ -2,7 +2,7 @@ name: Sync Inventory Stock
 
 on:
   repository_dispatch:
-    types: [webhook_stock_sync] # ✅ FIX 1: Matches Make's event_type exactly
+    types: [webhook_stock_sync]
 
 permissions:
   contents: write
@@ -25,8 +25,8 @@ jobs:
           node -e '
             const fs = require("fs");
             
-            // ✅ FIX 2: Pass down only the target products content directly
-            const payload = ${{ toJson(github.event.client_payload.products) }};
+            // Access the incoming array directly from the custom payload field
+            const payload = ${{ toJson(github.event.client_payload) }};
             
             if (!payload) {
               console.error("Error: No payload found in the event.");
@@ -37,38 +37,25 @@ jobs:
             let products = [];
             
             if (fs.existsSync(existingPath)) {
-              products = JSON.parse(fs.readFileSync(existingPath, "utf8"));
+              try {
+                products = JSON.parse(fs.readFileSync(existingPath, "utf8"));
+              } catch (e) {
+                console.log("Existing file was empty or invalid JSON. Initializing empty array.");
+                products = [];
+              }
             }
             
-            // Case 1: Make.com sends the entire updated products array
+            // Case 1: Payload is an array (Direct overwrite)
             if (Array.isArray(payload)) {
               console.log("Payload is an array. Writing directly to products.json...");
               fs.writeFileSync(existingPath, JSON.stringify(payload, null, 2), "utf8");
             } 
-            // Case 2: Make.com sends an object wrapping the updates
+            // Case 2: Payload is an object containing product listings
             else if (typeof payload === "object") {
-              console.log("Payload is an object. Merging stock updates...");
+              console.log("Payload is an object. Evaluating stock updates...");
               
-              const updates = Array.isArray(payload.updates) ? payload.updates : (Array.isArray(payload) ? payload : []);
-              
-              if (updates.length > 0) {
-                products.forEach(p => {
-                  const match = updates.find(u => u.n && u.n.toLowerCase() === p.n.toLowerCase());
-                  if (match && typeof match.stock !== "undefined") {
-                    p.stock = match.stock;
-                    console.log(`Updated stock for ${p.n} to ${p.stock}`);
-                  }
-                });
-              } else {
-                products.forEach(p => {
-                  if (typeof payload[p.n] !== "undefined") {
-                    p.stock = payload[p.n];
-                    console.log(`Updated stock for ${p.n} to ${p.stock}`);
-                  }
-                });
-              }
-              
-              fs.writeFileSync(existingPath, JSON.stringify(products, null, 2), "utf8");
+              // Direct fallback if the payload is a flat object map
+              fs.writeFileSync(existingPath, JSON.stringify(payload, null, 2), "utf8");
             } else {
               console.error("Error: Unknown payload format.");
               process.exit(1);
