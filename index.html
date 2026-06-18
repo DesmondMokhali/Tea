@@ -2254,6 +2254,12 @@ async function loadDynamicCatalog() {
     } catch (parseErr) {
       throw new Error(`products.json is not valid JSON: ${parseErr.message}`);
     }
+    
+    // Handle Make.com format {"products": [...]} or pure array
+    if (data && typeof data === 'object' && !Array.isArray(data) && Array.isArray(data.products)) {
+      data = data.products;
+    }
+
     if (!Array.isArray(data)) {
       throw new Error(`products.json must be a JSON array, got: ${typeof data}`);
     }
