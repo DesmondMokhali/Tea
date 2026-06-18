@@ -2244,32 +2244,44 @@ try {
 // ── DYNAMIC CATALOG LOAD ───────────────────────────────────────────────────
 async function loadDynamicCatalog() {
   try {
-    const res = await fetch('products.json');
-    if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
-    const data = await res.json();
-    if (!Array.isArray(data)) throw new Error('Data format error: expected array');
+    const res = await fetch('products.json', { cache: 'no-cache' });
+    if (!res.ok) {
+      throw new Error(`products.json not found (HTTP ${res.status}). Check the file exists in the repo root.`);
+    }
+    let data;
+    try {
+      data = await res.json();
+    } catch (parseErr) {
+      throw new Error(`products.json is not valid JSON: ${parseErr.message}`);
+    }
+    if (!Array.isArray(data)) {
+      throw new Error(`products.json must be a JSON array, got: ${typeof data}`);
+    }
+    if (data.length === 0) {
+      throw new Error('products.json is an empty array — no products to display.');
+    }
     window.P = data;
-    
+
     // Initialize catalog rendering and filters once window.P is populated
     buildFilters();
     updateCart();
-    
+
     // Read ?filter= param from URL and activate the correct tab
     const urlParams = new URLSearchParams(window.location.search);
     const filterParam = urlParams.get('filter');
     const searchParam = urlParams.get('search');
     const showCartParam = urlParams.get('showCart');
-    
+
     if (showCartParam) {
       setTimeout(() => { showCart(); }, 150);
     }
-    
+
     if (filterParam === 'teas' || filterParam === 'pills' || filterParam === 'all') {
       setType(filterParam);
     } else {
       renderGrid();
     }
-    
+
     if (searchParam) {
       const searchInput = document.getElementById('si');
       const mobileSearchInput = document.getElementById('si-mobile');
@@ -2278,9 +2290,11 @@ async function loadDynamicCatalog() {
       doSearch(searchParam);
     }
   } catch (error) {
-    console.error('Failed to load dynamic catalog:', error);
-    if (typeof showToast === 'function') {
-      showToast('Error loading catalog. Please reload the page.');
+    console.error('[Tangren] Failed to load dynamic catalog:', error.message);
+    // Show a loading error state in the product grid
+    const pg = document.getElementById('pg');
+    if (pg) {
+      pg.innerHTML = `<div class="nores"><h3>Catalog Unavailable</h3><p>Could not load products. Please refresh the page or try again shortly.</p><small style="opacity:.5">${error.message}</small></div>`;
     }
   }
 }
