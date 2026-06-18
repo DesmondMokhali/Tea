@@ -5200,10 +5200,18 @@ async function loadDynamicCatalog() {
       throw new Error('products.json is an empty array — no products to display.');
     }
     
+    // Debugger: Log the first item to see exact keys passed by Make.com
+    console.log("[Tangren Sample Item]:", data[0]);
+    
     // Map raw Make.com data and merge with tcmCatalogDetails
     window.P = data.map(item => {
-      // 1. Get the clean product name
-      const name = item["Product"] || item.n || "Unknown Product";
+      // 1. Get the clean product name using multiple fallbacks
+      let name = item["Product"] || item["n"] || item["product"] || item[0];
+      if (!name) {
+        // Fallback to the first string value found in the object keys
+        const firstStringVal = Object.values(item).find(v => typeof v === 'string' && isNaN(Number(v)) && v.length > 2);
+        name = firstStringVal || "Unknown Product";
+      }
       
       // 2. Normalize the name for the lookup dictionary (forces UPPERCASE matching)
       const lookupKey = name.toUpperCase().trim();
@@ -5216,7 +5224,9 @@ async function loadDynamicCatalog() {
       }
       const cleanPrice = parseFloat(rawPrice) || 0;
       
-      const imagePath = item.img || `assets/images/${name.replace(/ /g, '_')}.png`;
+      // 4. Strip special characters like () for the image path to prevent 404s
+      const safeNameForUrl = name.replace(/[^a-zA-Z0-9 -]/g, '').replace(/ /g, '_');
+      const imagePath = item.img || `assets/images/${safeNameForUrl}.png`;
       
       // 4. Build the final clean product object for layout templates
       return {
