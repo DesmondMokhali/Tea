@@ -2263,6 +2263,10 @@ async function loadDynamicCatalog() {
     if (!Array.isArray(data)) {
       throw new Error(`products.json must be a JSON array, got: ${typeof data}`);
     }
+    
+    // Filter out any null or invalid entries (e.g. empty spreadsheet rows)
+    data = data.filter(item => item && typeof item === 'object');
+
     if (data.length === 0) {
       throw new Error('products.json is an empty array — no products to display.');
     }
