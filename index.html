@@ -5199,7 +5199,42 @@ async function loadDynamicCatalog() {
     if (data.length === 0) {
       throw new Error('products.json is an empty array — no products to display.');
     }
-    window.P = data;
+    
+    // Map raw Make.com data and merge with tcmCatalogDetails
+    window.P = data.map(item => {
+      // 1. Get the clean product name
+      const name = item["Product"] || item.n || "Unknown Product";
+      
+      // 2. Normalize the name for the lookup dictionary (forces UPPERCASE matching)
+      const lookupKey = name.toUpperCase().trim();
+      const details = (typeof tcmCatalogDetails !== 'undefined' && tcmCatalogDetails[lookupKey]) ? tcmCatalogDetails[lookupKey] : {};
+
+      // 3. Safely handle the price and completely strip out any "R" currency markers
+      let rawPrice = item["Retail price"] || item.p || 0;
+      if (typeof rawPrice === 'string') {
+        rawPrice = rawPrice.replace(/[Rr\\s]/g, ''); // Strips "R", "r", and spaces
+      }
+      const cleanPrice = parseFloat(rawPrice) || 0;
+      
+      const imagePath = item.img || \`assets/images/\${name.replace(/ /g, '_')}.png\`;
+      
+      // 4. Build the final clean product object for layout templates
+      return {
+        n: name,
+        t: details.t || item.t || "Traditional Herbal Formula",
+        cat: details.cat || item.cat || "general",
+        p: cleanPrice, // Pure number for .toFixed(2)
+        r: details.r || item.r || 4.5,
+        rv: details.rv || item.rv || 12,
+        b: details.b || item.b || null,
+        img: imagePath,
+        ing: details.ing || item.ing || [],
+        ben: details.ben || item.ben || [],
+        ind: details.ind || item.ind || "Formulated to support holistic wellbeing.",
+        use: details.use || item.use || "Consult packaging for traditional preparation.",
+        ch: details.ch || item.ch || ["TCM", "Herbal"]
+      };
+    });
 
     // Initialize catalog rendering and filters once window.P is populated
     buildFilters();
