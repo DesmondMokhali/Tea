@@ -5212,11 +5212,11 @@ async function loadDynamicCatalog() {
       // 3. Safely handle the price and completely strip out any "R" currency markers
       let rawPrice = item["Retail price"] || item.p || 0;
       if (typeof rawPrice === 'string') {
-        rawPrice = rawPrice.replace(/[Rr\\s]/g, ''); // Strips "R", "r", and spaces
+        rawPrice = rawPrice.replace(/[Rr\s]/g, ''); // Strips "R", "r", and spaces
       }
       const cleanPrice = parseFloat(rawPrice) || 0;
       
-      const imagePath = item.img || \`assets/images/\${name.replace(/ /g, '_')}.png\`;
+      const imagePath = item.img || `assets/images/${name.replace(/ /g, '_')}.png`;
       
       // 4. Build the final clean product object for layout templates
       return {
