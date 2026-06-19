@@ -138,7 +138,7 @@ for key, filename in img_map.items():
         continue
 
     # Inject img as the first property
-    new_entry_body = f"\n        img: '{filename}'," + entry_body
+    new_entry_body = f'\n        img: "{filename}",' + entry_body
     content = content[:brace_open] + new_entry_body + content[brace_close:]
     patched += 1
     print(f"  PATCHED: {key} -> {filename}")
