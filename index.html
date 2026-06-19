@@ -5328,11 +5328,20 @@ async function loadDynamicCatalog() {
         ? `assets/images/${details.img}`
         : `assets/images/${name.toUpperCase().replace(/\s+/g, '_')}.png`;
       
-      // 4. Build the final clean product object for layout templates
+      // 5. Detect whether this product is a pill using the stock code field ("5")
+      //    Teas use TG-TEA-XX and pills use TG-PILL-XX
+      const stockCode = item["5"] || item["External ID"] || item.sku || "";
+      const isPill = stockCode.toUpperCase().includes('PILL') ||
+                     name.toUpperCase().includes(' WAN') ||
+                     name.toUpperCase().includes(' WAN ') ||
+                     name.toUpperCase().endsWith('WAN');
+
+      // 6. Build the final clean product object for layout templates
       return {
         n: name,
         t: details.t || item.t || "Traditional Herbal Formula",
         cat: details.cat || item.cat || "general",
+        isPill: isPill,
         p: cleanPrice, // Pure number for .toFixed(2)
         r: details.r || item.r || 4.5,
         rv: details.rv || item.rv || 12,
