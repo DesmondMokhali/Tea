@@ -5342,7 +5342,26 @@ async function loadDynamicCatalog() {
           .replace(/^_|_$/g, '')            // trim edge underscores
           .toLowerCase();
       }
-      const imgSlug = details.img ? toImgSlug(details.img) : toImgSlug(name.replace(/\s+/g,'_'));
+      let imgSlug = details.img ? toImgSlug(details.img) : toImgSlug(name.replace(/\s+/g,'_'));
+      
+      // Image overrides to map spreadsheet names to files physically present in the folder
+      const imgOverrides = {
+        'clear_heat_detoxifying_tea': 'detox_tea',
+        'ginseng_and_goji_berry_tea': 'ginseng_tea',
+        'ginseng_and_green_tea': 'ginseng_tea',
+        'menopause_balance_tea': 'menopause_tea',
+        'blood_sugar_balancing_tea': 'sugar_balance_tea',
+        'tian_wang_bu_xin_dan': 'tian_wang_bu_xin_wan',
+        'xiao_chai_hu_wan': 'xiao_chai_hu_tang_wan',
+        'xiao_yao_san': 'xiao_yao_wan',
+        'zhi_bai_di_huang_pian': 'zhi_bai_di_huang_wan',
+        'shi_liu_wei_di_huang_wan': 'liu_wei_di_huang_wan',
+        'bi_min_gan_wan': 'te_xiao_bi_min_gan_wan',
+        'shu_gan_wan': 'chai_hu_shu_gan_wan'
+      };
+      if (imgOverrides[imgSlug]) {
+        imgSlug = imgOverrides[imgSlug];
+      }
       const imagePath = `images/${imgSlug}.png`;
 
       // 5. Detect whether this product is a pill using the stock code field ("5")
