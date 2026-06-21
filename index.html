@@ -5350,6 +5350,17 @@ async function loadDynamicCatalog() {
         // Return dummy / skipped state
         return null;
       }
+
+      // Spelling normalization overrides to map spreadsheet names to actual files in /images
+      const spellingOverrides = {
+        'ani_cancer_tea': 'anti_cancer_tea',
+        'female_inflamation_tea': 'female_inflammation_tea',
+        'olong_tea': 'oolong_tea'
+      };
+      if (spellingOverrides[imgSlug]) {
+        imgSlug = spellingOverrides[imgSlug];
+      }
+      
       const imagePath = `images/${imgSlug}.png`;
 
       // 5. Detect whether this product is a pill using the stock code field ("5")
