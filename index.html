@@ -5312,7 +5312,14 @@ async function loadDynamicCatalog() {
       };
       name = aliases[name] || name;
       
-      const lookupKey = name.toUpperCase().trim();
+      let lookupKey = name.toUpperCase().trim();
+      if (typeof tcmCatalogDetails !== 'undefined' && !tcmCatalogDetails[lookupKey]) {
+        // Fallback: strip (Description) tag to match base name
+        const baseKey = lookupKey.split('(')[0].trim();
+        const keys = Object.keys(tcmCatalogDetails);
+        const matched = keys.find(k => k.split('(')[0].trim() === baseKey);
+        if (matched) lookupKey = matched;
+      }
       const details = (typeof tcmCatalogDetails !== 'undefined' && tcmCatalogDetails[lookupKey]) ? tcmCatalogDetails[lookupKey] : {};
 
       // 3. Safely handle the price and completely strip out any "R" currency markers
@@ -5328,6 +5335,8 @@ async function loadDynamicCatalog() {
         return raw
           .replace(/\.png$/i, '')          // strip extension
           .replace(/\([^)]*\)/g, '')        // strip (Description) tags
+          .replace(/&/g, 'and')             // handle ampersands -> and
+          .replace(/[^a-zA-Z0-9\s-_]/g, '') // remove special characters
           .replace(/[-\s]+/g, '_')          // hyphens & spaces → underscore
           .replace(/_+/g, '_')              // collapse multiple underscores
           .replace(/^_|_$/g, '')            // trim edge underscores
@@ -5342,7 +5351,16 @@ async function loadDynamicCatalog() {
       const isPill = stockCode.toUpperCase().includes('PILL') ||
                      name.toUpperCase().includes(' WAN') ||
                      name.toUpperCase().includes(' WAN ') ||
-                     name.toUpperCase().endsWith('WAN');
+                     name.toUpperCase().endsWith('WAN') ||
+                     name.toUpperCase().includes(' PIAN') ||
+                     name.toUpperCase().includes(' PIAN ') ||
+                     name.toUpperCase().endsWith('PIAN') ||
+                     name.toUpperCase().includes(' SAN') ||
+                     name.toUpperCase().includes(' SAN ') ||
+                     name.toUpperCase().endsWith('SAN') ||
+                     name.toUpperCase().includes(' DAN') ||
+                     name.toUpperCase().includes(' DAN ') ||
+                     name.toUpperCase().endsWith('DAN');
 
       // 6. Build the final clean product object for layout templates
       return {
