@@ -5342,25 +5342,13 @@ async function loadDynamicCatalog() {
           .replace(/^_|_$/g, '')            // trim edge underscores
           .toLowerCase();
       }
-      let imgSlug = details.img ? toImgSlug(details.img) : toImgSlug(name.replace(/\s+/g,'_'));
+      let imgSlug = toImgSlug(name);
       
-      // Image overrides to map spreadsheet names to files physically present in the folder
-      const imgOverrides = {
-        'clear_heat_detoxifying_tea': 'detox_tea',
-        'ginseng_and_goji_berry_tea': 'ginseng_tea',
-        'ginseng_and_green_tea': 'ginseng_tea',
-        'menopause_balance_tea': 'menopause_tea',
-        'blood_sugar_balancing_tea': 'sugar_balance_tea',
-        'tian_wang_bu_xin_dan': 'tian_wang_bu_xin_wan',
-        'xiao_chai_hu_wan': 'xiao_chai_hu_tang_wan',
-        'xiao_yao_san': 'xiao_yao_wan',
-        'zhi_bai_di_huang_pian': 'zhi_bai_di_huang_wan',
-        'shi_liu_wei_di_huang_wan': 'liu_wei_di_huang_wan',
-        'bi_min_gan_wan': 'te_xiao_bi_min_gan_wan',
-        'shu_gan_wan': 'chai_hu_shu_gan_wan'
-      };
-      if (imgOverrides[imgSlug]) {
-        imgSlug = imgOverrides[imgSlug];
+      // Filter out technical files that aren't real products
+      const isTechFile = imgSlug === 'rename_images' || imgSlug === 'tangren_herbal_teas_semantic';
+      if (isTechFile) {
+        // Return dummy / skipped state
+        return null;
       }
       const imagePath = `images/${imgSlug}.png`;
 
@@ -5398,7 +5386,7 @@ async function loadDynamicCatalog() {
         use: details.use || item.use || "Consult packaging for traditional preparation.",
         ch: details.ch || item.ch || ["TCM", "Herbal"]
       };
-    });
+    }).filter(p => p !== null);
 
     // Initialize catalog rendering and filters once window.P is populated
     buildFilters();
