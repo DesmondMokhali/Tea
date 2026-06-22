@@ -6,7 +6,8 @@
       "2": "Fulfillment Model",
       "3": "Target Profit Margin",
       "4": "Wholesale Cost",
-      "5": "External ID"
+      "5": "External ID",
+      "6": "Image File"
     },
     {
       "0": "Abdomen Slimming Tea",
@@ -14,7 +15,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-001"
+      "5": "TG-TEA-001",
+      "6": null
     },
     {
       "0": "An Shen Bu Xin Wan",
@@ -22,7 +24,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-001"
+      "5": "TG-PILL-001",
+      "6": null
     },
     {
       "0": "Anti Cancer Tea",
@@ -30,7 +33,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-002"
+      "5": "TG-TEA-002",
+      "6": null
     },
     {
       "0": "Anti Stress Sleeping Tea",
@@ -38,7 +42,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-003"
+      "5": "TG-TEA-003",
+      "6": null
     },
     {
       "0": "Anti Virus Tea",
@@ -46,7 +51,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-004"
+      "5": "TG-TEA-004",
+      "6": null
     },
     {
       "0": "Ba Zhen Wan",
@@ -54,7 +60,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-002"
+      "5": "TG-PILL-002",
+      "6": null
     },
     {
       "0": "Ba Zheng Wan",
@@ -62,7 +69,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-003"
+      "5": "TG-PILL-003",
+      "6": null
     },
     {
       "0": "Balsam Pear Tea",
@@ -70,7 +78,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-005"
+      "5": "TG-TEA-005",
+      "6": null
     },
     {
       "0": "Ban Long Wan",
@@ -78,7 +87,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-004"
+      "5": "TG-PILL-004",
+      "6": null
     },
     {
       "0": "Ban Xia Xie Xin Wan",
@@ -86,7 +96,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-005"
+      "5": "TG-PILL-005",
+      "6": null
     },
     {
       "0": "Bao He Wan",
@@ -94,7 +105,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-006"
+      "5": "TG-PILL-006",
+      "6": null
     },
     {
       "0": "Barley Grass Juice",
@@ -102,7 +114,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-007"
+      "5": "TG-PILL-007",
+      "6": null
     },
     {
       "0": "Bi Yan Wan",
@@ -110,7 +123,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-008"
+      "5": "TG-PILL-008",
+      "6": null
     },
     {
       "0": "Black Tea",
@@ -118,7 +132,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-006"
+      "5": "TG-TEA-006",
+      "6": null
     },
     {
       "0": "Blood Cleaning Tea",
@@ -126,7 +141,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-007"
+      "5": "TG-TEA-007",
+      "6": null
     },
     {
       "0": "Blood Tonic Tea",
@@ -134,7 +150,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-008"
+      "5": "TG-TEA-008",
+      "6": null
     },
     {
       "0": "Bu Zhong Yi Qi Wan",
@@ -142,7 +159,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-009"
+      "5": "TG-PILL-009",
+      "6": null
     },
     {
       "0": "Cassia Tea",
@@ -150,7 +168,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-009"
+      "5": "TG-TEA-009",
+      "6": null
     },
     {
       "0": "Chai Hu Shu Gan Wan",
@@ -158,7 +177,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-010"
+      "5": "TG-PILL-010",
+      "6": null
     },
     {
       "0": "Chrysanthemum Plus Tea",
@@ -166,7 +186,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-010"
+      "5": "TG-TEA-010",
+      "6": null
     },
     {
       "0": "Chuan Xin Lian Kang Yan Wan",
@@ -174,7 +195,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-011"
+      "5": "TG-PILL-011",
+      "6": null
     },
     {
       "0": "Chuan Xiong Cha Tiao Wan",
@@ -182,7 +204,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-012"
+      "5": "TG-PILL-012",
+      "6": null
     },
     {
       "0": "Constipation Tea",
@@ -190,7 +213,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-011"
+      "5": "TG-TEA-011",
+      "6": null
     },
     {
       "0": "Cooling Tea",
@@ -198,7 +222,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-012"
+      "5": "TG-TEA-012",
+      "6": null
     },
     {
       "0": "Coughing Tea",
@@ -206,7 +231,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-013"
+      "5": "TG-TEA-013",
+      "6": null
     },
     {
       "0": "Da Bu Yin Wan",
@@ -214,7 +240,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-013"
+      "5": "TG-PILL-013",
+      "6": null
     },
     {
       "0": "Dang Gui Wan",
@@ -222,7 +249,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-014"
+      "5": "TG-PILL-014",
+      "6": null
     },
     {
       "0": "Dealcoholic Tea",
@@ -230,7 +258,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-014"
+      "5": "TG-TEA-014",
+      "6": null
     },
     {
       "0": "Detox Tea",
@@ -238,7 +267,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-015"
+      "5": "TG-TEA-015",
+      "6": null
     },
     {
       "0": "Digestive Tea",
@@ -246,7 +276,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-016"
+      "5": "TG-TEA-016",
+      "6": null
     },
     {
       "0": "Du Huo Ji Sheng Wan",
@@ -254,7 +285,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-015"
+      "5": "TG-PILL-015",
+      "6": null
     },
     {
       "0": "Er Chen Wan",
@@ -262,7 +294,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-016"
+      "5": "TG-PILL-016",
+      "6": null
     },
     {
       "0": "Fang Feng Tong Sheng Wan",
@@ -270,7 +303,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-017"
+      "5": "TG-PILL-017",
+      "6": null
     },
     {
       "0": "Female Inflamation Tea",
@@ -278,7 +312,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-017"
+      "5": "TG-TEA-017",
+      "6": null
     },
     {
       "0": "Five Seeds Tea",
@@ -286,7 +321,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-018"
+      "5": "TG-TEA-018",
+      "6": null
     },
     {
       "0": "Fu Zheng Fang",
@@ -294,7 +330,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-018"
+      "5": "TG-PILL-018",
+      "6": null
     },
     {
       "0": "Fu Zi Li Zhong Wan",
@@ -302,7 +339,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-019"
+      "5": "TG-PILL-019",
+      "6": null
     },
     {
       "0": "Gan Mao Ling",
@@ -310,7 +348,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-020"
+      "5": "TG-PILL-020",
+      "6": null
     },
     {
       "0": "Ginkgo Tea",
@@ -318,7 +357,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-019"
+      "5": "TG-TEA-019",
+      "6": null
     },
     {
       "0": "Ginseng Date Tea",
@@ -326,7 +366,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-020"
+      "5": "TG-TEA-020",
+      "6": null
     },
     {
       "0": "Ginseng Tea",
@@ -334,7 +375,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-021"
+      "5": "TG-TEA-021",
+      "6": null
     },
     {
       "0": "Green Tea",
@@ -342,7 +384,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-022"
+      "5": "TG-TEA-022",
+      "6": null
     },
     {
       "0": "Guan Jie Yan Wan",
@@ -350,7 +393,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-021"
+      "5": "TG-PILL-021",
+      "6": null
     },
     {
       "0": "Guava Tea",
@@ -358,7 +402,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-023"
+      "5": "TG-TEA-023",
+      "6": null
     },
     {
       "0": "Gui Pi Wan",
@@ -366,7 +411,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-022"
+      "5": "TG-PILL-022",
+      "6": null
     },
     {
       "0": "Gui Zhi Fu Ling Wan",
@@ -374,7 +420,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-023"
+      "5": "TG-PILL-023",
+      "6": null
     },
     {
       "0": "Gynostemma Tea",
@@ -382,7 +429,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-024"
+      "5": "TG-TEA-024",
+      "6": null
     },
     {
       "0": "Heart Care Tea",
@@ -390,7 +438,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-025"
+      "5": "TG-TEA-025",
+      "6": null
     },
     {
       "0": "Huai Jiao Wan",
@@ -398,7 +447,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-024"
+      "5": "TG-PILL-024",
+      "6": null
     },
     {
       "0": "Huo Xiang Zheng Qi Wan",
@@ -406,7 +456,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-025"
+      "5": "TG-PILL-025",
+      "6": null
     },
     {
       "0": "Hypertension Tea",
@@ -414,7 +465,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-026"
+      "5": "TG-TEA-026",
+      "6": null
     },
     {
       "0": "Jia Wei Xiao Yao Wan",
@@ -422,7 +474,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-026"
+      "5": "TG-PILL-026",
+      "6": null
     },
     {
       "0": "Jiang Dan Gu Chuan Wan",
@@ -430,7 +483,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-027"
+      "5": "TG-PILL-027",
+      "6": null
     },
     {
       "0": "Jiang Ya Wan",
@@ -438,7 +492,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-028"
+      "5": "TG-PILL-028",
+      "6": null
     },
     {
       "0": "Jie Geng Wan",
@@ -446,7 +501,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-029"
+      "5": "TG-PILL-029",
+      "6": null
     },
     {
       "0": "Jin Gui Shen Qi Wan",
@@ -454,7 +510,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-030"
+      "5": "TG-PILL-030",
+      "6": null
     },
     {
       "0": "Jin Suo Gu Jing Wan",
@@ -462,7 +519,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-031"
+      "5": "TG-PILL-031",
+      "6": null
     },
     {
       "0": "Jiu Wei Qiang Huo Wan",
@@ -470,7 +528,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-032"
+      "5": "TG-PILL-032",
+      "6": null
     },
     {
       "0": "Joint Care Tea",
@@ -478,7 +537,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-027"
+      "5": "TG-TEA-027",
+      "6": null
     },
     {
       "0": "Kang Gu Zeng Sheng Wan",
@@ -486,7 +546,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-033"
+      "5": "TG-PILL-033",
+      "6": null
     },
     {
       "0": "Kidney Care Tea",
@@ -494,7 +555,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-028"
+      "5": "TG-TEA-028",
+      "6": null
     },
     {
       "0": "Kuding Tea",
@@ -502,7 +564,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-029"
+      "5": "TG-TEA-029",
+      "6": null
     },
     {
       "0": "Li Dan Pai Shi Wan",
@@ -510,7 +573,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-034"
+      "5": "TG-PILL-034",
+      "6": null
     },
     {
       "0": "Li Dan Wan",
@@ -518,7 +582,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-035"
+      "5": "TG-PILL-035",
+      "6": null
     },
     {
       "0": "Li Zhong Wan",
@@ -526,7 +591,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-036"
+      "5": "TG-PILL-036",
+      "6": null
     },
     {
       "0": "Lian Qiao Bai Du Wan",
@@ -534,7 +600,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-037"
+      "5": "TG-PILL-037",
+      "6": null
     },
     {
       "0": "Libido Up Tea",
@@ -542,7 +609,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-030"
+      "5": "TG-TEA-030",
+      "6": null
     },
     {
       "0": "Liu Wei Di Huang Wan",
@@ -550,7 +618,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-038"
+      "5": "TG-PILL-038",
+      "6": null
     },
     {
       "0": "Liver Care Tea",
@@ -558,7 +627,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-031"
+      "5": "TG-TEA-031",
+      "6": null
     },
     {
       "0": "Long Dan Xie Gan Wan",
@@ -566,7 +636,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-039"
+      "5": "TG-PILL-039",
+      "6": null
     },
     {
       "0": "Lung Cleaning Tea",
@@ -574,7 +645,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-032"
+      "5": "TG-TEA-032",
+      "6": null
     },
     {
       "0": "Mai Wei Di Huang Wan",
@@ -582,7 +654,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-040"
+      "5": "TG-PILL-040",
+      "6": null
     },
     {
       "0": "Menopause Tea",
@@ -590,7 +663,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-033"
+      "5": "TG-TEA-033",
+      "6": null
     },
     {
       "0": "Menstruation Regulating Tea",
@@ -598,7 +672,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-034"
+      "5": "TG-TEA-034",
+      "6": null
     },
     {
       "0": "Ming Mu Di Huang Wan",
@@ -606,7 +681,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-041"
+      "5": "TG-PILL-041",
+      "6": null
     },
     {
       "0": "Moringa Tea",
@@ -614,7 +690,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-035"
+      "5": "TG-TEA-035",
+      "6": null
     },
     {
       "0": "Mu Xiang Shun Qi Wan",
@@ -622,7 +699,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-042"
+      "5": "TG-PILL-042",
+      "6": null
     },
     {
       "0": "Oolong Tea",
@@ -630,7 +708,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-036"
+      "5": "TG-TEA-036",
+      "6": null
     },
     {
       "0": "Pian Tou Tong Wan",
@@ -638,7 +717,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-043"
+      "5": "TG-PILL-043",
+      "6": null
     },
     {
       "0": "Prostate Care Tea",
@@ -646,7 +726,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-037"
+      "5": "TG-TEA-037",
+      "6": null
     },
     {
       "0": "Qi Ju Di Huang Wan",
@@ -654,7 +735,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-044"
+      "5": "TG-PILL-044",
+      "6": null
     },
     {
       "0": "Qian Lie Shu Wan",
@@ -662,7 +744,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-045"
+      "5": "TG-PILL-045",
+      "6": null
     },
     {
       "0": "Qing Qi Hua Tan Wan",
@@ -670,7 +753,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-046"
+      "5": "TG-PILL-046",
+      "6": null
     },
     {
       "0": "Qing Re An Chuang Wan",
@@ -678,7 +762,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-047"
+      "5": "TG-PILL-047",
+      "6": null
     },
     {
       "0": "Quit Smoking Tea",
@@ -686,7 +771,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-038"
+      "5": "TG-TEA-038",
+      "6": null
     },
     {
       "0": "Red Flower Green Tea",
@@ -694,7 +780,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-039"
+      "5": "TG-TEA-039",
+      "6": null
     },
     {
       "0": "Sex Tea",
@@ -702,7 +789,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-040"
+      "5": "TG-TEA-040",
+      "6": null
     },
     {
       "0": "Shao Fu Zhu Yu Wan",
@@ -710,7 +798,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-048"
+      "5": "TG-PILL-048",
+      "6": null
     },
     {
       "0": "Shen Jing Shuai Ruo Wan",
@@ -718,7 +807,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-049"
+      "5": "TG-PILL-049",
+      "6": null
     },
     {
       "0": "Shen Ling Bai Zhu Wan",
@@ -726,7 +816,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-050"
+      "5": "TG-PILL-050",
+      "6": null
     },
     {
       "0": "Sheng Mai Wan",
@@ -734,7 +825,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-051"
+      "5": "TG-PILL-051",
+      "6": null
     },
     {
       "0": "Shou Wu Wan",
@@ -742,7 +834,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-052"
+      "5": "TG-PILL-052",
+      "6": null
     },
     {
       "0": "Si Jun Zi Wan",
@@ -750,7 +843,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-053"
+      "5": "TG-PILL-053",
+      "6": null
     },
     {
       "0": "Si Miao Wan",
@@ -758,7 +852,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-054"
+      "5": "TG-PILL-054",
+      "6": null
     },
     {
       "0": "Si Wu Tang Wan",
@@ -766,7 +861,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-055"
+      "5": "TG-PILL-055",
+      "6": null
     },
     {
       "0": "Skin Lightening Tea",
@@ -774,7 +870,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-041"
+      "5": "TG-TEA-041",
+      "6": null
     },
     {
       "0": "Slim Tea",
@@ -782,7 +879,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-042"
+      "5": "TG-TEA-042",
+      "6": null
     },
     {
       "0": "Sugar Balance Tea",
@@ -790,7 +888,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-043"
+      "5": "TG-TEA-043",
+      "6": null
     },
     {
       "0": "Tao Hong Si Wu Wan",
@@ -798,7 +897,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-056"
+      "5": "TG-PILL-056",
+      "6": null
     },
     {
       "0": "Te Xiao Bi Min Gan Wan",
@@ -806,7 +906,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-057"
+      "5": "TG-PILL-057",
+      "6": null
     },
     {
       "0": "Te Xiao Jing Zhui Tong Wan",
@@ -814,7 +915,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-058"
+      "5": "TG-PILL-058",
+      "6": null
     },
     {
       "0": "Three Flowers Tea",
@@ -822,7 +924,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-044"
+      "5": "TG-TEA-044",
+      "6": null
     },
     {
       "0": "Tian Ma Gou Teng Wan",
@@ -830,7 +933,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-059"
+      "5": "TG-PILL-059",
+      "6": null
     },
     {
       "0": "Tian Wang Bu Xin Wan",
@@ -838,7 +942,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-060"
+      "5": "TG-PILL-060",
+      "6": null
     },
     {
       "0": "Tiao Jing Cu Yun Wan",
@@ -846,7 +951,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-061"
+      "5": "TG-PILL-061",
+      "6": null
     },
     {
       "0": "Tong Jing Wan",
@@ -854,7 +960,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-062"
+      "5": "TG-PILL-062",
+      "6": null
     },
     {
       "0": "Walnut Tea",
@@ -862,7 +969,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-045"
+      "5": "TG-TEA-045",
+      "6": null
     },
     {
       "0": "Wen Jing Wan",
@@ -870,7 +978,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-063"
+      "5": "TG-PILL-063",
+      "6": null
     },
     {
       "0": "White Gourd Slim Tea",
@@ -878,7 +987,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-046"
+      "5": "TG-TEA-046",
+      "6": null
     },
     {
       "0": "Womb Care Tea",
@@ -886,7 +996,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-TEA-047"
+      "5": "TG-TEA-047",
+      "6": null
     },
     {
       "0": "Wu Ji Bai Feng Wan",
@@ -894,7 +1005,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-064"
+      "5": "TG-PILL-064",
+      "6": null
     },
     {
       "0": "Wu Ling Wan",
@@ -902,7 +1014,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-065"
+      "5": "TG-PILL-065",
+      "6": null
     },
     {
       "0": "Wu Zi Yan Zong Wan",
@@ -910,7 +1023,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-066"
+      "5": "TG-PILL-066",
+      "6": null
     },
     {
       "0": "Xiang Sha Liu Jun Wan",
@@ -918,7 +1032,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-067"
+      "5": "TG-PILL-067",
+      "6": null
     },
     {
       "0": "Xiang Sha Yang Wei Wan",
@@ -926,7 +1041,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-068"
+      "5": "TG-PILL-068",
+      "6": null
     },
     {
       "0": "Xiao Chai Hu Tang Wan",
@@ -934,7 +1050,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-069"
+      "5": "TG-PILL-069",
+      "6": null
     },
     {
       "0": "Xiao Huo Luo Wan",
@@ -942,7 +1059,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-070"
+      "5": "TG-PILL-070",
+      "6": null
     },
     {
       "0": "Xiao Yao Wan",
@@ -950,7 +1068,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-071"
+      "5": "TG-PILL-071",
+      "6": null
     },
     {
       "0": "Xue Fu Zhu Yu Wan",
@@ -958,7 +1077,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-072"
+      "5": "TG-PILL-072",
+      "6": null
     },
     {
       "0": "Yang Xue Sheng Fa Wan",
@@ -966,7 +1086,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-073"
+      "5": "TG-PILL-073",
+      "6": null
     },
     {
       "0": "Yu Ping Feng Wan",
@@ -974,7 +1095,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-074"
+      "5": "TG-PILL-074",
+      "6": null
     },
     {
       "0": "Zhen Zhu An Chuang Wan",
@@ -982,7 +1104,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-075"
+      "5": "TG-PILL-075",
+      "6": null
     },
     {
       "0": "Zhi Bai Di Huang Wan",
@@ -990,7 +1113,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-076"
+      "5": "TG-PILL-076",
+      "6": null
     },
     {
       "0": "Zhi Ke Ding Chuan Wan",
@@ -998,7 +1122,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-077"
+      "5": "TG-PILL-077",
+      "6": null
     },
     {
       "0": "Zhi Yang Wan",
@@ -1006,7 +1131,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-078"
+      "5": "TG-PILL-078",
+      "6": null
     },
     {
       "0": "Zhuang Yang Wan",
@@ -1014,7 +1140,8 @@
       "2": "Store Pickup (Cyrildene)",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-079"
+      "5": "TG-PILL-079",
+      "6": null
     },
     {
       "0": "Zuo Gu Shen Jing Tong Wan",
@@ -1022,7 +1149,8 @@
       "2": "Own Bulk Stock",
       "3": "30",
       "4": "70",
-      "5": "TG-PILL-080"
+      "5": "TG-PILL-080",
+      "6": null
     }
   ]
 }
