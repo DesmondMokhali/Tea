@@ -9,23 +9,7 @@
       "5": "External ID"
     },
     {
-      "0": "ABDOMEN SLIMMING TEA",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "AN SHEN BU XIN WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-01"
-    },
-    {
-      "0": "ANI CANCER TEA",
+      "0": "ANI-CANCER TEA",
       "1": "R80",
       "2": "Own Bulk Stock",
       "3": "230",
@@ -33,7 +17,7 @@
       "5": "TG-TEA-01"
     },
     {
-      "0": "ANTI STRESS SLEEPING TEA",
+      "0": "ANTI-STRESS SLEEPING TEA",
       "1": "R440",
       "2": "Own Bulk Stock",
       "3": "230",
@@ -41,7 +25,7 @@
       "5": "TG-TEA-02"
     },
     {
-      "0": "ANTI VIRUS TEA",
+      "0": "ANTI-VIRUS TEA",
       "1": "R450",
       "2": "Own Bulk Stock",
       "3": "230",
@@ -49,52 +33,12 @@
       "5": "TG-TEA-03"
     },
     {
-      "0": "BA ZHEN WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-02"
-    },
-    {
-      "0": "BA ZHENG WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-03"
-    },
-    {
-      "0": "BALSAM PEAR TEA",
+      "0": "BALSAM PEAR TEA (BITTER MELON TEA)",
       "1": "R450",
       "2": "Own Bulk Stock",
       "3": "230",
       "4": "220",
       "5": "TG-TEA-04"
-    },
-    {
-      "0": "BAN LONG WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-04"
-    },
-    {
-      "0": "BAN XIA XIE XIN WAN",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "BAO HE WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-02"
     },
     {
       "0": "BARLEY GRASS JUICE",
@@ -105,23 +49,15 @@
       "5": "TG-TEA-05"
     },
     {
-      "0": "BI YAN WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-13"
-    },
-    {
-      "0": "BLACK TEA",
-      "1": "R0",
+      "0": "BLOOD PRESSURE BALANCING TEA",
+      "1": "R450",
       "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-06"
     },
     {
-      "0": "BLOOD CLEANING TEA",
+      "0": "BLOOD SUGAR BALANCING TEA",
       "1": "R450",
       "2": "Own Bulk Stock",
       "3": "230",
@@ -129,7 +65,7 @@
       "5": "TG-TEA-07"
     },
     {
-      "0": "BLOOD TONIC TEA",
+      "0": "BRAIN TONIC TEA",
       "1": "R450",
       "2": "Own Bulk Stock",
       "3": "230",
@@ -137,71 +73,47 @@
       "5": "TG-TEA-08"
     },
     {
-      "0": "BU ZHONG YI QI WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-06"
-    },
-    {
-      "0": "CASSIA TEA",
-      "1": "R0",
+      "0": "BREAST ENLARGEMENT TEA",
+      "1": "R450",
       "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-09"
     },
     {
-      "0": "CHAI HU SHU GAN WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-07"
-    },
-    {
-      "0": "CHRYSANTHEMUM PLUS TEA",
-      "1": "R0",
+      "0": "BREAST HYPERPLASIA TEA",
+      "1": "R450",
       "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-10"
     },
     {
-      "0": "CHUAN XIN LIAN KANG YAN WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-25"
-    },
-    {
-      "0": "CHUAN XIONG CHA TIAO WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-08"
-    },
-    {
-      "0": "CONSTIPATION TEA",
-      "1": "R0",
+      "0": "CARDIOVASCULAR TEA",
+      "1": "R450",
       "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-11"
     },
     {
-      "0": "COOLING TEA",
-      "1": "R0",
+      "0": "CLEAR HEAT DETOXIFYING TEA",
+      "1": "R450",
       "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-12"
     },
     {
-      "0": "COUGHING TEA",
+      "0": "COLON CLEANSER TEA",
+      "1": "R450",
+      "2": "Own Bulk Stock",
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-13"
+    },
+    {
+      "0": "COUGH STILE TEA",
       "1": "R450",
       "2": "Own Bulk Stock",
       "3": "230",
@@ -209,124 +121,36 @@
       "5": "TG-TEA-14"
     },
     {
-      "0": "DA BU YIN WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-10"
-    },
-    {
-      "0": "DANG GUI WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-12"
-    },
-    {
-      "0": "DEALCOHOLIC TEA",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "DETOX TEA",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "DIGESTIVE TEA",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "DU HUO JI SHENG WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-14"
-    },
-    {
-      "0": "ER CHEN WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-75"
-    },
-    {
-      "0": "FANG FENG TONG SHENG WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-17"
-    },
-    {
-      "0": "FEMALE INFLAMATION TEA",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "FIVE SEEDS TEA",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "FU ZHENG FANG",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-03"
-    },
-    {
-      "0": "FU ZI LI ZHONG WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-18"
-    },
-    {
-      "0": "GAN MAO LING",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "GINKGO TEA",
+      "0": "FIBROID TEA",
       "1": "R450",
       "2": "Own Bulk Stock",
       "3": "230",
       "4": "220",
-      "5": "TG-TEA-19"
+      "5": "TG-TEA-15"
     },
     {
-      "0": "GINSENG DATE TEA",
+      "0": "FLOS CHRYSANTHEMI TEA",
       "1": "R450",
       "2": "Own Bulk Stock",
       "3": "230",
       "4": "220",
-      "5": "TG-TEA-19"
+      "5": "TG-TEA-16"
+    },
+    {
+      "0": "GINSENG & GOJI BERRY TEA",
+      "1": "R450",
+      "2": "Own Bulk Stock",
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-17"
+    },
+    {
+      "0": "GINSENG & GREEN TEA",
+      "1": "R450",
+      "2": "Own Bulk Stock",
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-18"
     },
     {
       "0": "GINSENG TEA",
@@ -337,6 +161,14 @@
       "5": "TG-TEA-19"
     },
     {
+      "0": "GOUT-EASE TEA",
+      "1": "R450",
+      "2": "Own Bulk Stock",
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-20"
+    },
+    {
       "0": "GREEN TEA",
       "1": "R450",
       "2": "Own Bulk Stock",
@@ -345,151 +177,39 @@
       "5": "TG-TEA-21"
     },
     {
-      "0": "GUAN JIE YAN WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-63"
-    },
-    {
-      "0": "GUAVA TEA",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "GUI PI WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-22"
-    },
-    {
-      "0": "GUI ZHI FU LING WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-23"
-    },
-    {
-      "0": "GYNOSTEMMA TEA",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "HEART CARE TEA",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "HUAI JIAO WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-68"
-    },
-    {
-      "0": "HUO XIANG ZHENG QI WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-26"
-    },
-    {
-      "0": "HYPERTENSION TEA",
+      "0": "HAIR GROWTH TEA",
       "1": "R450",
       "2": "Own Bulk Stock",
       "3": "230",
       "4": "220",
-      "5": "TG-TEA-34"
+      "5": "TG-TEA-22"
     },
     {
-      "0": "JIA WEI XIAO YAO WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-57"
-    },
-    {
-      "0": "JIANG DAN GU CHUAN WAN",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "JIANG YA WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-27"
-    },
-    {
-      "0": "JIE GENG WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-20"
-    },
-    {
-      "0": "JIN GUI SHEN QI WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-28"
-    },
-    {
-      "0": "JIN SUO GU JING WAN",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "JIU WEI QIANG HUO WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-31"
-    },
-    {
-      "0": "JOINT CARE TEA",
+      "0": "HAWTHORN LEAF TEA",
       "1": "R450",
       "2": "Own Bulk Stock",
       "3": "230",
       "4": "220",
-      "5": "TG-TEA-49"
+      "5": "TG-TEA-23"
     },
     {
-      "0": "KANG GU ZENG SHENG WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-17"
+      "0": "IMMUNE BOOSTER TEA",
+      "1": "R450",
+      "2": "Own Bulk Stock",
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-24"
     },
     {
-      "0": "KIDNEY CARE TEA",
+      "0": "KIDNEY STONE CLEANSER TEA",
+      "1": "R450",
+      "2": "Own Bulk Stock",
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-25"
+    },
+    {
+      "0": "KIDNEY TONIC TEA",
       "1": "R450",
       "2": "Own Bulk Stock",
       "3": "230",
@@ -497,63 +217,7 @@
       "5": "TG-TEA-26"
     },
     {
-      "0": "KUDING TEA",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "LI DAN PAI SHI WAN",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "LI DAN WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-13"
-    },
-    {
-      "0": "LI ZHONG WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-18"
-    },
-    {
-      "0": "LIAN QIAO BAI DU WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-81"
-    },
-    {
-      "0": "LIBIDO UP TEA",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "LIU WEI DI HUANG WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-31"
-    },
-    {
-      "0": "LIVER CARE TEA",
+      "0": "LIVER CLEANSER TEA",
       "1": "R450",
       "2": "Own Bulk Stock",
       "3": "230",
@@ -561,15 +225,23 @@
       "5": "TG-TEA-27"
     },
     {
-      "0": "LONG DAN XIE GAN WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-32"
+      "0": "LIVER PROTECTOR TEA",
+      "1": "R450",
+      "2": "Own Bulk Stock",
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-28"
     },
     {
-      "0": "LUNG CLEANING TEA",
+      "0": "LONGAN & RED DATES TEA",
+      "1": "R450",
+      "2": "Own Bulk Stock",
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-29"
+    },
+    {
+      "0": "LUNG CLEANSER TEA",
       "1": "R450",
       "2": "Own Bulk Stock",
       "3": "230",
@@ -577,15 +249,15 @@
       "5": "TG-TEA-30"
     },
     {
-      "0": "MAI WEI DI HUANG WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-31"
+      "0": "MALE FERTILITY TEA",
+      "1": "R450",
+      "2": "Own Bulk Stock",
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-31"
     },
     {
-      "0": "MENOPAUSE TEA",
+      "0": "MENOPAUSE BALANCE TEA",
       "1": "R450",
       "2": "Own Bulk Stock",
       "3": "230",
@@ -593,284 +265,116 @@
       "5": "TG-TEA-32"
     },
     {
-      "0": "MENSTRUATION REGULATING TEA",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "MING MU DI HUANG WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-34"
-    },
-    {
-      "0": "MORINGA TEA",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "MU XIANG SHUN QI WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-35"
-    },
-    {
-      "0": "OLONG TEA",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "PIAN TOU TONG WAN",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "PROSTATE CARE TEA",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "QI JU DI HUANG WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-38"
-    },
-    {
-      "0": "QIAN LIE SHU WAN",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "QING QI HUA TAN WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-39"
-    },
-    {
-      "0": "QING RE AN CHUANG WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-34"
-    },
-    {
-      "0": "QUIT SMOKING TEA",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "RED FLOWER GREEN TEA",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "RENAME IMAGES",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "SEX TEA",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "SHAO FU ZHU YU WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-61"
-    },
-    {
-      "0": "SHEN JING SHUAI RUO WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-44"
-    },
-    {
-      "0": "SHEN LING BAI ZHU WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-44"
-    },
-    {
-      "0": "SHENG MAI WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-72"
-    },
-    {
-      "0": "SHOU WU WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-65"
-    },
-    {
-      "0": "SI JUN ZI WAN",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "SI MIAO WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-68"
-    },
-    {
-      "0": "SI WU TANG WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-13"
-    },
-    {
-      "0": "SKIN LIGHTENING TEA",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "SLIM TEA",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "SUGAR BALANCE TEA",
+      "0": "PILES TEA",
       "1": "R450",
       "2": "Own Bulk Stock",
       "3": "230",
       "4": "220",
-      "5": "TG-TEA-07"
+      "5": "TG-TEA-33"
     },
     {
-      "0": "TANGREN HERBAL TEAS SEMANTIC",
-      "1": "R0",
+      "0": "PROSTATE INFUSION TEA",
+      "1": "R450",
       "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-34"
     },
     {
-      "0": "TAO HONG SI WU WAN",
-      "1": "R0",
+      "0": "RHEUMATISM ARTHRITIS TEA",
+      "1": "R450",
       "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-35"
     },
     {
-      "0": "TE XIAO BI MIN GAN WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-05"
-    },
-    {
-      "0": "TE XIAO JING ZHUI TONG WAN",
-      "1": "R0",
+      "0": "SMOKING QUIT TEA",
+      "1": "R450",
       "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-36"
     },
     {
-      "0": "THREE FLOWERS TEA",
-      "1": "R0",
+      "0": "STOMACH COMFORT TEA",
+      "1": "R450",
       "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-37"
     },
     {
-      "0": "TIAN MA GOU TENG WAN",
-      "1": "R0",
+      "0": "STOMACH ULCER REPAIR TEA",
+      "1": "R450",
       "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-38"
     },
     {
-      "0": "TIAN WANG BU XIN WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-50"
+      "0": "STRENGTHING BONE & EXTRA ENERGY TEA",
+      "1": "R450",
+      "2": "Own Bulk Stock",
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-39"
     },
     {
-      "0": "TIAO JING CU YUN WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-79"
+      "0": "STROKE RECOVERY INJECTION INFUSION TEA",
+      "1": "R450",
+      "2": "Own Bulk Stock",
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-40"
     },
     {
-      "0": "TONG JING WAN",
-      "1": "R600",
-      "2": "Store Pickup (Cyrildene)",
-      "3": "250",
-      "4": "350",
-      "5": "TG-PILL-74"
+      "0": "THROAT COMFORT TEA",
+      "1": "R450",
+      "2": "Own Bulk Stock",
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-41"
+    },
+    {
+      "0": "THYROID BALANCING TEA",
+      "1": "R450",
+      "2": "Own Bulk Stock",
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-42"
+    },
+    {
+      "0": "TONSILLITIS TEA",
+      "1": "R450",
+      "2": "Own Bulk Stock",
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-43"
+    },
+    {
+      "0": "URINARY TRACT INFECTIN CLEANSER TEA",
+      "1": "R450",
+      "2": "Own Bulk Stock",
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-44"
+    },
+    {
+      "0": "VARICOSE VEINS INFUSION TEA",
+      "1": "R450",
+      "2": "Own Bulk Stock",
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-45"
+    },
+    {
+      "0": "VAGINAL TIGHTENING & CLEANSER TEA",
+      "1": "R450",
+      "2": "Own Bulk Stock",
+      "3": "230",
+      "4": "220",
+      "5": "TG-TEA-46"
     },
     {
       "0": "WALNUT TEA",
@@ -879,14 +383,6 @@
       "3": "230",
       "4": "220",
       "5": "TG-TEA-47"
-    },
-    {
-      "0": "WEN JING WAN",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
     },
     {
       "0": "WHITE GOURD SLIM TEA",
@@ -905,119 +401,103 @@
       "5": "TG-TEA-49"
     },
     {
-      "0": "WU JI BAI FENG WAN",
+      "0": "AN SHEN BU XIN WAN (CALM SHEN/SPIRIT)",
       "1": "R600",
       "2": "Store Pickup (Cyrildene)",
       "3": "250",
       "4": "350",
-      "5": "TG-PILL-66"
+      "5": "TG-PILL-01"
     },
     {
-      "0": "WU LING WAN",
+      "0": "BA ZHEN WAN (EIGHT TONIC PILLS)",
       "1": "R600",
       "2": "Store Pickup (Cyrildene)",
       "3": "250",
       "4": "350",
-      "5": "TG-PILL-53"
+      "5": "TG-PILL-02"
     },
     {
-      "0": "WU ZI YAN ZONG WAN",
+      "0": "BA ZHENG WAN (Clean Urine)",
       "1": "R600",
       "2": "Store Pickup (Cyrildene)",
       "3": "250",
       "4": "350",
-      "5": "TG-PILL-54"
+      "5": "TG-PILL-03"
     },
     {
-      "0": "XIANG SHA LIU JUN WAN",
+      "0": "BAN LONG WAN (Tonify Prime Yang)",
       "1": "R600",
       "2": "Store Pickup (Cyrildene)",
       "3": "250",
       "4": "350",
-      "5": "TG-PILL-55"
+      "5": "TG-PILL-04"
     },
     {
-      "0": "XIANG SHA YANG WEI WAN",
+      "0": "BI MIN GAN WAN (Nose/Allergy)",
       "1": "R600",
       "2": "Store Pickup (Cyrildene)",
       "3": "250",
       "4": "350",
-      "5": "TG-PILL-35"
+      "5": "TG-PILL-05"
     },
     {
-      "0": "XIAO CHAI HU TANG WAN",
+      "0": "BU ZHONG YI QI WAN (TONIC QI)",
       "1": "R600",
       "2": "Store Pickup (Cyrildene)",
       "3": "250",
       "4": "350",
-      "5": "TG-PILL-55"
+      "5": "TG-PILL-06"
     },
     {
-      "0": "XIAO HUO LUO WAN",
+      "0": "CHAI HU SHU GAN WAN (SOOTHE LIVER)",
       "1": "R600",
       "2": "Store Pickup (Cyrildene)",
       "3": "250",
       "4": "350",
-      "5": "TG-PILL-56"
+      "5": "TG-PILL-07"
     },
     {
-      "0": "XIAO YAO WAN",
+      "0": "CHUAN XIONG CHA TIAO WAN (HEADACHE)",
       "1": "R600",
       "2": "Store Pickup (Cyrildene)",
       "3": "250",
       "4": "350",
-      "5": "TG-PILL-57"
+      "5": "TG-PILL-08"
     },
     {
-      "0": "XUE FU ZHU YU WAN",
+      "0": "CONG RONG BU SHEN WAN (TONIFY KIDNEY)",
       "1": "R600",
       "2": "Store Pickup (Cyrildene)",
       "3": "250",
       "4": "350",
-      "5": "TG-PILL-61"
+      "5": "TG-PILL-09"
     },
     {
-      "0": "YANG XUE SHENG FA WAN",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "YU PING FENG WAN",
+      "0": "DA BU YIN WAN (Nourish Yin)",
       "1": "R600",
       "2": "Store Pickup (Cyrildene)",
       "3": "250",
       "4": "350",
-      "5": "TG-PILL-66"
+      "5": "TG-PILL-10"
     },
     {
-      "0": "ZHEN ZHU AN CHUANG WAN",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    {
-      "0": "ZHI BAI DI HUANG WAN",
+      "0": "DAN SHEN PIAN (SALVIA/HEART)",
       "1": "R600",
       "2": "Store Pickup (Cyrildene)",
       "3": "250",
       "4": "350",
-      "5": "TG-PILL-82"
+      "5": "TG-PILL-11"
     },
     {
-      "0": "ZHI KE DING CHUAN WAN",
+      "0": "DANG GUI WAN (ANGELICA/BLOOD)",
       "1": "R600",
       "2": "Store Pickup (Cyrildene)",
       "3": "250",
       "4": "350",
-      "5": "TG-PILL-69"
+      "5": "TG-PILL-12"
     },
     {
-      "0": "ZHI YANG WAN",
+      "0": "DI TANG WAN (Clear Blood Stasis)",
       "1": "R600",
       "2": "Store Pickup (Cyrildene)",
       "3": "250",
@@ -1025,7 +505,231 @@
       "5": "TG-PILL-13"
     },
     {
-      "0": "ZHUANG YANG WAN",
+      "0": "DU HUO JI SHENG WAN (ARTHRITIS)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-14"
+    },
+    {
+      "0": "ER CHEN WAN (Clear Phlegm)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-15"
+    },
+    {
+      "0": "ER LONG ZUO CI WAN (EAR/TINNITUS)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-16"
+    },
+    {
+      "0": "FANG FENG TONG SHENG WAN (DETOX)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-17"
+    },
+    {
+      "0": "FU ZI LI ZHONG WAN (WARM SPLEEN)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-18"
+    },
+    {
+      "0": "GAN MAO QING RE KAN CHONG JI (FLU)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-19"
+    },
+    {
+      "0": "GE GEN WAN (STIFF NECK/DIARRHEA)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-20"
+    },
+    {
+      "0": "GOU PI GAO (HERBAL PLASTER)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-21"
+    },
+    {
+      "0": "GUI PI WAN (HEART & SPLEEN TONIC)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-22"
+    },
+    {
+      "0": "GUI ZHI FU LING WAN (FIBROIDS)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-23"
+    },
+    {
+      "0": "HAI MA BU SHEN WAN (SEAHORSE TONIC)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-24"
+    },
+    {
+      "0": "HUANG LIAN SHANG QING WAN (CLEAR FIRE)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-25"
+    },
+    {
+      "0": "HUO XIANG ZHENG QI WAN (STOMACH FLU)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-26"
+    },
+    {
+      "0": "JIAN PI WAN (STRENGTHEN SPLEEN)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-27"
+    },
+    {
+      "0": "JIN GUI SHEN QI WAN (KIDNEY YANG TONIC)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-28"
+    },
+    {
+      "0": "JING FANG BAI DU WAN (FLU DEFENSE)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-29"
+    },
+    {
+      "0": "JU HUA QING SHEN WAN (EYE HEALTH)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-30"
+    },
+    {
+      "0": "LIU WEI DI HUANG WAN (SIX TONIC PILLS)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-31"
+    },
+    {
+      "0": "LONG DAN XIE GAN WAN (LIVER FIRE)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-32"
+    },
+    {
+      "0": "MA REN WAN (HEMP SEED/CONSTIPATION)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-33"
+    },
+    {
+      "0": "MING MU DI HUANG WAN (EYE TONIC)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-34"
+    },
+    {
+      "0": "MU XIANG SHUN QI WAN (GAS/BLOATING)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-35"
+    },
+    {
+      "0": "NING SAN BU XIN WAN (REST MIND)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-36"
+    },
+    {
+      "0": "PING WEI WAN (BALANCING STOMACH)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-37"
+    },
+    {
+      "0": "QI JU DI HUANG WAN (LYCIUM/EYE)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-38"
+    },
+    {
+      "0": "QING QI HUA TAN WAN (CLEAR PHLEGM)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-39"
+    },
+    {
+      "0": "REN SHEN JIAN PI WAN (GINSENG SPLEEN)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-40"
+    },
+    {
+      "0": "REN SHEN ZAI ZAO WAN (RECOVERY)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-41"
+    },
+    {
+      "0": "RUN CHANG WAN (INTESTINE LUBRICANT)",
       "1": "R600",
       "2": "Store Pickup (Cyrildene)",
       "3": "250",
@@ -1033,12 +737,324 @@
       "5": "TG-PILL-42"
     },
     {
-      "0": "ZUO GU SHEN JING TONG WAN",
-      "1": "R0",
-      "2": "Own Bulk Stock",
-      "3": "",
-      "4": "",
-      "5": ""
+      "0": "SAN CHAO WAN (THREE TONIC PILLS)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-43"
+    },
+    {
+      "0": "SHEN LING BAI ZHU WAN (DIGESTION)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-44"
+    },
+    {
+      "0": "SHEN TONG ZHU YU WAN (PAIN RELIEF)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-45"
+    },
+    {
+      "0": "SHI QUAN DA BU WAN (TEN TONIC PILLS)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-46"
+    },
+    {
+      "0": "SHU GAN WAN (COMFORT LIVER)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-47"
+    },
+    {
+      "0": "SHU JING HUO XUE WAN (CIRCULATION)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-48"
+    },
+    {
+      "0": "SUAN ZAO REN WAN (ZIZIPHUS/SLEEP)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-49"
+    },
+    {
+      "0": "TIAN WANG BU XIN DAN (EMOTIONAL CALM)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-50"
+    },
+    {
+      "0": "TONG QIAO HUO XUE WAN (SINUS CIRCULATION)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-51"
+    },
+    {
+      "0": "WREI SHENG WAN (HEALTH PROMOTION)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-52"
+    },
+    {
+      "0": "WU MEI WAN (MUME/INTESTINE)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-53"
+    },
+    {
+      "0": "WUZI YAN ZONG WAN (FIVE SEED/FERTILITY)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-54"
+    },
+    {
+      "0": "XIAO CHAI HU WAN (MINOR BUPLEURUM)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-55"
+    },
+    {
+      "0": "XIAO HUO LUO WAN (CHANNEL CLEARING)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-56"
+    },
+    {
+      "0": "XIAO YAO WAN (FREE & EASY WANDERER)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-57"
+    },
+    {
+      "0": "XIE HUANG WAN (PURGE SPLEEN FIRE)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-58"
+    },
+    {
+      "0": "XIN YI SAN WAN (MAGNOLIA FLOWER)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-59"
+    },
+    {
+      "0": "XUAN BI WAN (JOINT FLUID)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-60"
+    },
+    {
+      "0": "XUE FU ZHU YU WAN (BLOOD STASIS CHEST)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-61"
+    },
+    {
+      "0": "YANG YIN QING FEI WAN (THROAT HEALTH)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-62"
+    },
+    {
+      "0": "YI GUAN JIAN WAN (LINKING DECOCTION)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-63"
+    },
+    {
+      "0": "YIN CHIAO CHIEH TU PIAN (DETOX PILLS)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-64"
+    },
+    {
+      "0": "YOU GUI WAN (RESTORING YANG)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-65"
+    },
+    {
+      "0": "YU PING FENG WAN (JADE WINDSCREEN)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-66"
+    },
+    {
+      "0": "YU QUAN WAN (JADE SPRING/DIABETES)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-67"
+    },
+    {
+      "0": "ZAI ZAO WAN (REGENERATION PILLS)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-68"
+    },
+    {
+      "0": "ZHI BAI DI HUANG WAN (YIN DEFICIENCY FIRE)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-69"
+    },
+    {
+      "0": "ZHI GAN CAO WAN (HONEY LICORICE)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-70"
+    },
+    {
+      "0": "ZHI SOU WAN (STOP COUGH)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-71"
+    },
+    {
+      "0": "ZONG HAI WAN (STOMACH HEALTH)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-72"
+    },
+    {
+      "0": "ZUO GUI WAN (RESTORING YIN)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-73"
+    },
+    {
+      "0": "ZUO JIN WAN (LEFT METAL PILLS)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-74"
+    },
+    {
+      "0": "ER CHEN WAN (PHLEGM EXPELLER)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-75"
+    },
+    {
+      "0": "PING WEI SAN (STOMACH HARMONIZER)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-76"
+    },
+    {
+      "0": "SAN CHAO WAN (REFLUX STOMACH)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-77"
+    },
+    {
+      "0": "SHI LIU WEI DI HUANG WAN (EYE DEFENSE)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-78"
+    },
+    {
+      "0": "TIAN MING BU XIN WAN (MIND TONIC)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-79"
+    },
+    {
+      "0": "XIAO YAO SAN (STRESS DECOCTION)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-80"
+    },
+    {
+      "0": "YIN CHIAO JIE DU WAN (DEFENSE FLAVOR)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-81"
+    },
+    {
+      "0": "ZHI BAI DI HUANG PIAN (CLEAR INTENSE FIRE)",
+      "1": "R600",
+      "2": "Store Pickup (Cyrildene)",
+      "3": "250",
+      "4": "350",
+      "5": "TG-PILL-82"
     }
   ]
 }
