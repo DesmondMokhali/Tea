@@ -5237,7 +5237,773 @@ const tcmCatalogDetails = {
       "Concentrated Pills",
       "Sleep Support"
     ]
+  },
+  "ANI CANCER TEA": {
+    "t": "Immune-Fortifying Herbal Shield",
+    "cat": "immunity",
+    "ing": ["Akebia Fruit", "Oldenlandia", "Chinese Lobelia", "Licorice", "Oolong Tea", "Cape Jasmine Fruit", "Green Tea"],
+    "ben": ["Supports immune defence", "Anti-inflammatory properties", "Clears heat and toxins", "Rich in antioxidants", "Promotes cellular health"],
+    "ind": "For those seeking to strengthen immune resilience and support overall cellular wellbeing through traditional Chinese herbalism.",
+    "use": "Steep 1 bag in hot water (90–95°C) for 5–7 minutes. Drink warm. 1–2 times daily. Consistent daily use recommended.",
+    "ch": ["Immune Support", "Antioxidant", "Detox", "Herbal Blend"]
+  },
+  "ANTI STRESS SLEEPING TEA": {
+    "t": "Calm Your Mind, Sleep Deeply",
+    "cat": "sleep",
+    "ing": ["Ganoderma lucidum", "Tuber Fleece Flower Stem", "Blighted Wheat", "Red Dates", "Licorice", "Glossy Privet Fruit"],
+    "ben": ["Calms the mind and spirit", "Reduces insomnia", "Eases mental stress", "Promotes deep restful sleep", "Balances the nervous system"],
+    "ind": "Suitable for people with mental stress and difficulty falling asleep. Can be used nightly as a bedtime ritual.",
+    "use": "Take 1 bag, 1–2 times per day. Best enjoyed warm, 30–60 minutes before bedtime. Steep for 5 minutes.",
+    "ch": ["Deep Sleep", "Stress Relief", "Calm Mind", "Anti-Insomnia"]
+  },
+  "ANTI VIRUS TEA": {
+    "t": "Fortify Your Natural Defences",
+    "cat": "immunity",
+    "ing": ["Honeysuckle Flower", "Dandelion", "Isatidis Root", "Astragalus Root", "Reed Rhizome", "Licorice", "Green Tea"],
+    "ben": ["Antiviral & antibacterial action", "Boosts immune system", "Clears heat and toxins", "Reduces inflammation", "Supports upper respiratory health"],
+    "ind": "Ideal for those seeking to strengthen immunity year-round, especially during cold and flu season.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm, 1–2 times daily. Especially beneficial during illness-prone seasons.",
+    "ch": ["Antiviral", "Immune Boost", "Detox", "Green Tea Base"]
+  },
+  "FEMALE INFLAMATION TEA": {
+    "t": "Women's Pelvic Health & Clarity",
+    "cat": "women",
+    "ing": ["Motherwort", "Red Peony Root", "Cyperus Rhizome", "Dandelion", "Plantain Herb", "Licorice Root"],
+    "ben": ["Reduces pelvic inflammation", "Clears heat and dampness", "Supports reproductive health", "Eases menstrual discomfort", "Anti-inflammatory action"],
+    "ind": "Designed for women experiencing pelvic or reproductive inflammation. Supports overall gynaecological health.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 2 times daily for best results.",
+    "ch": ["Women's Health", "Anti-Inflammatory", "Detox", "Herbal Blend"]
+  },
+  "OLONG TEA": {
+    "t": "Semi-Fermented Chinese Classic",
+    "cat": "general",
+    "ing": ["Camellia sinensis (partially oxidised leaves)"],
+    "ben": ["Rich in antioxidants", "Supports metabolism", "Aids weight management", "Anti-ageing benefits", "Promotes mental alertness", "Improves heart health"],
+    "ind": "Suitable for all ages. A special semi-fermented Chinese tea that bridges the benefits of green and black tea.",
+    "use": "Steep 1 bag in hot water (85–90°C) for 3–5 minutes. Drink warm. 2–3 cups daily.",
+    "ch": ["Traditional Tea", "Antioxidant", "Metabolism", "Wellness"]
+  },
+  "GINSENG TEA": {
+    "t": "Ancient Vitality Tonic",
+    "cat": "energy",
+    "ing": ["Korean Ginseng Root (Panax ginseng)", "Red Dates", "Honey"],
+    "ben": ["Boosts physical stamina", "Enhances mental clarity", "Strengthens immune function", "Reduces fatigue", "Balances energy levels", "Adaptogenic stress support"],
+    "ind": "Ideal for those experiencing fatigue, low energy, or mental exhaustion. Suitable for men and women of all ages.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 cups daily, preferably in the morning.",
+    "ch": ["Energy", "Adaptogen", "Immune Boost", "Traditional"]
+  },
+  "AN SHEN BU XIN WAN": {
+    "t": "Calm the Spirit, Nourish the Heart",
+    "cat": "sleep",
+    "ing": ["Magnetitum", "Rehmannia Root", "Ligustrum Fruit", "Eclipta", "Salvia Root", "Polygala Root", "Schisandra Fruit", "Red Jujube"],
+    "ben": ["Calms the mind and spirit", "Reduces anxiety and palpitations", "Improves sleep quality", "Nourishes Heart Yin and Blood", "Relieves dizziness"],
+    "ind": "For people with Heart and Kidney Yin deficiency presenting as insomnia, restlessness, heart palpitations, poor memory, or dizziness.",
+    "use": "Take 15 pills, 3 times daily with warm water. Use consistently for at least 4 weeks for best results.",
+    "ch": ["Sleep", "Heart Health", "Anxiety Relief", "Yin Tonic"]
+  },
+  "BA ZHEN WAN": {
+    "t": "Eight Treasure Tonic \u2014 Blood & Qi",
+    "cat": "women",
+    "ing": ["Ginseng", "Atractylodes", "Poria", "Licorice", "Rehmannia Root", "White Peony Root", "Dong Quai", "Ligusticum Wallichii"],
+    "ben": ["Replenishes Qi and Blood", "Combats fatigue and pallor", "Supports menstrual health", "Boosts energy levels", "Improves complexion"],
+    "ind": "Ideal for women and men with Qi and Blood deficiency — symptoms include pale complexion, fatigue, dizziness, irregular periods, and weakness.",
+    "use": "Take 8 pills, 3 times daily with warm water or warm rice wine. Best taken consistently for 4–8 weeks.",
+    "ch": ["Blood Tonic", "Qi Tonic", "Women's Health", "Traditional Formula"]
+  },
+  "BA ZHENG WAN": {
+    "t": "Urinary Tract Clearing Formula",
+    "cat": "urinary",
+    "ing": ["Dianthus", "Akebia Stem", "Talc", "Plantain Seed", "Gardenia Fruit", "Rhubarb", "Licorice Root", "Polygonum Aviculare"],
+    "ben": ["Clears heat and dampness in the urinary tract", "Relieves painful urination", "Reduces urinary frequency and urgency", "Supports bladder health", "Anti-inflammatory action"],
+    "ind": "For those experiencing urinary tract infections, burning urination, or lower abdominal discomfort due to damp-heat in the bladder.",
+    "use": "Take 8 pills, 3 times daily with warm water. Continue for 5–7 days or until symptoms resolve.",
+    "ch": ["Urinary Health", "Anti-Inflammatory", "Detox", "Damp-Heat Clearing"]
+  },
+  "BAN LONG WAN": {
+    "t": "Kidney Yang & Essence Fortifier",
+    "cat": "men",
+    "ing": ["Deer Gelatin (Lu Jiao Jiao)", "Tortoise Shell Gelatin (Gui Ban Jiao)", "Rehmannia Root", "Poria", "Schisandra Fruit"],
+    "ben": ["Tonifies Kidney Yang and Essence", "Supports reproductive vitality", "Strengthens lower back and knees", "Boosts stamina and libido", "Slows premature ageing"],
+    "ind": "For men and women with Kidney Yang and Yin deficiency presenting as weakness, cold limbs, poor libido, lower back pain, and fatigue.",
+    "use": "Take 9 pills, 2 times daily with warm water or warm salted water. Best taken on an empty stomach.",
+    "ch": ["Kidney Yang", "Men's Health", "Vitality", "Anti-Ageing"]
+  },
+  "BAN XIA XIE XIN WAN": {
+    "t": "Harmonise the Stomach, Clear Heat",
+    "cat": "digestion",
+    "ing": ["Pinellia Rhizome (Ban Xia)", "Scutellaria Root", "Coptis Rhizome", "Ginseng", "Dried Ginger", "Licorice Root", "Red Jujube"],
+    "ben": ["Harmonises the stomach", "Clears damp-heat in the digestive tract", "Relieves nausea, bloating, and vomiting", "Reduces acid reflux", "Eases stomach discomfort"],
+    "ind": "For individuals with digestive disorders such as gastritis, nausea, reflux, stomach distension, and diarrhoea alternating with constipation.",
+    "use": "Take 8 pills, 3 times daily with warm water, preferably 30 minutes before meals.",
+    "ch": ["Digestion", "Stomach Health", "Nausea Relief", "TCM Classic"]
+  },
+  "BAO HE WAN": {
+    "t": "Digest & Relieve Food Stagnation",
+    "cat": "digestion",
+    "ing": ["Hawthorn Fruit (Shan Zha)", "Shen Qu", "Radish Seed", "Pinellia Rhizome", "Tangerine Peel", "Poria", "Forsythia Fruit"],
+    "ben": ["Relieves food stagnation", "Reduces bloating and belching", "Improves appetite", "Eases indigestion and fullness", "Supports healthy bowel movement"],
+    "ind": "For those suffering from overeating, indigestion, abdominal fullness, belching with foul odour, or nausea after meals.",
+    "use": "Take 8 pills, 3 times daily with warm water. Take after meals for best results.",
+    "ch": ["Digestion", "Food Stagnation", "Bloating Relief", "Appetite"]
+  },
+  "BI YAN WAN": {
+    "t": "Nasal & Sinus Relief Formula",
+    "cat": "respiratory",
+    "ing": ["Magnolia Flower", "Xanthium Fruit", "Astragalus Root", "Saposhnikovia Root", "Anemarrhena Rhizome", "Platycodon Root", "Schisandra Fruit", "Wild Chrysanthemum"],
+    "ben": ["Relieves nasal congestion", "Reduces sinus inflammation", "Clears heat and wind from nasal passages", "Alleviates rhinitis and hay fever", "Improves breathing"],
+    "ind": "For people with chronic rhinitis, allergic rhinitis, sinusitis, or persistent nasal congestion with yellow or clear discharge.",
+    "use": "Take 8 pills, 3 times daily with warm water. Continue for 2–4 weeks for chronic conditions.",
+    "ch": ["Nasal Health", "Rhinitis", "Allergy Relief", "Sinus Support"]
+  },
+  "BU ZHONG YI QI WAN": {
+    "t": "Raise the Qi, Strengthen the Spleen",
+    "cat": "energy",
+    "ing": ["Astragalus Root (Huang Qi)", "Ginseng Root", "White Atractylodes", "Licorice", "Dong Quai", "Cimicifuga Rhizome", "Bupleurum Root", "Tangerine Peel"],
+    "ben": ["Tonifies Spleen and Stomach Qi", "Lifts prolapsed organs", "Boosts energy and stamina", "Relieves chronic fatigue", "Improves poor appetite and loose stools"],
+    "ind": "For those with Spleen Qi deficiency presenting as chronic fatigue, poor appetite, loose stools, or organ prolapse (stomach, uterus, rectum).",
+    "use": "Take 8 pills, 3 times daily with warm water. Consistent use for 4–8 weeks recommended.",
+    "ch": ["Qi Tonic", "Energy", "Spleen Health", "Traditional Formula"]
+  },
+  "CHAI HU SHU GAN WAN": {
+    "t": "Liver Qi Stagnation Relief",
+    "cat": "liver",
+    "ing": ["Bupleurum Root", "White Peony Root", "Cyperus Rhizome", "Bitter Orange (Zhi Ke)", "Ligusticum Wallichii", "Tangerine Peel", "Licorice Root"],
+    "ben": ["Soothes Liver Qi stagnation", "Relieves stress and irritability", "Eases hypochondriac pain and distension", "Improves mood swings", "Supports healthy digestion"],
+    "ind": "For those experiencing emotional stress, irritability, side pain, bloating, or digestive upset related to Liver Qi stagnation.",
+    "use": "Take 8 pills, 3 times daily with warm water. Take away from meals. Use consistently for 4 weeks.",
+    "ch": ["Liver Health", "Stress Relief", "Mood Support", "Qi Regulation"]
+  },
+  "CHUAN XIN LIAN KANG YAN WAN": {
+    "t": "Anti-Inflammatory Heat Clearing Formula",
+    "cat": "immunity",
+    "ing": ["Andrographis (Chuan Xin Lian)", "Isatidis Root", "Taraxacum", "Viola", "Licorice Root"],
+    "ben": ["Clears heat and detoxifies", "Strong anti-inflammatory action", "Supports upper respiratory infections", "Reduces throat inflammation", "Antibacterial properties"],
+    "ind": "For acute infections, tonsillitis, pharyngitis, pneumonia, respiratory inflammation, or any condition involving damp-heat or toxic heat.",
+    "use": "Take 8 pills, 3 times daily with warm water. Use for 5–10 days for acute infections.",
+    "ch": ["Anti-Inflammatory", "Detox", "Respiratory", "Immunity"]
+  },
+  "CHUAN XIONG CHA TIAO WAN": {
+    "t": "Wind-Cold Headache Relief",
+    "cat": "pain",
+    "ing": ["Ligusticum Wallichii (Chuan Xiong)", "Mint", "Saposhnikovia Root", "Asarum", "Schizonepeta", "Angelica Root", "Licorice Root", "Tea Leaf (Green Tea)"],
+    "ben": ["Relieves wind-cold headaches", "Dispels wind and cold pathogens", "Reduces migraines and sinus headaches", "Clears nasal passages", "Reduces neck stiffness"],
+    "ind": "For headaches caused by wind-cold invasion — especially forehead, temporal, or crown headaches associated with cold, flu, or sinus congestion.",
+    "use": "Take 8 pills, 3 times daily with strong green tea. For acute headaches, take with warm water.",
+    "ch": ["Headache Relief", "Wind-Cold", "Pain Relief", "Traditional Formula"]
+  },
+  "DA BU YIN WAN": {
+    "t": "Nourish Yin, Clear Deficiency Heat",
+    "cat": "women",
+    "ing": ["Tortoise Shell Plastron (Gui Ban)", "Phellodendron Bark", "Anemarrhena Rhizome", "Steamed Rehmannia Root", "Pork Spinal Cord"],
+    "ben": ["Nourishes Yin and Blood", "Clears deficiency-heat", "Reduces afternoon fevers and night sweats", "Relieves tidal fever and hot flushes", "Strengthens lower back and knees"],
+    "ind": "For Kidney and Liver Yin deficiency with deficiency heat — symptoms include afternoon fever, night sweats, hot flushes, spontaneous seminal emission, and knee weakness.",
+    "use": "Take 9 pills, 2–3 times daily with warm salted water or warm water on an empty stomach.",
+    "ch": ["Yin Tonic", "Menopause", "Night Sweats", "Kidney Health"]
+  },
+  "DANG GUI WAN": {
+    "t": "Blood Nourisher & Menstrual Regulator",
+    "cat": "women",
+    "ing": ["Dong Quai (Dang Gui)", "White Peony Root", "Ligusticum Wallichii", "Rehmannia Root", "Ginseng", "Atractylodes", "Poria", "Licorice Root"],
+    "ben": ["Nourishes and invigorates Blood", "Regulates menstruation", "Relieves menstrual pain and irregularity", "Improves pale complexion and anaemia", "Warms the uterus"],
+    "ind": "For women with Blood deficiency, pale complexion, irregular or painful periods, amenorrhoea, or post-partum weakness.",
+    "use": "Take 8 pills, 3 times daily with warm water. Best taken consistently for 1–3 menstrual cycles.",
+    "ch": ["Women's Health", "Blood Tonic", "Menstrual Health", "Traditional Formula"]
+  },
+  "DU HUO JI SHENG WAN": {
+    "t": "Joint & Back Pain Relief Formula",
+    "cat": "pain",
+    "ing": ["Angelica Pubescens", "Loranthus Parasite Twig", "Eucommia Bark", "Achyranthes Root", "Asarum", "Ligusticum Wallichii", "Rehmannia Root", "White Peony Root", "Ginseng", "Poria", "Licorice Root", "Cinnamomum Bark", "Saposhnikovia Root", "Dong Quai"],
+    "ben": ["Relieves chronic joint and lower back pain", "Dispels wind, cold, and dampness", "Nourishes Liver and Kidney", "Strengthens tendons and bones", "Improves mobility and flexibility"],
+    "ind": "For those with chronic bi-syndrome (painful obstruction) — especially lower back pain, knee pain, joint stiffness, or arthritis in elderly or deficient individuals.",
+    "use": "Take 9 pills, 2–3 times daily with warm water. Chronic conditions may require 4–12 weeks of consistent use.",
+    "ch": ["Joint Health", "Back Pain", "Arthritis", "Kidney Tonic"]
+  },
+  "ER CHEN WAN": {
+    "t": "Phlegm-Dampness Clearing Formula",
+    "cat": "respiratory",
+    "ing": ["Pinellia Rhizome (Ban Xia)", "Tangerine Peel", "Poria", "Licorice Root", "Fresh Ginger"],
+    "ben": ["Dries dampness and dissolves phlegm", "Relieves chronic cough with excessive mucus", "Eases nausea and vomiting", "Supports healthy digestion", "Reduces chest congestion"],
+    "ind": "For those with phlegm-dampness patterns — chronic cough with white phlegm, nausea, chest congestion, poor digestion, or dizziness.",
+    "use": "Take 9 pills, 2 times daily with warm water. Use for 2–4 weeks for chronic phlegm conditions.",
+    "ch": ["Respiratory", "Phlegm Clearing", "Digestion", "Traditional Formula"]
+  },
+  "FANG FENG TONG SHENG WAN": {
+    "t": "Wind-Heat Release & Detox Formula",
+    "cat": "immunity",
+    "ing": ["Saposhnikovia Root", "Schizonepeta", "Forsythia Fruit", "Mint", "Rhubarb", "Mirabilite", "Gypsum", "Scutellaria Root", "Platycodi Radix", "Talc", "Licorice", "Angelica Root", "White Peony", "Ligusticum Wallichii", "Atractylodes", "Gardenia Fruit"],
+    "ben": ["Releases exterior wind-heat", "Clears interior heat and toxins", "Relieves fever, headache, and sore throat", "Promotes bowel movement", "Treats skin conditions with heat signs"],
+    "ind": "For robust individuals with simultaneous exterior wind-heat and interior heat accumulation — fever, constipation, urinary difficulty, and skin conditions.",
+    "use": "Take 6 pills, 2 times daily with warm water. Not recommended for long-term use without practitioner guidance.",
+    "ch": ["Immunity", "Detox", "Fever Relief", "Skin Health"]
+  },
+  "FU ZHENG FANG": {
+    "t": "Immune Fortifying & Vitality Tonic",
+    "cat": "immunity",
+    "ing": ["Astragalus Root", "Ganoderma (Reishi)", "Ligustrum Fruit", "Codonopsis Root", "Atractylodes", "Poria", "Licorice Root"],
+    "ben": ["Strengthens overall immune function", "Tonifies Qi and Zheng Qi (righteous energy)", "Supports cancer recovery and radiation side effects", "Reduces fatigue", "Boosts resistance to illness"],
+    "ind": "For those with weakened immunity, recovering from illness, or undergoing chemotherapy or radiation. Also suitable for general immune support.",
+    "use": "Take 8 pills, 3 times daily with warm water. Consistent use for 4–8 weeks is recommended.",
+    "ch": ["Immune Support", "Qi Tonic", "Recovery", "Anti-Cancer Support"]
+  },
+  "FU ZI LI ZHONG WAN": {
+    "t": "Warm the Middle, Dispel Cold",
+    "cat": "digestion",
+    "ing": ["Prepared Aconite Root (Fu Zi)", "Dried Ginger", "Ginseng Root", "White Atractylodes", "Licorice Root"],
+    "ben": ["Warms the Middle Jiao (Spleen & Stomach)", "Dispels interior cold", "Relieves cold-type abdominal pain", "Stops diarrhoea and loose stools", "Treats deficiency-cold patterns"],
+    "ind": "For those with Spleen and Stomach Yang deficiency — cold abdominal pain, diarrhoea, vomiting, cold extremities, poor appetite, and watery stools.",
+    "use": "Take 8 pills, 3 times daily with warm water. Avoid cold drinks and raw foods during treatment.",
+    "ch": ["Digestion", "Yang Tonic", "Cold Abdominal Pain", "Spleen Health"]
+  },
+  "GAN MAO LING": {
+    "t": "Cold & Flu Relief Tablets",
+    "cat": "immunity",
+    "ing": ["Ilex Root (Gang Mei Gen)", "Evodia Lepta", "Chrysanthemum Flower", "Vitex Fruit", "Isatidis Root", "Lonicera Flower"],
+    "ben": ["Relieves cold and flu symptoms", "Reduces fever and sore throat", "Clears heat and toxins", "Anti-viral properties", "Alleviates headache and body aches"],
+    "ind": "For all stages of colds and flu — especially symptoms including fever, sore throat, headache, nasal congestion, and body aches.",
+    "use": "Take 4 tablets, 3 times daily with warm water at onset of symptoms. Continue for 3–5 days.",
+    "ch": ["Cold & Flu", "Fever Relief", "Immunity", "Anti-Viral"]
+  },
+  "GUAN JIE YAN WAN": {
+    "t": "Joint Inflammation & Arthritis Relief",
+    "cat": "pain",
+    "ing": ["Stephania Root", "Astragalus Root", "Atractylodes Rhizome", "Dried Ginger", "Licorice Root", "Cinnamon Twig", "Prepared Aconite"],
+    "ben": ["Reduces joint inflammation", "Relieves arthritis and rheumatic pain", "Dispels wind, cold, and dampness", "Reduces joint swelling", "Improves range of motion"],
+    "ind": "For those with rheumatoid arthritis, osteoarthritis, gout, or any painful joint condition related to wind-cold-damp obstruction.",
+    "use": "Take 8 pills, 3 times daily with warm water. Continue for 4–8 weeks for chronic conditions.",
+    "ch": ["Joint Health", "Arthritis", "Pain Relief", "Anti-Inflammatory"]
+  },
+  "GUI PI WAN": {
+    "t": "Heart & Spleen Nourishing Tonic",
+    "cat": "sleep",
+    "ing": ["Ginseng", "Atractylodes", "Poria", "Astragalus Root", "Dong Quai", "Longan Fruit", "Jujube Seed (Suan Zao Ren)", "Polygala Root", "Licorice Root", "Woody Nightshade", "Ginger", "Red Jujube"],
+    "ben": ["Tonifies Heart and Spleen", "Nourishes Blood and Qi", "Relieves anxiety, insomnia, and palpitations", "Improves memory and concentration", "Addresses excessive dreaming and forgetfulness"],
+    "ind": "For those with Heart-Blood and Spleen Qi deficiency — symptoms include insomnia, forgetfulness, palpitations, anxiety, fatigue, and pale complexion.",
+    "use": "Take 8 pills, 3 times daily with warm water. Best taken consistently for 4–8 weeks.",
+    "ch": ["Heart Health", "Sleep", "Anxiety Relief", "Blood Tonic"]
+  },
+  "GUI ZHI FU LING WAN": {
+    "t": "Blood Stasis & Uterine Health",
+    "cat": "women",
+    "ing": ["Cinnamon Twig", "Poria", "Moutan Bark", "Peach Kernel", "Red Peony Root"],
+    "ben": ["Invigorates Blood and dissolves stasis", "Reduces uterine fibroids and cysts", "Relieves painful, irregular, or fixed menstrual pain", "Treats endometriosis", "Reduces abdominal masses"],
+    "ind": "For women with Blood stagnation patterns — uterine fibroids, ovarian cysts, endometriosis, fixed abdominal pain, and dark clotted menstrual blood.",
+    "use": "Take 9 pills, 2 times daily with warm water. Not for use during pregnancy. Use consistently for 3 months for fibroids.",
+    "ch": ["Women's Health", "Fibroids", "Menstrual Pain", "Blood Stasis"]
+  },
+  "HUAI JIAO WAN": {
+    "t": "Haemorrhoids & Rectal Bleeding Relief",
+    "cat": "digestion",
+    "ing": ["Sophora Japonica Fruit (Huai Jiao)", "Schizonepeta", "Saposhnikovia Root", "Bitter Orange", "Scutellaria Root", "Rehmannia Root (raw)"],
+    "ben": ["Clears large intestine heat", "Stops rectal bleeding", "Reduces haemorrhoid swelling", "Cools Blood and detoxifies", "Relieves constipation-related haemorrhoids"],
+    "ind": "For those suffering from haemorrhoids with bright red rectal bleeding, anal swelling, pain, or constipation associated with damp-heat in the large intestine.",
+    "use": "Take 9 pills, 2 times daily with warm water. Avoid spicy, fatty foods during treatment.",
+    "ch": ["Haemorrhoids", "Rectal Health", "Digestion", "Blood Cooling"]
+  },
+  "HUO XIANG ZHENG QI WAN": {
+    "t": "Stomach Flu & Summer Damp Relief",
+    "cat": "digestion",
+    "ing": ["Agastache (Huo Xiang)", "Magnolia Bark", "Tangerine Peel", "White Atractylodes", "Pinellia Rhizome", "Poria", "Platycodon Root", "Licorice Root", "Perilla Leaf", "White Angelica"],
+    "ben": ["Dispels summer dampness", "Relieves nausea, vomiting, and diarrhoea", "Treats stomach flu and food poisoning", "Clears chest tightness", "Harmonises the Stomach"],
+    "ind": "For summer colds, stomach flu, food poisoning, travel sickness, nausea, vomiting, and diarrhoea associated with damp obstruction.",
+    "use": "Take 8 pills, 3 times daily with warm water. For acute gastroenteritis, use 3–5 days.",
+    "ch": ["Digestion", "Nausea Relief", "Summer Damp", "Stomach Flu"]
+  },
+  "JIA WEI XIAO YAO WAN": {
+    "t": "Liver Qi Stagnation with Heat",
+    "cat": "women",
+    "ing": ["Bupleurum Root", "White Peony Root", "White Atractylodes", "Poria", "Dong Quai", "Moutan Bark", "Gardenia Fruit", "Licorice Root", "Ginger", "Mint"],
+    "ben": ["Soothes Liver Qi stagnation", "Clears Liver heat", "Relieves PMS, mood swings, and irritability", "Reduces breast tenderness", "Regulates menstruation"],
+    "ind": "For women with Liver Qi stagnation with heat — irritability, mood swings, PMS, breast distension, irregular periods, hot flushes, and insomnia.",
+    "use": "Take 8 pills, 3 times daily with warm water. Best taken throughout the menstrual cycle consistently.",
+    "ch": ["Women's Health", "PMS", "Liver Health", "Mood Support"]
+  },
+  "JIANG DAN GU CHUAN WAN": {
+    "t": "Cholesterol & Gallbladder Support",
+    "cat": "liver",
+    "ing": ["Hawthorn Fruit", "Cassia Seed", "Turmeric", "Ze Xie (Water Plantain)", "Lotus Leaf", "Green Tea Extract", "Salvia Root"],
+    "ben": ["Lowers LDL cholesterol", "Reduces gallstones and bile sludge", "Supports liver and gallbladder health", "Improves lipid metabolism", "Clears damp-heat"],
+    "ind": "For those with high cholesterol, gallbladder issues, fatty liver, or cardiovascular risk factors related to phlegm-dampness accumulation.",
+    "use": "Take 8 pills, 3 times daily with warm water. Combine with low-fat diet for best results. Use for 4–8 weeks.",
+    "ch": ["Cholesterol", "Liver Health", "Gallbladder", "Heart Health"]
+  },
+  "JIANG YA WAN": {
+    "t": "Blood Pressure Balancing Formula",
+    "cat": "heart",
+    "ing": ["Tian Ma (Gastrodia Rhizome)", "Gou Teng (Uncaria)", "Eucommia Bark", "Achyranthes Root", "Mulberry Mistletoe Stem", "Gardenia Fruit", "Scutellaria Root", "Duzhong"],
+    "ben": ["Lowers blood pressure", "Calms Liver Yang rising", "Reduces headache and dizziness", "Improves circulation", "Nourishes Liver and Kidney Yin"],
+    "ind": "For those with Liver Yang hypertension — high blood pressure, headache, dizziness, flushed face, ringing in the ears, and stiff neck.",
+    "use": "Take 8 pills, 3 times daily with warm water. Monitor blood pressure regularly. For long-term management.",
+    "ch": ["Blood Pressure", "Heart Health", "Liver Yang", "Dizziness Relief"]
+  },
+  "JIE GENG WAN": {
+    "t": "Throat & Respiratory Support",
+    "cat": "respiratory",
+    "ing": ["Platycodon Root (Jie Geng)", "Licorice Root", "Mint", "Fritillaria Bulb", "Chrysanthemum Flower"],
+    "ben": ["Opens the Lung and throat", "Dissolves phlegm", "Relieves sore throat and hoarse voice", "Reduces productive cough", "Supports upper respiratory health"],
+    "ind": "For those with sore throat, pharyngitis, laryngitis, hoarse voice, excessive phlegm, or chronic cough.",
+    "use": "Take 8 pills, 3 times daily with warm water. Dissolve pills slowly in the mouth for throat conditions.",
+    "ch": ["Respiratory", "Throat Health", "Cough Relief", "Phlegm Clearing"]
+  },
+  "JIN GUI SHEN QI WAN": {
+    "t": "Kidney Yang Warming Tonic",
+    "cat": "men",
+    "ing": ["Rehmannia Root", "Dioscorea Rhizome", "Cornus Fruit", "Moutan Bark", "Poria", "Ze Xie", "Cinnamon Bark", "Prepared Aconite Root"],
+    "ben": ["Warms and tonifies Kidney Yang", "Relieves cold lower back and knees", "Reduces frequent urination at night", "Improves libido and sexual function", "Treats oedema related to Kidney Yang deficiency"],
+    "ind": "For Kidney Yang deficiency patterns — cold lower back, frequent urination at night, impotence, lower extremity oedema, and cold extremities.",
+    "use": "Take 8 pills, 3 times daily with warm water. Avoid cold and raw foods. Use consistently for 4–8 weeks.",
+    "ch": ["Kidney Yang", "Men's Health", "Energy", "Anti-Ageing"]
+  },
+  "JIN SUO GU JING WAN": {
+    "t": "Consolidate Kidney, Stop Leakage",
+    "cat": "men",
+    "ing": ["Semen Euryales (Qian Shi)", "Lotus Stamen", "Calcined Oyster Shell", "Calcined Fossil Bone (Long Gu)", "Astragalus Seed (Sha Yuan Ji Li)", "Lotus Seed"],
+    "ben": ["Consolidates Kidney Qi and Essence", "Reduces premature ejaculation and spermatorrhoea", "Stops excessive urination and leucorrhoea", "Strengthens reproductive function", "Treats nocturnal emission"],
+    "ind": "For men with Kidney deficiency causing spermatorrhoea, premature ejaculation, nocturnal emission, fatigue, and lower back weakness.",
+    "use": "Take 9 pills, 3 times daily with warm salted water. Use consistently for 4–8 weeks for best results.",
+    "ch": ["Men's Health", "Kidney Health", "Reproductive", "Essence Tonic"]
+  },
+  "JIU WEI QIANG HUO WAN": {
+    "t": "Wind-Cold-Damp Exterior Release",
+    "cat": "pain",
+    "ing": ["Qiang Huo (Notopterygium)", "Saposhnikovia Root", "Atractylodes Rhizome", "Anemarrhena Rhizome", "Ligusticum Wallichii", "Rehmannia Root", "Asarum", "Scutellaria Root", "Licorice Root"],
+    "ben": ["Releases exterior wind-cold-damp", "Relieves body aches and headache", "Reduces fever and chills", "Treats bi-syndrome with dampness", "Clears interior heat"],
+    "ind": "For wind-cold-damp conditions — body aches, headache, stiff neck, fever with chills, and no sweating. Especially effective for wet or humid weather ailments.",
+    "use": "Take 8 pills, 3 times daily with warm water during acute illness. Discontinue after symptoms resolve.",
+    "ch": ["Cold & Flu", "Pain Relief", "Wind-Cold", "Bi-Syndrome"]
+  },
+  "KANG GU ZENG SHENG WAN": {
+    "t": "Bone & Joint Degeneration Support",
+    "cat": "pain",
+    "ing": ["Eucommia Bark", "Astragalus Root", "Ligusticum Wallichii", "Drynaria Rhizome", "Salvia Root", "Spatholobus Stem", "Dipsacus Root", "Achyranthes Root"],
+    "ben": ["Strengthens bones and tendons", "Slows joint degeneration", "Relieves bone spurs and osteophytes", "Nourishes Liver and Kidney", "Reduces stiffness and pain"],
+    "ind": "For cervical spondylosis, lumbar spondylosis, bone spurs, and degenerative joint disease. Suitable for older adults with Kidney and Liver deficiency.",
+    "use": "Take 5 pills, 3 times daily with warm water. Long-term use (3–6 months) recommended for chronic degeneration.",
+    "ch": ["Bone Health", "Joint Degeneration", "Kidney Tonic", "Pain Relief"]
+  },
+  "LI DAN PAI SHI WAN": {
+    "t": "Gallstone & Bile Duct Clearing",
+    "cat": "liver",
+    "ing": ["Lysimachia (Jin Qian Cao)", "Curcuma Root", "Scutellaria Root", "Rhubarb", "Abutilon Seed", "Licorice Root"],
+    "ben": ["Dissolves and expels gallstones", "Clears damp-heat from liver and gallbladder", "Relieves biliary colic and right upper quadrant pain", "Promotes bile flow", "Reduces liver inflammation"],
+    "ind": "For those with gallstones, cholecystitis, bile duct obstruction, or right upper quadrant pain related to liver and gallbladder damp-heat.",
+    "use": "Take 10 pills, 3 times daily with warm water. Use for 4–8 weeks. Combine with adequate water intake.",
+    "ch": ["Gallstones", "Liver Health", "Bile Duct", "Detox"]
+  },
+  "LI DAN WAN": {
+    "t": "Liver & Gallbladder Harmoniser",
+    "cat": "liver",
+    "ing": ["Artemisia Capillaris", "Scutellaria Root", "Gardenia Fruit", "Rhubarb", "Curcuma Root", "Salvia Root", "Bitter Orange"],
+    "ben": ["Clears liver and gallbladder heat", "Promotes bile secretion and flow", "Reduces jaundice", "Relieves right-sided pain and fullness", "Improves liver function"],
+    "ind": "For liver and gallbladder damp-heat conditions — jaundice, cholecystitis, hepatitis, bitter taste in mouth, right upper abdominal pain.",
+    "use": "Take 5 pills, 3 times daily with warm water. Use for 2–4 weeks for acute conditions.",
+    "ch": ["Liver Health", "Gallbladder", "Jaundice", "Detox"]
+  },
+  "LI ZHONG WAN": {
+    "t": "Regulate the Middle, Warm the Spleen",
+    "cat": "digestion",
+    "ing": ["Ginseng Root", "Dried Ginger", "White Atractylodes", "Licorice Root"],
+    "ben": ["Warms the Middle Jiao", "Strengthens Spleen and Stomach Yang", "Relieves cold abdominal pain", "Stops diarrhoea and loose stools", "Improves poor appetite"],
+    "ind": "For Spleen and Stomach Yang deficiency — cold abdominal pain, chronic diarrhoea, watery vomiting, and weak digestion without thirst.",
+    "use": "Take 8 pills, 3 times daily with warm water. Avoid cold, raw, or greasy foods during treatment.",
+    "ch": ["Digestion", "Spleen Health", "Yang Tonic", "Abdominal Pain"]
+  },
+  "LIAN QIAO BAI DU WAN": {
+    "t": "Toxin-Clearing Skin & Fever Formula",
+    "cat": "immunity",
+    "ing": ["Forsythia Fruit", "Lonicera Flower", "Coptis Rhizome", "Scutellaria Root", "Rhubarb", "Licorice Root", "Mint", "Schizonepeta"],
+    "ben": ["Clears heat and detoxifies", "Treats toxic skin conditions (boils, acne, abscesses)", "Reduces fever", "Relieves sore throat and swollen glands", "Anti-bacterial properties"],
+    "ind": "For acute toxic heat conditions — skin boils, abscesses, acne, red swollen skin lesions, high fever, and throat inflammation.",
+    "use": "Take 8 pills, 3 times daily with warm water. Use for 5–10 days for acute conditions.",
+    "ch": ["Skin Health", "Detox", "Fever", "Immunity"]
+  },
+  "LIU WEI DI HUANG WAN": {
+    "t": "Six-Ingredient Kidney Yin Tonic",
+    "cat": "men",
+    "ing": ["Rehmannia Root (Shu Di Huang)", "Cornus Fruit (Shan Zhu Yu)", "Dioscorea Rhizome (Shan Yao)", "Ze Xie (Alisma)", "Moutan Bark (Mu Dan Pi)", "Poria (Fu Ling)"],
+    "ben": ["Tonifies Kidney and Liver Yin", "Reduces night sweats and tidal fever", "Relieves lower back weakness and tinnitus", "Supports bone and tendon health", "Improves vision and hearing"],
+    "ind": "For Kidney Yin deficiency — lower back weakness, tinnitus, dizziness, night sweats, hot palms, and reduced bone density. Suitable for men and women.",
+    "use": "Take 8 pills, 3 times daily with warm water or warm salted water. Long-term use (3+ months) is beneficial.",
+    "ch": ["Kidney Yin", "Anti-Ageing", "Men's Health", "Bone Health"]
+  },
+  "LONG DAN XIE GAN WAN": {
+    "t": "Clear Liver Fire & Damp-Heat",
+    "cat": "liver",
+    "ing": ["Gentian Root (Long Dan)", "Scutellaria Root", "Gardenia Fruit", "Akebia Stem", "Ze Xie", "Plantain Seed", "Dong Quai", "Rehmannia Root", "Bupleurum Root", "Licorice Root"],
+    "ben": ["Clears Liver and Gallbladder fire and damp-heat", "Relieves red eyes and ear infections", "Reduces genital itching and discharge", "Treats urinary tract infections", "Anti-inflammatory"],
+    "ind": "For Liver and Gallbladder damp-heat — red, swollen eyes, bitter taste, ear infections, urinary infections, genital inflammation, leucorrhoea.",
+    "use": "Take 6 pills, 3 times daily with warm water. Use for 5–10 days. Not for prolonged use without supervision.",
+    "ch": ["Liver Health", "Damp-Heat", "UTI", "Genital Health"]
+  },
+  "MAI WEI DI HUANG WAN": {
+    "t": "Lung & Kidney Yin Nourishing Tonic",
+    "cat": "respiratory",
+    "ing": ["Ophiopogon Root (Mai Dong)", "Schisandra Fruit (Wu Wei Zi)", "Rehmannia Root", "Cornus Fruit", "Dioscorea", "Ze Xie", "Moutan Bark", "Poria"],
+    "ben": ["Nourishes Lung and Kidney Yin", "Relieves chronic dry cough", "Reduces night sweats and hot flushes", "Moistens dryness in the lungs", "Treats consumptive disorders"],
+    "ind": "For Lung and Kidney Yin deficiency — chronic dry cough, shortness of breath, dry mouth, night sweats, and tidal fever.",
+    "use": "Take 8 pills, 3 times daily with warm water. Use consistently for 4–8 weeks.",
+    "ch": ["Lung Health", "Kidney Yin", "Dry Cough", "Menopause"]
+  },
+  "MING MU DI HUANG WAN": {
+    "t": "Liver & Kidney Tonic for Eyes",
+    "cat": "general",
+    "ing": ["Rehmannia Root", "Cornus Fruit", "Dioscorea", "Ze Xie", "Moutan Bark", "Poria", "Chinese Wolfberry (Gou Qi Zi)", "Chrysanthemum Flower", "White Peony Root", "Dong Quai", "Schisandra Fruit"],
+    "ben": ["Nourishes Liver and Kidney Yin", "Improves vision and reduces eye fatigue", "Treats dry, red, or blurry eyes", "Reduces excessive tearing", "Supports macular health"],
+    "ind": "For Liver and Kidney Yin deficiency affecting the eyes — dry eyes, blurry vision, eye strain, photophobia, night blindness, and tearing in wind.",
+    "use": "Take 8 pills, 3 times daily with warm water. Use consistently for 4–8 weeks for eye conditions.",
+    "ch": ["Eye Health", "Liver Yin", "Kidney Yin", "Vision Support"]
+  },
+  "MU XIANG SHUN QI WAN": {
+    "t": "Qi Stagnation & Digestive Discomfort Relief",
+    "cat": "digestion",
+    "ing": ["Mu Xiang (Aucklandia Root)", "Bitter Orange (Zhi Ke)", "Magnolia Bark", "Cyperus Rhizome", "Licorice Root", "Bing Lang (Areca Seed)", "Dried Ginger"],
+    "ben": ["Moves Qi and relieves distension", "Reduces bloating and belching", "Eases epigastric fullness", "Treats Qi stagnation in the digestive tract", "Harmonises the middle Jiao"],
+    "ind": "For digestive Qi stagnation — abdominal distension, belching, flatulence, stomach fullness, and poor appetite related to stress or overeating.",
+    "use": "Take 8 pills, 3 times daily with warm water. Take 30 minutes before or after meals.",
+    "ch": ["Digestion", "Bloating Relief", "Qi Regulation", "Stomach Health"]
+  },
+  "PIAN TOU TONG WAN": {
+    "t": "Migraine & Chronic Headache Relief",
+    "cat": "pain",
+    "ing": ["Ligusticum Wallichii", "Scorpion (Quan Xie)", "Centipede (Wu Gong)", "Bombyx Mori", "Uncaria Stem", "Ginkgo Leaf", "Dong Quai", "Red Peony Root"],
+    "ben": ["Relieves migraines and chronic headaches", "Dispels wind and blood stasis", "Reduces frequency and severity of attacks", "Improves blood circulation in the head", "Anti-spasmodic properties"],
+    "ind": "For those suffering from chronic migraines, one-sided headaches, vascular headaches, or tension headaches related to wind and Blood stasis.",
+    "use": "Take 5 pills, 2–3 times daily with warm water. For acute attacks, take at onset.",
+    "ch": ["Headache", "Migraine", "Pain Relief", "Blood Circulation"]
+  },
+  "QI JU DI HUANG WAN": {
+    "t": "Wolfberry & Chrysanthemum Eye Tonic",
+    "cat": "general",
+    "ing": ["Chinese Wolfberry (Gou Qi Zi)", "Chrysanthemum Flower", "Rehmannia Root", "Cornus Fruit", "Dioscorea", "Ze Xie", "Moutan Bark", "Poria"],
+    "ben": ["Nourishes Liver and Kidney Yin", "Improves dry, tired, or blurry eyes", "Reduces dizziness and tinnitus", "Clears Liver heat from the eyes", "Supports long-term eye health"],
+    "ind": "For those with Liver-Kidney Yin deficiency causing eye dryness, blurry vision, light sensitivity, dizziness, and tinnitus.",
+    "use": "Take 8 pills, 3 times daily with warm water. Use for 4–8 weeks for sustained benefits.",
+    "ch": ["Eye Health", "Liver Yin", "Kidney Yin", "Dizziness Relief"]
+  },
+  "QIAN LIE SHU WAN": {
+    "t": "Prostate Health & Urinary Flow",
+    "cat": "men",
+    "ing": ["Saw Palmetto Extract", "Ze Xie (Alisma)", "Plantain Seed", "Poria", "Phellodendron Bark", "Anemarrhena Rhizome", "Cinnamon Bark", "Achyranthes Root"],
+    "ben": ["Reduces benign prostatic hyperplasia (BPH)", "Improves urinary flow", "Reduces night-time urination", "Clears damp-heat in the lower jiao", "Reduces prostate inflammation"],
+    "ind": "For men with BPH, prostatitis, frequent urination, weak urine stream, incomplete bladder emptying, or prostate inflammation.",
+    "use": "Take 9 pills, 3 times daily with warm water. Use consistently for 4–8 weeks for prostate support.",
+    "ch": ["Men's Health", "Prostate", "Urinary Health", "Damp-Heat Clearing"]
+  },
+  "QING QI HUA TAN WAN": {
+    "t": "Clear Lung Heat & Dissolve Phlegm",
+    "cat": "respiratory",
+    "ing": ["Trichosanthes Fruit", "Arisaema (Bile-processed)", "Scutellaria Root", "Bitter Orange", "Tangerine Peel", "Poria", "Apricot Kernel", "Pinellia Rhizome"],
+    "ben": ["Clears lung heat", "Dissolves thick, yellow phlegm", "Relieves productive cough", "Reduces chest tightness", "Treats heat-phlegm respiratory conditions"],
+    "ind": "For heat-phlegm patterns — productive cough with thick yellow or green phlegm, chest tightness, shortness of breath, and fever.",
+    "use": "Take 9 pills, 2–3 times daily with warm water. Use for 5–10 days for acute infections.",
+    "ch": ["Respiratory", "Phlegm Clearing", "Lung Heat", "Cough Relief"]
+  },
+  "QING RE AN CHUANG WAN": {
+    "t": "Clear Heat & Treat Acne Formula",
+    "cat": "general",
+    "ing": ["Coptis Rhizome", "Scutellaria Root", "Gardenia Fruit", "Rhubarb", "Forsythia Fruit", "Taraxacum", "Lonicera Flower", "Mint"],
+    "ben": ["Clears heat and toxic fire", "Reduces acne and skin breakouts", "Decreases skin inflammation and redness", "Purifies the Blood", "Promotes healthy skin"],
+    "ind": "For heat and toxin-type acne — inflammatory, cystic, or hormonal acne with redness, pain, and pustules on the face and back.",
+    "use": "Take 8 pills, 3 times daily with warm water. Combine with adequate hydration and low-sugar diet.",
+    "ch": ["Skin Health", "Acne", "Detox", "Heat Clearing"]
+  },
+  "SHAO FU ZHU YU WAN": {
+    "t": "Lower Abdominal Blood Stasis Relief",
+    "cat": "women",
+    "ing": ["Fennel Seed", "Dried Ginger", "Corydalis Rhizome", "Myrrh", "Dong Quai", "Ligusticum Wallichii", "Cinnamon Bark", "Red Peony Root", "Pu Huang (Cattail Pollen)", "Wu Ling Zhi (Pteropus Feces)"],
+    "ben": ["Warms the lower abdomen", "Invigorates Blood and dissolves stasis", "Relieves dysmenorrhoea (period pain)", "Reduces uterine fibroids", "Treats endometriosis pain"],
+    "ind": "For women with lower abdominal cold-blood stasis — severe dysmenorrhoea, dark clotted menstrual blood, lower abdominal pain with cold sensation, and uterine masses.",
+    "use": "Take 9 pills, 2–3 times daily with warm water. Avoid during pregnancy and menstruation with heavy bleeding.",
+    "ch": ["Women's Health", "Menstrual Pain", "Blood Stasis", "Fibroids"]
+  },
+  "SHEN JING SHUAI RUO WAN": {
+    "t": "Nervous System Nourishing Tonic",
+    "cat": "sleep",
+    "ing": ["Ginseng", "Deer Velvet", "Astragalus Root", "Angelica Root", "Suan Zao Ren (Jujube Seed)", "Polygala Root", "Licorice Root", "Longan Fruit", "Poria"],
+    "ben": ["Nourishes Qi, Blood and the nervous system", "Relieves neurasthenia, anxiety and exhaustion", "Improves sleep quality", "Enhances memory and concentration", "Reduces chronic stress"],
+    "ind": "For neurasthenia and nervous exhaustion — insomnia, poor memory, chronic fatigue, anxiety, palpitations, and dizziness related to Heart-Spleen deficiency.",
+    "use": "Take 8 pills, 3 times daily with warm water. Use consistently for 4–8 weeks for full effect.",
+    "ch": ["Nervous System", "Sleep", "Anxiety", "Qi Tonic"]
+  },
+  "SHEN LING BAI ZHU WAN": {
+    "t": "Strengthen Spleen, Resolve Dampness",
+    "cat": "digestion",
+    "ing": ["Ginseng Root", "Poria", "White Atractylodes", "Dioscorea (Shan Yao)", "Lotus Seed", "Yi Yi Ren (Job's Tears)", "Amomum Fruit", "Platycodon Root", "Licorice Root", "Hyacinth Bean"],
+    "ben": ["Tonifies Spleen and Stomach Qi", "Resolves dampness in the digestive system", "Relieves chronic diarrhoea and loose stools", "Improves poor appetite and fatigue", "Reduces bloating"],
+    "ind": "For chronic Spleen-dampness patterns — loose stools, diarrhoea, poor appetite, fatigue, abdominal distension, and nausea.",
+    "use": "Take 8 pills, 3 times daily with warm water or rice water. Use consistently for 4–8 weeks.",
+    "ch": ["Digestion", "Spleen Health", "Diarrhoea Relief", "Qi Tonic"]
+  },
+  "SHENG MAI WAN": {
+    "t": "Heart Qi & Yin Regenerating Tonic",
+    "cat": "heart",
+    "ing": ["Ginseng Root (Ren Shen)", "Ophiopogon Root (Mai Dong)", "Schisandra Fruit (Wu Wei Zi)"],
+    "ben": ["Generates Qi and Yin", "Strengthens heart function", "Reduces palpitations and shortness of breath", "Relieves chronic fatigue", "Treats profuse sweating from Qi deficiency"],
+    "ind": "For Heart Qi and Yin deficiency — palpitations, shortness of breath, spontaneous sweating, fatigue, and dry mouth. Suitable for post-illness recovery.",
+    "use": "Take 8 pills, 3 times daily with warm water. Use for 4–8 weeks for cardiovascular support.",
+    "ch": ["Heart Health", "Qi Tonic", "Yin Tonic", "Fatigue Relief"]
+  },
+  "SHOU WU WAN": {
+    "t": "Anti-Ageing Hair & Blood Tonic",
+    "cat": "general",
+    "ing": ["He Shou Wu (Polygonum multiflorum)", "Dong Quai", "White Peony Root", "Achyranthes Root", "Ligustrum Fruit", "Eclipta", "Black Sesame Seed"],
+    "ben": ["Nourishes Liver and Kidney", "Darkens premature grey hair", "Strengthens hair and reduces hair loss", "Tonifies Blood", "Slows premature ageing"],
+    "ind": "For those with premature greying, hair loss, or Blood deficiency with Liver-Kidney weakness. Suitable for men and women over 30.",
+    "use": "Take 9 pills, 2 times daily with warm water or warm milk. Long-term use (3+ months) gives best results.",
+    "ch": ["Hair Health", "Anti-Ageing", "Blood Tonic", "Kidney Tonic"]
+  },
+  "SI JUN ZI WAN": {
+    "t": "Four Gentlemen \u2014 Core Qi Tonic",
+    "cat": "energy",
+    "ing": ["Ginseng Root (Ren Shen)", "White Atractylodes (Bai Zhu)", "Poria (Fu Ling)", "Licorice Root (Zhi Gan Cao)"],
+    "ben": ["Foundation Qi tonic formula", "Strengthens Spleen and Stomach", "Improves appetite and digestion", "Reduces fatigue and weakness", "Suitable as a long-term wellness tonic"],
+    "ind": "For foundational Qi deficiency — pale complexion, fatigue, weak muscles, poor appetite, and soft or loose stools. The classical starting formula for Qi tonification.",
+    "use": "Take 8 pills, 3 times daily with warm water. Safe for long-term use as a wellness tonic.",
+    "ch": ["Qi Tonic", "Energy", "Spleen Health", "Foundation Formula"]
+  },
+  "SI MIAO WAN": {
+    "t": "Gout & Damp-Heat Lower Limb Relief",
+    "cat": "pain",
+    "ing": ["Phellodendron Bark", "Atractylodes Rhizome (Cang Zhu)", "Yi Yi Ren (Job's Tears)", "Achyranthes Root"],
+    "ben": ["Clears damp-heat from lower limbs", "Relieves gout and joint inflammation", "Reduces swelling and redness", "Treats damp-heat bi-syndrome", "Lowers uric acid accumulation"],
+    "ind": "For gout, hot and swollen joints, or painful lower limb conditions caused by damp-heat accumulation. Particularly effective for foot and knee inflammation.",
+    "use": "Take 9 pills, 2–3 times daily with warm water. Combine with increased fluid intake to flush uric acid.",
+    "ch": ["Gout", "Joint Health", "Damp-Heat", "Anti-Inflammatory"]
+  },
+  "SI WU TANG WAN": {
+    "t": "Four Substances Blood Nourishing Formula",
+    "cat": "women",
+    "ing": ["Rehmannia Root (Shu Di Huang)", "White Peony Root (Bai Shao)", "Dong Quai (Dang Gui)", "Ligusticum Wallichii (Chuan Xiong)"],
+    "ben": ["Nourishes and invigorates Blood", "Regulates menstruation", "Relieves menstrual cramps and irregular cycles", "Improves pale, dull complexion", "Reduces dry skin and hair"],
+    "ind": "For women with Blood deficiency — irregular periods, amenorrhoea, scanty menstruation, pale complexion, dry hair, and dizziness. The classical women's Blood tonic.",
+    "use": "Take 9 pills, 2–3 times daily with warm water. Best used throughout the menstrual cycle.",
+    "ch": ["Women's Health", "Blood Tonic", "Menstrual Health", "Foundation Formula"]
+  },
+  "TAO HONG SI WU WAN": {
+    "t": "Blood-Invigorating Menstrual Formula",
+    "cat": "women",
+    "ing": ["Peach Kernel (Tao Ren)", "Safflower (Hong Hua)", "Rehmannia Root", "White Peony Root", "Dong Quai", "Ligusticum Wallichii"],
+    "ben": ["Strongly invigorates Blood and removes stasis", "Regulates painful and irregular menstruation", "Treats dark, clotted menstrual blood", "Relieves fixed abdominal pain", "Reduces uterine masses"],
+    "ind": "For women with Blood stasis — painful periods, dark or clotted menstrual blood, irregular cycle, post-partum Blood stasis, and uterine fibroids.",
+    "use": "Take 8 pills, 3 times daily with warm water. Avoid during pregnancy and heavy menstrual bleeding.",
+    "ch": ["Women's Health", "Blood Stasis", "Menstrual Pain", "Fibroids"]
+  },
+  "TE XIAO BI MIN GAN WAN": {
+    "t": "Allergic Rhinitis & Hay Fever Relief",
+    "cat": "respiratory",
+    "ing": ["Xanthium Fruit (Cang Er Zi)", "Magnolia Flower (Xin Yi Hua)", "Astragalus Root", "Saposhnikovia Root", "Chrysanthemum Flower", "Schisandra Fruit", "Licorice Root"],
+    "ben": ["Relieves allergic rhinitis and hay fever", "Reduces nasal congestion and sneezing", "Decreases nasal discharge", "Strengthens Wei Qi to prevent recurrence", "Anti-histamine-like effect"],
+    "ind": "For those with allergic rhinitis, hay fever, chronic sinusitis, or seasonal allergies causing sneezing, nasal drip, and congestion.",
+    "use": "Take 4 pills, 3 times daily with warm water. Use for 2–4 weeks seasonally or as needed.",
+    "ch": ["Rhinitis", "Allergy Relief", "Respiratory", "Nasal Health"]
+  },
+  "TE XIAO JING ZHUI TONG WAN": {
+    "t": "Cervical Spondylosis & Neck Pain Relief",
+    "cat": "pain",
+    "ing": ["Eucommia Bark", "Drynaria Rhizome", "Pueraria Root (Ge Gen)", "Spatholobus Stem", "Ligusticum Wallichii", "Scorpion", "Centipede", "Licorice Root"],
+    "ben": ["Relieves cervical spondylosis", "Reduces neck pain and stiffness", "Improves blood circulation in the neck and shoulders", "Dispels wind-cold-damp obstruction", "Strengthens cervical vertebrae"],
+    "ind": "For cervical spondylosis, neck pain, shoulder stiffness, upper back pain, and numbness or tingling in the arms from nerve compression.",
+    "use": "Take 5 pills, 3 times daily with warm water. Use for 4–12 weeks for chronic conditions.",
+    "ch": ["Neck Pain", "Cervical Health", "Pain Relief", "Joint Health"]
+  },
+  "TIAN MA GOU TENG WAN": {
+    "t": "Liver Yang Headache & Hypertension",
+    "cat": "heart",
+    "ing": ["Gastrodia Rhizome (Tian Ma)", "Uncaria Stem (Gou Teng)", "Abalone Shell (Shi Jue Ming)", "Gardenia Fruit", "Scutellaria Root", "Eucommia Bark", "Achyranthes Root", "Loranthus Twig", "Fu Shen", "Polygorum Stem", "Dipsacus Root"],
+    "ben": ["Calms Liver Yang rising", "Lowers blood pressure", "Relieves headache and dizziness", "Extinguishes internal wind", "Reduces tinnitus and insomnia"],
+    "ind": "For Liver Yang excess and internal wind — hypertension, headaches, dizziness, tinnitus, flushed face, insomnia, and irritability.",
+    "use": "Take 8 pills, 3 times daily with warm water. Monitor blood pressure regularly. Use for 4–8 weeks.",
+    "ch": ["Blood Pressure", "Headache", "Liver Yang", "Dizziness Relief"]
+  },
+  "TIAN WANG BU XIN WAN": {
+    "t": "Emperor of Heaven's Heart Tonic",
+    "cat": "sleep",
+    "ing": ["Rehmannia Root", "Asparagus Root", "Ophiopogon Root", "Schisandra Fruit", "Poria", "Polygala Root", "Dong Quai", "Ginseng Root", "Platycladi Seed", "Suan Zao Ren", "Salvia Root", "Coptis Rhizome", "Platycodon Root"],
+    "ben": ["Nourishes Heart and Kidney Yin", "Calms the Shen (spirit)", "Relieves insomnia and excessive dreaming", "Reduces anxiety and palpitations", "Improves memory and focus"],
+    "ind": "For Heart and Kidney Yin deficiency — anxiety, insomnia, poor memory, palpitations, night sweats, and fatigue from overwork or study.",
+    "use": "Take 9 pills, 2 times daily with warm water or Dendrobium tea. Best taken in the evening.",
+    "ch": ["Sleep", "Heart Health", "Anxiety", "Yin Tonic"]
+  },
+  "TIAO JING CU YUN WAN": {
+    "t": "Regulate Cycle & Boost Fertility",
+    "cat": "women",
+    "ing": ["Dong Quai", "White Peony Root", "Rehmannia Root", "Ligusticum Wallichii", "Cyperus Rhizome", "Codonopsis Root", "Astragalus Root", "Salvia Root", "Leonurus (Motherwort)"],
+    "ben": ["Regulates menstrual cycle", "Promotes ovulation", "Nourishes Blood and Qi for fertility", "Reduces Qi and Blood stagnation", "Supports conception and uterine health"],
+    "ind": "For women with irregular cycles, amenorrhoea, anovulation, or infertility related to Qi and Blood deficiency with stagnation.",
+    "use": "Take 8 pills, 3 times daily with warm water. Use from Day 5 to Day 14 of the cycle for fertility support.",
+    "ch": ["Women's Health", "Fertility", "Menstrual Health", "Blood Tonic"]
+  },
+  "TONG JING WAN": {
+    "t": "Dysmenorrhoea & Menstrual Pain Relief",
+    "cat": "women",
+    "ing": ["Corydalis Rhizome (Yan Hu Suo)", "White Peony Root", "Dong Quai", "Ligusticum Wallichii", "Cyperus Rhizome", "Mu Xiang", "Pu Huang", "Wu Ling Zhi"],
+    "ben": ["Relieves menstrual cramps and pain", "Moves Qi and Blood stagnation", "Warms the uterus", "Reduces heavy menstrual bleeding with clots", "Eases pre-menstrual abdominal pain"],
+    "ind": "For dysmenorrhoea (painful periods), especially cramping with dark or clotted blood, abdominal distension, or cold-related period pain.",
+    "use": "Take 8 pills, 3 times daily. Begin 2–3 days before expected period and continue through menstruation.",
+    "ch": ["Women's Health", "Menstrual Pain", "Dysmenorrhoea", "Cramp Relief"]
+  },
+  "WEN JING WAN": {
+    "t": "Warm the Meridians, Regulate the Menses",
+    "cat": "women",
+    "ing": ["Dong Quai", "Ligusticum Wallichii", "White Peony Root", "Cinnamon Twig", "Evodia Fruit", "Moutan Bark", "Ginseng Root", "Pinellia Rhizome", "Dried Ginger", "Licorice Root", "Gelatin (E Jiao)", "Ophiopogon Root"],
+    "ben": ["Warms the uterus and channels", "Regulates cold-type irregular menstruation", "Relieves cold abdominal pain", "Nourishes Blood and Yin", "Treats infertility from cold-blood stasis"],
+    "ind": "For women with cold-type menstrual disorders — irregular periods, amenorrhoea with cold sensation, infertility, excessive uterine bleeding, and late-night fever with warm palms.",
+    "use": "Take 9 pills, 2–3 times daily with warm water. Avoid cold foods and environments during treatment.",
+    "ch": ["Women's Health", "Uterine Warming", "Menstrual Regulation", "Fertility"]
+  },
+  "WU JI BAI FENG WAN": {
+    "t": "Black Chicken White Phoenix \u2014 Women's Tonic",
+    "cat": "women",
+    "ing": ["Black-boned Chicken (Wu Ji)", "Rehmannia Root", "Dong Quai", "White Peony Root", "Ligusticum Wallichii", "Ginseng Root", "Astragalus Root", "Deerhorn Gelatin", "Tortoise Shell Gelatin", "Salvia Root", "Cyperus Rhizome"],
+    "ben": ["Tonifies Qi and nourishes Blood", "Regulates menstruation", "Reduces leucorrhoea and vaginal discharge", "Relieves menopause symptoms", "Strengthens the uterus and Kidney Essence"],
+    "ind": "For women with Qi and Blood deficiency — irregular periods, fatigue, leucorrhoea, menstrual pain, and menopausal symptoms. Suitable for women of all reproductive ages.",
+    "use": "Take 9 pills, 2 times daily with warm water or warm rice wine. Long-term use (2–3 months) is beneficial.",
+    "ch": ["Women's Health", "Blood Tonic", "Menstrual Health", "Menopause"]
+  },
+  "WU LING WAN": {
+    "t": "Water Metabolism & Oedema Relief",
+    "cat": "urinary",
+    "ing": ["Poria (Fu Ling)", "Polyporus (Zhu Ling)", "Ze Xie (Alisma)", "White Atractylodes", "Cinnamon Twig"],
+    "ben": ["Promotes water metabolism", "Reduces oedema and fluid retention", "Treats urinary difficulty", "Relieves dizziness from water accumulation", "Supports kidney filtration"],
+    "ind": "For water accumulation patterns — oedema (swelling), urinary difficulty, diarrhoea, nausea with water ingestion, and headache or dizziness from fluid retention.",
+    "use": "Take 9 pills, 2–3 times daily with warm water. Increase fluid intake to support urination.",
+    "ch": ["Urinary Health", "Oedema", "Water Metabolism", "Kidney Health"]
+  },
+  "WU ZI YAN ZONG WAN": {
+    "t": "Five Seeds Male Fertility Tonic",
+    "cat": "men",
+    "ing": ["Cuscuta Seed (Tu Si Zi)", "Chinese Wolfberry (Gou Qi Zi)", "Raspberry (Fu Pen Zi)", "Plantain Seed (Che Qian Zi)", "Schisandra Fruit (Wu Wei Zi)"],
+    "ben": ["Tonifies Kidney Yang and Essence", "Improves sperm count and quality", "Boosts libido and sexual vitality", "Reduces premature ejaculation", "Strengthens lower back and knees"],
+    "ind": "For men with male infertility, low sperm count or motility, premature ejaculation, impotence, or Kidney deficiency causing lower back weakness.",
+    "use": "Take 9 pills, 3 times daily with warm water or warm salted water. Use consistently for 3 months for fertility.",
+    "ch": ["Men's Health", "Male Fertility", "Kidney Yang", "Sexual Health"]
+  },
+  "XIANG SHA LIU JUN WAN": {
+    "t": "Qi Tonic with Phlegm-Damp Relief",
+    "cat": "digestion",
+    "ing": ["Mu Xiang", "Amomum Fruit (Sha Ren)", "Ginseng Root", "White Atractylodes", "Poria", "Licorice Root", "Tangerine Peel", "Pinellia Rhizome"],
+    "ben": ["Tonifies Spleen and Stomach Qi", "Resolves phlegm-dampness", "Relieves nausea and vomiting", "Improves poor appetite", "Reduces abdominal distension"],
+    "ind": "For Spleen-Stomach Qi deficiency complicated by phlegm-dampness — nausea, poor appetite, loose stools, fatigue, and belching.",
+    "use": "Take 8 pills, 3 times daily with warm water. Take 30 minutes before meals for best effect.",
+    "ch": ["Digestion", "Qi Tonic", "Nausea Relief", "Spleen Health"]
+  },
+  "XIANG SHA YANG WEI WAN": {
+    "t": "Stomach Nourishing & Harmonising Formula",
+    "cat": "digestion",
+    "ing": ["Mu Xiang", "Amomum Fruit (Sha Ren)", "White Atractylodes", "Magnolia Bark", "Tangerine Peel", "Pinellia Rhizome", "Poria", "Codonopsis Root", "Licorice Root", "Hawthorn Fruit"],
+    "ben": ["Nourishes and harmonises the Stomach", "Relieves chronic gastritis symptoms", "Reduces epigastric pain and fullness", "Improves food digestion", "Reduces nausea and acid reflux"],
+    "ind": "For chronic weak stomach conditions — gastritis, epigastric discomfort, poor appetite, bloating, and acid reflux with a pale, weak constitution.",
+    "use": "Take 8 pills, 3 times daily with warm water, 30 minutes before meals.",
+    "ch": ["Digestion", "Gastritis", "Stomach Health", "Qi Tonic"]
+  },
+  "XIAO CHAI HU TANG WAN": {
+    "t": "Shaoyang Harmonising Formula",
+    "cat": "immunity",
+    "ing": ["Bupleurum Root (Chai Hu)", "Scutellaria Root", "Ginseng Root", "Pinellia Rhizome", "Licorice Root", "Ginger", "Red Jujube"],
+    "ben": ["Harmonises the Shaoyang (half-interior/half-exterior)", "Relieves alternating chills and fever", "Treats chronic liver and gallbladder conditions", "Reduces nausea and vomiting", "Supports immune resolution"],
+    "ind": "For Shaoyang syndrome — alternating chills and fever, bitter taste, dry throat, dizziness, nausea, and hypochondriac fullness. Also for chronic hepatitis.",
+    "use": "Take 8 pills, 3 times daily with warm water. Use for 5–7 days for acute; 4 weeks for chronic hepatitis.",
+    "ch": ["Immunity", "Liver Health", "Fever", "Traditional Formula"]
+  },
+  "XIAO HUO LUO WAN": {
+    "t": "Invigorate the Channels, Dispel Wind",
+    "cat": "pain",
+    "ing": ["Prepared Aconite Root (Chuan Wu)", "Prepared Grass Aconite (Cao Wu)", "Dried Earthworm (Di Long)", "Frankincense (Ru Xiang)", "Myrrh (Mo Yao)", "Prepared Arisaema (Tian Nan Xing)"],
+    "ben": ["Strongly dispels wind-cold-damp obstruction", "Invigorates Blood and channels", "Relieves chronic joint and muscle pain", "Treats numbness and paralysis from wind-phlegm", "Reduces cold-type arthritis pain"],
+    "ind": "For stubborn, chronic wind-cold-damp bi-syndrome — severe joint pain, numbness, muscle paralysis, or limb weakness from phlegm and cold obstruction.",
+    "use": "Take 3 pills, 2–3 times daily with warm water or warm rice wine. Not for long-term use without supervision.",
+    "ch": ["Joint Pain", "Arthritis", "Wind-Cold", "Numbness Relief"]
+  },
+  "XIAO YAO WAN": {
+    "t": "Free and Easy Wanderer \u2014 Liver Harmony",
+    "cat": "women",
+    "ing": ["Bupleurum Root (Chai Hu)", "White Peony Root", "White Atractylodes", "Poria", "Dong Quai", "Licorice Root", "Mint", "Ginger"],
+    "ben": ["Soothes Liver Qi stagnation", "Strengthens the Spleen", "Relieves stress, depression, and irritability", "Regulates menstruation", "Treats menstrual irregularity and breast tenderness"],
+    "ind": "For Liver Qi stagnation with Spleen deficiency — stress, irritability, depression, irregular periods, breast tenderness, poor appetite, and fatigue.",
+    "use": "Take 8 pills, 3 times daily with warm water. One of the most widely used long-term wellness formulas in TCM.",
+    "ch": ["Women's Health", "Liver Health", "Stress Relief", "Menstrual Health"]
+  },
+  "XUE FU ZHU YU WAN": {
+    "t": "Blood Stasis in the Chest \u2014 Circulation Tonic",
+    "cat": "heart",
+    "ing": ["Peach Kernel (Tao Ren)", "Safflower (Hong Hua)", "Dong Quai", "Rehmannia Root", "Red Peony Root", "Ligusticum Wallichii", "Bupleurum Root", "Platycodon Root", "Bitter Orange (Zhi Ke)", "Achyranthes Root", "Licorice Root"],
+    "ben": ["Invigorates Blood and removes stasis in the chest", "Promotes circulation", "Relieves chronic chest pain and palpitations", "Treats headaches from Blood stagnation", "Reduces hyperpigmentation"],
+    "ind": "For Blood stasis in the upper body — chronic chest pain, headaches, insomnia with restlessness, palpitations, and dark, purplish complexion.",
+    "use": "Take 9 pills, 2 times daily with warm water. Avoid during pregnancy. Use consistently for 4–8 weeks.",
+    "ch": ["Heart Health", "Blood Circulation", "Chest Pain", "Blood Stasis"]
+  },
+  "YANG XUE SHENG FA WAN": {
+    "t": "Nourish Blood & Promote Hair Growth",
+    "cat": "general",
+    "ing": ["He Shou Wu", "Dong Quai", "Ligusticum Wallichii", "Rehmannia Root", "White Peony Root", "Ligustrum Fruit", "Eclipta", "Cuscuta Seed", "Sesame Seed"],
+    "ben": ["Nourishes Liver and Kidney", "Promotes hair growth", "Reduces hair loss and thinning", "Darkens grey hair", "Strengthens hair roots and scalp"],
+    "ind": "For those with hair loss, premature greying, thin or brittle hair related to Liver-Kidney deficiency and Blood deficiency.",
+    "use": "Take 9 pills, 3 times daily with warm water. Long-term consistent use (3–6 months) for full hair restoration benefit.",
+    "ch": ["Hair Growth", "Blood Tonic", "Anti-Ageing", "Kidney Tonic"]
+  },
+  "YU PING FENG WAN": {
+    "t": "Jade Windscreen \u2014 Immune Shield",
+    "cat": "immunity",
+    "ing": ["Astragalus Root (Huang Qi)", "White Atractylodes (Bai Zhu)", "Saposhnikovia Root (Fang Feng)"],
+    "ben": ["Strengthens Wei Qi (defensive energy)", "Prevents frequent colds and infections", "Reduces excessive sweating", "Builds long-term immune resilience", "Anti-allergic properties"],
+    "ind": "For those prone to frequent colds, spontaneous sweating, low immunity, or allergic rhinitis caused by Qi deficiency of the Lung and Spleen.",
+    "use": "Take 8 pills, 3 times daily with warm water. Excellent for long-term daily immune maintenance.",
+    "ch": ["Immune Shield", "Prevention", "Qi Tonic", "Allergy Relief"]
+  },
+  "ZHEN ZHU AN CHUANG WAN": {
+    "t": "Pearl Skin Clearing & Acne Formula",
+    "cat": "general",
+    "ing": ["Pearl (Zhen Zhu)", "Coptis Rhizome", "Scutellaria Root", "Gardenia Fruit", "Rhubarb", "Forsythia Fruit", "Taraxacum", "Rehmannia Root"],
+    "ben": ["Clears skin heat and toxins", "Reduces acne, pimples, and skin blemishes", "Brightens the complexion", "Antibacterial action against acne bacteria", "Reduces skin inflammation and redness"],
+    "ind": "For heat-toxin acne — inflammatory, cystic, or hormonal breakouts. Suitable for teenagers and adults with persistent facial or back acne.",
+    "use": "Take 6 pills, 2–3 times daily with warm water. Combine with face cleansing routine and low-glycaemic diet.",
+    "ch": ["Skin Health", "Acne", "Pearl Formula", "Detox"]
+  },
+  "ZHI BAI DI HUANG WAN": {
+    "t": "Yin-Nourishing with Heat-Clearing",
+    "cat": "men",
+    "ing": ["Phellodendron Bark (Huang Bai)", "Anemarrhena Rhizome (Zhi Mu)", "Rehmannia Root", "Cornus Fruit", "Dioscorea", "Ze Xie", "Moutan Bark", "Poria"],
+    "ben": ["Nourishes Yin and clears deficiency heat", "Reduces night sweats and tidal fever", "Treats hot flushes and menopause symptoms", "Reduces spontaneous seminal emission", "Relieves dry mouth and night sweats"],
+    "ind": "For Kidney and Liver Yin deficiency with fire — night sweats, tidal fever, hot palms and soles, spermatorrhoea, and menopause-related hot flushes.",
+    "use": "Take 8 pills, 3 times daily with warm salted water. Use for 4–8 weeks for sustained results.",
+    "ch": ["Menopause", "Night Sweats", "Kidney Yin", "Deficiency Heat"]
+  },
+  "ZHI KE DING CHUAN WAN": {
+    "t": "Stop Cough & Settle Wheezing",
+    "cat": "respiratory",
+    "ing": ["Ephedra (Ma Huang)", "Apricot Kernel (Xing Ren)", "Gypsum (Shi Gao)", "Licorice Root", "Ginkgo Leaf", "Perilla Seed", "Coltsfoot Flower", "Morus Bark", "Fritillaria Bulb"],
+    "ben": ["Relieves acute and chronic cough", "Stops wheezing and shortness of breath", "Clears lung heat phlegm", "Treats asthma and bronchitis", "Opens the airways"],
+    "ind": "For acute or chronic respiratory conditions — cough, wheeze, asthma, bronchitis, and shortness of breath with yellow or white phlegm.",
+    "use": "Take 8 pills, 3 times daily with warm water. For acute conditions, use for 5–7 days.",
+    "ch": ["Respiratory", "Asthma", "Cough", "Wheezing Relief"]
+  },
+  "ZHI YANG WAN": {
+    "t": "Stop Itching \u2014 Skin Damp-Heat Formula",
+    "cat": "general",
+    "ing": ["Sophora Root (Ku Shen)", "Cnidium Fruit (She Chuang Zi)", "Dictamnus Root Bark", "Schizonepeta", "Atractylodes Rhizome", "Phellodendron Bark", "Licorice Root"],
+    "ben": ["Clears skin damp-heat", "Relieves intense skin itching", "Treats eczema, hives, and dermatitis", "Anti-fungal and anti-bacterial properties", "Reduces skin inflammation"],
+    "ind": "For damp-heat skin conditions — eczema, urticaria (hives), dermatitis, itching rashes, and genital itching.",
+    "use": "Take 6 pills, 3 times daily with warm water. Can also be used as a topical wash (dissolve in warm water).",
+    "ch": ["Skin Health", "Eczema", "Itch Relief", "Damp-Heat Clearing"]
+  },
+  "ZHUANG YANG WAN": {
+    "t": "Yang Fortifying & Male Vitality Tonic",
+    "cat": "men",
+    "ing": ["Prepared Aconite Root", "Deer Velvet (Lu Rong)", "Morinda Root (Ba Ji Tian)", "Cuscuta Seed", "Chinese Wolfberry", "Eucommia Bark", "Ginseng Root", "Astragalus Root", "Dioscorea"],
+    "ben": ["Strongly tonifies Kidney Yang", "Improves libido and sexual performance", "Reduces erectile dysfunction", "Warms the lower body and extremities", "Boosts stamina and energy"],
+    "ind": "For men with pronounced Kidney Yang deficiency — low libido, erectile dysfunction, impotence, cold extremities, chronic lower back pain, and fatigue.",
+    "use": "Take 9 pills, 2 times daily with warm salted water. Take on an empty stomach. Use consistently for 4–8 weeks.",
+    "ch": ["Men's Health", "Libido", "Kidney Yang", "Sexual Health"]
+  },
+  "ZUO GU SHEN JING TONG WAN": {
+    "t": "Sciatica & Lumbar Nerve Pain Relief",
+    "cat": "pain",
+    "ing": ["Ma Qian Zi (Nux Vomica — processed)", "Ru Xiang (Frankincense)", "Mo Yao (Myrrh)", "Hong Hua (Safflower)", "Chuan Niu Xi (Achyranthes)", "Xue Jie (Dragon's Blood)", "Di Long (Earthworm)", "Mu Xiang"],
+    "ben": ["Relieves sciatic nerve pain", "Invigorates Blood in the lower back and legs", "Dispels wind-cold-damp obstruction", "Reduces lumbar disc inflammation", "Treats numbness and tingling in legs"],
+    "ind": "For sciatica, lumbar disc herniation, lower back and leg pain, numbness, tingling, or radiating pain down the leg related to Blood stasis and wind obstruction.",
+    "use": "Take 3 pills, 2 times daily with warm water or warm rice wine. Not for use during pregnancy. Use under guidance for chronic cases.",
+    "ch": ["Sciatica", "Back Pain", "Nerve Pain", "Blood Stasis"]
   }
+
 };
 
 window.P = [];
