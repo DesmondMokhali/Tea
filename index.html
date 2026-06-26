@@ -6653,7 +6653,67 @@ function chkOvClick(e) {
 
 function submitOrder(e) {
   e.preventDefault();
-  
+  console.log("🔥 Checkout submission handler triggered successfully!");
+
+  // Gather details from input fields
+  const fullName = document.getElementById('c-name').value;
+  const email = document.getElementById('c-email').value;
+  const address = document.getElementById('c-address').value;
+  const zip = document.getElementById('c-zip').value;
+  const city = document.getElementById('c-city').value;
+
+  // Format delivery instructions flat string
+  const delivery_instructions = [address, city, zip].filter(Boolean).join(", ");
+
+  // Map local cart array matching the consignee specs
+  const line_items = cart.map(item => {
+    const p = P[item.idx];
+    const unitPrice = parseFloat(p.p) || 0;
+    const qty = parseInt(item.qty, 10) || 0;
+    
+    // Find zero-padded External ID using code naming
+    let extId = p.extId || "";
+    if (!extId && p.n) {
+      extId = p.n.toUpperCase().replace(/\s+/g, '_');
+    }
+    
+    return {
+      external_id: extId,
+      quantity: qty,
+      retail_price: unitPrice,
+      total_cost: parseFloat((unitPrice * qty).toFixed(2))
+    };
+  });
+
+  const order_total = line_items.reduce((sum, item) => sum + item.total_cost, 0);
+
+  const compiledPayload = {
+    delivery_profile: {
+      recipient_name: fullName.trim(),
+      recipient_whatsapp: email.trim(), // Used for contact info / messaging channels
+      delivery_instructions: delivery_instructions.trim(),
+      special_notes: "None"
+    },
+    line_items: line_items,
+    order_total: parseFloat(order_total.toFixed(2)),
+    checkout_timestamp: new Date().toISOString()
+  };
+
+  console.log("📦 Compiled Guest Payload: ", JSON.stringify(compiledPayload));
+
+  // Dispatch details to Make.com Webhook URL (Unauthenticated checkout flow)
+  fetch('https://hook.eu1.make.com/y9xdj0ntph4f02zfzvn5ksbbsrrirnug', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(compiledPayload)
+  })
+  .then(response => {
+    console.log("Response status:", response.status);
+  })
+  .catch(err => {
+    console.error("Webhook submit error:", err);
+  });
+
   // Perform order placement animation/state
   document.getElementById('checkout-content').style.display = 'none';
   document.getElementById('checkout-success').style.display = 'block';
