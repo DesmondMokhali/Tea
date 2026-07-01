@@ -2187,7 +2187,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
       <span>Estimated Total</span>
       <span id="cart-total">R0.00</span>
     </div>
-    <button class="checkout-btn" onclick="openCheckout()">Proceed to Checkout</button>
+    <button class="checkout-btn" onclick="window.location.href='./basket.html'">Proceed to Checkout</button>
   </div>
 </div>
 
@@ -6285,6 +6285,14 @@ async function loadDynamicCatalog() {
 document.addEventListener('DOMContentLoaded',()=>{
   // Fetch dynamic products catalog
   loadDynamicCatalog();
+
+  // If redirecting back from React basket page with checkout intent:
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('openCheckout') === 'true') {
+    setTimeout(() => {
+      openCheckout();
+    }, 600);
+  }
 
   // Toggle nav dropdowns on click/tap (especially for touch screens)
   document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
