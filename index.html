@@ -2148,42 +2148,62 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
   <div class="modal" style="max-width: 650px; grid-template-columns: 1fr; padding: 28px;">
     <button class="mcls" onclick="closeCheckout()"><i data-lucide="x" style="width:20px;height:20px"></i></button>
     <div id="checkout-content">
-      <h2 class="mtitle" style="margin-bottom: 20px;">Complete Your Order</h2>
-      <div class="checkout-modal-body">
+      <h2 class="mtitle" style="margin-bottom: 20px; border-bottom: 2px solid var(--g); padding-bottom: 10px;">Complete Your Order</h2>
+      <div class="checkout-modal-body" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; align-items: start;">
         <div>
-          <form class="checkout-form" onsubmit="submitOrder(event)">
+          <form class="checkout-form" onsubmit="submitOrder(event)" style="display: flex; flex-direction: column; gap: 12px;">
             <div class="form-grp">
-              <label for="c-name">Full Name</label>
-              <input type="text" id="c-name" required placeholder="John Doe">
+              <label for="c-name" style="font-weight: 600; font-size: 13px;">Full Name</label>
+              <input type="text" id="c-name" required placeholder="John Doe" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
             </div>
-            <div class="form-grp">
-              <label for="c-email">Email Address</label>
-              <input type="email" id="c-email" required placeholder="john@example.com">
-            </div>
-            <div class="form-grp">
-              <label for="c-address">Shipping Address</label>
-              <input type="text" id="c-address" required placeholder="123 Wellness Way">
-            </div>
-            <div class="form-row2">
+            <div class="form-row2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
               <div class="form-grp">
-                <label for="c-zip">ZIP Code</label>
-                <input type="text" id="c-zip" required placeholder="10001">
+                <label for="c-email" style="font-weight: 600; font-size: 13px;">Email Address</label>
+                <input type="email" id="c-email" required placeholder="john@example.com" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
               </div>
               <div class="form-grp">
-                <label for="c-city">City</label>
-                <input type="text" id="c-city" required placeholder="New York">
+                <label for="c-phone" style="font-weight: 600; font-size: 13px;">WhatsApp / Phone Number</label>
+                <input type="tel" id="c-phone" required placeholder="+27 72 123 4567" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
               </div>
             </div>
-            <button type="submit" class="checkout-btn" style="margin-top: 10px;">Place Order</button>
+            <div class="form-grp">
+              <label for="c-address" style="font-weight: 600; font-size: 13px;">Shipping Address (Street & House Number)</label>
+              <input type="text" id="c-address" required placeholder="123 Wellness Way" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
+            </div>
+            <div class="form-row2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <div class="form-grp">
+                <label for="c-suburb" style="font-weight: 600; font-size: 13px;">Suburb / Town</label>
+                <input type="text" id="c-suburb" required placeholder="Sandton" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
+              </div>
+              <div class="form-grp">
+                <label for="c-city" style="font-weight: 600; font-size: 13px;">City</label>
+                <input type="text" id="c-city" required placeholder="Johannesburg" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
+              </div>
+            </div>
+            <div class="form-row2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <div class="form-grp">
+                <label for="c-zip" style="font-weight: 600; font-size: 13px;">ZIP / Postal Code</label>
+                <input type="text" id="c-zip" required placeholder="2196" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
+              </div>
+              <div class="form-grp">
+                <label for="c-province" style="font-weight: 600; font-size: 13px;">Province</label>
+                <input type="text" id="c-province" required placeholder="Gauteng" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
+              </div>
+            </div>
+            <div class="form-grp">
+              <label for="c-instructions" style="font-weight: 600; font-size: 13px;">Delivery Instructions</label>
+              <textarea id="c-instructions" placeholder="Leave at front desk / special delivery notes..." style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px; font-family: inherit; font-size: 14px; height: 60px; resize: none;"></textarea>
+            </div>
+            <button type="submit" class="checkout-btn" style="margin-top: 10px; background: #10b981; color: white; padding: 10px 20px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; transition: background 0.2s;">Place Order</button>
           </form>
         </div>
-        <div>
-          <h3 class="mcat" style="margin-bottom: 10px;">Order Summary</h3>
+        <div style="position: sticky; top: 10px; background: var(--w); border: 1px solid var(--cd); border-radius: 8px; padding: 20px;">
+          <h3 class="mcat" style="margin-bottom: 10px; font-weight: 700; border-bottom: 1px solid var(--cd); padding-bottom: 8px;">Order Summary</h3>
           <div class="order-summary" id="chk-summary"></div>
           <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--cd);">
-            <div class="cart-row" style="margin-bottom: 6px;"><span>Subtotal</span><span id="chk-subtotal">R0.00</span></div>
-            <div class="cart-row" style="margin-bottom: 6px;"><span>Shipping</span><span id="chk-shipping">FREE</span></div>
-            <div class="cart-row total" style="margin-bottom: 0;"><span>Total</span><span id="chk-total">R0.00</span></div>
+            <div class="cart-row" style="margin-bottom: 6px; display: flex; justify-content: space-between;"><span>Subtotal</span><span id="chk-subtotal">R0.00</span></div>
+            <div class="cart-row" style="margin-bottom: 6px; display: flex; justify-content: space-between;"><span>Shipping</span><span id="chk-shipping">FREE</span></div>
+            <div class="cart-row total" style="margin-bottom: 0; display: flex; justify-content: space-between; font-weight: 700; font-size: 1.1em; border-top: 1.5px solid var(--cd); padding-top: 10px; margin-top: 10px;"><span>Total</span><span id="chk-total">R0.00</span></div>
           </div>
         </div>
       </div>
@@ -6658,12 +6678,16 @@ function submitOrder(e) {
   // Gather details from input fields
   const fullName = document.getElementById('c-name').value;
   const email = document.getElementById('c-email').value;
+  const phone = document.getElementById('c-phone').value;
   const address = document.getElementById('c-address').value;
-  const zip = document.getElementById('c-zip').value;
+  const suburb = document.getElementById('c-suburb').value;
   const city = document.getElementById('c-city').value;
+  const zip = document.getElementById('c-zip').value;
+  const province = document.getElementById('c-province').value;
+  const instructions = document.getElementById('c-instructions').value;
 
   // Format delivery instructions flat string
-  const delivery_instructions = [address, city, zip].filter(Boolean).join(", ");
+  const delivery_instructions = [address, suburb, city, province, zip].filter(Boolean).join(", ");
 
   // Map local cart array matching the consignee specs
   const line_items = cart.map(item => {
@@ -6685,18 +6709,34 @@ function submitOrder(e) {
     };
   });
 
-  const order_total = line_items.reduce((sum, item) => sum + item.total_cost, 0);
+  const subtotal = line_items.reduce((sum, item) => sum + item.total_cost, 0);
+  
+  // Calculate dynamic shipping cost (orders R500 or greater get free shipping)
+  const shipping_cost = subtotal >= 500 ? 0 : 75;
+  const order_total = parseFloat((subtotal + shipping_cost).toFixed(2));
+
+  // Generate unique tracking key matching Make.com requirements: ORD-MMDD-HHmmss
+  const now = new Date();
+  const MM = String(now.getMonth() + 1).padStart(2, '0');
+  const DD = String(now.getDate()).padStart(2, '0');
+  const HH = String(now.getHours()).padStart(2, '0');
+  const mm = String(now.getMinutes()).padStart(2, '0');
+  const ss = String(now.getSeconds()).padStart(2, '0');
+  const tracking_id = `ORD-${MM}${DD}-${HH}${mm}${ss}`;
 
   const compiledPayload = {
+    tracking_id: tracking_id,
     delivery_profile: {
       recipient_name: fullName.trim(),
-      recipient_whatsapp: email.trim(), // Used for contact info / messaging channels
+      recipient_email: email.trim(),
+      recipient_whatsapp: phone.trim(),
       delivery_instructions: delivery_instructions.trim(),
-      special_notes: "None"
+      special_notes: instructions.trim()
     },
     line_items: line_items,
-    order_total: parseFloat(order_total.toFixed(2)),
-    checkout_timestamp: new Date().toISOString()
+    shipping_fee: shipping_cost,
+    order_total: order_total,
+    checkout_timestamp: now.toISOString()
   };
 
   console.log("📦 Compiled Guest Payload: ", JSON.stringify(compiledPayload));
