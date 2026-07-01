@@ -2154,45 +2154,45 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
         <div>
           <form class="checkout-form" onsubmit="submitOrder(event)" style="display: flex; flex-direction: column; gap: 12px;">
             <div class="form-grp">
-              <label for="c-name" style="font-weight: 600; font-size: 13px;">Full Name</label>
+              <label for="c-name" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--s); display: block; margin-bottom: 5px;">Full Name *</label>
               <input type="text" id="c-name" required placeholder="John Doe" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
             </div>
             <div class="form-row2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
               <div class="form-grp">
-                <label for="c-email" style="font-weight: 600; font-size: 13px;">Email Address</label>
+                <label for="c-email" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--s); display: block; margin-bottom: 5px;">Email Address *</label>
                 <input type="email" id="c-email" required placeholder="john@example.com" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
               </div>
               <div class="form-grp">
-                <label for="c-phone" style="font-weight: 600; font-size: 13px;">WhatsApp / Phone Number</label>
+                <label for="c-phone" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--s); display: block; margin-bottom: 5px;">WhatsApp / Phone Number *</label>
                 <input type="tel" id="c-phone" required placeholder="+27 72 123 4567" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
               </div>
             </div>
             <div class="form-grp">
-              <label for="c-address" style="font-weight: 600; font-size: 13px;">Shipping Address (Street & House Number)</label>
+              <label for="c-address" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--s); display: block; margin-bottom: 5px;">Shipping Address *</label>
               <input type="text" id="c-address" required placeholder="123 Wellness Way" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
             </div>
             <div class="form-row2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
               <div class="form-grp">
-                <label for="c-suburb" style="font-weight: 600; font-size: 13px;">Suburb / Town</label>
+                <label for="c-suburb" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--s); display: block; margin-bottom: 5px;">Suburb / Town *</label>
                 <input type="text" id="c-suburb" required placeholder="Sandton" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
               </div>
               <div class="form-grp">
-                <label for="c-city" style="font-weight: 600; font-size: 13px;">City</label>
+                <label for="c-city" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--s); display: block; margin-bottom: 5px;">City *</label>
                 <input type="text" id="c-city" required placeholder="Johannesburg" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
               </div>
             </div>
             <div class="form-row2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
               <div class="form-grp">
-                <label for="c-zip" style="font-weight: 600; font-size: 13px;">ZIP / Postal Code</label>
+                <label for="c-zip" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--s); display: block; margin-bottom: 5px;">ZIP / Postal Code *</label>
                 <input type="text" id="c-zip" required placeholder="2196" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
               </div>
               <div class="form-grp">
-                <label for="c-province" style="font-weight: 600; font-size: 13px;">Province</label>
+                <label for="c-province" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--s); display: block; margin-bottom: 5px;">Province *</label>
                 <input type="text" id="c-province" required placeholder="Gauteng" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
               </div>
             </div>
             <div class="form-grp">
-              <label for="c-instructions" style="font-weight: 600; font-size: 13px;">Delivery Instructions</label>
+              <label for="c-instructions" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--s); display: block; margin-bottom: 5px;">Delivery Instructions</label>
               <textarea id="c-instructions" placeholder="Leave at front desk / special delivery notes..." style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px; font-family: inherit; font-size: 14px; height: 60px; resize: none;"></textarea>
             </div>
             <button type="submit" class="checkout-btn" style="margin-top: 10px; background: #10b981; color: white; padding: 10px 20px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; transition: background 0.2s;">Place Order</button>
