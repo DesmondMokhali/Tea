@@ -6288,6 +6288,14 @@ document.addEventListener('DOMContentLoaded',()=>{
   // Fetch dynamic products catalog
   loadDynamicCatalog();
 
+  // If redirecting back from basket page with checkout intent:
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('openCheckout') === 'true') {
+    setTimeout(() => {
+      openCheckout();
+    }, 450);
+  }
+
   // Toggle nav dropdowns on click/tap (especially for touch screens)
   document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
     const btn = dropdown.querySelector('.nav-dropbtn');
