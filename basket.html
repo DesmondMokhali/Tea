@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shopping Basket | Tangren Herbal Wellness</title>
-  <!-- v1.0.1 -->
+  <title>Shopping Basket | The Herbalist</title>
   <meta name="description" content="Review your Tangren Herbal Wellness basket and proceed to checkout. Free delivery on orders over R500." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
 
   <!-- SVG Icon Sprite -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
@@ -24,9 +23,6 @@
     </symbol>
     <symbol id="ico-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-    </symbol>
-    <symbol id="ico-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
     </symbol>
     <symbol id="ico-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
       <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/>
@@ -58,617 +54,870 @@
     <symbol id="ico-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
       <path d="M2 22l10-10M14 8c0 0-2 8-12 14 0 0 8-4 12-14 2-5 0-8 0-8s3 3 0 8z"/>
     </symbol>
-    <symbol id="ico-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/>
-    </symbol>
   </svg>
 
   <style>
-    /* ── RESET & BASE ── */
+    /* ── RESET & THEME VARIABLES ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
     :root {
-      --forest:    #1b3a28;
-      --forest-d:  #132b1e;
-      --forest-m:  #2d5c3f;
-      --sage:      #4a9b6f;
-      --sage-l:    #d4edda;
-      --sage-border:#a8d5b8;
-      --cream:     #faf8f5;
-      --cream-d:   #f0ece5;
-      --border:    #e2ddd6;
-      --text:      #1e1e1e;
-      --text-m:    #444;
-      --text-l:    #757575;
-      --amber:     #b45309;
-      --amber-l:   #fef3c7;
-      --amber-b:   #f6d460;
-      --red:       #dc2626;
-      --red-l:     #fee2e2;
-      --white:     #ffffff;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-      --shadow:    0 4px 16px rgba(0,0,0,0.08);
-      --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
-      --radius:    10px;
-      --radius-sm: 6px;
-      --tr:        0.18s ease;
+      --f:       #1b3a28;        /* Deep Forest Green */
+      --fm:      #2a5040;       /* Medium Forest */
+      --fl:      #3a6852;       /* Light Forest */
+      --g:       #c8a06e;       /* Classic Accent Gold */
+      --gl:      #dab882;       /* Light Gold Accent */
+      --gp:      #f0e0c4;       /* Pale Gold Accent */
+      --c:       #f7f2e6;       /* Site Warm Cream Background */
+      --cd:      #e8e0cc;      /* Darker Cream Accent */
+      --s:       #6a9970;       /* Sage Green Accent */
+      --sl:      #9abf9d;       /* Soft Sage Accent */
+      --t:       #182415;       /* Main Text Color */
+      --tm:      #3d5c44;      /* Medium Contrast Sage Text */
+      --tl:      #7a9280;      /* Low Contrast Sage Text */
+      --w:       #ffffff;       /* Pure White Card Base */
+      --red:     #c0392b;      /* Elegant Red for warnings/delete */
+      --tr:      0.24s cubic-bezier(0.4, 0, 0.2, 1);
+      --sh:      0 8px 32px rgba(27,58,40,0.06);
+      --sh-hover:0 12px 48px rgba(27,58,40,0.12);
+      --radius:  12px;
+      --radius-sm:8px;
     }
 
-    html { scroll-behavior: smooth; }
-
     body {
-      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
-      background: var(--cream);
-      color: var(--text);
-      font-size: 14px;
-      line-height: 1.55;
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      background: var(--c);
+      color: var(--t);
+      font-size: 14.5px;
+      line-height: 1.6;
       min-height: 100vh;
       overflow-x: hidden;
     }
 
-    img { max-width: 100%; display: block; }
-    button { cursor: pointer; font-family: inherit; border: none; background: none; }
-    a { text-decoration: none; color: inherit; }
     svg.icon { display: inline-block; vertical-align: middle; flex-shrink: 0; }
 
-    /* ── TOPBAR ── */
-    .topbar {
-      background: var(--forest);
-      color: rgba(255,255,255,0.9);
+    /* ── SCROLLBARS ── */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--c); }
+    ::-webkit-scrollbar-thumb { background: var(--cd); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--g); }
+
+    /* ── PREMIUM HEADER UTILITY BAR ── */
+    .top-bar {
+      background: #112519;
+      color: rgba(255,255,255,0.7);
       font-size: 11.5px;
-      font-weight: 500;
-      text-align: center;
-      padding: 7px 16px;
-      letter-spacing: 0.05em;
+      height: 34px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
+      letter-spacing: 0.04em;
     }
 
-    /* ── NAVBAR ── */
-    .navbar {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
+    /* ── MAIN HEADER / NAVBAR ── */
+    .main-header {
+      background: var(--f);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 12px 24px;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.15);
     }
-    .navbar-inner {
-      max-width: 1100px;
+    .main-header-inner {
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 0 20px;
-      height: 60px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 20px;
     }
-    .nav-logo { display: flex; align-items: center; gap: 9px; }
-    .nav-logo-mark {
-      width: 36px; height: 36px;
-      background: var(--forest);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      color: #fff; flex-shrink: 0;
+    .nlogo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
     }
-    .nav-logo-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 15px; color: var(--forest); line-height: 1.1; }
-    .nav-logo-text span  { font-size: 10px; color: var(--text-l); text-transform: uppercase; letter-spacing: 0.1em; }
-    .nav-right { display: flex; align-items: center; gap: 10px; }
-    .nav-back {
-      display: flex; align-items: center; gap: 5px;
-      color: var(--text-m); font-size: 13px; font-weight: 600;
-      padding: 7px 12px;
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-sm);
+    .nmark {
+      width: 36px;
+      height: 36px;
+      background: var(--g);
+      color: var(--f);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    .ntext b {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--gl);
+      letter-spacing: 0.04em;
+      display: block;
+      line-height: 1.1;
+    }
+    .ntext small {
+      font-size: 9.5px;
+      color: var(--sl);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    
+    .nav-actions { display: flex; align-items: center; gap: 16px; }
+    .nav-back-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--gp);
+      font-size: 13px;
+      font-weight: 600;
+      transition: color var(--tr);
+    }
+    .nav-back-link:hover { color: var(--gl); }
+
+    .header-cart-btn {
+      background: var(--g);
+      color: var(--f);
+      border-radius: 28px;
+      padding: 6px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
       transition: all var(--tr);
+      font-size: 13px;
     }
-    .nav-back:hover { border-color: var(--forest); color: var(--forest); background: var(--cream); }
-    .nav-back span { display: none; }
-    @media(min-width:480px){ .nav-back span { display: inline; } }
-    .nav-cart-wrap { display: flex; align-items: center; gap: 7px; }
-    .nav-cart-badge {
-      background: var(--forest); color: #fff;
-      font-size: 11px; font-weight: 700;
-      padding: 2px 8px; border-radius: 20px; min-width: 24px;
-      text-align: center;
+    .header-cart-btn:hover { background: var(--gl); transform: translateY(-1px); }
+    .cart-badge {
+      background: var(--f);
+      color: var(--g);
+      font-size: 9px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 50%;
     }
-    .nav-cart-total { font-size: 13px; font-weight: 700; color: var(--forest); display: none; }
-    @media(min-width:600px){ .nav-cart-total { display: block; } }
 
     /* ── BREADCRUMB ── */
     .breadcrumb {
-      max-width: 1100px; margin: 0 auto;
-      padding: 10px 20px;
-      font-size: 12px; color: var(--text-l);
-      display: flex; align-items: center; gap: 4px;
-    }
-    .breadcrumb a { color: var(--forest); transition: text-decoration var(--tr); }
-    .breadcrumb a:hover { text-decoration: underline; }
-
-    /* ── PAGE WRAP ── */
-    .page-wrap {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 0 20px 80px;
+      padding: 16px 24px 0;
+      font-size: 12px;
+      color: var(--tl);
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    .page-head { margin-bottom: 20px; }
-    .page-title { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--forest); line-height: 1.2; }
-    .page-sub   { font-size: 13px; color: var(--text-l); margin-top: 3px; }
+    .breadcrumb a { color: var(--tm); transition: color var(--tr); }
+    .breadcrumb a:hover { color: var(--f); text-decoration: underline; }
 
-    /* ── TWO-COLUMN GRID ── */
+    /* ── PAGE LAYOUT ── */
+    .page-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 24px 80px;
+    }
+    .page-head {
+      margin-bottom: 24px;
+    }
+    .page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      color: var(--f);
+      font-weight: 700;
+    }
+    .page-desc {
+      font-size: 13.5px;
+      color: var(--tm);
+      margin-top: 4px;
+    }
+
     .basket-grid {
       display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: 20px;
+      grid-template-columns: 1fr 360px;
+      gap: 28px;
       align-items: start;
     }
-    @media(max-width:860px){
+    @media(max-width:900px){
       .basket-grid { grid-template-columns: 1fr; }
       .sidebar-col { display: none; }
     }
 
-    /* ── CARDS ── */
+    /* ── PREMIUM CARDS ── */
     .card {
-      background: var(--white);
-      border: 1px solid var(--border);
+      background: var(--w);
       border-radius: var(--radius);
-      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--cd);
+      box-shadow: var(--sh);
       overflow: hidden;
-      margin-bottom: 14px;
+      margin-bottom: 20px;
+      transition: box-shadow var(--tr);
     }
+    .card:hover { box-shadow: var(--sh-hover); }
     .card-hdr {
-      padding: 14px 18px;
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
+      background: var(--w);
+      padding: 16px 24px;
+      border-bottom: 1.5px solid var(--c);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .card-hdr h2 { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--forest); }
-    .badge-pill {
-      background: var(--cream-d); color: var(--text-l);
-      font-size: 11px; font-weight: 600;
-      padding: 2px 10px; border-radius: 20px;
+    .card-hdr h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--f);
+      font-weight: 700;
     }
-    .card-body { padding: 18px; }
+    .item-count-badge {
+      background: var(--c);
+      color: var(--tm);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
 
-    /* ── DELIVERY BANNER ── */
+    /* ── DELIVERY BAR BANNER ── */
     .delivery-banner {
-      border-radius: var(--radius-sm);
-      padding: 11px 14px;
-      margin-bottom: 14px;
-      display: flex; flex-direction: column; gap: 8px;
-      border: 1.5px solid;
-      transition: background var(--tr), border-color var(--tr);
+      border-radius: var(--radius);
+      padding: 14px 20px;
+      margin-bottom: 20px;
+      border: 1.5px solid transparent;
+      transition: all var(--tr);
     }
-    .delivery-banner.pending  { background: var(--amber-l); border-color: var(--amber-b); }
-    .delivery-banner.ok       { background: var(--sage-l);  border-color: var(--sage-border); }
-    .delivery-banner-row { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; }
-    .delivery-banner.pending .delivery-banner-row { color: var(--amber); }
-    .delivery-banner.ok      .delivery-banner-row { color: #166534; }
-    .delivery-bar-track { height: 4px; background: rgba(0,0,0,0.1); border-radius: 99px; overflow: hidden; }
-    .delivery-bar-fill  { height: 100%; border-radius: 99px; transition: width 0.5s cubic-bezier(.4,0,.2,1); }
-    .delivery-banner.pending .delivery-bar-fill { background: var(--amber); }
-    .delivery-banner.ok      .delivery-bar-fill { background: var(--sage); }
+    .delivery-banner.pending {
+      background: var(--c);
+      border-color: var(--cd);
+    }
+    .delivery-banner.ok {
+      background: #eef7f2;
+      border-color: var(--s);
+    }
+    .delivery-banner-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--f);
+    }
+    .delivery-banner.ok .delivery-banner-row { color: #166534; }
+    .delivery-bar-track {
+      height: 5px;
+      background: var(--cd);
+      border-radius: 99px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+    .delivery-bar-fill {
+      height: 100%;
+      background: var(--g);
+      border-radius: 99px;
+      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .delivery-banner.ok .delivery-bar-fill { background: var(--s); }
 
     /* ── BASKET ITEMS ── */
     .basket-item {
-      display: flex; gap: 14px;
-      padding: 16px 18px;
-      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 20px;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--c);
       transition: background var(--tr);
     }
     .basket-item:last-child { border-bottom: none; }
-    .basket-item:hover { background: #fefefe; }
-
+    .basket-item:hover { background: #faf9f6; }
+    
     .item-thumb {
-      width: 88px; height: 88px; flex-shrink: 0;
+      width: 96px;
+      height: 96px;
       border-radius: var(--radius-sm);
-      border: 1px solid var(--border);
-      background: var(--cream);
+      border: 1px solid var(--cd);
+      background: var(--c);
       overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
-    .item-thumb img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
-    .item-thumb-fallback {
-      color: var(--border); display: none; align-items: center; justify-content: center;
-      width: 100%; height: 100%;
+    .item-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 6px;
     }
 
-    .item-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
-    .item-cat  { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--sage); }
-    .item-name { font-family: 'Playfair Display', serif; font-size: 14.5px; color: var(--forest); line-height: 1.3; }
-    .item-unit { font-size: 12px; color: var(--text-l); }
+    .item-info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .item-cat {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--s);
+    }
+    .item-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: var(--f);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    .item-unit {
+      font-size: 12px;
+      color: var(--tl);
+    }
 
     .item-controls {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 10px; margin-top: auto; padding-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 12px;
+      gap: 12px;
     }
     .qty-ctrl {
-      display: flex; align-items: center;
-      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      border: 1.5px solid var(--cd);
       border-radius: var(--radius-sm);
+      background: var(--w);
       overflow: hidden;
     }
     .qty-btn {
-      width: 32px; height: 32px;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--forest); background: none; border: none;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--f);
       transition: background var(--tr);
     }
-    .qty-btn:hover { background: var(--cream); }
-    .qty-btn:active { transform: scale(0.88); }
+    .qty-btn:hover { background: var(--c); }
     .qty-num {
-      min-width: 36px; height: 32px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 13px; font-weight: 700; color: var(--forest);
-      border-left: 1.5px solid var(--border);
-      border-right: 1.5px solid var(--border);
+      min-width: 36px;
+      text-align: center;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--f);
+      border-left: 1.5px solid var(--cd);
+      border-right: 1.5px solid var(--cd);
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .item-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
-    .item-total { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--forest); }
+
+    .item-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+    .item-total {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--f);
+    }
     .item-remove {
-      display: flex; align-items: center; gap: 4px;
-      font-size: 12px; font-weight: 500; color: var(--text-l);
-      transition: color var(--tr); border: none; background: none;
-      padding: 2px 0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--tl);
+      transition: color var(--tr);
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
     .item-remove:hover { color: var(--red); }
 
-    @media(max-width:480px){
-      .basket-item { gap: 10px; }
-      .item-thumb  { width: 72px; height: 72px; }
-      .item-name   { font-size: 13.5px; }
-      .qty-btn     { width: 28px; height: 28px; }
-      .qty-num     { min-width: 30px; height: 28px; font-size: 12px; }
+    @media(max-width:520px) {
+      .basket-item { padding: 16px 20px; gap: 14px; }
+      .item-thumb { width: 76px; height: 76px; }
+      .item-name { font-size: 14.5px; }
     }
 
-    /* ── CROSS-SELL ── */
-    .cross-hdr { margin-bottom: 12px; }
-    .cross-hdr h3 { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--forest); }
-    .cross-hdr p  { font-size: 12px; color: var(--text-l); margin-top: 2px; }
+    /* ── CARD BODY PADDING ── */
+    .card-body { padding: 20px 24px; }
+
+    /* ── CROSS-SELL SLIDER ── */
+    .cross-hdr h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--f);
+      font-weight: 700;
+    }
+    .cross-hdr p {
+      font-size: 12.5px;
+      color: var(--tm);
+      margin-top: 2px;
+    }
     .cross-slider {
-      display: flex; gap: 10px;
-      overflow-x: auto; padding-bottom: 4px;
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      padding: 12px 0 6px;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
-      scrollbar-width: thin;
-      scrollbar-color: var(--border) transparent;
+      scrollbar-width: none;
     }
-    .cross-slider::-webkit-scrollbar { height: 3px; }
-    .cross-slider::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .cross-slider::-webkit-scrollbar { display: none; }
+    .swipe-hint {
+      font-size: 11px;
+      color: var(--tl);
+      text-align: center;
+      margin-top: 8px;
+      letter-spacing: 0.04em;
+    }
     .cross-card {
-      flex: 0 0 145px; scroll-snap-align: start;
-      background: var(--white);
-      border: 1px solid var(--border);
+      flex: 0 0 160px;
+      scroll-snap-align: start;
+      background: var(--w);
+      border: 1px solid var(--cd);
       border-radius: var(--radius-sm);
       overflow: hidden;
-      display: flex; flex-direction: column;
-      transition: box-shadow var(--tr), transform var(--tr);
+      display: flex;
+      flex-direction: column;
+      transition: all var(--tr);
     }
-    .cross-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+    .cross-card:hover { transform: translateY(-3px); box-shadow: var(--sh-hover); border-color: var(--g); }
     .cross-img {
-      height: 100px; background: var(--cream);
-      position: relative; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
+      height: 110px;
+      background: var(--c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
     }
-    .cross-img img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
+    .cross-img img { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
     .cross-badge {
-      position: absolute; top: 5px; left: 5px;
-      font-size: 9px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.04em; padding: 2px 6px; border-radius: 4px;
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      font-size: 8.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 2.5px 6.5px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
     }
-    .b-pop  { background: #fef3c7; color: #92400e; }
-    .b-new  { background: #dbeafe; color: #1e40af; }
-    .b-best { background: var(--sage-l); color: #166534; }
-    .cross-info { padding: 9px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
-    .cross-name { font-size: 11.5px; font-weight: 600; color: var(--forest); line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .cross-price { font-size: 13px; font-weight: 700; color: var(--forest); }
+    .b-pop { background: #fef3c7; color: #92400e; }
+    .b-new { background: #dbeafe; color: #1e40af; }
+    .b-best { background: #eef7f2; color: #15803d; }
+    .cross-info {
+      padding: 10px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .cross-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--f);
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      height: 32px;
+    }
+    .cross-price {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--f);
+    }
     .cross-btn {
-      margin-top: auto; width: 100%;
-      background: var(--forest); color: #fff;
-      border: none; border-radius: 5px;
-      padding: 7px 4px; font-size: 11px; font-weight: 700;
-      transition: background var(--tr); display: flex; align-items: center; justify-content: center; gap: 4px;
+      margin-top: auto;
+      width: 100%;
+      background: var(--f);
+      color: var(--gp);
+      border-radius: 6px;
+      padding: 7px 4px;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: all var(--tr);
     }
-    .cross-btn:hover { background: var(--forest-d); }
-    .cross-btn.added { background: var(--sage); }
-    .swipe-hint { font-size: 10.5px; color: var(--text-l); text-align: center; margin-top: 8px; letter-spacing: 0.05em; display: none; }
-    @media(max-width:600px){ .swipe-hint { display: block; } }
+    .cross-btn:hover { background: var(--g); color: var(--f); }
 
-    /* ── PROMO CODE ── */
-    .promo-hdr { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--forest); margin-bottom: 12px; display: flex; align-items: center; gap: 7px; }
-    .promo-row { display: flex; gap: 8px; }
+    /* ── PROMO CODE UI ── */
+    .promo-hdr {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--f);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .promo-row { display: flex; gap: 10px; }
     .promo-input {
-      flex: 1; padding: 10px 13px;
-      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-      font-size: 13px; font-family: inherit; outline: none;
-      text-transform: uppercase; letter-spacing: 0.05em;
+      flex: 1;
+      padding: 10px 14px;
+      border: 1.5px solid var(--cd);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-family: inherit;
+      outline: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
       transition: border-color var(--tr);
     }
-    .promo-input:focus { border-color: var(--forest); }
+    .promo-input:focus { border-color: var(--g); }
     .promo-btn {
-      padding: 10px 18px;
-      background: var(--forest); color: #fff; border: none;
+      padding: 10px 20px;
+      background: var(--f);
+      color: var(--gp);
       border-radius: var(--radius-sm);
-      font-size: 13px; font-weight: 700;
-      transition: background var(--tr);
-      white-space: nowrap;
+      font-size: 13px;
+      font-weight: 700;
+      transition: all var(--tr);
     }
-    .promo-btn:hover { background: var(--forest-d); }
-    .promo-err  { font-size: 11px; color: var(--red); margin-top: 5px; font-weight: 600; display: none; }
-    .promo-hint { font-size: 11px; color: var(--text-l); margin-top: 6px; }
+    .promo-btn:hover { background: var(--g); color: var(--f); }
+    .promo-err { font-size: 11px; color: var(--red); margin-top: 5px; font-weight: 600; display: none; }
+    .promo-hint { font-size: 11px; color: var(--tl); margin-top: 6px; }
+
     .promo-applied {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 10px 13px;
-      background: var(--sage-l); border: 1.5px solid var(--sage-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: #eef7f2;
+      border: 1.5px solid var(--s);
       border-radius: var(--radius-sm);
     }
-    .promo-applied-label { font-size: 13px; font-weight: 700; color: #166534; display: flex; align-items: center; gap: 5px; }
-    .promo-applied-sub   { font-size: 11px; color: #4a7c59; }
-    .promo-rm {
-      background: none; border: none;
-      color: #4a7c59; transition: color var(--tr);
-      display: flex; align-items: center; padding: 3px;
-    }
+    .promo-applied-label { font-size: 13.5px; font-weight: 700; color: #166534; display: flex; align-items: center; gap: 6px; }
+    .promo-applied-sub { font-size: 11.5px; color: #3d5c44; }
+    .promo-rm { color: #166534; transition: color var(--tr); }
     .promo-rm:hover { color: var(--red); }
 
-    /* ── TRUST BADGES ── */
-    .trust-stack { display: flex; flex-direction: column; gap: 10px; }
+    /* ── TRUST BADGES STACK ── */
+    .trust-stack { display: flex; flex-direction: column; gap: 12px; }
     .trust-item {
-      display: flex; gap: 12px; align-items: flex-start;
-      padding: 13px 15px;
-      background: var(--white);
-      border: 1px solid var(--border);
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 14px 18px;
+      background: var(--w);
+      border: 1px solid var(--cd);
       border-radius: var(--radius-sm);
-      box-shadow: var(--shadow-sm);
-      transition: box-shadow var(--tr);
+      box-shadow: var(--sh);
+      transition: all var(--tr);
     }
-    .trust-item:hover { box-shadow: var(--shadow); }
+    .trust-item:hover { box-shadow: var(--sh-hover); transform: translateY(-1px); }
     .trust-icon {
-      width: 36px; height: 36px; flex-shrink: 0;
-      background: var(--sage-l);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--sage);
+      width: 38px;
+      height: 38px;
+      background: #faf2e6;
+      color: var(--g);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
-    .trust-title { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--forest); margin-bottom: 2px; }
-    .trust-desc  { font-size: 11.5px; color: var(--text-l); line-height: 1.5; }
+    .trust-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--f); margin-bottom: 2px; }
+    .trust-desc { font-size: 12px; color: var(--tm); line-height: 1.5; }
 
-    /* ── SIDEBAR ORDER SUMMARY ── */
+    /* ── ORDER SUMMARY SIDEBAR ── */
     .summary-card {
-      background: var(--white);
-      border: 1px solid var(--border);
+      background: var(--w);
+      border: 1px solid var(--cd);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      box-shadow: var(--sh-hover);
       overflow: hidden;
-      position: sticky; top: 74px;
-      margin-bottom: 14px;
+      position: sticky;
+      top: 86px;
+      margin-bottom: 16px;
     }
     .summary-hdr {
-      background: var(--forest); color: #fff;
-      padding: 15px 18px;
+      background: var(--f);
+      color: var(--gl);
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .summary-hdr h3 { font-family: 'Playfair Display', serif; font-size: 16px; }
-    .summary-hdr p  { font-size: 11px; opacity: 0.7; margin-top: 2px; }
-    .summary-body { padding: 16px 18px; }
+    .summary-hdr h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; }
+    .summary-hdr p { font-size: 11px; color: var(--sl); margin-top: 1px; }
+    
+    .summary-body { padding: 18px 20px; }
     .sum-row {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 8px 0; font-size: 13px;
-      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 9px 0;
+      font-size: 13.5px;
+      border-bottom: 1px solid var(--c);
     }
     .sum-row:last-of-type { border-bottom: none; }
-    .sum-row-lbl   { color: var(--text-l); }
-    .sum-row-val   { font-weight: 600; color: var(--text); }
-    .sum-row-val.free     { color: #166534; font-weight: 700; }
-    .sum-row-val.discount { color: #166534; }
-    .sum-divider { height: 1px; background: var(--border); margin: 6px 0; }
-    .sum-total-row { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0 2px; }
-    .sum-total-lbl { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--forest); font-weight: 700; }
-    .sum-total-val { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--forest); font-weight: 700; }
+    .sum-row-lbl { color: var(--tm); }
+    .sum-row-val { font-weight: 600; color: var(--f); }
+    .sum-row-val.free { color: var(--s); font-weight: 700; }
+    .sum-row-val.discount { color: var(--s); }
+    
+    .sum-divider { height: 1.5px; background: var(--c); margin: 8px 0; }
+    .sum-total-row { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0 4px; }
+    .sum-total-lbl { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--f); font-weight: 700; }
+    .sum-total-val { font-family: 'Montserrat', sans-serif; font-size: 24px; color: var(--f); font-weight: 800; }
+
     .chk-btn {
-      display: block; width: 100%;
-      background: var(--forest); color: #fff; border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: var(--f);
+      color: var(--gl);
       border-radius: var(--radius-sm);
-      padding: 14px; font-size: 14px; font-weight: 700;
-      letter-spacing: 0.05em; text-transform: uppercase;
-      margin-top: 14px;
-      transition: background var(--tr), transform var(--tr), box-shadow var(--tr);
-      cursor: pointer;
+      padding: 15px;
+      font-size: 14.5px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 16px;
+      transition: all var(--tr);
     }
-    .chk-btn:hover { background: var(--forest-d); box-shadow: 0 5px 18px rgba(27,58,40,0.22); transform: translateY(-1px); }
-    .chk-btn:active { transform: scale(0.99); }
+    .chk-btn:hover { background: var(--g); color: var(--f); box-shadow: 0 6px 20px rgba(200,160,110,0.25); }
+    
     .sum-secure {
-      display: flex; align-items: center; justify-content: center;
-      gap: 5px; font-size: 11px; color: var(--text-l); margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--tl);
+      margin-top: 12px;
     }
 
     /* ── EMPTY STATE ── */
     .empty-state {
-      padding: 52px 20px; text-align: center;
-      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      padding: 64px 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
     }
     .empty-icon-wrap {
-      width: 64px; height: 64px;
-      background: var(--cream-d);
+      width: 72px;
+      height: 72px;
+      background: var(--c);
+      color: var(--g);
       border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--border); margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 4px;
     }
-    .empty-state h3  { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--forest); }
-    .empty-state p   { font-size: 13px; color: var(--text-l); max-width: 260px; }
-    .empty-shop-btn  {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: var(--forest); color: #fff;
-      padding: 11px 24px; border-radius: var(--radius-sm);
-      font-size: 13px; font-weight: 700; margin-top: 6px;
-      transition: background var(--tr);
+    .empty-state h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--f); }
+    .empty-state p { font-size: 13.5px; color: var(--tm); max-width: 280px; }
+    .empty-shop-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--f);
+      color: var(--gp);
+      padding: 12px 28px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 13.5px;
+      margin-top: 8px;
+      transition: all var(--tr);
     }
-    .empty-shop-btn:hover { background: var(--forest-d); }
+    .empty-shop-btn:hover { background: var(--g); color: var(--f); }
 
     /* ── MOBILE STICKY BAR ── */
     .mob-bar {
       display: none;
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
-      background: var(--white);
-      border-top: 1px solid var(--border);
-      padding: 10px 16px;
-      box-shadow: 0 -4px 16px rgba(0,0,0,0.1);
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      background: var(--w);
+      border-top: 1px solid var(--cd);
+      padding: 12px 20px;
+      box-shadow: 0 -4px 20px rgba(27,58,40,0.1);
     }
-    @media(max-width:860px){ .mob-bar { display: block; } }
+    @media(max-width:900px){ .mob-bar { display: block; } }
     .mob-bar-inner {
-      display: flex; align-items: center; gap: 12px;
-      max-width: 600px; margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      max-width: 600px;
+      margin: 0 auto;
     }
-    .mob-total-lbl { font-size: 11px; color: var(--text-l); }
-    .mob-total-val { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--forest); }
+    .mob-total-lbl { font-size: 11px; color: var(--tl); text-transform: uppercase; letter-spacing: 0.05em; }
+    .mob-total-val { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 800; color: var(--f); }
     .mob-chk-btn {
-      flex: 1; background: var(--forest); color: #fff; border: none;
+      flex: 1;
+      background: var(--f);
+      color: var(--gl);
       border-radius: var(--radius-sm);
-      padding: 13px 12px; font-size: 13.5px; font-weight: 700;
-      letter-spacing: 0.03em; cursor: pointer; text-transform: uppercase;
-      transition: background var(--tr);
+      padding: 14px 16px;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all var(--tr);
+      text-align: center;
     }
-    .mob-chk-btn:hover { background: var(--forest-d); }
+    .mob-chk-btn:hover { background: var(--g); color: var(--f); }
 
     /* ── TOAST ── */
     .toast {
-      position: fixed; bottom: 76px; left: 50%;
+      position: fixed;
+      bottom: 86px;
+      left: 50%;
       transform: translateX(-50%) translateY(12px);
-      background: var(--forest); color: #fff;
-      padding: 9px 20px; border-radius: 30px;
-      font-size: 12.5px; font-weight: 600;
-      opacity: 0; pointer-events: none;
+      background: var(--f);
+      color: var(--gl);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 700;
+      opacity: 0;
+      pointer-events: none;
       transition: opacity 0.25s, transform 0.25s;
-      white-space: nowrap; z-index: 999;
-      box-shadow: var(--shadow);
+      white-space: nowrap;
+      z-index: 999;
+      box-shadow: var(--shadow-lg);
     }
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-    /* ── SECTION GAP ── */
-    .section { margin-bottom: 14px; }
   </style>
 </head>
 <body>
 
-<!-- Topbar -->
-<div class="topbar">
+<!-- Top Utility Bar -->
+<div class="top-bar">
   <svg class="icon" width="13" height="13"><use href="#ico-truck"/></svg>
   Free courier delivery on orders over R500 &nbsp;&bull;&nbsp; Nationwide South Africa
 </div>
 
-<!-- Navbar -->
-<nav class="navbar">
-  <div class="navbar-inner">
-    <a href="index.html" class="nav-logo">
-      <div class="nav-logo-mark">
+<!-- Main Header -->
+<header class="main-header">
+  <div class="main-header-inner">
+    <a href="index.html" class="nlogo">
+      <div class="nmark">
         <svg class="icon" width="18" height="18"><use href="#ico-leaf"/></svg>
       </div>
-      <div class="nav-logo-text">
-        <strong>Tangren</strong>
-        <span>Herbal Wellness</span>
+      <div class="ntext">
+        <b>The Herbalist</b>
+        <small>Traditional Wellness</small>
       </div>
     </a>
-    <div class="nav-right">
-      <a href="index.html" class="nav-back">
-        <svg class="icon" width="15" height="15"><use href="#ico-arrow-left"/></svg>
-        <span>Continue Shopping</span>
+    <div class="nav-actions">
+      <a href="index.html" class="nav-back-link">
+        <svg class="icon" width="14" height="14"><use href="#ico-arrow-left"/></svg>
+        Continue Shopping
       </a>
-      <div class="nav-cart-wrap">
-        <svg class="icon" width="18" height="18" style="color:var(--forest)"><use href="#ico-cart"/></svg>
-        <span class="nav-cart-badge" id="nav-count">0</span>
-        <span class="nav-cart-total" id="nav-total">R0.00</span>
+      <div class="header-cart-btn">
+        <svg class="icon" width="16" height="16"><use href="#ico-cart"/></svg>
+        <span class="cart-badge" id="nav-count">0</span>
       </div>
     </div>
   </div>
-</nav>
+</header>
 
 <!-- Breadcrumb -->
 <div class="breadcrumb">
   <a href="index.html">Home</a>
-  <svg class="icon" width="12" height="12" style="color:var(--border)"><use href="#ico-chevron-right"/></svg>
+  <svg class="icon" width="10" height="10" style="color:var(--tl)"><use href="#ico-chevron-right"/></svg>
   <span>Shopping Basket</span>
 </div>
 
-<!-- Main Content -->
+<!-- Page Body -->
 <div class="page-wrap">
-
   <div class="page-head">
-    <h1 class="page-title">Shopping Basket</h1>
-    <p class="page-sub" id="page-sub">Review your items and proceed to checkout.</p>
+    <h1 class="page-title">Your Basket</h1>
+    <p class="page-desc" id="page-sub">Review your items and proceed to complete your order details.</p>
   </div>
 
   <div class="basket-grid">
-
     <!-- LEFT COLUMN -->
     <div class="main-col">
-
-      <!-- 1. Delivery Banner -->
-      <div class="section">
-        <div class="delivery-banner pending" id="delivery-banner">
-          <div class="delivery-banner-row">
-            <svg class="icon" width="15" height="15" id="delivery-icon"><use href="#ico-truck"/></svg>
-            <span id="delivery-text">Spend R500 more to get FREE courier delivery.</span>
-          </div>
-          <div class="delivery-bar-track">
-            <div class="delivery-bar-fill" id="delivery-fill" style="width:0%"></div>
-          </div>
+      <!-- Free Delivery Progress -->
+      <div class="delivery-banner pending" id="delivery-banner">
+        <div class="delivery-banner-row">
+          <svg class="icon" width="16" height="16" id="delivery-icon"><use href="#ico-truck"/></svg>
+          <span id="delivery-text">Spend R500 more to get FREE courier delivery.</span>
+        </div>
+        <div class="delivery-bar-track">
+          <div class="delivery-bar-fill" id="delivery-fill" style="width:0%"></div>
         </div>
       </div>
 
-      <!-- 2. Basket Items Card -->
-      <div class="card section">
+      <!-- Items List -->
+      <div class="card">
         <div class="card-hdr">
-          <h2>Your Basket</h2>
-          <span class="badge-pill" id="item-badge">0 items</span>
+          <h2>Items Summary</h2>
+          <span class="item-count-badge" id="item-badge">0 Items</span>
         </div>
         <div id="basket-items-container"></div>
       </div>
 
-      <!-- 3. You Might Also Like -->
-      <div class="card section" id="cross-section" style="display:none;">
+      <!-- Cross-Sells -->
+      <div class="card" id="cross-section" style="display:none;">
         <div class="card-body">
           <div class="cross-hdr">
-            <h3>You might also like</h3>
-            <p>Frequently paired with your selection</p>
+            <h3>Recommended Pairings</h3>
+            <p>Add these matching wellness selections to your basket</p>
           </div>
           <div class="cross-slider" id="cross-slider"></div>
-          <p class="swipe-hint">Swipe to explore more products</p>
+          <p class="swipe-hint">← Swipe to explore more options →</p>
         </div>
       </div>
 
-      <!-- 4. Promo Code -->
-      <div class="card section">
+      <!-- Promo Code -->
+      <div class="card">
         <div class="card-body">
           <div class="promo-hdr">
-            <svg class="icon" width="16" height="16" style="color:var(--sage)"><use href="#ico-tag"/></svg>
-            Promotional Code
+            <svg class="icon" width="15" height="15" style="color:var(--g)"><use href="#ico-tag"/></svg>
+            Promotional &amp; Benefit Codes
           </div>
           <div id="promo-ui"></div>
         </div>
       </div>
 
-      <!-- 5. Trust Badges (mobile only) -->
-      <div class="section" id="trust-mobile-wrap" style="display:none;">
+      <!-- Mobile Trust Badges -->
+      <div id="trust-mobile-wrap" style="display:none; margin-bottom:20px;">
         <div class="trust-stack" id="trust-mobile"></div>
       </div>
+    </div>
 
-    </div><!-- /main-col -->
-
-    <!-- RIGHT SIDEBAR (desktop) -->
+    <!-- RIGHT SIDEBAR (Desktop) -->
     <div class="sidebar-col">
-
-      <!-- Order Summary -->
+      <!-- Order Summary Card -->
       <div class="summary-card">
         <div class="summary-hdr">
           <h3>Order Summary</h3>
-          <p>Items &amp; delivery calculated</p>
+          <p>Finalize and secure your checkout</p>
         </div>
         <div class="summary-body">
           <div class="sum-row">
-            <span class="sum-row-lbl">Subtotal</span>
+            <span class="sum-row-lbl">Items Subtotal</span>
             <span class="sum-row-val" id="s-subtotal">R0.00</span>
           </div>
           <div class="sum-row" id="s-disc-row" style="display:none;">
-            <span class="sum-row-lbl">Discount</span>
+            <span class="sum-row-lbl">Promo Discount</span>
             <span class="sum-row-val discount" id="s-disc">-R0.00</span>
           </div>
           <div class="sum-row">
@@ -677,70 +926,72 @@
           </div>
           <div class="sum-divider"></div>
           <div class="sum-total-row">
-            <span class="sum-total-lbl">Total</span>
+            <span class="sum-total-lbl">Total Price</span>
             <span class="sum-total-val" id="s-total">R0.00</span>
           </div>
-          <button class="chk-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+          <button class="chk-btn" onclick="proceedToCheckout()">
+            Proceed to Checkout
+            <svg class="icon" width="16" height="16"><use href="#ico-chevron-right"/></svg>
+          </button>
           <div class="sum-secure">
             <svg class="icon" width="12" height="12"><use href="#ico-lock"/></svg>
-            Secure &amp; safe checkout
+            SSL Secure Order Encryption
           </div>
         </div>
       </div>
 
-      <!-- Trust Badges (desktop) -->
+      <!-- Trust Badges -->
       <div class="trust-stack">
         <div class="trust-item">
-          <div class="trust-icon"><svg class="icon" width="18" height="18"><use href="#ico-truck"/></svg></div>
+          <div class="trust-icon"><svg class="icon" width="16" height="16"><use href="#ico-truck"/></svg></div>
           <div>
             <div class="trust-title">Fast Courier Delivery</div>
-            <div class="trust-desc">3–5 working days nationwide across South Africa.</div>
+            <div class="trust-desc">Delivered to your door in 3-5 working days. Trackable nationwide shipping.</div>
           </div>
         </div>
         <div class="trust-item">
-          <div class="trust-icon"><svg class="icon" width="18" height="18"><use href="#ico-shield"/></svg></div>
+          <div class="trust-icon"><svg class="icon" width="16" height="16"><use href="#ico-shield"/></svg></div>
           <div>
-            <div class="trust-title">7-Day Guarantee</div>
-            <div class="trust-desc">Return within 7 days for a hassle-free exchange.</div>
+            <div class="trust-title">7-Day Quality Guarantee</div>
+            <div class="trust-desc">Seals checked and protected. Satisfaction exchanges within 7 days.</div>
           </div>
         </div>
         <div class="trust-item">
-          <div class="trust-icon"><svg class="icon" width="18" height="18"><use href="#ico-chat"/></svg></div>
+          <div class="trust-icon"><svg class="icon" width="16" height="16"><use href="#ico-chat"/></svg></div>
           <div>
             <div class="trust-title">WhatsApp Support</div>
-            <div class="trust-desc">Personal guidance on dosage &amp; products.</div>
+            <div class="trust-desc">Direct line with our experts for dosing information and inquiries.</div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
 
-    </div><!-- /sidebar-col -->
-  </div><!-- /basket-grid -->
-</div><!-- /page-wrap -->
-
-<!-- Mobile Sticky Checkout Bar -->
+<!-- Sticky Bottom Action Bar (Mobile Only) -->
 <div class="mob-bar" id="mob-bar" style="display:none;">
   <div class="mob-bar-inner">
     <div>
-      <div class="mob-total-lbl">Order Total</div>
+      <div class="mob-total-lbl">Est. Total</div>
       <div class="mob-total-val" id="mob-total">R0.00</div>
     </div>
     <button class="mob-chk-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
   </div>
 </div>
 
-<!-- Toast -->
+<!-- Toast Alert -->
 <div class="toast" id="toast"></div>
 
 <script>
-// ── SVG helpers ──────────────────────────────────────────────────────────────
+// SVG helper utility
 const SVG = id => `<svg class="icon" width="14" height="14"><use href="#${id}"/></svg>`;
 
-// ── CONSTANTS ────────────────────────────────────────────────────────────────
+// Business Rules Setup
 const FREE_THRESHOLD = 500;
 const DELIVERY_FEE   = 75;
 const PROMOS = { TANGREN10: 0.10, HERB15: 0.15 };
 
-// ── CATALOGUE ────────────────────────────────────────────────────────────────
+// Database seed catalog
 const CAT = [
   { id:'TG-TEA-001', name:'Abdomen Slimming Tea',     price:100, img:'images/abdomen_slimming_tea.png',      cat:'Herbal Tea'  },
   { id:'TG-TEA-003', name:'Anti Stress Sleeping Tea',  price:100, img:'images/anti_stress_sleeping_tea.png', cat:'Herbal Tea'  },
@@ -758,7 +1009,7 @@ const CAT = [
 const CROSS_IDS    = ['TG-TEA-011','TG-TEA-013','TG-TEA-014','TG-TEA-015','TG-PILL-002','TG-PILL-003','TG-TEA-016'];
 const CROSS_BADGES = { 'TG-TEA-013':'Popular','TG-PILL-002':'Best Seller','TG-TEA-011':'New','TG-TEA-016':'Popular' };
 
-// ── STATE ────────────────────────────────────────────────────────────────────
+// Initial States loaded from site cache
 let basket       = JSON.parse(localStorage.getItem('tg_basket') || 'null')
                    || [{id:'TG-TEA-001',qty:2},{id:'TG-TEA-010',qty:1},{id:'TG-PILL-001',qty:1}];
 let promoCode    = null;
@@ -767,7 +1018,7 @@ let promoDisc    = 0;
 const byId = id => CAT.find(p => p.id === id);
 const save = ()  => localStorage.setItem('tg_basket', JSON.stringify(basket));
 
-// ── CALC ─────────────────────────────────────────────────────────────────────
+// Calculations
 function calc() {
   const sub      = basket.reduce((s,i) => s + (byId(i.id)?.price||0)*i.qty, 0);
   const discAmt  = Math.round(sub * promoDisc);
@@ -778,25 +1029,23 @@ function calc() {
   return { sub, discAmt, after, delivery, total, remain };
 }
 
-// ── RENDER ───────────────────────────────────────────────────────────────────
+// Render dynamic components
 function render() {
   const { sub, discAmt, after, delivery, total, remain } = calc();
   const totalQty = basket.reduce((s,i) => s+i.qty, 0);
 
-  // nav
+  // Navbar counts
   document.getElementById('nav-count').textContent = totalQty;
-  document.getElementById('nav-total').textContent = 'R'+total.toFixed(2);
 
-  // subtitle
+  // Header and subtitles
   document.getElementById('page-sub').textContent =
-    totalQty===0 ? 'Your basket is empty.'
-                 : `${totalQty} item${totalQty!==1?'s':''} in your basket.`;
+    totalQty===0 ? 'Your shopping basket is currently empty.'
+                 : `Review your ${totalQty} traditional herbal selection${totalQty!==1?'s':''} below.`;
 
-  // item badge
   document.getElementById('item-badge').textContent =
-    `${basket.length} item${basket.length!==1?'s':''}`;
+    `${basket.length} Product${basket.length!==1?'s':''}`;
 
-  // delivery banner
+  // Delivery banner logic
   const pct    = Math.min(100, Math.round((after/FREE_THRESHOLD)*100));
   const banner = document.getElementById('delivery-banner');
   const icon   = document.getElementById('delivery-icon');
@@ -811,18 +1060,18 @@ function render() {
     document.getElementById('delivery-text').textContent = `Spend R${remain} more to get FREE courier delivery.`;
   }
 
-  // basket items
+  // Render basket items
   const con = document.getElementById('basket-items-container');
   if (basket.length===0) {
     con.innerHTML = `
       <div class="empty-state">
         <div class="empty-icon-wrap">
-          <svg class="icon" width="32" height="32"><use href="#ico-cart"/></svg>
+          <svg class="icon" width="28" height="28"><use href="#ico-cart"/></svg>
         </div>
         <h3>Your basket is empty</h3>
-        <p>Add some herbal wellness products to get started.</p>
+        <p>Explore our premium traditional formulations and teas to add wellness remedies to your cart.</p>
         <a href="index.html" class="empty-shop-btn">
-          ${SVG('ico-arrow-left')} Browse Products
+          ${SVG('ico-arrow-left')} Back to Catalogue
         </a>
       </div>`;
   } else {
@@ -833,28 +1082,28 @@ function render() {
         <div class="item-thumb">
           <img src="${p.img}" alt="${p.name}"
             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-          <div class="item-thumb-fallback">
-            <svg width="28" height="28"><use href="#ico-leaf"/></svg>
+          <div class="item-thumb-fallback" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;">
+            <svg class="icon" width="24" height="24" style="color:var(--cd);"><use href="#ico-leaf"/></svg>
           </div>
         </div>
         <div class="item-info">
           <span class="item-cat">${p.cat}</span>
           <div class="item-name">${p.name}</div>
-          <div class="item-unit">R${p.price.toFixed(2)} per unit</div>
+          <div class="item-unit">R${p.price.toFixed(2)}</div>
           <div class="item-controls">
             <div class="qty-ctrl">
-              <button class="qty-btn" onclick="changeQty('${item.id}',-1)" aria-label="Decrease">
-                <svg class="icon" width="12" height="12"><use href="#ico-minus"/></svg>
+              <button class="qty-btn" onclick="changeQty('${item.id}',-1)" aria-label="Decrease quantity">
+                <svg class="icon" width="11" height="11"><use href="#ico-minus"/></svg>
               </button>
               <span class="qty-num">${item.qty}</span>
-              <button class="qty-btn" onclick="changeQty('${item.id}',1)" aria-label="Increase">
-                <svg class="icon" width="12" height="12"><use href="#ico-plus"/></svg>
+              <button class="qty-btn" onclick="changeQty('${item.id}',1)" aria-label="Increase quantity">
+                <svg class="icon" width="11" height="11"><use href="#ico-plus"/></svg>
               </button>
             </div>
             <div class="item-right">
               <span class="item-total">R${(p.price*item.qty).toFixed(2)}</span>
               <button class="item-remove" onclick="removeItem('${item.id}')">
-                <svg class="icon" width="13" height="13"><use href="#ico-trash"/></svg> Remove
+                <svg class="icon" width="12" height="12"><use href="#ico-trash"/></svg> Remove
               </button>
             </div>
           </div>
@@ -863,11 +1112,11 @@ function render() {
     }).join('');
   }
 
-  // cross-sell
+  // Cross-sellings
   const inCart  = new Set(basket.map(i=>i.id));
   const crosses = CROSS_IDS.filter(id=>!inCart.has(id)).map(id=>byId(id)).filter(Boolean).slice(0,8);
   const cs      = document.getElementById('cross-section');
-  cs.style.display = crosses.length ? 'block' : 'none';
+  cs.style.display = (crosses.length && basket.length) ? 'block' : 'none';
   document.getElementById('cross-slider').innerHTML = crosses.map(p => {
     const b    = CROSS_BADGES[p.id];
     const bcls = b==='Popular'?'b-pop':b==='Best Seller'?'b-best':b==='New'?'b-new':'';
@@ -881,39 +1130,41 @@ function render() {
         <div class="cross-name">${p.name}</div>
         <div class="cross-price">R${p.price.toFixed(2)}</div>
         <button class="cross-btn" id="xb-${p.id}" onclick="addCross('${p.id}')">
-          ${SVG('ico-plus')} Add to basket
+          ${SVG('ico-plus')} Add
         </button>
       </div>
     </div>`;
   }).join('');
 
-  // promo
+  // Promo code
   renderPromo();
 
-  // mobile trust
+  // Mobile trust badges
   const mw = document.getElementById('trust-mobile-wrap');
   const mt = document.getElementById('trust-mobile');
-  if (window.innerWidth <= 860) {
+  if (window.innerWidth <= 900) {
     mw.style.display = 'block';
     mt.innerHTML = `
       <div class="trust-item">
-        <div class="trust-icon"><svg class="icon" width="18" height="18"><use href="#ico-truck"/></svg></div>
+        <div class="trust-icon"><svg class="icon" width="16" height="16"><use href="#ico-truck"/></svg></div>
         <div><div class="trust-title">Fast Courier Delivery</div>
              <div class="trust-desc">3–5 working days nationwide across South Africa.</div></div>
       </div>
       <div class="trust-item">
-        <div class="trust-icon"><svg class="icon" width="18" height="18"><use href="#ico-shield"/></svg></div>
+        <div class="trust-icon"><svg class="icon" width="16" height="16"><use href="#ico-shield"/></svg></div>
         <div><div class="trust-title">7-Day Guarantee</div>
              <div class="trust-desc">Return within 7 days for hassle-free exchange.</div></div>
       </div>
       <div class="trust-item">
-        <div class="trust-icon"><svg class="icon" width="18" height="18"><use href="#ico-chat"/></svg></div>
+        <div class="trust-icon"><svg class="icon" width="16" height="16"><use href="#ico-chat"/></svg></div>
         <div><div class="trust-title">WhatsApp Support</div>
              <div class="trust-desc">Personal guidance on dosage &amp; products.</div></div>
       </div>`;
+  } else {
+    mw.style.display = 'none';
   }
 
-  // summary sidebar
+  // Summaries
   document.getElementById('s-subtotal').textContent = 'R'+sub.toFixed(2);
   if (discAmt>0) {
     document.getElementById('s-disc-row').style.display = 'flex';
@@ -921,12 +1172,18 @@ function render() {
   } else {
     document.getElementById('s-disc-row').style.display = 'none';
   }
+  
   const sDelEl = document.getElementById('s-delivery');
-  if (delivery===0) { sDelEl.textContent='FREE (Spend R500+)'; sDelEl.className='sum-row-val free'; }
-  else               { sDelEl.textContent='R'+delivery.toFixed(2); sDelEl.className='sum-row-val'; }
+  if (delivery===0) { 
+    sDelEl.textContent='FREE (Spend R500+)'; 
+    sDelEl.className='sum-row-val free'; 
+  } else { 
+    sDelEl.textContent='R'+delivery.toFixed(2); 
+    sDelEl.className='sum-row-val'; 
+  }
   document.getElementById('s-total').textContent = 'R'+total.toFixed(2);
 
-  // mobile bar
+  // Mobile bar
   document.getElementById('mob-total').textContent = 'R'+total.toFixed(2);
   const mb = document.getElementById('mob-bar');
   mb.style.display = basket.length ? 'block' : 'none';
@@ -941,10 +1198,10 @@ function renderPromo() {
           <div class="promo-applied-label">
             ${SVG('ico-check-circle')} ${promoCode} applied
           </div>
-          <div class="promo-applied-sub">${Math.round(promoDisc*100)}% discount applied to your order</div>
+          <div class="promo-applied-sub">${Math.round(promoDisc*100)}% discount has been applied.</div>
         </div>
         <button class="promo-rm" onclick="removePromo()" title="Remove promo code">
-          <svg class="icon" width="16" height="16"><use href="#ico-x"/></svg>
+          <svg class="icon" width="14" height="14"><use href="#ico-x"/></svg>
         </button>
       </div>`;
   } else {
@@ -952,7 +1209,7 @@ function renderPromo() {
       <div class="promo-row">
         <input type="text" class="promo-input" id="promo-input" placeholder="Enter promo code"
           maxlength="20" onkeydown="if(event.key==='Enter')applyPromo()" />
-        <button class="promo-btn" onclick="applyPromo()">Apply</button>
+        <button class="promo-btn" onclick="applyPromo()">Apply Code</button>
       </div>
       <p class="promo-err" id="promo-err"></p>
       <p class="promo-hint">Use <strong>TANGREN10</strong> for 10% off or <strong>HERB15</strong> for 15% off.</p>`;
