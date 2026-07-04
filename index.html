@@ -1423,143 +1423,242 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
 }
 
 /* ── CHECKOUT MODAL ── */
+
+/* The checkout overlay always centres the modal vertically */
+#chk-mo {
+  align-items: flex-start;     /* Allow tall modals to scroll from top */
+  padding: 12px;
+}
+/* The checkout modal uses 1 column — form stacks above summary */
+#chk-mo .modal {
+  display: block;              /* Override product modal's 2-col grid */
+  max-width: 860px;
+  width: 100%;
+  max-height: calc(100dvh - 24px);
+  max-height: calc(100vh - 24px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 16px;
+  padding: 28px;
+  box-sizing: border-box;
+}
+
+/* Title bar */
+.chk-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  color: var(--f);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--g);
+}
+
+/* 2-column: form left, summary right (desktop) */
 .checkout-modal-body {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 24px;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 28px;
+  align-items: start;
 }
+
+/* Form fields */
 .checkout-form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 13px;
 }
 .form-grp {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
 }
 .form-grp label {
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
-  color: var(--tm);
+  color: var(--s);
 }
-.form-grp input {
-  padding: 8px 12px;
-  border: 1px solid var(--cd);
-  border-radius: 6px;
-  font-size: 13px;
+.form-grp input,
+.form-grp textarea,
+.form-grp select {
+  width: 100%;
+  padding: 10px 13px;
+  border: 1.5px solid var(--cd);
+  border-radius: 8px;
+  font-size: 13.5px;
   font-family: inherit;
   outline: none;
   transition: border-color var(--tr);
+  background: var(--w);
+  color: var(--t);
+  box-sizing: border-box;
 }
-.form-grp input:focus {
-  border-color: var(--s);
-}
+.form-grp input:focus,
+.form-grp textarea:focus { border-color: var(--g); box-shadow: 0 0 0 3px rgba(200,160,110,0.12); }
+.form-grp textarea { resize: none; height: 64px; }
+
+/* 2-column sub-row inside the form */
 .form-row2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
-.order-summary {
-  background: var(--c);
+
+/* Submit button */
+.chk-submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 6px;
+  padding: 13px 20px;
+  background: #10b981;
+  color: white;
+  border: none;
   border-radius: 8px;
-  padding: 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: 0.03em;
+}
+.chk-submit-btn:hover { background: #059669; transform: translateY(-1px); }
+
+/* Order summary panel */
+.chk-summary-panel {
+  background: var(--c);
+  border: 1px solid var(--cd);
+  border-radius: 10px;
+  padding: 18px;
+  position: sticky;
+  top: 0;
+}
+.chk-summary-panel h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  color: var(--f);
+  font-weight: 700;
+  border-bottom: 1px solid var(--cd);
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+}
+.order-summary {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   max-height: 200px;
   overflow-y: auto;
 }
 .order-summary-item {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   font-size: 12.5px;
   color: var(--tm);
+  gap: 8px;
 }
+.order-summary-item span:first-child { flex: 1; min-width: 0; word-break: break-word; }
+.order-summary-item span:last-child { font-weight: 600; white-space: nowrap; }
+.chk-totals {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--cd);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.chk-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--tm);
+}
+.chk-total-row.grand {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--f);
+  border-top: 1.5px solid var(--cd);
+  padding-top: 10px;
+  margin-top: 4px;
+}
+
+/* Success screen */
 .order-success-screen {
   text-align: center;
-  padding: 40px 20px;
+  padding: 48px 24px;
 }
 .success-icon {
-  width: 70px;
-  height: 70px;
-  background: var(--s);
-  color: white;
+  width: 72px; height: 72px;
+  background: var(--s); color: white;
   border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 32px;
-  margin-bottom: 20px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 32px; margin-bottom: 20px;
   animation: scaleUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
 }
 @keyframes scaleUp {
   from { transform: scale(0); }
-  to { transform: scale(1); }
+  to   { transform: scale(1); }
 }
-.success-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 24px;
-  color: var(--f);
-  margin-bottom: 10px;
-}
-.success-msg {
-  font-size: 14px;
-  color: var(--tl);
-  margin-bottom: 24px;
-  line-height: 1.6;
-}
+.success-title { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--f); margin-bottom: 12px; }
+.success-msg   { font-size: 14px; color: var(--tl); margin-bottom: 24px; line-height: 1.7; max-width: 380px; margin-left: auto; margin-right: auto; }
 
 /* ── RESPONSIVE ── */
 @media(max-width:780px){
-  .hero{grid-template-columns:1fr; padding: 40px 24px;}
-  .himg-wrap{display:none}
-  .modal{grid-template-columns:1fr; max-height: 95vh;}
-  .checkout-modal-body{grid-template-columns: 1fr !important; gap: 20px !important;}
-  .mimgcol{display:flex; min-height:240px; height:240px;}
-  .mimgcol .mimg{width:100%; height:100%; padding:16px;}
-  .mcol{max-height: calc(95vh - 240px);}
-  .nlinks{display:none}
-  .swrap input{width:110px}
-  .swrap input:focus{width:130px}
+  .hero { grid-template-columns:1fr; padding: 40px 24px; }
+  .himg-wrap { display:none; }
+  .modal { grid-template-columns:1fr; max-height: 95vh; }
+  .mimgcol { display:flex; min-height:240px; height:240px; }
+  .mimgcol .mimg { width:100%; height:100%; padding:16px; }
+  .mcol { max-height: calc(95vh - 240px); }
+  .nlinks { display:none; }
+  .swrap input { width:110px; }
+  .swrap input:focus { width:130px; }
 
-  /* ── CART DRAWER: MOBILE FIXES ── */
-  .cart-drawer {
-    max-width: 100vw;
-    width: 100vw;
-    /* Use dvh for mobile browsers with collapsible chrome */
-    height: 100dvh;
-    height: 100vh;
-  }
-  .cart-items {
-    /* Set height dynamically allowing plenty of space for the taller footer */
-    height: calc(100dvh - 280px) !important;
-    height: calc(100vh - 280px) !important;
-    max-height: calc(100dvh - 280px) !important;
-    max-height: calc(100vh - 280px) !important;
-  }
-  .syn-sec {
-    /* Hide synergy widget on mobile to prevent layout height overflows */
-    display: none !important;
-  }
-  .cart-item-img {
-    width: 64px;
-    height: 64px;
-  }
-  /* Checkout modal: full-screen on mobile, scroll inside */
+  /* Checkout modal — full height, scroll inside */
+  #chk-mo { padding: 0; align-items: flex-start; }
   #chk-mo .modal {
     max-height: 100dvh !important;
     max-height: 100vh !important;
     height: 100dvh !important;
     height: 100vh !important;
     border-radius: 0 !important;
+    padding: 20px 16px 32px;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
   }
-  .form-row2 {
+  /* Collapse 2-column summary+form to single column */
+  .checkout-modal-body {
     grid-template-columns: 1fr !important;
+    gap: 20px !important;
   }
+  /* Collapse 2-column form rows */
+  .form-row2 { grid-template-columns: 1fr !important; }
+  /* Sticky panel no longer sticky in mobile column flow */
+  .chk-summary-panel { position: static !important; }
+  /* Cart drawer */
+  .cart-drawer {
+    max-width: 100vw; width: 100vw;
+    height: 100dvh; height: 100vh;
+  }
+  .cart-items {
+    height: calc(100dvh - 280px) !important;
+    height: calc(100vh - 280px) !important;
+    max-height: calc(100dvh - 280px) !important;
+    max-height: calc(100vh - 280px) !important;
+  }
+  .syn-sec { display: none !important; }
+  .cart-item-img { width: 64px; height: 64px; }
+}
+@media(max-width:480px){
+  #chk-mo .modal { padding: 16px 12px 40px; }
+  .chk-title { font-size: 20px; }
+  .form-grp input,
+  .form-grp textarea { font-size: 16px; } /* Prevent iOS zoom on focus */
+  .chk-submit-btn { font-size: 14px; padding: 12px; }
 }
 @media(max-width:480px){
   nav { padding: 0 12px; }
@@ -2195,79 +2294,104 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
 
 <!-- CHECKOUT MODAL -->
 <div class="mov" id="chk-mo" onclick="chkOvClick(event)">
-  <div class="modal" style="max-width: 850px; grid-template-columns: 1fr; padding: 28px; max-height: 92vh; overflow-y: auto;">
-    <button class="mcls" onclick="closeCheckout()"><i data-lucide="x" style="width:20px;height:20px"></i></button>
-    <div id="checkout-content" style="max-height: 100%;">
-      <h2 class="mtitle" style="margin-bottom: 20px; border-bottom: 2px solid var(--g); padding-bottom: 10px; font-family: 'Playfair Display', serif; font-size: 24px; color: var(--f);">Complete Your Order</h2>
-      <div class="checkout-modal-body" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; align-items: start;">
+  <div class="modal">
+    <button class="mcls" onclick="closeCheckout()" aria-label="Close checkout"><i data-lucide="x" style="width:20px;height:20px"></i></button>
+
+    <!-- ORDER FORM -->
+    <div id="checkout-content">
+      <h2 class="chk-title">Complete Your Order</h2>
+
+      <div class="checkout-modal-body">
+        <!-- LEFT: Delivery Form -->
         <div>
-          <form class="checkout-form" onsubmit="submitOrder(event)" style="display: flex; flex-direction: column; gap: 12px;">
+          <form class="checkout-form" onsubmit="submitOrder(event)">
+
             <div class="form-grp">
-              <label for="c-name" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--s); display: block; margin-bottom: 5px;">Full Name *</label>
-              <input type="text" id="c-name" required placeholder="John Doe" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
+              <label for="c-name">Full Name *</label>
+              <input type="text" id="c-name" required placeholder="John Doe" autocomplete="name" />
             </div>
-            <div class="form-row2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+
+            <div class="form-row2">
               <div class="form-grp">
-                <label for="c-email" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--s); display: block; margin-bottom: 5px;">Email Address *</label>
-                <input type="email" id="c-email" required placeholder="john@example.com" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
+                <label for="c-email">Email Address *</label>
+                <input type="email" id="c-email" required placeholder="john@example.com" autocomplete="email" />
               </div>
               <div class="form-grp">
-                <label for="c-phone" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--s); display: block; margin-bottom: 5px;">WhatsApp / Phone Number *</label>
-                <input type="tel" id="c-phone" required placeholder="+27 72 123 4567" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
+                <label for="c-phone">WhatsApp / Phone *</label>
+                <input type="tel" id="c-phone" required placeholder="+27 72 123 4567" autocomplete="tel" />
               </div>
             </div>
+
             <div class="form-grp">
-              <label for="c-address" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--s); display: block; margin-bottom: 5px;">Shipping Address *</label>
-              <input type="text" id="c-address" required placeholder="123 Wellness Way" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
+              <label for="c-address">Shipping Address *</label>
+              <input type="text" id="c-address" required placeholder="123 Wellness Way" autocomplete="street-address" />
             </div>
-            <div class="form-row2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+
+            <div class="form-row2">
               <div class="form-grp">
-                <label for="c-suburb" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--s); display: block; margin-bottom: 5px;">Suburb / Town *</label>
-                <input type="text" id="c-suburb" required placeholder="Sandton" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
+                <label for="c-suburb">Suburb / Town *</label>
+                <input type="text" id="c-suburb" required placeholder="Sandton" />
               </div>
               <div class="form-grp">
-                <label for="c-city" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--s); display: block; margin-bottom: 5px;">City *</label>
-                <input type="text" id="c-city" required placeholder="Johannesburg" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
-              </div>
-            </div>
-            <div class="form-row2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-              <div class="form-grp">
-                <label for="c-zip" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--s); display: block; margin-bottom: 5px;">ZIP / Postal Code *</label>
-                <input type="text" id="c-zip" required placeholder="2196" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
-              </div>
-              <div class="form-grp">
-                <label for="c-province" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--s); display: block; margin-bottom: 5px;">Province *</label>
-                <input type="text" id="c-province" required placeholder="Gauteng" style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px;">
+                <label for="c-city">City *</label>
+                <input type="text" id="c-city" required placeholder="Johannesburg" autocomplete="address-level2" />
               </div>
             </div>
+
+            <div class="form-row2">
+              <div class="form-grp">
+                <label for="c-zip">Postal Code *</label>
+                <input type="text" id="c-zip" required placeholder="2196" autocomplete="postal-code" inputmode="numeric" />
+              </div>
+              <div class="form-grp">
+                <label for="c-province">Province *</label>
+                <input type="text" id="c-province" required placeholder="Gauteng" />
+              </div>
+            </div>
+
             <div class="form-grp">
-              <label for="c-instructions" style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--s); display: block; margin-bottom: 5px;">Delivery Instructions</label>
-              <textarea id="c-instructions" placeholder="Leave at front desk / special delivery notes..." style="width: 100%; padding: 8px 12px; border: 1px solid var(--cd); border-radius: 6px; font-family: inherit; font-size: 14px; height: 60px; resize: none;"></textarea>
+              <label for="c-instructions">Delivery Instructions</label>
+              <textarea id="c-instructions" placeholder="Leave at front desk / special delivery notes..."></textarea>
             </div>
-            <button type="submit" class="checkout-btn" style="margin-top: 10px; background: #10b981; color: white; padding: 10px 20px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; transition: background 0.2s;">Place Order</button>
+
+            <button type="submit" class="chk-submit-btn">
+              <i data-lucide="package-check" style="width:18px;height:18px"></i>
+              Place Order
+            </button>
           </form>
         </div>
-        <div style="position: sticky; top: 10px; background: var(--w); border: 1px solid var(--cd); border-radius: 8px; padding: 20px;">
-          <h3 class="mcat" style="margin-bottom: 10px; font-weight: 700; border-bottom: 1px solid var(--cd); padding-bottom: 8px;">Order Summary</h3>
+
+        <!-- RIGHT: Order Summary Panel -->
+        <div class="chk-summary-panel">
+          <h3>Order Summary</h3>
           <div class="order-summary" id="chk-summary"></div>
-          <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--cd);">
-            <div class="cart-row" style="margin-bottom: 6px; display: flex; justify-content: space-between;"><span>Subtotal</span><span id="chk-subtotal">R0.00</span></div>
-            <div class="cart-row" style="margin-bottom: 6px; display: flex; justify-content: space-between;"><span>Shipping</span><span id="chk-shipping">FREE</span></div>
-            <div class="cart-row total" style="margin-bottom: 0; display: flex; justify-content: space-between; font-weight: 700; font-size: 1.1em; border-top: 1.5px solid var(--cd); padding-top: 10px; margin-top: 10px;"><span>Total</span><span id="chk-total">R0.00</span></div>
+          <div class="chk-totals">
+            <div class="chk-total-row">
+              <span>Subtotal</span><span id="chk-subtotal">R0.00</span>
+            </div>
+            <div class="chk-total-row">
+              <span>Shipping</span><span id="chk-shipping">R75.00</span>
+            </div>
+            <div class="chk-total-row grand">
+              <span>Total</span><span id="chk-total">R0.00</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div id="checkout-success" style="display: none;">
+    </div><!-- /#checkout-content -->
+
+    <!-- SUCCESS SCREEN -->
+    <div id="checkout-success" style="display:none;">
       <div class="order-success-screen">
         <div class="success-icon"><i data-lucide="check" style="width:32px;height:32px"></i></div>
         <h2 class="success-title">Order Placed!</h2>
-        <p class="success-msg">Thank you for your purchase. We are preparing your premium herbal tea blend. A confirmation email has been sent to you.</p>
+        <p class="success-msg">Thank you for your purchase. We&rsquo;re preparing your premium herbal blend. A confirmation will be sent to you shortly.</p>
         <button class="btnp" onclick="closeCheckout()">Continue Shopping</button>
       </div>
     </div>
-  </div>
-</div>
+
+  </div><!-- /.modal -->
+</div><!-- /#chk-mo -->
 
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <script>
