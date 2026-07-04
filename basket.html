@@ -90,7 +90,10 @@
       font-size: 14.5px;
       line-height: 1.6;
       min-height: 100vh;
+      width: 100%;
       overflow-x: hidden;
+      margin: 0;
+      padding: 0;
     }
 
     svg.icon { display: inline-block; vertical-align: middle; flex-shrink: 0; }
@@ -1025,7 +1028,7 @@
         </div>
       </div>
 
-      <!-- Promo Code -->
+      <!-- Promo Code & Benefits -->
       <div class="card">
         <div class="card-body">
           <div class="promo-hdr">
@@ -1033,12 +1036,33 @@
             Promotional &amp; Benefit Codes
           </div>
           <div id="promo-ui"></div>
-        </div>
-      </div>
+          
+          <!-- Trust Badges Under Promo Code Card -->
+          <div class="trust-stack" style="margin-top: 24px; border-top: 1px solid var(--cd); padding-top: 20px;">
+            <div class="trust-item">
+              <div class="trust-icon"><svg class="icon" width="16" height="16"><use href="#ico-truck"/></svg></div>
+              <div>
+                <div class="trust-title">Fast Courier Delivery</div>
+                <div class="trust-desc">Delivered to your door in 3-5 working days. Trackable nationwide shipping.</div>
+              </div>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon"><svg class="icon" width="16" height="16"><use href="#ico-shield"/></svg></div>
+              <div>
+                <div class="trust-title">7-Day Quality Guarantee</div>
+                <div class="trust-desc">Seals checked and protected. Satisfaction exchanges within 7 days.</div>
+              </div>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon"><svg class="icon" width="16" height="16"><use href="#ico-chat"/></svg></div>
+              <div>
+                <div class="trust-title">WhatsApp Support</div>
+                <div class="trust-desc">Direct line with our experts for dosing information and inquiries.</div>
+              </div>
+            </div>
+          </div>
 
-      <!-- Mobile Trust Badges -->
-      <div id="trust-mobile-wrap" style="display:none; margin-bottom:20px;">
-        <div class="trust-stack" id="trust-mobile"></div>
+        </div>
       </div>
     </div>
 
@@ -1079,7 +1103,7 @@
         </div>
       </div>
 
-      <!-- Trust Badges -->
+      <!-- Trust Badges (Copied dynamically/statically) -->
       <div class="trust-stack">
         <div class="trust-item">
           <div class="trust-icon"><svg class="icon" width="16" height="16"><use href="#ico-truck"/></svg></div>
@@ -1279,29 +1303,7 @@ function render() {
   renderPromo();
 
   // Mobile trust badges
-  const mw = document.getElementById('trust-mobile-wrap');
-  const mt = document.getElementById('trust-mobile');
-  if (window.innerWidth <= 900) {
-    mw.style.display = 'block';
-    mt.innerHTML = `
-      <div class="trust-item">
-        <div class="trust-icon"><svg class="icon" width="16" height="16"><use href="#ico-truck"/></svg></div>
-        <div><div class="trust-title">Fast Courier Delivery</div>
-             <div class="trust-desc">3–5 working days nationwide across South Africa.</div></div>
-      </div>
-      <div class="trust-item">
-        <div class="trust-icon"><svg class="icon" width="16" height="16"><use href="#ico-shield"/></svg></div>
-        <div><div class="trust-title">7-Day Guarantee</div>
-             <div class="trust-desc">Return within 7 days for hassle-free exchange.</div></div>
-      </div>
-      <div class="trust-item">
-        <div class="trust-icon"><svg class="icon" width="16" height="16"><use href="#ico-chat"/></svg></div>
-        <div><div class="trust-title">WhatsApp Support</div>
-             <div class="trust-desc">Personal guidance on dosage &amp; products.</div></div>
-      </div>`;
-  } else {
-    mw.style.display = 'none';
-  }
+      // (Bypassed since they are statically placed in the promo card section now)
 
   // Summaries
   document.getElementById('s-subtotal').textContent = 'R'+sub.toFixed(2);
