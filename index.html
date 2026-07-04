@@ -1726,7 +1726,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
         <i data-lucide="user"></i>
         <span class="action-text">Account</span>
       </a>
-      <a href="basket.html?v=1.0.1" class="header-cart-btn">
+      <a href="basket.html?v=1.0.2" class="header-cart-btn">
         <div class="cart-icon-wrap">
           <i data-lucide="shopping-cart"></i>
           <span class="cart-badge" id="cnt">0</span>
@@ -6665,7 +6665,7 @@ function addFromModal() {
 }
 
 function showCart() {
-  window.location.href = 'basket.html?v=1.0.1';
+  window.location.href = 'basket.html?v=1.0.2';
 }
 
 // ── CHECKOUT FLOW ──
@@ -6952,7 +6952,7 @@ function addBundleByNames() {
   });
   if (added > 0) {
     showToast('Bundle added to cart!');
-    setTimeout(function(){ window.location.href = 'basket.html?v=1.0.1'; }, 500);
+    setTimeout(function(){ window.location.href = 'basket.html?v=1.0.2'; }, 500);
   } else {
     showToast('Opening store \u2014 bundle ready to add!');
   }
