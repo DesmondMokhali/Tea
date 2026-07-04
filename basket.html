@@ -242,6 +242,13 @@
       gap: 28px;
       align-items: start;
     }
+    .sidebar-col {
+      position: sticky;
+      top: 96px; /* Offset below sticky header */
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
     @media(max-width:900px){
       .basket-grid { grid-template-columns: 1fr; gap: 0; }
       .sidebar-col { display: none; }
