@@ -6926,13 +6926,13 @@ function submitOrder(e) {
   console.log("📦 Compiled Guest Payload: ", JSON.stringify(compiledPayload));
 
   // Dispatch details to Make.com Webhook URL (Unauthenticated checkout flow)
-  fetch('https://hook.eu1.make.com/y9xdj0ntph4f02zfzvn5ksbbsrrirnug', {
+  fetch('https://hook.eu1.make.com/gjgs9if1449mylxmt44hxc1n9rv1535n', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(compiledPayload)
   })
   .then(response => {
-    console.log("Response status:", response.status);
+    console.log("Data sent to Make! Status:", response.status);
   })
   .catch(err => {
     console.error("Webhook submit error:", err);

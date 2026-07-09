@@ -58,7 +58,7 @@ export function compileCheckoutPayload(cartState, formData) {
 export async function submitCheckoutOrder(cartState, formData) {
   const compiledPayload = compileCheckoutPayload(cartState, formData);
 
-  const response = await fetch('https://hook.eu1.make.com/y9xdj0ntph4f02zfzvn5ksbbsrrirnug', {
+  const response = await fetch('https://hook.eu1.make.com/gjgs9if1449mylxmt44hxc1n9rv1535n', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
