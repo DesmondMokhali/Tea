@@ -6,12 +6,21 @@
   <title>Specials &amp; Bundles | The Herbalist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- Lucide Icon Font for site compatibility -->
+  <link rel="stylesheet" href="https://unpkg.com/lucide-static@latest/font/lucide.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
+          colors: {
+            forest: '#1b3a28',
+            gold: '#c8a06e',
+            cream: '#f7f2e6',
+            sage: '#6a9970',
+            textMain: '#182415'
+          },
           fontFamily: {
             serif: ['Playfair Display', 'serif'],
             sans: ['DM Sans', 'sans-serif'],
@@ -22,23 +31,25 @@
     }
   </script>
 </head>
-<body class="bg-[#f8fafc] text-[#0f172a] font-sans antialiased">
+<body class="bg-[#f7f2e6] text-[#182415] font-sans antialiased">
 
   <!-- Header -->
-  <header class="border-b border-[#e2e8f0] bg-white sticky top-0 z-50">
+  <header class="border-b border-white/10 bg-[#1b3a28] sticky top-0 z-50 shadow-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-2 no-underline">
-        <span class="h-8 w-8 rounded-full bg-[#1b3a28] flex items-center justify-center text-white font-bold text-sm">🌿</span>
-        <span class="font-semibold text-lg tracking-tight text-[#0f172a]">The Herbalist</span>
+        <span class="h-8 w-8 rounded-full bg-[#c8a06e] flex items-center justify-center text-[#1b3a28] font-bold text-sm">
+          <i class="lucide-leaf" style="font-size: 16px;"></i>
+        </span>
+        <span class="font-serif font-bold text-lg text-[#dab882] tracking-wider">The Herbalist</span>
       </a>
-      <nav class="hidden md:flex space-x-8 text-sm font-medium text-[#475569]">
-        <a href="index.html#ga" class="hover:text-[#1b3a28] transition">Catalogue</a>
-        <a href="blog.html" class="hover:text-[#1b3a28] transition">Wellness Journal</a>
-        <a href="collections-specials-and-bundles.html" class="text-[#1b3a28] font-bold">Bundle Specials</a>
+      <nav class="hidden md:flex space-x-8 text-sm font-semibold">
+        <a href="index.html#ga" class="text-white/80 hover:text-[#dab882] transition">Catalogue</a>
+        <a href="blog.html" class="text-white/80 hover:text-[#dab882] transition">Wellness Journal</a>
+        <a href="collections-specials-and-bundles.html" class="text-[#dab882] font-bold">Bundle Specials</a>
       </nav>
       <div class="flex items-center gap-4">
-        <a href="basket-v2.html" class="bg-[#1b3a28] text-white px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#224832] transition no-underline">
-          Go To Basket
+        <a href="basket-v2.html" class="bg-[#c8a06e] hover:bg-[#dab882] text-[#1b3a28] px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition no-underline flex items-center gap-2">
+          <i class="lucide-shopping-cart" style="font-size: 14px;"></i> Go To Basket
         </a>
       </div>
     </div>
@@ -49,7 +60,7 @@
     <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
     <div class="max-w-7xl mx-auto px-4 relative z-10">
       <span class="text-xs font-bold uppercase tracking-widest text-[#c8a06e] mb-2 block">Synergistic Ritual Packages</span>
-      <h1 class="font-serif text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">Specials &amp; Bundles</h1>
+      <h1 class="font-serif text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 text-[#dab882]">Specials &amp; Bundles</h1>
       <p class="max-w-xl mx-auto text-sm text-slate-300">Curated daily regimens combining traditional teas and pills to target specific wellness protocols at discounted rates.</p>
     </div>
   </div>
@@ -61,8 +72,8 @@
     </div>
   </main>
 
-  <footer class="border-t border-[#e2e8f0] bg-white py-8 mt-24">
-    <div class="max-w-7xl mx-auto px-4 text-center text-xs text-[#64748b]">
+  <footer class="border-t border-[#e8e0cc] bg-white py-8 mt-24">
+    <div class="max-w-7xl mx-auto px-4 text-center text-xs text-[#7a9280]">
       &copy; 2026 The Herbalist. All rights reserved. Traditional Chinese Wellness.
     </div>
   </footer>
@@ -76,7 +87,7 @@
         price: 449.95,
         value: 500.00,
         badge: "Energy",
-        icon: "⚡",
+        iconClass: "lucide-zap",
         pain: "Brain fog, relying on coffee to wake up, the 3 PM crash, and high muscle tension at night."
       },
       {
@@ -86,7 +97,7 @@
         price: 599.95,
         value: 700.00,
         badge: "Weight",
-        icon: "⚖️",
+        iconClass: "lucide-scale",
         pain: "Stubborn core midsection weight, water retention, afternoon sluggishness, and waking up feeling heavy."
       },
       {
@@ -96,7 +107,7 @@
         price: 449.95,
         value: 500.00,
         badge: "Mental Calm",
-        icon: "🛡️",
+        iconClass: "lucide-shield-alert",
         pain: "A racing mind at 2 AM, sudden daytime chest tightness/palpitations, and feeling completely overwhelmed."
       },
       {
@@ -106,7 +117,7 @@
         price: 449.95,
         value: 500.00,
         badge: "Respiration",
-        icon: "🫁",
+        iconClass: "lucide-wind",
         pain: "Heavy throbbing sinus pressure, a constant throat-clearing post-nasal drip, and weak lung capacity."
       },
       {
@@ -116,7 +127,7 @@
         price: 369.95,
         value: 400.00,
         badge: "Male Health",
-        icon: "🔥",
+        iconClass: "lucide-flame",
         pain: "Low bedroom drive, poor gym recovery, brain fog, and lower back physical exhaustion."
       },
       {
@@ -126,7 +137,7 @@
         price: 899.95,
         value: 1000.00,
         badge: "Anti-Aging",
-        icon: "🌟",
+        iconClass: "lucide-sparkles",
         pain: "Systemic aging, fading daily stamina, multi-organ sluggishness, and a weak immune baseline."
       },
       {
@@ -136,7 +147,7 @@
         price: 549.95,
         value: 600.00,
         badge: "Womb Health",
-        icon: "🌸",
+        iconClass: "lucide-flower",
         pain: "Debilitating menstrual cramps, unpredictable cycles, and hormonal mood swings."
       },
       {
@@ -146,7 +157,7 @@
         price: 369.95,
         value: 400.00,
         badge: "Detox",
-        icon: "🧼",
+        iconClass: "lucide-droplets",
         pain: "Chronic skin breakouts, low-grade internal inflammation, and an overloaded digestive filter."
       },
       {
@@ -156,7 +167,7 @@
         price: 449.95,
         value: 500.00,
         badge: "Digestion",
-        icon: "🍵",
+        iconClass: "lucide-coffee",
         pain: "Chronic burning acid reflux, chest irritation, nausea, trapped gas, and abdominal pain."
       },
       {
@@ -166,7 +177,7 @@
         price: 549.95,
         value: 600.00,
         badge: "Mobility",
-        icon: "🦴",
+        iconClass: "lucide-accessibility",
         pain: "Clicking, stiff knee joints, bone-on-bone lower back aching, and cold, painful morning movement."
       },
       {
@@ -176,7 +187,7 @@
         price: 369.95,
         value: 400.00,
         badge: "Digital Fatigue",
-        icon: "💻",
+        iconClass: "lucide-monitor",
         pain: "Bloodshot straining eyes, blurred pixel vision, and severe throbbing tension in the shoulders and neck."
       },
       {
@@ -186,7 +197,7 @@
         price: 369.95,
         value: 400.00,
         badge: "Sugar Care",
-        icon: "🩹",
+        iconClass: "lucide-activity",
         pain: "Intense sweet or carbohydrate cravings, shaky late-afternoon energy crashes."
       },
       {
@@ -196,7 +207,7 @@
         price: 279.95,
         value: 300.00,
         badge: "Skin Care",
-        icon: "✨",
+        iconClass: "lucide-smile",
         pain: "Deep, painful hormonal jawline breakouts, chronic facial redness, and toxic heat expressions."
       },
       {
@@ -206,7 +217,7 @@
         price: 449.95,
         value: 500.00,
         badge: "Vascular",
-        icon: "❤️",
+        iconClass: "lucide-heart",
         pain: "Cold hands and feet, throbbing head tension, and unpredictable blood pressure readings."
       },
       {
@@ -216,7 +227,7 @@
         price: 349.95,
         value: 400.00,
         badge: "Recovery",
-        icon: "🤢",
+        iconClass: "lucide-beer",
         pain: "Severe weekend-wasting hangovers, heavy bloating from rich/greasy takeout food."
       }
     ];
@@ -224,28 +235,30 @@
     function renderGrid() {
       const grid = document.getElementById('bundles-grid');
       grid.innerHTML = BUNDLES_DATA.map(b => `
-        <div class="bg-white border border-[#e2e8f0] rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-[#1b3a28]/30 transition duration-300 flex flex-col justify-between">
+        <div class="bg-white border border-[#e8e0cc] rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-[#c8a06e] transition duration-300 flex flex-col justify-between">
           <div>
-            <div class="aspect-[4/3] bg-gradient-to-br from-[#f1f5f9] to-[#e2e8f0] relative flex items-center justify-center p-6">
-              <span class="absolute top-4 left-4 bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider">${b.badge}</span>
-              <span class="absolute top-4 right-4 bg-slate-100 text-slate-800 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">${b.count} Items</span>
-              <div class="text-6xl">${b.icon}</div>
+            <div class="aspect-[4/3] bg-gradient-to-br from-[#fcfbf9] to-[#e8e0cc] relative flex items-center justify-center p-6 border-b border-[#e8e0cc]">
+              <span class="absolute top-4 left-4 bg-[#1b3a28] text-[#f0e0c4] px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider">${b.badge}</span>
+              <span class="absolute top-4 right-4 bg-[#f7f2e6] text-[#3d5c44] px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider border border-[#e8e0cc]">${b.count} Items</span>
+              <div class="text-[#1b3a28] text-5xl flex items-center justify-center">
+                <i class="${b.iconClass}" style="font-size: 56px;"></i>
+              </div>
             </div>
             <div class="p-6 pb-2">
               <div class="flex items-center gap-2 mb-2 text-xs">
                 <span class="text-amber-500 font-bold">★ ★ ★ ★ ★</span>
-                <span class="font-semibold text-[#64748b]">(4.9 rating)</span>
+                <span class="font-semibold text-[#7a9280]">(4.9 rating)</span>
               </div>
-              <h3 class="font-serif text-lg font-bold text-[#0f172a] mb-2 leading-snug">${b.name}</h3>
-              <p class="text-xs text-[#64748b] line-clamp-3 mb-4"><strong class="text-[#0f172a]">Targets:</strong> ${b.pain}</p>
+              <h3 class="font-serif text-lg font-bold text-[#1b3a28] mb-2 leading-snug">${b.name}</h3>
+              <p class="text-xs text-[#7a9280] line-clamp-3 mb-4"><strong class="text-[#182415]">Targets:</strong> ${b.pain}</p>
             </div>
           </div>
           <div class="p-6 pt-0">
             <div class="flex items-baseline gap-3 mb-6">
               <span class="text-2xl font-extrabold text-[#059669]">R${b.price.toFixed(2)}</span>
-              <span class="text-xs font-medium text-[#94a3b8] line-through">R${b.value.toFixed(2)}</span>
+              <span class="text-xs font-medium text-[#7a9280] line-through">R${b.value.toFixed(2)}</span>
             </div>
-            <a href="products-bundle-detail.html?bundle=${b.slug}" class="w-full text-center bg-[#0f172a] hover:bg-[#1e293b] text-white font-bold py-3 rounded-xl transition duration-200 text-xs uppercase tracking-wider block no-underline">
+            <a href="products-bundle-detail.html?bundle=${b.slug}" class="w-full text-center bg-[#1b3a28] hover:bg-[#c8a06e] hover:text-[#1b3a28] text-white font-bold py-3 rounded-xl transition duration-200 text-xs uppercase tracking-wider block no-underline">
               View Ritual Details
             </a>
           </div>

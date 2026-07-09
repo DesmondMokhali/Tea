@@ -6,12 +6,20 @@
   <title>Ritual Bundle Details | The Herbalist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/lucide-static@latest/font/lucide.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
+          colors: {
+            forest: '#1b3a28',
+            gold: '#c8a06e',
+            cream: '#f7f2e6',
+            sage: '#6a9970',
+            textMain: '#182415'
+          },
           fontFamily: {
             serif: ['Playfair Display', 'serif'],
             sans: ['DM Sans', 'sans-serif'],
@@ -26,23 +34,25 @@
     .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
-<body class="bg-[#f8fafc] text-[#0f172a] font-sans antialiased pb-32">
+<body class="bg-[#f7f2e6] text-[#182415] font-sans antialiased pb-32">
 
   <!-- Header -->
-  <header class="border-b border-[#e2e8f0] bg-white sticky top-0 z-50">
+  <header class="border-b border-white/10 bg-[#1b3a28] sticky top-0 z-50 shadow-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-2 no-underline">
-        <span class="h-8 w-8 rounded-full bg-[#1b3a28] flex items-center justify-center text-white font-bold text-sm">🌿</span>
-        <span class="font-semibold text-lg tracking-tight text-[#0f172a]">The Herbalist</span>
+        <span class="h-8 w-8 rounded-full bg-[#c8a06e] flex items-center justify-center text-[#1b3a28] font-bold text-sm">
+          <i class="lucide-leaf" style="font-size: 16px;"></i>
+        </span>
+        <span class="font-serif font-bold text-lg text-[#dab882] tracking-wider">The Herbalist</span>
       </a>
-      <nav class="hidden md:flex space-x-8 text-sm font-medium text-[#475569]">
-        <a href="index.html#ga" class="hover:text-[#1b3a28] transition">Catalogue</a>
-        <a href="blog.html" class="hover:text-[#1b3a28] transition">Wellness Journal</a>
-        <a href="collections-specials-and-bundles.html" class="hover:text-[#1b3a28] transition">Bundle Specials</a>
+      <nav class="hidden md:flex space-x-8 text-sm font-semibold">
+        <a href="index.html#ga" class="text-white/80 hover:text-[#dab882] transition">Catalogue</a>
+        <a href="blog.html" class="text-white/80 hover:text-[#dab882] transition">Wellness Journal</a>
+        <a href="collections-specials-and-bundles.html" class="text-white/80 hover:text-[#dab882] transition">Bundle Specials</a>
       </nav>
       <div class="flex items-center gap-4">
-        <a href="basket-v2.html" class="bg-[#1b3a28] text-white px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#224832] transition no-underline">
-          Go To Basket
+        <a href="basket-v2.html" class="bg-[#c8a06e] hover:bg-[#dab882] text-[#1b3a28] px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition no-underline flex items-center gap-2">
+          <i class="lucide-shopping-cart" style="font-size: 14px;"></i> Go To Basket
         </a>
       </div>
     </div>
@@ -54,26 +64,28 @@
       
       <!-- Left Column -->
       <div class="lg:col-span-7 space-y-6">
-        <div class="flex items-center gap-2 text-xs font-medium text-[#64748b]">
+        <div class="flex items-center gap-2 text-xs font-medium text-[#7a9280]">
           <a href="collections-specials-and-bundles.html" class="hover:text-[#1b3a28]">Specials &amp; Bundles</a>
           <span>/</span>
-          <span class="text-[#0f172a]" id="breadcrumb-active">Loading...</span>
+          <span class="text-[#182415]" id="breadcrumb-active">Loading...</span>
         </div>
 
-        <div class="bg-white border border-[#e2e8f0] rounded-2xl overflow-hidden shadow-sm">
-          <div class="aspect-[4/3] bg-gradient-to-br from-[#f1f5f9] to-[#e2e8f0] relative flex items-center justify-center p-8">
+        <div class="bg-white border border-[#e8e0cc] rounded-2xl overflow-hidden shadow-sm">
+          <div class="aspect-[4/3] bg-gradient-to-br from-[#fcfbf9] to-[#e8e0cc] relative flex items-center justify-center p-8">
             <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]"></div>
             <div class="text-center z-10">
-              <div class="text-6xl mb-4 animate-bounce" id="bundle-hero-icon">🌱</div>
-              <h3 class="font-serif text-2xl font-bold text-[#0f172a] mb-1" id="bundle-hero-title">Loading Ritual...</h3>
-              <p class="text-xs text-[#64748b] uppercase tracking-wider" id="bundle-hero-badge">Standard Package</p>
+              <div class="text-[#1b3a28] text-6xl mb-4 flex justify-center items-center" id="bundle-hero-icon-container">
+                <i id="bundle-hero-icon" class="lucide-package" style="font-size: 64px;"></i>
+              </div>
+              <h3 class="font-serif text-2xl font-bold text-[#1b3a28] mb-1" id="bundle-hero-title">Loading Ritual...</h3>
+              <p class="text-xs text-[#7a9280] uppercase tracking-wider" id="bundle-hero-badge">Standard Package</p>
             </div>
           </div>
         </div>
 
-        <div class="bg-white border border-[#e2e8f0] rounded-2xl p-6 lg:p-8 space-y-6 shadow-sm">
-          <h2 class="font-serif text-2xl font-bold text-[#0f172a] mb-2">Protocol Pain Points</h2>
-          <p class="text-[#475569] text-sm leading-relaxed" id="bundle-pain-desc">
+        <div class="bg-white border border-[#e8e0cc] rounded-2xl p-6 lg:p-8 space-y-6 shadow-sm">
+          <h2 class="font-serif text-2xl font-bold text-[#1b3a28] mb-2">Protocol Pain Points</h2>
+          <p class="text-[#3d5c44] text-sm leading-relaxed" id="bundle-pain-desc">
             Loading targeted pain profile details...
           </p>
         </div>
@@ -81,45 +93,47 @@
 
       <!-- Right Column: sticky Checkout panel -->
       <div class="lg:col-span-5 lg:sticky lg:top-24 space-y-6">
-        <div class="bg-white border border-[#e2e8f0] rounded-2xl p-6 lg:p-8 shadow-md">
-          <div class="border-b border-[#e2e8f0] pb-5 mb-5">
-            <span class="inline-block bg-[#f0e0c4] text-[#854d0e] px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider mb-3" id="panel-category">
+        <div class="bg-white border border-[#e8e0cc] rounded-2xl p-6 lg:p-8 shadow-md">
+          <div class="border-b border-[#e8e0cc] pb-5 mb-5">
+            <span class="inline-block bg-[#1b3a28] text-[#f0e0c4] px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider mb-3" id="panel-category">
               Restorative
             </span>
-            <h1 class="font-serif text-3xl font-extrabold text-[#0f172a] leading-tight mb-2" id="panel-title">
+            <h1 class="font-serif text-3xl font-extrabold text-[#1b3a28] leading-tight mb-2" id="panel-title">
               Loading...
             </h1>
             <div class="flex items-center gap-2 mb-4 text-xs">
               <span class="text-amber-500 font-bold">★ ★ ★ ★ ★</span>
-              <span class="font-semibold text-[#64748b]">(4.9 rating)</span>
+              <span class="font-semibold text-[#7a9280]">(4.9 rating)</span>
             </div>
             <div class="flex items-baseline gap-3">
               <span class="text-3xl font-extrabold text-[#059669]" id="price-display">R0.00</span>
-              <span class="text-sm font-medium text-[#94a3b8] line-through" id="value-display">R0.00</span>
+              <span class="text-sm font-medium text-[#7a9280] line-through" id="value-display">R0.00</span>
               <span class="text-xs font-bold text-[#166534] bg-[#eef7f2] px-2 py-0.5 rounded-md" id="save-display">Save R0.00</span>
             </div>
           </div>
 
           <div class="mb-6">
-            <h3 class="text-xs font-bold uppercase tracking-wider text-[#64748b] mb-3">Ritual Checklist</h3>
-            <div class="border border-[#e2e8f0] rounded-xl overflow-hidden divide-y divide-[#e2e8f0] bg-[#f8fafc]" id="included-list">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-[#7a9280] mb-3">Ritual Checklist</h3>
+            <div class="border border-[#e8e0cc] rounded-xl overflow-hidden divide-y divide-[#e8e0cc] bg-[#fcfbf9]" id="included-list">
               <!-- Render product items dynamically -->
             </div>
           </div>
 
-          <div class="bg-[#f8fafc] border border-[#e2e8f0] rounded-xl p-4 mb-6 flex items-start gap-3">
-            <span class="text-lg">🚚</span>
+          <div class="bg-[#fcfbf9] border border-[#e8e0cc] rounded-xl p-4 mb-6 flex items-start gap-3">
+            <span class="text-[#1b3a28] text-lg">
+              <i class="lucide-truck" style="font-size: 20px;"></i>
+            </span>
             <div>
-              <p class="text-xs font-bold text-[#0f172a]" id="shipping-status">Loading delivery details...</p>
-              <p class="text-[11px] text-[#64748b]">Nationwide trackable shipping.</p>
+              <p class="text-xs font-bold text-[#1b3a28]" id="shipping-status">Loading delivery details...</p>
+              <p class="text-[11px] text-[#7a9280]">Nationwide trackable shipping.</p>
             </div>
           </div>
 
-          <button class="w-full bg-[#0f172a] hover:bg-[#1e293b] text-white font-bold py-4 px-6 rounded-xl transition duration-200 shadow-sm text-sm uppercase tracking-wider" onclick="checkoutBundle()">
-            Add Bundle to Cart
+          <button class="w-full bg-[#1b3a28] hover:bg-[#c8a06e] hover:text-[#1b3a28] text-white font-bold py-4 px-6 rounded-xl transition duration-200 shadow-sm text-sm uppercase tracking-wider flex items-center justify-center gap-2" onclick="checkoutBundle()">
+            <i class="lucide-shopping-bag" style="font-size: 16px;"></i> Add Bundle to Cart
           </button>
           <div class="text-center mt-4">
-            <a href="collections-specials-and-bundles.html" class="inline-block text-xs font-bold text-[#64748b] hover:text-[#0f172a] transition duration-150">
+            <a href="collections-specials-and-bundles.html" class="inline-block text-xs font-bold text-[#7a9280] hover:text-[#1b3a28] transition duration-150">
               ← Back to Specials
             </a>
           </div>
@@ -129,12 +143,12 @@
     </div>
 
     <!-- Tabs Container -->
-    <div class="bg-white border border-[#e2e8f0] rounded-2xl p-6 lg:p-8 shadow-sm mt-12">
-      <div class="flex border-b border-[#e2e8f0] mb-8 overflow-x-auto">
+    <div class="bg-white border border-[#e8e0cc] rounded-2xl p-6 lg:p-8 shadow-sm mt-12">
+      <div class="flex border-b border-[#e8e0cc] mb-8 overflow-x-auto">
         <button onclick="switchTab('routine')" id="tab-routine" class="pb-4 px-6 font-serif text-lg font-bold border-b-2 border-[#1b3a28] text-[#1b3a28] whitespace-nowrap transition duration-200">
           The Daily Routine
         </button>
-        <button onclick="switchTab('benefits')" id="tab-benefits" class="pb-4 px-6 font-serif text-lg font-bold border-b-2 border-transparent text-[#64748b] hover:text-[#0f172a] whitespace-nowrap transition duration-200">
+        <button onclick="switchTab('benefits')" id="tab-benefits" class="pb-4 px-6 font-serif text-lg font-bold border-b-2 border-transparent text-[#7a9280] hover:text-[#1b3a28] whitespace-nowrap transition duration-200">
           Targeted Benefits
         </button>
       </div>
@@ -146,12 +160,12 @@
   </main>
 
   <!-- Sticky Bottom Bar -->
-  <footer class="fixed bottom-0 left-0 right-0 bg-white border-t border-[#e2e8f0] shadow-[0_-8px_24px_rgba(15,23,42,0.06)] z-40 py-3 px-4 sm:px-6">
+  <footer class="fixed bottom-0 left-0 right-0 bg-white border-t border-[#e8e0cc] shadow-[0_-8px_24px_rgba(15,23,42,0.06)] z-40 py-3 px-4 sm:px-6">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
       <div class="flex flex-col">
-        <span class="text-xs font-bold uppercase tracking-wider text-[#64748b]">Complete Your Ritual</span>
+        <span class="text-xs font-bold uppercase tracking-wider text-[#7a9280]">Complete Your Ritual</span>
         <div class="flex items-center gap-2 mt-1">
-          <span class="text-lg font-extrabold text-[#0f172a]" id="bottom-total">R0.00</span>
+          <span class="text-lg font-extrabold text-[#1b3a28]" id="bottom-total">R0.00</span>
           <span class="text-[10px] font-bold text-[#854d0e] bg-[#fef3c7] px-2 py-0.5 rounded-full" id="bottom-badge">
             Calculating shipping...
           </span>
@@ -163,7 +177,7 @@
       </div>
 
       <div class="flex-shrink-0">
-        <button class="w-full md:w-auto bg-[#0f172a] hover:bg-[#1e293b] text-white font-bold text-xs py-3 px-6 rounded-xl uppercase tracking-wider transition" onclick="checkoutBundle()">
+        <button class="w-full md:w-auto bg-[#1b3a28] hover:bg-[#c8a06e] hover:text-[#1b3a28] text-white font-bold text-xs py-3 px-6 rounded-xl uppercase tracking-wider transition" onclick="checkoutBundle()">
           Checkout Now
         </button>
       </div>
@@ -177,7 +191,7 @@
         price: 449.95,
         value: 500.00,
         badge: "Energy",
-        icon: "⚡",
+        icon: "lucide-zap",
         pain: "Brain fog, relying on coffee to wake up, the 3 PM crash, and high muscle tension at night.",
         included: [
           { id: 'TG-TEA-020', name: 'Ginseng Date Tea', time: '🌅 Morning', type: 'Herbal Tea' },
@@ -197,7 +211,7 @@
         price: 599.95,
         value: 700.00,
         badge: "Weight",
-        icon: "⚖️",
+        icon: "lucide-scale",
         pain: "Stubborn core midsection weight, water retention, afternoon sluggishness, and waking up feeling heavy.",
         included: [
           { id: 'TG-TEA-001', name: 'Abdomen Slimming Tea', time: '🌅 Morning', type: 'Herbal Tea' },
@@ -220,7 +234,7 @@
         price: 449.95,
         value: 500.00,
         badge: "Mental Calm",
-        icon: "🛡️",
+        icon: "lucide-shield-alert",
         pain: "A racing mind at 2 AM, sudden daytime chest tightness/palpitations, and feeling completely overwhelmed.",
         included: [
           { id: 'TG-PILL-010', name: 'Chai Hu Shu Gan Wan', time: '☀️ Daytime', type: 'Herbal Pill' },
@@ -240,7 +254,7 @@
         price: 449.95,
         value: 500.00,
         badge: "Respiration",
-        icon: "🫁",
+        icon: "lucide-wind",
         pain: "Heavy throbbing sinus pressure, a constant throat-clearing post-nasal drip, and weak lung capacity.",
         included: [
           { id: 'TG-PILL-008', name: 'Bi Yan Wan', time: '🌅 Morning', type: 'Herbal Pill' },
@@ -260,7 +274,7 @@
         price: 369.95,
         value: 400.00,
         badge: "Male Health",
-        icon: "🔥",
+        icon: "lucide-flame",
         pain: "Low bedroom drive, poor gym recovery, brain fog, and lower back physical exhaustion.",
         included: [
           { id: 'TG-PILL-004', name: 'Ban Long Wan', time: '🌅 Morning', type: 'Herbal Pill' },
@@ -280,7 +294,7 @@
         price: 899.95,
         value: 1000.00,
         badge: "Anti-Aging",
-        icon: "🌟",
+        icon: "lucide-sparkles",
         pain: "Systemic aging, fading daily stamina, multi-organ sluggishness, and a weak immune baseline.",
         included: [
           { id: 'TG-TEA-021', name: 'Ginseng Tea', time: '🌅 Morning', type: 'Herbal Tea' },
@@ -306,7 +320,7 @@
         price: 549.95,
         value: 600.00,
         badge: "Womb Health",
-        icon: "🌸",
+        icon: "lucide-flower",
         pain: "Debilitating menstrual cramps, unpredictable cycles, and hormonal mood swings.",
         included: [
           { id: 'TG-TEA-047', name: 'Womb Care Tea', time: '🌅 Morning', type: 'Herbal Tea' },
@@ -327,7 +341,7 @@
         price: 369.95,
         value: 400.00,
         badge: "Detox",
-        icon: "🧼",
+        icon: "lucide-droplets",
         pain: "Chronic skin breakouts, low-grade internal inflammation, and an overloaded digestive filter.",
         included: [
           { id: 'TG-TEA-015', name: 'Detox Tea', time: '🌅 Morning', type: 'Herbal Tea' },
@@ -347,7 +361,7 @@
         price: 449.95,
         value: 500.00,
         badge: "Digestion",
-        icon: "🍵",
+        icon: "lucide-coffee",
         pain: "Chronic burning acid reflux, chest irritation, nausea, trapped gas, and abdominal pain.",
         included: [
           { id: 'TG-PILL-005', name: 'Ban Xia Xie Xin Wan', time: '🌅 Morning', type: 'Herbal Pill' },
@@ -368,7 +382,7 @@
         price: 549.95,
         value: 600.00,
         badge: "Mobility",
-        icon: "🦴",
+        icon: "lucide-accessibility",
         pain: "Clicking, stiff knee joints, bone-on-bone lower back aching, and cold, painful morning movement.",
         included: [
           { id: 'TG-PILL-015', name: 'Du Huo Ji Sheng Wan', time: '🌅 Morning', type: 'Herbal Pill' },
@@ -389,7 +403,7 @@
         price: 369.95,
         value: 400.00,
         badge: "Digital Fatigue",
-        icon: "💻",
+        icon: "lucide-monitor",
         pain: "Bloodshot straining eyes, blurred pixel vision, and severe throbbing tension in the shoulders/neck.",
         included: [
           { id: 'TG-PILL-041', name: 'Ming Mu Di Huang Wan', time: '🌅 Morning', type: 'Herbal Pill' },
@@ -408,7 +422,7 @@
         price: 369.95,
         value: 400.00,
         badge: "Sugar Care",
-        icon: "🩹",
+        icon: "lucide-activity",
         pain: "Intense sweet or carbohydrate cravings, shaky late-afternoon energy crashes, and sluggish insulin processing.",
         included: [
           { id: 'TG-TEA-043', name: 'Sugar Balance Tea', time: '🌅 Morning', type: 'Herbal Tea' },
@@ -427,7 +441,7 @@
         price: 279.95,
         value: 300.00,
         badge: "Skin Care",
-        icon: "✨",
+        icon: "lucide-smile",
         pain: "Deep, painful hormonal jawline breakouts, chronic facial redness, and toxic heat expressions.",
         included: [
           { id: 'TG-PILL-047', name: 'Qing Re An Chuang Wan', time: '🌅 Morning', type: 'Herbal Pill' },
@@ -445,7 +459,7 @@
         price: 449.95,
         value: 500.00,
         badge: "Vascular",
-        icon: "❤️",
+        icon: "lucide-heart",
         pain: "Cold hands and feet, throbbing head tension, tight chest pressure, and unpredictable blood pressure readings.",
         included: [
           { id: 'TG-TEA-025', name: 'Heart Care Tea', time: '🌅 Morning', type: 'Herbal Tea' },
@@ -465,7 +479,7 @@
         price: 349.95,
         value: 400.00,
         badge: "Recovery",
-        icon: "🤢",
+        icon: "lucide-beer",
         pain: "Severe weekend-wasting hangovers, heavy bloating from rich/greasy takeout food, and a highly sluggish, over-worked liver.",
         included: [
           { id: 'TG-TEA-014', name: 'Dealcoholic Tea', time: '🌅 Morning', type: 'Herbal Tea' },
@@ -498,7 +512,11 @@
       if (!b) return;
 
       document.getElementById('breadcrumb-active').textContent = b.name;
-      document.getElementById('bundle-hero-icon').textContent = b.icon;
+      
+      // Update container to support lucide class updates
+      const iconContainer = document.getElementById('bundle-hero-icon-container');
+      iconContainer.innerHTML = `<i class="${b.icon}" style="font-size: 64px;"></i>`;
+      
       document.getElementById('bundle-hero-title').textContent = b.name;
       document.getElementById('bundle-hero-badge').textContent = b.badge;
       document.getElementById('bundle-pain-desc').textContent = b.pain;
@@ -516,15 +534,17 @@
     function renderProducts(items) {
       const list = document.getElementById('included-list');
       list.innerHTML = items.map(p => `
-        <div class="flex items-center gap-4 p-4 bg-white hover:bg-slate-50 transition duration-150">
-          <input type="checkbox" checked disabled class="h-4 w-4 rounded border-gray-300 text-[#1b3a28] focus:ring-[#1b3a28] accent-[#1b3a28]" />
-          <div class="h-10 w-10 bg-slate-100 rounded-md flex items-center justify-center text-xs flex-shrink-0">🌱</div>
+        <div class="flex items-center gap-4 p-4 bg-white hover:bg-[#f7f2e6]/30 transition duration-150 border-b border-[#e8e0cc]">
+          <input type="checkbox" checked disabled class="h-4 w-4 rounded border-[#e8e0cc] text-[#1b3a28] focus:ring-[#1b3a28] accent-[#1b3a28]" />
+          <div class="h-10 w-10 bg-[#f7f2e6] rounded-md flex items-center justify-center text-xs flex-shrink-0 text-[#1b3a28]">
+            <i class="lucide-leaf"></i>
+          </div>
           <div class="flex-1 min-w-0">
-            <p class="text-xs font-semibold text-[#64748b] uppercase tracking-wide">${p.type} (${p.id})</p>
-            <p class="text-sm font-bold text-[#0f172a] truncate">${p.name}</p>
+            <p class="text-xs font-semibold text-[#7a9280] uppercase tracking-wide">${p.type} (${p.id})</p>
+            <p class="text-sm font-bold text-[#182415] truncate">${p.name}</p>
           </div>
           <div class="flex-shrink-0">
-            <span class="inline-block bg-white border border-[#e2e8f0] px-2 py-1 rounded-md text-xs font-medium text-[#475569] shadow-xs">
+            <span class="inline-block bg-white border border-[#e8e0cc] px-2 py-1 rounded-md text-xs font-medium text-[#3d5c44] shadow-xs">
               ${p.time}
             </span>
           </div>
@@ -537,16 +557,18 @@
       container.innerHTML = addons.map(item => {
         const isAdded = selectedAddons.includes(item.id);
         return `
-          <div class="flex items-center gap-3 bg-[#f8fafc] border border-[#e2e8f0] p-2 rounded-xl flex-shrink-0">
-            <div class="h-8 w-8 bg-white border border-[#e2e8f0] rounded-lg flex items-center justify-center text-xs">🍵</div>
+          <div class="flex items-center gap-3 bg-[#f7f2e6] border border-[#e8e0cc] p-2 rounded-xl flex-shrink-0">
+            <div class="h-8 w-8 bg-white border border-[#e8e0cc] rounded-lg flex items-center justify-center text-[#1b3a28]">
+              <i class="lucide-cup-soda"></i>
+            </div>
             <div>
-              <h5 class="text-xs font-bold text-[#0f172a]">${item.name}</h5>
-              <p class="text-[10px] font-medium text-[#64748b]">+ R${item.price.toFixed(2)}</p>
+              <h5 class="text-xs font-bold text-[#182415]">${item.name}</h5>
+              <p class="text-[10px] font-medium text-[#7a9280]">+ R${item.price.toFixed(2)}</p>
             </div>
             <button onclick="toggleAddon('${item.id}')" class="text-[10px] font-bold px-3 py-1.5 rounded-lg border transition ${
               isAdded 
                 ? 'bg-emerald-600 border-emerald-600 text-white hover:bg-emerald-700' 
-                : 'bg-white border-[#e2e8f0] text-[#0f172a] hover:bg-slate-50'
+                : 'bg-white border-[#e8e0cc] text-[#182415] hover:bg-slate-50'
             }">
               ${isAdded ? 'Added' : 'Add'}
             </button>
@@ -599,7 +621,7 @@
         if (t === tab) {
           btn.className = 'pb-4 px-6 font-serif text-lg font-bold border-b-2 border-[#1b3a28] text-[#1b3a28] whitespace-nowrap transition duration-200';
         } else {
-          btn.className = 'pb-4 px-6 font-serif text-lg font-bold border-b-2 border-transparent text-[#64748b] hover:text-[#0f172a] whitespace-nowrap transition duration-200';
+          btn.className = 'pb-4 px-6 font-serif text-lg font-bold border-b-2 border-transparent text-[#7a9280] hover:text-[#1b3a28] whitespace-nowrap transition duration-200';
         }
       });
 
@@ -609,13 +631,13 @@
       const content = document.getElementById('tab-content');
       if (tab === 'routine') {
         content.innerHTML = `
-          <div class="space-y-8 relative before:absolute before:inset-0 before:left-4 before:w-[2px] before:bg-[#e2e8f0] py-2">
+          <div class="space-y-8 relative before:absolute before:inset-0 before:left-4 before:w-[2px] before:bg-[#e8e0cc] py-2">
             ${b.routine.map(r => `
               <div class="relative pl-10">
                 <div class="absolute left-[9px] top-1 h-4 w-4 rounded-full border-2 border-[#1b3a28] bg-white"></div>
                 <h4 class="font-bold text-sm text-[#1b3a28] uppercase tracking-wider mb-1">${r.title}</h4>
-                <h3 class="font-serif text-lg font-bold text-[#0f172a] mb-2">${r.product}</h3>
-                <p class="text-sm text-[#475569] leading-relaxed max-w-2xl">${r.desc}</p>
+                <h3 class="font-serif text-lg font-bold text-[#182415] mb-2">${r.product}</h3>
+                <p class="text-sm text-[#3d5c44] leading-relaxed max-w-2xl">${r.desc}</p>
               </div>
             `).join('')}
           </div>
@@ -623,18 +645,18 @@
       } else {
         content.innerHTML = `
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="flex items-start gap-3 p-4 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl">
+            <div class="flex items-start gap-3 p-4 bg-[#fcfbf9] border border-[#e8e0cc] rounded-xl">
               <span class="text-[#059669] font-bold text-lg">✓</span>
               <div>
-                <h4 class="font-bold text-sm text-[#0f172a] mb-1">Targeted Pain Profile Elimination</h4>
-                <p class="text-xs text-[#64748b]">${b.pain}</p>
+                <h4 class="font-bold text-sm text-[#182415] mb-1">Targeted Pain Profile Elimination</h4>
+                <p class="text-xs text-[#7a9280]">${b.pain}</p>
               </div>
             </div>
-            <div class="flex items-start gap-3 p-4 bg-[#f8fafc] border border-[#e2e8f0] rounded-xl">
+            <div class="flex items-start gap-3 p-4 bg-[#fcfbf9] border border-[#e8e0cc] rounded-xl">
               <span class="text-[#059669] font-bold text-lg">✓</span>
               <div>
-                <h4 class="font-bold text-sm text-[#0f172a] mb-1">Synergistic TCM Combination</h4>
-                <p class="text-xs text-[#64748b]">Engineered so that capsule/tablet absorption mirrors tea ingestion to prevent stomach load.</p>
+                <h4 class="font-bold text-sm text-[#182415] mb-1">Synergistic TCM Combination</h4>
+                <p class="text-xs text-[#7a9280]">Engineered so that capsule/tablet absorption mirrors tea ingestion to prevent stomach load.</p>
               </div>
             </div>
           </div>
