@@ -839,7 +839,9 @@ const byId = id => {
 const save = ()  => localStorage.setItem('tangren_cart', JSON.stringify(basket));
 
 function calc() {
-  const sub      = basket.reduce((s,i) => s + (byId(i.id)?.price||0)*i.qty, 0);
+  // Resolve item price: use _bundlePrice for bundles, catalog lookup for standalone products
+  const itemPrice = i => i._bundleId ? (i._bundlePrice || 0) : (byId(i.id)?.price || 0);
+  const sub      = basket.reduce((s,i) => s + itemPrice(i) * i.qty, 0);
   const discAmt  = Math.round(sub * promoDisc);
   const after    = sub - discAmt;
   const delivery = after >= FREE_THRESHOLD ? 0 : DELIVERY_FEE;
@@ -887,6 +889,41 @@ function render() {
       </div>`;
   } else {
     con.innerHTML = basket.map(item => {
+      // ── Bundle item ──────────────────────────────────────────────────────────
+      if (item._bundleId) {
+        const bPrice = item._bundlePrice || 0;
+        const bName  = item._bundleName  || 'Ritual Bundle';
+        return `
+        <div class="basket-item">
+          <div class="item-thumb" style="background:var(--cs,#1b3a28);display:flex;align-items:center;justify-content:center;">
+            <svg class="icon" width="28" height="28" style="color:#c8a06e"><use href="#ico-leaf"/></svg>
+          </div>
+          <div class="item-info">
+            <span class="item-cat" style="color:#c8a06e;font-weight:700">Ritual Bundle</span>
+            <div class="item-name">${bName}</div>
+            <div class="item-unit">R${bPrice.toFixed(2)} per bundle</div>
+            <div class="item-controls">
+              <div class="qty-ctrl">
+                <button class="qty-btn" onclick="changeQty('${item.id}',-1)" aria-label="Decrease">
+                  <svg class="icon" width="11" height="11"><use href="#ico-minus"/></svg>
+                </button>
+                <span class="qty-num">${item.qty}</span>
+                <button class="qty-btn" onclick="changeQty('${item.id}',1)" aria-label="Increase">
+                  <svg class="icon" width="11" height="11"><use href="#ico-plus"/></svg>
+                </button>
+              </div>
+              <div class="item-right">
+                <span class="item-total">R${(bPrice * item.qty).toFixed(2)}</span>
+                <button class="item-remove" onclick="removeItem('${item.id}')">
+                  <svg class="icon" width="12" height="12"><use href="#ico-trash"/></svg> Remove
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>`;
+      }
+
+      // ── Standalone product ───────────────────────────────────────────────────
       const p = byId(item.id); if(!p) return '';
       return `
       <div class="basket-item">

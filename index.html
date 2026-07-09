@@ -6895,27 +6895,38 @@ function submitOrder(e) {
   // Format delivery instructions flat string
   const delivery_instructions = [address, suburb, city, province, zip].filter(Boolean).join(", ");
 
-  // Map local cart array matching the consignee specs
+  // Map local cart array into the unified line_items payload format.
+  // Each item explicitly declares whether it is a bundle or a standalone product:
+  //   - Bundle items:     { bundle_id: <id>, product_id: null,  quantity, unit_price, line_total }
+  //   - Standalone items: { bundle_id: null,  product_id: <sku>, quantity, unit_price, line_total }
   const line_items = cart.map(item => {
     const p = P[item.idx];
     const unitPrice = parseFloat(p.p) || 0;
     const qty = parseInt(item.qty, 10) || 0;
-    
-    // Find zero-padded External ID using code naming
-    let extId = p.extId || "";
-    if (!extId && p.n) {
-      extId = p.n.toUpperCase().replace(/\s+/g, '_');
+    const lineTotal = parseFloat((unitPrice * qty).toFixed(2));
+
+    // Items tagged with _bundleId were added via the bundle detail page checkout
+    if (item._bundleId) {
+      return {
+        bundle_id: item._bundleId,
+        product_id: null,
+        quantity: qty,
+        unit_price: unitPrice,
+        line_total: lineTotal
+      };
     }
-    
+
+    // All other items are standalone products — use the SKU as the product_id
     return {
-      external_id: extId,
+      bundle_id: null,
+      product_id: p.id || "",
       quantity: qty,
-      retail_price: unitPrice,
-      total_cost: parseFloat((unitPrice * qty).toFixed(2))
+      unit_price: unitPrice,
+      line_total: lineTotal
     };
   });
 
-  const subtotal = line_items.reduce((sum, item) => sum + item.total_cost, 0);
+  const subtotal = line_items.reduce((sum, item) => sum + item.line_total, 0);
   
   // Calculate dynamic shipping cost (orders R500 or greater get free shipping)
   const shipping_cost = subtotal >= 500 ? 0 : 75;

@@ -1,6 +1,10 @@
 /**
  * Compiles a structured, unauthenticated guest order payload optimized for WhatsApp dispatch modules.
  * 
+ * Each line item explicitly identifies whether it is a bundle or a standalone product:
+ *   - Bundle:     { bundle_id: <id>, product_id: null,  quantity, unit_price, line_total }
+ *   - Standalone: { bundle_id: null,  product_id: <sku>, quantity, unit_price, line_total }
+ *
  * @param {Object} cartState - Current guest cart items (e.g. from context/local storage).
  * @param {Object} formData - Form inputs filled out by the guest during checkout.
  * @returns {Object} The complete compiled JSON checkout payload.
@@ -24,21 +28,34 @@ export function compileCheckoutPayload(cartState, formData) {
     special_notes: (formData.specialNotes || "").trim()
   };
 
-  // Compile line items dynamically with zero-padded External ID matching
+  // Compile line items with explicit bundle vs standalone product identification
   const lineItems = (cartState.items || []).map(item => {
     const unitPrice = parseFloat(item.retailPrice) || 0;
     const qty = parseInt(item.quantity, 10) || 0;
-    
+    const lineTotal = parseFloat((unitPrice * qty).toFixed(2));
+
+    // Bundle items carry a bundleId — standalone products do not
+    if (item.bundleId) {
+      return {
+        bundle_id: item.bundleId,
+        product_id: null,
+        quantity: qty,
+        unit_price: unitPrice,
+        line_total: lineTotal
+      };
+    }
+
     return {
-      external_id: (item.externalId || "").trim(),
+      bundle_id: null,
+      product_id: (item.externalId || item.sku || "").trim(),
       quantity: qty,
-      retail_price: unitPrice,
-      total_cost: parseFloat((unitPrice * qty).toFixed(2))
+      unit_price: unitPrice,
+      line_total: lineTotal
     };
   });
 
   // Calculate order total
-  const orderTotal = lineItems.reduce((sum, item) => sum + item.total_cost, 0);
+  const orderTotal = lineItems.reduce((sum, item) => sum + item.line_total, 0);
 
   return {
     delivery_profile: deliveryProfile,

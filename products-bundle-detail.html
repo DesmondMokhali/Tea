@@ -668,23 +668,33 @@
       const b = BUNDLES_CATALOG[currentBundleKey];
       if (!b) return;
 
-      let basket = JSON.parse(localStorage.getItem('tg_basket') || '[]');
-      
-      // Add core bundle items
-      b.included.forEach(p => {
-        const item = basket.find(x => x.id === p.id);
-        if (item) item.qty++;
-        else basket.push({ id: p.id, qty: 1 });
-      });
+      let basket = JSON.parse(localStorage.getItem('tangren_cart') || '[]');
 
-      // Add selected addons
+      // Store the bundle as a SINGLE line item tagged with _bundleId.
+      // This allows the checkout payload to correctly emit:
+      //   { bundle_id: X, product_id: null, quantity: 1, ... }
+      // The backend resolves individual products via the bundle_items table.
+      const existingBundle = basket.find(x => x._bundleId === currentBundleKey);
+      if (existingBundle) {
+        existingBundle.qty++;
+      } else {
+        basket.push({
+          id: currentBundleKey,         // used as a stable cart key
+          _bundleId: currentBundleKey,  // signals this is a bundle to the checkout
+          _bundleName: b.name,
+          _bundlePrice: b.price,
+          qty: 1
+        });
+      }
+
+      // Add selected addon products as standalone line items
       selectedAddons.forEach(id => {
-        const item = basket.find(x => x.id === id);
+        const item = basket.find(x => x.id === id && !x._bundleId);
         if (item) item.qty++;
         else basket.push({ id: id, qty: 1 });
       });
 
-      localStorage.setItem('tg_basket', JSON.stringify(basket));
+      localStorage.setItem('tangren_cart', JSON.stringify(basket));
       window.location.href = 'basket-v2.html';
     }
 
