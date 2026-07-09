@@ -6206,13 +6206,16 @@ window.P = [];
 
 // ── STATE ──────────────────────────────────────────────────────────────────
 let activeType='all', activeCat='all', searchQ='', cart=[], openIdx=null;
+// Cart is stored as [{id:'TG-TEA-001',qty:1}] in localStorage (SKU-based, shared with basket-v2.html)
+// We convert to internal [{idx, qty}] format after P[] is loaded in loadDynamicCatalog()
+let _savedCartRaw = [];
 try {
   const savedCart = localStorage.getItem('tangren_cart');
   if (savedCart) {
-    cart = JSON.parse(savedCart);
+    _savedCartRaw = JSON.parse(savedCart) || [];
   }
 } catch (e) {
-  cart = [];
+  _savedCartRaw = [];
 }
 
 // ── DYNAMIC CATALOG LOAD ───────────────────────────────────────────────────
@@ -6355,6 +6358,7 @@ async function loadDynamicCatalog() {
 
       // 6. Build the final clean product object for layout templates
       return {
+        id: stockCode,            // SKU e.g. "TG-TEA-001" — used for cross-page cart sync
         n: toTitleCase(name),
         t: details.t || item.t || "Traditional Herbal Formula",
         cat: details.cat || item.cat || "general",
@@ -6373,6 +6377,20 @@ async function loadDynamicCatalog() {
     }).filter(p => p !== null);
 
     // Initialize catalog rendering and filters once window.P is populated
+    // Restore cart from localStorage: convert {id,qty} → {idx,qty} using the loaded P[] array
+    if (_savedCartRaw.length > 0) {
+      cart = [];
+      _savedCartRaw.forEach(saved => {
+        if (saved && saved.id) {
+          // SKU-based format (from basket-v2 or new saves)
+          const idx = window.P.findIndex(p => p && p.id === saved.id);
+          if (idx !== -1) cart.push({ idx, qty: saved.qty || 1 });
+        } else if (saved && typeof saved.idx === 'number') {
+          // Legacy idx-based format — keep as-is
+          cart.push(saved);
+        }
+      });
+    }
     buildFilters();
     updateCart();
 
@@ -6717,8 +6735,12 @@ function updateCart() {
     if (headerTotal) headerTotal.textContent = `R${subtotal.toFixed(2)}`;
     totalVal.textContent = `R${(subtotal + shipping).toFixed(2)}`;
     
-    // Save to localStorage
-    localStorage.setItem('tangren_cart', JSON.stringify(cart));
+    // Save to localStorage in SKU-based {id, qty} format so basket-v2.html can read it directly
+    const cartForStorage = cart.map(item => ({
+      id: (window.P[item.idx] && window.P[item.idx].id) || ('IDX_' + item.idx),
+      qty: item.qty
+    }));
+    localStorage.setItem('tangren_cart', JSON.stringify(cartForStorage));
     localStorage.setItem('tangren_cart_total', subtotal.toFixed(2));
     localStorage.setItem('tangren_cart_qty', totalQty.toString());
     

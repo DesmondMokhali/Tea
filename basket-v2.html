@@ -817,8 +817,7 @@ fetch('products.json')
 const CROSS_IDS    = ['TG-TEA-011','TG-TEA-013','TG-TEA-014','TG-TEA-015','TG-PILL-002','TG-PILL-003','TG-TEA-016'];
 const CROSS_BADGES = { 'TG-TEA-013':'Popular','TG-PILL-002':'Best Seller','TG-TEA-011':'New','TG-TEA-016':'Popular' };
 
-let basket    = JSON.parse(localStorage.getItem('tangren_cart') || 'null')
-                || [{id:'TG-TEA-001',qty:2},{id:'TG-TEA-010',qty:1},{id:'TG-PILL-001',qty:1}];
+let basket    = JSON.parse(localStorage.getItem('tangren_cart') || 'null') || [];
 let promoCode = null;
 let promoDisc = 0;
 
