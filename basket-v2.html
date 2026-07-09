@@ -775,7 +775,7 @@ const FREE_THRESHOLD = 500;
 const DELIVERY_FEE   = 75;
 const PROMOS = { TANGREN10: 0.10, HERB15: 0.15 };
 
-const CAT = [
+let CAT = [
   { id:'TG-TEA-001', name:'Abdomen Slimming Tea',     price:100, img:'images/abdomen_slimming_tea.png',      cat:'Herbal Tea'  },
   { id:'TG-TEA-003', name:'Anti Stress Sleeping Tea',  price:100, img:'images/anti_stress_sleeping_tea.png', cat:'Herbal Tea'  },
   { id:'TG-TEA-010', name:'Coughing Tea',              price:100, img:'images/coughing_tea.png',             cat:'Herbal Tea'  },
@@ -789,16 +789,55 @@ const CAT = [
   { id:'TG-PILL-003',name:'Xiao Yao Wan',              price:100, img:'images/xiao_yao_wan.png',             cat:'Herbal Pill' },
   { id:'TG-TEA-016', name:'Heart Care Tea',            price:100, img:'images/heart_care_tea.png',           cat:'Herbal Tea'  },
 ];
+
+// Dynamically fetch full catalog list from products.json on load to resolve names for all products
+fetch('products.json')
+  .then(res => res.json())
+  .then(data => {
+    if (data && data.products) {
+      data.products.forEach((p, index) => {
+        if (index === 0) return; // skip header row
+        const id = p["5"];
+        const name = p["0"];
+        const priceStr = p["1"] || "R100";
+        const price = parseFloat(priceStr.replace('R', '')) || 100;
+        const cat = id.includes('PILL') ? 'Herbal Pill' : 'Herbal Tea';
+        // Normalize image filenames to match assets
+        const nSnake = name.toLowerCase().replace(/[^a-z0-9]/g, '_').replace(/_+/g, '_').replace(/^_|_$/g, '');
+        const img = `images/${nSnake}.png`;
+
+        if (!CAT.some(item => item.id === id)) {
+          CAT.push({ id, name, price, img, cat });
+        }
+      });
+      render();
+    }
+  }).catch(e => console.log("Silent fallback, using default catalog list: ", e));
+
 const CROSS_IDS    = ['TG-TEA-011','TG-TEA-013','TG-TEA-014','TG-TEA-015','TG-PILL-002','TG-PILL-003','TG-TEA-016'];
 const CROSS_BADGES = { 'TG-TEA-013':'Popular','TG-PILL-002':'Best Seller','TG-TEA-011':'New','TG-TEA-016':'Popular' };
 
-let basket    = JSON.parse(localStorage.getItem('tg_basket') || 'null')
+let basket    = JSON.parse(localStorage.getItem('tangren_cart') || 'null')
                 || [{id:'TG-TEA-001',qty:2},{id:'TG-TEA-010',qty:1},{id:'TG-PILL-001',qty:1}];
 let promoCode = null;
 let promoDisc = 0;
 
-const byId = id => CAT.find(p => p.id === id);
-const save = ()  => localStorage.setItem('tg_basket', JSON.stringify(basket));
+// Normalized dynamic product resolver that checks static list + fallback naming
+const byId = id => {
+  // Try static list first
+  let found = CAT.find(p => p.id === id);
+  if (found) return found;
+
+  // Fallback match to avoid empty names/images if item is added from homepage (uses index.html format)
+  if (typeof P !== 'undefined' && P) {
+    let pObj = P.find(p => p && p.id === id);
+    if (pObj) {
+      return { id: pObj.id, name: pObj.n, price: pObj.p || 100, img: pObj.img || 'images/abdomen_slimming_tea.png', cat: pObj.cat || 'TCM Product' };
+    }
+  }
+  return { id, name: id.replace('TG-','').replace('-',' '), price: 100, img: 'images/abdomen_slimming_tea.png', cat: 'TCM Herbalist' };
+};
+const save = ()  => localStorage.setItem('tangren_cart', JSON.stringify(basket));
 
 function calc() {
   const sub      = basket.reduce((s,i) => s + (byId(i.id)?.price||0)*i.qty, 0);
