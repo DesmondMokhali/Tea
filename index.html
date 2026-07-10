@@ -6863,12 +6863,25 @@ function openCheckout() {
   const SHIP_COST = 75;
   
   summary.innerHTML = cart.map(item => {
-    const p = P[item.idx];
-    const total = p.p * item.qty;
+    if (!item) return '';
+    let name = '';
+    let price = 0;
+    
+    if (item._bundleId) {
+      name = item._bundleName || 'Ritual Bundle';
+      price = item._bundlePrice || 0;
+    } else {
+      const p = P[item.idx];
+      if (!p) return '';
+      name = p.n;
+      price = p.p;
+    }
+    
+    const total = price * item.qty;
     subtotal += total;
     return `
       <div class="order-summary-item">
-        <span>${p.n} (x${item.qty})</span>
+        <span>${name} (x${item.qty})</span>
         <span>R${total.toFixed(2)}</span>
       </div>
     `;
