@@ -6204,6 +6204,12 @@ const tcmCatalogDetails = {
 
 window.P = [];
 
+// ── SUPABASE CONFIG ────────────────────────────────────────────────────────
+const SUPABASE_PROJECT_REF = 'fmmzesqelnwayexweatz';
+const SUPABASE_URL         = `https://${SUPABASE_PROJECT_REF}.supabase.co`;
+const EDGE_FUNCTION_URL    = `${SUPABASE_URL}/functions/v1/checkout`;
+const SUPABASE_ANON_KEY    = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZtbXplc3FlbG53YXlleHdlYXR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM1NzkyMjIsImV4cCI6MjA5OTE1NTIyMn0.0H5bQs5MR6pRfeBrP2wda86VM0IK4b2aRcJORtkaNrU';
+
 // ── STATE ──────────────────────────────────────────────────────────────────
 let activeType='all', activeCat='all', searchQ='', cart=[], openIdx=null;
 // Cart is stored as [{id:'TG-TEA-001',qty:1}] in localStorage (SKU-based, shared with basket-v2.html)
@@ -6942,14 +6948,13 @@ function submitOrder(e) {
   if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Processing…'; }
 
   // ── POST to Supabase Edge Function (secure backend) ───────────────────────
-  // The Edge Function URL follows the pattern:
-  //   https://<project-ref>.supabase.co/functions/v1/checkout
-  // Replace YOUR_SUPABASE_PROJECT_REF below with your actual project reference ID.
-  const EDGE_FUNCTION_URL = 'https://fmmzesqelnwayexweatz.supabase.co/functions/v1/checkout';
-
   fetch(EDGE_FUNCTION_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': SUPABASE_ANON_KEY,
+      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+    },
     body: JSON.stringify(browserPayload)
   })
   .then(async response => {
