@@ -25,7 +25,7 @@ serve(async (req) => {
 
     // 🛠️ FIX: Query using text columns instead of numerical 'id'
     const { data: dbProducts } = await supabaseAdmin.from('products').select('external_id, retail_price').in('external_id', productCodes)
-    const { data: dbBundles } = await supabaseAdmin.from('bundles').select('name, retail_price').in('name', bundleCodes)
+    const { data: dbBundles } = await supabaseAdmin.from('bundles').select('title, bundle_retail_price').in('title', bundleCodes)
     // NOTE: If your bundles table uses a 'slug' column for 'performance-engine', change 'name' above to 'slug'
 
     let calculatedOrderTotal = 0
@@ -35,8 +35,8 @@ serve(async (req) => {
         const match = dbProducts?.find(p => p.external_id === cartItem.database_id)
         if (match) calculatedOrderTotal += (match.retail_price * cartItem.quantity)
       } else if (cartItem.item_type === 'bundle') {
-        const match = dbBundles?.find(b => b.name === cartItem.database_id) // Match against the text identifier
-        if (match) calculatedOrderTotal += (match.retail_price * cartItem.quantity)
+        const match = dbBundles?.find(b => b.title === cartItem.database_id)
+        if (match) calculatedOrderTotal += (match.bundle_retail_price * cartItem.quantity)
       }
     })
 
