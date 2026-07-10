@@ -6881,104 +6881,101 @@ function submitOrder(e) {
   e.preventDefault();
   console.log("🔥 Checkout submission handler triggered successfully!");
 
-  // Gather details from input fields
-  const fullName = document.getElementById('c-name').value;
-  const email = document.getElementById('c-email').value;
-  const phone = document.getElementById('c-phone').value;
-  const address = document.getElementById('c-address').value;
-  const suburb = document.getElementById('c-suburb').value;
-  const city = document.getElementById('c-city').value;
-  const zip = document.getElementById('c-zip').value;
-  const province = document.getElementById('c-province').value;
-  const instructions = document.getElementById('c-instructions').value;
+  // ── Gather form inputs ───────────────────────────────────────────────────
+  const fullName    = document.getElementById('c-name').value.trim();
+  const email       = document.getElementById('c-email').value.trim();
+  const phone       = document.getElementById('c-phone').value.trim();
+  const address     = document.getElementById('c-address').value.trim();
+  const suburb      = document.getElementById('c-suburb').value.trim();
+  const city        = document.getElementById('c-city').value.trim();
+  const zip         = document.getElementById('c-zip').value.trim();
+  const province    = document.getElementById('c-province').value.trim();
+  const instructions = document.getElementById('c-instructions').value.trim();
 
-  // Format delivery instructions flat string
   const delivery_instructions = [address, suburb, city, province, zip].filter(Boolean).join(", ");
 
-  // Map local cart array into the unified line_items payload format.
-  // Each item explicitly declares whether it is a bundle or a standalone product:
-  //   - Bundle items:     { bundle_id: <id>, product_id: null,  quantity, unit_price, line_total }
-  //   - Standalone items: { bundle_id: null,  product_id: <sku>, quantity, unit_price, line_total }
-  const line_items = cart.map(item => {
-    const p = P[item.idx];
-    const unitPrice = parseFloat(p.p) || 0;
-    const qty = parseInt(item.qty, 10) || 0;
-    const lineTotal = parseFloat((unitPrice * qty).toFixed(2));
-
-    // Items tagged with _bundleId were added via the bundle detail page checkout
-    if (item._bundleId) {
-      return {
-        bundle_id: item._bundleId,
-        product_id: null,
-        quantity: qty,
-        unit_price: unitPrice,
-        line_total: lineTotal
-      };
-    }
-
-    // All other items are standalone products — use the SKU as the product_id
-    return {
-      bundle_id: null,
-      product_id: p.id || "",
-      quantity: qty,
-      unit_price: unitPrice,
-      line_total: lineTotal
-    };
-  });
-
-  const subtotal = line_items.reduce((sum, item) => sum + item.line_total, 0);
-  
-  // Calculate dynamic shipping cost (orders R500 or greater get free shipping)
-  const shipping_cost = subtotal >= 500 ? 0 : 75;
-  const order_total = parseFloat((subtotal + shipping_cost).toFixed(2));
-
-  // Generate unique tracking key matching Make.com requirements: ORD-MMDD-HHmmss
+  // ── Generate order tracking ID ───────────────────────────────────────────
   const now = new Date();
-  const MM = String(now.getMonth() + 1).padStart(2, '0');
-  const DD = String(now.getDate()).padStart(2, '0');
-  const HH = String(now.getHours()).padStart(2, '0');
-  const mm = String(now.getMinutes()).padStart(2, '0');
-  const ss = String(now.getSeconds()).padStart(2, '0');
+  const MM  = String(now.getMonth() + 1).padStart(2, '0');
+  const DD  = String(now.getDate()).padStart(2, '0');
+  const HH  = String(now.getHours()).padStart(2, '0');
+  const mm  = String(now.getMinutes()).padStart(2, '0');
+  const ss  = String(now.getSeconds()).padStart(2, '0');
   const tracking_id = `ORD-${MM}${DD}-${HH}${mm}${ss}`;
 
-  const compiledPayload = {
-    tracking_id: tracking_id,
+  // ── Build clientCart: IDs + quantities ONLY (no prices sent from browser) ─
+  // The server will look up authoritative prices from the database.
+  const clientCart = cart.map(item => {
+    // Bundle items are tagged with _bundleId by the bundle detail page
+    if (item._bundleId) {
+      return {
+        item_type:   'bundle',
+        database_id: item._bundleId,   // the bundle's key/slug
+        quantity:    parseInt(item.qty, 10) || 1
+      };
+    }
+    // Standalone products use the SKU (TG-TEA-XXX / TG-PILL-XXX)
+    const p = P[item.idx];
+    return {
+      item_type:   'single',
+      database_id: (p && p.id) || '',  // product SKU
+      quantity:    parseInt(item.qty, 10) || 1
+    };
+  }).filter(i => i.database_id); // drop any unresolved items
+
+  const browserPayload = {
+    tracking_id,
     delivery_profile: {
-      recipient_name: fullName.trim(),
-      recipient_email: email.trim(),
-      recipient_whatsapp: phone.trim(),
-      delivery_instructions: delivery_instructions.trim(),
-      special_notes: instructions.trim()
+      recipient_name:         fullName,
+      recipient_email:        email,
+      recipient_whatsapp:     phone,
+      delivery_instructions:  delivery_instructions,
+      special_notes:          instructions
     },
-    line_items: line_items,
-    shipping_fee: shipping_cost,
-    order_total: order_total,
-    checkout_timestamp: now.toISOString()
+    clientCart  // ← IDs + quantities only; backend resolves prices
   };
 
-  console.log("📦 Compiled Guest Payload: ", JSON.stringify(compiledPayload));
+  console.log("📦 Sending secure payload to Edge Function:", JSON.stringify(browserPayload));
 
-  // Dispatch details to Make.com Webhook URL (Unauthenticated checkout flow)
-  fetch('https://hook.eu1.make.com/gjgs9if1449mylxmt44hxc1n9rv1535n', {
+  // ── Disable submit button while request is in flight ───────────────────────
+  const submitBtn = document.querySelector('#checkout-content .checkout-btn-primary');
+  if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Processing…'; }
+
+  // ── POST to Supabase Edge Function (secure backend) ───────────────────────
+  // The Edge Function URL follows the pattern:
+  //   https://<project-ref>.supabase.co/functions/v1/checkout
+  // Replace YOUR_SUPABASE_PROJECT_REF below with your actual project reference ID.
+  const EDGE_FUNCTION_URL = 'https://YOUR_SUPABASE_PROJECT_REF.supabase.co/functions/v1/checkout';
+
+  fetch(EDGE_FUNCTION_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(compiledPayload)
+    body: JSON.stringify(browserPayload)
   })
-  .then(response => {
-    console.log("Data sent to Make! Status:", response.status);
+  .then(async response => {
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || `Server error ${response.status}`);
+
+    console.log("✅ Secure checkout processed. Server total:", data.order_total);
+
+    // Show success state
+    document.getElementById('checkout-content').style.display = 'none';
+    document.getElementById('checkout-success').style.display = 'block';
+    lucide.createIcons({ nameAttr: 'data-lucide', attrs: { class: '' }, nodes: [document.getElementById('checkout-success')] });
+
+    // Clear cart
+    cart = [];
+    updateCart();
   })
   .catch(err => {
-    console.error("Webhook submit error:", err);
-  });
+    console.error("❌ Secure checkout error:", err.message);
 
-  // Perform order placement animation/state
-  document.getElementById('checkout-content').style.display = 'none';
-  document.getElementById('checkout-success').style.display = 'block';
-  lucide.createIcons({nameAttr:'data-lucide',attrs:{class:''},nodes:[document.getElementById('checkout-success')]});
-  
-  // Clear cart
-  cart = [];
-  updateCart();
+    // Re-enable submit on error so customer can retry
+    if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Place Order'; }
+
+    // Show user-friendly error message
+    showToast("⚠️ Order failed. Please check your connection and try again.");
+  });
 }
 
 let toastTimer;
