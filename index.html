@@ -6387,12 +6387,31 @@ async function loadDynamicCatalog() {
     if (_savedCartRaw.length > 0) {
       cart = [];
       _savedCartRaw.forEach(saved => {
-        if (saved && saved.id) {
-          // SKU-based format (from basket-v2 or new saves)
+        if (!saved) return;
+
+        // ── Bundle item (tagged with _bundleId by products-bundle-detail.html) ─
+        // These won't have a P[] entry — preserve them as-is with their metadata
+        if (saved._bundleId) {
+          cart.push({
+            _bundleId:    saved._bundleId,
+            _bundleName:  saved._bundleName  || 'Ritual Bundle',
+            _bundlePrice: saved._bundlePrice || 0,
+            id:           saved.id,
+            idx:          null,
+            qty:          saved.qty || 1
+          });
+          return;
+        }
+
+        // ── Standalone SKU-based format (from basket-v2 or new saves) ─────────
+        if (saved.id) {
           const idx = window.P.findIndex(p => p && p.id === saved.id);
           if (idx !== -1) cart.push({ idx, qty: saved.qty || 1 });
-        } else if (saved && typeof saved.idx === 'number') {
-          // Legacy idx-based format — keep as-is
+          return;
+        }
+
+        // ── Legacy idx-based format ───────────────────────────────────────────
+        if (typeof saved.idx === 'number') {
           cart.push(saved);
         }
       });
@@ -6910,27 +6929,33 @@ function submitOrder(e) {
   const tracking_id = `ORD-${MM}${DD}-${HH}${mm}${ss}`;
 
   // ── Build clientCart: IDs + quantities ONLY (no prices sent from browser) ─
-  // The server will look up authoritative prices from the database.
+  // Payload matches exactly what the edge function index.ts expects:
+  //   { database_id, item_type: 'bundle'|'single', quantity }
   const clientCart = cart.map(item => {
-    // Bundle items are tagged with _bundleId by the bundle detail page
+
+    // CASE 1: Bundle item restored from localStorage or added via bundle detail page
+    // database_id must match bundles.title in Supabase
     if (item._bundleId) {
       return {
         item_type:   'bundle',
-        database_id: item._bundleId,   // the bundle's key/slug
+        database_id: item._bundleId,        // matches bundles.title column
         quantity:    parseInt(item.qty, 10) || 1
       };
     }
-    // Standalone products use the SKU (TG-TEA-XXX / TG-PILL-XXX)
+
+    // CASE 2: Standalone product added from homepage catalog
+    // database_id must match products.external_id in Supabase
     const p = P[item.idx];
+    if (!p) return null;
     return {
       item_type:   'single',
-      database_id: (p && p.id) || '',  // product SKU
+      database_id: p.id || '',              // matches products.external_id column
       quantity:    parseInt(item.qty, 10) || 1
     };
-  }).filter(i => i.database_id); // drop any unresolved items
+  }).filter(i => i && i.database_id);      // drop null / unresolved items
 
   const browserPayload = {
-    tracking_id,
+    tracking_id:      'ORDER-' + Math.random().toString(36).substr(2, 9).toUpperCase(),
     delivery_profile: {
       recipient_name:         fullName,
       recipient_email:        email,
@@ -6938,7 +6963,8 @@ function submitOrder(e) {
       delivery_instructions:  delivery_instructions,
       special_notes:          instructions
     },
-    clientCart  // ← IDs + quantities only; backend resolves prices
+    shipping_fee: 0,                        // calculated server-side; sent as hint only
+    clientCart                              // ← IDs + quantities only; backend resolves prices
   };
 
   console.log("📦 Sending secure payload to Edge Function:", JSON.stringify(browserPayload));
