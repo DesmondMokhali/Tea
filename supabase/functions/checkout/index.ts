@@ -25,8 +25,18 @@ serve(async (req) => {
 
     // 🛠️ FIX: Query using text columns instead of numerical 'id'
     const { data: dbProducts } = await supabaseAdmin.from('products').select('external_id, retail_price').in('external_id', productCodes)
-    const { data: dbBundles } = await supabaseAdmin.from('bundles').select('title, bundle_retail_price').in('title', bundleCodes)
-    // NOTE: If your bundles table uses a 'slug' column for 'performance-engine', change 'name' above to 'slug'
+    
+    // Fetch all bundles to run in-memory slug comparison (avoids exact string match failure against title)
+    const { data: dbBundles } = await supabaseAdmin.from('bundles').select('title, bundle_retail_price')
+
+    // Normalization helper: converts both DB titles and client slugs to a matched lower-case slug comparison format
+    const toSlug = (str: string) => (str || '').toLowerCase()
+      .replace(/&/g, 'and')
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/[-\s]+/g, '_')
+      .replace(/_+/g, '_')
+      .replace(/^_|_$/g, '')
+      .replace(/_/g, '-'); // converts to clean hyphenated-slug
 
     let calculatedOrderTotal = 0
 
@@ -35,7 +45,8 @@ serve(async (req) => {
         const match = dbProducts?.find(p => p.external_id === cartItem.database_id)
         if (match) calculatedOrderTotal += (match.retail_price * cartItem.quantity)
       } else if (cartItem.item_type === 'bundle') {
-        const match = dbBundles?.find(b => b.title === cartItem.database_id)
+        const targetSlug = toSlug(cartItem.database_id);
+        const match = dbBundles?.find(b => toSlug(b.title) === targetSlug)
         if (match) calculatedOrderTotal += (match.bundle_retail_price * cartItem.quantity)
       }
     })
