@@ -6362,14 +6362,16 @@ async function loadDynamicCatalog() {
           .replace(/\bQi\b/gi, 'Qi');
       }
 
-      // 6. Build the final clean product object for layout templates
+      // 6. Build the final clean product object for layout templates using standard Supabase schema properties
       return {
-        id: stockCode,            // SKU e.g. "TG-TEA-001" — used for cross-page cart sync
+        id: stockCode || item.external_id || "", // SKU e.g. "TG-TEA-001" — used for cross-page cart sync
+        external_id: stockCode || item.external_id || "",
         n: toTitleCase(name),
         t: details.t || item.t || "Traditional Herbal Formula",
         cat: details.cat || item.cat || "general",
         isPill: isPill,
-        p: cleanPrice, // Pure number for .toFixed(2)
+        p: cleanPrice || item.retail_price || 0, // Pure number for .toFixed(2)
+        retail_price: cleanPrice || item.retail_price || 0,
         r: details.r || item.r || 4.5,
         rv: details.rv || item.rv || 12,
         b: details.b || item.b || null,
@@ -6380,7 +6382,7 @@ async function loadDynamicCatalog() {
         use: details.use || item.use || "Consult packaging for traditional preparation.",
         ch: details.ch || item.ch || ["TCM", "Herbal"]
       };
-    }).filter(p => p !== null);
+    }).filter(p => p !== null && p.id);
 
     // Initialize catalog rendering and filters once window.P is populated
     // Restore cart from localStorage: convert {id,qty} → {idx,qty} using the loaded P[] array
@@ -6720,22 +6722,41 @@ function updateCart() {
   } else {
     footerActions.style.display = 'block';
     list.innerHTML = cart.map(item => {
-      const p = P[item.idx];
-      const itemTotal = p.p * item.qty;
+      let name = '';
+      let price = 0;
+      let img = '';
+      
+      if (item._bundleId) {
+        name = item._bundleName || 'Ritual Bundle';
+        price = item._bundlePrice || 0;
+        img = 'images/abdomen_slimming_tea.png'; // default/placeholder thumbnail for bundles in side cart
+      } else {
+        const p = P[item.idx];
+        if (!p) return '';
+        name = p.n;
+        price = p.p;
+        img = p.img;
+      }
+
+      const itemTotal = price * item.qty;
       subtotal += itemTotal;
+      const removeOnClick = item._bundleId ? `removeFromCart(null, '${item._bundleId}')` : `removeFromCart(${item.idx})`;
+      const changeQtyMinus = item._bundleId ? `changeQty(null, -1, '${item._bundleId}')` : `changeQty(${item.idx}, -1)`;
+      const changeQtyPlus = item._bundleId ? `changeQty(null, 1, '${item._bundleId}')` : `changeQty(${item.idx}, 1)`;
+
       return `
         <div class="cart-item">
-          <img class="cart-item-img" src="${p.img}" alt="${p.n}" onerror="this.src='';this.style.background='var(--c)'">
+          <img class="cart-item-img" src="${img}" alt="${name}" onerror="this.src='';this.style.background='var(--c)'">
           <div class="cart-item-info">
-            <div class="cart-item-name">${p.n}</div>
-            <div class="cart-item-price">R${p.p.toFixed(2)}</div>
+            <div class="cart-item-name">${name}</div>
+            <div class="cart-item-price">R${price.toFixed(2)}</div>
             <div class="cart-item-ctrls">
-              <button class="qty-btn" onclick="changeQty(${item.idx}, -1)" title="Decrease quantity"><i data-lucide="minus" style="width:10px;height:10px"></i></button>
+              <button class="qty-btn" onclick="${changeQtyMinus}" title="Decrease quantity"><i data-lucide="minus" style="width:10px;height:10px"></i></button>
               <span class="qty-val">${item.qty}</span>
-              <button class="qty-btn" onclick="changeQty(${item.idx}, 1)" title="Increase quantity"><i data-lucide="plus" style="width:10px;height:10px"></i></button>
+              <button class="qty-btn" onclick="${changeQtyPlus}" title="Increase quantity"><i data-lucide="plus" style="width:10px;height:10px"></i></button>
             </div>
           </div>
-          <button class="cart-item-del" onclick="removeFromCart(${item.idx})" title="Remove item"><i data-lucide="trash-2" style="width:14px;height:14px"></i></button>
+          <button class="cart-item-del" onclick="${removeOnClick}" title="Remove item"><i data-lucide="trash-2" style="width:14px;height:14px"></i></button>
         </div>
       `;
     }).join('');
@@ -6761,10 +6782,21 @@ function updateCart() {
     totalVal.textContent = `R${(subtotal + shipping).toFixed(2)}`;
     
     // Save to localStorage in SKU-based {id, qty} format so basket-v2.html can read it directly
-    const cartForStorage = cart.map(item => ({
-      id: (window.P[item.idx] && window.P[item.idx].id) || ('IDX_' + item.idx),
-      qty: item.qty
-    }));
+    const cartForStorage = cart.map(item => {
+      if (item._bundleId) {
+        return {
+          id:           item.id,
+          _bundleId:    item._bundleId,
+          _bundleName:  item._bundleName,
+          _bundlePrice: item._bundlePrice,
+          qty:          item.qty
+        };
+      }
+      return {
+        id: (window.P[item.idx] && window.P[item.idx].id) || ('IDX_' + item.idx),
+        qty: item.qty
+      };
+    });
     localStorage.setItem('tangren_cart', JSON.stringify(cartForStorage));
     localStorage.setItem('tangren_cart_total', subtotal.toFixed(2));
     localStorage.setItem('tangren_cart_qty', totalQty.toString());
@@ -6798,20 +6830,20 @@ function updateCart() {
   }
 }
 
-function changeQty(idx, delta) {
-  const item = cart.find(i => i.idx === idx);
+function changeQty(idx, delta, bundleId) {
+  const item = cart.find(i => bundleId ? i._bundleId === bundleId : i.idx === idx);
   if (item) {
     item.qty += delta;
     if (item.qty <= 0) {
-      removeFromCart(idx);
+      removeFromCart(idx, bundleId);
     } else {
       updateCart();
     }
   }
 }
 
-function removeFromCart(idx) {
-  cart = cart.filter(i => i.idx !== idx);
+function removeFromCart(idx, bundleId) {
+  cart = cart.filter(i => bundleId ? i._bundleId !== bundleId : i.idx !== idx);
   updateCart();
 }
 
