@@ -6967,6 +6967,14 @@ function submitOrder(e) {
     };
   }).filter(i => i && i.database_id);      // drop null / unresolved items
 
+  // Calculate cart subtotal to dynamically determine shipping fee matching standard threshold rules
+  const subtotal = cart.reduce((sum, item) => {
+    if (item._bundleId) return sum + (item._bundlePrice || 0) * item.qty;
+    const p = P[item.idx];
+    return sum + (p ? p.p : 0) * item.qty;
+  }, 0);
+  const shipping_fee = subtotal >= 500 ? 0 : 75;
+
   const browserPayload = {
     tracking_id:      'ORDER-' + Math.random().toString(36).substr(2, 9).toUpperCase(),
     delivery_profile: {
@@ -6976,7 +6984,7 @@ function submitOrder(e) {
       delivery_instructions:  delivery_instructions,
       special_notes:          instructions
     },
-    shipping_fee: 0,                        // calculated server-side; sent as hint only
+    shipping_fee:     shipping_fee,         // passed as a validated numeric value
     clientCart                              // ← IDs + quantities only; backend resolves prices
   };
 
