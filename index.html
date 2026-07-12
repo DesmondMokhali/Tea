@@ -6550,14 +6550,15 @@ function doSearch(q){searchQ=q.toLowerCase().trim();renderGrid()}
 
 function filtered(){
   return P.filter(p=>{
+    if (!p || !p.n) return false; // defensive: skip malformed entries
     const matchesType = activeType === 'all' || 
                         (activeType === 'teas' && !p.isPill) || 
                         (activeType === 'pills' && p.isPill);
     const inCat = activeCat === 'all' || p.cat === activeCat;
     const inQ = !searchQ || 
-                p.n.toLowerCase().includes(searchQ) || 
-                p.t.toLowerCase().includes(searchQ) || 
-                p.ing.some(i => i.toLowerCase().includes(searchQ)) || 
+                (p.n || '').toLowerCase().includes(searchQ) || 
+                (p.t || '').toLowerCase().includes(searchQ) || 
+                (p.ing || []).some(i => i.toLowerCase().includes(searchQ)) || 
                 (p.ch && p.ch.some(c => c.toLowerCase().includes(searchQ)));
     return matchesType && inCat && inQ;
   });
@@ -6580,19 +6581,23 @@ function renderGrid(){
     const i=vi;
     const idx=P.indexOf(p);
     const delay=Math.min(i*35,400);
+    if (!p || !p.n) return ''; // defensive: skip malformed catalog entries
+    const displayPrice = (p.retail_price || p.p || 0);
+    const displayName  = p.title || p.n || 'Herbal Product';
+    const displayImg   = p.image_url || p.img || '';
     return `<div class="card" style="animation-delay:${delay}ms" onclick="openModal(${idx})">
       ${p.b?`<span class="cbadge ${p.b==='Bestseller'?'bs':p.b==='New'?'nw':'pr'}">${p.b}</span>`:''}
       <div class="cimgw">
-        <img class="cimg" src="${p.img}" alt="${p.n}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <img class="cimg" src="${displayImg}" alt="${displayName}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="cfall" style="display:none"><i data-lucide="coffee" style="width:36px;height:36px;color:var(--fm)"></i></div>
       </div>
       <div class="cbody">
         <div class="ccat">${catLabel(p.cat)}</div>
-        <div class="cname">${p.n}</div>
-        <div class="ctag">${p.t}</div>
-        <div class="crat"><span class="cstars">${'★'.repeat(Math.round(p.r))}</span><span>${p.r} (${p.rv})</span></div>
+        <div class="cname">${displayName}</div>
+        <div class="ctag">${p.t || ''}</div>
+        <div class="crat"><span class="cstars">${'★'.repeat(Math.round(p.r || 4))}</span><span>${p.r || 4} (${p.rv || 0})</span></div>
         <div class="cfoot">
-          <span class="cprice">R${p.p.toFixed(2)}</span>
+          <span class="cprice">R${displayPrice.toFixed(2)}</span>
           <button class="catcbtn${cart.some(item => item.idx === idx) ? ' ok' : ''}" id="cb${idx}" onclick="addCard(event,${idx})">${cart.some(item => item.idx === idx) ? '✓ Added' : 'Add to Cart'}</button>
         </div>
       </div>
@@ -6619,23 +6624,29 @@ function openProductDetailByName(name) {
 
 // ── MODAL ──────────────────────────────────────────────────────────────────
 function openModal(idx){
-  const p=P[idx];openIdx=idx;
-  document.getElementById('mi').src=p.img;
+  const p=P[idx];
+  if (!p) { console.warn('[Tangren] openModal: no product at idx', idx); return; }
+  openIdx=idx;
+  // Support both old shorthand and new Supabase column names
+  const pName  = p.title        || p.n   || 'Herbal Product';
+  const pPrice = p.retail_price || p.p   || 0;
+  const pImg   = p.image_url    || p.img || '';
+  document.getElementById('mi').src=pImg;
   document.getElementById('mi').style.display='block';
   document.getElementById('mf').style.display='none';
   document.getElementById('mcat').textContent=catLabel(p.cat);
-  document.getElementById('mtt').textContent=p.n;
-  document.getElementById('mtag').textContent=p.t;
-  document.getElementById('mst').textContent='★'.repeat(Math.round(p.r));
-  document.getElementById('mrav').textContent=`${p.r} · ${p.rv} reviews`;
-  document.getElementById('mpr').textContent=`R${p.p.toFixed(2)}`;
+  document.getElementById('mtt').textContent=pName;
+  document.getElementById('mtag').textContent=p.t || '';
+  document.getElementById('mst').textContent='★'.repeat(Math.round(p.r || 4));
+  document.getElementById('mrav').textContent=`${p.r || 4} · ${p.rv || 0} reviews`;
+  document.getElementById('mpr').textContent=`R${pPrice.toFixed(2)}`;
   const stocks=[14,7,23,11,19,8,31,16];
   document.getElementById('mstk').textContent=`Only ${stocks[idx%stocks.length]} left!`;
   document.getElementById('mch').innerHTML=(p.ch||[]).map(c=>`<span class="mchip">${c}</span>`).join('');
-  document.getElementById('il').innerHTML=p.ing.map(i=>`<li class="iitem"><div class="idot"></div><span>${i}</span></li>`).join('');
-  document.getElementById('bl').innerHTML=p.ben.map(b=>`<li class="bitem"><span class="bchk">✓</span><span>${b}</span></li>`).join('');
-  document.getElementById('ub').innerHTML=p.use;
-  document.getElementById('wb').innerHTML=p.ind;
+  document.getElementById('il').innerHTML=(p.ing||[]).map(i=>`<li class="iitem"><div class="idot"></div><span>${i}</span></li>`).join('');
+  document.getElementById('bl').innerHTML=(p.ben||[]).map(b=>`<li class="bitem"><span class="bchk">✓</span><span>${b}</span></li>`).join('');
+  document.getElementById('ub').innerHTML=p.use || '';
+  document.getElementById('wb').innerHTML=p.ind || '';
   const ti=TESTIS[idx%TESTIS.length];
   document.getElementById('tq').textContent=ti[0];
   document.getElementById('ta').textContent=ti[1];
@@ -6733,9 +6744,9 @@ function updateCart() {
       } else {
         const p = P[item.idx];
         if (!p) return '';
-        name = p.n;
-        price = p.p;
-        img = p.img;
+        name  = p.title        || p.n   || 'Herbal Product';
+        price = p.retail_price || p.p   || 0;
+        img   = p.image_url    || p.img || '';
       }
 
       const itemTotal = price * item.qty;
@@ -6905,8 +6916,8 @@ function openCheckout() {
     } else {
       const p = P[item.idx];
       if (!p) return '';
-      name = p.n;
-      price = p.p;
+      name  = p.title        || p.n || 'Herbal Product';
+      price = p.retail_price || p.p || 0;
     }
     
     const total = price * item.qty;
@@ -7003,7 +7014,7 @@ function submitOrder(e) {
   const subtotal = cart.reduce((sum, item) => {
     if (item._bundleId) return sum + (item._bundlePrice || 0) * item.qty;
     const p = P[item.idx];
-    return sum + (p ? p.p : 0) * item.qty;
+    return sum + (p ? (p.retail_price || p.p || 0) : 0) * item.qty;
   }, 0);
   const shipping_fee = subtotal >= 500 ? 0 : 75;
 
@@ -7109,7 +7120,7 @@ const SYNERGY_BUNDLES = [
 
 function findPIdx(partial) {
   const q = partial.toLowerCase();
-  return P.findIndex(p => p && p.n && p.n.toLowerCase().includes(q));
+  return P.findIndex(p => p && (p.title || p.n) && (p.title || p.n).toLowerCase().includes(q));
 }
 
 function renderSynergy() {
@@ -7123,15 +7134,22 @@ function renderSynergy() {
   sw.style.display = 'block';
   sc.innerHTML = bundles.map(({ b, ti, pi }) => {
     const tea = P[ti], pill = P[pi];
-    const combined = (tea.p + pill.p).toFixed(2);
+    if (!tea || !pill) return ''; // defensive: skip if product lookup failed
+    const teaPrice  = tea.retail_price  || tea.p  || 0;
+    const pillPrice = pill.retail_price || pill.p || 0;
+    const combined = (teaPrice + pillPrice).toFixed(2);
     const bothAdded = cart.some(i => i.idx === ti) && cart.some(i => i.idx === pi);
-    const shortTea = tea.n.split(' ').slice(0, 4).join(' ');
-    const shortPill = pill.n.split(' ').slice(0, 3).join(' ');
+    const teaName  = tea.title  || tea.n  || 'Tea';
+    const pillName = pill.title || pill.n || 'Pill';
+    const teaImg   = tea.image_url  || tea.img  || '';
+    const pillImg  = pill.image_url || pill.img || '';
+    const shortTea  = teaName.split(' ').slice(0, 4).join(' ');
+    const shortPill = pillName.split(' ').slice(0, 3).join(' ');
     return `
       <div class="syn-card">
         <div class="syn-imgs">
-          <img class="syn-img" src="${tea.img}" alt="${tea.n}" onerror="this.style.opacity='.35'">
-          <img class="syn-img" src="${pill.img}" alt="${pill.n}" onerror="this.style.opacity='.35'">
+          <img class="syn-img" src="${teaImg}" alt="${teaName}" onerror="this.style.opacity='.35'">
+          <img class="syn-img" src="${pillImg}" alt="${pillName}" onerror="this.style.opacity='.35'">
         </div>
         <div class="syn-info">
           <div class="syn-badge"><i data-lucide="${b.icon}" style="width:10px;height:10px;vertical-align:-1px;margin-right:3px"></i> ${b.label}</div>
@@ -7187,7 +7205,7 @@ function addBundleByNames() {
   if (typeof P === 'undefined') { window.location.href = 'index.html'; return; }
   var added = 0;
   names.forEach(function(name) {
-    var idx = P.findIndex(function(p){ return p && p.n && p.n.toUpperCase().indexOf(name.toUpperCase()) > -1; });
+    var idx = P.findIndex(function(p){ return p && (p.title || p.n) && (p.title || p.n).toUpperCase().indexOf(name.toUpperCase()) > -1; });
     if (idx > -1) { addToCart(idx); added++; }
   });
   if (added > 0) {
