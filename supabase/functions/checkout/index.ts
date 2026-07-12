@@ -46,7 +46,7 @@ serve(async (req) => {
     // ── Fetch matching rows from Supabase ───────────────────────────────────
     const { data: dbProducts, error: productError } = await supabaseAdmin
       .from('products')
-      .select('external_id, title, retail_price')
+      .select('external_id, name, retail_price')  // 'name' is the actual column; frontend maps it to .title
       .in('external_id', productCodes.length > 0 ? productCodes : ['__none__'])
 
     if (productError) throw new Error(`Supabase products query failed: ${productError.message}`)
@@ -85,7 +85,7 @@ serve(async (req) => {
         pricedLineItems.push({
           item_type:   'single',
           database_id: cartItem.database_id,
-          title:       match.title,
+          title:       match.name,          // DB column is 'name'; exposed as 'title' in payload
           unit_price:  match.retail_price,
           quantity:    cartItem.quantity,
           line_total:  lineTotal
