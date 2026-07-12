@@ -6362,27 +6362,27 @@ async function loadDynamicCatalog() {
           .replace(/\bQi\b/gi, 'Qi');
       }
 
-      // 6. Build the final clean product object for layout templates using standard Supabase schema properties
+      // 6. Build the canonical product object using Supabase column names.
+      // These are the authoritative property names used throughout the entire codebase.
       return {
-        id: stockCode || item.external_id || "", // SKU e.g. "TG-TEA-001" — used for cross-page cart sync
-        external_id: stockCode || item.external_id || "",
-        n: toTitleCase(name),
+        external_id: stockCode,       // Primary key — matches products.external_id in Supabase
+        id:          stockCode,       // Alias kept for localStorage compatibility
+        title:       toTitleCase(name),                       // Replaces old .n
+        retail_price: cleanPrice || item.retail_price || 0,  // Replaces old .p
+        image_url:   imagePath,                              // Replaces old .img
         t: details.t || item.t || "Traditional Herbal Formula",
         cat: details.cat || item.cat || "general",
         isPill: isPill,
-        p: cleanPrice || item.retail_price || 0, // Pure number for .toFixed(2)
-        retail_price: cleanPrice || item.retail_price || 0,
         r: details.r || item.r || 4.5,
         rv: details.rv || item.rv || 12,
         b: details.b || item.b || null,
-        img: imagePath,
         ing: details.ing || item.ing || [],
         ben: details.ben || item.ben || [],
         ind: details.ind || item.ind || "Formulated to support holistic wellbeing.",
         use: details.use || item.use || "Consult packaging for traditional preparation.",
         ch: details.ch || item.ch || ["TCM", "Herbal"]
       };
-    }).filter(p => p !== null && p.id);
+    }).filter(p => p !== null && p.external_id);
 
     // Initialize catalog rendering and filters once window.P is populated
     // Restore cart from localStorage: convert {id,qty} → {idx,qty} using the loaded P[] array
@@ -6391,30 +6391,37 @@ async function loadDynamicCatalog() {
       _savedCartRaw.forEach(saved => {
         if (!saved) return;
 
-        // ── Bundle item (tagged with _bundleId by products-bundle-detail.html) ─
-        // These won't have a P[] entry — preserve them as-is with their metadata
+        // ── Bundle item (tagged with _bundleId by products-bundle-detail.html) ──
         if (saved._bundleId) {
           cart.push({
             _bundleId:    saved._bundleId,
             _bundleName:  saved._bundleName  || 'Ritual Bundle',
             _bundlePrice: saved._bundlePrice || 0,
             id:           saved.id,
-            idx:          null,
             qty:          saved.qty || 1
           });
           return;
         }
 
-        // ── Standalone SKU-based format (from basket-v2 or new saves) ─────────
+        // ── SKU-based standalone product (id = external_id) ──
         if (saved.id) {
-          const idx = window.P.findIndex(p => p && p.id === saved.id);
-          if (idx !== -1) cart.push({ idx, qty: saved.qty || 1 });
+          const p = window.P.find(p => p && p.external_id === saved.id);
+          if (!p) {
+            console.error(`[Cart Restore] Product not found in catalog: "${saved.id}". Was it removed from Supabase?`);
+            return; // skip — do not add ghost items
+          }
+          cart.push({ id: saved.id, qty: saved.qty || 1 });
           return;
         }
 
-        // ── Legacy idx-based format ───────────────────────────────────────────
+        // ── Legacy idx-based format — convert to id-based on restore ──
         if (typeof saved.idx === 'number') {
-          cart.push(saved);
+          const p = window.P[saved.idx];
+          if (!p || !p.external_id) {
+            console.error(`[Cart Restore] Legacy idx=${saved.idx} has no valid product in catalog.`);
+            return;
+          }
+          cart.push({ id: p.external_id, qty: saved.qty || 1 });
         }
       });
     }
@@ -6550,16 +6557,16 @@ function doSearch(q){searchQ=q.toLowerCase().trim();renderGrid()}
 
 function filtered(){
   return P.filter(p=>{
-    if (!p || !p.n) return false; // defensive: skip malformed entries
+    if (!p || !p.external_id) return false;
     const matchesType = activeType === 'all' || 
                         (activeType === 'teas' && !p.isPill) || 
                         (activeType === 'pills' && p.isPill);
     const inCat = activeCat === 'all' || p.cat === activeCat;
     const inQ = !searchQ || 
-                (p.n || '').toLowerCase().includes(searchQ) || 
-                (p.t || '').toLowerCase().includes(searchQ) || 
-                (p.ing || []).some(i => i.toLowerCase().includes(searchQ)) || 
-                (p.ch && p.ch.some(c => c.toLowerCase().includes(searchQ)));
+                (p.title || '').toLowerCase().includes(searchQ) || 
+                (p.t    || '').toLowerCase().includes(searchQ) || 
+                (p.ing  || []).some(i => i.toLowerCase().includes(searchQ)) || 
+                (p.ch   && p.ch.some(c => c.toLowerCase().includes(searchQ)));
     return matchesType && inCat && inQ;
   });
 }
@@ -6581,24 +6588,21 @@ function renderGrid(){
     const i=vi;
     const idx=P.indexOf(p);
     const delay=Math.min(i*35,400);
-    if (!p || !p.n) return ''; // defensive: skip malformed catalog entries
-    const displayPrice = (p.retail_price || p.p || 0);
-    const displayName  = p.title || p.n || 'Herbal Product';
-    const displayImg   = p.image_url || p.img || '';
+    if (!p || !p.external_id) return '';
     return `<div class="card" style="animation-delay:${delay}ms" onclick="openModal(${idx})">
       ${p.b?`<span class="cbadge ${p.b==='Bestseller'?'bs':p.b==='New'?'nw':'pr'}">${p.b}</span>`:''}
       <div class="cimgw">
-        <img class="cimg" src="${displayImg}" alt="${displayName}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <img class="cimg" src="${p.image_url}" alt="${p.title}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="cfall" style="display:none"><i data-lucide="coffee" style="width:36px;height:36px;color:var(--fm)"></i></div>
       </div>
       <div class="cbody">
         <div class="ccat">${catLabel(p.cat)}</div>
-        <div class="cname">${displayName}</div>
+        <div class="cname">${p.title}</div>
         <div class="ctag">${p.t || ''}</div>
         <div class="crat"><span class="cstars">${'★'.repeat(Math.round(p.r || 4))}</span><span>${p.r || 4} (${p.rv || 0})</span></div>
         <div class="cfoot">
-          <span class="cprice">R${displayPrice.toFixed(2)}</span>
-          <button class="catcbtn${cart.some(item => item.idx === idx) ? ' ok' : ''}" id="cb${idx}" onclick="addCard(event,${idx})">${cart.some(item => item.idx === idx) ? '✓ Added' : 'Add to Cart'}</button>
+          <span class="cprice">R${p.retail_price.toFixed(2)}</span>
+          <button class="catcbtn${cart.some(item => item.id === p.external_id) ? ' ok' : ''}" id="cb${idx}" onclick="addCard(event,${idx})">${cart.some(item => item.id === p.external_id) ? '✓ Added' : 'Add to Cart'}</button>
         </div>
       </div>
     </div>`;
@@ -6625,21 +6629,17 @@ function openProductDetailByName(name) {
 // ── MODAL ──────────────────────────────────────────────────────────────────
 function openModal(idx){
   const p=P[idx];
-  if (!p) { console.warn('[Tangren] openModal: no product at idx', idx); return; }
+  if (!p) { console.error('[Tangren] openModal: no product at idx', idx); return; }
   openIdx=idx;
-  // Support both old shorthand and new Supabase column names
-  const pName  = p.title        || p.n   || 'Herbal Product';
-  const pPrice = p.retail_price || p.p   || 0;
-  const pImg   = p.image_url    || p.img || '';
-  document.getElementById('mi').src=pImg;
+  document.getElementById('mi').src=p.image_url;
   document.getElementById('mi').style.display='block';
   document.getElementById('mf').style.display='none';
   document.getElementById('mcat').textContent=catLabel(p.cat);
-  document.getElementById('mtt').textContent=pName;
+  document.getElementById('mtt').textContent=p.title;
   document.getElementById('mtag').textContent=p.t || '';
   document.getElementById('mst').textContent='★'.repeat(Math.round(p.r || 4));
   document.getElementById('mrav').textContent=`${p.r || 4} · ${p.rv || 0} reviews`;
-  document.getElementById('mpr').textContent=`R${pPrice.toFixed(2)}`;
+  document.getElementById('mpr').textContent=`R${p.retail_price.toFixed(2)}`;
   const stocks=[14,7,23,11,19,8,31,16];
   document.getElementById('mstk').textContent=`Only ${stocks[idx%stocks.length]} left!`;
   document.getElementById('mch').innerHTML=(p.ch||[]).map(c=>`<span class="mchip">${c}</span>`).join('');
@@ -6651,7 +6651,7 @@ function openModal(idx){
   document.getElementById('tq').textContent=ti[0];
   document.getElementById('ta').textContent=ti[1];
   const mac=document.getElementById('mac');
-  const inCart = cart.some(item => item.idx === idx);
+  const inCart = cart.some(item => item.id === p.external_id);
   mac.innerHTML=inCart?'<i data-lucide="check" style="width:15px;height:15px;display:inline;vertical-align:-2px"></i> Added to Cart':'<i data-lucide="shopping-cart" style="width:15px;height:15px;display:inline;vertical-align:-2px"></i> Add to Cart';
   mac.classList.toggle('ok',inCart);
   tab('ing',null);
@@ -6736,24 +6736,28 @@ function updateCart() {
       let name = '';
       let price = 0;
       let img = '';
-      
+
       if (item._bundleId) {
-        name = item._bundleName || 'Ritual Bundle';
+        name  = item._bundleName  || 'Ritual Bundle';
         price = item._bundlePrice || 0;
-        img = 'images/abdomen_slimming_tea.png'; // default/placeholder thumbnail for bundles in side cart
+        img   = 'images/abdomen_slimming_tea.png';
       } else {
-        const p = P[item.idx];
-        if (!p) return '';
-        name  = p.title        || p.n   || 'Herbal Product';
-        price = p.retail_price || p.p   || 0;
-        img   = p.image_url    || p.img || '';
+        const p = P.find(prod => prod && prod.external_id === item.id);
+        if (!p) {
+          console.error(`[Cart] Product lookup failed for id="${item.id}". Check Supabase products.external_id.`);
+          return '';
+        }
+        name  = p.title;
+        price = p.retail_price;
+        img   = p.image_url;
       }
 
       const itemTotal = price * item.qty;
       subtotal += itemTotal;
-      const removeOnClick = item._bundleId ? `removeFromCart(null, '${item._bundleId}')` : `removeFromCart(${item.idx})`;
-      const changeQtyMinus = item._bundleId ? `changeQty(null, -1, '${item._bundleId}')` : `changeQty(${item.idx}, -1)`;
-      const changeQtyPlus = item._bundleId ? `changeQty(null, 1, '${item._bundleId}')` : `changeQty(${item.idx}, 1)`;
+      const safeId = item.id ? `'${item.id}'` : 'null';
+      const removeOnClick  = item._bundleId ? `removeFromCart(null,'${item._bundleId}')` : `removeFromCart(${safeId})`;
+      const changeQtyMinus = item._bundleId ? `changeQty(null,-1,'${item._bundleId}')` : `changeQty(${safeId},-1)`;
+      const changeQtyPlus  = item._bundleId ? `changeQty(null,1,'${item._bundleId}')` : `changeQty(${safeId},1)`;
 
       return `
         <div class="cart-item">
@@ -6792,21 +6796,13 @@ function updateCart() {
     if (headerTotal) headerTotal.textContent = `R${subtotal.toFixed(2)}`;
     totalVal.textContent = `R${(subtotal + shipping).toFixed(2)}`;
     
-    // Save to localStorage in SKU-based {id, qty} format so basket-v2.html can read it directly
+    // Save to localStorage in SKU/external_id format
     const cartForStorage = cart.map(item => {
       if (item._bundleId) {
-        return {
-          id:           item.id,
-          _bundleId:    item._bundleId,
-          _bundleName:  item._bundleName,
-          _bundlePrice: item._bundlePrice,
-          qty:          item.qty
-        };
+        return { id: item.id, _bundleId: item._bundleId, _bundleName: item._bundleName, _bundlePrice: item._bundlePrice, qty: item.qty };
       }
-      return {
-        id: (window.P[item.idx] && window.P[item.idx].id) || ('IDX_' + item.idx),
-        qty: item.qty
-      };
+      // item.id IS the external_id — save it directly
+      return { id: item.id, qty: item.qty };
     });
     localStorage.setItem('tangren_cart', JSON.stringify(cartForStorage));
     localStorage.setItem('tangren_cart_total', subtotal.toFixed(2));
@@ -6821,10 +6817,12 @@ function updateCart() {
     lucide.createIcons({nameAttr:'data-lucide',attrs:{class:''},nodes:[cartDrawer]});
   }
 
-  // Update button states on the main grid dynamically
+  // Update button states on the main grid
   document.querySelectorAll('.catcbtn').forEach(btn => {
     const idx = parseInt(btn.id.replace('cb', ''), 10);
-    const inCart = cart.some(i => i.idx === idx);
+    const p = P[idx];
+    if (!p) return;
+    const inCart = cart.some(i => i.id === p.external_id);
     btn.textContent = inCart ? '✓ Added' : 'Add to Cart';
     btn.classList.toggle('ok', inCart);
   });
@@ -6841,32 +6839,39 @@ function updateCart() {
   }
 }
 
-function changeQty(idx, delta, bundleId) {
-  const item = cart.find(i => bundleId ? i._bundleId === bundleId : i.idx === idx);
+function changeQty(id, delta, bundleId) {
+  const item = cart.find(i => bundleId ? i._bundleId === bundleId : i.id === id);
   if (item) {
     item.qty += delta;
     if (item.qty <= 0) {
-      removeFromCart(idx, bundleId);
+      removeFromCart(id, bundleId);
     } else {
       updateCart();
     }
+  } else {
+    console.error(`[Cart] changeQty: no item found for id="${id}" bundleId="${bundleId}"`);
   }
 }
 
-function removeFromCart(idx, bundleId) {
-  cart = cart.filter(i => bundleId ? i._bundleId !== bundleId : i.idx !== idx);
+function removeFromCart(id, bundleId) {
+  cart = cart.filter(i => bundleId ? i._bundleId !== bundleId : i.id !== id);
   updateCart();
 }
 
 function addToCart(idx) {
-  const item = cart.find(i => i.idx === idx);
-  if (item) {
-    item.qty += 1;
+  const p = P[idx];
+  if (!p || !p.external_id) {
+    console.error('[Cart] addToCart: no product at idx', idx, '— check catalog load');
+    return;
+  }
+  const existing = cart.find(i => i.id === p.external_id);
+  if (existing) {
+    existing.qty += 1;
   } else {
-    cart.push({ idx: idx, qty: 1 });
+    cart.push({ id: p.external_id, qty: 1 });
   }
   updateCart();
-  showToast(`${P[idx].n} added to cart!`);
+  showToast(`${p.title} added to cart!`);
 }
 
 function addCard(e, idx) {
@@ -6911,13 +6916,16 @@ function openCheckout() {
     let price = 0;
     
     if (item._bundleId) {
-      name = item._bundleName || 'Ritual Bundle';
+      name  = item._bundleName  || 'Ritual Bundle';
       price = item._bundlePrice || 0;
     } else {
-      const p = P[item.idx];
-      if (!p) return '';
-      name  = p.title        || p.n || 'Herbal Product';
-      price = p.retail_price || p.p || 0;
+      const p = P.find(prod => prod && prod.external_id === item.id);
+      if (!p) {
+        console.error(`[Checkout Summary] Product not found for id="${item.id}". Item cannot be priced.`);
+        return '';
+      }
+      name  = p.title;
+      price = p.retail_price;
     }
     
     const total = price * item.qty;
@@ -6988,33 +6996,35 @@ function submitOrder(e) {
   // Payload matches exactly what the edge function index.ts expects:
   //   { database_id, item_type: 'bundle'|'single', quantity }
   const clientCart = cart.map(item => {
-
-    // CASE 1: Bundle item restored from localStorage or added via bundle detail page
-    // database_id must match bundles.title in Supabase
+    // CASE 1: Bundle item
     if (item._bundleId) {
       return {
         item_type:   'bundle',
-        database_id: item._bundleId,        // matches bundles.title column
+        database_id: item._bundleId,
         quantity:    parseInt(item.qty, 10) || 1
       };
     }
-
-    // CASE 2: Standalone product added from homepage catalog
-    // database_id must match products.external_id in Supabase
-    const p = P[item.idx];
-    if (!p) return null;
+    // CASE 2: Standalone product — use external_id directly (no P[] lookup needed)
+    if (!item.id) {
+      console.error('[clientCart] Cart item missing id. Skipping.');
+      return null;
+    }
     return {
       item_type:   'single',
-      database_id: p.id || '',              // matches products.external_id column
+      database_id: item.id,  // IS the external_id
       quantity:    parseInt(item.qty, 10) || 1
     };
-  }).filter(i => i && i.database_id);      // drop null / unresolved items
+  }).filter(Boolean);
 
   // Calculate cart subtotal to dynamically determine shipping fee matching standard threshold rules
   const subtotal = cart.reduce((sum, item) => {
     if (item._bundleId) return sum + (item._bundlePrice || 0) * item.qty;
-    const p = P[item.idx];
-    return sum + (p ? (p.retail_price || p.p || 0) : 0) * item.qty;
+    const p = P.find(prod => prod && prod.external_id === item.id);
+    if (!p) {
+      console.error(`[Checkout Subtotal] Product not found for id="${item.id}". Excluded from total.`);
+      return sum;
+    }
+    return sum + (p.retail_price * item.qty);
   }, 0);
   const shipping_fee = subtotal >= 500 ? 0 : 75;
 
@@ -7120,7 +7130,7 @@ const SYNERGY_BUNDLES = [
 
 function findPIdx(partial) {
   const q = partial.toLowerCase();
-  return P.findIndex(p => p && (p.title || p.n) && (p.title || p.n).toLowerCase().includes(q));
+  return P.findIndex(p => p && p.title && p.title.toLowerCase().includes(q));
 }
 
 function renderSynergy() {
@@ -7134,22 +7144,16 @@ function renderSynergy() {
   sw.style.display = 'block';
   sc.innerHTML = bundles.map(({ b, ti, pi }) => {
     const tea = P[ti], pill = P[pi];
-    if (!tea || !pill) return ''; // defensive: skip if product lookup failed
-    const teaPrice  = tea.retail_price  || tea.p  || 0;
-    const pillPrice = pill.retail_price || pill.p || 0;
-    const combined = (teaPrice + pillPrice).toFixed(2);
-    const bothAdded = cart.some(i => i.idx === ti) && cart.some(i => i.idx === pi);
-    const teaName  = tea.title  || tea.n  || 'Tea';
-    const pillName = pill.title || pill.n || 'Pill';
-    const teaImg   = tea.image_url  || tea.img  || '';
-    const pillImg  = pill.image_url || pill.img || '';
-    const shortTea  = teaName.split(' ').slice(0, 4).join(' ');
-    const shortPill = pillName.split(' ').slice(0, 3).join(' ');
+    if (!tea || !pill) { console.error('[Synergy] Product not found at ti=', ti, 'pi=', pi); return ''; }
+    const combined = (tea.retail_price + pill.retail_price).toFixed(2);
+    const bothAdded = cart.some(i => i.id === tea.external_id) && cart.some(i => i.id === pill.external_id);
+    const shortTea  = tea.title.split(' ').slice(0, 4).join(' ');
+    const shortPill = pill.title.split(' ').slice(0, 3).join(' ');
     return `
       <div class="syn-card">
         <div class="syn-imgs">
-          <img class="syn-img" src="${teaImg}" alt="${teaName}" onerror="this.style.opacity='.35'">
-          <img class="syn-img" src="${pillImg}" alt="${pillName}" onerror="this.style.opacity='.35'">
+          <img class="syn-img" src="${tea.image_url}" alt="${tea.title}" onerror="this.style.opacity='.35'">
+          <img class="syn-img" src="${pill.image_url}" alt="${pill.title}" onerror="this.style.opacity='.35'">
         </div>
         <div class="syn-info">
           <div class="syn-badge"><i data-lucide="${b.icon}" style="width:10px;height:10px;vertical-align:-1px;margin-right:3px"></i> ${b.label}</div>
@@ -7205,7 +7209,7 @@ function addBundleByNames() {
   if (typeof P === 'undefined') { window.location.href = 'index.html'; return; }
   var added = 0;
   names.forEach(function(name) {
-    var idx = P.findIndex(function(p){ return p && (p.title || p.n) && (p.title || p.n).toUpperCase().indexOf(name.toUpperCase()) > -1; });
+    var idx = P.findIndex(function(p){ return p && p.title && p.title.toUpperCase().indexOf(name.toUpperCase()) > -1; });
     if (idx > -1) { addToCart(idx); added++; }
   });
   if (added > 0) {
