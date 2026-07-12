@@ -29,10 +29,15 @@ serve(async (req) => {
       )
     }
 
-    const supabaseAdmin = createClient(
-      Deno.env.get('SUPABASE_URL') ?? '',
-      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
-    )
+    const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '';
+    const supabaseUrl = Deno.env.get('SUPABASE_URL') ?? '';
+
+    if (!serviceRoleKey) {
+      console.error('[checkout] SUPABASE_SERVICE_ROLE_KEY environment variable is not defined!');
+      throw new Error('Server environment is misconfigured: Admin authorization key is missing.');
+    }
+
+    const supabaseAdmin = createClient(supabaseUrl, serviceRoleKey)
 
     // ── Extract SKUs and bundle identifiers from the cart ───────────────────
     const productCodes = clientCart
@@ -45,15 +50,15 @@ serve(async (req) => {
 
     // ── Fetch matching rows from Supabase ───────────────────────────────────
     const { data: dbProducts, error: productError } = await supabaseAdmin
-      .from('product') // Change table name to singular 'product'
+      .from('products')
       .select('external_id, name, retail_price')
       .in('external_id', productCodes.length > 0 ? productCodes : ['__none__'])
 
-    if (productError) throw new Error(`Supabase product query failed: ${productError.message}`)
+    if (productError) throw new Error(`Supabase products query failed: ${productError.message}`)
 
     // Fetch all bundles and match client slugs in-memory
     const { data: dbBundles, error: bundleError } = await supabaseAdmin
-      .from('bundle') // Change table name to singular 'bundle'
+      .from('bundles')
       .select('title, bundle_retail_price')
 
     if (bundleError) throw new Error(`Supabase bundles query failed: ${bundleError.message}`)
