@@ -45,16 +45,15 @@ serve(async (req) => {
 
     // ── Fetch matching rows from Supabase ───────────────────────────────────
     const { data: dbProducts, error: productError } = await supabaseAdmin
-      .from('products')
-      .select('external_id, name, retail_price')  // 'name' is the actual column; frontend maps it to .title
+      .from('product') // Change table name to singular 'product'
+      .select('external_id, name, retail_price')
       .in('external_id', productCodes.length > 0 ? productCodes : ['__none__'])
 
-    if (productError) throw new Error(`Supabase products query failed: ${productError.message}`)
+    if (productError) throw new Error(`Supabase product query failed: ${productError.message}`)
 
-    // Fetch all bundles and match client slugs in-memory to handle title
-    // formatting differences (spaces vs hyphens, case, ampersands, etc.)
+    // Fetch all bundles and match client slugs in-memory
     const { data: dbBundles, error: bundleError } = await supabaseAdmin
-      .from('bundles')
+      .from('bundle') // Change table name to singular 'bundle'
       .select('title, bundle_retail_price')
 
     if (bundleError) throw new Error(`Supabase bundles query failed: ${bundleError.message}`)
