@@ -56,21 +56,36 @@ serve(async (req) => {
 
     if (productError) throw new Error(`Supabase products query failed: ${productError.message}`)
 
-    // Fetch all bundles and match client slugs in-memory
+    // Map of bundle slug names to their corresponding database integer IDs
+    const BUNDLE_SLUG_TO_ID: Record<string, number> = {
+      'high-performance-engine': 1,
+      'metabolic-weight-flush': 2,
+      'stress-anxiety-fortress': 3,
+      'sinus-respiratory-shield': 4,
+      'alpha-male-vitality': 5,
+      'longevity-organ-shield': 6,
+      'womb-wellness-ritual': 7,
+      'detox-liver-flush': 8,
+      'gastric-reflux-harmony': 9,
+      'golden-years-mobility': 10,
+      'screen-time-eye-strain': 11,
+      'blood-sugar-craving-control': 12,
+      'cystic-acne-skin-ritual': 13,
+      'vascular-blood-pressure': 14,
+      'weekend-recovery': 15
+    };
+
+    const bundleIds = bundleCodes
+      .map((code: string) => BUNDLE_SLUG_TO_ID[code])
+      .filter(Boolean);
+
+    // Fetch all bundles matching the resolved integer IDs
     const { data: dbBundles, error: bundleError } = await supabaseAdmin
       .from('bundles')
-      .select('title, bundle_retail_price')
+      .select('id, title, bundle_retail_price')
+      .in('id', bundleIds.length > 0 ? bundleIds : [-1])
 
     if (bundleError) throw new Error(`Supabase bundles query failed: ${bundleError.message}`)
-
-    // Slug normaliser: converts "Metabolic & Weight" → "metabolic-and-weight"
-    const toSlug = (str: string) => (str || '').toLowerCase()
-      .replace(/&/g, 'and')
-      .replace(/[^a-z0-9\s-]/g, '')
-      .replace(/[-\s]+/g, '_')
-      .replace(/_+/g, '_')
-      .replace(/^_|_$/g, '')
-      .replace(/_/g, '-')
 
     // ── Calculate verified server-side order total ──────────────────────────
     let calculatedOrderTotal = 0
@@ -80,7 +95,6 @@ serve(async (req) => {
       if (cartItem.item_type === 'single') {
         const match = dbProducts?.find((p: any) => p.external_id === cartItem.database_id)
         if (!match) {
-          // Surface the exact failing SKU — this is what was causing empty totals
           console.error(`[checkout] No product found for external_id="${cartItem.database_id}". Check Supabase products table.`)
           throw new Error(`Product not found in database: "${cartItem.database_id}". Order cannot be completed.`)
         }
@@ -89,17 +103,20 @@ serve(async (req) => {
         pricedLineItems.push({
           item_type:   'single',
           database_id: cartItem.database_id,
-          title:       match.name,          // DB column is 'name'; exposed as 'title' in payload
+          title:       match.name,
           unit_price:  match.retail_price,
           quantity:    cartItem.quantity,
           line_total:  lineTotal
         })
 
       } else if (cartItem.item_type === 'bundle') {
-        const targetSlug = toSlug(cartItem.database_id)
-        const match = dbBundles?.find((b: any) => toSlug(b.title) === targetSlug)
+        const intId = BUNDLE_SLUG_TO_ID[cartItem.database_id]
+        if (!intId) {
+          throw new Error(`Invalid bundle identifier: "${cartItem.database_id}".`)
+        }
+        const match = dbBundles?.find((b: any) => b.id === intId)
         if (!match) {
-          console.error(`[checkout] No bundle matched slug="${targetSlug}" (original="${cartItem.database_id}"). Check Supabase bundles table.`)
+          console.error(`[checkout] No bundle found for id=${intId} (slug="${cartItem.database_id}"). Check Supabase bundles table.`)
           throw new Error(`Bundle not found in database: "${cartItem.database_id}". Order cannot be completed.`)
         }
         const lineTotal = match.bundle_retail_price * cartItem.quantity
