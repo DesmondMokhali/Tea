@@ -187,6 +187,7 @@
   <script>
     const BUNDLES_CATALOG = {
       "high-performance-engine": {
+        db_id: 1,
         name: "24-Hour High-Performance Engine",
         price: 449.95,
         value: 500.00,
@@ -207,6 +208,7 @@
         ]
       },
       "metabolic-weight-flush": {
+        db_id: 2,
         name: "Comprehensive Metabolic & Weight Flush",
         price: 599.95,
         value: 700.00,
@@ -230,6 +232,7 @@
         ]
       },
       "stress-mood-fortress": {
+        db_id: 3,
         name: "Ultimate Stress, Anxiety & Mood Fortress",
         price: 449.95,
         value: 500.00,
@@ -250,6 +253,7 @@
         ]
       },
       "sinus-respiratory-shield": {
+        db_id: 4,
         name: "Chronic Sinus & Deep Respiratory Shield",
         price: 449.95,
         value: 500.00,
@@ -270,6 +274,7 @@
         ]
       },
       "alpha-male-vitality": {
+        db_id: 5,
         name: "Alpha Male Vitality & Performance Protocol",
         price: 369.95,
         value: 400.00,
@@ -290,6 +295,7 @@
         ]
       },
       "longevity-organ-shield": {
+        db_id: 6,
         name: "Whole-Body Longevity & Organ Shield",
         price: 899.95,
         value: 1000.00,
@@ -316,6 +322,7 @@
         ]
       },
       "womb-wellness-restoration": {
+        db_id: 7,
         name: "Womb Wellness & Cycle Restoration Ritual",
         price: 549.95,
         value: 600.00,
@@ -337,6 +344,7 @@
         ]
       },
       "systemic-detox-liver-flush": {
+        db_id: 8,
         name: "Deep Systemic Detox & Total Liver Flush",
         price: 369.95,
         value: 400.00,
@@ -357,6 +365,7 @@
         ]
       },
       "gastric-reflux-gut-harmony": {
+        db_id: 9,
         name: "Advanced Gastric Reflux & Gut Harmony Shield",
         price: 449.95,
         value: 500.00,
@@ -378,6 +387,7 @@
         ]
       },
       "joint-mobility-rescue": {
+        db_id: 10,
         name: "Golden Years Joint & Mobility Rescue",
         price: 549.95,
         value: 600.00,
@@ -399,6 +409,7 @@
         ]
       },
       "eye-strain-neck-tension": {
+        db_id: 11,
         name: "Screen-Time Eye Strain & Neck Tension Block",
         price: 369.95,
         value: 400.00,
@@ -418,6 +429,7 @@
         ]
       },
       "sugar-craving-control": {
+        db_id: 12,
         name: "Ultimate Blood Sugar & Craving Control",
         price: 369.95,
         value: 400.00,
@@ -437,6 +449,7 @@
         ]
       },
       "cystic-acne-skin-ritual": {
+        db_id: 13,
         name: "Advanced Cystic Acne & Flawless Skin Ritual",
         price: 279.95,
         value: 300.00,
@@ -455,6 +468,7 @@
         ]
       },
       "vascular-blood-pressure": {
+        db_id: 14,
         name: "Chronic Vascular & Blood Pressure Loop",
         price: 449.95,
         value: 500.00,
@@ -475,6 +489,7 @@
         ]
       },
       "weekend-recovery-organ-shield": {
+        db_id: 15,
         name: "Weekend Recovery & Ultimate Organ Shield",
         price: 349.95,
         value: 400.00,
@@ -493,8 +508,6 @@
           { title: "Nausea Intercept", product: "Huo Xiang Zheng Qi Wan", desc: "Instantly settle an upside-down stomach and clear gastrointestinal dampness." }
         ]
       }
-    };
-
     const addons = [
       { id: 'TG-TEA-012', name: 'Cooling Tea', price: 100 },
       { id: 'TG-TEA-014', name: 'Liver Care Tea', price: 100 }
@@ -674,13 +687,13 @@
       // This allows the checkout payload to correctly emit:
       //   { bundle_id: X, product_id: null, quantity: 1, ... }
       // The backend resolves individual products via the bundle_items table.
-      const existingBundle = basket.find(x => x._bundleId === currentBundleKey);
+      const existingBundle = basket.find(x => x._bundleId === b.db_id);
       if (existingBundle) {
         existingBundle.qty++;
       } else {
         basket.push({
-          id: currentBundleKey,         // used as a stable cart key
-          _bundleId: currentBundleKey,  // signals this is a bundle to the checkout
+          id: b.db_id,              // integer DB primary key — used as stable cart key
+          _bundleId: b.db_id,       // integer — sent as database_id in checkout payload
           _bundleName: b.name,
           _bundlePrice: b.price,
           qty: 1
