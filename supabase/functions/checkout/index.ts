@@ -6,6 +6,26 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
+// Add this bundle slug-to-ID lookup map at the top of your handler
+const BUNDLE_ID_MAP: Record<string, number> = {
+  "high-performance-engine": 1,
+  "metabolic-weight-flush": 2,
+  "stress-anxiety-mood-fortress": 3,
+  "sinus-respiratory-shield": 4,
+  "alpha-male-vitality": 5,
+  "whole-body-longevity": 6,
+  "womb-wellness-cycle": 7,
+  "deep-systemic-detox": 8,
+  "gastric-reflux-gut-harmony": 9,
+  "golden-years-joint-mobility": 10,
+  "joint-mobility-rescue": 10,
+  "screen-time-eye-strain": 11,
+  "blood-sugar-craving-control": 12,
+  "advanced-cystic-acne": 13,
+  "vascular-blood-pressure": 14,
+  "weekend-recovery": 15
+};
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
@@ -61,16 +81,24 @@ serve(async (req) => {
       'high-performance-engine': 1,
       'metabolic-weight-flush': 2,
       'stress-anxiety-fortress': 3,
+      'stress-anxiety-mood-fortress': 3,
       'sinus-respiratory-shield': 4,
       'alpha-male-vitality': 5,
       'longevity-organ-shield': 6,
+      'whole-body-longevity': 6,
       'womb-wellness-ritual': 7,
+      'womb-wellness-cycle': 7,
       'detox-liver-flush': 8,
+      'deep-systemic-detox': 8,
       'gastric-reflux-harmony': 9,
+      'gastric-reflux-gut-harmony': 9,
       'golden-years-mobility': 10,
+      'golden-years-joint-mobility': 10,
+      'joint-mobility-rescue': 10,
       'screen-time-eye-strain': 11,
       'blood-sugar-craving-control': 12,
       'cystic-acne-skin-ritual': 13,
+      'advanced-cystic-acne': 13,
       'vascular-blood-pressure': 14,
       'weekend-recovery': 15
     };
@@ -138,6 +166,23 @@ serve(async (req) => {
 
     // ── Build the Make.com payload ──────────────────────────────────────────
     // Includes the full priced line items array so Make.com has all context
+    const processedLineItems = pricedLineItems.map((item: any) => {
+      if (item.item_type === "bundle") {
+        // Look up the integer ID from the map using the lowercase slug string
+        const slug = item.database_id; 
+        const numericId = BUNDLE_ID_MAP[slug];
+        
+        return {
+          ...item,
+          // Assign the clean integer ID if found, otherwise keep original fallback
+          database_id: numericId ? numericId : item.database_id 
+        };
+      }
+      
+      // Return single items exactly as they are
+      return item;
+    });
+
     const makePayload = {
       tracking_id,
       delivery_profile,
@@ -145,7 +190,7 @@ serve(async (req) => {
       order_total:   calculatedOrderTotal,          // always a valid number
       item_count:    pricedLineItems.reduce((s: number, i: any) => s + i.quantity, 0),
       // Full line items — each has item_type, database_id, title, unit_price, quantity, line_total
-      line_items:    pricedLineItems,
+      line_items:    processedLineItems,
       // Raw clientCart forwarded verbatim so Make.com can re-check database_id if needed
       client_cart:   clientCart
     }

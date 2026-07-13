@@ -6864,14 +6864,17 @@ function addToCart(idx) {
     console.error('[Cart] addToCart: no product at idx', idx, '— check catalog load');
     return;
   }
-  const existing = cart.find(i => i.id === p.external_id);
-  if (existing) {
-    existing.qty += 1;
+  const existingIndex = cart.findIndex(i => i.id === p.external_id);
+  if (existingIndex > -1) {
+    // Already in cart — remove it (toggle off)
+    cart.splice(existingIndex, 1);
+    updateCart();
+    showToast(`${p.title} removed from cart.`);
   } else {
     cart.push({ id: p.external_id, qty: 1 });
+    updateCart();
+    showToast(`${p.title} added to cart!`);
   }
-  updateCart();
-  showToast(`${p.title} added to cart!`);
 }
 
 function addCard(e, idx) {
@@ -6890,17 +6893,46 @@ function showCart() {
 }
 
 // ── CHECKOUT FLOW ──
+
+// Save a single checkout field to localStorage
+function _saveCheckoutField(fieldId) {
+  const el = document.getElementById(fieldId);
+  if (el) localStorage.setItem('chk_' + fieldId, el.value);
+}
+
+// Restore all checkout form fields from localStorage
+function _restoreCheckoutForm() {
+  const fields = ['c-name','c-email','c-phone','c-address','c-suburb','c-city','c-zip','c-province','c-instructions'];
+  fields.forEach(id => {
+    const el = document.getElementById(id);
+    const saved = localStorage.getItem('chk_' + id);
+    if (el && saved !== null) el.value = saved;
+  });
+}
+
+// Clear all checkout form fields from localStorage (call after successful order)
+function _clearCheckoutStorage() {
+  const fields = ['c-name','c-email','c-phone','c-address','c-suburb','c-city','c-zip','c-province','c-instructions'];
+  fields.forEach(id => localStorage.removeItem('chk_' + id));
+}
+
 function openCheckout() {
   toggleCart(false);
   document.getElementById('checkout-content').style.display = 'block';
   document.getElementById('checkout-success').style.display = 'none';
-  
-  // Reset form fields
-  document.getElementById('c-name').value = '';
-  document.getElementById('c-email').value = '';
-  document.getElementById('c-address').value = '';
-  document.getElementById('c-zip').value = '';
-  document.getElementById('c-city').value = '';
+
+  // Restore any previously typed info from localStorage instead of blanking the form
+  _restoreCheckoutForm();
+
+  // Attach auto-save listeners (safe to add multiple times — replaced with cloneNode trick)
+  const fields = ['c-name','c-email','c-phone','c-address','c-suburb','c-city','c-zip','c-province','c-instructions'];
+  fields.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && !el.dataset.chkSaveAttached) {
+      el.addEventListener('input', () => _saveCheckoutField(id));
+      el.dataset.chkSaveAttached = '1';
+    }
+  });
   
   // Render Summary
   const summary = document.getElementById('chk-summary');
@@ -7068,9 +7100,10 @@ function submitOrder(e) {
     document.getElementById('checkout-success').style.display = 'block';
     lucide.createIcons({ nameAttr: 'data-lucide', attrs: { class: '' }, nodes: [document.getElementById('checkout-success')] });
 
-    // Clear cart
+    // Clear cart and wipe saved checkout form data
     cart = [];
     updateCart();
+    _clearCheckoutStorage();
   })
   .catch(err => {
     console.error("❌ Secure checkout error:", err.message);
