@@ -103,9 +103,16 @@ serve(async (req) => {
       'weekend-recovery': 15
     };
 
+    const getBundleId = (id: any): number | null => {
+      if (typeof id === 'number') return id;
+      const num = Number(id);
+      if (!isNaN(num)) return num;
+      return BUNDLE_SLUG_TO_ID[id] ?? null;
+    };
+
     const bundleIds = bundleCodes
-      .map((code: string) => BUNDLE_SLUG_TO_ID[code])
-      .filter(Boolean);
+      .map(getBundleId)
+      .filter((id): id is number => id !== null);
 
     // Fetch all bundles matching the resolved integer IDs
     const { data: dbBundles, error: bundleError } = await supabaseAdmin
@@ -138,7 +145,7 @@ serve(async (req) => {
         })
 
       } else if (cartItem.item_type === 'bundle') {
-        const intId = BUNDLE_SLUG_TO_ID[cartItem.database_id]
+        const intId = getBundleId(cartItem.database_id)
         if (!intId) {
           throw new Error(`Invalid bundle identifier: "${cartItem.database_id}".`)
         }
