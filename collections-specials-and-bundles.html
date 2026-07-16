@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Specials &amp; Bundles | The Herbalist</title>
+  <meta name="description" content="Curated synergistic herbal bundles combining Traditional Chinese teas and pills. Target specific wellness goals at exclusive bundle prices." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
-  <!-- Lucide Icon Font for site compatibility -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/lucide-static@latest/font/lucide.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -30,30 +30,294 @@
       }
     }
   </script>
+  <style>
+    :root {
+      --f:#1b3a28;--fm:#2a5040;--fl:#3a6852;
+      --g:#c8a06e;--gl:#dab882;--gp:#f0e0c4;
+      --c:#f7f2e6;--cd:#e8e0cc;
+      --s:#6a9970;--sl:#9abf9d;
+      --t:#182415;--tm:#3d5c44;--tl:#7a9280;
+      --w:#fff;
+      --tr:.24s cubic-bezier(.4,0,.2,1);
+      --header-bg: var(--f);
+      --header-border: rgba(255,255,255,0.1);
+      --search-bg: rgba(255,255,255,0.08);
+    }
+    /* ── Top Utility Bar ── */
+    .top-bar {
+      background: #112519;
+      color: rgba(255,255,255,0.70);
+      font-size: 11.5px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-family: 'DM Sans', sans-serif;
+    }
+    .top-bar-inner {
+      width: 100%; max-width: 1300px; margin: 0 auto;
+      padding: 0 24px; display: flex; justify-content: space-between;
+    }
+    .top-bar-left, .top-bar-right { display: flex; align-items: center; gap: 12px; }
+    .top-bar-right a { color: rgba(255,255,255,0.70); text-decoration: none; transition: color var(--tr); }
+    .top-bar-right a:hover { color: var(--gl); }
+    .bar-sep { color: rgba(255,255,255,0.15); }
+
+    /* ── Main Header ── */
+    .main-header {
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--header-border);
+      padding: 12px 24px;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 24px rgba(0,0,0,0.2);
+      font-family: 'DM Sans', sans-serif;
+    }
+    .main-header-inner {
+      max-width: 1300px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .main-header .nlogo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .main-header .nlogo .ntext b {
+      font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600;
+      color: var(--gl); letter-spacing: 0.04em; display: block;
+    }
+    .main-header .nlogo .ntext small {
+      font-size: 9.5px; color: var(--sl); letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .main-header .nlogo .nmark {
+      width: 34px; height: 34px; background: var(--g); color: var(--f);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 15px; flex-shrink: 0;
+    }
+    /* Search */
+    .header-search-wrap { flex: 1; max-width: 580px; position: relative; display: flex; align-items: center; }
+    .header-search-wrap input {
+      width: 100%; background: var(--search-bg); border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 24px; padding: 10px 100px 10px 42px;
+      font-family: 'DM Sans', sans-serif; font-size: 13.5px; color: #fff; outline: none;
+      transition: all var(--tr);
+    }
+    .header-search-wrap input::placeholder { color: rgba(255,255,255,0.4); }
+    .header-search-wrap input:focus {
+      background: rgba(255,255,255,0.12); border-color: var(--g);
+      box-shadow: 0 0 0 3px rgba(200,160,110,0.15);
+    }
+    .header-search-wrap .search-icon {
+      position: absolute; left: 16px; color: rgba(255,255,255,0.4);
+      display: flex; align-items: center; pointer-events: none;
+    }
+    .header-search-wrap .search-icon svg { width: 15px; height: 15px; }
+    .header-search-wrap .search-btn {
+      position: absolute; right: 5px; background: var(--g); color: var(--f);
+      border: none; border-radius: 20px; padding: 6px 16px;
+      font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700;
+      cursor: pointer; transition: all var(--tr);
+    }
+    .header-search-wrap .search-btn:hover { background: var(--gl); }
+    /* Actions */
+    .header-actions { display: flex; align-items: center; gap: 20px; }
+    .action-link {
+      display: flex; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.85); text-decoration: none;
+      font-size: 13.5px; font-weight: 600; transition: color var(--tr);
+    }
+    .action-link:hover { color: var(--gl); }
+    .action-link svg { width: 18px; height: 18px; color: var(--gl); }
+    /* Cart Button */
+    .header-cart-btn {
+      background: var(--g); color: var(--f); border: none; border-radius: 28px;
+      padding: 8px 18px; cursor: pointer; display: flex; align-items: center;
+      gap: 12px; transition: all var(--tr); text-decoration: none;
+    }
+    .header-cart-btn:hover { background: var(--gl); transform: translateY(-1px); }
+    .cart-icon-wrap { position: relative; display: flex; align-items: center; }
+    .cart-icon-wrap svg { width: 18px; height: 18px; color: var(--f); }
+    .cart-badge {
+      position: absolute; top: -8px; right: -10px;
+      background: var(--f); color: var(--g); font-size: 9px; font-weight: 700;
+      min-width: 16px; height: 16px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 4px; border: 1px solid var(--g); transition: transform 0.2s ease;
+    }
+    .cart-btn-text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.1; }
+    .cart-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(27,58,40,0.7); }
+    .cart-total { font-size: 12.5px; font-weight: 700; color: var(--f); }
+    /* Category Nav */
+    .category-nav { background: var(--fm); border-bottom: 1px solid rgba(0,0,0,0.12); padding: 10px 24px; font-family: 'DM Sans', sans-serif; }
+    .category-nav-inner { max-width: 1300px; margin: 0 auto; display: flex; gap: 28px; align-items: center; }
+    .cat-link { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13px; font-weight: 600; transition: color var(--tr); }
+    .cat-link:hover { color: var(--gl); }
+    .cat-link.active { color: var(--g); font-weight: 700; }
+    .nav-dropdown { position: relative; }
+    .nav-dropbtn {
+      color: rgba(255,255,255,0.75); font-size: 13px; font-weight: 600;
+      text-decoration: none; cursor: pointer;
+      display: inline-flex; align-items: center; transition: color var(--tr);
+    }
+    .nav-dropdown:hover .nav-dropbtn { color: var(--gl); }
+    .nav-dropdown-content {
+      display: none; position: absolute; top: calc(100% + 10px); left: 0;
+      background: var(--f); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      min-width: 180px; z-index: 200; overflow: hidden;
+    }
+    .nav-dropdown:hover .nav-dropdown-content { display: block; }
+    .nav-dropdown-content a {
+      display: block; padding: 10px 16px; color: rgba(255,255,255,0.8);
+      text-decoration: none; font-size: 13px; font-weight: 500;
+      transition: background var(--tr), color var(--tr);
+    }
+    .nav-dropdown-content a:hover { background: rgba(255,255,255,0.08); color: var(--gl); }
+    /* Hamburger */
+    .hamburger-btn { display: none; background: none; border: none; color: var(--gl); cursor: pointer; padding: 4px; }
+    .hamburger-btn svg { width: 24px; height: 24px; }
+    /* Mobile Search Row */
+    .mobile-search-row { display: none; background: var(--f); padding: 8px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    /* Mobile Drawer */
+    .mobile-menu-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 300;
+      opacity: 0; pointer-events: none; transition: opacity var(--tr);
+    }
+    .mobile-menu-overlay.on { opacity: 1; pointer-events: all; }
+    .mobile-menu-drawer {
+      position: fixed; top: 0; left: -280px; width: 280px; height: 100vh;
+      background: var(--f); z-index: 310; box-shadow: 4px 0 24px rgba(0,0,0,0.3);
+      display: flex; flex-direction: column; transition: left 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    .mobile-menu-drawer.on { left: 0; }
+    .mobile-menu-hdr {
+      padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .mobile-menu-hdr h3 { font-family: 'Playfair Display', serif; color: var(--gl); font-size: 18px; }
+    .mobile-menu-close { background: none; border: none; font-size: 24px; color: var(--sl); cursor: pointer; }
+    .mobile-menu-body { padding: 20px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto; }
+    .mobile-menu-body a {
+      color: rgba(255,255,255,0.85); text-decoration: none; font-size: 14.5px;
+      font-weight: 600; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .mobile-menu-body a:hover { color: var(--gl); }
+    .mobile-menu-section { display: flex; flex-direction: column; gap: 10px; padding-left: 12px; border-left: 2px solid rgba(255,255,255,0.15); margin: 6px 0; }
+    .mobile-menu-section-title { font-size: 11px; text-transform: uppercase; color: var(--sl); font-weight: 700; letter-spacing: 0.08em; }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .top-bar, .category-nav, .header-actions .action-link { display: none; }
+      .hamburger-btn { display: block; }
+      .main-header { padding: 10px 16px; }
+      .main-header-inner { gap: 12px; }
+      .main-header .header-search-wrap { display: none; }
+      .mobile-search-row { display: block; position: sticky; top: 60px; z-index: 90; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+      .mobile-search-row .header-search-wrap { display: flex; max-width: 100%; }
+      .header-actions { gap: 12px; }
+      .header-cart-btn { padding: 6px 12px; }
+      .cart-btn-text { display: none; }
+    }
+  </style>
 </head>
 <body class="bg-[#f7f2e6] text-[#182415] font-sans antialiased">
 
-  <!-- Header -->
-  <header class="border-b border-white/10 bg-[#1b3a28] sticky top-0 z-50 shadow-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-2 no-underline">
-        <span class="h-8 w-8 rounded-full bg-[#c8a06e] flex items-center justify-center text-[#1b3a28] font-bold text-sm">
-          <i class="lucide-leaf" style="font-size: 16px;"></i>
-        </span>
-        <span class="font-serif font-bold text-lg text-[#dab882] tracking-wider">The Herbalist</span>
+  <!-- ── TOP UTILITY BAR ── -->
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <div class="top-bar-left">
+        <span><i data-lucide="phone" style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:5px;color:var(--gl)"></i>Careline: +27 (0) 11 888 3000</span>
+        <span class="bar-sep">|</span>
+        <span><i data-lucide="truck" style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:5px;color:var(--gl)"></i>Free Delivery on Orders Over R500</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="index.html#contact">Track Order</a>
+        <span class="bar-sep">|</span>
+        <a href="#" onclick="alert('Benefit Rewards program details coming soon!')">Benefit Card</a>
+        <span class="bar-sep">|</span>
+        <a href="#" onclick="alert('Accounts integration coming soon!')">Login / Register</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MAIN HEADER ── -->
+  <header class="main-header">
+    <div class="main-header-inner">
+      <!-- Hamburger (Mobile) -->
+      <button class="hamburger-btn" onclick="toggleMobileMenu(true)">
+        <i data-lucide="menu"></i>
+      </button>
+      <!-- Logo -->
+      <a class="nlogo" href="index.html">
+        <div class="nmark"><i data-lucide="leaf"></i></div>
+        <div class="ntext"><b>The Herbalist</b><small>Traditional Chinese Wellness</small></div>
       </a>
-      <nav class="hidden md:flex space-x-8 text-sm font-semibold">
-        <a href="index.html#ga" class="text-white/80 hover:text-[#dab882] transition">Catalogue</a>
-        <a href="blog.html" class="text-white/80 hover:text-[#dab882] transition">Wellness Journal</a>
-        <a href="collections-specials-and-bundles.html" class="text-[#dab882] font-bold">Bundle Specials</a>
-      </nav>
-      <div class="flex items-center gap-4">
-        <a href="basket-v2.html" class="bg-[#c8a06e] hover:bg-[#dab882] text-[#1b3a28] px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition no-underline flex items-center gap-2">
-          <i class="lucide-shopping-cart" style="font-size: 14px;"></i> Go To Basket
+      <!-- Search -->
+      <div class="header-search-wrap">
+        <span class="search-icon"><i data-lucide="search"></i></span>
+        <input type="text" id="si" placeholder="Search products, remedies, ingredients..." onkeydown="if(event.key==='Enter') window.location.href='index.html?q='+encodeURIComponent(this.value)+'#ga'" />
+        <button class="search-btn" onclick="window.location.href='index.html?q='+encodeURIComponent(document.getElementById('si').value)+'#ga'">Search</button>
+      </div>
+      <!-- Actions -->
+      <div class="header-actions">
+        <a href="#" class="action-link" onclick="alert('Accounts integration coming soon!')">
+          <i data-lucide="user"></i>
+          <span>Account</span>
+        </a>
+        <a href="basket-v2.html" class="header-cart-btn">
+          <div class="cart-icon-wrap">
+            <i data-lucide="shopping-cart"></i>
+            <span class="cart-badge" id="cnt">0</span>
+          </div>
+          <div class="cart-btn-text">
+            <span class="cart-label">Basket</span>
+            <span class="cart-total" id="header-cart-total">R0.00</span>
+          </div>
         </a>
       </div>
     </div>
   </header>
+
+  <!-- ── MOBILE SEARCH ROW ── -->
+  <div class="mobile-search-row">
+    <div class="header-search-wrap">
+      <span class="search-icon"><i data-lucide="search"></i></span>
+      <input type="text" id="si-mobile" placeholder="Search products, remedies..." onkeydown="if(event.key==='Enter') window.location.href='index.html?q='+encodeURIComponent(this.value)+'#ga'" />
+    </div>
+  </div>
+
+  <!-- ── CATEGORY NAV ── -->
+  <nav class="category-nav">
+    <div class="category-nav-inner">
+      <a href="index.html" class="cat-link">Home</a>
+      <div class="nav-dropdown">
+        <a href="index.html?filter=all#ga" class="nav-dropbtn">Products <i data-lucide="chevron-down" style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-left:3px"></i></a>
+        <div class="nav-dropdown-content">
+          <a href="index.html?filter=all#ga">All Products</a>
+          <a href="index.html?filter=teas#ga">Herbal Teas</a>
+          <a href="index.html?filter=pills#ga">Herbal Pills</a>
+        </div>
+      </div>
+      <a href="blog.html" class="cat-link">Wellness Blog</a>
+      <a href="collections-specials-and-bundles.html" class="cat-link active">Bundle Specials</a>
+      <a href="index.html#contact" class="cat-link">Contact Us</a>
+    </div>
+  </nav>
+
+  <!-- ── MOBILE DRAWER ── -->
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay" onclick="toggleMobileMenu(false)"></div>
+  <div class="mobile-menu-drawer" id="mobile-menu-drawer">
+    <div class="mobile-menu-hdr">
+      <h3>Menu</h3>
+      <button class="mobile-menu-close" onclick="toggleMobileMenu(false)">&times;</button>
+    </div>
+    <div class="mobile-menu-body">
+      <a href="index.html" onclick="toggleMobileMenu(false)">Home</a>
+      <div class="mobile-menu-section">
+        <div class="mobile-menu-section-title">Products</div>
+        <a href="index.html?filter=all#ga" onclick="toggleMobileMenu(false)">All Products</a>
+        <a href="index.html?filter=teas#ga" onclick="toggleMobileMenu(false)">Herbal Teas</a>
+        <a href="index.html?filter=pills#ga" onclick="toggleMobileMenu(false)">Herbal Pills</a>
+      </div>
+      <a href="blog.html" onclick="toggleMobileMenu(false)">Wellness Blog</a>
+      <a href="collections-specials-and-bundles.html" onclick="toggleMobileMenu(false)" style="color: var(--g); font-weight: bold;">Bundle Specials</a>
+      <a href="index.html#contact" onclick="toggleMobileMenu(false)">Contact Us</a>
+    </div>
+  </div>
 
   <!-- Page Banner -->
   <div class="bg-[#1b3a28] text-white py-12 lg:py-16 text-center relative overflow-hidden">
@@ -312,6 +576,45 @@
       });
     }
     renderGrid();
+  </script>
+
+  <!-- Lucide SVG Icons Init -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>
+    // Init Lucide icons
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+
+    // Mobile menu toggle
+    function toggleMobileMenu(open) {
+      const overlay = document.getElementById('mobile-menu-overlay');
+      const drawer  = document.getElementById('mobile-menu-drawer');
+      if (!overlay || !drawer) return;
+      if (open) {
+        overlay.classList.add('on');
+        drawer.classList.add('on');
+        document.body.style.overflow = 'hidden';
+      } else {
+        overlay.classList.remove('on');
+        drawer.classList.remove('on');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Cart counter from localStorage
+    (function initCartDisplay() {
+      try {
+        const cart = JSON.parse(localStorage.getItem('tangren_cart') || '[]');
+        const qty  = cart.reduce((s, i) => s + (i.qty || 1), 0);
+        const total = cart.reduce((s, i) => {
+          const price = i._bundlePrice || 0;
+          return s + price * (i.qty || 1);
+        }, 0);
+        const badge = document.getElementById('cnt');
+        const headerTotal = document.getElementById('header-cart-total');
+        if (badge) badge.textContent = qty;
+        if (headerTotal && total > 0) headerTotal.textContent = 'R' + total.toFixed(2);
+      } catch(e) {}
+    })();
   </script>
 </body>
 </html>
