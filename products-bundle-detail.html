@@ -147,10 +147,10 @@
     <!-- Tabs Container -->
     <div class="bg-white border border-[#e8e0cc] rounded-2xl p-6 lg:p-8 shadow-sm mt-12">
       <div class="flex border-b border-[#e8e0cc] mb-8 overflow-x-auto">
-        <button onclick="switchTab('routine')" id="tab-routine" class="pb-4 px-6 font-serif text-lg font-bold border-b-2 border-[#1b3a28] text-[#1b3a28] whitespace-nowrap transition duration-200">
+        <button onclick="switchTab('routine')" id="tab-routine" class="pb-4 px-6 font-sans text-lg font-bold border-b-2 border-[#1b3a28] text-[#1b3a28] whitespace-nowrap transition duration-200">
           The Daily Routine
         </button>
-        <button onclick="switchTab('benefits')" id="tab-benefits" class="pb-4 px-6 font-serif text-lg font-bold border-b-2 border-transparent text-[#7a9280] hover:text-[#1b3a28] whitespace-nowrap transition duration-200">
+        <button onclick="switchTab('benefits')" id="tab-benefits" class="pb-4 px-6 font-sans text-lg font-bold border-b-2 border-transparent text-[#7a9280] hover:text-[#1b3a28] whitespace-nowrap transition duration-200">
           Targeted Benefits
         </button>
       </div>
@@ -699,10 +699,12 @@
       const tabs = ['routine', 'benefits'];
       tabs.forEach(t => {
         const btn = document.getElementById(`tab-${t}`);
-        if (t === tab) {
-          btn.className = 'pb-4 px-6 font-serif text-lg font-bold border-b-2 border-[#1b3a28] text-[#1b3a28] whitespace-nowrap transition duration-200';
-        } else {
-          btn.className = 'pb-4 px-6 font-serif text-lg font-bold border-b-2 border-transparent text-[#7a9280] hover:text-[#1b3a28] whitespace-nowrap transition duration-200';
+        if (btn) {
+          if (t === tab) {
+            btn.className = 'pb-4 px-6 font-sans text-lg font-bold border-b-2 border-[#1b3a28] text-[#1b3a28] whitespace-nowrap transition duration-200';
+          } else {
+            btn.className = 'pb-4 px-6 font-sans text-lg font-bold border-b-2 border-transparent text-[#7a9280] hover:text-[#1b3a28] whitespace-nowrap transition duration-200';
+          }
         }
       });
 
@@ -710,6 +712,8 @@
       if (!b) return;
 
       const content = document.getElementById('tab-content');
+      if (!content) return;
+
       if (tab === 'routine') {
         content.innerHTML = `
           <div class="space-y-8 relative before:absolute before:inset-0 before:left-4 before:w-[2px] before:bg-[#e8e0cc] py-2">
@@ -717,7 +721,7 @@
               <div class="relative pl-10">
                 <div class="absolute left-[9px] top-1 h-4 w-4 rounded-full border-2 border-[#1b3a28] bg-white"></div>
                 <h4 class="font-bold text-sm text-[#1b3a28] uppercase tracking-wider mb-1">${r.title}</h4>
-                <h3 class="font-serif text-lg font-bold text-[#182415] mb-2">${r.product}</h3>
+                <h3 class="font-sans text-lg font-bold text-[#182415] mb-2">${r.product}</h3>
                 <p class="text-sm text-[#3d5c44] leading-relaxed max-w-2xl">${r.desc}</p>
               </div>
             `).join('')}
