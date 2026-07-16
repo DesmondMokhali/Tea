@@ -536,7 +536,8 @@
 
       if (!b) return;
 
-      document.getElementById('breadcrumb-active').textContent = b.name;
+      const activeBreadcrumb = document.getElementById('breadcrumb-active');
+      if (activeBreadcrumb) activeBreadcrumb.textContent = b.name;
       
       // Replace hero block with bundle images rotator
       const heroContainer = document.getElementById('bundle-hero-container');
@@ -654,8 +655,11 @@
       if (!b) return;
       
       const total = b.price + (selectedAddons.length * 100);
-      document.getElementById('price-display').textContent = `R${total.toFixed(2)}`;
-      document.getElementById('bottom-total').textContent = `R${total.toFixed(2)}`;
+      const priceDisplay = document.getElementById('price-display');
+      if (priceDisplay) priceDisplay.textContent = `R${total.toFixed(2)}`;
+      
+      const bottomTotal = document.getElementById('bottom-total');
+      if (bottomTotal) bottomTotal.textContent = `R${total.toFixed(2)}`;
 
       const remaining = Math.max(0, 500 - total);
       const statusText = remaining === 0 
@@ -666,13 +670,17 @@
         ? 'FREE Delivery Unlocked!'
         : `Add R${remaining.toFixed(2)} more for FREE shipping`;
 
-      document.getElementById('shipping-status').textContent = statusText;
-      document.getElementById('bottom-badge').textContent = badgeText;
-      
-      if (remaining === 0) {
-        document.getElementById('bottom-badge').className = 'text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full';
-      } else {
-        document.getElementById('bottom-badge').className = 'text-[10px] font-bold text-[#854d0e] bg-[#fef3c7] px-2 py-0.5 rounded-full';
+      const shippingStatus = document.getElementById('shipping-status');
+      if (shippingStatus) shippingStatus.textContent = statusText;
+
+      const bottomBadge = document.getElementById('bottom-badge');
+      if (bottomBadge) {
+        bottomBadge.textContent = badgeText;
+        if (remaining === 0) {
+          bottomBadge.className = 'text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full';
+        } else {
+          bottomBadge.className = 'text-[10px] font-bold text-[#854d0e] bg-[#fef3c7] px-2 py-0.5 rounded-full';
+        }
       }
       renderAddons();
     }
