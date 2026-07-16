@@ -71,14 +71,16 @@
         </div>
 
         <div class="bg-white border border-[#e8e0cc] rounded-2xl overflow-hidden shadow-sm">
-          <div class="aspect-[4/3] bg-gradient-to-br from-[#fcfbf9] to-[#e8e0cc] relative flex items-center justify-center p-8">
-            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]"></div>
-            <div class="text-center z-10">
-              <div class="text-[#1b3a28] text-6xl mb-4 flex justify-center items-center" id="bundle-hero-icon-container">
-                <i id="bundle-hero-icon" class="lucide-package" style="font-size: 64px;"></i>
+          <div class="aspect-[4/3] relative w-full" id="bundle-hero-container">
+            <div class="absolute inset-0 bg-gradient-to-br from-[#fcfbf9] to-[#e8e0cc] flex items-center justify-center p-8 z-0">
+              <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]"></div>
+              <div class="text-center z-10">
+                <div class="text-[#1b3a28] text-6xl mb-4 flex justify-center items-center" id="bundle-hero-icon-container">
+                  <i id="bundle-hero-icon" class="lucide-package" style="font-size: 64px;"></i>
+                </div>
+                <h3 class="font-serif text-2xl font-bold text-[#1b3a28] mb-1" id="bundle-hero-title">Loading Ritual...</h3>
+                <p class="text-xs text-[#7a9280] uppercase tracking-wider" id="bundle-hero-badge">Standard Package</p>
               </div>
-              <h3 class="font-serif text-2xl font-bold text-[#1b3a28] mb-1" id="bundle-hero-title">Loading Ritual...</h3>
-              <p class="text-xs text-[#7a9280] uppercase tracking-wider" id="bundle-hero-badge">Standard Package</p>
             </div>
           </div>
         </div>
@@ -194,6 +196,7 @@
         badge: "Energy",
         icon: "lucide-zap",
         pain: "Brain fog, relying on coffee to wake up, the 3 PM crash, and high muscle tension at night.",
+        images: ["assets/bundle_images/1. 24-Hour High-Performance Engine.jpeg"],
         included: [
           { id: 'TG-TEA-020', name: 'Ginseng Date Tea', time: '🌅 Morning', type: 'Herbal Tea' },
           { id: 'TG-TEA-021', name: 'Ginseng Tea', time: '🌅 Morning', type: 'Herbal Tea' },
@@ -215,6 +218,7 @@
         badge: "Weight",
         icon: "lucide-scale",
         pain: "Stubborn core midsection weight, water retention, afternoon sluggishness, and waking up feeling heavy.",
+        images: ["assets/bundle_images/2. Comprehensive Metabolic & Weight Flush.jpeg"],
         included: [
           { id: 'TG-TEA-001', name: 'Abdomen Slimming Tea', time: '🌅 Morning', type: 'Herbal Tea' },
           { id: 'TG-TEA-042', name: 'Slim Tea', time: '🌅 Morning', type: 'Herbal Tea' },
@@ -239,6 +243,7 @@
         badge: "Mental Calm",
         icon: "lucide-shield-alert",
         pain: "A racing mind at 2 AM, sudden daytime chest tightness/palpitations, and feeling completely overwhelmed.",
+        images: ["assets/bundle_images/3. Ultimate Stress, Anxiety & Mood Fortress.jpeg"],
         included: [
           { id: 'TG-PILL-010', name: 'Chai Hu Shu Gan Wan', time: '☀️ Daytime', type: 'Herbal Pill' },
           { id: 'TG-PILL-026', name: 'Jia Wei Xiao Yao Wan', time: '☀️ Daytime', type: 'Herbal Pill' },
@@ -248,8 +253,8 @@
         ],
         routine: [
           { title: "Daytime Stress Window", product: "Chai Hu Shu Gan Wan + Jia Wei Xiao Yao Wan", desc: "Take together to smooth away jagged frustration and stabilize emotional baseline." },
-          { title: "Evening Wind-down", product: "An Shen Bu Xin Wan", desc: "Take to drop heart rate and quiet physical anxiety loops." },
-          { title: "Bedtime Multi-Tea Blend", product: "Anti Stress Sleeping Tea + Three Flowers Tea", desc: "Brew together 30 minutes before bed to switch off mental chatter and slide into deep sleep." }
+          { title: "Evening Relaxation Window", product: "An Shen Bu Xin Wan", desc: "Nourish the heart lining to stop racing night thoughts before bed." },
+          { title: "Bedtime Tea Regimen", product: "Anti Stress Sleeping Tea + Three Flowers Tea", desc: "Sip hot to release stored facial, neck, and shoulder anxiety tension." }
         ]
       },
       "sinus-respiratory-shield": {
@@ -260,17 +265,17 @@
         badge: "Respiration",
         icon: "lucide-wind",
         pain: "Heavy throbbing sinus pressure, a constant throat-clearing post-nasal drip, and weak lung capacity.",
+        images: ["assets/bundle_images/4. Chronic Sinus & Deep Respiratory Shield.jpeg"],
         included: [
-          { id: 'TG-PILL-008', name: 'Bi Yan Wan', time: '🌅 Morning', type: 'Herbal Pill' },
-          { id: 'TG-PILL-057', name: 'Te Xiao Bi Min Gan Wan', time: '🌅 Morning', type: 'Herbal Pill' },
-          { id: 'TG-PILL-020', name: 'Gan Mao Ling', time: '☀️ Afternoon', type: 'Herbal Pill' },
-          { id: 'TG-TEA-013', name: 'Coughing Tea', time: '🌙 Night', type: 'Herbal Tea' },
-          { id: 'TG-TEA-032', name: 'Lung Cleaning Tea', time: '🌙 Night', type: 'Herbal Tea' }
+          { id: 'TG-PILL-066', name: 'Xin Yi Wan', time: '🌅 Morning', type: 'Herbal Pill' },
+          { id: 'TG-TEA-035', name: 'Nose Care Tea', time: '☀️ Afternoon', type: 'Herbal Tea' },
+          { id: 'TG-PILL-049', name: 'Qing Qi Hua Tan Wan', time: '🌙 Night', type: 'Herbal Pill' },
+          { id: 'TG-TEA-008', name: 'Bronchitis Tea', time: '🌙 Night', type: 'Herbal Tea' }
         ],
         routine: [
-          { title: "Morning Airway Window", product: "Bi Yan Wan + Te Xiao Bi Min Gan Wan", desc: "Take together to lock down hyper-reactive allergy triggers and drain sinus congestion." },
-          { title: "Afternoon Shield", product: "Gan Mao Ling", desc: "Take to support immune defense layers against airborne office bugs." },
-          { title: "Nighttime Multi-Tea Blend", product: "Coughing Tea + Lung Cleaning Tea", desc: "Brew together to liquefy deep bronchial phlegm and coat raw, scraped airways overnight." }
+          { title: "Morning Sinus Vent", product: "Xin Yi Wan", desc: "Open the nasal passages and disperse damp-cold wind blockages." },
+          { title: "All-Day Drainage Support", product: "Nose Care Tea", desc: "Drink hot throughout the afternoon to thin out mucus congestion." },
+          { title: "Nighttime Pulmonary Clear", product: "Qing Qi Hua Tan Wan + Bronchitis Tea", desc: "Take together to stop night coughing fits and clear heat from the bronchial tubes." }
         ]
       },
       "alpha-male-vitality": {
@@ -281,17 +286,17 @@
         badge: "Male Health",
         icon: "lucide-flame",
         pain: "Low bedroom drive, poor gym recovery, brain fog, and lower back physical exhaustion.",
+        images: ["assets/bundle_images/5. Alpha Male Vitality & Performance Protocol.jpeg"],
         included: [
-          { id: 'TG-PILL-004', name: 'Ban Long Wan', time: '🌅 Morning', type: 'Herbal Pill' },
-          { id: 'TG-TEA-020', name: 'Ginseng Date Tea', time: '☀️ Afternoon', type: 'Herbal Tea' },
-          { id: 'TG-TEA-030', name: 'Libido Up Tea', time: '☀️ Afternoon', type: 'Herbal Tea' },
-          { id: 'TG-PILL-079', name: 'Zhuang Yang Wan', time: '🌙 Evening', type: 'Herbal Pill' },
-          { id: 'TG-TEA-040', name: 'Sex Tea', time: '🌙 Evening', type: 'Herbal Tea' }
+          { id: 'TG-PILL-067', name: 'Xi Yang Shen Wan', time: '🌅 Morning', type: 'Herbal Pill' },
+          { id: 'TG-PILL-060', name: 'Tu Si Zi Wan', time: '☀️ Afternoon', type: 'Herbal Pill' },
+          { id: 'TG-PILL-039', name: 'Liu Wei Di Huang Wan', time: '🌙 Night', type: 'Herbal Pill' },
+          { id: 'TG-TEA-032', name: 'Male Tonic Tea', time: '🌙 Night', type: 'Herbal Tea' }
         ],
         routine: [
-          { title: "Morning Essence Base", product: "Ban Long Wan", desc: "Take to restore baseline structural energy and deep marrow reserves." },
-          { title: "Afternoon Blend", product: "Ginseng Date Tea + Libido Up Tea", desc: "Steep together for a massive surge in daytime performance and focus." },
-          { title: "Evening Window", product: "Zhuang Yang Wan + Sex Tea", desc: "Take together to maximize overnight recovery and vascular blood flow." }
+          { title: "Morning Fire Ignition", product: "Xi Yang Shen Wan", desc: "Boost adrenal energy output and mental drive without heart jitters." },
+          { title: "Afternoon Adrenal Guard", product: "Tu Si Zi Wan", desc: "Reinforce lower back strength and secure physical essence." },
+          { title: "Nighttime Yin Recharge", product: "Liu Wei Di Huang Wan + Male Tonic Tea", desc: "Nourish vital kidney essence overnight to restore stamina." }
         ]
       },
       "longevity-organ-shield": {
@@ -302,23 +307,19 @@
         badge: "Anti-Aging",
         icon: "lucide-sparkles",
         pain: "Systemic aging, fading daily stamina, multi-organ sluggishness, and a weak immune baseline.",
+        images: ["assets/bundle_images/6. Whole-Body Longevity & Organ Shield.jpeg"],
         included: [
-          { id: 'TG-TEA-021', name: 'Ginseng Tea', time: '🌅 Morning', type: 'Herbal Tea' },
-          { id: 'TG-TEA-035', name: 'Moringa Tea', time: '🌅 Morning', type: 'Herbal Tea' },
-          { id: 'TG-PILL-009', name: 'Bu Zhong Yi Qi Wan', time: '☀️ Mid-Day', type: 'Herbal Pill' },
-          { id: 'TG-PILL-018', name: 'Fu Zheng Fang', time: '☀️ Mid-Day', type: 'Herbal Pill' },
-          { id: 'TG-TEA-019', name: 'Ginkgo Tea', time: '☀️ Mid-Day', type: 'Herbal Tea' },
-          { id: 'TG-TEA-025', name: 'Heart Care Tea', time: '🥗 Post-Meal', type: 'Herbal Tea' },
-          { id: 'TG-TEA-031', name: 'Liver Care Tea', time: '🥗 Post-Meal', type: 'Herbal Tea' },
-          { id: 'TG-PILL-038', name: 'Liu Wei Di Huang Wan', time: '🌙 Night', type: 'Herbal Pill' },
-          { id: 'TG-PILL-022', name: 'Gui Pi Wan', time: '🌙 Night', type: 'Herbal Pill' },
-          { id: 'TG-TEA-002', name: 'Anti Cancer Tea', time: '🌙 Night', type: 'Herbal Tea' }
+          { id: 'TG-PILL-039', name: 'Liu Wei Di Huang Wan', time: '🌅 Morning', type: 'Herbal Pill' },
+          { id: 'TG-PILL-009', name: 'Bu Zhong Yi Qi Wan', time: '🌅 Morning', type: 'Herbal Pill' },
+          { id: 'TG-TEA-021', name: 'Ginseng Tea', time: '☀️ Afternoon', type: 'Herbal Tea' },
+          { id: 'TG-TEA-020', name: 'Ginseng Date Tea', time: '☀️ Afternoon', type: 'Herbal Tea' },
+          { id: 'TG-PILL-065', name: 'Xiang Sha Yang Wei Wan', time: '🌙 Night', type: 'Herbal Pill' },
+          { id: 'TG-PILL-008', name: 'Bu Nao Wan', time: '🌙 Night', type: 'Herbal Pill' }
         ],
         routine: [
-          { title: "Morning Power Blend", product: "Ginseng Tea + Moringa Tea", desc: "Brew together to flood your body with pure antioxidants." },
-          { title: "Mid-Day Brain Window", product: "Bu Zhong Yi Qi Wan + Fu Zheng Fang + Ginkgo Tea", desc: "Strengthen immune layers and oxygenate the brain." },
-          { title: "Post-Meal Filter", product: "Heart Care Tea + Liver Care Tea", desc: "Drink after lunch to protect cardiovascular and hepatic networks." },
-          { title: "Nighttime Repair", product: "Liu Wei Di Huang Wan + Gui Pi Wan + Anti Cancer Tea", desc: "Repair cells and restore kidney essence overnight." }
+          { title: "Morning Cell Base", product: "Liu Wei Di Huang Wan + Bu Zhong Yi Qi Wan", desc: "Take together to nourish organ bases and elevate general immune parameters." },
+          { title: "Daytime Energy Blend", product: "Ginseng Tea + Ginseng Date Tea", desc: "Brew together to maintain active cellular respiration and physical stamina." },
+          { title: "Nighttime Brain & Gut Guard", product: "Xiang Sha Yang Wei Wan + Bu Nao Wan", desc: "Settle digestion and feed micro-circulation to the brain for cellular longevity." }
         ]
       },
       "womb-wellness-restoration": {
@@ -329,18 +330,16 @@
         badge: "Womb Health",
         icon: "lucide-flower",
         pain: "Debilitating menstrual cramps, unpredictable cycles, and hormonal mood swings.",
+        images: ["assets/bundle_images/7. Womb Wellness & Cycle Restoration Ritual.jpeg"],
         included: [
-          { id: 'TG-TEA-047', name: 'Womb Care Tea', time: '🌅 Morning', type: 'Herbal Tea' },
-          { id: 'TG-TEA-034', name: 'Menstruation Regulating Tea', time: '🌅 Morning', type: 'Herbal Tea' },
-          { id: 'TG-PILL-026', name: 'Jia Wei Xiao Yao Wan', time: '☀️ Afternoon', type: 'Herbal Pill' },
-          { id: 'TG-PILL-064', name: 'Wu Ji Bai Feng Wan', time: '☀️ Afternoon', type: 'Herbal Pill' },
-          { id: 'TG-PILL-048', name: 'Shao Fu Zhu Yu Wan', time: '🌙 Night', type: 'Herbal Pill' },
-          { id: 'TG-TEA-017', name: 'Female Inflammation Tea', time: '🌙 Night', type: 'Herbal Tea' }
+          { id: 'TG-PILL-007', name: 'Ba Zhen Wan', time: '🌅 Morning', type: 'Herbal Pill' },
+          { id: 'TG-TEA-051', name: 'Womb Wellness Tea', time: '☀️ Afternoon', type: 'Herbal Tea' },
+          { id: 'TG-PILL-063', name: 'Wu Ji Bai Feng Wan', time: '🌙 Night', type: 'Herbal Pill' }
         ],
         routine: [
-          { title: "Morning Warming Blend", product: "Womb Care Tea + Menstruation Regulating Tea", desc: "Warms the pelvic floor, breaks up stasis, and targets cramps." },
-          { title: "Afternoon Balance", product: "Jia Wei Xiao Yao Wan + Wu Ji Bai Feng Wan", desc: "Balances emotional swings and enriches clean blood production." },
-          { title: "Nighttime Comfort", product: "Shao Fu Zhu Yu Wan + Female Inflammation Tea", desc: "Cools internal irritation and aligns cycle parameters while you sleep." }
+          { title: "Morning Blood Nourisher", product: "Ba Zhen Wan", desc: "Build warm red blood supply to offset cycle losses." },
+          { title: "Daytime Warming Blend", product: "Womb Wellness Tea", desc: "Drink warm to gently dissolve cold womb stasis and cramps." },
+          { title: "Nighttime Endocrine Tuner", product: "Wu Ji Bai Feng Wan", desc: "Nourish reproductive channels to establish cyclical timing." }
         ]
       },
       "systemic-detox-liver-flush": {
@@ -351,17 +350,16 @@
         badge: "Detox",
         icon: "lucide-droplets",
         pain: "Chronic skin breakouts, low-grade internal inflammation, and an overloaded digestive filter.",
+        images: ["assets/bundle_images/8. Deep Systemic Detox & Total Liver Flush.jpeg"],
         included: [
-          { id: 'TG-TEA-015', name: 'Detox Tea', time: '🌅 Morning', type: 'Herbal Tea' },
-          { id: 'TG-TEA-012', name: 'Cooling Tea', time: '🌅 Morning', type: 'Herbal Tea' },
-          { id: 'TG-PILL-039', name: 'Long Dan Xie Gan Wan', time: '☀️ Mid-Day', type: 'Herbal Pill' },
-          { id: 'TG-PILL-037', name: 'Lian Qiao Bai Du Wan', time: '🌙 Night', type: 'Herbal Pill' },
-          { id: 'TG-TEA-007', name: 'Blood Cleaning Tea', time: '🌙 Night', type: 'Herbal Tea' }
+          { id: 'TG-PILL-040', name: 'Long Dan Xie Gan Wan', time: '🌅 Morning', type: 'Herbal Pill' },
+          { id: 'TG-TEA-030', name: 'Liver Care Tea', time: '☀️ Afternoon', type: 'Herbal Tea' },
+          { id: 'TG-TEA-015', name: 'Detox Tea', time: '🌙 Night', type: 'Herbal Tea' }
         ],
         routine: [
-          { title: "Fasting Morning Blend", product: "Detox Tea + Cooling Tea", desc: "Flush toxic damp-heat out of the face, skin, and upper body." },
-          { title: "Mid-Day Purification", product: "Long Dan Xie Gan Wan", desc: "Purge deep-seated liver and gall bladder toxins." },
-          { title: "Overnight Filter Window", product: "Lian Qiao Bai Du Wan + Blood Cleaning Tea", desc: "Purify the bloodstream during sleep." }
+          { title: "Morning Heat Clearance", product: "Long Dan Xie Gan Wan", desc: "Drain toxic damp-heat configurations from the liver and gallbladder." },
+          { title: "Daytime Filter Support", product: "Liver Care Tea", desc: "Sip throughout the day to boost hepatic enzyme processing." },
+          { title: "Nighttime Systemic Flush", product: "Detox Tea", desc: "Drink a cup before bed to assist cellular detoxification pathways." }
         ]
       },
       "gastric-reflux-gut-harmony": {
@@ -372,11 +370,12 @@
         badge: "Digestion",
         icon: "lucide-coffee",
         pain: "Chronic burning acid reflux, chest irritation, nausea, trapped gas, and abdominal pain.",
+        images: ["assets/bundle_images/9. Advanced Gastric Reflux & Gut Harmony Shield.jpeg"],
         included: [
-          { id: 'TG-PILL-005', name: 'Ban Xia Xie Xin Wan', time: '🌅 Morning', type: 'Herbal Pill' },
-          { id: 'TG-PILL-042', name: 'Mu Xiang Shun Qi Wan', time: '☀️ Afternoon', type: 'Herbal Pill' },
-          { id: 'TG-PILL-068', name: 'Xiang Sha Yang Wei Wan', time: '☀️ Afternoon', type: 'Herbal Pill' },
-          { id: 'TG-PILL-067', name: 'Xiang Sha Liu Jun Wan', time: '🌙 Night', type: 'Herbal Pill' },
+          { id: 'TG-PILL-004', name: 'Ban Xia Xie Xin Wan', time: '🌅 Morning', type: 'Herbal Pill' },
+          { id: 'TG-PILL-045', name: 'Mu Xiang Shun Qi Wan', time: '☀️ Afternoon', type: 'Herbal Pill' },
+          { id: 'TG-PILL-065', name: 'Xiang Sha Yang Wei Wan', time: '☀️ Afternoon', type: 'Herbal Pill' },
+          { id: 'TG-PILL-064', name: 'Xiang Sha Liu Jun Wan', time: '🌙 Night', type: 'Herbal Pill' },
           { id: 'TG-PILL-025', name: 'Huo Xiang Zheng Qi Wan', time: '🌙 Night', type: 'Herbal Pill' },
           { id: 'TG-TEA-016', name: 'Digestive Tea', time: '🌙 Night', type: 'Herbal Tea' }
         ],
@@ -394,6 +393,7 @@
         badge: "Mobility",
         icon: "lucide-accessibility",
         pain: "Clicking, stiff knee joints, bone-on-bone lower back aching, and cold, painful morning movement.",
+        images: ["assets/bundle_images/10. Golden Years Joint & Mobility Rescue.jpeg"],
         included: [
           { id: 'TG-PILL-015', name: 'Du Huo Ji Sheng Wan', time: '🌅 Morning', type: 'Herbal Pill' },
           { id: 'TG-PILL-033', name: 'Kang Gu Zeng Sheng Wan', time: '🌅 Morning', type: 'Herbal Pill' },
@@ -416,6 +416,10 @@
         badge: "Digital Fatigue",
         icon: "lucide-monitor",
         pain: "Bloodshot straining eyes, blurred pixel vision, and severe throbbing tension in the shoulders/neck.",
+        images: [
+          "assets/bundle_images/11. Screen-Time Eye Strain & Neck Tension Block.jpeg",
+          "assets/bundle_images/11. Screen-Time Eye Strain & Neck Tension Block 2.jpeg"
+        ],
         included: [
           { id: 'TG-PILL-041', name: 'Ming Mu Di Huang Wan', time: '🌅 Morning', type: 'Herbal Pill' },
           { id: 'TG-TEA-010', name: 'Chrysanthemum Plus Tea', time: '☀️ Afternoon', type: 'Herbal Tea' },
@@ -436,6 +440,7 @@
         badge: "Sugar Care",
         icon: "lucide-activity",
         pain: "Intense sweet or carbohydrate cravings, shaky late-afternoon energy crashes, and sluggish insulin processing.",
+        images: ["assets/bundle_images/12. Ultimate Blood Sugar & Craving Control.jpeg"],
         included: [
           { id: 'TG-TEA-043', name: 'Sugar Balance Tea', time: '🌅 Morning', type: 'Herbal Tea' },
           { id: 'TG-TEA-023', name: 'Guava Tea', time: '☀️ Afternoon', type: 'Herbal Tea' },
@@ -445,7 +450,7 @@
         routine: [
           { title: "Fasting Morning Guard", product: "Sugar Balance Tea", desc: "Stabilize baseline glycemic curves for the day." },
           { title: "Mealtime Intercept", product: "Guava Tea + Balsam Pear Tea", desc: "Drink after carb-heavy meals to buffer glucose spikes." },
-          { title: "Nighttime Endocrine Base", product: "Zhi Bai Di Huang Wan", desc: "Soothe pancreatic heat and align metabolic processing while you sleep." }
+          { title: "Nighttime Endocrine Base", product: "Zhi Bai Di Huang Wan", desc: "Sothe pancreatic heat and align metabolic processing while you sleep." }
         ]
       },
       "cystic-acne-skin-ritual": {
@@ -456,6 +461,10 @@
         badge: "Skin Care",
         icon: "lucide-smile",
         pain: "Deep, painful hormonal jawline breakouts, chronic facial redness, and toxic heat expressions.",
+        images: [
+          "assets/bundle_images/13. Advanced Cystic Acne & Flawless Skin Ritual.jpeg",
+          "assets/bundle_images/13. Advanced Cystic Acne & Flawless Skin Ritual 2.jpeg"
+        ],
         included: [
           { id: 'TG-PILL-047', name: 'Qing Re An Chuang Wan', time: '🌅 Morning', type: 'Herbal Pill' },
           { id: 'TG-TEA-012', name: 'Cooling Tea', time: '☀️ Afternoon', type: 'Herbal Tea' },
@@ -475,6 +484,7 @@
         badge: "Vascular",
         icon: "lucide-heart",
         pain: "Cold hands and feet, throbbing head tension, tight chest pressure, and unpredictable blood pressure readings.",
+        images: ["assets/bundle_images/14. Chronic Vascular & Blood Pressure Loop.jpeg"],
         included: [
           { id: 'TG-TEA-025', name: 'Heart Care Tea', time: '🌅 Morning', type: 'Herbal Tea' },
           { id: 'TG-TEA-026', name: 'Hypertension Tea', time: '🌅 Morning', type: 'Herbal Tea' },
@@ -496,6 +506,7 @@
         badge: "Recovery",
         icon: "lucide-beer",
         pain: "Severe weekend-wasting hangovers, heavy bloating from rich/greasy takeout food, and a highly sluggish, over-worked liver.",
+        images: ["assets/bundle_images/15. Weekend Recovery & Ultimate Organ Shield.jpeg"],
         included: [
           { id: 'TG-TEA-014', name: 'Dealcoholic Tea', time: '🌅 Morning', type: 'Herbal Tea' },
           { id: 'TG-TEA-015', name: 'Detox Tea', time: '🌅 Morning', type: 'Herbal Tea' },
@@ -527,9 +538,34 @@
 
       document.getElementById('breadcrumb-active').textContent = b.name;
       
-      // Update container to support lucide class updates
-      const iconContainer = document.getElementById('bundle-hero-icon-container');
-      iconContainer.innerHTML = `<i class="${b.icon}" style="font-size: 64px;"></i>`;
+      // Replace hero block with bundle images rotator
+      const heroContainer = document.getElementById('bundle-hero-container');
+      if (heroContainer) {
+        heroContainer.innerHTML = `
+          <div class="w-full h-full relative" id="hero-img-rotator">
+            ${b.images.map((img, i) => `
+              <img src="${img}" alt="${b.name}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${i === 0 ? 'opacity-100' : 'opacity-0'}">
+            `).join('')}
+          </div>
+        `;
+
+        if (b.images.length > 1) {
+          let currentIdx = 0;
+          setInterval(() => {
+            const rotator = document.getElementById('hero-img-rotator');
+            if (rotator) {
+              const imgs = rotator.querySelectorAll('img');
+              if (imgs.length > 0) {
+                imgs[currentIdx].classList.remove('opacity-100');
+                imgs[currentIdx].classList.add('opacity-0');
+                currentIdx = (currentIdx + 1) % imgs.length;
+                imgs[currentIdx].classList.remove('opacity-0');
+                imgs[currentIdx].classList.add('opacity-100');
+              }
+            }
+          }, 60000); // 60 seconds
+        }
+      }
       
       document.getElementById('bundle-hero-title').textContent = b.name;
       document.getElementById('bundle-hero-badge').textContent = b.badge;
