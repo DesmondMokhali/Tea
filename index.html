@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/lucide-static@latest/font/lucide.css">
+<!-- Add Supabase JS Client -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 /* Icon helper */
 .ico{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle}
@@ -6209,6 +6211,34 @@ const SUPABASE_PROJECT_REF = 'fmmzesqelnwayexweatz';
 const SUPABASE_URL         = `https://${SUPABASE_PROJECT_REF}.supabase.co`;
 const EDGE_FUNCTION_URL    = `${SUPABASE_URL}/functions/v1/checkout`;
 const SUPABASE_ANON_KEY    = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZtbXplc3FlbG53YXlleHdlYXR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM1NzkyMjIsImV4cCI6MjA5OTE1NTIyMn0.0H5bQs5MR6pRfeBrP2wda86VM0IK4b2aRcJORtkaNrU';
+
+// Initialize Supabase Client
+const _supabase = typeof supabase !== 'undefined' ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+// Function to load live product prices from database
+async function loadProducts() {
+  if (!_supabase) return;
+  const { data: products, error } = await _supabase
+    .from('products')
+    .select('external_id, title, retail_price, stock_quantity');
+
+  if (error) {
+    console.error('Error fetching products:', error);
+    return;
+  }
+
+  // Update UI elements dynamically
+  products.forEach(product => {
+    // Example: update price element with ID matching product SKU/external_id
+    const priceElement = document.getElementById(`price-${product.external_id}`);
+    if (priceElement) {
+      priceElement.innerText = `R ${product.retail_price}`;
+    }
+  });
+}
+
+// Run on page load
+document.addEventListener('DOMContentLoaded', loadProducts);
 
 // ── STATE ──────────────────────────────────────────────────────────────────
 let activeType='all', activeCat='all', searchQ='', cart=[], openIdx=null;
