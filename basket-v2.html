@@ -939,8 +939,10 @@ function render() {
     con.innerHTML = basket.map(item => {
       // ── Bundle item ──────────────────────────────────────────────────────────
       if (item._bundleId) {
-        const bPrice = item._bundlePrice || 0;
-        const bName  = item._bundleName  || 'Ritual Bundle';
+        const bPrice  = item._bundlePrice || 0;
+        const bName   = item._bundleName  || 'Ritual Bundle';
+        // Use _bundleId as the canonical key — cast to string so onclick literal matches
+        const bKey = String(item._bundleId);
         return `
         <div class="basket-item">
           <div class="item-thumb" style="background:var(--cs,#1b3a28);display:flex;align-items:center;justify-content:center;">
@@ -952,17 +954,17 @@ function render() {
             <div class="item-unit">R${bPrice.toFixed(2)} per bundle</div>
             <div class="item-controls">
               <div class="qty-ctrl">
-                <button class="qty-btn" onclick="changeQty('${item.id}',-1)" aria-label="Decrease">
+                <button class="qty-btn" onclick="changeBundleQty('${bKey}',-1)" aria-label="Decrease">
                   <svg class="icon" width="11" height="11"><use href="#ico-minus"/></svg>
                 </button>
                 <span class="qty-num">${item.qty}</span>
-                <button class="qty-btn" onclick="changeQty('${item.id}',1)" aria-label="Increase">
+                <button class="qty-btn" onclick="changeBundleQty('${bKey}',1)" aria-label="Increase">
                   <svg class="icon" width="11" height="11"><use href="#ico-plus"/></svg>
                 </button>
               </div>
               <div class="item-right">
                 <span class="item-total">R${(bPrice * item.qty).toFixed(2)}</span>
-                <button class="item-remove" onclick="removeItem('${item.id}')">
+                <button class="item-remove" onclick="removeBundle('${bKey}')">
                   <svg class="icon" width="12" height="12"><use href="#ico-trash"/></svg> Remove
                 </button>
               </div>
@@ -1081,17 +1083,30 @@ function renderPromo() {
   }
 }
 
+// Standalone product qty/remove — match by id (loose == handles string vs int edge cases)
 function changeQty(id, d) {
-  const it = basket.find(i=>i.id===id); if(!it) return;
+  const it = basket.find(i => !i._bundleId && i.id == id); if(!it) return;
   if (it.qty+d < 1) { removeItem(id); return; }
   it.qty += d; save(); render();
 }
 function removeItem(id) {
-  basket = basket.filter(i=>i.id!==id); save(); render();
+  basket = basket.filter(i => !(!i._bundleId && i.id == id)); save(); render();
   toast('Item removed from basket');
 }
+// Bundle-specific qty/remove — match by _bundleId (loose == handles string vs int)
+function changeBundleQty(bundleId, d) {
+  const it = basket.find(i => i._bundleId && String(i._bundleId) === String(bundleId));
+  if (!it) return;
+  if (it.qty + d < 1) { removeBundle(bundleId); return; }
+  it.qty += d; save(); render();
+}
+function removeBundle(bundleId) {
+  basket = basket.filter(i => !(i._bundleId && String(i._bundleId) === String(bundleId)));
+  save(); render();
+  toast('Bundle removed from basket');
+}
 function addCross(id) {
-  const ex = basket.find(i=>i.id===id);
+  const ex = basket.find(i => !i._bundleId && i.id == id);
   if (ex) ex.qty++; else basket.push({id, qty:1});
   save(); render(); toast('Added to basket');
 }
