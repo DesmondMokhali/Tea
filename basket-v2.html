@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <!-- SVG Icon Sprite -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
@@ -775,6 +777,14 @@ const FREE_THRESHOLD = 500;
 const DELIVERY_FEE   = 75;
 const PROMOS = { TANGREN10: 0.10, HERB15: 0.15 };
 
+// ── SUPABASE CONFIG ────────────────────────────────────────────────────────
+const SUPABASE_URL_BV2     = 'https://fmmzesqelnwayexweatz.supabase.co';
+const SUPABASE_ANON_KEY_BV2 = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZtbXplc3FlbG53YXlleHdlYXR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM1NzkyMjIsImV4cCI6MjA5OTE1NTIyMn0.0H5bQs5MR6pRfeBrP2wda86VM0IK4b2aRcJORtkaNrU';
+const _sbBV2 = (typeof supabase !== 'undefined')
+  ? supabase.createClient(SUPABASE_URL_BV2, SUPABASE_ANON_KEY_BV2)
+  : null;
+
+// Seed catalog with sensible fallback prices — Supabase will overwrite these
 let CAT = [
   { id:'TG-TEA-001', name:'Abdomen Slimming Tea',     price:100, img:'images/abdomen_slimming_tea.png',      cat:'Herbal Tea'  },
   { id:'TG-TEA-003', name:'Anti Stress Sleeping Tea',  price:100, img:'images/anti_stress_sleeping_tea.png', cat:'Herbal Tea'  },
@@ -790,29 +800,67 @@ let CAT = [
   { id:'TG-TEA-016', name:'Heart Care Tea',            price:100, img:'images/heart_care_tea.png',           cat:'Herbal Tea'  },
 ];
 
-// Dynamically fetch full catalog list from products.json on load to resolve names for all products
-fetch('products.json')
-  .then(res => res.json())
-  .then(data => {
-    if (data && data.products) {
-      data.products.forEach((p, index) => {
-        if (index === 0) return; // skip header row
-        const id = p["5"];
-        const name = p["0"];
-        const priceStr = p["1"] || "R100";
-        const price = parseFloat(priceStr.replace('R', '')) || 100;
-        const cat = id.includes('PILL') ? 'Herbal Pill' : 'Herbal Tea';
-        // Normalize image filenames to match assets
-        const nSnake = name.toLowerCase().replace(/[^a-z0-9]/g, '_').replace(/_+/g, '_').replace(/^_|_$/g, '');
-        const img = `images/${nSnake}.png`;
+// Load live prices from Supabase — overwrites any static price in CAT
+async function loadLivePrices() {
+  if (!_sbBV2) { render(); return; }
+  try {
+    const { data: products, error } = await _sbBV2
+      .from('products')
+      .select('*');
 
-        if (!CAT.some(item => item.id === id)) {
-          CAT.push({ id, name, price, img, cat });
+    if (error) {
+      console.error('[Basket] Supabase price fetch error:', error.message);
+    } else if (products && Array.isArray(products)) {
+      products.forEach(p => {
+        if (!p) return;
+        // Determine the real price field (try multiple known column names)
+        const priceVal = p.retail_price ?? p.price ?? p.unit_price;
+        const id = p.external_id || p.id;
+        const liveName = p.name || p.title;
+        const numPrice = parseFloat(priceVal);
+        if (!id || isNaN(numPrice)) return;
+
+        // Build normalised image slug from name
+        const slug = (liveName || id).toLowerCase().replace(/[^a-z0-9]/g, '_').replace(/_+/g, '_').replace(/^_|_$/g, '');
+        const img  = `images/${slug}.png`;
+        const cat  = id.includes('PILL') ? 'Herbal Pill' : 'Herbal Tea';
+
+        // Update existing CAT entry or add new one
+        const existing = CAT.find(c => c.id === id);
+        if (existing) {
+          existing.price = numPrice;
+          if (liveName) existing.name = liveName;
+        } else {
+          CAT.push({ id, name: liveName || id, price: numPrice, img, cat });
         }
       });
-      render();
     }
-  }).catch(e => console.log("Silent fallback, using default catalog list: ", e));
+  } catch (err) {
+    console.error('[Basket] Unexpected error fetching prices:', err);
+  }
+  render();
+}
+
+// Subscribe to realtime price changes for instant basket updates
+if (_sbBV2) {
+  _sbBV2
+    .channel('basket:products')
+    .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'products' }, payload => {
+      const p = payload.new;
+      if (!p) return;
+      const id       = p.external_id || p.id;
+      const priceVal = p.retail_price ?? p.price ?? p.unit_price;
+      const numPrice = parseFloat(priceVal);
+      if (!id || isNaN(numPrice)) return;
+      const existing = CAT.find(c => c.id === id);
+      if (existing) existing.price = numPrice;
+      render();
+    })
+    .subscribe();
+}
+
+// Kick off the initial load
+loadLivePrices();
 
 const CROSS_IDS    = ['TG-TEA-011','TG-TEA-013','TG-TEA-014','TG-TEA-015','TG-PILL-002','TG-PILL-003','TG-TEA-016'];
 const CROSS_BADGES = { 'TG-TEA-013':'Popular','TG-PILL-002':'Best Seller','TG-TEA-011':'New','TG-TEA-016':'Popular' };
@@ -1070,7 +1118,9 @@ function toast(msg) {
   setTimeout(()=>t.classList.remove('show'), 2800);
 }
 
-render();
+// Initial render is triggered by loadLivePrices() above after fetching live prices.
+// Fallback: render immediately in case Supabase hasn't loaded yet.
+if (CAT.length > 0 && basket.length >= 0) render();
 window.addEventListener('resize', render);
 </script>
 </body>
