@@ -538,6 +538,12 @@
       const grid = document.getElementById('bundles-grid');
       grid.innerHTML = BUNDLES_DATA.map(b => {
         const hasMultiple = b.images.length > 1;
+        // Dynamically compute the original 'was' total retail value:
+        // Individual items are priced at R100 each (e.g., 5 items = R500.00 full value).
+        // Ensure calculated 'was' value is strictly greater than the discounted bundle price.
+        const calculatedValue = Math.max((b.count || 4) * 100, Math.ceil(b.price * 1.15));
+        const displayValue    = b.value && b.value > b.price ? b.value : calculatedValue;
+
         return `
         <div class="bg-white border border-[#e8e0cc] rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-[#c8a06e] transition duration-300 flex flex-col justify-between">
           <div>
@@ -563,7 +569,7 @@
           <div class="p-6 pt-0">
             <div class="flex items-baseline gap-3 mb-6">
               <span class="text-2xl font-extrabold text-[#059669]">R${b.price.toFixed(2)}</span>
-              <span class="text-xs font-medium text-[#7a9280] line-through">R${b.value.toFixed(2)}</span>
+              <span class="text-xs font-medium text-[#7a9280] line-through">R${displayValue.toFixed(2)}</span>
             </div>
             <a href="products-bundle-detail.html?bundle=${b.slug}" class="w-full text-center bg-[#1b3a28] hover:bg-[#c8a06e] hover:text-[#1b3a28] text-white font-bold py-3 rounded-xl transition duration-200 text-xs uppercase tracking-wider block no-underline">
               View Ritual Details
