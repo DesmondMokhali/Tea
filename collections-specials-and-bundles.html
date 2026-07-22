@@ -347,6 +347,7 @@
   <script>
     const BUNDLES_DATA = [
       {
+        id: 1,
         slug: "high-performance-engine",
         name: "24-Hour High-Performance Engine",
         count: 5,
@@ -358,6 +359,7 @@
         images: ["assets/bundle_images/1. 24-Hour High-Performance Engine.jpeg"]
       },
       {
+        id: 2,
         slug: "metabolic-weight-flush",
         name: "Comprehensive Metabolic & Weight Flush",
         count: 7,
@@ -369,6 +371,7 @@
         images: ["assets/bundle_images/2. Comprehensive Metabolic & Weight Flush.jpeg"]
       },
       {
+        id: 3,
         slug: "stress-mood-fortress",
         name: "Ultimate Stress, Anxiety & Mood Fortress",
         count: 5,
@@ -380,6 +383,7 @@
         images: ["assets/bundle_images/3. Ultimate Stress, Anxiety & Mood Fortress.jpeg"]
       },
       {
+        id: 4,
         slug: "sinus-respiratory-shield",
         name: "Chronic Sinus & Deep Respiratory Shield",
         count: 5,
@@ -391,6 +395,7 @@
         images: ["assets/bundle_images/4. Chronic Sinus & Deep Respiratory Shield.jpeg"]
       },
       {
+        id: 5,
         slug: "alpha-male-vitality",
         name: "Alpha Male Vitality & Performance Protocol",
         count: 4,
@@ -402,6 +407,7 @@
         images: ["assets/bundle_images/5. Alpha Male Vitality & Performance Protocol.jpeg"]
       },
       {
+        id: 6,
         slug: "longevity-organ-shield",
         name: "Whole-Body Longevity & Organ Shield",
         count: 10,
@@ -413,6 +419,7 @@
         images: ["assets/bundle_images/6. Whole-Body Longevity & Organ Shield.jpeg"]
       },
       {
+        id: 7,
         slug: "womb-wellness-restoration",
         name: "Womb Wellness & Cycle Restoration Ritual",
         count: 6,
@@ -424,6 +431,7 @@
         images: ["assets/bundle_images/7. Womb Wellness & Cycle Restoration Ritual.jpeg"]
       },
       {
+        id: 8,
         slug: "systemic-detox-liver-flush",
         name: "Deep Systemic Detox & Total Liver Flush",
         count: 4,
@@ -435,6 +443,7 @@
         images: ["assets/bundle_images/8. Deep Systemic Detox & Total Liver Flush.jpeg"]
       },
       {
+        id: 9,
         slug: "gastric-reflux-gut-harmony",
         name: "Advanced Gastric Reflux & Gut Harmony Shield",
         count: 5,
@@ -446,6 +455,7 @@
         images: ["assets/bundle_images/9. Advanced Gastric Reflux & Gut Harmony Shield.jpeg"]
       },
       {
+        id: 10,
         slug: "joint-mobility-rescue",
         name: "Golden Years Joint & Mobility Rescue",
         count: 6,
@@ -457,6 +467,7 @@
         images: ["assets/bundle_images/10. Golden Years Joint & Mobility Rescue.jpeg"]
       },
       {
+        id: 11,
         slug: "eye-strain-neck-tension",
         name: "Screen-Time Eye Strain & Neck Tension Block",
         count: 4,
@@ -471,6 +482,7 @@
         ]
       },
       {
+        id: 12,
         slug: "sugar-craving-control",
         name: "Ultimate Blood Sugar & Craving Control",
         count: 4,
@@ -482,6 +494,7 @@
         images: ["assets/bundle_images/12. Ultimate Blood Sugar & Craving Control.jpeg"]
       },
       {
+        id: 13,
         slug: "cystic-acne-skin-ritual",
         name: "Advanced Cystic Acne & Flawless Skin Ritual",
         count: 3,
@@ -496,6 +509,7 @@
         ]
       },
       {
+        id: 14,
         slug: "vascular-blood-pressure",
         name: "Chronic Vascular & Blood Pressure Loop",
         count: 5,
@@ -507,6 +521,7 @@
         images: ["assets/bundle_images/14. Chronic Vascular & Blood Pressure Loop.jpeg"]
       },
       {
+        id: 15,
         slug: "weekend-recovery-organ-shield",
         name: "Weekend Recovery & Ultimate Organ Shield",
         count: 4,
@@ -596,25 +611,31 @@
         } else if (bundles && Array.isArray(bundles)) {
           bundles.forEach(b => {
             if (!b) return;
-            const bSlug = b.slug || b.id;
-            const bPrice = parseFloat(b.bundle_retail_price || b.retail_price || b.price);
+            const bIdStr = String(b.id);
+            const bSlug = (b.slug || '').toLowerCase().trim();
+            const bPrice = parseFloat(b.bundle_retail_price ?? b.retail_price ?? b.price);
             const bTitle = b.title || b.name;
 
-            // Match against static list by slug or id
-            const existing = BUNDLES_DATA.find(item => item.slug === bSlug || item.id === b.id);
+            // Match against static list by ID or slug
+            const existing = BUNDLES_DATA.find(item => {
+              if (item.id && String(item.id) === bIdStr) return true;
+              if (item.slug && item.slug.toLowerCase() === bSlug) return true;
+              return false;
+            });
+
             if (existing) {
-              if (!isNaN(bPrice)) existing.price = bPrice;
+              if (!isNaN(bPrice) && bPrice > 0) existing.price = bPrice;
               if (bTitle) existing.name = bTitle;
               if (b.description) existing.pain = b.description;
             } else {
-              // Push dynamic bundle if not in static list
+              // Push dynamic bundle if not present in static template
               BUNDLES_DATA.push({
                 id: b.id,
-                slug: bSlug,
-                name: bTitle || bSlug,
+                slug: b.slug || `bundle-${b.id}`,
+                name: bTitle || `Bundle #${b.id}`,
                 count: b.item_count || 4,
-                price: !isNaN(bPrice) ? bPrice : 399.95,
-                value: !isNaN(bPrice) ? Math.round(bPrice * 1.15) : 450.00,
+                price: (!isNaN(bPrice) && bPrice > 0) ? bPrice : 399.95,
+                value: (!isNaN(bPrice) && bPrice > 0) ? Math.round(bPrice * 1.15) : 450.00,
                 badge: b.category || "Special Ritual",
                 iconClass: "lucide-sparkles",
                 pain: b.description || "Synergistic herbal protocol formulated for targeted wellness.",
@@ -636,10 +657,15 @@
         .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'bundles' }, payload => {
           const b = payload.new;
           if (!b) return;
-          const bSlug = b.slug || b.id;
-          const bPrice = parseFloat(b.bundle_retail_price || b.retail_price || b.price);
-          const existing = BUNDLES_DATA.find(item => item.slug === bSlug || item.id === b.id);
-          if (existing && !isNaN(bPrice)) {
+          const bIdStr = String(b.id);
+          const bSlug = (b.slug || '').toLowerCase().trim();
+          const bPrice = parseFloat(b.bundle_retail_price ?? b.retail_price ?? b.price);
+          const existing = BUNDLES_DATA.find(item => {
+            if (item.id && String(item.id) === bIdStr) return true;
+            if (item.slug && item.slug.toLowerCase() === bSlug) return true;
+            return false;
+          });
+          if (existing && !isNaN(bPrice) && bPrice > 0) {
             existing.price = bPrice;
             renderGrid();
           }
