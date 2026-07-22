@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/lucide-static@latest/font/lucide.css" />
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -575,7 +577,78 @@
         }
       });
     }
+    // ── SUPABASE CONFIG ────────────────────────────────────────────────────────
+    const SUPABASE_URL_BUNDLES     = 'https://fmmzesqelnwayexweatz.supabase.co';
+    const SUPABASE_ANON_KEY_BUNDLES = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZtbXplc3FlbG53YXlleHdlYXR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM1NzkyMjIsImV4cCI6MjA5OTE1NTIyMn0.0H5bQs5MR6pRfeBrP2wda86VM0IK4b2aRcJORtkaNrU';
+    const _sbBundles = (typeof supabase !== 'undefined')
+      ? supabase.createClient(SUPABASE_URL_BUNDLES, SUPABASE_ANON_KEY_BUNDLES)
+      : null;
+
+    async function loadBundlesFromSupabase() {
+      if (!_sbBundles) { renderGrid(); return; }
+      try {
+        const { data: bundles, error } = await _sbBundles
+          .from('bundles')
+          .select('*');
+
+        if (error) {
+          console.error('[Bundles Page] Supabase error:', error.message);
+        } else if (bundles && Array.isArray(bundles)) {
+          bundles.forEach(b => {
+            if (!b) return;
+            const bSlug = b.slug || b.id;
+            const bPrice = parseFloat(b.bundle_retail_price || b.retail_price || b.price);
+            const bTitle = b.title || b.name;
+
+            // Match against static list by slug or id
+            const existing = BUNDLES_DATA.find(item => item.slug === bSlug || item.id === b.id);
+            if (existing) {
+              if (!isNaN(bPrice)) existing.price = bPrice;
+              if (bTitle) existing.name = bTitle;
+              if (b.description) existing.pain = b.description;
+            } else {
+              // Push dynamic bundle if not in static list
+              BUNDLES_DATA.push({
+                id: b.id,
+                slug: bSlug,
+                name: bTitle || bSlug,
+                count: b.item_count || 4,
+                price: !isNaN(bPrice) ? bPrice : 399.95,
+                value: !isNaN(bPrice) ? Math.round(bPrice * 1.15) : 450.00,
+                badge: b.category || "Special Ritual",
+                iconClass: "lucide-sparkles",
+                pain: b.description || "Synergistic herbal protocol formulated for targeted wellness.",
+                images: ["assets/bundle_images/1. 24-Hour High-Performance Engine.jpeg"]
+              });
+            }
+          });
+        }
+      } catch (err) {
+        console.error('[Bundles Page] Unexpected fetch error:', err);
+      }
+      renderGrid();
+    }
+
+    // Real-time listener for live bundle updates
+    if (_sbBundles) {
+      _sbBundles
+        .channel('public:bundles')
+        .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'bundles' }, payload => {
+          const b = payload.new;
+          if (!b) return;
+          const bSlug = b.slug || b.id;
+          const bPrice = parseFloat(b.bundle_retail_price || b.retail_price || b.price);
+          const existing = BUNDLES_DATA.find(item => item.slug === bSlug || item.id === b.id);
+          if (existing && !isNaN(bPrice)) {
+            existing.price = bPrice;
+            renderGrid();
+          }
+        })
+        .subscribe();
+    }
+
     renderGrid();
+    loadBundlesFromSupabase();
   </script>
 
   <!-- Lucide SVG Icons Init -->
