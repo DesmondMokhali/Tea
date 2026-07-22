@@ -6220,7 +6220,7 @@ async function loadProducts() {
   if (!_supabase) return;
   const { data: products, error } = await _supabase
     .from('products')
-    .select('*');
+    .select('external_id, title, retail_price, stock_quantity');
 
   if (error) {
     console.error('Error fetching products:', error.message || error);
@@ -6231,7 +6231,7 @@ async function loadProducts() {
   if (products && Array.isArray(products)) {
     products.forEach(product => {
       if (!product || !product.external_id) return;
-      const priceVal = product.retail_price ?? product.price;
+      const priceVal = product.retail_price;
       if (priceVal !== undefined && priceVal !== null) {
         const priceElement = document.getElementById(`price-${product.external_id}`);
         if (priceElement) {
