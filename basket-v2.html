@@ -773,8 +773,8 @@
 <script>
 const SVG = id => `<svg class="icon" width="14" height="14"><use href="#${id}"/></svg>`;
 
-const FREE_THRESHOLD = 500;
-const DELIVERY_FEE   = 75;
+const FREE_THRESHOLD = 0;
+const DELIVERY_FEE   = 0;
 const PROMOS = { TANGREN10: 0.10, HERB15: 0.15 };
 
 // ── SUPABASE CONFIG ────────────────────────────────────────────────────────
@@ -935,22 +935,17 @@ function render() {
     `${basket.length} Product${basket.length!==1?'s':''}`;
 
   // Tier Discount & Delivery banner
-  const pct    = Math.min(100, Math.round((after/FREE_THRESHOLD)*100));
   const banner = document.getElementById('delivery-banner');
   const icon   = document.getElementById('delivery-icon');
-  document.getElementById('delivery-fill').style.width = pct+'%';
+  document.getElementById('delivery-fill').style.width = '100%';
+  banner.className = 'delivery-banner ok';
+
   if (tierDiscRate > 0) {
-    banner.className = 'delivery-banner ok';
     icon.innerHTML   = '<use href="#ico-tag"/>';
-    document.getElementById('delivery-text').textContent = `Volume Discount Unlocked! You are saving ${Math.round(tierDiscRate * 100)}% on all items.`;
-  } else if (delivery===0) {
-    banner.className = 'delivery-banner ok';
-    icon.innerHTML   = '<use href="#ico-check-circle"/>';
-    document.getElementById('delivery-text').textContent = 'Congratulations! Your order qualifies for FREE delivery.';
+    document.getElementById('delivery-text').textContent = `Volume Discount Unlocked! You are saving ${Math.round(tierDiscRate * 100)}% on all items. FREE Courier Delivery Included!`;
   } else {
-    banner.className = 'delivery-banner pending';
-    icon.innerHTML   = '<use href="#ico-truck"/>';
-    document.getElementById('delivery-text').textContent = `Add 1 or more items to unlock volume discounts! (Spend R${remain} more for FREE delivery).`;
+    icon.innerHTML   = '<use href="#ico-check-circle"/>';
+    document.getElementById('delivery-text').textContent = 'FREE Courier Delivery on all orders! Add 2 or more items to unlock volume discounts (up to 25% off).';
   }
 
   // Basket items
