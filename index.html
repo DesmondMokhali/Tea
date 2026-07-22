@@ -6220,21 +6220,26 @@ async function loadProducts() {
   if (!_supabase) return;
   const { data: products, error } = await _supabase
     .from('products')
-    .select('external_id, title, retail_price, stock_quantity');
+    .select('*');
 
   if (error) {
-    console.error('Error fetching products:', error);
+    console.error('Error fetching products:', error.message || error);
     return;
   }
 
   // Update UI elements dynamically
-  products.forEach(product => {
-    // Example: update price element with ID matching product SKU/external_id
-    const priceElement = document.getElementById(`price-${product.external_id}`);
-    if (priceElement) {
-      priceElement.innerText = `R ${product.retail_price}`;
-    }
-  });
+  if (products && Array.isArray(products)) {
+    products.forEach(product => {
+      if (!product || !product.external_id) return;
+      const priceVal = product.retail_price ?? product.price;
+      if (priceVal !== undefined && priceVal !== null) {
+        const priceElement = document.getElementById(`price-${product.external_id}`);
+        if (priceElement) {
+          priceElement.innerText = `R ${priceVal}`;
+        }
+      }
+    });
+  }
 }
 
 // Run on page load
