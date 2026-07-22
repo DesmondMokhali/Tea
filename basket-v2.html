@@ -886,21 +886,45 @@ const byId = id => {
 };
 const save = ()  => localStorage.setItem('tangren_cart', JSON.stringify(basket));
 
+function calculateTierDiscount(quantity) {
+  if (quantity >= 10) return 0.25; // 25%
+  if (quantity >= 6)  return 0.18; // 18%
+  if (quantity >= 5)  return 0.15; // 15%
+  if (quantity >= 4)  return 0.12; // 12%
+  if (quantity >= 3)  return 0.10; // 10%
+  if (quantity >= 2)  return 0.05; // 5%
+  return 0.00;                     // 0%
+}
+
+function getEffectiveUnitPrice(basePrice, quantity) {
+  const discount = calculateTierDiscount(quantity);
+  return basePrice * (1 - discount);
+}
+
 function calc() {
-  // Resolve item price: use _bundlePrice for bundles, catalog lookup for standalone products
-  const itemPrice = i => i._bundleId ? (i._bundlePrice || 0) : (byId(i.id)?.price || 0);
-  const sub      = basket.reduce((s,i) => s + itemPrice(i) * i.qty, 0);
+  const totalQty = basket.reduce((s, i) => s + i.qty, 0);
+  const tierDiscRate = calculateTierDiscount(totalQty);
+
+  // Resolve base item price: use _bundlePrice for bundles, catalog lookup for standalone products
+  const itemBasePrice = i => i._bundleId ? (i._bundlePrice || 0) : (byId(i.id)?.price || 0);
+
+  // Calculate subtotal with effective tier prices
+  const sub = basket.reduce((s, i) => {
+    const baseP = itemBasePrice(i);
+    const effP  = getEffectiveUnitPrice(baseP, totalQty);
+    return s + effP * i.qty;
+  }, 0);
+
   const discAmt  = Math.round(sub * promoDisc);
   const after    = sub - discAmt;
   const delivery = after >= FREE_THRESHOLD ? 0 : DELIVERY_FEE;
   const total    = after + delivery;
   const remain   = Math.max(0, FREE_THRESHOLD - after);
-  return { sub, discAmt, after, delivery, total, remain };
+  return { totalQty, tierDiscRate, sub, discAmt, after, delivery, total, remain };
 }
 
 function render() {
-  const { sub, discAmt, after, delivery, total, remain } = calc();
-  const totalQty = basket.reduce((s,i) => s+i.qty, 0);
+  const { totalQty, tierDiscRate, sub, discAmt, after, delivery, total, remain } = calc();
 
   document.getElementById('nav-count').textContent = totalQty;
   document.getElementById('page-sub').textContent =
@@ -910,19 +934,23 @@ function render() {
   document.getElementById('item-badge').textContent =
     `${basket.length} Product${basket.length!==1?'s':''}`;
 
-  // Delivery banner
+  // Tier Discount & Delivery banner
   const pct    = Math.min(100, Math.round((after/FREE_THRESHOLD)*100));
   const banner = document.getElementById('delivery-banner');
   const icon   = document.getElementById('delivery-icon');
   document.getElementById('delivery-fill').style.width = pct+'%';
-  if (delivery===0) {
+  if (tierDiscRate > 0) {
+    banner.className = 'delivery-banner ok';
+    icon.innerHTML   = '<use href="#ico-tag"/>';
+    document.getElementById('delivery-text').textContent = `Volume Discount Unlocked! You are saving ${Math.round(tierDiscRate * 100)}% on all items.`;
+  } else if (delivery===0) {
     banner.className = 'delivery-banner ok';
     icon.innerHTML   = '<use href="#ico-check-circle"/>';
     document.getElementById('delivery-text').textContent = 'Congratulations! Your order qualifies for FREE delivery.';
   } else {
     banner.className = 'delivery-banner pending';
     icon.innerHTML   = '<use href="#ico-truck"/>';
-    document.getElementById('delivery-text').textContent = `Spend R${remain} more to get FREE courier delivery.`;
+    document.getElementById('delivery-text').textContent = `Add 1 or more items to unlock volume discounts! (Spend R${remain} more for FREE delivery).`;
   }
 
   // Basket items
@@ -975,6 +1003,13 @@ function render() {
 
       // ── Standalone product ───────────────────────────────────────────────────
       const p = byId(item.id); if(!p) return '';
+      const baseUnitPrice = p.price;
+      const effUnitPrice  = getEffectiveUnitPrice(baseUnitPrice, totalQty);
+      const hasTierDisc   = tierDiscRate > 0;
+      const unitPriceHtml = hasTierDisc
+        ? `<span style="text-decoration:line-through;opacity:0.6;margin-right:6px;">R${baseUnitPrice.toFixed(2)}</span><strong style="color:#2a5040">R${effUnitPrice.toFixed(2)}</strong> <span style="font-size:0.8em;color:#c8a06e;font-weight:700">(${Math.round(tierDiscRate*100)}% OFF)</span>`
+        : `R${baseUnitPrice.toFixed(2)} each`;
+
       return `
       <div class="basket-item">
         <div class="item-thumb">
@@ -987,7 +1022,7 @@ function render() {
         <div class="item-info">
           <span class="item-cat">${p.cat}</span>
           <div class="item-name">${p.name}</div>
-          <div class="item-unit">R${p.price.toFixed(2)} each</div>
+          <div class="item-unit">${unitPriceHtml}</div>
           <div class="item-controls">
             <div class="qty-ctrl">
               <button class="qty-btn" onclick="changeQty('${item.id}',-1)" aria-label="Decrease">
@@ -999,7 +1034,7 @@ function render() {
               </button>
             </div>
             <div class="item-right">
-              <span class="item-total">R${(p.price*item.qty).toFixed(2)}</span>
+              <span class="item-total">R${(effUnitPrice * item.qty).toFixed(2)}</span>
               <button class="item-remove" onclick="removeItem('${item.id}')">
                 <svg class="icon" width="12" height="12"><use href="#ico-trash"/></svg> Remove
               </button>
