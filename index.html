@@ -6585,9 +6585,14 @@ async function loadDynamicCatalog() {
 
     // Fetch and apply live prices from Supabase to the catalog items
     await loadProducts();
+
+    // If URL has ?openCheckout=true, open checkout after live DB prices are loaded
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('openCheckout') === 'true') {
+      openCheckout();
+    }
   } catch (error) {
     console.error('[Tangren] Failed to load dynamic catalog:', error.message);
-    // Show a loading error state in the product grid
     const pg = document.getElementById('pg');
     if (pg) {
       pg.innerHTML = `<div class="nores"><h3>Catalog Unavailable</h3><p>Could not load products. Please refresh the page or try again shortly.</p><small style="opacity:.5">${error.message}</small></div>`;
@@ -6597,16 +6602,8 @@ async function loadDynamicCatalog() {
 
 // ── INIT ───────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded',()=>{
-  // Fetch dynamic products catalog
+  // Fetch dynamic products catalog (will automatically trigger openCheckout after Supabase prices load if ?openCheckout=true)
   loadDynamicCatalog();
-
-  // If redirecting back from basket page with checkout intent:
-  const params = new URLSearchParams(window.location.search);
-  if (params.get('openCheckout') === 'true') {
-    setTimeout(() => {
-      openCheckout();
-    }, 450);
-  }
 
   // Toggle nav dropdowns on click/tap (especially for touch screens)
   document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
