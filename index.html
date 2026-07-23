@@ -6261,6 +6261,41 @@ async function loadProducts() {
       if (typeof updateCart === 'function') updateCart(); // refresh checkout panel prices
     }
   }
+
+  // 2. Fetch live bundles and update bundle items in cart
+  try {
+    const { data: bundles, error: bErr } = await _supabase
+      .from('bundles')
+      .select('*');
+
+    if (!bErr && bundles && Array.isArray(bundles)) {
+      let bundleCartUpdated = false;
+      bundles.forEach(b => {
+        if (!b) return;
+        const bIdStr = String(b.id);
+        const bPrice = parseFloat(b.bundle_retail_price ?? b.retail_price ?? b.price);
+        const bName  = b.title || b.name;
+
+        if (isNaN(bPrice) || bPrice <= 0) return;
+
+        if (typeof cart !== 'undefined' && Array.isArray(cart)) {
+          cart.forEach(item => {
+            if (item._bundleId && String(item._bundleId) === bIdStr) {
+              item._bundlePrice = bPrice;
+              if (bName) item._bundleName = bName;
+              bundleCartUpdated = true;
+            }
+          });
+        }
+      });
+      if (bundleCartUpdated) {
+        localStorage.setItem('tangren_cart', JSON.stringify(cart));
+        if (typeof updateCart === 'function') updateCart();
+      }
+    }
+  } catch (err) {
+    console.error('[Index] Bundle price fetch error:', err);
+  }
 }
 
 // Run on page load

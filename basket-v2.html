@@ -800,32 +800,30 @@ let CAT = [
   { id:'TG-TEA-016', name:'Heart Care Tea',            price:100, img:'images/heart_care_tea.png',           cat:'Herbal Tea'  },
 ];
 
-// Load live prices from Supabase — overwrites any static price in CAT
+// Load live product and bundle prices from Supabase — overwrites static prices
 async function loadLivePrices() {
   if (!_sbBV2) { render(); return; }
   try {
-    const { data: products, error } = await _sbBV2
+    // 1. Fetch live products
+    const { data: products, error: pErr } = await _sbBV2
       .from('products')
       .select('*');
 
-    if (error) {
-      console.error('[Basket] Supabase price fetch error:', error.message);
+    if (pErr) {
+      console.error('[Basket] Supabase product price error:', pErr.message);
     } else if (products && Array.isArray(products)) {
       products.forEach(p => {
         if (!p) return;
-        // Determine the real price field (try multiple known column names)
         const priceVal = p.retail_price ?? p.price ?? p.unit_price;
         const id = p.external_id || p.id;
         const liveName = p.name || p.title;
         const numPrice = parseFloat(priceVal);
         if (!id || isNaN(numPrice)) return;
 
-        // Build normalised image slug from name
         const slug = (liveName || id).toLowerCase().replace(/[^a-z0-9]/g, '_').replace(/_+/g, '_').replace(/^_|_$/g, '');
         const img  = `images/${slug}.png`;
         const cat  = id.includes('PILL') ? 'Herbal Pill' : 'Herbal Tea';
 
-        // Update existing CAT entry or add new one
         const existing = CAT.find(c => c.id === id);
         if (existing) {
           existing.price = numPrice;
@@ -835,16 +833,46 @@ async function loadLivePrices() {
         }
       });
     }
+
+    // 2. Fetch live bundles and update bundle items in cart
+    const { data: bundles, error: bErr } = await _sbBV2
+      .from('bundles')
+      .select('*');
+
+    if (bErr) {
+      console.error('[Basket] Supabase bundle price error:', bErr.message);
+    } else if (bundles && Array.isArray(bundles)) {
+      let cartUpdated = false;
+      bundles.forEach(b => {
+        if (!b) return;
+        const bIdStr = String(b.id);
+        const bSlug  = (b.slug || '').toLowerCase().trim();
+        const bPrice = parseFloat(b.bundle_retail_price ?? b.retail_price ?? b.price);
+        const bName  = b.title || b.name;
+
+        if (isNaN(bPrice) || bPrice <= 0) return;
+
+        // Update matching bundle items in active basket
+        basket.forEach(item => {
+          if (item._bundleId && (String(item._bundleId) === bIdStr || (item._bundleSlug && item._bundleSlug.toLowerCase() === bSlug))) {
+            item._bundlePrice = bPrice;
+            if (bName) item._bundleName = bName;
+            cartUpdated = true;
+          }
+        });
+      });
+      if (cartUpdated) save();
+    }
   } catch (err) {
     console.error('[Basket] Unexpected error fetching prices:', err);
   }
   render();
 }
 
-// Subscribe to realtime price changes for instant basket updates
+// Subscribe to realtime product & bundle price changes for instant basket updates
 if (_sbBV2) {
   _sbBV2
-    .channel('basket:products')
+    .channel('basket:updates')
     .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'products' }, payload => {
       const p = payload.new;
       if (!p) return;
@@ -855,6 +883,21 @@ if (_sbBV2) {
       const existing = CAT.find(c => c.id === id);
       if (existing) existing.price = numPrice;
       render();
+    })
+    .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'bundles' }, payload => {
+      const b = payload.new;
+      if (!b) return;
+      const bIdStr = String(b.id);
+      const bPrice = parseFloat(b.bundle_retail_price ?? b.retail_price ?? b.price);
+      if (isNaN(bPrice) || bPrice <= 0) return;
+      let cartUpdated = false;
+      basket.forEach(item => {
+        if (item._bundleId && String(item._bundleId) === bIdStr) {
+          item._bundlePrice = bPrice;
+          cartUpdated = true;
+        }
+      });
+      if (cartUpdated) { save(); render(); }
     })
     .subscribe();
 }
