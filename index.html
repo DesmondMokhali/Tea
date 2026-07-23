@@ -6232,14 +6232,25 @@ async function loadProducts() {
     let updatedCount = 0;
     products.forEach(product => {
       if (!product) return;
-      const id = product.external_id || product.id;
+      const dbExtId = (product.external_id || product.id || '').toString().trim();
+      const dbTitle = (product.title || product.name || '').toString().trim().toLowerCase();
       const priceVal = product.retail_price ?? product.price ?? product.unit_price;
+
       if (priceVal !== undefined && priceVal !== null && !isNaN(Number(priceVal))) {
         const numPrice = Number(priceVal);
 
         // Update in-memory window.P product item if catalog is loaded
         if (window.P && Array.isArray(window.P)) {
-          const pMatch = window.P.find(p => p && (p.external_id === id || p.id === id));
+          const pMatch = window.P.find(p => {
+            if (!p) return false;
+            const pExtId = (p.external_id || p.id || '').toString().trim();
+            const pTitle = (p.title || p.n || '').toString().trim().toLowerCase();
+
+            if (dbExtId && pExtId && dbExtId.toLowerCase() === pExtId.toLowerCase()) return true;
+            if (dbTitle && pTitle && dbTitle === pTitle) return true;
+            return false;
+          });
+
           if (pMatch) {
             pMatch.retail_price = numPrice;
             updatedCount++;
@@ -6247,8 +6258,8 @@ async function loadProducts() {
         }
 
         // Update DOM price elements if matching ID exists
-        if (id) {
-          const priceElement = document.getElementById(`price-${id}`);
+        if (dbExtId) {
+          const priceElement = document.getElementById(`price-${dbExtId}`);
           if (priceElement) {
             priceElement.innerText = `R ${numPrice.toFixed(2)}`;
           }
@@ -6256,7 +6267,7 @@ async function loadProducts() {
       }
     });
 
-    if (updatedCount > 0) {
+    if (updatedCount > 0 || products.length > 0) {
       if (typeof renderGrid === 'function') renderGrid();
       if (typeof updateCart === 'function') updateCart(); // refresh checkout panel prices
     }
