@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/lucide-static@latest/font/lucide.css" />
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -495,14 +497,77 @@
         ]
       }
     };
-    let currentBundleKey = "";
+    // ── SUPABASE CONFIG ────────────────────────────────────────────────────────
+    const SUPABASE_URL_BDETAIL     = 'https://fmmzesqelnwayexweatz.supabase.co';
+    const SUPABASE_ANON_KEY_BDETAIL = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZtbXplc3FlbG53YXlleHdlYXR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM1NzkyMjIsImV4cCI6MjA5OTE1NTIyMn0.0H5bQs5MR6pRfeBrP2wda86VM0IK4b2aRcJORtkaNrU';
+    const _sbBDetail = (typeof supabase !== 'undefined')
+      ? supabase.createClient(SUPABASE_URL_BDETAIL, SUPABASE_ANON_KEY_BDETAIL)
+      : null;
+
+    async function loadLiveBundlePriceFromSupabase(key) {
+      if (!_sbBDetail || !key) return;
+      const bObj = BUNDLES_CATALOG[key];
+      const targetDbId = bObj ? bObj.db_id : null;
+
+      try {
+        const { data: bundles, error } = await _sbBDetail
+          .from('bundles')
+          .select('*');
+
+        if (error) {
+          console.error('[Bundle Detail] Supabase fetch error:', error.message);
+          return;
+        }
+
+        if (bundles && Array.isArray(bundles)) {
+          bundles.forEach(b => {
+            if (!b) return;
+            const priceVal = parseFloat(b.bundle_retail_price ?? b.retail_price ?? b.price);
+            if (isNaN(priceVal) || priceVal <= 0) return;
+
+            const matchKey = Object.keys(BUNDLES_CATALOG).find(k => {
+              const catItem = BUNDLES_CATALOG[k];
+              if (catItem.db_id && String(catItem.db_id) === String(b.id)) return true;
+              if (k === (b.slug || '').toLowerCase().trim()) return true;
+              return false;
+            });
+
+            if (matchKey) {
+              BUNDLES_CATALOG[matchKey].price = priceVal;
+              if (matchKey === currentBundleKey) {
+                updatePriceDisplay();
+              }
+            }
+          });
+        }
+      } catch (err) {
+        console.error('[Bundle Detail] Unexpected price fetch error:', err);
+      }
+    }
+
+    function updatePriceDisplay() {
+      const b = BUNDLES_CATALOG[currentBundleKey];
+      if (!b) return;
+
+      const priceDisplay = document.getElementById('price-display');
+      if (priceDisplay) priceDisplay.textContent = `R${b.price.toFixed(2)}`;
+
+      const valDisp = document.getElementById('value-display');
+      if (valDisp) valDisp.textContent = `R${b.value.toFixed(2)}`;
+
+      const saveDisp = document.getElementById('save-display');
+      if (saveDisp) saveDisp.textContent = `Save R${(b.value - b.price).toFixed(2)}`;
+    }
 
     function loadBundleData() {
       const params = new URLSearchParams(window.location.search);
       const key = params.get('bundle') || "high-performance-engine";
       currentBundleKey = key;
-      const b = BUNDLES_CATALOG[key];
 
+      // Fetch live price from Supabase
+      loadLiveBundlePriceFromSupabase(key);
+
+      const b = BUNDLES_CATALOG[key];
       if (!b) return;
 
       const activeBreadcrumb = document.getElementById('breadcrumb-active');
