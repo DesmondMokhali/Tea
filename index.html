@@ -2326,35 +2326,80 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
               </div>
             </div>
 
+            <!-- Delivery Method Selector -->
+            <div style="font-family: 'DM Sans', sans-serif; margin-bottom: 20px;">
+              <label style="font-weight: 700; color: var(--f); font-size: 13.5px; display: block; margin-bottom: 8px;">Select Delivery Method *</label>
+
+              <!-- Option 1: Door to Door -->
+              <label style="display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 1.5px solid var(--cd); border-radius: 10px; margin-bottom: 10px; cursor: pointer; background: #fff; transition: border-color var(--tr);" id="lbl-del-door">
+                <input type="radio" name="delivery_method" value="door" checked onchange="toggleDeliveryOptions('door')" style="accent-color: var(--f); width: 16px; height: 16px;">
+                <span style="font-size: 13px; color: var(--t);">
+                  <strong style="color: var(--f);">Courier Door-to-Door Delivery</strong> (Delivered to your address)
+                </span>
+              </label>
+
+              <!-- Option 2: Locker -->
+              <label style="display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 1.5px solid var(--cd); border-radius: 10px; cursor: pointer; background: #fff; transition: border-color var(--tr);" id="lbl-del-locker">
+                <input type="radio" name="delivery_method" value="locker" onchange="toggleDeliveryOptions('locker')" style="accent-color: var(--f); width: 16px; height: 16px;">
+                <span style="font-size: 13px; color: var(--t);">
+                  <strong style="color: var(--f);">Courier Locker Delivery (PUDO / The Courier Guy)</strong> (Pick up at nearby locker)
+                </span>
+              </label>
+            </div>
+
+            <!-- CONTAINER 1: Street Address Form (Shown for Door Delivery) -->
+            <div id="door-address-container" style="display: block;">
+              <div class="form-grp">
+                <label for="c-address">Street Address *</label>
+                <input type="text" id="c-address" required placeholder="123 Wellness Way, Suburb" autocomplete="street-address" />
+              </div>
+
+              <div class="form-row2">
+                <div class="form-grp">
+                  <label for="c-suburb">Suburb / Town *</label>
+                  <input type="text" id="c-suburb" required placeholder="Sandton" />
+                </div>
+                <div class="form-grp">
+                  <label for="c-city">City *</label>
+                  <input type="text" id="c-city" required placeholder="Johannesburg" autocomplete="address-level2" />
+                </div>
+              </div>
+
+              <div class="form-row2">
+                <div class="form-grp">
+                  <label for="c-zip">Postal Code *</label>
+                  <input type="text" id="c-zip" required placeholder="2196" autocomplete="postal-code" inputmode="numeric" />
+                </div>
+                <div class="form-grp">
+                  <label for="c-province">Province *</label>
+                  <input type="text" id="c-province" required placeholder="Gauteng" />
+                </div>
+              </div>
+            </div>
+
+            <!-- CONTAINER 2: PUDO Locker Finder Map (Shown for Locker Delivery) -->
+            <div id="locker-map-container" style="display: none; padding: 16px; border: 1.5px solid var(--g); background: #fcfbf9; border-radius: 12px; margin-bottom: 20px;">
+              <h4 style="margin: 0 0 6px 0; color: var(--f); font-family: 'Playfair Display', serif; font-size: 16px;">Find Your Nearest PUDO Locker:</h4>
+              <p style="font-size: 12.5px; color: var(--tm); margin-bottom: 12px;">Search for your suburb or zoom in on the interactive map below to select your pickup location.</p>
+              
+              <!-- Interactive PUDO Locker Map Embed -->
+              <iframe 
+                id="pudo-map-iframe"
+                src="https://www.pudo.co.za/terminal-map.html" 
+                width="100%" 
+                height="400" 
+                style="border: 1px solid var(--cd); border-radius: 10px; background: #fff;"
+                loading="lazy">
+              </iframe>
+
+              <div class="form-grp" style="margin-top: 14px;">
+                <label for="selected_locker" style="color: var(--f); font-weight: 700;">Selected Locker Name / Location Code *</label>
+                <input type="text" id="selected_locker" placeholder="Type or paste locker name e.g. PUDO Locker - Shell Garage Midrand" style="font-weight: 600; background-color: #ffffff; border-color: var(--g);" />
+              </div>
+            </div>
+
             <div class="form-grp">
-              <label for="c-address">Shipping Address *</label>
-              <input type="text" id="c-address" required placeholder="123 Wellness Way" autocomplete="street-address" />
-            </div>
-
-            <div class="form-row2">
-              <div class="form-grp">
-                <label for="c-suburb">Suburb / Town *</label>
-                <input type="text" id="c-suburb" required placeholder="Sandton" />
-              </div>
-              <div class="form-grp">
-                <label for="c-city">City *</label>
-                <input type="text" id="c-city" required placeholder="Johannesburg" autocomplete="address-level2" />
-              </div>
-            </div>
-
-            <div class="form-row2">
-              <div class="form-grp">
-                <label for="c-zip">Postal Code *</label>
-                <input type="text" id="c-zip" required placeholder="2196" autocomplete="postal-code" inputmode="numeric" />
-              </div>
-              <div class="form-grp">
-                <label for="c-province">Province *</label>
-                <input type="text" id="c-province" required placeholder="Gauteng" />
-              </div>
-            </div>
-
-            <div class="form-grp">
-              <label for="c-instructions">Delivery Instructions</label>
+              <label for="c-instructions">Delivery Instructions / Special Notes</label>
               <textarea id="c-instructions" placeholder="Leave at front desk / special delivery notes..."></textarea>
             </div>
 
@@ -7058,6 +7103,44 @@ function _restoreCheckoutForm() {
   });
 }
 
+// Toggle between Door-to-Door and PUDO Locker Delivery options
+function toggleDeliveryOptions(selectedMethod) {
+  const doorContainer   = document.getElementById('door-address-container');
+  const lockerContainer = document.getElementById('locker-map-container');
+  const lockerInput     = document.getElementById('selected_locker');
+
+  const doorInputs = ['c-address', 'c-suburb', 'c-city', 'c-zip', 'c-province'];
+
+  const lblDoor   = document.getElementById('lbl-del-door');
+  const lblLocker = document.getElementById('lbl-del-locker');
+
+  if (selectedMethod === 'locker') {
+    if (doorContainer)   doorContainer.style.display   = 'none';
+    if (lockerContainer) lockerContainer.style.display = 'block';
+
+    doorInputs.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.removeAttribute('required');
+    });
+    if (lockerInput) lockerInput.setAttribute('required', 'true');
+
+    if (lblDoor)   lblDoor.style.borderColor   = 'var(--cd)';
+    if (lblLocker) lblLocker.style.borderColor = 'var(--g)';
+  } else {
+    if (doorContainer)   doorContainer.style.display   = 'block';
+    if (lockerContainer) lockerContainer.style.display = 'none';
+
+    doorInputs.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.setAttribute('required', 'true');
+    });
+    if (lockerInput) lockerInput.removeAttribute('required');
+
+    if (lblDoor)   lblDoor.style.borderColor   = 'var(--g)';
+    if (lblLocker) lblLocker.style.borderColor = 'var(--cd)';
+  }
+}
+
 // Clear all checkout form fields from localStorage (call after successful order)
 function _clearCheckoutStorage() {
   const fields = ['c-name','c-email','c-phone','c-address','c-suburb','c-city','c-zip','c-province','c-instructions'];
@@ -7163,17 +7246,30 @@ function submitOrder(e) {
   console.log("🔥 Checkout submission handler triggered successfully!");
 
   // ── Gather form inputs ───────────────────────────────────────────────────
-  const fullName    = document.getElementById('c-name').value.trim();
-  const email       = document.getElementById('c-email').value.trim();
-  const phone       = document.getElementById('c-phone').value.trim();
-  const address     = document.getElementById('c-address').value.trim();
-  const suburb      = document.getElementById('c-suburb').value.trim();
-  const city        = document.getElementById('c-city').value.trim();
-  const zip         = document.getElementById('c-zip').value.trim();
-  const province    = document.getElementById('c-province').value.trim();
-  const instructions = document.getElementById('c-instructions').value.trim();
+  const fullName      = document.getElementById('c-name').value.trim();
+  const email         = document.getElementById('c-email').value.trim();
+  const phone         = document.getElementById('c-phone').value.trim();
+  const instructions  = document.getElementById('c-instructions').value.trim();
 
-  const delivery_instructions = [address, suburb, city, province, zip].filter(Boolean).join(", ");
+  // Determine delivery method: 'door' vs 'locker'
+  const methodRadio   = document.querySelector('input[name="delivery_method"]:checked');
+  const deliveryMethod = methodRadio ? methodRadio.value : 'door';
+
+  let delivery_instructions = '';
+
+  if (deliveryMethod === 'locker') {
+    const lockerVal = (document.getElementById('selected_locker')?.value || '').trim();
+    delivery_instructions = lockerVal
+      ? `[PUDO LOCKER PICKUP]: ${lockerVal}`
+      : `[PUDO LOCKER PICKUP]: Unspecified Locker`;
+  } else {
+    const address  = (document.getElementById('c-address')?.value || '').trim();
+    const suburb   = (document.getElementById('c-suburb')?.value || '').trim();
+    const city     = (document.getElementById('c-city')?.value || '').trim();
+    const zip      = (document.getElementById('c-zip')?.value || '').trim();
+    const province = (document.getElementById('c-province')?.value || '').trim();
+    delivery_instructions = [address, suburb, city, province, zip].filter(Boolean).join(", ");
+  }
 
   // ── Generate order tracking ID ───────────────────────────────────────────
   const now = new Date();
@@ -7227,9 +7323,10 @@ function submitOrder(e) {
       recipient_email:        email,
       recipient_whatsapp:     phone,
       delivery_instructions:  delivery_instructions,
+      delivery_method:        deliveryMethod === 'locker' ? 'Courier Locker (PUDO)' : 'Courier Door-to-Door',
       special_notes:          instructions
     },
-    shipping_fee:     shipping_fee,         // passed as a validated numeric value
+    shipping_fee:     0,                    // 100% FREE Courier Delivery
     clientCart                              // ← IDs + quantities only; backend resolves prices
   };
 
