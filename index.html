@@ -6844,6 +6844,23 @@ function updateCart() {
   cntBadge.style.transform = 'scale(1.2)';
   setTimeout(() => { cntBadge.style.transform = ''; }, 200);
 
+  // Volume tier discount calculation function
+  function calculateTierDiscount(quantity) {
+    if (quantity >= 10) return 0.25; // 25%
+    if (quantity >= 6)  return 0.18; // 18%
+    if (quantity >= 5)  return 0.15; // 15%
+    if (quantity >= 4)  return 0.12; // 12%
+    if (quantity >= 3)  return 0.10; // 10%
+    if (quantity >= 2)  return 0.05; // 5%
+    return 0.00;                     // 0%
+  }
+
+  function getEffectiveUnitPrice(basePrice, totalCartQty) {
+    const discount = calculateTierDiscount(totalCartQty);
+    return basePrice * (1 - discount);
+  }
+
+  const tierDiscRate = calculateTierDiscount(totalQty);
   let subtotal = 0;
   
   if (cart.length === 0) {
@@ -6886,19 +6903,28 @@ function updateCart() {
         img   = p.image_url;
       }
 
-      const itemTotal = price * item.qty;
+      let effPrice = price;
+      if (!item._bundleId) {
+        effPrice = getEffectiveUnitPrice(price, totalQty);
+      }
+
+      const itemTotal = effPrice * item.qty;
       subtotal += itemTotal;
       const safeId = item.id ? `'${item.id}'` : 'null';
       const removeOnClick  = item._bundleId ? `removeFromCart(null,'${item._bundleId}')` : `removeFromCart(${safeId})`;
       const changeQtyMinus = item._bundleId ? `changeQty(null,-1,'${item._bundleId}')` : `changeQty(${safeId},-1)`;
       const changeQtyPlus  = item._bundleId ? `changeQty(null,1,'${item._bundleId}')` : `changeQty(${safeId},1)`;
 
+      const priceDisplayHtml = (!item._bundleId && tierDiscRate > 0)
+        ? `<span style="text-decoration:line-through;opacity:0.6;margin-right:4px;">R${price.toFixed(2)}</span><strong style="color:var(--f)">R${effPrice.toFixed(2)}</strong> <span style="font-size:0.75em;color:var(--g)">(${Math.round(tierDiscRate*100)}% OFF)</span>`
+        : `R${price.toFixed(2)}`;
+
       return `
         <div class="cart-item">
           <img class="cart-item-img" src="${img}" alt="${name}" onerror="this.src='';this.style.background='var(--c)'">
           <div class="cart-item-info">
             <div class="cart-item-name">${name}</div>
-            <div class="cart-item-price">R${price.toFixed(2)}</div>
+            <div class="cart-item-price">${priceDisplayHtml}</div>
             <div class="cart-item-ctrls">
               <button class="qty-btn" onclick="${changeQtyMinus}" title="Decrease quantity"><i data-lucide="minus" style="width:10px;height:10px"></i></button>
               <span class="qty-val">${item.qty}</span>
@@ -6910,25 +6936,16 @@ function updateCart() {
       `;
     }).join('');
 
-    // Shipping: R75 flat rate, free over R500
-    const SHIPPING_THRESHOLD = 500;
-    const SHIPPING_COST = 75;
+    // Shipping: Always 100% FREE courier delivery
     const shippingEl = document.getElementById('cart-shipping-status');
+    shippingEl.innerHTML = 'FREE <i data-lucide="gift" style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-left:3px"></i>';
+    shippingEl.style.color = 'var(--s)';
+    shippingEl.style.fontWeight = '600';
     let shipping = 0;
-    if (subtotal >= SHIPPING_THRESHOLD) {
-      shippingEl.innerHTML = 'FREE <i data-lucide="gift" style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-left:3px"></i>';
-      shippingEl.style.color = 'var(--s)';
-      shippingEl.style.fontWeight = '600';
-      shipping = 0;
-    } else {
-      shippingEl.textContent = `R${SHIPPING_COST.toFixed(2)}`;
-      shippingEl.style.color = '';
-      shippingEl.style.fontWeight = '';
-      shipping = SHIPPING_COST;
-    }
+
     subtotalVal.textContent = `R${subtotal.toFixed(2)}`;
     if (headerTotal) headerTotal.textContent = `R${subtotal.toFixed(2)}`;
-    totalVal.textContent = `R${(subtotal + shipping).toFixed(2)}`;
+    totalVal.textContent = `R${subtotal.toFixed(2)}`;
     
     // Save to localStorage in SKU/external_id format
     const cartForStorage = cart.map(item => {
@@ -7072,10 +7089,19 @@ function openCheckout() {
   const summary = document.getElementById('chk-summary');
   let subtotal = 0;
   
-  // Shipping: R75 flat rate, free over R500
-  const SHIP_THRESH = 500;
-  const SHIP_COST = 75;
-  
+  // Calculate volume tier discount for checkout summary
+  const totalCartQty = cart.reduce((s, i) => s + (i.qty || 1), 0);
+  function calcTierDisc(qty) {
+    if (qty >= 10) return 0.25;
+    if (qty >= 6)  return 0.18;
+    if (qty >= 5)  return 0.15;
+    if (qty >= 4)  return 0.12;
+    if (qty >= 3)  return 0.10;
+    if (qty >= 2)  return 0.05;
+    return 0.00;
+  }
+  const tierRate = calcTierDisc(totalCartQty);
+
   summary.innerHTML = cart.map(item => {
     if (!item) return '';
     let name = '';
@@ -7085,7 +7111,11 @@ function openCheckout() {
       name  = item._bundleName  || 'Ritual Bundle';
       price = item._bundlePrice || 0;
     } else {
-      const p = P.find(prod => prod && prod.external_id === item.id);
+      const p = P.find(prod => {
+        if (!prod) return false;
+        const pExtId = (prod.external_id || prod.id || '').toString().trim();
+        return pExtId.toLowerCase() === (item.id || '').toString().trim().toLowerCase();
+      });
       if (!p) {
         console.error(`[Checkout Summary] Product not found for id="${item.id}". Item cannot be priced.`);
         return '';
@@ -7094,30 +7124,29 @@ function openCheckout() {
       price = p.retail_price;
     }
     
-    const total = price * item.qty;
+    const effUnitPrice = item._bundleId ? price : (price * (1 - tierRate));
+    const total = effUnitPrice * item.qty;
     subtotal += total;
+
+    const discBadge = (!item._bundleId && tierRate > 0)
+      ? ` <small style="color:var(--g);font-weight:700">(${Math.round(tierRate*100)}% OFF)</small>`
+      : '';
+
     return `
       <div class="order-summary-item">
-        <span>${name} (x${item.qty})</span>
+        <span>${name} (x${item.qty})${discBadge}</span>
         <span>R${total.toFixed(2)}</span>
       </div>
     `;
   }).join('');
   
-  let chkShipping = 0;
-  if (subtotal >= SHIP_THRESH) {
-    document.getElementById('chk-shipping').textContent = 'FREE 🎉';
-    document.getElementById('chk-shipping').style.color = 'var(--s)';
-    document.getElementById('chk-shipping').style.fontWeight = '600';
-    chkShipping = 0;
-  } else {
-    document.getElementById('chk-shipping').textContent = `R${SHIP_COST.toFixed(2)}`;
-    document.getElementById('chk-shipping').style.color = '';
-    document.getElementById('chk-shipping').style.fontWeight = '';
-    chkShipping = SHIP_COST;
-  }
+  document.getElementById('chk-shipping').textContent = 'FREE 🎉';
+  document.getElementById('chk-shipping').style.color = 'var(--s)';
+  document.getElementById('chk-shipping').style.fontWeight = '600';
+  const chkShipping = 0;
+
   document.getElementById('chk-subtotal').textContent = `R${subtotal.toFixed(2)}`;
-  document.getElementById('chk-total').textContent = `R${(subtotal + chkShipping).toFixed(2)}`;
+  document.getElementById('chk-total').textContent = `R${subtotal.toFixed(2)}`;
   
   document.getElementById('chk-mo').classList.add('on');
   document.body.style.overflow = 'hidden';
