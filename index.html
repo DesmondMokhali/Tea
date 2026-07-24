@@ -920,6 +920,26 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
   .hero-img-protocol { min-height: 340px; }
   .hero-img-protocol img { max-height: 460px; }
   .hero-img-protocol::before { width: 84%; padding-top: 84%; }
+
+  /* Per-slide image position — tuned per banner since each real photo has a
+     different aspect ratio/composition, so one universal position doesn't fit all. */
+  .hero-slide.theme-energy .hero-img-protocol,
+  .hero-slide.theme-weight .hero-img-protocol {
+    justify-content: flex-start;   /* shift left */
+    transform: translateY(28px);   /* nudge down */
+  }
+  .hero-slide.theme-recovery .hero-img-protocol {
+    justify-content: flex-start;   /* shift left */
+    align-self: flex-end;          /* bottom aligns with CTA */
+  }
+  .hero-slide.theme-women .hero-img-protocol {
+    align-self: flex-end;          /* move down, bottom aligns with CTA */
+  }
+  .hero-slide.theme-joint .hero-img-protocol,
+  .hero-slide.theme-longevity .hero-img-protocol {
+    justify-content: flex-start;   /* shift left a bit */
+    align-self: flex-end;          /* move down, bottom aligns with CTA */
+  }
 }
 
 @media(max-width: 991px){
