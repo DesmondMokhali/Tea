@@ -857,7 +857,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
 .hero-slide.theme-women,
 .hero-slide.theme-joint,
 .hero-slide.theme-longevity {
-  grid-template-columns: 7fr 3fr;
+  grid-template-columns: 60% 40%;
 }
 .hero-slide.theme-energy    { background: linear-gradient(135deg, #2a5040 0%, #16281c 100%); --pa: #dab882; }
 .hero-slide.theme-weight    { background: linear-gradient(135deg, #3c5b46 0%, #1b3a28 100%); --pa: #9dc48a; }
@@ -912,6 +912,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
   max-width: 100%; max-height: 380px; width: auto; height: auto;
   object-fit: contain;
   filter: drop-shadow(0 24px 46px rgba(0,0,0,.45));
+}
+
+/* Desktop-only refinement: larger, more prominent banner image within the 60/40 split. Mobile block below is untouched. */
+@media(min-width: 992px){
+  .hero-carousel { min-height: 560px; }
+  .hero-img-protocol { min-height: 340px; }
+  .hero-img-protocol img { max-height: 460px; }
+  .hero-img-protocol::before { width: 84%; padding-top: 84%; }
 }
 
 @media(max-width: 991px){
