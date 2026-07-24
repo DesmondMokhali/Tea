@@ -580,7 +580,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
   line-height: 1.15;
   margin-bottom: 15px;
   letter-spacing: -0.02em;
-  text-transform: uppercase;
 }
   
 .hero-slide h1 em { color: var(--gl); font-style: normal; font-weight: 800; }
@@ -849,6 +848,79 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
   letter-spacing: 0.08em;
   text-align: center;
   margin-top: 4px;
+}
+
+/* ── PROTOCOL BANNERS (2026 refresh) — single floating image, 70/30 split ── */
+.hero-slide.theme-energy,
+.hero-slide.theme-weight,
+.hero-slide.theme-recovery,
+.hero-slide.theme-women,
+.hero-slide.theme-joint,
+.hero-slide.theme-longevity {
+  grid-template-columns: 7fr 3fr;
+}
+.hero-slide.theme-energy    { background: linear-gradient(135deg, #2a5040 0%, #16281c 100%); --pa: #dab882; }
+.hero-slide.theme-weight    { background: linear-gradient(135deg, #3c5b46 0%, #1b3a28 100%); --pa: #9dc48a; }
+.hero-slide.theme-recovery  { background: linear-gradient(135deg, #2d4a49 0%, #142e2c 100%); --pa: #7cc2b8; }
+.hero-slide.theme-women     { background: linear-gradient(135deg, #4a3a3d 0%, #2a1f22 100%); --pa: #dba9ad; }
+.hero-slide.theme-joint     { background: linear-gradient(135deg, #4a3524 0%, #241a10 100%); --pa: #d69a5c; }
+.hero-slide.theme-longevity { background: linear-gradient(135deg, #16351f 0%, #08150d 100%); --pa: #e3c17e; }
+
+.hero-eyebrow {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--pa, var(--gl));
+  margin-bottom: 16px;
+}
+.hero-slide h1 em { color: var(--pa, var(--gl)); }
+.hero-slide .hsub { max-width: 480px; }
+
+.hero-bullets { list-style: none; margin: 2px 0 26px; display: flex; flex-direction: column; gap: 9px; }
+.hero-bullets li { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: rgba(255,255,255,.88); line-height: 1.5; }
+.hero-bullets li .bchk { color: var(--pa, var(--gl)); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+
+.hero-price-cta-row { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; margin-top: 6px; }
+.hero-price-block { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.hero-was { font-family: 'Montserrat', sans-serif; font-size: 14px; color: rgba(255,255,255,.45); text-decoration: line-through; }
+.hero-now { font-family: 'Montserrat', sans-serif; font-size: 27px; font-weight: 900; color: #fff; }
+.hero-save { font-size: 10.5px; font-weight: 800; color: #16281c; background: var(--pa, var(--gl)); padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: .03em; }
+
+.hero-slide.theme-energy .btnp,
+.hero-slide.theme-weight .btnp,
+.hero-slide.theme-recovery .btnp,
+.hero-slide.theme-women .btnp,
+.hero-slide.theme-joint .btnp,
+.hero-slide.theme-longevity .btnp { background: var(--pa, var(--g)); }
+.hero-slide.theme-energy .btnp:hover,
+.hero-slide.theme-weight .btnp:hover,
+.hero-slide.theme-recovery .btnp:hover,
+.hero-slide.theme-women .btnp:hover,
+.hero-slide.theme-joint .btnp:hover,
+.hero-slide.theme-longevity .btnp:hover { filter: brightness(1.1); }
+
+.hero-img-protocol { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; height: 100%; min-height: 260px; }
+.hero-img-protocol::before {
+  content: ''; position: absolute; width: 78%; padding-top: 78%; border-radius: 50%;
+  background: radial-gradient(circle, var(--pa, var(--gl)) 0%, transparent 70%);
+  opacity: .18; z-index: -1;
+}
+.hero-img-protocol img {
+  max-width: 100%; max-height: 380px; width: auto; height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 46px rgba(0,0,0,.45));
+}
+
+@media(max-width: 991px){
+  .hero-eyebrow { order: 1; }
+  .hero-bullets { order: 4; align-items: center; margin: 2px 0 8px; }
+  .hero-bullets li { justify-content: center; }
+  .hero-img-protocol { order: 5; margin: 4px 0; min-height: 0; }
+  .hero-img-protocol img { max-height: 220px; }
+  .hero-price-cta-row { order: 6; justify-content: center; margin-top: 4px; }
 }
 
 /* Carousel controls */
@@ -1892,202 +1964,165 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
 <section class="hero-carousel" id="hero-carousel">
   <div class="hero-track" id="hero-track">
 
-    <!-- SLIDE 1: Metabolic (Bao He Wan + Abdomen Slimming) -->
-    <div class="hero-slide theme-metabolic">
+    <!-- SLIDE 1: 24-Hour Performance Protocol -->
+    <div class="hero-slide theme-energy">
       <div class="hero-text">
-        <div class="hero-badge-clean">Metabolic Bundle &nbsp;·&nbsp; Digestive System</div>
-        <h1>BEAT THE 3PM<br><em>ENERGY CRASH</em></h1>
-        <p class="hsub">Stop feeling sluggish after meals. Bao He Wan and Abdomen Slim Tea work together to support digestion, reduce bloating, and help maintain steady energy throughout the afternoon.</p>
-        <div class="hero-action-row">
-          <button class="btnp" onclick="addBundleByNames('BAO HE WAN','ABDOMEN SLIMMING')">
-            <i data-lucide="shopping-cart" style="width:15px;height:15px;margin-right:5px"></i> Shop Bundle
+        <div class="hero-eyebrow">24-Hour Performance Protocol&trade;</div>
+        <h1>Own Every Hour of <em>Your Day</em></h1>
+        <p class="hsub">Built for people who wake up tired, lose momentum by midday, and have nothing left by evening. This structured morning-to-night herbal protocol helps support sustained energy, daily resilience, mental clarity, and restful recovery&mdash;without relying on endless cups of coffee.</p>
+        <ul class="hero-bullets">
+          <li><span class="bchk">&#10003;</span> Supports sustained daily energy</li>
+          <li><span class="bchk">&#10003;</span> Helps maintain focus and productivity</li>
+          <li><span class="bchk">&#10003;</span> Promotes restful nighttime recovery</li>
+        </ul>
+        <div class="hero-price-cta-row">
+          <div class="hero-price-block">
+            <span class="hero-was">R920</span>
+            <span class="hero-now">R799.95</span>
+            <span class="hero-save">Save R120.05</span>
+          </div>
+          <button class="btnp" onclick="window.location.href='index.html?filter=all#ga'">
+            <i data-lucide="shopping-cart" style="width:15px;height:15px;margin-right:5px"></i> Start My Daily Energy Protocol
           </button>
-          <button class="btno" onclick="window.location.href='index.html?filter=teas#ga'">Shop Teas</button>
-          <button class="btno" onclick="window.location.href='index.html?filter=pills#ga'">Shop Pills</button>
         </div>
       </div>
-      <div class="hero-imgs">
-        <div class="hero-img-box hero-img-stack-left" onclick="openProductDetailByName('BAO HE WAN')" style="cursor: pointer;">
-          <img src="images/bao_he_wan.png" alt="Bao He Wan" onerror="this.style.opacity='.2'">
-          <div class="hero-img-desc">Bao He Wan</div>
-          <span class="hero-img-label-under">Digestion Aid</span>
-        </div>
-        <div class="hero-bundle-price-badge">
-          <span class="bundle-was-price">Was R210.00</span>
-          <span class="bundle-now-price">R155.00</span>
-          <span class="bundle-save-badge">Save R55</span>
-        </div>
-        <div class="hero-img-box hero-img-stack-right" onclick="openProductDetailByName('ABDOMEN SLIMMING')" style="cursor: pointer;">
-          <img src="images/abdomen_slimming_tea.png" alt="Abdomen Slimming Tea" onerror="this.style.opacity='.2'">
-          <div class="hero-img-desc">Abdomen Slim</div>
-          <span class="hero-img-label-under">Herbal Tea</span>
-        </div>
+      <div class="hero-img-protocol">
+        <img src="assets/bundle_images/1. 24-Hour High-Performance Engine.jpeg" alt="24-Hour Performance Protocol" onerror="this.style.opacity='.2'">
       </div>
     </div>
 
-    <!-- SLIDE 2: Fluid Drainage (Slim Tea + White Gourd Slim Tea) -->
-    <div class="hero-slide theme-drainage">
+    <!-- SLIDE 2: Metabolic Reset Protocol -->
+    <div class="hero-slide theme-weight">
       <div class="hero-text">
-        <div class="hero-urgency-clean">Flash Offer &mdash; Expires 15 June 2026</div>
-        <h1>FEEL LIGHTER IN DAYS,<br><em>NOT MONTHS.</em></h1>
-        <p class="hsub">Support your body's natural fluid balance with Slim Tea and White Gourd Slim Tea. A gentle herbal protocol designed to reduce bloating and help you feel less heavy and uncomfortable.</p>
-        <div class="hero-action-row">
-          <button class="btnp" onclick="addBundleByNames('SLIM TEA','WHITE GOURD')">
-            <i data-lucide="shopping-cart" style="width:15px;height:15px;margin-right:5px"></i> Flash Offer
+        <div class="hero-eyebrow">Metabolic Reset Protocol&trade;</div>
+        <h1>Feel Lighter. Move Easier. <em>Reclaim Your Confidence.</em></h1>
+        <p class="hsub">Designed for those struggling with persistent bloating, sluggish digestion, water retention, and a heavy feeling that lingers throughout the day. This complete herbal protocol supports healthy digestion and metabolism so you can feel lighter from morning to night.</p>
+        <ul class="hero-bullets">
+          <li><span class="bchk">&#10003;</span> Supports healthy metabolism</li>
+          <li><span class="bchk">&#10003;</span> Helps reduce bloated discomfort</li>
+          <li><span class="bchk">&#10003;</span> Promotes digestive wellness throughout the day</li>
+        </ul>
+        <div class="hero-price-cta-row">
+          <div class="hero-price-block">
+            <span class="hero-was">R1,150</span>
+            <span class="hero-now">R999.95</span>
+            <span class="hero-save">Save R150.05</span>
+          </div>
+          <button class="btnp" onclick="window.location.href='index.html?filter=all#ga'">
+            <i data-lucide="shopping-cart" style="width:15px;height:15px;margin-right:5px"></i> Begin My Metabolic Reset
           </button>
-          <button class="btno" onclick="window.location.href='index.html?filter=teas#ga'">Shop Teas</button>
         </div>
       </div>
-      <div class="hero-imgs">
-        <div class="hero-img-box hero-img-stack-left" onclick="openProductDetailByName('SLIM TEA')" style="cursor: pointer;">
-          <img src="images/slim_tea.png" alt="Slim Tea" onerror="this.style.opacity='.2'">
-          <div class="hero-img-desc">Slim Tea</div>
-          <span class="hero-img-label-under">Detox Blend</span>
-        </div>
-        <div class="hero-bundle-price-badge">
-          <span class="bundle-was-price">Was R159.00</span>
-          <span class="bundle-now-price">R119.00</span>
-          <span class="bundle-save-badge">Save R40</span>
-        </div>
-        <div class="hero-img-box hero-img-stack-right" onclick="openProductDetailByName('WHITE GOURD')" style="cursor: pointer;">
-          <img src="images/white_gourd_slim_tea.png" alt="White Gourd Slim Tea" onerror="this.style.opacity='.2'">
-          <div class="hero-img-desc">White Gourd Slim</div>
-          <span class="hero-img-label-under">Herbal Tea</span>
-        </div>
+      <div class="hero-img-protocol">
+        <img src="assets/bundle_images/2. Comprehensive Metabolic &amp; Weight Flush.jpeg" alt="Metabolic Reset Protocol" onerror="this.style.opacity='.2'">
       </div>
     </div>
 
-    <!-- SLIDE 3: Cognitive (Gui Pi Wan + Ginseng Date + Kuding Tea) -->
-    <div class="hero-slide theme-cognitive">
+    <!-- SLIDE 3: Weekend Recovery Protocol -->
+    <div class="hero-slide theme-recovery">
       <div class="hero-text">
-        <div class="hero-badge-clean">Cognitive Performance Stack &nbsp;·&nbsp; Spleen Qi</div>
-        <h1>STOP BORROWING STAMINA<br><em>WITH COFFEE JITTERS</em></h1>
-        <p class="hsub">Replace the cycle of caffeine spikes and crashes. Gui Pi Wan, Ginseng Date Tea, and Kuding Tea help support sustained focus, balanced energy, and daily mental clarity.</p>
-        <div class="hero-action-row">
-          <button class="btnp" onclick="addBundleByNames('GUI PI WAN','GINSENG DATE','KUDING')">
-            <i data-lucide="shopping-cart" style="width:15px;height:15px;margin-right:5px"></i> Shop Stack
+        <div class="hero-eyebrow">Weekend Recovery Protocol&trade;</div>
+        <h1>Bounce Back <em>After Every Indulgence</em></h1>
+        <p class="hsub">Late nights, rich meals, celebrations, and weekends can leave you feeling sluggish and uncomfortable. This protocol supports your body's natural recovery processes so you can get back to feeling refreshed and ready for the week ahead.</p>
+        <ul class="hero-bullets">
+          <li><span class="bchk">&#10003;</span> Supports natural detoxification</li>
+          <li><span class="bchk">&#10003;</span> Helps ease digestive discomfort</li>
+          <li><span class="bchk">&#10003;</span> Promotes post-indulgence recovery</li>
+        </ul>
+        <div class="hero-price-cta-row">
+          <div class="hero-price-block">
+            <span class="hero-was">R805</span>
+            <span class="hero-now">R699.95</span>
+            <span class="hero-save">Save R105.05</span>
+          </div>
+          <button class="btnp" onclick="window.location.href='index.html?filter=all#ga'">
+            <i data-lucide="shopping-cart" style="width:15px;height:15px;margin-right:5px"></i> Start My Recovery
           </button>
-          <button class="btno" onclick="window.location.href='index.html?filter=all#ga'">Shop All Products</button>
         </div>
       </div>
-      <div class="hero-imgs">
-        <div class="hero-img-box hero-img-stack-left" onclick="openProductDetailByName('GUI PI WAN')" style="cursor: pointer;">
-          <img src="images/gui_pi_wan.png" alt="Gui Pi Wan" onerror="this.style.opacity='.2'">
-          <div class="hero-img-desc">Gui Pi Wan</div>
-          <span class="hero-img-label-under">Spleen Aid</span>
-        </div>
-        <div class="hero-img-box hero-img-stack-center" onclick="openProductDetailByName('GINSENG DATE')" style="cursor: pointer;">
-          <img src="images/ginseng_date_tea.png" alt="Ginseng Date Tea" onerror="this.style.opacity='.2'">
-          <div class="hero-img-desc">Ginseng Date</div>
-          <span class="hero-img-label-under">Herbal Tea</span>
-        </div>
-        <div class="hero-bundle-price-badge">
-          <span class="bundle-was-price">Was R299.00</span>
-          <span class="bundle-now-price">R219.00</span>
-          <span class="bundle-save-badge">Save R80</span>
-        </div>
-        <div class="hero-img-box hero-img-stack-right" onclick="openProductDetailByName('KUDING')" style="cursor: pointer;">
-          <img src="images/kuding_tea.png" alt="Kuding Tea" onerror="this.style.opacity='.2'">
-          <div class="hero-img-desc">Kuding Tea</div>
-          <span class="hero-img-label-under">Clearance Tea</span>
-        </div>
+      <div class="hero-img-protocol">
+        <img src="assets/bundle_images/15. Weekend Recovery &amp; Ultimate Organ Shield.jpeg" alt="Weekend Recovery Protocol" onerror="this.style.opacity='.2'">
       </div>
     </div>
 
-    <!-- SLIDE 4: Hormone Balance (Chai Hu Shu Gan + Ba Zhen) -->
-    <div class="hero-slide theme-hormone">
+    <!-- SLIDE 4: Women's Balance Protocol -->
+    <div class="hero-slide theme-women">
       <div class="hero-text">
-        <div class="hero-badge-clean">Women's Hormone Balance Protocol</div>
-        <h1>ACHIEVE A STATE OF FLOW.<br><em>NOT MONTHLY BURNOUT.</em></h1>
-        <p class="hsub">Support energy, mood balance, and overall menstrual wellness with a traditional herbal combination designed for modern women.</p>
-        <div class="hero-action-row">
-          <button class="btnp" onclick="addBundleByNames('CHAI HU SHU GAN','BA ZHEN')">
-            <i data-lucide="shopping-cart" style="width:15px;height:15px;margin-right:5px"></i> Shop Protocol
+        <div class="hero-eyebrow">Women's Balance Protocol&trade;</div>
+        <h1>Restore Balance <em>Through Every Stage</em></h1>
+        <p class="hsub">Created to support women seeking greater balance, vitality, and overall reproductive wellness. This carefully selected herbal protocol complements your daily routine with traditional formulations used to support feminine wellbeing.</p>
+        <ul class="hero-bullets">
+          <li><span class="bchk">&#10003;</span> Supports women's wellness</li>
+          <li><span class="bchk">&#10003;</span> Helps maintain daily vitality</li>
+          <li><span class="bchk">&#10003;</span> Promotes overall balance</li>
+        </ul>
+        <div class="hero-price-cta-row">
+          <div class="hero-price-block">
+            <span class="hero-was">R1,127</span>
+            <span class="hero-now">R979.95</span>
+            <span class="hero-save">Save R147.05</span>
+          </div>
+          <button class="btnp" onclick="window.location.href='index.html?filter=all#ga'">
+            <i data-lucide="shopping-cart" style="width:15px;height:15px;margin-right:5px"></i> Begin My Wellness Ritual
           </button>
-          <button class="btno" onclick="window.location.href='index.html?filter=pills#ga'">Shop Pills</button>
         </div>
       </div>
-      <div class="hero-imgs">
-        <div class="hero-img-box hero-img-stack-left" onclick="openProductDetailByName('CHAI HU SHU GAN')" style="cursor: pointer;">
-          <img src="images/chai_hu_shu_gan_wan.png" alt="Chai Hu Shu Gan Wan" onerror="this.style.opacity='.2'">
-          <div class="hero-img-desc">Chai Hu Shu Gan</div>
-          <span class="hero-img-label-under">Liver Flow</span>
-        </div>
-        <div class="hero-bundle-price-badge">
-          <span class="bundle-was-price">Was R215.00</span>
-          <span class="bundle-now-price">R159.00</span>
-          <span class="bundle-save-badge">Save R56</span>
-        </div>
-        <div class="hero-img-box hero-img-stack-right" onclick="openProductDetailByName('BA ZHEN')" style="cursor: pointer;">
-          <img src="images/ba_zhen_wan.png" alt="Ba Zhen Wan" onerror="this.style.opacity='.2'">
-          <div class="hero-img-desc">Ba Zhen Wan</div>
-          <span class="hero-img-label-under">Eight Tonics</span>
-        </div>
+      <div class="hero-img-protocol">
+        <img src="assets/bundle_images/7. Womb Wellness &amp; Cycle Restoration Ritual.jpeg" alt="Women's Balance Protocol" onerror="this.style.opacity='.2'">
       </div>
     </div>
 
-    <!-- SLIDE 5: Spinal Joint (Te Xiao + Du Huo) -->
-    <div class="hero-slide theme-spinal">
+    <!-- SLIDE 5: Joint Freedom Protocol -->
+    <div class="hero-slide theme-joint">
       <div class="hero-text">
-        <div class="hero-badge-clean">Spinal &amp; Joint Relief Protocol</div>
-        <h1>RELIEF FOR THE HOURS YOUR BODY CAN'T FORGET</em></h1>
-        <p class="hsub">Long days at a desk can leave the neck, back, and joints feeling stiff and restricted. This herbal combination supports mobility, circulation, and everyday comfort.</p>
-        <div class="hero-action-row">
-          <button class="btnp" onclick="addBundleByNames('TE XIAO','DU HUO')">
-            <i data-lucide="shopping-cart" style="width:15px;height:15px;margin-right:5px"></i> Shop Relief Bundle
+        <div class="hero-eyebrow">Joint Freedom Protocol&trade;</div>
+        <h1>Move Freely. <em>Live Fully.</em></h1>
+        <p class="hsub">Whether it's stiff knees in the morning, aching joints after a long day, or reduced mobility with age, this complete protocol is designed to support comfortable movement and active living.</p>
+        <ul class="hero-bullets">
+          <li><span class="bchk">&#10003;</span> Supports joint comfort</li>
+          <li><span class="bchk">&#10003;</span> Helps maintain mobility</li>
+          <li><span class="bchk">&#10003;</span> Promotes bone and muscle wellbeing</li>
+        </ul>
+        <div class="hero-price-cta-row">
+          <div class="hero-price-block">
+            <span class="hero-was">R1,208</span>
+            <span class="hero-now">R1,049.95</span>
+            <span class="hero-save">Save R158.05</span>
+          </div>
+          <button class="btnp" onclick="window.location.href='index.html?filter=all#ga'">
+            <i data-lucide="shopping-cart" style="width:15px;height:15px;margin-right:5px"></i> Support My Joint Health
           </button>
-          <button class="btno" onclick="window.location.href='index.html?filter=pills#ga'">Shop Pills</button>
         </div>
       </div>
-      <div class="hero-imgs">
-        <div class="hero-img-box hero-img-stack-left" onclick="openProductDetailByName('TE XIAO')" style="cursor: pointer;">
-          <img src="images/te_xiao_jing_zhui_tong_wan.png" alt="Te Xiao Neck Relief" onerror="this.style.opacity='.2'">
-          <div class="hero-img-desc">Te Xiao Neck</div>
-          <span class="hero-img-label-under">Neck Relief</span>
-        </div>
-        <div class="hero-bundle-price-badge">
-          <span class="bundle-was-price">Was R200.00</span>
-          <span class="bundle-now-price">R149.00</span>
-          <span class="bundle-save-badge">Save R51</span>
-        </div>
-        <div class="hero-img-box hero-img-stack-right" onclick="openProductDetailByName('DU HUO')" style="cursor: pointer;">
-          <img src="images/du_huo_ji_sheng_wan.png" alt="Du Huo Ji Sheng Wan" onerror="this.style.opacity='.2'">
-          <div class="hero-img-desc">Du Huo Joint</div>
-          <span class="hero-img-label-under">Back &amp; Joint</span>
-        </div>
+      <div class="hero-img-protocol">
+        <img src="assets/bundle_images/10. Golden Years Joint &amp; Mobility Rescue.jpeg" alt="Joint Freedom Protocol" onerror="this.style.opacity='.2'">
       </div>
     </div>
 
-    <!-- SLIDE 6: Seasonal Defense (Anti-Virus Tea + Chuan Xin Lian) -->
-    <div class="hero-slide theme-seasonal">
+    <!-- SLIDE 6: Longevity Protocol -->
+    <div class="hero-slide theme-longevity">
       <div class="hero-text">
-        <div class="hero-urgency-clean">Seasonal Defense Stock &mdash; Priority Access Expires 31 July 2026</div>
-        <h1>BUILD A STRONGER<br><em>DAILY DEFENSE</em></h1>
-        <p class="hsub">Traditional herbs selected to support respiratory wellness, seasonal resilience, and everyday vitality when environmental demands are at their highest.</p>
-        <div class="hero-action-row">
-          <button class="btnp" onclick="addBundleByNames('ANTI-VIRUS TEA','CHUAN XIN')">
-            <i data-lucide="shopping-cart" style="width:15px;height:15px;margin-right:5px"></i> Shop Seasonal Defense
+        <div class="hero-eyebrow">Longevity Protocol&trade;</div>
+        <h1>Invest in the Health of <em>Your Future Self</em></h1>
+        <p class="hsub">Healthy aging isn't about chasing youth&mdash;it's about maintaining strength, vitality, and resilience year after year. This premium protocol combines traditional herbal formulations selected to support whole-body wellness and long-term vitality.</p>
+        <ul class="hero-bullets">
+          <li><span class="bchk">&#10003;</span> Supports healthy aging</li>
+          <li><span class="bchk">&#10003;</span> Helps maintain daily vitality</li>
+          <li><span class="bchk">&#10003;</span> Promotes whole-body wellness</li>
+        </ul>
+        <div class="hero-price-cta-row">
+          <div class="hero-price-block">
+            <span class="hero-was">R1,725</span>
+            <span class="hero-now">R1,499.95</span>
+            <span class="hero-save">Save R225.05</span>
+          </div>
+          <button class="btnp" onclick="window.location.href='index.html?filter=all#ga'">
+            <i data-lucide="shopping-cart" style="width:15px;height:15px;margin-right:5px"></i> Start My Longevity Journey
           </button>
-          <button class="btno" onclick="window.location.href='index.html?filter=teas#ga'">Shop Teas</button>
-          <button class="btno" onclick="window.location.href='index.html?filter=pills#ga'">Shop Pills</button>
         </div>
       </div>
-      <div class="hero-imgs">
-        <div class="hero-img-box hero-img-stack-left" onclick="openProductDetailByName('ANTI-VIRUS')" style="cursor: pointer;">
-          <img src="images/anti_virus_tea.png" alt="Anti-Virus Tea" onerror="this.style.opacity='.2'">
-          <div class="hero-img-desc">Anti-Virus</div>
-          <span class="hero-img-label-under">Defensive Tea</span>
-        </div>
-        <div class="hero-bundle-price-badge">
-          <span class="bundle-was-price">Was R185.00</span>
-          <span class="bundle-now-price">R135.00</span>
-          <span class="bundle-save-badge">Save R50</span>
-        </div>
-        <div class="hero-img-box hero-img-stack-right" onclick="openProductDetailByName('CHUAN XIN')" style="cursor: pointer;">
-          <img src="images/chuan_xin_lian_kang_yan_wan.png" alt="Chuan Xin Lian" onerror="this.style.opacity='.2'">
-          <div class="hero-img-desc">Chuan Xin Lian</div>
-          <span class="hero-img-label-under">Defensive Pill</span>
-        </div>
+      <div class="hero-img-protocol">
+        <img src="assets/bundle_images/6. Whole-Body Longevity &amp; Organ Shield.jpeg" alt="Longevity Protocol" onerror="this.style.opacity='.2'">
       </div>
     </div>
 
