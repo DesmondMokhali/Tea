@@ -7557,11 +7557,11 @@ function heroGoTo(idx) {
   if (track) track.style.transform = 'translateX(-' + (_hIdx * 100) + '%)';
   document.querySelectorAll('.hero-dot').forEach(function(d, i){ d.classList.toggle('active', i === _hIdx); });
   clearInterval(_hAuto);
-  _hAuto = setInterval(function(){ heroMove(1); }, 10000);
+  _hAuto = setInterval(function(){ heroMove(1); }, 50000);
 }
 function heroMove(dir) { heroGoTo(_hIdx + dir); }
 document.addEventListener('DOMContentLoaded', function() {
-  _hAuto = setInterval(function(){ heroMove(1); }, 10000);
+  _hAuto = setInterval(function(){ heroMove(1); }, 50000);
   var carousel = document.getElementById('hero-carousel');
   if (carousel) {
     var _sx = 0;
