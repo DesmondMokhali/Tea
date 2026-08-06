@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Specials &amp; Bundles | The Herbalist</title>
-  <meta name="description" content="Curated synergistic herbal bundles combining Traditional Chinese teas and pills. Target specific wellness goals at exclusive bundle prices." />
+  <title>Synergistic Bundles &amp; Protocols | The Herbalist</title>
+  <meta name="description" content="Curated TCM daily regimens combining traditional teas and micro-pills for maximum cellular synergy." />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/lucide-static@latest/font/lucide.css" />
+  
   <!-- Supabase JS Client -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://cdn.tailwindcss.com"></script>
@@ -18,7 +20,9 @@
         extend: {
           colors: {
             forest: '#1b3a28',
+            forestMuted: '#2a5040',
             gold: '#c8a06e',
+            goldLight: '#dab882',
             cream: '#f7f2e6',
             sage: '#6a9970',
             textMain: '#182415'
@@ -45,163 +49,75 @@
       --header-border: rgba(255,255,255,0.1);
       --search-bg: rgba(255,255,255,0.08);
     }
-    /* ── Top Utility Bar ── */
-    .top-bar {
-      background: #112519;
-      color: rgba(255,255,255,0.70);
-      font-size: 11.5px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      font-family: 'DM Sans', sans-serif;
-    }
-    .top-bar-inner {
-      width: 100%; max-width: 1300px; margin: 0 auto;
-      padding: 0 24px; display: flex; justify-content: space-between;
-    }
+    
+    /* Utility Bar & Header Styles */
+    .top-bar { background: #112519; color: rgba(255,255,255,0.70); font-size: 11.5px; height: 32px; display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); font-family: 'DM Sans', sans-serif; }
+    .top-bar-inner { width: 100%; max-width: 1300px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; }
     .top-bar-left, .top-bar-right { display: flex; align-items: center; gap: 12px; }
     .top-bar-right a { color: rgba(255,255,255,0.70); text-decoration: none; transition: color var(--tr); }
     .top-bar-right a:hover { color: var(--gl); }
     .bar-sep { color: rgba(255,255,255,0.15); }
 
-    /* ── Main Header ── */
-    .main-header {
-      background: var(--header-bg);
-      border-bottom: 1px solid var(--header-border);
-      padding: 12px 24px;
-      position: sticky; top: 0; z-index: 100;
-      box-shadow: 0 2px 24px rgba(0,0,0,0.2);
-      font-family: 'DM Sans', sans-serif;
-    }
-    .main-header-inner {
-      max-width: 1300px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between; gap: 24px;
-    }
+    .main-header { background: var(--header-bg); border-bottom: 1px solid var(--header-border); padding: 12px 24px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 24px rgba(0,0,0,0.2); font-family: 'DM Sans', sans-serif; }
+    .main-header-inner { max-width: 1300px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
     .main-header .nlogo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .main-header .nlogo .ntext b {
-      font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600;
-      color: var(--gl); letter-spacing: 0.04em; display: block;
-    }
-    .main-header .nlogo .ntext small {
-      font-size: 9.5px; color: var(--sl); letter-spacing: 0.14em; text-transform: uppercase;
-    }
-    .main-header .nlogo .nmark {
-      width: 34px; height: 34px; background: var(--g); color: var(--f);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-size: 15px; flex-shrink: 0;
-    }
-    /* Search */
+    .main-header .nlogo .ntext b { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; color: var(--gl); letter-spacing: 0.04em; display: block; }
+    .main-header .nlogo .ntext small { font-size: 9.5px; color: var(--sl); letter-spacing: 0.14em; text-transform: uppercase; }
+    .main-header .nlogo .nmark { width: 34px; height: 34px; background: var(--g); color: var(--f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+    
     .header-search-wrap { flex: 1; max-width: 580px; position: relative; display: flex; align-items: center; }
-    .header-search-wrap input {
-      width: 100%; background: var(--search-bg); border: 1.5px solid rgba(255,255,255,0.15);
-      border-radius: 24px; padding: 10px 100px 10px 42px;
-      font-family: 'DM Sans', sans-serif; font-size: 13.5px; color: #fff; outline: none;
-      transition: all var(--tr);
-    }
+    .header-search-wrap input { width: 100%; background: var(--search-bg); border: 1.5px solid rgba(255,255,255,0.15); border-radius: 24px; padding: 10px 100px 10px 42px; font-family: 'DM Sans', sans-serif; font-size: 13.5px; color: #fff; outline: none; transition: all var(--tr); }
     .header-search-wrap input::placeholder { color: rgba(255,255,255,0.4); }
-    .header-search-wrap input:focus {
-      background: rgba(255,255,255,0.12); border-color: var(--g);
-      box-shadow: 0 0 0 3px rgba(200,160,110,0.15);
-    }
-    .header-search-wrap .search-icon {
-      position: absolute; left: 16px; color: rgba(255,255,255,0.4);
-      display: flex; align-items: center; pointer-events: none;
-    }
+    .header-search-wrap input:focus { background: rgba(255,255,255,0.12); border-color: var(--g); box-shadow: 0 0 0 3px rgba(200,160,110,0.15); }
+    .header-search-wrap .search-icon { position: absolute; left: 16px; color: rgba(255,255,255,0.4); display: flex; align-items: center; pointer-events: none; }
     .header-search-wrap .search-icon svg { width: 15px; height: 15px; }
-    .header-search-wrap .search-btn {
-      position: absolute; right: 5px; background: var(--g); color: var(--f);
-      border: none; border-radius: 20px; padding: 6px 16px;
-      font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700;
-      cursor: pointer; transition: all var(--tr);
-    }
+    .header-search-wrap .search-btn { position: absolute; right: 5px; background: var(--g); color: var(--f); border: none; border-radius: 20px; padding: 6px 16px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700; cursor: pointer; transition: all var(--tr); }
     .header-search-wrap .search-btn:hover { background: var(--gl); }
-    /* Actions */
+
     .header-actions { display: flex; align-items: center; gap: 20px; }
-    .action-link {
-      display: flex; align-items: center; gap: 8px;
-      color: rgba(255,255,255,0.85); text-decoration: none;
-      font-size: 13.5px; font-weight: 600; transition: color var(--tr);
-    }
+    .action-link { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.85); text-decoration: none; font-size: 13.5px; font-weight: 600; transition: color var(--tr); }
     .action-link:hover { color: var(--gl); }
     .action-link svg { width: 18px; height: 18px; color: var(--gl); }
-    /* Cart Button */
-    .header-cart-btn {
-      background: var(--g); color: var(--f); border: none; border-radius: 28px;
-      padding: 8px 18px; cursor: pointer; display: flex; align-items: center;
-      gap: 12px; transition: all var(--tr); text-decoration: none;
-    }
+    
+    .header-cart-btn { background: var(--g); color: var(--f); border: none; border-radius: 28px; padding: 8px 18px; cursor: pointer; display: flex; align-items: center; gap: 12px; transition: all var(--tr); text-decoration: none; }
     .header-cart-btn:hover { background: var(--gl); transform: translateY(-1px); }
     .cart-icon-wrap { position: relative; display: flex; align-items: center; }
     .cart-icon-wrap svg { width: 18px; height: 18px; color: var(--f); }
-    .cart-badge {
-      position: absolute; top: -8px; right: -10px;
-      background: var(--f); color: var(--g); font-size: 9px; font-weight: 700;
-      min-width: 16px; height: 16px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      padding: 0 4px; border: 1px solid var(--g); transition: transform 0.2s ease;
-    }
+    .cart-badge { position: absolute; top: -8px; right: -10px; background: var(--f); color: var(--g); font-size: 9px; font-weight: 700; min-width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; padding: 0 4px; border: 1px solid var(--g); transition: transform 0.2s ease; }
     .cart-btn-text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.1; }
     .cart-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(27,58,40,0.7); }
     .cart-total { font-size: 12.5px; font-weight: 700; color: var(--f); }
-    /* Category Nav */
+
     .category-nav { background: var(--fm); border-bottom: 1px solid rgba(0,0,0,0.12); padding: 10px 24px; font-family: 'DM Sans', sans-serif; }
     .category-nav-inner { max-width: 1300px; margin: 0 auto; display: flex; gap: 28px; align-items: center; }
     .cat-link { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13px; font-weight: 600; transition: color var(--tr); }
     .cat-link:hover { color: var(--gl); }
     .cat-link.active { color: var(--g); font-weight: 700; }
+    
     .nav-dropdown { position: relative; }
-    .nav-dropbtn {
-      color: rgba(255,255,255,0.75); font-size: 13px; font-weight: 600;
-      text-decoration: none; cursor: pointer;
-      display: inline-flex; align-items: center; transition: color var(--tr);
-    }
+    .nav-dropbtn { color: rgba(255,255,255,0.75); font-size: 13px; font-weight: 600; text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; transition: color var(--tr); }
     .nav-dropdown:hover .nav-dropbtn { color: var(--gl); }
-    .nav-dropdown-content {
-      display: none; position: absolute; top: calc(100% + 10px); left: 0;
-      background: var(--f); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px; box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-      min-width: 180px; z-index: 200; overflow: hidden;
-    }
+    .nav-dropdown-content { display: none; position: absolute; top: calc(100% + 10px); left: 0; background: var(--f); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; box-shadow: 0 8px 32px rgba(0,0,0,0.25); min-width: 180px; z-index: 200; overflow: hidden; }
     .nav-dropdown:hover .nav-dropdown-content { display: block; }
-    .nav-dropdown-content a {
-      display: block; padding: 10px 16px; color: rgba(255,255,255,0.8);
-      text-decoration: none; font-size: 13px; font-weight: 500;
-      transition: background var(--tr), color var(--tr);
-    }
+    .nav-dropdown-content a { display: block; padding: 10px 16px; color: rgba(255,255,255,0.8); text-decoration: none; font-size: 13px; font-weight: 500; transition: background var(--tr), color var(--tr); }
     .nav-dropdown-content a:hover { background: rgba(255,255,255,0.08); color: var(--gl); }
-    /* Hamburger */
+
     .hamburger-btn { display: none; background: none; border: none; color: var(--gl); cursor: pointer; padding: 4px; }
     .hamburger-btn svg { width: 24px; height: 24px; }
-    /* Mobile Search Row */
     .mobile-search-row { display: none; background: var(--f); padding: 8px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    /* Mobile Drawer */
-    .mobile-menu-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 300;
-      opacity: 0; pointer-events: none; transition: opacity var(--tr);
-    }
+    .mobile-menu-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 300; opacity: 0; pointer-events: none; transition: opacity var(--tr); }
     .mobile-menu-overlay.on { opacity: 1; pointer-events: all; }
-    .mobile-menu-drawer {
-      position: fixed; top: 0; left: -280px; width: 280px; height: 100vh;
-      background: var(--f); z-index: 310; box-shadow: 4px 0 24px rgba(0,0,0,0.3);
-      display: flex; flex-direction: column; transition: left 0.3s cubic-bezier(0.4,0,0.2,1);
-    }
+    .mobile-menu-drawer { position: fixed; top: 0; left: -280px; width: 280px; height: 100vh; background: var(--f); z-index: 310; box-shadow: 4px 0 24px rgba(0,0,0,0.3); display: flex; flex-direction: column; transition: left 0.3s cubic-bezier(0.4,0,0.2,1); }
     .mobile-menu-drawer.on { left: 0; }
-    .mobile-menu-hdr {
-      padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
-      display: flex; align-items: center; justify-content: space-between;
-    }
+    .mobile-menu-hdr { padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between; }
     .mobile-menu-hdr h3 { font-family: 'Playfair Display', serif; color: var(--gl); font-size: 18px; }
     .mobile-menu-close { background: none; border: none; font-size: 24px; color: var(--sl); cursor: pointer; }
     .mobile-menu-body { padding: 20px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto; }
-    .mobile-menu-body a {
-      color: rgba(255,255,255,0.85); text-decoration: none; font-size: 14.5px;
-      font-weight: 600; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
+    .mobile-menu-body a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 14.5px; font-weight: 600; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
     .mobile-menu-body a:hover { color: var(--gl); }
     .mobile-menu-section { display: flex; flex-direction: column; gap: 10px; padding-left: 12px; border-left: 2px solid rgba(255,255,255,0.15); margin: 6px 0; }
     .mobile-menu-section-title { font-size: 11px; text-transform: uppercase; color: var(--sl); font-weight: 700; letter-spacing: 0.08em; }
-    /* Responsive */
+
     @media (max-width: 768px) {
       .top-bar, .category-nav, .header-actions .action-link { display: none; }
       .hamburger-btn { display: block; }
@@ -214,47 +130,46 @@
       .header-cart-btn { padding: 6px 12px; }
       .cart-btn-text { display: none; }
     }
+    
+    .filter-tab { transition: all 0.2s ease; }
+    .filter-tab.active { background-color: #1b3a28; color: #dab882; border-color: #c8a06e; }
   </style>
 </head>
-<body class="bg-[#f7f2e6] text-[#182415] font-sans antialiased">
+<body class="bg-[#f7f2e6] text-[#182415] font-sans antialiased selection:bg-[#c8a06e] selection:text-[#1b3a28]">
 
-  <!-- ── TOP UTILITY BAR ── -->
+  <!-- TOP BAR -->
   <div class="top-bar">
     <div class="top-bar-inner">
       <div class="top-bar-left">
-        <span><i data-lucide="phone" style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:5px;color:var(--gl)"></i>Careline: +27 (0) 11 888 3000</span>
+        <span><i data-lucide="phone" class="w-3 h-3 inline mr-1 text-gold"></i>Careline: +27 (0) 11 888 3000</span>
         <span class="bar-sep">|</span>
-        <span><i data-lucide="truck" style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:5px;color:var(--gl)"></i>Free Delivery on Orders Over R500</span>
+        <span><i data-lucide="truck" class="w-3 h-3 inline mr-1 text-gold"></i>Free Express Shipping Over R500</span>
       </div>
       <div class="top-bar-right">
-        <a href="index.html#contact">Track Order</a>
+        <a href="index.html#contact">Track Regimen</a>
         <span class="bar-sep">|</span>
-        <a href="#" onclick="alert('Benefit Rewards program details coming soon!')">Benefit Card</a>
+        <a href="#" onclick="alert('Rewards program launching soon!')">Practitioner Portal</a>
         <span class="bar-sep">|</span>
         <a href="#" onclick="alert('Accounts integration coming soon!')">Login / Register</a>
       </div>
     </div>
   </div>
 
-  <!-- ── MAIN HEADER ── -->
+  <!-- MAIN HEADER -->
   <header class="main-header">
     <div class="main-header-inner">
-      <!-- Hamburger (Mobile) -->
       <button class="hamburger-btn" onclick="toggleMobileMenu(true)">
         <i data-lucide="menu"></i>
       </button>
-      <!-- Logo -->
       <a class="nlogo" href="index.html">
         <div class="nmark"><i data-lucide="leaf"></i></div>
         <div class="ntext"><b>The Herbalist</b><small>Traditional Chinese Wellness</small></div>
       </a>
-      <!-- Search -->
       <div class="header-search-wrap">
         <span class="search-icon"><i data-lucide="search"></i></span>
-        <input type="text" id="si" placeholder="Search products, remedies, ingredients..." onkeydown="if(event.key==='Enter') window.location.href='index.html?q='+encodeURIComponent(this.value)+'#ga'" />
+        <input type="text" id="si" placeholder="Search by health goal (e.g. fatigue, joint stiffness, bloating)..." onkeydown="if(event.key==='Enter') window.location.href='index.html?q='+encodeURIComponent(this.value)+'#ga'" />
         <button class="search-btn" onclick="window.location.href='index.html?q='+encodeURIComponent(document.getElementById('si').value)+'#ga'">Search</button>
       </div>
-      <!-- Actions -->
       <div class="header-actions">
         <a href="#" class="action-link" onclick="alert('Accounts integration coming soon!')">
           <i data-lucide="user"></i>
@@ -262,11 +177,11 @@
         </a>
         <a href="basket-v2.html" class="header-cart-btn">
           <div class="cart-icon-wrap">
-            <i data-lucide="shopping-cart"></i>
+            <i data-lucide="shopping-bag"></i>
             <span class="cart-badge" id="cnt">0</span>
           </div>
           <div class="cart-btn-text">
-            <span class="cart-label">Basket</span>
+            <span class="cart-label">Your Protocol</span>
             <span class="cart-total" id="header-cart-total">R0.00</span>
           </div>
         </a>
@@ -274,33 +189,33 @@
     </div>
   </header>
 
-  <!-- ── MOBILE SEARCH ROW ── -->
+  <!-- MOBILE SEARCH ROW -->
   <div class="mobile-search-row">
     <div class="header-search-wrap">
       <span class="search-icon"><i data-lucide="search"></i></span>
-      <input type="text" id="si-mobile" placeholder="Search products, remedies..." onkeydown="if(event.key==='Enter') window.location.href='index.html?q='+encodeURIComponent(this.value)+'#ga'" />
+      <input type="text" id="si-mobile" placeholder="Search by health goal..." onkeydown="if(event.key==='Enter') window.location.href='index.html?q='+encodeURIComponent(this.value)+'#ga'" />
     </div>
   </div>
 
-  <!-- ── CATEGORY NAV ── -->
+  <!-- CATEGORY NAV -->
   <nav class="category-nav">
     <div class="category-nav-inner">
       <a href="index.html" class="cat-link">Home</a>
       <div class="nav-dropdown">
-        <a href="index.html?filter=all#ga" class="nav-dropbtn">Products <i data-lucide="chevron-down" style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-left:3px"></i></a>
+        <a href="index.html?filter=all#ga" class="nav-dropbtn">Single Formulas <i data-lucide="chevron-down" style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-left:3px"></i></a>
         <div class="nav-dropdown-content">
           <a href="index.html?filter=all#ga">All Products</a>
           <a href="index.html?filter=teas#ga">Herbal Teas</a>
           <a href="index.html?filter=pills#ga">Herbal Pills</a>
         </div>
       </div>
-      <a href="blog.html" class="cat-link">Wellness Blog</a>
-      <a href="collections-specials-and-bundles.html" class="cat-link active">Bundle Specials</a>
+      <a href="collections-specials-and-bundles.html" class="cat-link active">Targeted Bundles &amp; Protocols</a>
+      <a href="blog.html" class="cat-link">TCM Education</a>
       <a href="index.html#contact" class="cat-link">Contact Us</a>
     </div>
   </nav>
 
-  <!-- ── MOBILE DRAWER ── -->
+  <!-- MOBILE DRAWER -->
   <div class="mobile-menu-overlay" id="mobile-menu-overlay" onclick="toggleMobileMenu(false)"></div>
   <div class="mobile-menu-drawer" id="mobile-menu-drawer">
     <div class="mobile-menu-hdr">
@@ -315,47 +230,122 @@
         <a href="index.html?filter=teas#ga" onclick="toggleMobileMenu(false)">Herbal Teas</a>
         <a href="index.html?filter=pills#ga" onclick="toggleMobileMenu(false)">Herbal Pills</a>
       </div>
-      <a href="blog.html" onclick="toggleMobileMenu(false)">Wellness Blog</a>
-      <a href="collections-specials-and-bundles.html" onclick="toggleMobileMenu(false)" style="color: var(--g); font-weight: bold;">Bundle Specials</a>
+      <a href="collections-specials-and-bundles.html" onclick="toggleMobileMenu(false)" style="color: var(--g); font-weight: bold;">Targeted Bundles &amp; Protocols</a>
+      <a href="blog.html" onclick="toggleMobileMenu(false)">TCM Education</a>
       <a href="index.html#contact" onclick="toggleMobileMenu(false)">Contact Us</a>
     </div>
   </div>
 
-  <!-- Page Banner -->
-  <div class="bg-[#1b3a28] text-white py-12 lg:py-16 text-center relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
-    <div class="max-w-7xl mx-auto px-4 relative z-10">
-      <span class="text-xs font-bold uppercase tracking-widest text-[#c8a06e] mb-2 block">Synergistic Ritual Packages</span>
-      <h1 class="font-serif text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 text-[#dab882]">Specials &amp; Bundles</h1>
-      <p class="max-w-xl mx-auto text-sm text-slate-300">Curated daily regimens combining traditional teas and pills to target specific wellness protocols at discounted rates.</p>
-    </div>
-  </div>
+  <!-- HERO SECTION -->
+  <section class="bg-[#1b3a28] text-white py-14 lg:py-20 relative overflow-hidden border-b border-[#c8a06e]/30">
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#c8a06e_1px,transparent_1px)] [background-size:20px_20px]"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <div class="inline-flex items-center gap-2 bg-[#2a5040] text-[#dab882] px-3.5 py-1 rounded-full text-xs font-bold tracking-wide uppercase mb-6 border border-[#c8a06e]/30">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Synergistic Micro-Dosing Regimens
+      </div>
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4 text-[#f7f2e6]">
+        Targeted Herbal Protocols
+      </h1>
+      <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-300 font-sans leading-relaxed mb-8">
+        Single herbs work well. Combined targeted protocols deliver total systemic transformation. Designed to sync morning activation with nighttime cellular repair.
+      </p>
 
-  <!-- Dynamic Catalog Grid -->
+      <!-- Trust Badges -->
+      <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-12 text-xs font-semibold text-[#dab882] pt-4 border-t border-white/10 max-w-3xl mx-auto">
+        <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-[#6a9970]"></i> 100% Authentic TCM Herbs</div>
+        <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-[#6a9970]"></i> Up to 30% Savings vs Single Items</div>
+        <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-[#6a9970]"></i> Practitioner-Formulated</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DYNAMIC FILTERING & GOAL SELECTION -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-20">
+    <div class="bg-white border border-[#e8e0cc] rounded-2xl p-4 shadow-lg flex flex-wrap items-center justify-between gap-4">
+      <span class="text-xs font-bold uppercase text-[#1b3a28] tracking-wider pl-2 flex items-center gap-2">
+        <i data-lucide="sliders-horizontal" class="w-4 h-4 text-[#c8a06e]"></i> Filter By Target Focus:
+      </span>
+      <div class="flex flex-wrap items-center gap-2 overflow-x-auto pb-1 sm:pb-0" id="filter-container">
+        <button onclick="filterBundles('all', this)" class="filter-tab active text-xs font-bold px-4 py-2 rounded-xl border border-[#e8e0cc] bg-[#f7f2e6] text-[#182415]">All Protocols</button>
+        <button onclick="filterBundles('Energy', this)" class="filter-tab text-xs font-bold px-4 py-2 rounded-xl border border-[#e8e0cc] bg-white text-[#182415] hover:bg-[#f7f2e6]">Energy & Focus</button>
+        <button onclick="filterBundles('Weight', this)" class="filter-tab text-xs font-bold px-4 py-2 rounded-xl border border-[#e8e0cc] bg-white text-[#182415] hover:bg-[#f7f2e6]">Weight & Detox</button>
+        <button onclick="filterBundles('Mobility', this)" class="filter-tab text-xs font-bold px-4 py-2 rounded-xl border border-[#e8e0cc] bg-white text-[#182415] hover:bg-[#f7f2e6]">Joints & Pain</button>
+        <button onclick="filterBundles('Womb Health', this)" class="filter-tab text-xs font-bold px-4 py-2 rounded-xl border border-[#e8e0cc] bg-white text-[#182415] hover:bg-[#f7f2e6]">Women's Cycle</button>
+        <button onclick="filterBundles('Anti-Aging', this)" class="filter-tab text-xs font-bold px-4 py-2 rounded-xl border border-[#e8e0cc] bg-white text-[#182415] hover:bg-[#f7f2e6]">Longevity</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROTOCOLS CATALOG GRID -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="bundles-grid">
-      <!-- Injected by JavaScript -->
+      <!-- Dynamic Bundle Cards Injected Here -->
     </div>
   </main>
 
-  <footer class="border-t border-[#e8e0cc] bg-white py-8 mt-24">
+  <!-- DYNAMIC CUSTOM BUILDER WIDGET -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="bg-gradient-to-br from-[#1b3a28] to-[#2a5040] text-white rounded-3xl p-8 lg:p-12 shadow-xl border border-[#c8a06e]/40 relative overflow-hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-7">
+          <span class="text-xs font-bold text-[#dab882] tracking-widest uppercase block mb-2">Build Your Custom Protocol</span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-extrabold mb-4">Combine &amp; Save Tier System</h2>
+          <p class="text-slate-200 text-sm leading-relaxed mb-6">
+            Prefer a custom regimen? Select individual herbal teas and classic micro-pill formulas to unlock automatic tiered bundle pricing at checkout.
+          </p>
+
+          <div class="grid grid-cols-3 gap-4 text-center">
+            <div class="bg-white/10 backdrop-blur border border-white/15 p-4 rounded-2xl">
+              <span class="text-2xl font-black text-[#dab882]">15% OFF</span>
+              <span class="block text-[11px] text-slate-300 font-semibold uppercase mt-1">3 Products</span>
+            </div>
+            <div class="bg-white/10 backdrop-blur border border-white/15 p-4 rounded-2xl">
+              <span class="text-2xl font-black text-[#dab882]">20% OFF</span>
+              <span class="block text-[11px] text-slate-300 font-semibold uppercase mt-1">4 Products</span>
+            </div>
+            <div class="bg-white/10 backdrop-blur border border-white/15 p-4 rounded-2xl">
+              <span class="text-2xl font-black text-[#dab882]">25% OFF</span>
+              <span class="block text-[11px] text-slate-300 font-semibold uppercase mt-1">5+ Products</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 bg-[#f7f2e6] text-[#182415] p-6 rounded-2xl border border-[#c8a06e]">
+          <h3 class="font-serif text-xl font-bold mb-2 text-[#1b3a28]">Need Custom Guidance?</h3>
+          <p class="text-xs text-[#3d5c44] leading-normal mb-6">
+            Unsure which herbs synergize best for your specific body constitution? Talk with our qualified wellness team directly.
+          </p>
+          <a href="index.html#contact" class="w-full bg-[#1b3a28] hover:bg-[#c8a06e] hover:text-[#1b3a28] text-white text-center font-bold py-3.5 rounded-xl transition duration-200 text-xs uppercase tracking-wider block no-underline shadow-md">
+            Request Free Herbal Recommendation
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-[#e8e0cc] bg-white py-10 mt-12">
     <div class="max-w-7xl mx-auto px-4 text-center text-xs text-[#7a9280]">
-      &copy; 2026 The Herbalist. All rights reserved. Traditional Chinese Wellness.
+      <p class="mb-2 font-bold text-[#1b3a28]">&copy; 2026 The Herbalist. Traditional Chinese Medicine &amp; Modern Wellness Protocols.</p>
+      <p>These natural herbal products are designed to support overall body balance and systemic longevity.</p>
     </div>
   </footer>
 
+  <!-- DATA & EXECUTION SCRIPT -->
   <script>
     const BUNDLES_DATA = [
       {
         id: 1,
         slug: "high-performance-engine",
-        name: "24-Hour High-Performance Engine",
+        name: "24-Hour High-Performance Engine Protocol",
         count: 5,
-        price: 449.95,
-        value: 500.00,
+        price: 799.95,
+        value: 920.00,
         badge: "Energy",
-        iconClass: "lucide-zap",
-        pain: "Brain fog, relying on coffee to wake up, the 3 PM crash, and high muscle tension at night.",
+        pain: "Brain fog, relying on coffee to wake up, afternoon energy crashes, and erratic sleep quality.",
+        routine: "Morning Ginseng Fuel → Afternoon Focus → Night Deep Repair",
         images: ["assets/bundle_images/1. 24-Hour High-Performance Engine.jpeg"]
       },
       {
@@ -363,242 +353,262 @@
         slug: "metabolic-weight-flush",
         name: "Comprehensive Metabolic & Weight Flush",
         count: 7,
-        price: 599.95,
-        value: 700.00,
+        price: 999.95,
+        value: 1150.00,
         badge: "Weight",
-        iconClass: "lucide-scale",
-        pain: "Stubborn core midsection weight, water retention, afternoon sluggishness, and waking up feeling heavy.",
+        pain: "Stubborn core midsection weight, water retention, digestive sluggishness, and waking up feeling heavy.",
+        routine: "Morning Flush → Afternoon Satiety → Evening Cleansing Tea",
         images: ["assets/bundle_images/2. Comprehensive Metabolic & Weight Flush.jpeg"]
       },
       {
         id: 3,
+        slug: "weekend-recovery-organ-shield",
+        name: "Weekend Recovery & Ultimate Organ Shield",
+        count: 4,
+        price: 699.95,
+        value: 805.00,
+        badge: "Detox",
+        pain: "Post-weekend hangovers, heavy takeout bloating, sluggish liver performance, and toxic heat buildup.",
+        routine: "Morning Dealcoholic Flush → Afternoon Liver Defense",
+        images: ["assets/bundle_images/15. Weekend Recovery & Ultimate Organ Shield.jpeg"]
+      },
+      {
+        id: 4,
+        slug: "womb-wellness-restoration",
+        name: "Womb Wellness & Cycle Restoration Ritual",
+        count: 3,
+        price: 979.95,
+        value: 1127.00,
+        badge: "Womb Health",
+        pain: "Severe menstrual discomfort, irregular cycle timing, cold hands/feet, and hormonal fatigue.",
+        routine: "Morning Qi & Blood Tonic → Afternoon Warmth Tea",
+        images: ["assets/bundle_images/7. Womb Wellness & Cycle Restoration Ritual.jpeg"]
+      },
+      {
+        id: 5,
+        slug: "joint-mobility-rescue",
+        name: "Golden Years Joint & Mobility Rescue",
+        count: 6,
+        price: 1049.95,
+        value: 1208.00,
+        badge: "Mobility",
+        pain: "Clicking joints, stiff knees, bone-on-bone lower back aching, and cold painful morning movement.",
+        routine: "Morning Micro-Pills → Daytime Cooling Tea → Night Dampness Removal",
+        images: ["assets/bundle_images/10. Golden Years Joint & Mobility Rescue.jpeg"]
+      },
+      {
+        id: 6,
+        slug: "longevity-organ-shield",
+        name: "Whole-Body Longevity & Organ Shield",
+        count: 6,
+        price: 1499.95,
+        value: 1725.00,
+        badge: "Anti-Aging",
+        pain: "Systemic aging signs, low daily stamina, multi-organ exhaustion, and compromised immunity.",
+        routine: "Morning Kidney & Spleen Vitality → Afternoon Ginseng Energy",
+        images: ["assets/bundle_images/6. Whole-Body Longevity & Organ Shield.jpeg"]
+      },
+      {
+        id: 7,
         slug: "stress-mood-fortress",
         name: "Ultimate Stress, Anxiety & Mood Fortress",
         count: 5,
         price: 449.95,
         value: 500.00,
         badge: "Mental Calm",
-        iconClass: "lucide-shield-alert",
         pain: "A racing mind at 2 AM, sudden daytime chest tightness/palpitations, and feeling completely overwhelmed.",
+        routine: "Morning Calm → Afternoon Qi Balance → Night Peaceful Sleep",
         images: ["assets/bundle_images/3. Ultimate Stress, Anxiety & Mood Fortress.jpeg"]
       },
       {
-        id: 4,
+        id: 8,
         slug: "sinus-respiratory-shield",
         name: "Chronic Sinus & Deep Respiratory Shield",
         count: 5,
         price: 449.95,
         value: 500.00,
         badge: "Respiration",
-        iconClass: "lucide-wind",
         pain: "Heavy throbbing sinus pressure, a constant throat-clearing post-nasal drip, and weak lung capacity.",
+        routine: "Morning Sinus Clear → Afternoon Lung Defense → Night Breathing Support",
         images: ["assets/bundle_images/4. Chronic Sinus & Deep Respiratory Shield.jpeg"]
       },
       {
-        id: 5,
+        id: 9,
         slug: "alpha-male-vitality",
         name: "Alpha Male Vitality & Performance Protocol",
         count: 4,
         price: 369.95,
         value: 400.00,
         badge: "Male Health",
-        iconClass: "lucide-flame",
         pain: "Low bedroom drive, poor gym recovery, brain fog, and lower back physical exhaustion.",
+        routine: "Morning Yang Activation → Evening Kidney Recovery",
         images: ["assets/bundle_images/5. Alpha Male Vitality & Performance Protocol.jpeg"]
       },
       {
-        id: 6,
-        slug: "longevity-organ-shield",
-        name: "Whole-Body Longevity & Organ Shield",
-        count: 10,
-        price: 899.95,
-        value: 1000.00,
-        badge: "Anti-Aging",
-        iconClass: "lucide-sparkles",
-        pain: "Systemic aging, fading daily stamina, multi-organ sluggishness, and a weak immune baseline.",
-        images: ["assets/bundle_images/6. Whole-Body Longevity & Organ Shield.jpeg"]
-      },
-      {
-        id: 7,
-        slug: "womb-wellness-restoration",
-        name: "Womb Wellness & Cycle Restoration Ritual",
-        count: 6,
-        price: 549.95,
-        value: 600.00,
-        badge: "Womb Health",
-        iconClass: "lucide-flower",
-        pain: "Debilitating menstrual cramps, unpredictable cycles, and hormonal mood swings.",
-        images: ["assets/bundle_images/7. Womb Wellness & Cycle Restoration Ritual.jpeg"]
-      },
-      {
-        id: 8,
+        id: 10,
         slug: "systemic-detox-liver-flush",
         name: "Deep Systemic Detox & Total Liver Flush",
         count: 4,
         price: 369.95,
         value: 400.00,
         badge: "Detox",
-        iconClass: "lucide-droplets",
         pain: "Chronic skin breakouts, low-grade internal inflammation, and an overloaded digestive filter.",
+        routine: "Morning Liver Defense → Night Heat Cleansing",
         images: ["assets/bundle_images/8. Deep Systemic Detox & Total Liver Flush.jpeg"]
       },
       {
-        id: 9,
+        id: 11,
         slug: "gastric-reflux-gut-harmony",
         name: "Advanced Gastric Reflux & Gut Harmony Shield",
         count: 5,
         price: 449.95,
         value: 500.00,
         badge: "Digestion",
-        iconClass: "lucide-coffee",
         pain: "Chronic burning acid reflux, chest irritation, nausea, trapped gas, and abdominal pain.",
+        routine: "Before Meals Soothing Tea → Post-Meal Spleen Support",
         images: ["assets/bundle_images/9. Advanced Gastric Reflux & Gut Harmony Shield.jpeg"]
       },
       {
-        id: 10,
-        slug: "joint-mobility-rescue",
-        name: "Golden Years Joint & Mobility Rescue",
-        count: 6,
-        price: 549.95,
-        value: 600.00,
-        badge: "Mobility",
-        iconClass: "lucide-accessibility",
-        pain: "Clicking, stiff knee joints, bone-on-bone lower back aching, and cold, painful morning movement.",
-        images: ["assets/bundle_images/10. Golden Years Joint & Mobility Rescue.jpeg"]
-      },
-      {
-        id: 11,
+        id: 12,
         slug: "eye-strain-neck-tension",
         name: "Screen-Time Eye Strain & Neck Tension Block",
         count: 4,
         price: 369.95,
         value: 400.00,
         badge: "Digital Fatigue",
-        iconClass: "lucide-monitor",
         pain: "Bloodshot straining eyes, blurred pixel vision, and severe throbbing tension in the shoulders and neck.",
-        images: [
-          "assets/bundle_images/11. Screen-Time Eye Strain & Neck Tension Block.jpeg",
-          "assets/bundle_images/11. Screen-Time Eye Strain & Neck Tension Block 2.jpeg"
-        ]
+        routine: "Workday Eye Relief → Evening Neck & Muscle Ease",
+        images: ["assets/bundle_images/11. Screen-Time Eye Strain & Neck Tension Block.jpeg"]
       },
       {
-        id: 12,
+        id: 13,
         slug: "sugar-craving-control",
         name: "Ultimate Blood Sugar & Craving Control",
         count: 4,
         price: 369.95,
         value: 400.00,
         badge: "Sugar Care",
-        iconClass: "lucide-activity",
         pain: "Intense sweet or carbohydrate cravings, shaky late-afternoon energy crashes.",
+        routine: "Pre-Meal Glucose Shield → Midday Satiety Fuel",
         images: ["assets/bundle_images/12. Ultimate Blood Sugar & Craving Control.jpeg"]
       },
       {
-        id: 13,
+        id: 14,
         slug: "cystic-acne-skin-ritual",
         name: "Advanced Cystic Acne & Flawless Skin Ritual",
         count: 3,
         price: 279.95,
         value: 300.00,
         badge: "Skin Care",
-        iconClass: "lucide-smile",
         pain: "Deep, painful hormonal jawline breakouts, chronic facial redness, and toxic heat expressions.",
-        images: [
-          "assets/bundle_images/13. Advanced Cystic Acne & Flawless Skin Ritual.jpeg",
-          "assets/bundle_images/13. Advanced Cystic Acne & Flawless Skin Ritual 2.jpeg"
-        ]
+        routine: "Morning Heat Flush → Evening Dermal Repair",
+        images: ["assets/bundle_images/13. Advanced Cystic Acne & Flawless Skin Ritual.jpeg"]
       },
       {
-        id: 14,
+        id: 15,
         slug: "vascular-blood-pressure",
         name: "Chronic Vascular & Blood Pressure Loop",
         count: 5,
         price: 449.95,
         value: 500.00,
         badge: "Vascular",
-        iconClass: "lucide-heart",
         pain: "Cold hands and feet, throbbing head tension, and unpredictable blood pressure readings.",
+        routine: "Morning Circulation Flow → Evening Vascular Relaxation",
         images: ["assets/bundle_images/14. Chronic Vascular & Blood Pressure Loop.jpeg"]
-      },
-      {
-        id: 15,
-        slug: "weekend-recovery-organ-shield",
-        name: "Weekend Recovery & Ultimate Organ Shield",
-        count: 4,
-        price: 349.95,
-        value: 400.00,
-        badge: "Recovery",
-        iconClass: "lucide-beer",
-        pain: "Severe weekend-wasting hangovers, heavy bloating from rich/greasy takeout food.",
-        images: ["assets/bundle_images/15. Weekend Recovery & Ultimate Organ Shield.jpeg"]
       }
     ];
 
-    function renderGrid() {
+    let currentFilter = 'all';
+
+    function renderGrid(dataToRender) {
       const grid = document.getElementById('bundles-grid');
-      grid.innerHTML = BUNDLES_DATA.map(b => {
-        const hasMultiple = b.images.length > 1;
-        // Dynamically compute the original 'was' total retail value:
-        // Individual items are priced at R100 each (e.g., 5 items = R500.00 full value).
-        // Ensure calculated 'was' value is strictly greater than the discounted bundle price.
-        const calculatedValue = Math.max((b.count || 4) * 100, Math.ceil(b.price * 1.15));
-        const displayValue    = b.value && b.value > b.price ? b.value : calculatedValue;
+      const items = dataToRender || BUNDLES_DATA;
+
+      grid.innerHTML = items.map(b => {
+        const val = b.value || Math.round(b.price * 1.15);
+        const savings = (val - b.price).toFixed(2);
+        const dailyEst = (b.price / 30).toFixed(2);
+        const routineText = b.routine || "Daily Morning & Evening Regimen";
 
         return `
-        <div class="bg-white border border-[#e8e0cc] rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-[#c8a06e] transition duration-300 flex flex-col justify-between">
+        <div class="bg-white border border-[#e8e0cc] rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:border-[#c8a06e] transition duration-300 flex flex-col justify-between group">
           <div>
-            <div class="aspect-[4/3] relative overflow-hidden border-b border-[#e8e0cc]">
-              <span class="absolute top-4 left-4 bg-[#1b3a28] text-[#f0e0c4] px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider z-10">${b.badge}</span>
-              <span class="absolute top-4 right-4 bg-[#f7f2e6] text-[#3d5c44] px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider border border-[#e8e0cc] z-10">${b.count} Items</span>
+            <!-- Header Visual Container -->
+            <div class="aspect-[4/3] relative overflow-hidden bg-[#f7f2e6]">
+              <span class="absolute top-4 left-4 bg-[#1b3a28] text-[#dab882] px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider z-10 border border-[#c8a06e]/30">
+                ${b.badge}
+              </span>
+              <span class="absolute top-4 right-4 bg-[#c8a06e] text-[#1b3a28] px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider z-10 shadow-sm">
+                Save R${savings}
+              </span>
               
-              <div class="w-full h-full relative" id="img-container-${b.slug}">
-                ${b.images.map((img, i) => `
-                  <img src="${img}" alt="${b.name}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${i === 0 ? 'opacity-100' : 'opacity-0'}" data-index="${i}">
-                `).join('')}
-              </div>
+              <img src="${b.images[0]}" alt="${b.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 ease-out">
             </div>
-            <div class="p-6 pb-2">
-              <div class="flex items-center gap-2 mb-2 text-xs">
+
+            <!-- Content Area -->
+            <div class="p-6">
+              <div class="flex items-center gap-1.5 mb-2 text-xs">
                 <span class="text-amber-500 font-bold">★ ★ ★ ★ ★</span>
-                <span class="font-semibold text-[#7a9280]">(4.9 rating)</span>
+                <span class="font-semibold text-[#7a9280]">(4.9 Clinical Rating)</span>
               </div>
-              <h3 class="font-sans text-lg font-bold text-[#1b3a28] mb-2 leading-snug">${b.name}</h3>
-              <p class="text-xs text-[#7a9280] line-clamp-3 mb-4"><strong class="text-[#182415]">Targets:</strong> ${b.pain}</p>
+              
+              <h3 class="font-serif text-xl font-bold text-[#1b3a28] mb-3 leading-snug">${b.name}</h3>
+              
+              <!-- Daily Routine Protocol Pills -->
+              <div class="bg-[#f7f2e6] border border-[#e8e0cc] p-3 rounded-xl mb-4">
+                <span class="text-[10px] font-bold text-[#6a9970] uppercase tracking-wider block mb-1">Dosing Protocol:</span>
+                <p class="text-xs font-semibold text-[#182415] flex items-center gap-1">
+                  <i data-lucide="clock" class="w-3.5 h-3.5 text-[#c8a06e]"></i> ${routineText}
+                </p>
+              </div>
+
+              <!-- Problem Addressed -->
+              <p class="text-xs text-[#7a9280] leading-relaxed mb-4">
+                <strong class="text-[#182415]">Targets Symptom:</strong> ${b.pain}
+              </p>
             </div>
           </div>
+
+          <!-- Pricing & Action -->
           <div class="p-6 pt-0">
-            <div class="flex items-baseline gap-3 mb-6">
-              <span class="text-2xl font-extrabold text-[#059669]">R${b.price.toFixed(2)}</span>
-              <span class="text-xs font-medium text-[#7a9280] line-through">R${displayValue.toFixed(2)}</span>
+            <div class="border-t border-[#e8e0cc] pt-4 mb-5 flex items-end justify-between">
+              <div>
+                <span class="text-xs text-[#7a9280] block font-medium">Full 30-Day Regimen</span>
+                <div class="flex items-baseline gap-2">
+                  <span class="text-2xl font-black text-[#1b3a28]">R${b.price.toFixed(2)}</span>
+                  <span class="text-xs font-semibold text-[#7a9280] line-through">R${val.toFixed(2)}</span>
+                </div>
+              </div>
+              <div class="text-right">
+                <span class="text-[10px] font-bold text-[#6a9970] uppercase block">Cost Per Day</span>
+                <span class="text-xs font-bold text-[#1b3a28]">~R${dailyEst}/day</span>
+              </div>
             </div>
-            <a href="products-bundle-detail.html?bundle=${b.slug}" class="w-full text-center bg-[#1b3a28] hover:bg-[#c8a06e] hover:text-[#1b3a28] text-white font-bold py-3 rounded-xl transition duration-200 text-xs uppercase tracking-wider block no-underline">
-              View Ritual Details
+
+            <a href="products-bundle-detail.html?bundle=${b.slug}" class="w-full text-center bg-[#1b3a28] hover:bg-[#c8a06e] hover:text-[#1b3a28] text-white font-bold py-3.5 rounded-xl transition duration-200 text-xs uppercase tracking-wider block no-underline shadow-md">
+              Explore Protocol Details
             </a>
           </div>
         </div>
       `}).join('');
 
-      // Setup image rotator intervals for bundles with multiple images (rotating every 60s)
-      BUNDLES_DATA.forEach(b => {
-        if (b.images.length > 1) {
-          let currentIdx = 0;
-          setInterval(() => {
-            const container = document.getElementById(`img-container-${b.slug}`);
-            if (container) {
-              const imgs = container.querySelectorAll('img');
-              if (imgs.length > 0) {
-                imgs[currentIdx].classList.remove('opacity-100');
-                imgs[currentIdx].classList.add('opacity-0');
-                currentIdx = (currentIdx + 1) % imgs.length;
-                imgs[currentIdx].classList.remove('opacity-0');
-                imgs[currentIdx].classList.add('opacity-100');
-              }
-            }
-          }, 60000); // 60 seconds
-        }
-      });
+      if (typeof lucide !== 'undefined') lucide.createIcons();
     }
-    // ── SUPABASE CONFIG ────────────────────────────────────────────────────────
+
+    function filterBundles(category, btnElement) {
+      currentFilter = category;
+      document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+      if(btnElement) btnElement.classList.add('active');
+
+      if (category === 'all') {
+        renderGrid(BUNDLES_DATA);
+      } else {
+        const filtered = BUNDLES_DATA.filter(b => b.badge.toLowerCase().includes(category.toLowerCase()));
+        renderGrid(filtered);
+      }
+    }
+
+    // ── SUPABASE INTEGRATION ──
     const SUPABASE_URL_BUNDLES     = 'https://fmmzesqelnwayexweatz.supabase.co';
     const SUPABASE_ANON_KEY_BUNDLES = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZtbXplc3FlbG53YXlleHdlYXR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM1NzkyMjIsImV4cCI6MjA5OTE1NTIyMn0.0H5bQs5MR6pRfeBrP2wda86VM0IK4b2aRcJORtkaNrU';
     const _sbBundles = (typeof supabase !== 'undefined')
@@ -622,7 +632,6 @@
             const bPrice = parseFloat(b.bundle_retail_price ?? b.retail_price ?? b.price);
             const bTitle = b.title || b.name;
 
-            // Match against static list by ID or slug
             const existing = BUNDLES_DATA.find(item => {
               if (item.id && String(item.id) === bIdStr) return true;
               if (item.slug && item.slug.toLowerCase() === bSlug) return true;
@@ -634,7 +643,6 @@
               if (bTitle) existing.name = bTitle;
               if (b.description) existing.pain = b.description;
             } else {
-              // Push dynamic bundle if not present in static template
               BUNDLES_DATA.push({
                 id: b.id,
                 slug: b.slug || `bundle-${b.id}`,
@@ -643,8 +651,8 @@
                 price: (!isNaN(bPrice) && bPrice > 0) ? bPrice : 399.95,
                 value: (!isNaN(bPrice) && bPrice > 0) ? Math.round(bPrice * 1.15) : 450.00,
                 badge: b.category || "Special Ritual",
-                iconClass: "lucide-sparkles",
                 pain: b.description || "Synergistic herbal protocol formulated for targeted wellness.",
+                routine: "Daily Morning & Evening Regimen",
                 images: ["assets/bundle_images/1. 24-Hour High-Performance Engine.jpeg"]
               });
             }
@@ -656,40 +664,16 @@
       renderGrid();
     }
 
-    // Real-time listener for live bundle updates
-    if (_sbBundles) {
-      _sbBundles
-        .channel('public:bundles')
-        .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'bundles' }, payload => {
-          const b = payload.new;
-          if (!b) return;
-          const bIdStr = String(b.id);
-          const bSlug = (b.slug || '').toLowerCase().trim();
-          const bPrice = parseFloat(b.bundle_retail_price ?? b.retail_price ?? b.price);
-          const existing = BUNDLES_DATA.find(item => {
-            if (item.id && String(item.id) === bIdStr) return true;
-            if (item.slug && item.slug.toLowerCase() === bSlug) return true;
-            return false;
-          });
-          if (existing && !isNaN(bPrice) && bPrice > 0) {
-            existing.price = bPrice;
-            renderGrid();
-          }
-        })
-        .subscribe();
-    }
-
-    renderGrid();
+    // INITIALIZATION
+    renderGrid(BUNDLES_DATA);
     loadBundlesFromSupabase();
   </script>
 
-  <!-- Lucide SVG Icons Init -->
+  <!-- Lucide SVG Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script>
-    // Init Lucide icons
     if (typeof lucide !== 'undefined') lucide.createIcons();
 
-    // Mobile menu toggle
     function toggleMobileMenu(open) {
       const overlay = document.getElementById('mobile-menu-overlay');
       const drawer  = document.getElementById('mobile-menu-drawer');
@@ -705,7 +689,6 @@
       }
     }
 
-    // Cart counter from localStorage
     (function initCartDisplay() {
       try {
         const cart = JSON.parse(localStorage.getItem('tangren_cart') || '[]');
