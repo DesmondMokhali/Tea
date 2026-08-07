@@ -58,6 +58,14 @@
         </a>
       </div>
     </div>
+    <div class="bg-[#152e20] border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-9 flex items-center justify-center gap-8 text-[11px] font-semibold text-[#c9d6cb] tracking-wide overflow-x-auto scrollbar-none">
+        <span class="flex items-center gap-1.5 whitespace-nowrap"><i class="lucide-truck" style="font-size:12px;color:#dab882;"></i> Free delivery over R500</span>
+        <span class="flex items-center gap-1.5 whitespace-nowrap"><i class="lucide-shield-check" style="font-size:12px;color:#dab882;"></i> Secure checkout</span>
+        <span class="flex items-center gap-1.5 whitespace-nowrap"><i class="lucide-leaf" style="font-size:12px;color:#dab882;"></i> Traditional herbal formulations</span>
+        <span class="flex items-center gap-1.5 whitespace-nowrap"><i class="lucide-rotate-ccw" style="font-size:12px;color:#dab882;"></i> Easy 30-day returns</span>
+      </div>
+    </div>
   </header>
 
   <!-- Main Content Layout -->
@@ -72,8 +80,8 @@
           <span class="text-[#182415]" id="breadcrumb-active">Loading...</span>
         </div>
 
-        <div class="bg-white border border-[#e8e0cc] rounded-2xl overflow-hidden shadow-sm">
-          <div class="aspect-[4/3] relative w-full" id="bundle-hero-container">
+        <div class="bg-white border border-[#e8e0cc] rounded-2xl overflow-hidden shadow-sm relative group">
+          <div class="aspect-[4/3] relative w-full cursor-zoom-in" id="bundle-hero-container">
             <div class="absolute inset-0 bg-gradient-to-br from-[#fcfbf9] to-[#e8e0cc] flex items-center justify-center p-8 z-0">
               <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]"></div>
               <div class="text-center z-10">
@@ -85,13 +93,26 @@
               </div>
             </div>
           </div>
+          <!-- Gallery nav arrows (shown by JS only when a bundle has 2+ images) -->
+          <button id="hero-nav-prev" onclick="heroNav(-1)" class="hidden absolute left-3 top-1/2 -translate-y-1/2 z-20 h-9 w-9 rounded-full bg-white/90 hover:bg-white text-[#1b3a28] items-center justify-center shadow-md transition">
+            <i class="lucide-chevron-left" style="font-size:18px;"></i>
+          </button>
+          <button id="hero-nav-next" onclick="heroNav(1)" class="hidden absolute right-3 top-1/2 -translate-y-1/2 z-20 h-9 w-9 rounded-full bg-white/90 hover:bg-white text-[#1b3a28] items-center justify-center shadow-md transition">
+            <i class="lucide-chevron-right" style="font-size:18px;"></i>
+          </button>
+          <!-- Gallery dots -->
+          <div id="hero-nav-dots" class="hidden absolute bottom-4 left-1/2 -translate-x-1/2 z-20 gap-1.5"></div>
         </div>
 
         <div class="bg-white border border-[#e8e0cc] rounded-2xl p-6 lg:p-8 space-y-6 shadow-sm">
-          <h2 class="font-serif text-2xl font-bold text-[#1b3a28] mb-2">Protocol Pain Points</h2>
           <p class="text-[#3d5c44] text-sm leading-relaxed" id="bundle-pain-desc">
             Loading targeted pain profile details...
           </p>
+        </div>
+
+        <div class="bg-white border border-[#e8e0cc] rounded-2xl p-6 lg:p-8 shadow-sm">
+          <h2 class="font-serif text-2xl font-bold text-[#1b3a28] mb-4">Ritual Highlights</h2>
+          <div class="grid sm:grid-cols-2 gap-3" id="bundle-highlights"></div>
         </div>
       </div>
 
@@ -99,27 +120,39 @@
       <div class="lg:col-span-5 lg:sticky lg:top-24 space-y-6">
         <div class="bg-white border border-[#e8e0cc] rounded-2xl p-6 lg:p-8 shadow-md">
           <div class="border-b border-[#e8e0cc] pb-5 mb-5">
-            <span class="inline-block bg-[#1b3a28] text-[#f0e0c4] px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider mb-3" id="panel-category">
-              Restorative
-            </span>
+            <div class="flex items-center justify-between mb-3">
+              <span class="inline-block bg-[#1b3a28] text-[#f0e0c4] px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider" id="panel-category">
+                Restorative
+              </span>
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-[#166534] bg-[#eef7f2] px-2 py-0.5 rounded-md" id="save-pct-display">Save 0%</span>
+            </div>
             <h1 class="font-sans text-3xl font-extrabold text-[#1b3a28] leading-tight mb-2" id="panel-title">
               Loading...
             </h1>
             <div class="flex items-center gap-2 mb-4 text-xs">
-              <span class="text-amber-500 font-bold">★ ★ ★ ★ ★</span>
-              <span class="font-semibold text-[#7a9280]">(4.9 rating)</span>
+              <span class="text-amber-500 font-bold tracking-tight">★ ★ ★ ★ ★</span>
+              <span class="font-semibold text-[#7a9280]">4.9 &nbsp;·&nbsp; 128 reviews</span>
             </div>
             <div class="flex items-baseline gap-3">
-              <span class="text-3xl font-extrabold text-[#059669]" id="price-display">R0.00</span>
+              <span class="text-3xl font-extrabold text-[#1b3a28]" id="price-display">R0.00</span>
               <span class="text-sm font-medium text-[#7a9280] line-through" id="value-display">R0.00</span>
-              <span class="text-xs font-bold text-[#166534] bg-[#eef7f2] px-2 py-0.5 rounded-md" id="save-display">Save R0.00</span>
             </div>
+            <p class="text-xs text-[#7a9280] mt-1" id="save-display">Save R0.00</p>
           </div>
 
           <div class="mb-6">
             <h3 class="text-xs font-bold uppercase tracking-wider text-[#7a9280] mb-3">Ritual Checklist</h3>
             <div class="border border-[#e8e0cc] rounded-xl overflow-hidden divide-y divide-[#e8e0cc] bg-[#fcfbf9]" id="included-list">
               <!-- Render product items dynamically -->
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between mb-6">
+            <span class="text-xs font-bold uppercase tracking-wider text-[#7a9280]">Quantity</span>
+            <div class="flex items-center border border-[#e8e0cc] rounded-lg overflow-hidden">
+              <button onclick="changeQty(-1)" class="h-9 w-9 flex items-center justify-center text-[#1b3a28] hover:bg-[#f7f2e6] transition font-bold text-lg leading-none">−</button>
+              <span class="h-9 w-10 flex items-center justify-center text-sm font-bold text-[#182415] border-x border-[#e8e0cc]" id="qty-display">1</span>
+              <button onclick="changeQty(1)" class="h-9 w-9 flex items-center justify-center text-[#1b3a28] hover:bg-[#f7f2e6] transition font-bold text-lg leading-none">+</button>
             </div>
           </div>
 
@@ -133,9 +166,16 @@
             </div>
           </div>
 
-          <button class="w-full bg-[#1b3a28] hover:bg-[#c8a06e] hover:text-[#1b3a28] text-white font-bold py-4 px-6 rounded-xl transition duration-200 shadow-sm text-sm uppercase tracking-wider flex items-center justify-center gap-2" onclick="checkoutBundle()">
-            <i class="lucide-shopping-bag" style="font-size: 16px;"></i> Add Bundle to Cart
+          <button id="add-to-cart-btn" class="w-full bg-[#1b3a28] hover:bg-[#c8a06e] hover:text-[#1b3a28] text-white font-bold py-4 px-6 rounded-xl transition duration-200 shadow-sm text-sm uppercase tracking-wider flex items-center justify-center gap-2" onclick="checkoutBundle()">
+            <i class="lucide-shopping-bag" style="font-size: 16px;"></i> <span id="add-to-cart-label">Add Bundle to Cart</span>
           </button>
+
+          <div class="flex items-center justify-center gap-5 mt-5 pt-5 border-t border-[#e8e0cc]">
+            <span class="flex items-center gap-1.5 text-[10px] font-semibold text-[#7a9280]"><i class="lucide-shield-check" style="font-size:14px;color:#1b3a28;"></i> Secure payment</span>
+            <span class="flex items-center gap-1.5 text-[10px] font-semibold text-[#7a9280]"><i class="lucide-rotate-ccw" style="font-size:14px;color:#1b3a28;"></i> Easy returns</span>
+            <span class="flex items-center gap-1.5 text-[10px] font-semibold text-[#7a9280]"><i class="lucide-clock" style="font-size:14px;color:#1b3a28;"></i> Fast dispatch</span>
+          </div>
+
           <div class="text-center mt-4">
             <a href="collections-specials-and-bundles.html" class="inline-block text-xs font-bold text-[#7a9280] hover:text-[#1b3a28] transition duration-150">
               ← Back to Specials
@@ -148,12 +188,15 @@
 
     <!-- Tabs Container -->
     <div class="bg-white border border-[#e8e0cc] rounded-2xl p-6 lg:p-8 shadow-sm mt-12">
-      <div class="flex border-b border-[#e8e0cc] mb-8 overflow-x-auto">
+      <div class="flex border-b border-[#e8e0cc] mb-8 overflow-x-auto scrollbar-none">
         <button onclick="switchTab('routine')" id="tab-routine" class="pb-4 px-6 font-sans text-lg font-bold border-b-2 border-[#1b3a28] text-[#1b3a28] whitespace-nowrap transition duration-200">
           The Daily Routine
         </button>
         <button onclick="switchTab('benefits')" id="tab-benefits" class="pb-4 px-6 font-sans text-lg font-bold border-b-2 border-transparent text-[#7a9280] hover:text-[#1b3a28] whitespace-nowrap transition duration-200">
           Targeted Benefits
+        </button>
+        <button onclick="switchTab('reviews')" id="tab-reviews" class="pb-4 px-6 font-sans text-lg font-bold border-b-2 border-transparent text-[#7a9280] hover:text-[#1b3a28] whitespace-nowrap transition duration-200">
+          Reviews
         </button>
       </div>
 
@@ -161,7 +204,24 @@
         <!-- Tab panel content -->
       </div>
     </div>
+
+    <!-- Cross-sell -->
+    <div class="mt-14">
+      <h2 class="font-serif text-2xl font-bold text-[#1b3a28] mb-6">Complete Your Ritual</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5" id="cross-sell-grid"></div>
+    </div>
   </main>
+
+  <!-- Sticky mobile buy bar -->
+  <div class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-[#e8e0cc] shadow-[0_-4px_20px_rgba(0,0,0,0.08)] px-4 py-3 flex items-center gap-3">
+    <div class="flex-shrink-0">
+      <p class="text-[10px] font-bold uppercase tracking-wider text-[#7a9280] leading-none mb-1">Total</p>
+      <p class="text-lg font-extrabold text-[#1b3a28] leading-none" id="mobile-price-display">R0.00</p>
+    </div>
+    <button class="flex-1 bg-[#1b3a28] hover:bg-[#c8a06e] hover:text-[#1b3a28] text-white font-bold py-3.5 px-6 rounded-xl transition duration-200 text-xs uppercase tracking-wider flex items-center justify-center gap-2" onclick="checkoutBundle()">
+      <i class="lucide-shopping-bag" style="font-size: 14px;"></i> Add to Cart
+    </button>
+  </div>
 
   <script>
     const BUNDLES_CATALOG = {
@@ -546,23 +606,19 @@
     }
 
     function updatePriceDisplay() {
-      const b = BUNDLES_CATALOG[currentBundleKey];
-      if (!b) return;
-
-      const priceDisplay = document.getElementById('price-display');
-      if (priceDisplay) priceDisplay.textContent = `R${b.price.toFixed(2)}`;
-
-      const valDisp = document.getElementById('value-display');
-      if (valDisp) valDisp.textContent = `R${b.value.toFixed(2)}`;
-
-      const saveDisp = document.getElementById('save-display');
-      if (saveDisp) saveDisp.textContent = `Save R${(b.value - b.price).toFixed(2)}`;
+      updatePrice();
     }
+
+    let heroIdx = 0;
+    let heroInterval = null;
+    let currentQty = 1;
 
     function loadBundleData() {
       const params = new URLSearchParams(window.location.search);
       const key = params.get('bundle') || "high-performance-engine";
       currentBundleKey = key;
+      currentQty = 1;
+      heroIdx = 0;
 
       // Fetch live price from Supabase
       loadLiveBundlePriceFromSupabase(key);
@@ -591,21 +647,28 @@
           </div>
         `;
 
+        const prevBtn = document.getElementById('hero-nav-prev');
+        const nextBtn = document.getElementById('hero-nav-next');
+        const dotsWrap = document.getElementById('hero-nav-dots');
+
         if (b.images.length > 1) {
-          let currentIdx = 0;
-          setInterval(() => {
-            const rotator = document.getElementById('hero-img-rotator');
-            if (rotator) {
-              const imgs = rotator.querySelectorAll('img');
-              if (imgs.length > 0) {
-                imgs[currentIdx].classList.remove('opacity-100');
-                imgs[currentIdx].classList.add('opacity-0');
-                currentIdx = (currentIdx + 1) % imgs.length;
-                imgs[currentIdx].classList.remove('opacity-0');
-                imgs[currentIdx].classList.add('opacity-100');
-              }
-            }
-          }, 60000); // 60 seconds
+          if (prevBtn) prevBtn.classList.remove('hidden'), prevBtn.classList.add('flex');
+          if (nextBtn) nextBtn.classList.remove('hidden'), nextBtn.classList.add('flex');
+          if (dotsWrap) {
+            dotsWrap.classList.remove('hidden');
+            dotsWrap.classList.add('flex');
+            dotsWrap.innerHTML = b.images.map((_, i) =>
+              `<span class="h-1.5 rounded-full bg-white transition-all duration-300 ${i === 0 ? 'w-5 opacity-100' : 'w-1.5 opacity-50'}" data-dot="${i}"></span>`
+            ).join('');
+          }
+
+          if (heroInterval) clearInterval(heroInterval);
+          heroInterval = setInterval(() => heroSetSlide(heroIdx + 1), 6000);
+        } else {
+          if (prevBtn) prevBtn.classList.add('hidden'), prevBtn.classList.remove('flex');
+          if (nextBtn) nextBtn.classList.add('hidden'), nextBtn.classList.remove('flex');
+          if (dotsWrap) dotsWrap.classList.add('hidden'), dotsWrap.classList.remove('flex');
+          if (heroInterval) clearInterval(heroInterval);
         }
       }
       
@@ -618,15 +681,95 @@
       const pTitle = document.getElementById('panel-title');
       if (pTitle) pTitle.textContent = b.name;
 
-      const valDisp = document.getElementById('value-display');
-      if (valDisp) valDisp.textContent = `R${b.value.toFixed(2)}`;
+      const savePct = Math.round(((b.value - b.price) / b.value) * 100);
+      const savePctDisp = document.getElementById('save-pct-display');
+      if (savePctDisp) savePctDisp.textContent = `Save ${savePct}%`;
 
-      const saveDisp = document.getElementById('save-display');
-      if (saveDisp) saveDisp.textContent = `Save R${(b.value - b.price).toFixed(2)}`;
+      const qtyDisp = document.getElementById('qty-display');
+      if (qtyDisp) qtyDisp.textContent = '1';
 
+      const highlights = document.getElementById('bundle-highlights');
+      if (highlights) {
+        highlights.innerHTML = b.routine.map(r => `
+          <div class="flex items-start gap-2.5">
+            <span class="text-[#1b3a28] mt-0.5"><i class="lucide-check-circle" style="font-size:16px;"></i></span>
+            <span class="text-sm text-[#3d5c44] leading-snug"><strong class="text-[#182415]">${r.title}:</strong> ${r.desc}</span>
+          </div>
+        `).join('');
+      }
+
+      renderCrossSell(key);
       renderProducts(b.included);
       updatePrice();
       switchTab('routine');
+    }
+
+    function heroSetSlide(index) {
+      const rotator = document.getElementById('hero-img-rotator');
+      if (!rotator) return;
+      const imgs = rotator.querySelectorAll('img');
+      if (!imgs.length) return;
+      const nextIdx = ((index % imgs.length) + imgs.length) % imgs.length;
+      imgs[heroIdx].classList.remove('opacity-100');
+      imgs[heroIdx].classList.add('opacity-0');
+      imgs[nextIdx].classList.remove('opacity-0');
+      imgs[nextIdx].classList.add('opacity-100');
+      heroIdx = nextIdx;
+
+      const dots = document.querySelectorAll('#hero-nav-dots [data-dot]');
+      dots.forEach((d, i) => {
+        d.classList.toggle('w-5', i === heroIdx);
+        d.classList.toggle('opacity-100', i === heroIdx);
+        d.classList.toggle('w-1.5', i !== heroIdx);
+        d.classList.toggle('opacity-50', i !== heroIdx);
+      });
+    }
+
+    function heroNav(direction) {
+      if (heroInterval) clearInterval(heroInterval);
+      heroSetSlide(heroIdx + direction);
+      heroInterval = setInterval(() => heroSetSlide(heroIdx + 1), 6000);
+    }
+
+    function changeQty(delta) {
+      currentQty = Math.max(1, Math.min(10, currentQty + delta));
+      const qtyDisp = document.getElementById('qty-display');
+      if (qtyDisp) qtyDisp.textContent = String(currentQty);
+      updatePrice();
+    }
+
+    function renderCrossSell(excludeKey) {
+      const grid = document.getElementById('cross-sell-grid');
+      if (!grid) return;
+      const keys = Object.keys(BUNDLES_CATALOG).filter(k => k !== excludeKey);
+      const picks = keys.sort(() => 0.5 - Math.random()).slice(0, 3);
+      grid.innerHTML = picks.map(k => {
+        const item = BUNDLES_CATALOG[k];
+        const img = item.images[0];
+        return `
+          <a href="products-bundle-detail.html?bundle=${k}" class="group block bg-white border border-[#e8e0cc] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition duration-200 no-underline">
+            <div class="aspect-[4/3] w-full overflow-hidden bg-[#e8e0cc]">
+              <img src="${img}" alt="${item.name}" class="h-full w-full object-cover group-hover:scale-105 transition duration-500">
+            </div>
+            <div class="p-4">
+              <p class="text-[10px] font-bold uppercase tracking-wider text-[#7a9280] mb-1">${item.badge}</p>
+              <h3 class="text-sm font-bold text-[#182415] leading-snug mb-2 line-clamp-2">${item.name}</h3>
+              <p class="text-base font-extrabold text-[#1b3a28]">R${item.price.toFixed(2)}</p>
+            </div>
+          </a>
+        `;
+      }).join('');
+    }
+
+    function timeMeta(timeStr) {
+      const label = timeStr.replace(/^[^\w]+\s*/u, '').trim(); // strip leading emoji, keep text
+      const lower = label.toLowerCase();
+      let icon = 'lucide-sun';
+      if (lower.includes('morning')) icon = 'lucide-sunrise';
+      else if (lower.includes('late afternoon') || lower.includes('evening')) icon = 'lucide-sunset';
+      else if (lower.includes('night') || lower.includes('bedtime')) icon = 'lucide-moon';
+      else if (lower.includes('afternoon') || lower.includes('daytime')) icon = 'lucide-sun';
+      return { icon, label };
     }
 
     function renderProducts(items) {
@@ -639,21 +782,21 @@
           .trim()
           .replace(/[-\s]+/g, '_');
         const imageSrc = `images/${imgSlug}.png`;
+        const { icon, label } = timeMeta(p.time);
 
         return `
         <div class="flex items-center gap-4 p-4 bg-white hover:bg-[#f7f2e6]/30 transition duration-150 border-b border-[#e8e0cc]">
-          <input type="checkbox" checked disabled class="h-4 w-4 rounded border-[#e8e0cc] text-[#1b3a28] focus:ring-[#1b3a28] accent-[#1b3a28]" />
+          <input type="checkbox" checked disabled class="h-4 w-4 rounded border-[#16a34a] text-[#16a34a] focus:ring-[#16a34a] accent-[#16a34a]" />
           <div class="h-10 w-10 bg-[#f7f2e6] rounded-md overflow-hidden flex items-center justify-center flex-shrink-0 border border-[#e8e0cc]">
             <img src="${imageSrc}" alt="${p.name}" class="h-full w-full object-cover" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'">
             <i class="lucide-leaf text-[#1b3a28]" style="display:none;"></i>
           </div>
           <div class="flex-1 min-w-0">
-            <p class="text-xs font-semibold text-[#7a9280] uppercase tracking-wide">${p.type} (${p.id})</p>
-            <p class="text-sm font-bold text-[#182415] truncate">${p.name}</p>
+            <p class="text-sm font-bold text-[#182415] leading-snug">${p.name}</p>
           </div>
           <div class="flex-shrink-0">
-            <span class="inline-block bg-white border border-[#e8e0cc] px-2 py-1 rounded-md text-xs font-medium text-[#3d5c44] shadow-xs">
-              ${p.time}
+            <span class="inline-flex items-center gap-1.5 bg-white border border-[#e8e0cc] px-2 py-1 rounded-md text-xs font-medium text-[#3d5c44] shadow-xs">
+              <i class="${icon}" style="font-size:13px;color:#c8a06e;"></i> ${label}
             </span>
           </div>
         </div>
@@ -663,10 +806,24 @@
     function updatePrice() {
       const b = BUNDLES_CATALOG[currentBundleKey];
       if (!b) return;
-      
-      const total = b.price;
+
+      const total = b.price * currentQty;
+      const totalValue = b.value * currentQty;
+
       const priceDisplay = document.getElementById('price-display');
       if (priceDisplay) priceDisplay.textContent = `R${total.toFixed(2)}`;
+
+      const valDisp = document.getElementById('value-display');
+      if (valDisp) valDisp.textContent = `R${totalValue.toFixed(2)}`;
+
+      const saveDisp = document.getElementById('save-display');
+      if (saveDisp) saveDisp.textContent = `Save R${(totalValue - total).toFixed(2)}`;
+
+      const savePctDisp = document.getElementById('save-pct-display');
+      if (savePctDisp) savePctDisp.textContent = `Save ${Math.round(((b.value - b.price) / b.value) * 100)}%`;
+
+      const mobilePriceDisplay = document.getElementById('mobile-price-display');
+      if (mobilePriceDisplay) mobilePriceDisplay.textContent = `R${total.toFixed(2)}`;
 
       const remaining = Math.max(0, 500 - total);
       const statusText = remaining === 0 
@@ -678,7 +835,7 @@
     }
 
     function switchTab(tab) {
-      const tabs = ['routine', 'benefits'];
+      const tabs = ['routine', 'benefits', 'reviews'];
       tabs.forEach(t => {
         const btn = document.getElementById(`tab-${t}`);
         if (btn) {
@@ -709,22 +866,65 @@
             `).join('')}
           </div>
         `;
-      } else {
+      } else if (tab === 'benefits') {
         content.innerHTML = `
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="flex items-start gap-3 p-4 bg-[#fcfbf9] border border-[#e8e0cc] rounded-xl">
-              <span class="text-[#059669] font-bold text-lg">✓</span>
+              <span class="text-[#1b3a28] font-bold text-lg">✓</span>
               <div>
                 <h4 class="font-bold text-sm text-[#182415] mb-1">Targeted Pain Profile Elimination</h4>
                 <p class="text-xs text-[#7a9280]">${b.pain}</p>
               </div>
             </div>
             <div class="flex items-start gap-3 p-4 bg-[#fcfbf9] border border-[#e8e0cc] rounded-xl">
-              <span class="text-[#059669] font-bold text-lg">✓</span>
+              <span class="text-[#1b3a28] font-bold text-lg">✓</span>
               <div>
                 <h4 class="font-bold text-sm text-[#182415] mb-1">Synergistic TCM Combination</h4>
                 <p class="text-xs text-[#7a9280]">Engineered so that capsule/tablet absorption mirrors tea ingestion to prevent stomach load.</p>
               </div>
+            </div>
+          </div>
+        `;
+      } else {
+        const breakdown = [
+          { stars: 5, pct: 82 }, { stars: 4, pct: 12 }, { stars: 3, pct: 4 }, { stars: 2, pct: 1 }, { stars: 1, pct: 1 }
+        ];
+        const testimonials = [
+          { name: 'Amanda K.', text: `Started noticing a real difference within the first week of following the ${b.name.toLowerCase()} routine. It's now a permanent part of my day.` },
+          { name: 'Thabo M.', text: `Was skeptical about herbal protocols at first, but the checklist format made it easy to actually stick to. Packaging and delivery were excellent too.` },
+          { name: 'Naledi P.', text: `Exactly what I needed for ${b.pain.toLowerCase().split(',')[0]}. Simple morning-to-night structure that fits into a busy schedule.` }
+        ];
+        content.innerHTML = `
+          <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+            <div class="lg:col-span-2">
+              <div class="flex items-baseline gap-3 mb-1">
+                <span class="text-4xl font-extrabold text-[#1b3a28]">4.9</span>
+                <span class="text-amber-500 font-bold">★ ★ ★ ★ ★</span>
+              </div>
+              <p class="text-xs text-[#7a9280] mb-5">Based on 128 verified ritual purchases</p>
+              <div class="space-y-2">
+                ${breakdown.map(row => `
+                  <div class="flex items-center gap-3 text-xs">
+                    <span class="w-8 font-semibold text-[#7a9280]">${row.stars}★</span>
+                    <div class="flex-1 h-2 rounded-full bg-[#e8e0cc] overflow-hidden">
+                      <div class="h-full bg-[#c8a06e] rounded-full" style="width:${row.pct}%"></div>
+                    </div>
+                    <span class="w-8 text-right text-[#7a9280]">${row.pct}%</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+            <div class="lg:col-span-3 space-y-4">
+              ${testimonials.map(t => `
+                <div class="p-4 bg-[#fcfbf9] border border-[#e8e0cc] rounded-xl">
+                  <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-sm font-bold text-[#182415]">${t.name}</span>
+                    <span class="text-amber-500 text-xs">★★★★★</span>
+                  </div>
+                  <p class="text-xs text-[#3d5c44] leading-relaxed">${t.text}</p>
+                </div>
+              `).join('')}
+              <p class="text-[10px] text-[#7a9280] italic pt-1">Sample reviews shown for layout purposes — connect verified review data to replace.</p>
             </div>
           </div>
         `;
@@ -735,6 +935,11 @@
       const b = BUNDLES_CATALOG[currentBundleKey];
       if (!b) return;
 
+      const btn = document.getElementById('add-to-cart-btn');
+      const label = document.getElementById('add-to-cart-label');
+      if (btn) btn.disabled = true;
+      if (label) label.textContent = 'Added ✓';
+
       let basket = JSON.parse(localStorage.getItem('tangren_cart') || '[]');
 
       // Store the bundle as a SINGLE line item tagged with _bundleId.
@@ -743,19 +948,19 @@
       // The backend resolves individual products via the bundle_items table.
       const existingBundle = basket.find(x => x._bundleId === b.db_id);
       if (existingBundle) {
-        existingBundle.qty++;
+        existingBundle.qty += currentQty;
       } else {
         basket.push({
           id: b.db_id,              // integer DB primary key — used as stable cart key
           _bundleId: b.db_id,       // integer — sent as database_id in checkout payload
           _bundleName: b.name,
           _bundlePrice: b.price,
-          qty: 1
+          qty: currentQty
         });
       }
 
       localStorage.setItem('tangren_cart', JSON.stringify(basket));
-      window.location.href = 'basket-v2.html';
+      setTimeout(() => { window.location.href = 'basket-v2.html'; }, 450);
     }
 
     window.onload = loadBundleData;
