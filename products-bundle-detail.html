@@ -593,6 +593,12 @@
 
             if (matchKey) {
               BUNDLES_CATALOG[matchKey].price = priceVal;
+              // Ensure the display value is at least 15% higher than the live price to avoid negative savings
+              const minExpectedValue = Math.round(priceVal * 1.15);
+              if (BUNDLES_CATALOG[matchKey].value <= priceVal) {
+                BUNDLES_CATALOG[matchKey].value = minExpectedValue;
+              }
+              
               if (matchKey === currentBundleKey) {
                 updatePriceDisplay();
               }
@@ -814,7 +820,15 @@
       if (valDisp) valDisp.textContent = `R${totalValue.toFixed(2)}`;
 
       const saveDisp = document.getElementById('save-display');
-      if (saveDisp) saveDisp.textContent = `Save R${(totalValue - total).toFixed(2)}`;
+      if (saveDisp) {
+        const savedAmount = totalValue - total;
+        if (savedAmount > 0) {
+          saveDisp.textContent = `Save R${savedAmount.toFixed(2)}`;
+          saveDisp.style.display = 'block';
+        } else {
+          saveDisp.style.display = 'none';
+        }
+      }
 
 
 
