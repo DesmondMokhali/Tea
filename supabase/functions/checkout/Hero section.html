@@ -1,0 +1,317 @@
+</style>
+
+</head>
+<body>
+
+
+
+<!-- ── TOP UTILITY BAR ── -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-bar-left">
+      <span><i data-lucide="phone" style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:5px;color:var(--gl)"></i>Careline: +27 (0) 11 888 3000</span>
+      <span class="bar-sep">|</span>
+      <span><i data-lucide="truck" style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:5px;color:var(--gl)"></i>FREE Courier Delivery on all orders! Add 2 or more items to unlock volume discounts (up to 25% off).</span>
+    </div>
+    <div class="top-bar-right">
+      <a href="index.html#contact">Track Order</a>
+      <span class="bar-sep">|</span>
+      <a href="#" onclick="alert('Benefit Rewards program details coming soon!')">Benefit Card</a>
+      <span class="bar-sep">|</span>
+      <a href="#" onclick="alert('Accounts integration coming soon!')">Login / Register</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── MAIN HEADER ── -->
+<header class="main-header">
+  <div class="main-header-inner">
+    <!-- Hamburger Button (Mobile Only) -->
+    <button class="hamburger-btn" onclick="toggleMobileMenu(true)">
+      <i data-lucide="menu"></i>
+    </button>
+
+    <!-- Brand Logo -->
+    <a class="nlogo" href="index.html">
+      <img src="assets/logo/ei_logo.svg" alt="Earth Inventory" style="height:42px;width:42px;object-fit:contain;filter:invert(1) brightness(2);">
+      <div class="ntext"><b>The Herbalist</b><small>Traditional Chinese Wellness</small></div>
+    </a>
+
+    <!-- Large Central Search Bar -->
+    <div class="header-search-wrap">
+      <span class="search-icon"><i data-lucide="search"></i></span>
+      <input type="text" id="si" placeholder="Search products, remedies, ingredients..." oninput="doSearch(this.value)">
+      <button class="search-btn" onclick="doSearch(document.getElementById('si').value)">Search</button>
+    </div>
+
+    <!-- Actions -->
+    <div class="header-actions">
+      <a href="#" class="action-link" onclick="alert('Benefit Rewards Card & Accounts coming soon!')">
+        <i data-lucide="user"></i>
+        <span class="action-text">Account</span>
+      </a>
+      <a href="basket-v2.html" class="header-cart-btn">
+        <div class="cart-icon-wrap">
+          <i data-lucide="shopping-cart"></i>
+          <span class="cart-badge" id="cnt">0</span>
+        </div>
+        <div class="cart-btn-text">
+          <span class="cart-label">Basket</span>
+          <span class="cart-total" id="header-cart-total">R0.00</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ── MOBILE SEARCH ROW ── -->
+<div class="mobile-search-row">
+  <div class="header-search-wrap">
+    <span class="search-icon"><i data-lucide="search"></i></span>
+    <input type="text" id="si-mobile" placeholder="Search products, remedies..." oninput="doSearch(this.value); document.getElementById('si').value = this.value;">
+  </div>
+</div>
+
+<!-- ── CATEGORY NAVIGATION BAR ── -->
+<nav class="category-nav">
+  <div class="category-nav-inner">
+    <a href="index.html" class="cat-link">Home</a>
+    <div class="nav-dropdown">
+      <a href="index.html?filter=all#ga" class="nav-dropbtn">Products <i data-lucide="chevron-down" style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-left:3px"></i></a>
+      <div class="nav-dropdown-content">
+        <a href="index.html?filter=all#ga">All Products</a>
+        <a href="index.html?filter=teas#ga">Herbal Teas</a>
+        <a href="index.html?filter=pills#ga">Herbal Pills</a>
+      </div>
+    </div>
+    <a href="blog.html" class="cat-link">Wellness Blog</a>
+    <a href="collections-specials-and-bundles.html" class="cat-link" style="color: var(--g); font-weight: bold;">Bundle Specials</a>
+    <a href="index.html#contact" class="cat-link">Contact Us</a>
+  </div>
+</nav>
+
+<!-- ── MOBILE MENU DRAWER ── -->
+<div class="mobile-menu-overlay" id="mobile-menu-overlay" onclick="toggleMobileMenu(false)"></div>
+<div class="mobile-menu-drawer" id="mobile-menu-drawer">
+  <div class="mobile-menu-hdr">
+    <h3>Menu</h3>
+    <button class="mobile-menu-close" onclick="toggleMobileMenu(false)">&times;</button>
+  </div>
+  <div class="mobile-menu-body">
+    <a href="index.html" onclick="toggleMobileMenu(false)">Home</a>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-section-title">Products</div>
+      <a href="index.html?filter=all#ga" onclick="toggleMobileMenu(false)">All Products</a>
+      <a href="index.html?filter=teas#ga" onclick="toggleMobileMenu(false)">Herbal Teas</a>
+      <a href="index.html?filter=pills#ga" onclick="toggleMobileMenu(false)">Herbal Pills</a>
+    </div>
+    <a href="blog.html" onclick="toggleMobileMenu(false)">Wellness Blog</a>
+    <a href="collections-specials-and-bundles.html" onclick="toggleMobileMenu(false)" style="color: var(--g); font-weight: bold;">Bundle Specials</a>
+    <a href="index.html#contact" onclick="toggleMobileMenu(false)">Contact Us</a>
+  </div>
+</div>
+
+<!-- ── HERO CAROUSEL ── -->
+<section class="hero-carousel" id="hero-carousel">
+  <div class="hero-track" id="hero-track">
+
+    <!-- SLIDE 1: Metabolic (Bao He Wan + Abdomen Slimming) -->
+    <div class="hero-slide theme-metabolic">
+      <div class="hero-text">
+        <div class="hero-badge-clean">Metabolic Bundle &nbsp;·&nbsp; Digestive System</div>
+        <h1>BEAT THE 3PM<br><em>ENERGY CRASH</em></h1>
+        <p class="hsub">Stop feeling sluggish after meals. Bao He Wan and Abdomen Slim Tea work together to support digestion, reduce bloating, and help maintain steady energy throughout the afternoon.</p>
+        <div class="hero-action-row">
+          <button class="btnp" onclick="addBundleByNames('BAO HE WAN','ABDOMEN SLIMMING')">
+            <i data-lucide="shopping-cart" style="width:15px;height:15px;margin-right:5px"></i> Shop Bundle
+          </button>
+          <button class="btno" onclick="window.location.href='index.html?filter=teas#ga'">Shop Teas</button>
+          <button class="btno" onclick="window.location.href='index.html?filter=pills#ga'">Shop Pills</button>
+        </div>
+      </div>
+      <div class="hero-imgs">
+        <div class="hero-img-box hero-img-stack-left" onclick="openProductDetailByName('BAO HE WAN')" style="cursor: pointer;">
+          <img src="images/bao_he_wan.png" alt="Bao He Wan" onerror="this.style.opacity='.2'">
+          <div class="hero-img-desc">Bao He Wan</div>
+          <span class="hero-img-label-under">Digestion Aid</span>
+        </div>
+        <div class="hero-bundle-price-badge">
+          <span class="bundle-was-price">Was R210.00</span>
+          <span class="bundle-now-price">R155.00</span>
+          <span class="bundle-save-badge">Save R55</span>
+        </div>
+        <div class="hero-img-box hero-img-stack-right" onclick="openProductDetailByName('ABDOMEN SLIMMING')" style="cursor: pointer;">
+          <img src="images/abdomen_slimming_tea.png" alt="Abdomen Slimming Tea" onerror="this.style.opacity='.2'">
+          <div class="hero-img-desc">Abdomen Slim</div>
+          <span class="hero-img-label-under">Herbal Tea</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: Fluid Drainage (Slim Tea + White Gourd Slim Tea) -->
+    <div class="hero-slide theme-drainage">
+      <div class="hero-text">
+        <div class="hero-urgency-clean">Flash Offer &mdash; Expires 15 June 2026</div>
+        <h1>FEEL LIGHTER IN DAYS,<br><em>NOT MONTHS.</em></h1>
+        <p class="hsub">Support your body's natural fluid balance with Slim Tea and White Gourd Slim Tea. A gentle herbal protocol designed to reduce bloating and help you feel less heavy and uncomfortable.</p>
+        <div class="hero-action-row">
+          <button class="btnp" onclick="addBundleByNames('SLIM TEA','WHITE GOURD')">
+            <i data-lucide="shopping-cart" style="width:15px;height:15px;margin-right:5px"></i> Flash Offer
+          </button>
+          <button class="btno" onclick="window.location.href='index.html?filter=teas#ga'">Shop Teas</button>
+        </div>
+      </div>
+      <div class="hero-imgs">
+        <div class="hero-img-box hero-img-stack-left" onclick="openProductDetailByName('SLIM TEA')" style="cursor: pointer;">
+          <img src="images/slim_tea.png" alt="Slim Tea" onerror="this.style.opacity='.2'">
+          <div class="hero-img-desc">Slim Tea</div>
+          <span class="hero-img-label-under">Detox Blend</span>
+        </div>
+        <div class="hero-bundle-price-badge">
+          <span class="bundle-was-price">Was R159.00</span>
+          <span class="bundle-now-price">R119.00</span>
+          <span class="bundle-save-badge">Save R40</span>
+        </div>
+        <div class="hero-img-box hero-img-stack-right" onclick="openProductDetailByName('WHITE GOURD')" style="cursor: pointer;">
+          <img src="images/white_gourd_slim_tea.png" alt="White Gourd Slim Tea" onerror="this.style.opacity='.2'">
+          <div class="hero-img-desc">White Gourd Slim</div>
+          <span class="hero-img-label-under">Herbal Tea</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: Cognitive (Gui Pi Wan + Ginseng Date + Kuding Tea) -->
+    <div class="hero-slide theme-cognitive">
+      <div class="hero-text">
+        <div class="hero-badge-clean">Cognitive Performance Stack &nbsp;·&nbsp; Spleen Qi</div>
+        <h1>STOP BORROWING STAMINA<br><em>WITH COFFEE JITTERS</em></h1>
+        <p class="hsub">Replace the cycle of caffeine spikes and crashes. Gui Pi Wan, Ginseng Date Tea, and Kuding Tea help support sustained focus, balanced energy, and daily mental clarity.</p>
+        <div class="hero-action-row">
+          <button class="btnp" onclick="addBundleByNames('GUI PI WAN','GINSENG DATE','KUDING')">
+            <i data-lucide="shopping-cart" style="width:15px;height:15px;margin-right:5px"></i> Shop Stack
+          </button>
+          <button class="btno" onclick="window.location.href='index.html?filter=all#ga'">Shop All Products</button>
+        </div>
+      </div>
+      <div class="hero-imgs">
+        <div class="hero-img-box hero-img-stack-left" onclick="openProductDetailByName('GUI PI WAN')" style="cursor: pointer;">
+          <img src="images/gui_pi_wan.png" alt="Gui Pi Wan" onerror="this.style.opacity='.2'">
+          <div class="hero-img-desc">Gui Pi Wan</div>
+          <span class="hero-img-label-under">Spleen Aid</span>
+        </div>
+        <div class="hero-img-box hero-img-stack-center" onclick="openProductDetailByName('GINSENG DATE')" style="cursor: pointer;">
+          <img src="images/ginseng_date_tea.png" alt="Ginseng Date Tea" onerror="this.style.opacity='.2'">
+          <div class="hero-img-desc">Ginseng Date</div>
+          <span class="hero-img-label-under">Herbal Tea</span>
+        </div>
+        <div class="hero-bundle-price-badge">
+          <span class="bundle-was-price">Was R299.00</span>
+          <span class="bundle-now-price">R219.00</span>
+          <span class="bundle-save-badge">Save R80</span>
+        </div>
+        <div class="hero-img-box hero-img-stack-right" onclick="openProductDetailByName('KUDING')" style="cursor: pointer;">
+          <img src="images/kuding_tea.png" alt="Kuding Tea" onerror="this.style.opacity='.2'">
+          <div class="hero-img-desc">Kuding Tea</div>
+          <span class="hero-img-label-under">Clearance Tea</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: Hormone Balance (Chai Hu Shu Gan + Ba Zhen) -->
+    <div class="hero-slide theme-hormone">
+      <div class="hero-text">
+        <div class="hero-badge-clean">Women's Hormone Balance Protocol</div>
+        <h1>ACHIEVE A STATE OF FLOW.<br><em>NOT MONTHLY BURNOUT.</em></h1>
+        <p class="hsub">Support energy, mood balance, and overall menstrual wellness with a traditional herbal combination designed for modern women.</p>
+        <div class="hero-action-row">
+          <button class="btnp" onclick="addBundleByNames('CHAI HU SHU GAN','BA ZHEN')">
+            <i data-lucide="shopping-cart" style="width:15px;height:15px;margin-right:5px"></i> Shop Protocol
+          </button>
+          <button class="btno" onclick="window.location.href='index.html?filter=pills#ga'">Shop Pills</button>
+        </div>
+      </div>
+      <div class="hero-imgs">
+        <div class="hero-img-box hero-img-stack-left" onclick="openProductDetailByName('CHAI HU SHU GAN')" style="cursor: pointer;">
+          <img src="images/chai_hu_shu_gan_wan.png" alt="Chai Hu Shu Gan Wan" onerror="this.style.opacity='.2'">
+          <div class="hero-img-desc">Chai Hu Shu Gan</div>
+          <span class="hero-img-label-under">Liver Flow</span>
+        </div>
+        <div class="hero-bundle-price-badge">
+          <span class="bundle-was-price">Was R215.00</span>
+          <span class="bundle-now-price">R159.00</span>
+          <span class="bundle-save-badge">Save R56</span>
+        </div>
+        <div class="hero-img-box hero-img-stack-right" onclick="openProductDetailByName('BA ZHEN')" style="cursor: pointer;">
+          <img src="images/ba_zhen_wan.png" alt="Ba Zhen Wan" onerror="this.style.opacity='.2'">
+          <div class="hero-img-desc">Ba Zhen Wan</div>
+          <span class="hero-img-label-under">Eight Tonics</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: Spinal Joint (Te Xiao + Du Huo) -->
+    <div class="hero-slide theme-spinal">
+      <div class="hero-text">
+        <div class="hero-badge-clean">Spinal &amp; Joint Relief Protocol</div>
+        <h1>RELIEF FOR THE HOURS YOUR BODY CAN'T FORGET</em></h1>
+        <p class="hsub">Long days at a desk can leave the neck, back, and joints feeling stiff and restricted. This herbal combination supports mobility, circulation, and everyday comfort.</p>
+        <div class="hero-action-row">
+          <button class="btnp" onclick="addBundleByNames('TE XIAO','DU HUO')">
+            <i data-lucide="shopping-cart" style="width:15px;height:15px;margin-right:5px"></i> Shop Relief Bundle
+          </button>
+          <button class="btno" onclick="window.location.href='index.html?filter=pills#ga'">Shop Pills</button>
+        </div>
+      </div>
+      <div class="hero-imgs">
+        <div class="hero-img-box hero-img-stack-left" onclick="openProductDetailByName('TE XIAO')" style="cursor: pointer;">
+          <img src="images/te_xiao_jing_zhui_tong_wan.png" alt="Te Xiao Neck Relief" onerror="this.style.opacity='.2'">
+          <div class="hero-img-desc">Te Xiao Neck</div>
+          <span class="hero-img-label-under">Neck Relief</span>
+        </div>
+        <div class="hero-bundle-price-badge">
+          <span class="bundle-was-price">Was R200.00</span>
+          <span class="bundle-now-price">R149.00</span>
+          <span class="bundle-save-badge">Save R51</span>
+        </div>
+        <div class="hero-img-box hero-img-stack-right" onclick="openProductDetailByName('DU HUO')" style="cursor: pointer;">
+          <img src="images/du_huo_ji_sheng_wan.png" alt="Du Huo Ji Sheng Wan" onerror="this.style.opacity='.2'">
+          <div class="hero-img-desc">Du Huo Joint</div>
+          <span class="hero-img-label-under">Back &amp; Joint</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: Seasonal Defense (Anti-Virus Tea + Chuan Xin Lian) -->
+    <div class="hero-slide theme-seasonal">
+      <div class="hero-text">
+        <div class="hero-urgency-clean">Seasonal Defense Stock &mdash; Priority Access Expires 31 July 2026</div>
+        <h1>BUILD A STRONGER<br><em>DAILY DEFENSE</em></h1>
+        <p class="hsub">Traditional herbs selected to support respiratory wellness, seasonal resilience, and everyday vitality when environmental demands are at their highest.</p>
+        <div class="hero-action-row">
+          <button class="btnp" onclick="addBundleByNames('ANTI-VIRUS TEA','CHUAN XIN')">
+            <i data-lucide="shopping-cart" style="width:15px;height:15px;margin-right:5px"></i> Shop Seasonal Defense
+          </button>
+          <button class="btno" onclick="window.location.href='index.html?filter=teas#ga'">Shop Teas</button>
+          <button class="btno" onclick="window.location.href='index.html?filter=pills#ga'">Shop Pills</button>
+        </div>
+      </div>
+      <div class="hero-imgs">
+        <div class="hero-img-box hero-img-stack-left" onclick="openProductDetailByName('ANTI-VIRUS')" style="cursor: pointer;">
+          <img src="images/anti_virus_tea.png" alt="Anti-Virus Tea" onerror="this.style.opacity='.2'">
+          <div class="hero-img-desc">Anti-Virus</div>
+          <span class="hero-img-label-under">Defensive Tea</span>
+        </div>
+        <div class="hero-bundle-price-badge">
+          <span class="bundle-was-price">Was R185.00</span>
+          <span class="bundle-now-price">R135.00</span>
+          <span class="bundle-save-badge">Save R50</span>
+        </div>
+        <div class="hero-img-box hero-img-stack-right" onclick="openProductDetailByName('CHUAN XIN')" style="cursor: pointer;">
+          <img src="images/chuan_xin_lian_kang_yan_wan.png" alt="Chuan Xin Lian" onerror="this.style.opacity='.2'">
+          <div class="hero-img-desc">Chuan Xin Lian</div>
+          <span class="hero-img-label-under">Defensive Pill</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end .hero-track -->
