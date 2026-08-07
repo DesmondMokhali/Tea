@@ -2229,8 +2229,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
         <span class="mstock" id="mstk"></span>
       </div>
       <div class="mchips" id="mch"></div>
-      <div class="matcrow">
-        <button class="maddcart" id="mac" onclick="addFromModal()"><i data-lucide="shopping-cart" style="width:15px;height:15px;display:inline;vertical-align:-2px"></i> Add to Cart</button>
+      <div class="matcrow" style="display:flex; gap:10px; align-items:center;">
+        <div class="mqty-selector" style="display:flex; align-items:center; border: 1px solid var(--cd); border-radius: 8px; overflow:hidden; background: var(--w);">
+          <button type="button" onclick="updateModalQty(-1)" style="padding: 11px 14px; background: transparent; border:none; cursor:pointer; color: var(--f); font-weight: bold; font-size: 16px;">-</button>
+          <span id="mqty-display" style="padding: 11px 8px; min-width: 40px; text-align:center; font-family:'DM Sans', sans-serif; font-weight:700; font-size: 14px; color: var(--f);">1</span>
+          <button type="button" onclick="updateModalQty(1)" style="padding: 11px 14px; background: transparent; border:none; cursor:pointer; color: var(--f); font-weight: bold; font-size: 16px;">+</button>
+        </div>
+        <button class="maddcart" id="mac" style="flex:1;" onclick="addFromModal()"><i data-lucide="shopping-cart" style="width:15px;height:15px;display:inline;vertical-align:-2px"></i> Add to Cart</button>
       </div>
       <div class="tabs" id="mtabs">
         <button class="tbtn on" data-tab="ing" onclick="tab('ing',this)">Ingredients</button>
@@ -6883,10 +6888,20 @@ function openProductDetailByName(name) {
 }
 
 // ── MODAL ──────────────────────────────────────────────────────────────────
+let currentModalQty = 1;
+
+function updateModalQty(change) {
+  currentModalQty += change;
+  if (currentModalQty < 1) currentModalQty = 1;
+  document.getElementById('mqty-display').textContent = currentModalQty;
+}
+
 function openModal(idx){
   const p=P[idx];
   if (!p) { console.error('[Tangren] openModal: no product at idx', idx); return; }
   openIdx=idx;
+  currentModalQty = 1;
+  document.getElementById('mqty-display').textContent = currentModalQty;
   document.getElementById('mi').src=p.image_url;
   document.getElementById('mi').style.display='block';
   document.getElementById('mf').style.display='none';
@@ -6907,9 +6922,11 @@ function openModal(idx){
   document.getElementById('tq').textContent=ti[0];
   document.getElementById('ta').textContent=ti[1];
   const mac=document.getElementById('mac');
-  const inCart = cart.some(item => item.id === p.external_id);
-  mac.innerHTML=inCart?'<i data-lucide="check" style="width:15px;height:15px;display:inline;vertical-align:-2px"></i> Added to Cart':'<i data-lucide="shopping-cart" style="width:15px;height:15px;display:inline;vertical-align:-2px"></i> Add to Cart';
-  mac.classList.toggle('ok',inCart);
+  if (mac) {
+    mac.className = 'maddcart';
+    mac.style.flex = '1';
+    mac.innerHTML = '<i data-lucide="shopping-cart" style="width:15px;height:15px;display:inline;vertical-align:-2px"></i> Add to Cart';
+  }
   tab('ing',null);
   setTimeout(()=>lucide.createIcons({nameAttr:'data-lucide',attrs:{class:''},nodes:[document.getElementById('mo')]}),10);
   document.getElementById('mo').classList.add('on');
@@ -7157,7 +7174,25 @@ function addCard(e, idx) {
 
 function addFromModal() {
   if (openIdx !== null) {
-    addToCart(openIdx);
+    const p = P[openIdx];
+    if (!p || !p.external_id) return;
+    const existingIndex = cart.findIndex(i => i.id === p.external_id);
+    
+    if (existingIndex > -1) {
+      cart[existingIndex].qty += currentModalQty;
+    } else {
+      cart.push({ id: p.external_id, qty: currentModalQty });
+    }
+    updateCart();
+    showToast(`${currentModalQty}x ${p.title} added to cart!`);
+    
+    const mac = document.getElementById('mac');
+    if (mac) {
+      mac.classList.add('ok');
+      mac.innerHTML = '<i data-lucide="check" style="width:15px;height:15px;display:inline;vertical-align:-2px"></i> Added';
+      lucide.createIcons({nameAttr:'data-lucide',attrs:{class:''},nodes:[mac]});
+      setTimeout(() => closeModal(), 600);
+    }
   }
 }
 
