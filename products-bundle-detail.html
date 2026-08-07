@@ -120,11 +120,10 @@
       <div class="lg:col-span-5 lg:sticky lg:top-24 space-y-6">
         <div class="bg-white border border-[#e8e0cc] rounded-2xl p-6 lg:p-8 shadow-md">
           <div class="border-b border-[#e8e0cc] pb-5 mb-5">
-            <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center mb-3">
               <span class="inline-block bg-[#1b3a28] text-[#f0e0c4] px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider" id="panel-category">
                 Restorative
               </span>
-              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-[#166534] bg-[#eef7f2] px-2 py-0.5 rounded-md" id="save-pct-display">Save 0%</span>
             </div>
             <h1 class="font-sans text-3xl font-extrabold text-[#1b3a28] leading-tight mb-2" id="panel-title">
               Loading...
@@ -681,9 +680,7 @@
       const pTitle = document.getElementById('panel-title');
       if (pTitle) pTitle.textContent = b.name;
 
-      const savePct = Math.round(((b.value - b.price) / b.value) * 100);
-      const savePctDisp = document.getElementById('save-pct-display');
-      if (savePctDisp) savePctDisp.textContent = `Save ${savePct}%`;
+
 
       const qtyDisp = document.getElementById('qty-display');
       if (qtyDisp) qtyDisp.textContent = '1';
@@ -819,8 +816,7 @@
       const saveDisp = document.getElementById('save-display');
       if (saveDisp) saveDisp.textContent = `Save R${(totalValue - total).toFixed(2)}`;
 
-      const savePctDisp = document.getElementById('save-pct-display');
-      if (savePctDisp) savePctDisp.textContent = `Save ${Math.round(((b.value - b.price) / b.value) * 100)}%`;
+
 
       const mobilePriceDisplay = document.getElementById('mobile-price-display');
       if (mobilePriceDisplay) mobilePriceDisplay.textContent = `R${total.toFixed(2)}`;
