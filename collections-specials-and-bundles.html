@@ -91,15 +91,15 @@
     .cart-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(27,58,40,0.7); }
     .cart-total { font-size: 12.5px; font-weight: 700; color: var(--f); }
 
-    .category-nav { background: var(--fm); border-bottom: 1px solid rgba(0,0,0,0.12); padding: 10px 24px; font-family: 'DM Sans', sans-serif; }
+    .category-nav { background: #e3dcc9; border-bottom: 1px solid rgba(0,0,0,0.12); padding: 10px 24px; font-family: 'DM Sans', sans-serif; }
     .category-nav-inner { max-width: 1300px; margin: 0 auto; display: flex; gap: 28px; align-items: center; }
-    .cat-link { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13px; font-weight: 600; transition: color var(--tr); }
-    .cat-link:hover { color: var(--gl); }
-    .cat-link.active { color: var(--g); font-weight: 700; }
+    .cat-link { color: var(--f); text-decoration: none; font-size: 13px; font-weight: 600; transition: color var(--tr); }
+    .cat-link:hover { color: #a84b24; }
+    .cat-link.active { color: #a84b24; font-weight: 700; }
     
     .nav-dropdown { position: relative; }
-    .nav-dropbtn { color: rgba(255,255,255,0.75); font-size: 13px; font-weight: 600; text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; transition: color var(--tr); }
-    .nav-dropdown:hover .nav-dropbtn { color: var(--gl); }
+    .nav-dropbtn { color: var(--f); font-size: 13px; font-weight: 600; text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; transition: color var(--tr); }
+    .nav-dropdown:hover .nav-dropbtn { color: #a84b24; }
     .nav-dropdown-content { display: none; position: absolute; top: calc(100% + 10px); left: 0; background: var(--f); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; box-shadow: 0 8px 32px rgba(0,0,0,0.25); min-width: 180px; z-index: 200; overflow: hidden; }
     .nav-dropdown:hover .nav-dropdown-content { display: block; }
     .nav-dropdown-content a { display: block; padding: 10px 16px; color: rgba(255,255,255,0.8); text-decoration: none; font-size: 13px; font-weight: 500; transition: background var(--tr), color var(--tr); }
@@ -381,16 +381,9 @@
   <nav class="category-nav">
     <div class="category-nav-inner">
       <a href="index.html" class="cat-link">Home</a>
-      <div class="nav-dropdown">
-        <a href="index.html?filter=all#ga" class="nav-dropbtn">Single Formulas <i data-lucide="chevron-down" style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-left:3px"></i></a>
-        <div class="nav-dropdown-content">
-          <a href="index.html?filter=all#ga">All Products</a>
-          <a href="index.html?filter=teas#ga">Herbal Teas</a>
-          <a href="index.html?filter=pills#ga">Herbal Pills</a>
-        </div>
-      </div>
-      <a href="collections-specials-and-bundles.html" class="cat-link active">Targeted Bundles &amp; Protocols</a>
-      <a href="blog.html" class="cat-link">TCM Education</a>
+      <a href="index.html?filter=all#ga" class="cat-link">Products</a>
+      <a href="blog.html" class="cat-link">Wellness Blog</a>
+      <a href="collections-specials-and-bundles.html" class="cat-link active">Bundle Specials</a>
       <a href="index.html#contact" class="cat-link">Contact Us</a>
     </div>
   </nav>
