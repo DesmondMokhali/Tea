@@ -145,6 +145,18 @@
     .fchip:hover { border-color: var(--s); color: var(--f); }
     .fchip.on { background: var(--f); border-color: var(--f); color: #fff; }
 
+    /* ── Filter Section ── */
+    .fsec { padding: 28px clamp(14px,4vw,52px) 0; }
+    .fhead { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:8px; }
+    .ftitle { font-family:'Cormorant Garamond',serif; font-size:21px; color:var(--f); line-height:1.1; margin:0; }
+    .fcount { font-size:12.5px; color:var(--tl); }
+    .fbar { display:flex; gap:7px; overflow-x:auto; padding-bottom:6px; scrollbar-width:none; margin-top:10px; }
+    .fbar::-webkit-scrollbar { display:none; }
+    .type-btn { background:transparent; border:none; border-radius:16px; padding:6px 16px; font-family:'DM Sans',sans-serif; font-size:12.5px; font-weight:500; color:var(--tm); cursor:pointer; transition:all var(--tr); }
+    .type-btn:hover { color:var(--f); }
+    .type-btn.on { background:var(--f); color:#fff; font-weight:600; box-shadow:0 1px 4px rgba(0,0,0,.12); }
+
+
     /* Footer CSS */
     .site-footer {
       background: var(--f);
@@ -429,19 +441,29 @@
     </div>
   </section>
 
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-20">
-    <div class="bg-white border border-[#e8e0cc] rounded-2xl p-4 shadow-lg flex flex-col md:flex-row md:items-center gap-4">
-      <span class="text-xs font-bold uppercase text-[#1b3a28] tracking-wider pl-2 flex items-center gap-2 whitespace-nowrap" title="Filter By Target Focus">
-        <i data-lucide="sliders-horizontal" class="w-4 h-4 text-[#c8a06e]"></i>
-      </span>
-      <div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 w-full" id="filter-container" style="scrollbar-width: none; -ms-overflow-style: none;">
-        <!-- Dynamic filters will be injected here -->
-        <style>
-          #filter-container::-webkit-scrollbar { display: none; }
-        </style>
+  <div class="fsec" id="bundles-filter-sec">
+    <div class="fhead">
+      <h2 class="ftitle">Our Collection</h2>
+      <div style="display:flex;gap:8px;background:var(--cd);padding:4px;border-radius:20px;align-items:center;">
+        <button class="type-btn on" id="btype-all" onclick="setBundleType('all')">All Products</button>
+        <button class="type-btn" id="btype-teas" onclick="setBundleType('teas')">Herbal Teas</button>
+        <button class="type-btn" id="btype-pills" onclick="setBundleType('pills')">Herbal Pills</button>
       </div>
+      <span class="fcount" id="bfc">0 products</span>
     </div>
-  </section>
+    <div class="fbar" id="bfb">
+      <button class="fchip on" onclick="setBundleCat('all',this)">All Teas</button>
+      <button class="fchip" onclick="setBundleCat('detox',this)">Detox &amp; Cleanse</button>
+      <button class="fchip" onclick="setBundleCat('heart',this)">Heart Health</button>
+      <button class="fchip" onclick="setBundleCat('weight',this)">Weight Management</button>
+      <button class="fchip" onclick="setBundleCat('immunity',this)">Immunity</button>
+      <button class="fchip" onclick="setBundleCat('womens',this)">Women's Wellness</button>
+      <button class="fchip" onclick="setBundleCat('mens',this)">Men's Wellness</button>
+      <button class="fchip" onclick="setBundleCat('sleep',this)">Sleep &amp; Calm</button>
+      <button class="fchip" onclick="setBundleCat('respiratory',this)">Respiratory</button>
+      <button class="fchip" onclick="setBundleCat('digestive',this)">Digestive</button>
+    </div>
+  </div>
 
   <!-- PROTOCOLS CATALOG GRID -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -898,7 +920,47 @@
         const filtered = BUNDLES_DATA.filter(b => b.badge.toLowerCase().includes(category.toLowerCase()));
         renderGrid(filtered);
       }
+      // update count
+      const count = document.querySelectorAll('#bundles-grid > *').length;
+      const fc = document.getElementById('bfc');
+      if (fc) fc.textContent = count + ' products';
     }
+
+    let _bundleTypeFilter = 'all';
+    let _bundleCatFilter = 'all';
+
+    function setBundleType(type) {
+      _bundleTypeFilter = type;
+      document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('on'));
+      const btn = document.getElementById('btype-' + type);
+      if (btn) btn.classList.add('on');
+      applyBundleFilters();
+    }
+
+    function setBundleCat(cat, el) {
+      _bundleCatFilter = cat;
+      document.querySelectorAll('#bfb .fchip').forEach(b => b.classList.remove('on'));
+      if (el) el.classList.add('on');
+      applyBundleFilters();
+    }
+
+    function applyBundleFilters() {
+      let data = BUNDLES_DATA;
+      if (_bundleTypeFilter !== 'all') {
+        data = data.filter(b => (b.type || '').toLowerCase() === _bundleTypeFilter);
+      }
+      if (_bundleCatFilter !== 'all') {
+        data = data.filter(b => (b.badge || '').toLowerCase().includes(_bundleCatFilter.toLowerCase()) ||
+          (b.focus || '').toLowerCase().includes(_bundleCatFilter.toLowerCase()));
+      }
+      renderGrid(data);
+      setTimeout(() => {
+        const count = document.querySelectorAll('#bundles-grid > *').length;
+        const fc = document.getElementById('bfc');
+        if (fc) fc.textContent = count + ' products';
+      }, 50);
+    }
+
 
     // ── SUPABASE INTEGRATION ──
     const SUPABASE_URL_BUNDLES     = 'https://fmmzesqelnwayexweatz.supabase.co';
@@ -961,6 +1023,12 @@
     buildBundleFilters();
     loadBundlesFromSupabase().then(() => {
       buildBundleFilters(); // Re-build in case new categories arrive
+      // Update count display
+      setTimeout(() => {
+        const count = document.querySelectorAll('#bundles-grid > *').length;
+        const fc = document.getElementById('bfc');
+        if (fc) fc.textContent = count + ' products';
+      }, 100);
     });
   </script>
 
