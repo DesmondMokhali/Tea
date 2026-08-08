@@ -145,6 +145,10 @@
     .fchip:hover { border-color: var(--s); color: var(--f); }
     .fchip.on { background: var(--f); border-color: var(--f); color: #fff; }
 
+    /* ── TRUST BAR ── */
+    .tbar { background: var(--cd); border-bottom: 1px solid rgba(27,58,40,.09); padding: 13px clamp(14px,4vw,52px); display: flex; align-items: center; justify-content: center; gap: clamp(12px,3vw,44px); flex-wrap: wrap; }
+    .titem { display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--tm); font-weight: 500; white-space: nowrap; }
+
     /* ── Filter Section ── */
     .fsec { padding: 28px clamp(14px,4vw,52px) 0; }
     .fhead { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:8px; }
@@ -440,6 +444,13 @@
       </div>
     </div>
   </section>
+
+  <div class="tbar">
+    <div class="titem"><i data-lucide="leaf" style="width:15px;height:15px;color:var(--s)"></i> 100% Natural Herbs</div>
+    <div class="titem"><i data-lucide="award" style="width:15px;height:15px;color:var(--g)"></i> Specialist Formulated</div>
+    <div class="titem"><i data-lucide="truck" style="width:15px;height:15px;color:var(--s)"></i> FREE Courier Delivery on All Orders</div>
+    <div class="titem"><i data-lucide="flask-conical" style="width:15px;height:15px;color:var(--g)"></i> Scientifically Researched</div>
+  </div>
 
   <div class="fsec" id="bundles-filter-sec">
     <div class="fhead">
