@@ -6,221 +6,300 @@
 <title>Ritual Bundle Details | Earth Inventory</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Montserrat:ital,wght@0,100..900;1,100..900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet"/>
 <link href="https://unpkg.com/lucide-static@latest/font/lucide.css" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <!-- Supabase JS Client -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        "colors": {
-                "inverse-on-surface": "#f5f1e5",
-                "on-secondary-container": "#79592e",
-                "error": "#ba1a1a",
-                "on-primary-container": "#82a48d",
-                "on-tertiary-fixed": "#00210a",
-                "primary-fixed": "#c7ebd1",
-                "secondary-container": "#ffd39c",
-                "on-error-container": "#93000a",
-                "background": "#fdf9ed",
-                "primary-fixed-dim": "#accfb6",
-                "surface-container-high": "#ece8dc",
-                "secondary-fixed": "#ffddb6",
-                "tertiary-fixed-dim": "#a1d3a5",
-                "tertiary-container": "#0d3c1c",
-                "on-surface-variant": "#424843",
-                "surface-tint": "#456551",
-                "outline-variant": "#c2c8c1",
-                "surface-container-highest": "#e6e2d7",
-                "surface-container-low": "#f7f3e7",
-                "secondary": "#79582d",
-                "secondary-fixed-dim": "#eabf8b",
-                "on-primary-fixed-variant": "#2e4d3a",
-                "surface-bright": "#fdf9ed",
-                "primary": "#042414",
-                "inverse-primary": "#accfb6",
-                "surface-dim": "#dedace",
-                "on-primary-fixed": "#012111",
-                "pulse-red": "#ff5c5c",
-                "surface-container-lowest": "#ffffff",
-                "on-secondary": "#ffffff",
-                "sage-light": "#9abf9d",
-                "on-background": "#1c1c15",
-                "timber-muted": "#3d5c44",
-                "outline": "#727972",
-                "parchment-dark": "#e8e0cc",
-                "tertiary-fixed": "#bcefc0",
-                "timber-text": "#182415",
-                "primary-container": "#1b3a28",
-                "on-secondary-fixed": "#2a1800",
-                "surface-variant": "#e6e2d7",
-                "tertiary": "#00250c",
-                "inverse-surface": "#323129",
-                "on-tertiary-container": "#78a87d",
-                "on-tertiary": "#ffffff",
-                "on-surface": "#1c1c15",
-                "forest-muted": "#2a5040",
-                "on-secondary-fixed-variant": "#5e4118",
-                "surface": "#fdf9ed",
-                "surface-container": "#f2eee2",
-                "error-container": "#ffdad6",
-                "gold-light": "#dab882",
-                "on-tertiary-fixed-variant": "#23502d",
-                "on-error": "#ffffff",
-                "on-primary": "#ffffff"
-        },
-        "borderRadius": {
-                "DEFAULT": "0.25rem",
-                "lg": "0.5rem",
-                "xl": "0.75rem",
-                "full": "9999px"
-        },
-        "spacing": {
-                "gutter-desktop": "32px",
-                "gutter-mobile": "16px",
-                "section-padding-sm": "40px",
-                "container-max": "1280px",
-                "base": "4px",
-                "section-padding-lg": "80px"
-        },
-        "fontFamily": {
-                "label-caps": [
-                        "Montserrat"
-                ],
-                "display-lg": [
-                        "Playfair Display"
-                ],
-                "body-md": [
-                        "DM Sans"
-                ],
-                "button-text": [
-                        "Montserrat"
-                ],
-                "headline-brand": [
-                        "EB Garamond"
-                ],
-                "headline-section": [
-                        "Playfair Display"
-                ],
-                "display-lg-mobile": [
-                        "Playfair Display"
-                ],
-                "body-lg": [
-                        "DM Sans"
-                ],
-                "caption": [
-                        "DM Sans"
-                ]
-        },
-        "fontSize": {
-                "label-caps": [
-                        "11px",
-                        {
-                                "lineHeight": "1.2",
-                                "letterSpacing": "0.1em",
-                                "fontWeight": "800"
-                        }
-                ],
-                "display-lg": [
-                        "48px",
-                        {
-                                "lineHeight": "1.1",
-                                "fontWeight": "800"
-                        }
-                ],
-                "body-md": [
-                        "14px",
-                        {
-                                "lineHeight": "1.65",
-                                "fontWeight": "400"
-                        }
-                ],
-                "button-text": [
-                        "14px",
-                        {
-                                "lineHeight": "1.0",
-                                "letterSpacing": "0.05em",
-                                "fontWeight": "700"
-                        }
-                ],
-                "headline-brand": [
-                        "26px",
-                        {
-                                "lineHeight": "1.0",
-                                "fontWeight": "600"
-                        }
-                ],
-                "headline-section": [
-                        "30px",
-                        {
-                                "lineHeight": "1.2",
-                                "fontWeight": "700"
-                        }
-                ],
-                "display-lg-mobile": [
-                        "32px",
-                        {
-                                "lineHeight": "1.15",
-                                "fontWeight": "800"
-                        }
-                ],
-                "body-lg": [
-                        "16px",
-                        {
-                                "lineHeight": "1.6",
-                                "fontWeight": "400"
-                        }
-                ],
-                "caption": [
-                        "12px",
-                        {
-                                "lineHeight": "1.4",
-                                "fontWeight": "500"
-                        }
-                ]
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "c": "#f6f2e6",
+            "cd": "#e8e0cc",
+            "f": "#1b3a28",
+            "fm": "#2a5040",
+            "fl": "#3a6852",
+            "g": "#c8a06e",
+            "gl": "#dab882",
+            "gp": "#f0e0c4",
+            "s": "#6a9970",
+            "sl": "#9abf9d",
+            "t": "#182415",
+            "tm": "#3d5c44",
+            "tl": "#7a9280",
+            "pulse-red": "#ba1a1a"
+          },
+          borderRadius: {
+            "brand": "12px"
+          },
+          fontFamily: {
+            "headline-brand": ["Cormorant Garamond", "serif"],
+            "headline-section": ["Playfair Display", "serif"],
+            "sans": ["DM Sans", "sans-serif"],
+            "button-text": ["Montserrat", "sans-serif"]
+          }
         }
-},
-    },
-  }
-</script>
+      }
+    }
+  </script>
 <style>
+/* Icon helper */
+.ico{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle}
+.ico svg{width:1em;height:1em;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+    /* Design Tokens — Identical to index.html */
+    :root {
+      --c: #f6f2e6;        /* Primary Cream Page Background */
+      --cd: #e8e0cc;       /* Secondary Cream Cards/Surfaces */
+      --f: #1b3a28;        /* Forest Green Primary */
+      --fm: #2a5040;       /* Muted Forest */
+      --fl: #3a6852;       /* Light Forest */
+      --g: #c8a06e;        /* Primary Gold */
+      --gl: #dab882;       /* Light Gold */
+      --gp: #f0e0c4;       /* Pale Gold */
+      --s: #6a9970;        /* Sage Green */
+      --sl: #9abf9d;       /* Light Sage */
+      --t: #182415;        /* Dark Text */
+      --tm: #3d5c44;       /* Medium Text */
+      --tl: #7a9280;       /* Light Text */
+      --w: #fff;
+      --r: 12px;           /* Standard Border Radius */
+      --tr: 0.24s cubic-bezier(0.4, 0, 0.2, 1);
+      --outline: #727972;
+      --outline-variant: #c2c8c1;
+      --surface-container-low: #f6f2e6;
+      /* Tinted Forest Shadows */
+      --sh0: 0 2px 12px rgba(27, 58, 40, 0.07);
+      --sh1: 0 4px 28px rgba(27, 58, 40, 0.13);
+      --sh2: 0 12px 56px rgba(27, 58, 40, 0.20);
+    }
+
+html{scroll-behavior:smooth}
+
+    /* Slim Very Dark Green Utility Bar */
+    .top-bar { 
+      background: #112519; 
+      color: rgba(255,255,255,0.85); 
+      font-size: 11.5px; 
+      height: 32px; 
+      display: flex; 
+      align-items: center; 
+      border-bottom: 1px solid rgba(255,255,255,0.08); 
+      font-family: 'DM Sans', sans-serif; 
+    }
+    .top-bar-inner { max-width: 1440px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; width: 100%; }
+    .top-bar-left, .top-bar-right { display: flex; align-items: center; gap: 14px; }
+    .top-bar-right a { color: rgba(255,255,255,0.85); text-decoration: none; transition: color var(--tr); }
+    .top-bar-right a:hover { color: var(--gl); }
+    .bar-sep { color: rgba(255,255,255,0.2); }
+
+    /* Sticky Dark Forest Header */
+    .main-header { 
+      background: var(--f); 
+      border-bottom: 1px solid rgba(255,255,255,0.1); 
+      padding: 14px 24px; 
+      position: sticky; 
+      top: 0; 
+      z-index: 100; 
+      box-shadow: var(--sh0); 
+    }
+    .main-header-inner { max-width: 1440px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 48px; }
+    .main-header .nlogo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
+    .main-header .nlogo .ntext b { font-family: 'Cormorant Garamond', serif; line-height: 0.9; margin-bottom: 2px; font-size: 28px; font-weight: 600; color: #f6f2e6; letter-spacing: 0.02em; display: block; }
+    .main-header .nlogo .ntext small { font-size: 10px; color: var(--gl); letter-spacing: 0.15em; text-transform: uppercase; }
+    
+    .header-search-wrap { flex: 1; max-width: 800px; position: relative; display: flex; align-items: center; }
+    .header-search-wrap input { width: 100%; background: var(--c); border: 1px solid transparent; border-radius: var(--r); padding: 10px 110px 10px 44px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--t); outline: none; transition: all var(--tr); }
+    .header-search-wrap input::placeholder { color: var(--tl); }
+    .header-search-wrap input:focus { border-color: var(--g); box-shadow: 0 0 0 3px rgba(200, 160, 110, 0.25); }
+    .header-search-wrap .search-icon { position: absolute; left: 14px; color: var(--tm); display: flex; align-items: center; pointer-events: none; }
+    .header-search-wrap .search-icon svg { width: 18px; height: 18px; }
+    .header-search-wrap .search-btn { position: absolute; right: 4px; background: var(--g); color: var(--f); border: none; border-radius: 8px; padding: 6px 18px; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; cursor: pointer; transition: all var(--tr); }
+    .header-search-wrap .search-btn:hover { background: var(--gl); }
+
+    .header-actions { display: flex; align-items: center; gap: 28px; flex-shrink: 0; }
+    .action-link { display: flex; flex-direction: column; align-items: center; gap: 4px; color: #fff; text-decoration: none; font-size: 12px; font-weight: 500; transition: color var(--tr); }
+    .action-link:hover { color: var(--gl); }
+    .action-link svg { width: 22px; height: 22px; color: #fff; }
+    .action-link:hover svg { color: var(--gl); }
+    
+    .header-cart-btn { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; color: #fff; text-decoration: none; font-size: 12px; font-weight: 500; transition: color var(--tr); cursor: pointer; }
+    .header-cart-btn:hover { color: var(--gl); }
+    .header-cart-btn svg { width: 22px; height: 22px; color: #fff; }
+    .header-cart-btn:hover svg { color: var(--gl); }
+    .cart-badge { position: absolute; top: -6px; right: -10px; background: #ba1a1a; color: #fff; font-size: 10px; font-weight: 700; min-width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; padding: 0 4px; border: 2px solid var(--f); }
+    
+    .hamburger-btn { display: none; background: none; border: none; color: #fff; cursor: pointer; }
+    
+    /* Category Navigation */
+    .category-nav { background: var(--cd); border-bottom: 1px solid rgba(27, 58, 40, 0.08); }
+    .category-nav-inner { max-width: 1440px; margin: 0 auto; padding: 0 24px; display: flex; gap: 32px; overflow-x: auto; scrollbar-width: none; }
+    .category-nav-inner::-webkit-scrollbar { display: none; }
+    .cat-link { text-decoration: none; color: var(--t); font-size: 13.5px; font-weight: 600; font-family: 'DM Sans', sans-serif; padding: 14px 0; border-bottom: 3px solid transparent; white-space: nowrap; transition: all var(--tr); }
+    .cat-link:hover { color: var(--f); border-bottom-color: rgba(200, 160, 110, 0.4); }
+    .cat-link.active { color: var(--f); border-bottom-color: var(--g); border-radius: 2px; }
+
+    /* Mobile Header adjustments */
+    .mobile-search-row { display: none; background: var(--f); padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    @media(max-width: 991px) {
+      .main-header-inner { gap: 16px; }
+      .header-search-wrap, .action-link span, .header-cart-btn span.cart-label { display: none; }
+      .header-actions { gap: 16px; }
+      .hamburger-btn { display: block; }
+      .main-header .nlogo .ntext b { font-size: 20px; }
+      .mobile-search-row { display: block; }
+      .mobile-search-row .header-search-wrap { display: flex; max-width: 100%; }
+      .top-bar-inner { flex-direction: column; justify-content: center; text-align: center; gap: 6px; padding: 6px; }
+      .top-bar { height: auto; }
+      .top-bar-right { display: none; }
+    }
+
+    /* Mobile Menu Drawer */
+    .mobile-menu-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999; display: none; opacity: 0; transition: opacity var(--tr); backdrop-filter: blur(4px); }
+    .mobile-menu-overlay.show { display: block; opacity: 1; }
+    .mobile-menu-drawer { position: fixed; top: 0; left: 0; bottom: 0; width: 280px; background: var(--c); z-index: 1000; transform: translateX(-100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; box-shadow: var(--sh2); }
+    .mobile-menu-drawer.open { transform: translateX(0); }
+    .mobile-menu-hdr { padding: 20px; background: var(--f); color: #fff; display: flex; justify-content: space-between; align-items: center; }
+    .mobile-menu-hdr h3 { margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 20px; }
+    .mobile-menu-close { background: none; border: none; color: #fff; font-size: 28px; cursor: pointer; line-height: 1; }
+    .mobile-menu-body { padding: 10px 0; overflow-y: auto; }
+    .mobile-menu-body a { display: block; padding: 14px 20px; color: var(--t); text-decoration: none; font-size: 15px; font-weight: 500; border-bottom: 1px solid rgba(27, 58, 40, 0.05); }
+    .mobile-menu-body a:hover { background: var(--cd); }
+
+    /* Integrated Trust Bar */
+    .integrated-trust-bar { background: var(--cd); border-bottom: 1px solid rgba(27, 58, 40, 0.08); padding: 14px 24px; }
+    .integrated-trust-inner { max-width: 1440px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: clamp(20px, 4vw, 56px); flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--t); font-weight: 600; white-space: nowrap; }
+    .trust-icon { width: 30px; height: 30px; background: var(--c); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(27, 58, 40, 0.1); color: var(--g); }
+    .trust-icon svg { width: 16px; height: 16px; }
+
+    /* Body background */
+    body { background: var(--c); color: var(--t); font-family: 'DM Sans', sans-serif; }
+
     .scrollbar-none::-webkit-scrollbar { display: none; }
     .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
-<body class="bg-surface-container-lowest text-on-background font-body-lg antialiased pb-32">
-<!-- Header -->
-<header class="border-b border-white/10 bg-primary-container sticky top-0 z-50 shadow-md">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-<a class="flex items-center gap-2 no-underline" href="index.html">
-<span class="h-8 w-8 rounded-full bg-gold-light flex items-center justify-center text-primary-container font-bold text-sm">
-<i class="lucide-leaf" style="font-size: 16px;"></i>
-</span>
-<span class="font-headline-brand text-lg text-gold-light tracking-wider">Earth Inventory</span>
-</a>
-<nav class="hidden md:flex space-x-8 text-sm font-semibold font-button-text">
-<a class="text-white/80 hover:text-gold-light transition" href="index.html#ga">Catalogue</a>
-<a class="text-white/80 hover:text-gold-light transition" href="blog.html">Wellness Journal</a>
-<a class="text-white/80 hover:text-gold-light transition" href="collections-specials-and-bundles.html">Bundle Specials</a>
-</nav>
-<div class="flex items-center gap-4">
-<a class="bg-gold-light hover:bg-secondary-container text-primary-container px-4 py-2 rounded-full font-button-text text-xs uppercase transition no-underline flex items-center gap-2" href="basket-v2.html">
-<i class="lucide-shopping-cart" style="font-size: 14px;"></i> Go To Basket
-        </a>
+<body class="selection:bg-gl selection:text-f">
+<!-- TOP UTILITY BAR -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-bar-left">
+      <span><svg aria-hidden="true" class="lucide lucide-phone w-3.5 h-3.5 inline mr-1 text-g" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>Careline: +27 (0) 11 888 3000</span>
+      <span class="bar-sep">|</span>
+      <span><svg aria-hidden="true" class="lucide lucide-truck w-3.5 h-3.5 inline mr-1 text-g" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path><path d="M15 18H9"></path><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path><circle cx="17" cy="18" r="2"></circle><circle cx="7" cy="18" r="2"></circle></svg>FREE Courier Delivery on all orders! Volume discounts up to 25% off.</span>
+    </div>
+    <div class="top-bar-right">
+      <a href="index.html#contact">Track Order</a>
+      <span class="bar-sep">|</span>
+      <a href="#" onclick="alert('Benefit Rewards program details coming soon!')">Benefit Card</a>
+      <span class="bar-sep">|</span>
+      <a href="#" onclick="alert('Accounts integration coming soon!')">Login / Register</a>
+    </div>
+  </div>
 </div>
-</div>
-<div class="bg-primary border-t border-white/5">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-9 flex items-center justify-center gap-8 text-[11px] font-label-caps text-surface-container-high tracking-wide overflow-x-auto scrollbar-none">
-<span class="flex items-center gap-1.5 whitespace-nowrap"><i class="lucide-truck" style="font-size:12px;color:#dab882;"></i> Free delivery</span>
-<span class="flex items-center gap-1.5 whitespace-nowrap"><i class="lucide-shield-check" style="font-size:12px;color:#dab882;"></i> Secure checkout</span>
-<span class="flex items-center gap-1.5 whitespace-nowrap"><i class="lucide-leaf" style="font-size:12px;color:#dab882;"></i> Traditional herbal formulations</span>
-<span class="flex items-center gap-1.5 whitespace-nowrap"><i class="lucide-rotate-ccw" style="font-size:12px;color:#dab882;"></i> Easy 30-day returns</span>
-</div>
-</div>
+
+<!-- MAIN HEADER -->
+<header class="main-header">
+  <div class="main-header-inner">
+    <button class="hamburger-btn" onclick="toggleMobileMenu(true)">
+      <svg aria-hidden="true" class="lucide lucide-menu" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
+    </button>
+
+    <a class="nlogo" href="index.html">
+      <img src="assets/logo/ei_logo_e2dbc7.svg" alt="Earth Inventory" style="height:48px;width:48px;object-fit:contain;">
+      <div class="ntext"><b>Earth Inventory</b><small>Traditional Chinese Wellness</small></div>
+    </a>
+
+    <div class="header-search-wrap">
+      <span class="search-icon"><svg aria-hidden="true" class="lucide lucide-search" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg></span>
+      <input type="text" id="si" placeholder="What are you looking for?">
+      <button class="search-btn">Search</button>
+    </div>
+
+    <div class="header-actions">
+      <a href="#" class="action-link" onclick="alert('Benefit Rewards Card & Accounts coming soon!');return false;">
+        <svg aria-hidden="true" class="lucide lucide-user" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span>Account</span>
+      </a>
+      <a href="basket-v2.html" class="header-cart-btn">
+        <div style="position:relative;">
+          <svg aria-hidden="true" class="lucide lucide-shopping-cart" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
+          <span class="cart-badge" id="cnt">0</span>
+        </div>
+        <span class="cart-label">Cart</span>
+      </a>
+    </div>
+  </div>
 </header>
+
+<!-- MOBILE SEARCH ROW -->
+<div class="mobile-search-row">
+  <div class="header-search-wrap">
+    <span class="search-icon"><svg aria-hidden="true" class="lucide lucide-search" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg></span>
+    <input type="text" id="si-mobile" placeholder="What are you looking for?">
+  </div>
+</div>
+
+<!-- CATEGORY NAVIGATION -->
+<nav class="category-nav">
+  <div class="category-nav-inner">
+    <a href="index.html" class="cat-link">Home</a>
+    <a href="index.html?filter=all#ga" class="cat-link">All Products</a>
+    <a href="collections-specials-and-bundles.html" class="cat-link active">Targeted Bundles</a>
+    <a href="index.html?filter=teas#ga" class="cat-link">Herbal Teas</a>
+    <a href="index.html?filter=pills#ga" class="cat-link">Micro-Pills</a>
+    <a href="blog.html" class="cat-link">Wellness Blog</a>
+  </div>
+</nav>
+
+<!-- MOBILE MENU DRAWER -->
+<div class="mobile-menu-overlay" id="mobile-menu-overlay" onclick="toggleMobileMenu(false)"></div>
+<div class="mobile-menu-drawer" id="mobile-menu-drawer">
+  <div class="mobile-menu-hdr">
+    <h3>Menu</h3>
+    <button class="mobile-menu-close" onclick="toggleMobileMenu(false)">&times;</button>
+  </div>
+  <div class="mobile-menu-body">
+    <a href="index.html" onclick="toggleMobileMenu(false)">Home</a>
+    <a href="index.html?filter=all#ga" onclick="toggleMobileMenu(false)">All Products</a>
+    <a href="collections-specials-and-bundles.html" onclick="toggleMobileMenu(false)">Targeted Bundles</a>
+    <a href="index.html?filter=teas#ga" onclick="toggleMobileMenu(false)">Herbal Teas</a>
+    <a href="index.html?filter=pills#ga" onclick="toggleMobileMenu(false)">Micro-Pills</a>
+    <a href="blog.html" onclick="toggleMobileMenu(false)">Wellness Blog</a>
+  </div>
+</div>
+
+<!-- INTEGRATED TRUST BAR -->
+<div class="integrated-trust-bar">
+  <div class="integrated-trust-inner">
+    <div class="trust-item">
+      <div class="trust-icon"><i class="lucide-leaf" style="font-size:16px;"></i></div>
+      100% Natural Herbs
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><i class="lucide-shield-check" style="font-size:16px;"></i></div>
+      Specialist Formulated
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><i class="lucide-truck" style="font-size:16px;"></i></div>
+      FREE Courier Delivery
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><i class="lucide-flask-conical" style="font-size:16px;"></i></div>
+      Scientifically Researched
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><i class="lucide-sparkles" style="font-size:16px;"></i></div>
+      Traditional Chinese Wellness
+    </div>
+  </div>
+</div>
+
 <!-- Main Content Layout -->
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
@@ -473,6 +552,23 @@
     </button>
 </div>
 <script>
+
+// ── MOBILE MENU ──
+function toggleMobileMenu(open) {
+  const overlay = document.getElementById('mobile-menu-overlay');
+  const drawer = document.getElementById('mobile-menu-drawer');
+  if (!overlay || !drawer) return;
+  if (open) {
+    overlay.classList.add('show');
+    drawer.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  } else {
+    overlay.classList.remove('show');
+    drawer.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
     const BUNDLES_CATALOG = {
       "high-performance-engine": {
         db_id: 1,
