@@ -778,6 +778,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
 .home-filter-btn { width: 100%; border: 0; background: transparent; text-align: left; padding: 8px 10px; border-radius: 8px; font-size: 13.5px; color: var(--t); font-weight: 500; cursor: pointer; transition: all var(--tr); font-family: 'DM Sans', sans-serif; }
 .home-filter-btn:hover { background: var(--cd); color: var(--f); }
 .home-filter-btn.active { background: var(--f); color: #fff; font-weight: 700; }
+.home-filter-label { display: flex; align-items: center; gap: 10px; padding: 6px 10px; border-radius: 8px; font-size: 13.5px; color: var(--t); font-weight: 500; cursor: pointer; transition: all var(--tr); font-family: 'DM Sans', sans-serif; }
+.home-filter-label:hover { background: var(--cd); color: var(--f); }
+.home-filter-label input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--f); cursor: pointer; border-radius: 3px; }
 
 .homepage-content-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid rgba(27, 58, 40, 0.12); flex-wrap: wrap; gap: 16px; }
 .homepage-content-header h2 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 700; color: var(--f); margin: 0; }
@@ -1968,25 +1971,23 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
     <div class="home-filter-group">
       <div class="home-filter-title">Health Concern <i data-lucide="chevron-up"></i></div>
       <div class="home-filter-list">
-        <button type="button" class="home-filter-btn active" onclick="setFilter('all')">All Products</button>
-        <button type="button" class="home-filter-btn" onclick="setFilter('detox')">Detox &amp; Cleanse</button>
-        <button type="button" class="home-filter-btn" onclick="setFilter('heart')">Heart Health</button>
-        <button type="button" class="home-filter-btn" onclick="setFilter('weight')">Weight Management</button>
-        <button type="button" class="home-filter-btn" onclick="setFilter('immunity')">Immunity</button>
-        <button type="button" class="home-filter-btn" onclick="setFilter('women')">Women's Wellness</button>
-        <button type="button" class="home-filter-btn" onclick="setFilter('men')">Men's Wellness</button>
-        <button type="button" class="home-filter-btn" onclick="setFilter('sleep')">Sleep &amp; Calm</button>
-        <button type="button" class="home-filter-btn" onclick="setFilter('resp')">Respiratory</button>
-        <button type="button" class="home-filter-btn" onclick="setFilter('digest')">Digestive</button>
+        <label class="home-filter-label"><input type="checkbox" value="detox" class="cat-cb" onchange="updateFilters()"> Detox &amp; Cleanse</label>
+        <label class="home-filter-label"><input type="checkbox" value="heart" class="cat-cb" onchange="updateFilters()"> Heart Health</label>
+        <label class="home-filter-label"><input type="checkbox" value="weight" class="cat-cb" onchange="updateFilters()"> Weight Management</label>
+        <label class="home-filter-label"><input type="checkbox" value="immunity" class="cat-cb" onchange="updateFilters()"> Immunity</label>
+        <label class="home-filter-label"><input type="checkbox" value="women" class="cat-cb" onchange="updateFilters()"> Women's Wellness</label>
+        <label class="home-filter-label"><input type="checkbox" value="men" class="cat-cb" onchange="updateFilters()"> Men's Wellness</label>
+        <label class="home-filter-label"><input type="checkbox" value="sleep" class="cat-cb" onchange="updateFilters()"> Sleep &amp; Calm</label>
+        <label class="home-filter-label"><input type="checkbox" value="resp" class="cat-cb" onchange="updateFilters()"> Respiratory</label>
+        <label class="home-filter-label"><input type="checkbox" value="digest" class="cat-cb" onchange="updateFilters()"> Digestive</label>
       </div>
     </div>
 
     <div class="home-filter-group">
       <div class="home-filter-title">Product Type <i data-lucide="chevron-up"></i></div>
       <div class="home-filter-list">
-        <button type="button" class="home-filter-btn" onclick="setType('all')">All Products</button>
-        <button type="button" class="home-filter-btn" onclick="setType('teas')">Herbal Teas</button>
-        <button type="button" class="home-filter-btn" onclick="setType('pills')">Micro-Pills</button>
+        <label class="home-filter-label"><input type="checkbox" value="teas" class="type-cb" onchange="updateFilters()"> Herbal Teas</label>
+        <label class="home-filter-label"><input type="checkbox" value="pills" class="type-cb" onchange="updateFilters()"> Micro-Pills</label>
       </div>
     </div>
   </aside>
@@ -6602,29 +6603,45 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 function buildFilters(){
   const fb=document.getElementById('fb');
-  fb.innerHTML=CATS.map(c=>`<button class="fchip${c.id==='all'?' on':''}" onclick="setFilter('${c.id}')"><i data-lucide="${c.ico}" style="width:13px;height:13px"></i> ${c.l}</button>`).join('');
-  lucide.createIcons({nameAttr:'data-lucide',attrs:{class:''},nodes:[fb]});
+  if(fb) {
+    fb.innerHTML=CATS.map(c=>`<button class="fchip${c.id==='all'?' on':''}" onclick="setFilter('${c.id}')"><i data-lucide="${c.ico}" style="width:13px;height:13px"></i> ${c.l}</button>`).join('');
+    lucide.createIcons({nameAttr:'data-lucide',attrs:{class:''},nodes:[fb]});
+  }
 }
 
-function setFilter(id){
-  activeCat=id;
-  document.querySelectorAll('.fchip').forEach((c,i)=>c.classList.toggle('on',CATS[i].id===id));
-  document.querySelectorAll('.home-filter-btn').forEach(btn=>btn.classList.remove('active'));
-  const map={all:'All Products',detox:'Detox & Cleanse',heart:'Heart Health',weight:'Weight Management',immunity:'Immunity',women:"Women's Wellness",men:"Men's Wellness",sleep:'Sleep & Calm',resp:'Respiratory',digest:'Digestive'};
-  const target=[...document.querySelectorAll('.home-filter-group:first-child .home-filter-btn')].find(btn=>btn.textContent.trim()===map[id]);
-  if(target) target.classList.add('active');
+// Global active sets
+let activeCats = new Set();
+let activeTypes = new Set();
+
+function updateFilters() {
+  activeCats.clear();
+  document.querySelectorAll('.cat-cb:checked').forEach(cb => activeCats.add(cb.value));
+  
+  activeTypes.clear();
+  document.querySelectorAll('.type-cb:checked').forEach(cb => activeTypes.add(cb.value));
+  
   renderGrid();
+}
+
+// Fallback for legacy calls from elsewhere (e.g., URL parameters, top menu)
+function setFilter(id){
+  if(id === 'all') {
+    document.querySelectorAll('.cat-cb').forEach(cb => cb.checked = false);
+  } else {
+    const cb = document.querySelector(`.cat-cb[value="${id}"]`);
+    if(cb) cb.checked = true;
+  }
+  updateFilters();
 }
 
 function setType(type){
-  activeType=type;
-  document.getElementById('type-all').classList.toggle('on', type === 'all');
-  document.getElementById('type-teas').classList.toggle('on', type === 'teas');
-  document.getElementById('type-pills').classList.toggle('on', type === 'pills');
-  
-  // Reset category filter to 'all' to avoid showing empty categories
-  setFilter('all'); 
-  renderGrid();
+  if(type === 'all') {
+    document.querySelectorAll('.type-cb').forEach(cb => cb.checked = false);
+  } else {
+    const cb = document.querySelector(`.type-cb[value="${type}"]`);
+    if(cb) cb.checked = true;
+  }
+  updateFilters();
 }
 
 function doSearch(q){searchQ=q.toLowerCase().trim();renderGrid()}
@@ -6632,15 +6649,23 @@ function doSearch(q){searchQ=q.toLowerCase().trim();renderGrid()}
 function filtered(){
   return P.filter(p=>{
     if (!p || !p.external_id) return false;
-    const matchesType = activeType === 'all' || 
-                        (activeType === 'teas' && !p.isPill) || 
-                        (activeType === 'pills' && p.isPill);
-    const inCat = activeCat === 'all' || p.cat === activeCat;
+    
+    // Type match: If no checkboxes checked, show all. Otherwise must match a checked type.
+    let matchesType = activeTypes.size === 0;
+    if (!matchesType) {
+      if (activeTypes.has('teas') && !p.isPill) matchesType = true;
+      if (activeTypes.has('pills') && p.isPill) matchesType = true;
+    }
+    
+    // Category match: If no checkboxes checked, show all. Otherwise must match a checked category.
+    let inCat = activeCats.size === 0 || activeCats.has(p.cat);
+    
     const inQ = !searchQ || 
                 (p.title || '').toLowerCase().includes(searchQ) || 
                 (p.t    || '').toLowerCase().includes(searchQ) || 
                 (p.ing  || []).some(i => i.toLowerCase().includes(searchQ)) || 
                 (p.ch   && p.ch.some(c => c.toLowerCase().includes(searchQ)));
+                
     return matchesType && inCat && inQ;
   });
 }
