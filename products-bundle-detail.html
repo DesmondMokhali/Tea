@@ -1,228 +1,478 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ritual Bundle Details | Earth Inventory</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://unpkg.com/lucide-static@latest/font/lucide.css" />
-  <!-- Supabase JS Client -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            forest: '#1b3a28',
-            gold: '#c8a06e',
-            cream: '#f7f2e6',
-            sage: '#6a9970',
-            textMain: '#182415'
-          },
-          fontFamily: {
-            serif: ['Playfair Display', 'serif'],
-            sans: ['DM Sans', 'sans-serif'],
-            montserrat: ['Montserrat', 'sans-serif'],
-          }
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ritual Bundle Details | Earth Inventory</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Montserrat:ital,wght@0,100..900;1,100..900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://unpkg.com/lucide-static@latest/font/lucide.css" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Supabase JS Client -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "inverse-on-surface": "#f5f1e5",
+                "on-secondary-container": "#79592e",
+                "error": "#ba1a1a",
+                "on-primary-container": "#82a48d",
+                "on-tertiary-fixed": "#00210a",
+                "primary-fixed": "#c7ebd1",
+                "secondary-container": "#ffd39c",
+                "on-error-container": "#93000a",
+                "background": "#fdf9ed",
+                "primary-fixed-dim": "#accfb6",
+                "surface-container-high": "#ece8dc",
+                "secondary-fixed": "#ffddb6",
+                "tertiary-fixed-dim": "#a1d3a5",
+                "tertiary-container": "#0d3c1c",
+                "on-surface-variant": "#424843",
+                "surface-tint": "#456551",
+                "outline-variant": "#c2c8c1",
+                "surface-container-highest": "#e6e2d7",
+                "surface-container-low": "#f7f3e7",
+                "secondary": "#79582d",
+                "secondary-fixed-dim": "#eabf8b",
+                "on-primary-fixed-variant": "#2e4d3a",
+                "surface-bright": "#fdf9ed",
+                "primary": "#042414",
+                "inverse-primary": "#accfb6",
+                "surface-dim": "#dedace",
+                "on-primary-fixed": "#012111",
+                "pulse-red": "#ff5c5c",
+                "surface-container-lowest": "#ffffff",
+                "on-secondary": "#ffffff",
+                "sage-light": "#9abf9d",
+                "on-background": "#1c1c15",
+                "timber-muted": "#3d5c44",
+                "outline": "#727972",
+                "parchment-dark": "#e8e0cc",
+                "tertiary-fixed": "#bcefc0",
+                "timber-text": "#182415",
+                "primary-container": "#1b3a28",
+                "on-secondary-fixed": "#2a1800",
+                "surface-variant": "#e6e2d7",
+                "tertiary": "#00250c",
+                "inverse-surface": "#323129",
+                "on-tertiary-container": "#78a87d",
+                "on-tertiary": "#ffffff",
+                "on-surface": "#1c1c15",
+                "forest-muted": "#2a5040",
+                "on-secondary-fixed-variant": "#5e4118",
+                "surface": "#fdf9ed",
+                "surface-container": "#f2eee2",
+                "error-container": "#ffdad6",
+                "gold-light": "#dab882",
+                "on-tertiary-fixed-variant": "#23502d",
+                "on-error": "#ffffff",
+                "on-primary": "#ffffff"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "gutter-desktop": "32px",
+                "gutter-mobile": "16px",
+                "section-padding-sm": "40px",
+                "container-max": "1280px",
+                "base": "4px",
+                "section-padding-lg": "80px"
+        },
+        "fontFamily": {
+                "label-caps": [
+                        "Montserrat"
+                ],
+                "display-lg": [
+                        "Playfair Display"
+                ],
+                "body-md": [
+                        "DM Sans"
+                ],
+                "button-text": [
+                        "Montserrat"
+                ],
+                "headline-brand": [
+                        "EB Garamond"
+                ],
+                "headline-section": [
+                        "Playfair Display"
+                ],
+                "display-lg-mobile": [
+                        "Playfair Display"
+                ],
+                "body-lg": [
+                        "DM Sans"
+                ],
+                "caption": [
+                        "DM Sans"
+                ]
+        },
+        "fontSize": {
+                "label-caps": [
+                        "11px",
+                        {
+                                "lineHeight": "1.2",
+                                "letterSpacing": "0.1em",
+                                "fontWeight": "800"
+                        }
+                ],
+                "display-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "1.1",
+                                "fontWeight": "800"
+                        }
+                ],
+                "body-md": [
+                        "14px",
+                        {
+                                "lineHeight": "1.65",
+                                "fontWeight": "400"
+                        }
+                ],
+                "button-text": [
+                        "14px",
+                        {
+                                "lineHeight": "1.0",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-brand": [
+                        "26px",
+                        {
+                                "lineHeight": "1.0",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-section": [
+                        "30px",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "700"
+                        }
+                ],
+                "display-lg-mobile": [
+                        "32px",
+                        {
+                                "lineHeight": "1.15",
+                                "fontWeight": "800"
+                        }
+                ],
+                "body-lg": [
+                        "16px",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ],
+                "caption": [
+                        "12px",
+                        {
+                                "lineHeight": "1.4",
+                                "fontWeight": "500"
+                        }
+                ]
         }
-      }
-    }
-  </script>
-  <style>
+},
+    },
+  }
+</script>
+<style>
     .scrollbar-none::-webkit-scrollbar { display: none; }
     .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
-<body class="bg-[#f7f2e6] text-[#182415] font-sans antialiased pb-32">
-
-  <!-- Header -->
-  <header class="border-b border-white/10 bg-[#1b3a28] sticky top-0 z-50 shadow-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-2 no-underline">
-        <span class="h-8 w-8 rounded-full bg-[#c8a06e] flex items-center justify-center text-[#1b3a28] font-bold text-sm">
-          <i class="lucide-leaf" style="font-size: 16px;"></i>
-        </span>
-        <span class="font-serif font-bold text-lg text-[#dab882] tracking-wider">Earth Inventory</span>
-      </a>
-      <nav class="hidden md:flex space-x-8 text-sm font-semibold">
-        <a href="index.html#ga" class="text-white/80 hover:text-[#dab882] transition">Catalogue</a>
-        <a href="blog.html" class="text-white/80 hover:text-[#dab882] transition">Wellness Journal</a>
-        <a href="collections-specials-and-bundles.html" class="text-white/80 hover:text-[#dab882] transition">Bundle Specials</a>
-      </nav>
-      <div class="flex items-center gap-4">
-        <a href="basket-v2.html" class="bg-[#c8a06e] hover:bg-[#dab882] text-[#1b3a28] px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition no-underline flex items-center gap-2">
-          <i class="lucide-shopping-cart" style="font-size: 14px;"></i> Go To Basket
+<body class="bg-surface-container-lowest text-on-background font-body-lg antialiased pb-32">
+<!-- Header -->
+<header class="border-b border-white/10 bg-primary-container sticky top-0 z-50 shadow-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<a class="flex items-center gap-2 no-underline" href="index.html">
+<span class="h-8 w-8 rounded-full bg-gold-light flex items-center justify-center text-primary-container font-bold text-sm">
+<i class="lucide-leaf" style="font-size: 16px;"></i>
+</span>
+<span class="font-headline-brand text-lg text-gold-light tracking-wider">Earth Inventory</span>
+</a>
+<nav class="hidden md:flex space-x-8 text-sm font-semibold font-button-text">
+<a class="text-white/80 hover:text-gold-light transition" href="index.html#ga">Catalogue</a>
+<a class="text-white/80 hover:text-gold-light transition" href="blog.html">Wellness Journal</a>
+<a class="text-white/80 hover:text-gold-light transition" href="collections-specials-and-bundles.html">Bundle Specials</a>
+</nav>
+<div class="flex items-center gap-4">
+<a class="bg-gold-light hover:bg-secondary-container text-primary-container px-4 py-2 rounded-full font-button-text text-xs uppercase transition no-underline flex items-center gap-2" href="basket-v2.html">
+<i class="lucide-shopping-cart" style="font-size: 14px;"></i> Go To Basket
         </a>
-      </div>
-    </div>
-    <div class="bg-[#152e20] border-t border-white/5">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-9 flex items-center justify-center gap-8 text-[11px] font-semibold text-[#c9d6cb] tracking-wide overflow-x-auto scrollbar-none">
-        <span class="flex items-center gap-1.5 whitespace-nowrap"><i class="lucide-truck" style="font-size:12px;color:#dab882;"></i> Free delivery</span>
-        <span class="flex items-center gap-1.5 whitespace-nowrap"><i class="lucide-shield-check" style="font-size:12px;color:#dab882;"></i> Secure checkout</span>
-        <span class="flex items-center gap-1.5 whitespace-nowrap"><i class="lucide-leaf" style="font-size:12px;color:#dab882;"></i> Traditional herbal formulations</span>
-        <span class="flex items-center gap-1.5 whitespace-nowrap"><i class="lucide-rotate-ccw" style="font-size:12px;color:#dab882;"></i> Easy 30-day returns</span>
-      </div>
-    </div>
-  </header>
-
-  <!-- Main Content Layout -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-      
-      <!-- Left Column -->
-      <div class="lg:col-span-7 space-y-6">
-        <div class="flex items-center gap-2 text-xs font-medium text-[#7a9280]">
-          <a href="collections-specials-and-bundles.html" class="hover:text-[#1b3a28]">Specials &amp; Bundles</a>
-          <span>/</span>
-          <span class="text-[#182415]" id="breadcrumb-active">Loading...</span>
-        </div>
-
-        <div class="bg-white border border-[#e8e0cc] rounded-2xl overflow-hidden shadow-sm relative group">
-          <div class="aspect-[4/3] relative w-full cursor-zoom-in" id="bundle-hero-container">
-            <div class="absolute inset-0 bg-gradient-to-br from-[#fcfbf9] to-[#e8e0cc] flex items-center justify-center p-8 z-0">
-              <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]"></div>
-              <div class="text-center z-10">
-                <div class="text-[#1b3a28] text-6xl mb-4 flex justify-center items-center" id="bundle-hero-icon-container">
-                  <i id="bundle-hero-icon" class="lucide-package" style="font-size: 64px;"></i>
-                </div>
-                <h3 class="font-sans text-2xl font-bold text-[#1b3a28] mb-1" id="bundle-hero-title">Loading Ritual...</h3>
-                <p class="text-xs text-[#7a9280] uppercase tracking-wider" id="bundle-hero-badge">Standard Package</p>
-              </div>
-            </div>
-          </div>
-          <!-- Gallery nav arrows (shown by JS only when a bundle has 2+ images) -->
-          <button id="hero-nav-prev" onclick="heroNav(-1)" class="hidden absolute left-3 top-1/2 -translate-y-1/2 z-20 h-9 w-9 rounded-full bg-white/90 hover:bg-white text-[#1b3a28] items-center justify-center shadow-md transition">
-            <i class="lucide-chevron-left" style="font-size:18px;"></i>
-          </button>
-          <button id="hero-nav-next" onclick="heroNav(1)" class="hidden absolute right-3 top-1/2 -translate-y-1/2 z-20 h-9 w-9 rounded-full bg-white/90 hover:bg-white text-[#1b3a28] items-center justify-center shadow-md transition">
-            <i class="lucide-chevron-right" style="font-size:18px;"></i>
-          </button>
-          <!-- Gallery dots -->
-          <div id="hero-nav-dots" class="hidden absolute bottom-4 left-1/2 -translate-x-1/2 z-20 gap-1.5"></div>
-        </div>
-
-        <div class="bg-white border border-[#e8e0cc] rounded-2xl p-6 lg:p-8 space-y-6 shadow-sm">
-          <p class="text-[#3d5c44] text-sm leading-relaxed" id="bundle-pain-desc">
-            Loading targeted pain profile details...
-          </p>
-        </div>
-
-        <div class="bg-white border border-[#e8e0cc] rounded-2xl p-6 lg:p-8 shadow-sm">
-          <h2 class="font-serif text-2xl font-bold text-[#1b3a28] mb-4">Ritual Highlights</h2>
-          <div class="grid sm:grid-cols-2 gap-3" id="bundle-highlights"></div>
-        </div>
-      </div>
-
-      <!-- Right Column: sticky Checkout panel -->
-      <div class="lg:col-span-5 lg:sticky lg:top-24 space-y-6">
-        <div class="bg-white border border-[#e8e0cc] rounded-2xl p-6 lg:p-8 shadow-md">
-          <div class="border-b border-[#e8e0cc] pb-5 mb-5">
-            <div class="flex items-center mb-3">
-              <span class="inline-block bg-[#1b3a28] text-[#f0e0c4] px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider" id="panel-category">
-                Restorative
-              </span>
-            </div>
-            <h1 class="font-sans text-3xl font-extrabold text-[#1b3a28] leading-tight mb-2" id="panel-title">
-              Loading...
-            </h1>
-            <div class="flex items-center gap-2 mb-4 text-xs">
-              <span class="text-amber-500 font-bold tracking-tight">★ ★ ★ ★ ★</span>
-              <span class="font-semibold text-[#7a9280]">4.9 &nbsp;·&nbsp; 128 reviews</span>
-            </div>
-            <div class="flex items-baseline gap-3">
-              <span class="text-3xl font-extrabold text-[#1b3a28]" id="price-display">R0.00</span>
-              <span class="text-sm font-medium text-[#7a9280] line-through" id="value-display">R0.00</span>
-            </div>
-            <p class="text-xs text-[#7a9280] mt-1" id="save-display">Save R0.00</p>
-          </div>
-
-          <div class="mb-6">
-            <h3 class="text-xs font-bold uppercase tracking-wider text-[#7a9280] mb-3">Ritual Checklist</h3>
-            <div class="border border-[#e8e0cc] rounded-xl overflow-hidden divide-y divide-[#e8e0cc] bg-[#fcfbf9]" id="included-list">
-              <!-- Render product items dynamically -->
-            </div>
-          </div>
-
-          <div class="flex items-center justify-between mb-6">
-            <span class="text-xs font-bold uppercase tracking-wider text-[#7a9280]">Quantity</span>
-            <div class="flex items-center border border-[#e8e0cc] rounded-lg overflow-hidden">
-              <button onclick="changeQty(-1)" class="h-9 w-9 flex items-center justify-center text-[#1b3a28] hover:bg-[#f7f2e6] transition font-bold text-lg leading-none">−</button>
-              <span class="h-9 w-10 flex items-center justify-center text-sm font-bold text-[#182415] border-x border-[#e8e0cc]" id="qty-display">1</span>
-              <button onclick="changeQty(1)" class="h-9 w-9 flex items-center justify-center text-[#1b3a28] hover:bg-[#f7f2e6] transition font-bold text-lg leading-none">+</button>
-            </div>
-          </div>
-
-          <div class="bg-[#fcfbf9] border border-[#e8e0cc] rounded-xl p-4 mb-6 flex items-start gap-3">
-            <span class="text-[#1b3a28] text-lg">
-              <i class="lucide-truck" style="font-size: 20px;"></i>
-            </span>
-            <div>
-              <p class="text-xs font-bold text-[#1b3a28]" id="shipping-status">Loading delivery details...</p>
-              <p class="text-[11px] text-[#7a9280]">Nationwide trackable shipping.</p>
-            </div>
-          </div>
-
-          <button id="add-to-cart-btn" class="w-full bg-[#1b3a28] hover:bg-[#c8a06e] hover:text-[#1b3a28] text-white font-bold py-4 px-6 rounded-xl transition duration-200 shadow-sm text-sm uppercase tracking-wider flex items-center justify-center gap-2" onclick="checkoutBundle()">
-            <i class="lucide-shopping-bag" style="font-size: 16px;"></i> <span id="add-to-cart-label">Add Bundle to Cart</span>
-          </button>
-
-          <div class="flex items-center justify-center gap-5 mt-5 pt-5 border-t border-[#e8e0cc]">
-            <span class="flex items-center gap-1.5 text-[10px] font-semibold text-[#7a9280]"><i class="lucide-shield-check" style="font-size:14px;color:#1b3a28;"></i> Secure payment</span>
-            <span class="flex items-center gap-1.5 text-[10px] font-semibold text-[#7a9280]"><i class="lucide-rotate-ccw" style="font-size:14px;color:#1b3a28;"></i> Easy returns</span>
-            <span class="flex items-center gap-1.5 text-[10px] font-semibold text-[#7a9280]"><i class="lucide-clock" style="font-size:14px;color:#1b3a28;"></i> Fast dispatch</span>
-          </div>
-
-          <div class="text-center mt-4">
-            <a href="collections-specials-and-bundles.html" class="inline-block text-xs font-bold text-[#7a9280] hover:text-[#1b3a28] transition duration-150">
-              ← Back to Specials
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Tabs Container -->
-    <div class="bg-white border border-[#e8e0cc] rounded-2xl p-6 lg:p-8 shadow-sm mt-12">
-      <div class="flex border-b border-[#e8e0cc] mb-8 overflow-x-auto scrollbar-none">
-        <button onclick="switchTab('routine')" id="tab-routine" class="pb-4 px-6 font-sans text-lg font-bold border-b-2 border-[#1b3a28] text-[#1b3a28] whitespace-nowrap transition duration-200">
-          The Daily Routine
-        </button>
-        <button onclick="switchTab('benefits')" id="tab-benefits" class="pb-4 px-6 font-sans text-lg font-bold border-b-2 border-transparent text-[#7a9280] hover:text-[#1b3a28] whitespace-nowrap transition duration-200">
-          Targeted Benefits
-        </button>
-        <button onclick="switchTab('reviews')" id="tab-reviews" class="pb-4 px-6 font-sans text-lg font-bold border-b-2 border-transparent text-[#7a9280] hover:text-[#1b3a28] whitespace-nowrap transition duration-200">
-          Reviews
-        </button>
-      </div>
-
-      <div id="tab-content" class="transition-all duration-300">
-        <!-- Tab panel content -->
-      </div>
-    </div>
-
-    <!-- Cross-sell -->
-    <div class="mt-14">
-      <h2 class="font-serif text-2xl font-bold text-[#1b3a28] mb-6">Complete Your Ritual</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5" id="cross-sell-grid"></div>
-    </div>
-  </main>
-
-  <!-- Sticky mobile buy bar -->
-  <div class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-[#e8e0cc] shadow-[0_-4px_20px_rgba(0,0,0,0.08)] px-4 py-3 flex items-center gap-3">
-    <div class="flex-shrink-0">
-      <p class="text-[10px] font-bold uppercase tracking-wider text-[#7a9280] leading-none mb-1">Total</p>
-      <p class="text-lg font-extrabold text-[#1b3a28] leading-none" id="mobile-price-display">R0.00</p>
-    </div>
-    <button class="flex-1 bg-[#1b3a28] hover:bg-[#c8a06e] hover:text-[#1b3a28] text-white font-bold py-3.5 px-6 rounded-xl transition duration-200 text-xs uppercase tracking-wider flex items-center justify-center gap-2" onclick="checkoutBundle()">
-      <i class="lucide-shopping-bag" style="font-size: 14px;"></i> Add to Cart
+</div>
+</div>
+<div class="bg-primary border-t border-white/5">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-9 flex items-center justify-center gap-8 text-[11px] font-label-caps text-surface-container-high tracking-wide overflow-x-auto scrollbar-none">
+<span class="flex items-center gap-1.5 whitespace-nowrap"><i class="lucide-truck" style="font-size:12px;color:#dab882;"></i> Free delivery</span>
+<span class="flex items-center gap-1.5 whitespace-nowrap"><i class="lucide-shield-check" style="font-size:12px;color:#dab882;"></i> Secure checkout</span>
+<span class="flex items-center gap-1.5 whitespace-nowrap"><i class="lucide-leaf" style="font-size:12px;color:#dab882;"></i> Traditional herbal formulations</span>
+<span class="flex items-center gap-1.5 whitespace-nowrap"><i class="lucide-rotate-ccw" style="font-size:12px;color:#dab882;"></i> Easy 30-day returns</span>
+</div>
+</div>
+</header>
+<!-- Main Content Layout -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+<!-- Left Column -->
+<div class="lg:col-span-7 space-y-8">
+<div class="flex items-center gap-2 font-caption text-xs text-on-surface-variant">
+<a class="hover:text-primary-container underline underline-offset-2" href="collections-specials-and-bundles.html">Specials &amp; Bundles</a>
+<span class="">/</span>
+<span class="text-on-background font-bold" id="breadcrumb-active">24-Hour High-Performance Engine</span>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden relative group">
+<div class="aspect-square sm:aspect-[4/3] relative w-full cursor-zoom-in bg-surface-container" id="bundle-hero-container">
+<div class="w-full h-full relative" id="hero-img-rotator">
+<img alt="24-Hour High-Performance Engine" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBXx_RxZRztUBoNSoZHKms409OmhPHXLf5m61nJgN7o7DMllwnqt5H8zvtJ6yJfsucGkvGS50p95kVcPWqh0OokdD3mynncgRwJxlyAPTcj3_f6peiH6Kyf_e1-O2ZfZM79CTScNb2iyg1XNjBPP8sz7Lg-EvVrt_ghLeuF_dUV3KOOGNurqlxT4qDcJSd32uj2aUfYbgcAbOT3iksUBevk4A2n8pbTV_VjFgQOQ-PYKoAK8IRJ-Ce"/>
+</div>
+<!-- Overlay elements preserved so document.getElementById queries do not crash -->
+<div class="absolute inset-0 flex items-end p-6 bg-gradient-to-t from-black/20 via-transparent to-transparent z-10 hidden">
+<div>
+<p class="font-label-caps text-xs text-gold-light uppercase mb-1" id="bundle-hero-badge">Energy</p>
+<h3 class="font-headline-section text-2xl text-surface-container-lowest leading-tight" id="bundle-hero-title">24-Hour High-Performance Engine</h3>
+</div>
+</div>
+</div>
+<button class="hidden absolute left-4 top-1/2 -translate-y-1/2 z-20 h-10 w-10 rounded-full bg-surface-container-lowest border border-outline-variant hover:bg-surface-container text-primary-container items-center justify-center shadow-sm transition" id="hero-nav-prev" onclick="heroNav(-1)">
+<i class="lucide-chevron-left" style="font-size:20px;"></i>
+</button>
+<button class="hidden absolute right-4 top-1/2 -translate-y-1/2 z-20 h-10 w-10 rounded-full bg-surface-container-lowest border border-outline-variant hover:bg-surface-container text-primary-container items-center justify-center shadow-sm transition" id="hero-nav-next" onclick="heroNav(1)">
+<i class="lucide-chevron-right" style="font-size:20px;"></i>
+</button>
+</div>
+<!-- Thumbnails -->
+<div class="flex gap-2 overflow-x-auto scrollbar-none" id="hero-thumbnails">
+<!-- Populated by JS -->
+</div>
+</div>
+<!-- Structured Description Sections -->
+<div class="space-y-6">
+<!-- Key Features -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6">
+<h3 class="font-headline-section text-xl text-primary-container mb-4 flex items-center gap-2"><i class="lucide-list-checks text-gold-light" style="font-size: 20px;"></i> Key Features &amp; Benefits</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex items-start gap-3 p-3 bg-surface border border-outline-variant rounded-sm">
+<span class="text-primary-container font-bold mt-0.5"><i class="lucide-check-circle" style="font-size:18px;"></i></span>
+<div>
+<h4 class="font-body-md text-sm font-bold text-on-background mb-1">Targeted Relief</h4>
+<p class="font-caption text-xs text-on-surface-variant" id="benefit-desc-1">Eliminates brain fog and reliance on stimulants.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 bg-surface border border-outline-variant rounded-sm">
+<span class="text-primary-container font-bold mt-0.5"><i class="lucide-check-circle" style="font-size:18px;"></i></span>
+<div>
+<h4 class="font-body-md text-sm font-bold text-on-background mb-1">Synergistic TCM Combination</h4>
+<p class="font-caption text-xs text-on-surface-variant">Engineered so that capsule absorption mirrors tea ingestion.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Dosage / Routine -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6">
+<h3 class="font-headline-section text-xl text-primary-container mb-4 flex items-center gap-2"><i class="lucide-clock text-gold-light" style="font-size: 20px;"></i> Dosage &amp; Daily Routine</h3>
+<div class="transition-all duration-300" id="tab-content">
+<div class="space-y-8 relative before:absolute before:inset-0 before:left-4 before:w-[2px] before:bg-outline-variant py-2">
+<div class="relative pl-10">
+<div class="absolute left-[9px] top-1 h-4 w-4 rounded-full border-2 border-primary-container bg-surface-container-lowest"></div>
+<h4 class="font-label-caps text-sm text-primary-container uppercase mb-1">Morning Blend</h4>
+<h3 class="font-headline-section text-lg text-on-background mb-2">Ginseng Date Tea + Ginseng Tea</h3>
+<p class="font-body-md text-sm text-timber-muted leading-relaxed max-w-2xl">Steep both together in one cup. Double-ginseng clean fuel for physical drive and mental clarity.</p>
+</div>
+<div class="relative pl-10">
+<div class="absolute left-[9px] top-1 h-4 w-4 rounded-full border-2 border-primary-container bg-surface-container-lowest"></div>
+<h4 class="font-label-caps text-sm text-primary-container uppercase mb-1">Afternoon Window</h4>
+<h3 class="font-headline-section text-lg text-on-background mb-2">Bu Zhong Yi Qi Wan</h3>
+<p class="font-body-md text-sm text-timber-muted leading-relaxed max-w-2xl">Take after lunch to permanently eliminate the post-meal energy crash.</p>
+</div>
+<div class="relative pl-10">
+<div class="absolute left-[9px] top-1 h-4 w-4 rounded-full border-2 border-primary-container bg-surface-container-lowest"></div>
+<h4 class="font-label-caps text-sm text-primary-container uppercase mb-1">Nighttime Window</h4>
+<h3 class="font-headline-section text-lg text-on-background mb-2">An Shen Bu Xin Wan + Anti Stress Sleeping Tea</h3>
+<p class="font-body-md text-sm text-timber-muted leading-relaxed max-w-2xl">Take pills and brew a hot cup of tea right before bed to drop the nervous system into deep recovery.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Reviews Preview -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6">
+<h3 class="font-headline-section text-xl text-primary-container mb-4 flex items-center gap-2"><i class="lucide-star text-gold-light" style="font-size: 20px;"></i> Customer Reviews</h3>
+<div class="flex items-center gap-4 mb-4">
+<span class="font-display-lg text-4xl text-primary-container">4.9</span>
+<div>
+<span class="text-gold-light text-lg">★★★★★</span>
+<p class="font-caption text-xs text-on-surface-variant">Based on 128 verified purchases</p>
+</div>
+</div>
+<div class="p-4 bg-surface border border-outline-variant rounded-sm mt-4">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-body-md text-sm font-bold text-on-background">Amanda K.</span>
+<span class="text-gold-light text-xs">★★★★★</span>
+</div>
+<p class="font-caption text-xs text-timber-muted leading-relaxed">Started noticing a real difference within the first week of following the routine. It's now a permanent part of my day.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: sticky Checkout panel -->
+<div class="lg:col-span-5 lg:sticky lg:top-24 space-y-6">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 lg:p-8 shadow-sm">
+<div class="mb-5">
+<div class="flex items-center gap-3 mb-3">
+<span class="inline-block bg-surface-container-high text-primary-container px-3 py-1 rounded-sm font-label-caps text-xs uppercase font-bold tracking-wider" id="panel-category">Energy</span>
+<span class="inline-flex items-center gap-1 text-xs font-bold text-[#16a34a] bg-[#16a34a]/10 px-2 py-1 rounded-sm uppercase tracking-wider"><i class="lucide-check-circle" style="font-size:12px;"></i> In Stock</span>
+</div>
+<h1 class="font-headline-section text-3xl text-primary-container leading-tight mb-3" id="panel-title">24-Hour High-Performance Engine</h1>
+<div class="flex items-center gap-2 mb-4 font-caption text-xs">
+<span class="text-gold-light font-bold tracking-tight">★ ★ ★ ★ ★</span>
+<span class="font-semibold text-on-surface-variant underline underline-offset-2">4.9  ·  128 reviews</span>
+</div>
+<p class="text-timber-muted font-body-md text-sm mb-6 pb-6 border-b border-outline-variant" id="bundle-pain-desc">Brain fog, relying on coffee to wake up, the 3 PM crash, and high muscle tension at night.</p>
+<div class="flex items-end gap-3 mb-2">
+<span class="font-display-lg text-4xl text-primary-container font-extrabold" id="price-display">R799.95</span>
+<span class="font-body-md text-base text-on-surface-variant line-through mb-1" id="value-display">R920.00</span>
+</div>
+<p class="font-label-caps text-xs text-pulse-red mt-1 font-bold mb-6" id="save-display" style="display: block;">Save R120.05</p>
+<!-- Retail style Add to Cart -->
+<div class="flex flex-col sm:flex-row gap-4 mb-4">
+<div class="flex items-center border border-outline-variant rounded-sm overflow-hidden h-12 sm:w-32 bg-surface-container-lowest">
+<button class="h-full w-10 flex items-center justify-center text-primary-container hover:bg-surface-container transition font-bold text-lg leading-none" onclick="changeQty(-1)">−</button>
+<span class="h-full flex-1 flex items-center justify-center text-base font-bold text-on-background border-x border-outline-variant" id="qty-display">1</span>
+<button class="h-full w-10 flex items-center justify-center text-primary-container hover:bg-surface-container transition font-bold text-lg leading-none" onclick="changeQty(1)">+</button>
+</div>
+<button class="flex-1 bg-[#1b3a28] hover:bg-[#2a5040] text-white h-12 rounded-sm transition duration-200 font-button-text text-sm uppercase flex items-center justify-center gap-2 tracking-widest font-bold shadow-sm" id="add-to-cart-btn" onclick="checkoutBundle()">
+<i class="lucide-shopping-cart" style="font-size: 18px;"></i> <span class="" id="add-to-cart-label">Add to Cart</span>
+</button>
+</div>
+<!-- Shipping badge -->
+<div class="bg-surface-container border border-outline-variant rounded-sm p-4 mb-0 flex items-center gap-3">
+<div class="bg-white rounded-full p-2 text-[#16a34a] border border-[#16a34a]/20">
+<i class="lucide-truck" style="font-size: 20px;"></i>
+</div>
+<div>
+<p class="font-body-md text-sm font-bold text-on-background" id="shipping-status">Qualifies for FREE Delivery!</p>
+<p class="font-caption text-xs text-on-surface-variant mt-0.5">Standard delivery 2-5 working days.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Prescription Style Regimen -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 shadow-sm">
+<div class="flex items-center justify-between mb-4 pb-4 border-b border-outline-variant">
+<h3 class="font-headline-section text-xl text-primary-container flex items-center gap-2"><i class="lucide-file-text text-gold-light" style="font-size: 20px;"></i> Professional Regimen</h3>
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase tracking-widest border border-outline-variant px-2 py-1 rounded-sm">Included</span>
+</div>
+<div class="space-y-0" id="included-list">
+<div class="flex items-center gap-4 py-3 border-b border-outline-variant last:border-0 relative before:absolute before:left-6 before:top-0 before:bottom-0 before:w-px before:bg-outline-variant before:-z-10">
+<div class="h-12 w-12 bg-white rounded-sm overflow-hidden flex items-center justify-center flex-shrink-0 border border-outline-variant shadow-sm z-10">
+<img alt="Ginseng Date Tea" class="h-full w-full object-cover mix-blend-multiply" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJIL7LVSgVL6NYow0NOuLg-Ex7gNtxMF9aDVFgAZugPGEmcAM3Q3NmaUdyW_DT156BnbbtqJS06jru0OrIU28vqF14tdeKP1nPJSyqrV9Af5-imqOu-hHZRmezKAD9c9xHqrEDBDoCKsWM-HQq3-Jxg7Y0R68bAw3aIN6IFPoo6PmrnYlb3Z7OZ-IAnvb3P3vI1QopslwWtK7-mzoajoj2AfKuz_INyBnrpe7KolLHXwIMnRR2ChEV" style="display: none;"/>
+<i class="lucide-pill text-primary-container" style="display: inline-block;"></i>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-body-md text-sm font-bold text-on-background leading-snug">Ginseng Date Tea</p>
+<p class="font-caption text-xs text-timber-muted mt-0.5 uppercase tracking-wide">Morning</p>
+</div>
+</div>
+<div class="flex items-center gap-4 py-3 border-b border-outline-variant last:border-0 relative before:absolute before:left-6 before:top-0 before:bottom-0 before:w-px before:bg-outline-variant before:-z-10">
+<div class="h-12 w-12 bg-white rounded-sm overflow-hidden flex items-center justify-center flex-shrink-0 border border-outline-variant shadow-sm z-10">
+<img alt="Ginseng Tea" class="h-full w-full object-cover mix-blend-multiply" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxXWO9KJrnuj0tIAYFlioXzrIX0CgirJJY4k9JnFH38ARnDps5e4pH3QAmjWS9M1WIf1m66dvcEQb2KTywSyvrYFhZYGQC5MROGtDqlpCqUHWREtAZpK1bfGHNnlqMDQN8XMtyKqWjRbUe5Hymf9qNle1650bURX6bijPVrqQFj7ephxBAsMFXGP2IBj6PpaWBPkMSjqWi5b-SoqyRKR-myf4gLRJEtA0B3K5U5Vxiz8SGjmcGhZ1Y" style="display: none;"/>
+<i class="lucide-pill text-primary-container" style="display: inline-block;"></i>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-body-md text-sm font-bold text-on-background leading-snug">Ginseng Tea</p>
+<p class="font-caption text-xs text-timber-muted mt-0.5 uppercase tracking-wide">Morning</p>
+</div>
+</div>
+<div class="flex items-center gap-4 py-3 border-b border-outline-variant last:border-0 relative before:absolute before:left-6 before:top-0 before:bottom-0 before:w-px before:bg-outline-variant before:-z-10">
+<div class="h-12 w-12 bg-white rounded-sm overflow-hidden flex items-center justify-center flex-shrink-0 border border-outline-variant shadow-sm z-10">
+<img alt="Bu Zhong Yi Qi Wan" class="h-full w-full object-cover mix-blend-multiply" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjfAoRm4w63pxrGfIOhP-txfi8tXWtYOAjl4On3tfIxDsGOibM7zOmRJOlUhTi13SDXPxb2r7XQyXR2zyvS8Ld9O-eD5RWJL-2BqTnPwIli6gp96lXLH4Dj8j9jko8VoLuPT01PGh2gMwgCofa7XLt3lwlT8zKywqY2bU3XiJIOWzc7ynfTOCufY4bc3_3i0-u6Tn_agwaQzCSXFiR_j5MVXUvwdMrz3N7Kg_Tftv3LqHXcv_AVySF" style="display: none;"/>
+<i class="lucide-pill text-primary-container" style="display: inline-block;"></i>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-body-md text-sm font-bold text-on-background leading-snug">Bu Zhong Yi Qi Wan</p>
+<p class="font-caption text-xs text-timber-muted mt-0.5 uppercase tracking-wide">Afternoon</p>
+</div>
+</div>
+<div class="flex items-center gap-4 py-3 border-b border-outline-variant last:border-0 relative before:absolute before:left-6 before:top-0 before:bottom-0 before:w-px before:bg-outline-variant before:-z-10">
+<div class="h-12 w-12 bg-white rounded-sm overflow-hidden flex items-center justify-center flex-shrink-0 border border-outline-variant shadow-sm z-10">
+<img alt="An Shen Bu Xin Wan" class="h-full w-full object-cover mix-blend-multiply" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzMc8eLjmSoTFhn5a-_s3-EeTZ9v5hmlUkk8B5Kmwe1AzWwBVy6vz10-Xw3xVF-wm6Xj40TPkJqcVI_4fmBCA-Mf_XhCMTW6wJfNYCRar8m9Du41Gf44kP6Xksx6KnU9GR0Y37Os7tG16DK9YZIgXmHwlcGR2tZ9SfI1pFyL5eAgK-VdxILlik2RDg-J7gkzvljZOVAuIesgPOwiO9T4s-7hhboV9jP4A1etKiNP9TB6sPdMm9hZpz" style="display: none;"/>
+<i class="lucide-pill text-primary-container" style="display: inline-block;"></i>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-body-md text-sm font-bold text-on-background leading-snug">An Shen Bu Xin Wan</p>
+<p class="font-caption text-xs text-timber-muted mt-0.5 uppercase tracking-wide">Night</p>
+</div>
+</div>
+<div class="flex items-center gap-4 py-3 border-b border-outline-variant last:border-0 relative before:absolute before:left-6 before:top-0 before:bottom-0 before:w-px before:bg-outline-variant before:-z-10">
+<div class="h-12 w-12 bg-white rounded-sm overflow-hidden flex items-center justify-center flex-shrink-0 border border-outline-variant shadow-sm z-10">
+<img alt="Anti Stress Sleeping Tea" class="h-full w-full object-cover mix-blend-multiply" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvCtABdW0ae9hOEQBcdbOCELnsJZuCS-deVYBXLPh-9ShQ1JvFgy1CJELmGh0YVXQZJKR_WGdDCHJtFysxDCCVRYqiMB_2BzQ7GMEo99KrD3nfuzrqehzbjprnUZMTONWmS5o15qSyWtovktJlKByAJ0abe7ALkeU3lQOY6HWvi1Yqc7JIGMulUjIGkujaDpgWc81JMWm_9byftHgRM6MW7OAjOG4nrn9AFlmnpL1o0eGVV7138sIw" style="display: none;"/>
+<i class="lucide-pill text-primary-container" style="display: inline-block;"></i>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-body-md text-sm font-bold text-on-background leading-snug">Anti Stress Sleeping Tea</p>
+<p class="font-caption text-xs text-timber-muted mt-0.5 uppercase tracking-wide">Night</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Cross-sell -->
+<div class="mt-16 pt-10 border-t border-outline-variant">
+<h2 class="font-headline-section text-2xl text-primary-container mb-8">Customers Also Bought</h2>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4" id="cross-sell-grid">
+<a class="group block bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden hover:shadow-md transition duration-200 no-underline flex flex-col h-full" href="products-bundle-detail.html?bundle=cystic-acne-skin-ritual">
+<div class="aspect-square w-full overflow-hidden bg-surface-container p-4">
+<img alt="Advanced Cystic Acne &amp; Flawless Skin Ritual" class="h-full w-full object-cover mix-blend-multiply group-hover:scale-105 transition duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMQDCgoSu-DKsTX-0n0wL5BU9vYbl5Jkmh361HSzMh88ZYXHLFywr1xOLTzxE99e6yFWiCdcW93Z1xPqn5XMTaNZ2G7sASWmRm7Bd2tJi8hbUotXAC3hrWWURL4J-qSk5guuus_c8bnFZ-dAd57ZYtnNOAqF_CnfkV8oT1NfJzVScz6IfPTg9TTuistq_z5kcdOJSljSsqHS0_MD6bP2d4SkrTEfNGTNK_DJLd2Aznnui-rQzKc99L"/>
+</div>
+<div class="p-4 border-t border-outline-variant flex flex-col flex-1">
+<h3 class="font-body-md text-sm font-bold text-on-background leading-snug mb-2 flex-1">Advanced Cystic Acne &amp; Flawless Skin Ritual</h3>
+<p class="font-body-md text-base font-extrabold text-primary-container mt-auto">R279.95</p>
+</div>
+</a>
+<a class="group block bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden hover:shadow-md transition duration-200 no-underline flex flex-col h-full" href="products-bundle-detail.html?bundle=vascular-blood-pressure">
+<div class="aspect-square w-full overflow-hidden bg-surface-container p-4">
+<img alt="Chronic Vascular &amp; Blood Pressure Loop" class="h-full w-full object-cover mix-blend-multiply group-hover:scale-105 transition duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiZhmkrr23Joqtgqo4MiVDo7Za1PEtsdR5Bmav11Gd6d2CHgIP3ZkdTQiYNC5S9EHJJHkOrxJZ0IAMVCadSI8vXsHE2bp6VniufJbuCrWQ2Q9lTH7v-ss9v1rl5Q_gYdMlR_8sX_ZFsKo7tFNkd6nxpjDG0s-9GHLulkl3oTpfYB3sNIvX81xLc8r-1VxDJyehSw76ZbNeEjOQ8ZS5KkgEdK__--cxkK2MG2xvjHHLt2auP5YDU6tr"/>
+</div>
+<div class="p-4 border-t border-outline-variant flex flex-col flex-1">
+<h3 class="font-body-md text-sm font-bold text-on-background leading-snug mb-2 flex-1">Chronic Vascular &amp; Blood Pressure Loop</h3>
+<p class="font-body-md text-base font-extrabold text-primary-container mt-auto">R449.95</p>
+</div>
+</a>
+<a class="group block bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden hover:shadow-md transition duration-200 no-underline flex flex-col h-full" href="products-bundle-detail.html?bundle=eye-strain-neck-tension">
+<div class="aspect-square w-full overflow-hidden bg-surface-container p-4">
+<img alt="Screen-Time Eye Strain &amp; Neck Tension Block" class="h-full w-full object-cover mix-blend-multiply group-hover:scale-105 transition duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGkpASZuVZyD_1C3xbs_2ExWBhzr27hILJZi3qp6bOQ82Vdg7YT7u-WQVDETS0oIeJnht9Ab49GCllzZMMJMSkrseVcl1nEDjIgQIv8d1mdFsRm4jovehVPoJi_Zh35QQFPTRMtwXk3Dqx2itqmAV0zyD7_Drx2NUHo8frouCDEEFfUebZK_O6WuO-wAnhRPs0bMP_f91zAJi__53TyrugeujFRRKEyFnl-j3_lPelpghKe13_RF-S"/>
+</div>
+<div class="p-4 border-t border-outline-variant flex flex-col flex-1">
+<h3 class="font-body-md text-sm font-bold text-on-background leading-snug mb-2 flex-1">Screen-Time Eye Strain &amp; Neck Tension Block</h3>
+<p class="font-body-md text-base font-extrabold text-primary-container mt-auto">R369.95</p>
+</div>
+</a>
+</div>
+</div>
+</main>
+<!-- Sticky mobile buy bar -->
+<div class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-surface-container-lowest border-t border-outline-variant shadow-[0_-4px_20px_rgba(0,0,0,0.08)] px-4 py-3 flex items-center gap-3">
+<div class="flex-shrink-0">
+<p class="font-label-caps text-[10px] uppercase text-on-surface-variant leading-none mb-1">Total</p>
+<p class="font-display-lg text-xl text-primary-container font-extrabold leading-none" id="mobile-price-display">R799.95</p>
+</div>
+<button class="flex-1 bg-[#1b3a28] hover:bg-[#2a5040] text-white py-3.5 px-6 rounded-sm transition duration-200 font-button-text text-xs uppercase flex items-center justify-center gap-2 font-bold" onclick="checkoutBundle()">
+<i class="lucide-shopping-cart" style="font-size: 16px;"></i> Add to Cart
     </button>
-  </div>
-
-  <script>
+</div>
+<script>
     const BUNDLES_CATALOG = {
       "high-performance-engine": {
         db_id: 1,
@@ -234,11 +484,11 @@
         pain: "Brain fog, relying on coffee to wake up, the 3 PM crash, and high muscle tension at night.",
         images: ["assets/bundle_images/1. 24-Hour High-Performance Engine.jpeg"],
         included: [
-          { id: 'TG-TEA-020', name: 'Ginseng Date Tea', time: '🌅 Morning', type: 'Herbal Tea' },
-          { id: 'TG-TEA-021', name: 'Ginseng Tea', time: '🌅 Morning', type: 'Herbal Tea' },
-          { id: 'TG-PILL-009', name: 'Bu Zhong Yi Qi Wan', time: '☀️ Afternoon', type: 'Herbal Pill' },
-          { id: 'TG-PILL-001', name: 'An Shen Bu Xin Wan', time: '🌙 Night', type: 'Herbal Pill' },
-          { id: 'TG-TEA-003', name: 'Anti Stress Sleeping Tea', time: '🌙 Night', type: 'Herbal Tea' }
+          { id: 'TG-TEA-020', name: 'Ginseng Date Tea', time: 'Morning', type: 'Herbal Tea' },
+          { id: 'TG-TEA-021', name: 'Ginseng Tea', time: 'Morning', type: 'Herbal Tea' },
+          { id: 'TG-PILL-009', name: 'Bu Zhong Yi Qi Wan', time: 'Afternoon', type: 'Herbal Pill' },
+          { id: 'TG-PILL-001', name: 'An Shen Bu Xin Wan', time: 'Night', type: 'Herbal Pill' },
+          { id: 'TG-TEA-003', name: 'Anti Stress Sleeping Tea', time: 'Night', type: 'Herbal Tea' }
         ],
         routine: [
           { title: "Morning Blend", product: "Ginseng Date Tea + Ginseng Tea", desc: "Steep both together in one cup. Double-ginseng clean fuel for physical drive and mental clarity." },
@@ -256,13 +506,13 @@
         pain: "Stubborn core midsection weight, water retention, afternoon sluggishness, and waking up feeling heavy.",
         images: ["assets/bundle_images/2. Comprehensive Metabolic & Weight Flush.jpeg"],
         included: [
-          { id: 'TG-TEA-001', name: 'Abdomen Slimming Tea', time: '🌅 Morning', type: 'Herbal Tea' },
-          { id: 'TG-TEA-042', name: 'Slim Tea', time: '🌅 Morning', type: 'Herbal Tea' },
-          { id: 'TG-PILL-006', name: 'Bao He Wan', time: '☀️ Afternoon', type: 'Herbal Pill' },
-          { id: 'TG-TEA-016', name: 'Digestive Tea', time: '☀️ Afternoon', type: 'Herbal Tea' },
-          { id: 'TG-TEA-046', name: 'White Gourd Slim Tea', time: '🌆 Late Afternoon', type: 'Herbal Tea' },
-          { id: 'TG-TEA-007', name: 'Blood Cleaning Tea', time: '🌙 Night', type: 'Herbal Tea' },
-          { id: 'TG-TEA-011', name: 'Constipation Tea', time: '🌙 Night', type: 'Herbal Tea' }
+          { id: 'TG-TEA-001', name: 'Abdomen Slimming Tea', time: 'Morning', type: 'Herbal Tea' },
+          { id: 'TG-TEA-042', name: 'Slim Tea', time: 'Morning', type: 'Herbal Tea' },
+          { id: 'TG-PILL-006', name: 'Bao He Wan', time: 'Afternoon', type: 'Herbal Pill' },
+          { id: 'TG-TEA-016', name: 'Digestive Tea', time: 'Afternoon', type: 'Herbal Tea' },
+          { id: 'TG-TEA-046', name: 'White Gourd Slim Tea', time: 'Late Afternoon', type: 'Herbal Tea' },
+          { id: 'TG-TEA-007', name: 'Blood Cleaning Tea', time: 'Night', type: 'Herbal Tea' },
+          { id: 'TG-TEA-011', name: 'Constipation Tea', time: 'Night', type: 'Herbal Tea' }
         ],
         routine: [
           { title: "Morning Fasting Blend", product: "Abdomen Slimming Tea + Slim Tea", desc: "Blend into a single morning teapot. Ignites early fasting thermogenesis and jumpstarts sluggish metabolisms." },
@@ -281,11 +531,11 @@
         pain: "A racing mind at 2 AM, sudden daytime chest tightness/palpitations, and feeling completely overwhelmed.",
         images: ["assets/bundle_images/3. Ultimate Stress, Anxiety & Mood Fortress.jpeg"],
         included: [
-          { id: 'TG-PILL-010', name: 'Chai Hu Shu Gan Wan', time: '☀️ Daytime', type: 'Herbal Pill' },
-          { id: 'TG-PILL-026', name: 'Jia Wei Xiao Yao Wan', time: '☀️ Daytime', type: 'Herbal Pill' },
-          { id: 'TG-PILL-001', name: 'An Shen Bu Xin Wan', time: '🌆 Evening', type: 'Herbal Pill' },
-          { id: 'TG-TEA-003', name: 'Anti Stress Sleeping Tea', time: '🌙 Bedtime', type: 'Herbal Tea' },
-          { id: 'TG-TEA-044', name: 'Three Flowers Tea', time: '🌙 Bedtime', type: 'Herbal Tea' }
+          { id: 'TG-PILL-010', name: 'Chai Hu Shu Gan Wan', time: 'Daytime', type: 'Herbal Pill' },
+          { id: 'TG-PILL-026', name: 'Jia Wei Xiao Yao Wan', time: 'Daytime', type: 'Herbal Pill' },
+          { id: 'TG-PILL-001', name: 'An Shen Bu Xin Wan', time: 'Evening', type: 'Herbal Pill' },
+          { id: 'TG-TEA-003', name: 'Anti Stress Sleeping Tea', time: 'Bedtime', type: 'Herbal Tea' },
+          { id: 'TG-TEA-044', name: 'Three Flowers Tea', time: 'Bedtime', type: 'Herbal Tea' }
         ],
         routine: [
           { title: "Daytime Stress Window", product: "Chai Hu Shu Gan Wan + Jia Wei Xiao Yao Wan", desc: "Take together to smooth away jagged frustration and stabilize emotional baseline." },
@@ -303,10 +553,10 @@
         pain: "Heavy throbbing sinus pressure, a constant throat-clearing post-nasal drip, and weak lung capacity.",
         images: ["assets/bundle_images/4. Chronic Sinus & Deep Respiratory Shield.jpeg"],
         included: [
-          { id: 'TG-PILL-066', name: 'Xin Yi Wan', time: '🌅 Morning', type: 'Herbal Pill' },
-          { id: 'TG-TEA-035', name: 'Nose Care Tea', time: '☀️ Afternoon', type: 'Herbal Tea' },
-          { id: 'TG-PILL-049', name: 'Qing Qi Hua Tan Wan', time: '🌙 Night', type: 'Herbal Pill' },
-          { id: 'TG-TEA-008', name: 'Bronchitis Tea', time: '🌙 Night', type: 'Herbal Tea' }
+          { id: 'TG-PILL-066', name: 'Xin Yi Wan', time: 'Morning', type: 'Herbal Pill' },
+          { id: 'TG-TEA-035', name: 'Nose Care Tea', time: 'Afternoon', type: 'Herbal Tea' },
+          { id: 'TG-PILL-049', name: 'Qing Qi Hua Tan Wan', time: 'Night', type: 'Herbal Pill' },
+          { id: 'TG-TEA-008', name: 'Bronchitis Tea', time: 'Night', type: 'Herbal Tea' }
         ],
         routine: [
           { title: "Morning Sinus Vent", product: "Xin Yi Wan", desc: "Open the nasal passages and disperse damp-cold wind blockages." },
@@ -324,10 +574,10 @@
         pain: "Low bedroom drive, poor gym recovery, brain fog, and lower back physical exhaustion.",
         images: ["assets/bundle_images/5. Alpha Male Vitality & Performance Protocol.jpeg"],
         included: [
-          { id: 'TG-PILL-067', name: 'Xi Yang Shen Wan', time: '🌅 Morning', type: 'Herbal Pill' },
-          { id: 'TG-PILL-060', name: 'Tu Si Zi Wan', time: '☀️ Afternoon', type: 'Herbal Pill' },
-          { id: 'TG-PILL-039', name: 'Liu Wei Di Huang Wan', time: '🌙 Night', type: 'Herbal Pill' },
-          { id: 'TG-TEA-032', name: 'Male Tonic Tea', time: '🌙 Night', type: 'Herbal Tea' }
+          { id: 'TG-PILL-067', name: 'Xi Yang Shen Wan', time: 'Morning', type: 'Herbal Pill' },
+          { id: 'TG-PILL-060', name: 'Tu Si Zi Wan', time: 'Afternoon', type: 'Herbal Pill' },
+          { id: 'TG-PILL-039', name: 'Liu Wei Di Huang Wan', time: 'Night', type: 'Herbal Pill' },
+          { id: 'TG-TEA-032', name: 'Male Tonic Tea', time: 'Night', type: 'Herbal Tea' }
         ],
         routine: [
           { title: "Morning Fire Ignition", product: "Xi Yang Shen Wan", desc: "Boost adrenal energy output and mental drive without heart jitters." },
@@ -345,12 +595,12 @@
         pain: "Systemic aging, fading daily stamina, multi-organ sluggishness, and a weak immune baseline.",
         images: ["assets/bundle_images/6. Whole-Body Longevity & Organ Shield.jpeg"],
         included: [
-          { id: 'TG-PILL-039', name: 'Liu Wei Di Huang Wan', time: '🌅 Morning', type: 'Herbal Pill' },
-          { id: 'TG-PILL-009', name: 'Bu Zhong Yi Qi Wan', time: '🌅 Morning', type: 'Herbal Pill' },
-          { id: 'TG-TEA-021', name: 'Ginseng Tea', time: '☀️ Afternoon', type: 'Herbal Tea' },
-          { id: 'TG-TEA-020', name: 'Ginseng Date Tea', time: '☀️ Afternoon', type: 'Herbal Tea' },
-          { id: 'TG-PILL-065', name: 'Xiang Sha Yang Wei Wan', time: '🌙 Night', type: 'Herbal Pill' },
-          { id: 'TG-PILL-008', name: 'Bu Nao Wan', time: '🌙 Night', type: 'Herbal Pill' }
+          { id: 'TG-PILL-039', name: 'Liu Wei Di Huang Wan', time: 'Morning', type: 'Herbal Pill' },
+          { id: 'TG-PILL-009', name: 'Bu Zhong Yi Qi Wan', time: 'Morning', type: 'Herbal Pill' },
+          { id: 'TG-TEA-021', name: 'Ginseng Tea', time: 'Afternoon', type: 'Herbal Tea' },
+          { id: 'TG-TEA-020', name: 'Ginseng Date Tea', time: 'Afternoon', type: 'Herbal Tea' },
+          { id: 'TG-PILL-065', name: 'Xiang Sha Yang Wei Wan', time: 'Night', type: 'Herbal Pill' },
+          { id: 'TG-PILL-008', name: 'Bu Nao Wan', time: 'Night', type: 'Herbal Pill' }
         ],
         routine: [
           { title: "Morning Cell Base", product: "Liu Wei Di Huang Wan + Bu Zhong Yi Qi Wan", desc: "Take together to nourish organ bases and elevate general immune parameters." },
@@ -368,9 +618,9 @@
         pain: "Debilitating menstrual cramps, unpredictable cycles, and hormonal mood swings.",
         images: ["assets/bundle_images/7. Womb Wellness & Cycle Restoration Ritual.jpeg"],
         included: [
-          { id: 'TG-PILL-007', name: 'Ba Zhen Wan', time: '🌅 Morning', type: 'Herbal Pill' },
-          { id: 'TG-TEA-051', name: 'Womb Wellness Tea', time: '☀️ Afternoon', type: 'Herbal Tea' },
-          { id: 'TG-PILL-063', name: 'Wu Ji Bai Feng Wan', time: '🌙 Night', type: 'Herbal Pill' }
+          { id: 'TG-PILL-007', name: 'Ba Zhen Wan', time: 'Morning', type: 'Herbal Pill' },
+          { id: 'TG-TEA-051', name: 'Womb Wellness Tea', time: 'Afternoon', type: 'Herbal Tea' },
+          { id: 'TG-PILL-063', name: 'Wu Ji Bai Feng Wan', time: 'Night', type: 'Herbal Pill' }
         ],
         routine: [
           { title: "Morning Blood Nourisher", product: "Ba Zhen Wan", desc: "Build warm red blood supply to offset cycle losses." },
@@ -388,9 +638,9 @@
         pain: "Chronic skin breakouts, low-grade internal inflammation, and an overloaded digestive filter.",
         images: ["assets/bundle_images/8. Deep Systemic Detox & Total Liver Flush.jpeg"],
         included: [
-          { id: 'TG-PILL-040', name: 'Long Dan Xie Gan Wan', time: '🌅 Morning', type: 'Herbal Pill' },
-          { id: 'TG-TEA-030', name: 'Liver Care Tea', time: '☀️ Afternoon', type: 'Herbal Tea' },
-          { id: 'TG-TEA-015', name: 'Detox Tea', time: '🌙 Night', type: 'Herbal Tea' }
+          { id: 'TG-PILL-040', name: 'Long Dan Xie Gan Wan', time: 'Morning', type: 'Herbal Pill' },
+          { id: 'TG-TEA-030', name: 'Liver Care Tea', time: 'Afternoon', type: 'Herbal Tea' },
+          { id: 'TG-TEA-015', name: 'Detox Tea', time: 'Night', type: 'Herbal Tea' }
         ],
         routine: [
           { title: "Morning Heat Clearance", product: "Long Dan Xie Gan Wan", desc: "Drain toxic damp-heat configurations from the liver and gallbladder." },
@@ -408,12 +658,12 @@
         pain: "Chronic burning acid reflux, chest irritation, nausea, trapped gas, and abdominal pain.",
         images: ["assets/bundle_images/9. Advanced Gastric Reflux & Gut Harmony Shield.jpeg"],
         included: [
-          { id: 'TG-PILL-004', name: 'Ban Xia Xie Xin Wan', time: '🌅 Morning', type: 'Herbal Pill' },
-          { id: 'TG-PILL-045', name: 'Mu Xiang Shun Qi Wan', time: '☀️ Afternoon', type: 'Herbal Pill' },
-          { id: 'TG-PILL-065', name: 'Xiang Sha Yang Wei Wan', time: '☀️ Afternoon', type: 'Herbal Pill' },
-          { id: 'TG-PILL-064', name: 'Xiang Sha Liu Jun Wan', time: '🌙 Night', type: 'Herbal Pill' },
-          { id: 'TG-PILL-025', name: 'Huo Xiang Zheng Qi Wan', time: '🌙 Night', type: 'Herbal Pill' },
-          { id: 'TG-TEA-016', name: 'Digestive Tea', time: '🌙 Night', type: 'Herbal Tea' }
+          { id: 'TG-PILL-004', name: 'Ban Xia Xie Xin Wan', time: 'Morning', type: 'Herbal Pill' },
+          { id: 'TG-PILL-045', name: 'Mu Xiang Shun Qi Wan', time: 'Afternoon', type: 'Herbal Pill' },
+          { id: 'TG-PILL-065', name: 'Xiang Sha Yang Wei Wan', time: 'Afternoon', type: 'Herbal Pill' },
+          { id: 'TG-PILL-064', name: 'Xiang Sha Liu Jun Wan', time: 'Night', type: 'Herbal Pill' },
+          { id: 'TG-PILL-025', name: 'Huo Xiang Zheng Qi Wan', time: 'Night', type: 'Herbal Pill' },
+          { id: 'TG-TEA-016', name: 'Digestive Tea', time: 'Night', type: 'Herbal Tea' }
         ],
         routine: [
           { title: "Morning Baseline Window", product: "Ban Xia Xie Xin Wan", desc: "Physically redirect rebellious stomach acid and fluids back downward." },
@@ -431,12 +681,12 @@
         pain: "Clicking, stiff knee joints, bone-on-bone lower back aching, and cold, painful morning movement.",
         images: ["assets/bundle_images/10. Golden Years Joint & Mobility Rescue.jpeg"],
         included: [
-          { id: 'TG-PILL-015', name: 'Du Huo Ji Sheng Wan', time: '🌅 Morning', type: 'Herbal Pill' },
-          { id: 'TG-PILL-033', name: 'Kang Gu Zeng Sheng Wan', time: '🌅 Morning', type: 'Herbal Pill' },
-          { id: 'TG-TEA-027', name: 'Joint Care Tea', time: '☀️ Daytime', type: 'Herbal Tea' },
-          { id: 'TG-TEA-012', name: 'Cooling Tea', time: '☀️ Daytime', type: 'Herbal Tea' },
-          { id: 'TG-PILL-070', name: 'Xiao Huo Luo Wan', time: '🌙 Night', type: 'Herbal Pill' },
-          { id: 'TG-PILL-054', name: 'Si Miao Wan', time: '🌙 Night', type: 'Herbal Pill' }
+          { id: 'TG-PILL-015', name: 'Du Huo Ji Sheng Wan', time: 'Morning', type: 'Herbal Pill' },
+          { id: 'TG-PILL-033', name: 'Kang Gu Zeng Sheng Wan', time: 'Morning', type: 'Herbal Pill' },
+          { id: 'TG-TEA-027', name: 'Joint Care Tea', time: 'Daytime', type: 'Herbal Tea' },
+          { id: 'TG-TEA-012', name: 'Cooling Tea', time: 'Daytime', type: 'Herbal Tea' },
+          { id: 'TG-PILL-070', name: 'Xiao Huo Luo Wan', time: 'Night', type: 'Herbal Pill' },
+          { id: 'TG-PILL-054', name: 'Si Miao Wan', time: 'Night', type: 'Herbal Pill' }
         ],
         routine: [
           { title: "Morning Structural Window", product: "Du Huo Ji Sheng Wan + Kang Gu Zeng Sheng Wan", desc: "Directly reinforce lower back strength and repair clicking joints." },
@@ -457,10 +707,10 @@
           "assets/bundle_images/11. Screen-Time Eye Strain & Neck Tension Block 2.jpeg"
         ],
         included: [
-          { id: 'TG-PILL-041', name: 'Ming Mu Di Huang Wan', time: '🌅 Morning', type: 'Herbal Pill' },
-          { id: 'TG-TEA-010', name: 'Chrysanthemum Plus Tea', time: '☀️ Afternoon', type: 'Herbal Tea' },
-          { id: 'TG-PILL-044', name: 'Qi Ju Di Huang Wan', time: '🌙 Evening', type: 'Herbal Pill' },
-          { id: 'TG-PILL-058', name: 'Te Xiao Jing Zhui Tong Wan', time: '🌙 Evening', type: 'Herbal Pill' }
+          { id: 'TG-PILL-041', name: 'Ming Mu Di Huang Wan', time: 'Morning', type: 'Herbal Pill' },
+          { id: 'TG-TEA-010', name: 'Chrysanthemum Plus Tea', time: 'Afternoon', type: 'Herbal Tea' },
+          { id: 'TG-PILL-044', name: 'Qi Ju Di Huang Wan', time: 'Evening', type: 'Herbal Pill' },
+          { id: 'TG-PILL-058', name: 'Te Xiao Jing Zhui Tong Wan', time: 'Evening', type: 'Herbal Pill' }
         ],
         routine: [
           { title: "Morning Ocular Window", product: "Ming Mu Di Huang Wan", desc: "Anchor baseline retinal and vision health." },
@@ -478,10 +728,10 @@
         pain: "Intense sweet or carbohydrate cravings, shaky late-afternoon energy crashes, and sluggish insulin processing.",
         images: ["assets/bundle_images/12. Ultimate Blood Sugar & Craving Control.jpeg"],
         included: [
-          { id: 'TG-TEA-043', name: 'Sugar Balance Tea', time: '🌅 Morning', type: 'Herbal Tea' },
-          { id: 'TG-TEA-023', name: 'Guava Tea', time: '☀️ Afternoon', type: 'Herbal Tea' },
-          { id: 'TG-TEA-005', name: 'Balsam Pear Tea', time: '☀️ Afternoon', type: 'Herbal Tea' },
-          { id: 'TG-PILL-076', name: 'Zhi Bai Di Huang Wan', time: '🌙 Night', type: 'Herbal Pill' }
+          { id: 'TG-TEA-043', name: 'Sugar Balance Tea', time: 'Morning', type: 'Herbal Tea' },
+          { id: 'TG-TEA-023', name: 'Guava Tea', time: 'Afternoon', type: 'Herbal Tea' },
+          { id: 'TG-TEA-005', name: 'Balsam Pear Tea', time: 'Afternoon', type: 'Herbal Tea' },
+          { id: 'TG-PILL-076', name: 'Zhi Bai Di Huang Wan', time: 'Night', type: 'Herbal Pill' }
         ],
         routine: [
           { title: "Fasting Morning Guard", product: "Sugar Balance Tea", desc: "Stabilize baseline glycemic curves for the day." },
@@ -502,9 +752,9 @@
           "assets/bundle_images/13. Advanced Cystic Acne & Flawless Skin Ritual 2.jpeg"
         ],
         included: [
-          { id: 'TG-PILL-047', name: 'Qing Re An Chuang Wan', time: '🌅 Morning', type: 'Herbal Pill' },
-          { id: 'TG-TEA-012', name: 'Cooling Tea', time: '☀️ Afternoon', type: 'Herbal Tea' },
-          { id: 'TG-PILL-075', name: 'Zhen Zhu An Chuang Wan', time: '🌙 Night', type: 'Herbal Pill' }
+          { id: 'TG-PILL-047', name: 'Qing Re An Chuang Wan', time: 'Morning', type: 'Herbal Pill' },
+          { id: 'TG-TEA-012', name: 'Cooling Tea', time: 'Afternoon', type: 'Herbal Tea' },
+          { id: 'TG-PILL-075', name: 'Zhen Zhu An Chuang Wan', time: 'Night', type: 'Herbal Pill' }
         ],
         routine: [
           { title: "Morning Internal Detox", product: "Qing Re An Chuang Wan", desc: "Cool toxic internal fire expressions before they exit through pores." },
@@ -522,11 +772,11 @@
         pain: "Cold hands and feet, throbbing head tension, tight chest pressure, and unpredictable blood pressure readings.",
         images: ["assets/bundle_images/14. Chronic Vascular & Blood Pressure Loop.jpeg"],
         included: [
-          { id: 'TG-TEA-025', name: 'Heart Care Tea', time: '🌅 Morning', type: 'Herbal Tea' },
-          { id: 'TG-TEA-026', name: 'Hypertension Tea', time: '🌅 Morning', type: 'Herbal Tea' },
-          { id: 'TG-PILL-028', name: 'Jiang Ya Wan', time: '☀️ Afternoon', type: 'Herbal Pill' },
-          { id: 'TG-PILL-059', name: 'Tian Ma Gou Teng Wan', time: '☀️ Afternoon', type: 'Herbal Pill' },
-          { id: 'TG-PILL-072', name: 'Xue Fu Zhu Yu Wan', time: '🌙 Night', type: 'Herbal Pill' }
+          { id: 'TG-TEA-025', name: 'Heart Care Tea', time: 'Morning', type: 'Herbal Tea' },
+          { id: 'TG-TEA-026', name: 'Hypertension Tea', time: 'Morning', type: 'Herbal Tea' },
+          { id: 'TG-PILL-028', name: 'Jiang Ya Wan', time: 'Afternoon', type: 'Herbal Pill' },
+          { id: 'TG-PILL-059', name: 'Tian Ma Gou Teng Wan', time: 'Afternoon', type: 'Herbal Pill' },
+          { id: 'TG-PILL-072', name: 'Xue Fu Zhu Yu Wan', time: 'Night', type: 'Herbal Pill' }
         ],
         routine: [
           { title: "Morning Cardiovascular Blend", product: "Heart Care Tea + Hypertension Tea", desc: "Brew together to gently dilate vascular walls and maintain smooth, easy flow." },
@@ -544,10 +794,10 @@
         pain: "Severe weekend-wasting hangovers, heavy bloating from rich/greasy takeout food, and a highly sluggish, over-worked liver.",
         images: ["assets/bundle_images/15. Weekend Recovery & Ultimate Organ Shield.jpeg"],
         included: [
-          { id: 'TG-TEA-014', name: 'Dealcoholic Tea', time: '🌅 Morning', type: 'Herbal Tea' },
-          { id: 'TG-TEA-015', name: 'Detox Tea', time: '🌅 Morning', type: 'Herbal Tea' },
-          { id: 'TG-PILL-006', name: 'Bao He Wan', time: '☀️ Afternoon', type: 'Herbal Pill' },
-          { id: 'TG-PILL-025', name: 'Huo Xiang Zheng Qi Wan', time: '☀️ Afternoon', type: 'Herbal Pill' }
+          { id: 'TG-TEA-014', name: 'Dealcoholic Tea', time: 'Morning', type: 'Herbal Tea' },
+          { id: 'TG-TEA-015', name: 'Detox Tea', time: 'Morning', type: 'Herbal Tea' },
+          { id: 'TG-PILL-006', name: 'Bao He Wan', time: 'Afternoon', type: 'Herbal Pill' },
+          { id: 'TG-PILL-025', name: 'Huo Xiang Zheng Qi Wan', time: 'Afternoon', type: 'Herbal Pill' }
         ],
         routine: [
           { title: "Morning-After Emergency Blend", product: "Dealcoholic Tea + Detox Tea", desc: "Accelerates breakdown of toxins and clears dehydration headaches." },
@@ -636,49 +886,45 @@
       
       // Replace hero block with bundle images rotator
       const heroContainer = document.getElementById('bundle-hero-container');
+      const thumbnailContainer = document.getElementById('hero-thumbnails');
       if (heroContainer) {
         heroContainer.innerHTML = `
           <div class="w-full h-full relative" id="hero-img-rotator">
             ${b.images.map((img, i) => `
-              <img src="${img}" alt="${b.name}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${i === 0 ? 'opacity-100' : 'opacity-0'}">
+              <img src="${img}" alt="${b.name}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${i === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'} mix-blend-multiply">
             `).join('')}
-          </div>
-          <!-- Overlay elements preserved so document.getElementById queries do not crash -->
-          <div class="absolute inset-0 flex items-end p-6 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10">
-            <div>
-              <p class="text-xs font-bold text-[#dab882] uppercase tracking-wider mb-1" id="bundle-hero-badge">${b.badge}</p>
-              <h3 class="font-sans text-2xl font-bold text-white leading-tight" id="bundle-hero-title">${b.name}</h3>
-            </div>
           </div>
         `;
 
+        if (thumbnailContainer) {
+          if (b.images.length > 1) {
+            thumbnailContainer.innerHTML = b.images.map((img, i) => `
+              <button onclick="heroSetSlide(${i})" class="h-20 w-20 flex-shrink-0 rounded-md border-2 ${i === 0 ? 'border-primary-container' : 'border-transparent'} overflow-hidden bg-surface-container transition-all hover:border-outline">
+                <img src="${img}" alt="Thumbnail ${i+1}" class="h-full w-full object-cover mix-blend-multiply">
+              </button>
+            `).join('');
+          } else {
+            thumbnailContainer.innerHTML = '';
+          }
+        }
+
         const prevBtn = document.getElementById('hero-nav-prev');
         const nextBtn = document.getElementById('hero-nav-next');
-        const dotsWrap = document.getElementById('hero-nav-dots');
-
+        
         if (b.images.length > 1) {
           if (prevBtn) prevBtn.classList.remove('hidden'), prevBtn.classList.add('flex');
           if (nextBtn) nextBtn.classList.remove('hidden'), nextBtn.classList.add('flex');
-          if (dotsWrap) {
-            dotsWrap.classList.remove('hidden');
-            dotsWrap.classList.add('flex');
-            dotsWrap.innerHTML = b.images.map((_, i) =>
-              `<span class="h-1.5 rounded-full bg-white transition-all duration-300 ${i === 0 ? 'w-5 opacity-100' : 'w-1.5 opacity-50'}" data-dot="${i}"></span>`
-            ).join('');
-          }
-
-          if (heroInterval) clearInterval(heroInterval);
-          heroInterval = setInterval(() => heroSetSlide(heroIdx + 1), 6000);
         } else {
           if (prevBtn) prevBtn.classList.add('hidden'), prevBtn.classList.remove('flex');
           if (nextBtn) nextBtn.classList.add('hidden'), nextBtn.classList.remove('flex');
-          if (dotsWrap) dotsWrap.classList.add('hidden'), dotsWrap.classList.remove('flex');
-          if (heroInterval) clearInterval(heroInterval);
         }
       }
       
       const painDesc = document.getElementById('bundle-pain-desc');
       if (painDesc) painDesc.textContent = b.pain;
+      
+      const benefitDesc1 = document.getElementById('benefit-desc-1');
+      if (benefitDesc1) benefitDesc1.textContent = b.pain;
 
       const pCat = document.getElementById('panel-category');
       if (pCat) pCat.textContent = b.badge;
@@ -686,20 +932,9 @@
       const pTitle = document.getElementById('panel-title');
       if (pTitle) pTitle.textContent = b.name;
 
-
-
       const qtyDisp = document.getElementById('qty-display');
       if (qtyDisp) qtyDisp.textContent = '1';
 
-      const highlights = document.getElementById('bundle-highlights');
-      if (highlights) {
-        highlights.innerHTML = b.routine.map(r => `
-          <div class="flex items-start gap-2.5">
-            <span class="text-[#1b3a28] mt-0.5"><i class="lucide-check-circle" style="font-size:16px;"></i></span>
-            <span class="text-sm text-[#3d5c44] leading-snug"><strong class="text-[#182415]">${r.title}:</strong> ${r.desc}</span>
-          </div>
-        `).join('');
-      }
 
       renderCrossSell(key);
       renderProducts(b.included);
@@ -712,26 +947,35 @@
       if (!rotator) return;
       const imgs = rotator.querySelectorAll('img');
       if (!imgs.length) return;
-      const nextIdx = ((index % imgs.length) + imgs.length) % imgs.length;
-      imgs[heroIdx].classList.remove('opacity-100');
-      imgs[heroIdx].classList.add('opacity-0');
-      imgs[nextIdx].classList.remove('opacity-0');
-      imgs[nextIdx].classList.add('opacity-100');
-      heroIdx = nextIdx;
+      
+      imgs[heroIdx].classList.remove('opacity-100', 'z-10');
+      imgs[heroIdx].classList.add('opacity-0', 'z-0');
+      
+      heroIdx = index;
+      
+      imgs[heroIdx].classList.remove('opacity-0', 'z-0');
+      imgs[heroIdx].classList.add('opacity-100', 'z-10');
 
-      const dots = document.querySelectorAll('#hero-nav-dots [data-dot]');
-      dots.forEach((d, i) => {
-        d.classList.toggle('w-5', i === heroIdx);
-        d.classList.toggle('opacity-100', i === heroIdx);
-        d.classList.toggle('w-1.5', i !== heroIdx);
-        d.classList.toggle('opacity-50', i !== heroIdx);
+      const thumbnails = document.querySelectorAll('#hero-thumbnails button');
+      thumbnails.forEach((btn, i) => {
+        if (i === heroIdx) {
+          btn.classList.add('border-primary-container');
+          btn.classList.remove('border-transparent');
+        } else {
+          btn.classList.remove('border-primary-container');
+          btn.classList.add('border-transparent');
+        }
       });
     }
 
     function heroNav(direction) {
-      if (heroInterval) clearInterval(heroInterval);
-      heroSetSlide(heroIdx + direction);
-      heroInterval = setInterval(() => heroSetSlide(heroIdx + 1), 6000);
+      const rotator = document.getElementById('hero-img-rotator');
+      if (!rotator) return;
+      const imgs = rotator.querySelectorAll('img');
+      if (!imgs.length) return;
+      
+      const nextIdx = ((heroIdx + direction % imgs.length) + imgs.length) % imgs.length;
+      heroSetSlide(nextIdx);
     }
 
     function changeQty(delta) {
@@ -745,62 +989,44 @@
       const grid = document.getElementById('cross-sell-grid');
       if (!grid) return;
       const keys = Object.keys(BUNDLES_CATALOG).filter(k => k !== excludeKey);
-      const picks = keys.sort(() => 0.5 - Math.random()).slice(0, 3);
+      const picks = keys.sort(() => 0.5 - Math.random()).slice(0, 4);
       grid.innerHTML = picks.map(k => {
         const item = BUNDLES_CATALOG[k];
         const img = item.images[0];
         return `
-          <a href="products-bundle-detail.html?bundle=${k}" class="group block bg-white border border-[#e8e0cc] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition duration-200 no-underline">
-            <div class="aspect-[4/3] w-full overflow-hidden bg-[#e8e0cc]">
-              <img src="${img}" alt="${item.name}" class="h-full w-full object-cover group-hover:scale-105 transition duration-500">
+          <a href="products-bundle-detail.html?bundle=${k}" class="group block bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden hover:shadow-md transition duration-200 no-underline flex flex-col h-full">
+            <div class="aspect-square w-full overflow-hidden bg-surface-container p-4">
+              <img src="${img}" alt="${item.name}" class="h-full w-full object-cover mix-blend-multiply group-hover:scale-105 transition duration-500">
             </div>
-            <div class="p-4">
-              <p class="text-[10px] font-bold uppercase tracking-wider text-[#7a9280] mb-1">${item.badge}</p>
-              <h3 class="text-sm font-bold text-[#182415] leading-snug mb-2 line-clamp-2">${item.name}</h3>
-              <p class="text-base font-extrabold text-[#1b3a28]">R${item.price.toFixed(2)}</p>
+            <div class="p-4 border-t border-outline-variant flex flex-col flex-1">
+              <h3 class="font-body-md text-sm font-bold text-on-background leading-snug mb-2 flex-1">${item.name}</h3>
+              <p class="font-body-md text-base font-extrabold text-primary-container mt-auto">R${item.price.toFixed(2)}</p>
             </div>
           </a>
         `;
       }).join('');
     }
 
-    function timeMeta(timeStr) {
-      const label = timeStr.replace(/^[^\w]+\s*/u, '').trim(); // strip leading emoji, keep text
-      const lower = label.toLowerCase();
-      let icon = 'lucide-sun';
-      if (lower.includes('morning')) icon = 'lucide-sunrise';
-      else if (lower.includes('late afternoon') || lower.includes('evening')) icon = 'lucide-sunset';
-      else if (lower.includes('night') || lower.includes('bedtime')) icon = 'lucide-moon';
-      else if (lower.includes('afternoon') || lower.includes('daytime')) icon = 'lucide-sun';
-      return { icon, label };
-    }
-
     function renderProducts(items) {
       const list = document.getElementById('included-list');
+      if(!list) return;
       list.innerHTML = items.map(p => {
-        // Compute the expected image file path by converting product name to lowercase with underscores
         const imgSlug = p.name.toLowerCase()
           .replace(/&/g, 'and')
           .replace(/[^a-z0-9\s-]/g, '')
           .trim()
           .replace(/[-\s]+/g, '_');
         const imageSrc = `images/${imgSlug}.png`;
-        const { icon, label } = timeMeta(p.time);
 
         return `
-        <div class="flex items-center gap-4 p-4 bg-white hover:bg-[#f7f2e6]/30 transition duration-150 border-b border-[#e8e0cc]">
-          <input type="checkbox" checked disabled class="h-4 w-4 rounded border-[#16a34a] text-[#16a34a] focus:ring-[#16a34a] accent-[#16a34a]" />
-          <div class="h-10 w-10 bg-[#f7f2e6] rounded-md overflow-hidden flex items-center justify-center flex-shrink-0 border border-[#e8e0cc]">
-            <img src="${imageSrc}" alt="${p.name}" class="h-full w-full object-cover" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'">
-            <i class="lucide-leaf text-[#1b3a28]" style="display:none;"></i>
+        <div class="flex items-center gap-4 py-3 border-b border-outline-variant last:border-0 relative before:absolute before:left-6 before:top-0 before:bottom-0 before:w-px before:bg-outline-variant before:-z-10">
+          <div class="h-12 w-12 bg-white rounded-sm overflow-hidden flex items-center justify-center flex-shrink-0 border border-outline-variant shadow-sm z-10">
+            <img src="${imageSrc}" alt="${p.name}" class="h-full w-full object-cover mix-blend-multiply" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'">
+            <i class="lucide-pill text-primary-container" style="display:none;"></i>
           </div>
           <div class="flex-1 min-w-0">
-            <p class="text-sm font-bold text-[#182415] leading-snug">${p.name}</p>
-          </div>
-          <div class="flex-shrink-0">
-            <span class="inline-flex items-center gap-1.5 bg-white border border-[#e8e0cc] px-2 py-1 rounded-md text-xs font-medium text-[#3d5c44] shadow-xs">
-              <i class="${icon}" style="font-size:13px;color:#c8a06e;"></i> ${label}
-            </span>
+            <p class="font-body-md text-sm font-bold text-on-background leading-snug">${p.name}</p>
+            <p class="font-caption text-xs text-timber-muted mt-0.5 uppercase tracking-wide">${p.time}</p>
           </div>
         </div>
       `}).join('');
@@ -845,100 +1071,24 @@
     }
 
     function switchTab(tab) {
-      const tabs = ['routine', 'benefits', 'reviews'];
-      tabs.forEach(t => {
-        const btn = document.getElementById(`tab-${t}`);
-        if (btn) {
-          if (t === tab) {
-            btn.className = 'pb-4 px-6 font-sans text-lg font-bold border-b-2 border-[#1b3a28] text-[#1b3a28] whitespace-nowrap transition duration-200';
-          } else {
-            btn.className = 'pb-4 px-6 font-sans text-lg font-bold border-b-2 border-transparent text-[#7a9280] hover:text-[#1b3a28] whitespace-nowrap transition duration-200';
-          }
-        }
-      });
-
       const b = BUNDLES_CATALOG[currentBundleKey];
       if (!b) return;
 
       const content = document.getElementById('tab-content');
       if (!content) return;
 
-      if (tab === 'routine') {
-        content.innerHTML = `
-          <div class="space-y-8 relative before:absolute before:inset-0 before:left-4 before:w-[2px] before:bg-[#e8e0cc] py-2">
-            ${b.routine.map(r => `
-              <div class="relative pl-10">
-                <div class="absolute left-[9px] top-1 h-4 w-4 rounded-full border-2 border-[#1b3a28] bg-white"></div>
-                <h4 class="font-bold text-sm text-[#1b3a28] uppercase tracking-wider mb-1">${r.title}</h4>
-                <h3 class="font-sans text-lg font-bold text-[#182415] mb-2">${r.product}</h3>
-                <p class="text-sm text-[#3d5c44] leading-relaxed max-w-2xl">${r.desc}</p>
-              </div>
-            `).join('')}
-          </div>
-        `;
-      } else if (tab === 'benefits') {
-        content.innerHTML = `
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="flex items-start gap-3 p-4 bg-[#fcfbf9] border border-[#e8e0cc] rounded-xl">
-              <span class="text-[#1b3a28] font-bold text-lg">✓</span>
-              <div>
-                <h4 class="font-bold text-sm text-[#182415] mb-1">Targeted Pain Profile Elimination</h4>
-                <p class="text-xs text-[#7a9280]">${b.pain}</p>
-              </div>
+      content.innerHTML = `
+        <div class="space-y-8 relative before:absolute before:inset-0 before:left-4 before:w-[2px] before:bg-outline-variant py-2">
+          ${b.routine.map(r => `
+            <div class="relative pl-10">
+              <div class="absolute left-[9px] top-1 h-4 w-4 rounded-full border-2 border-primary-container bg-surface-container-lowest"></div>
+              <h4 class="font-label-caps text-sm text-primary-container uppercase mb-1">${r.title}</h4>
+              <h3 class="font-headline-section text-lg text-on-background mb-2">${r.product}</h3>
+              <p class="font-body-md text-sm text-timber-muted leading-relaxed max-w-2xl">${r.desc}</p>
             </div>
-            <div class="flex items-start gap-3 p-4 bg-[#fcfbf9] border border-[#e8e0cc] rounded-xl">
-              <span class="text-[#1b3a28] font-bold text-lg">✓</span>
-              <div>
-                <h4 class="font-bold text-sm text-[#182415] mb-1">Synergistic TCM Combination</h4>
-                <p class="text-xs text-[#7a9280]">Engineered so that capsule/tablet absorption mirrors tea ingestion to prevent stomach load.</p>
-              </div>
-            </div>
-          </div>
-        `;
-      } else {
-        const breakdown = [
-          { stars: 5, pct: 82 }, { stars: 4, pct: 12 }, { stars: 3, pct: 4 }, { stars: 2, pct: 1 }, { stars: 1, pct: 1 }
-        ];
-        const testimonials = [
-          { name: 'Amanda K.', text: `Started noticing a real difference within the first week of following the ${b.name.toLowerCase()} routine. It's now a permanent part of my day.` },
-          { name: 'Thabo M.', text: `Was skeptical about herbal protocols at first, but the checklist format made it easy to actually stick to. Packaging and delivery were excellent too.` },
-          { name: 'Naledi P.', text: `Exactly what I needed for ${b.pain.toLowerCase().split(',')[0]}. Simple morning-to-night structure that fits into a busy schedule.` }
-        ];
-        content.innerHTML = `
-          <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
-            <div class="lg:col-span-2">
-              <div class="flex items-baseline gap-3 mb-1">
-                <span class="text-4xl font-extrabold text-[#1b3a28]">4.9</span>
-                <span class="text-amber-500 font-bold">★ ★ ★ ★ ★</span>
-              </div>
-              <p class="text-xs text-[#7a9280] mb-5">Based on 128 verified ritual purchases</p>
-              <div class="space-y-2">
-                ${breakdown.map(row => `
-                  <div class="flex items-center gap-3 text-xs">
-                    <span class="w-8 font-semibold text-[#7a9280]">${row.stars}★</span>
-                    <div class="flex-1 h-2 rounded-full bg-[#e8e0cc] overflow-hidden">
-                      <div class="h-full bg-[#c8a06e] rounded-full" style="width:${row.pct}%"></div>
-                    </div>
-                    <span class="w-8 text-right text-[#7a9280]">${row.pct}%</span>
-                  </div>
-                `).join('')}
-              </div>
-            </div>
-            <div class="lg:col-span-3 space-y-4">
-              ${testimonials.map(t => `
-                <div class="p-4 bg-[#fcfbf9] border border-[#e8e0cc] rounded-xl">
-                  <div class="flex items-center justify-between mb-1.5">
-                    <span class="text-sm font-bold text-[#182415]">${t.name}</span>
-                    <span class="text-amber-500 text-xs">★★★★★</span>
-                  </div>
-                  <p class="text-xs text-[#3d5c44] leading-relaxed">${t.text}</p>
-                </div>
-              `).join('')}
-              <p class="text-[10px] text-[#7a9280] italic pt-1">Sample reviews shown for layout purposes — connect verified review data to replace.</p>
-            </div>
-          </div>
-        `;
-      }
+          `).join('')}
+        </div>
+      `;
     }
 
     function checkoutBundle() {
@@ -976,18 +1126,18 @@
     window.onload = loadBundleData;
   </script>
 <style>
-  .site-footer{background:#1b3a28;color:rgba(255,255,255,0.7);padding:50px 24px 30px;font-family:'DM Sans',sans-serif;border-top:4px solid #c8a06e}
+  .site-footer{background:#1b3a28;color:rgba(255,255,255,0.7);padding:50px 24px 30px;font-family:'DM Sans',sans-serif;border-top:4px solid #dab882}
   .footer-inner{max-width:1200px;margin:0 auto}
   .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-bottom:40px}
   @media(max-width:768px){.footer-grid{grid-template-columns:repeat(1,1fr)}}
   .footer-col h4{color:#fff;font-size:15px;font-weight:700;margin-bottom:20px;text-transform:uppercase;letter-spacing:0.5px;position:relative;padding-bottom:8px}
-  .footer-col h4::after{content:'';position:absolute;left:0;bottom:0;width:30px;height:2px;background:#c8a06e}
+  .footer-col h4::after{content:'';position:absolute;left:0;bottom:0;width:30px;height:2px;background:#dab882}
   .footer-links{list-style:none;padding:0;margin:0}
   .footer-links li{margin-bottom:12px;font-size:13.5px}
   .footer-links a{color:rgba(255,255,255,0.65);text-decoration:none;transition:color 0.2s ease,padding-left 0.2s ease;display:inline-flex;align-items:center}
-  .footer-links a:hover{color:#c8a06e;padding-left:4px}
-  .footer-careline{background:rgba(200,160,110,0.08);border:1px dashed rgba(200,160,110,0.25);padding:12px;border-radius:8px;margin-top:15px}
-  .footer-careline p{margin:0 0 4px;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:#c8a06e}
+  .footer-links a:hover{color:#dab882;padding-left:4px}
+  .footer-careline{background:rgba(218,184,130,0.08);border:1px dashed rgba(218,184,130,0.25);padding:12px;border-radius:8px;margin-top:15px}
+  .footer-careline p{margin:0 0 4px;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:#dab882}
   .footer-careline a{color:#fff;font-weight:700;font-size:14.5px;text-decoration:none}
   .footer-app-badges{display:flex;flex-direction:column;gap:10px;margin-top:15px}
   .footer-app-badges a{display:inline-block;max-width:130px;transition:transform 0.2s ease}
@@ -996,7 +1146,7 @@
   .footer-social-row{margin-top:20px}
   .footer-social-links{display:flex;gap:12px;margin-top:10px}
   .footer-social-links a{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.7);transition:all 0.2s ease;text-decoration:none}
-  .footer-social-links a:hover{background:#c8a06e;color:#1b3a28;transform:translateY(-2px)}
+  .footer-social-links a:hover{background:#dab882;color:#1b3a28;transform:translateY(-2px)}
   .footer-social-links svg{width:16px;height:16px}
   .footer-bottom-divider{border:0;height:1px;background:rgba(255,255,255,0.1);margin:30px 0 20px}
   .footer-bottom-logos{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:20px;margin-bottom:25px;opacity:0.75}
@@ -1005,89 +1155,79 @@
   .footer-disclaimer{font-size:11.5px;line-height:1.65;color:rgba(255,255,255,0.4);text-align:center;max-width:900px;margin:0 auto 20px}
   .footer-copyright{font-size:12.5px;text-align:center;color:rgba(255,255,255,0.5)}
 </style>
-
 <footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <!-- COLUMN 1: Customer Service -->
-      <div class="footer-col">
-        <h4>Customer Service</h4>
-        <ul class="footer-links">
-          <li><a href="index.html?filter=all#ga">&#8250; Delivery Options</a></li>
-          <li><a href="index.html#contact">&#8250; Payment Options</a></li>
-          <li><a href="index.html#contact">&#8250; Contact Us</a></li>
-          <li><a href="blog.html">&#8250; Ask an Expert</a></li>
-        </ul>
-        <div class="footer-careline">
-          <p>Careline Support</p>
-          <a href="tel:+27118883000">+27 (0) 11 888 3000</a>
-        </div>
-      </div>
-
-      <!-- COLUMN 2: Legal -->
-      <div class="footer-col">
-        <h4>Legal &amp; Policies</h4>
-        <ul class="footer-links">
-          <li><a href="index.html#contact">&#8250; Terms &amp; Conditions</a></li>
-          <li><a href="index.html#contact">&#8250; Privacy Policy</a></li>
-          <li><a href="index.html#contact">&#8250; Disclaimer</a></li>
-          <li><a href="index.html#contact">&#8250; FAQ</a></li>
-          <li><a href="index.html#contact">&#8250; PAIA &amp; POPIA Manual</a></li>
-        </ul>
-      </div>
-
-      <!-- COLUMN 3: About -->
-      <div class="footer-col">
-        <h4>About Earth Inventory</h4>
-        <ul class="footer-links">
-          <li><a href="blog.html">&#8250; Investor Relations</a></li>
-          <li><a href="blog.html">&#8250; About Our Group</a></li>
-          <li><a href="blog.html">&#8250; Careers</a></li>
-          <li><a href="blog.html">&#8250; Wellness Foundation</a></li>
-        </ul>
-      </div>
-
-      <!-- COLUMN 4: Download App & Follow -->
-      <div class="footer-col">
-        <h4>Download Our App</h4>
-        <div class="footer-app-badges">
-          <a href="https://itunes.apple.com/za" target="_blank">
-            <img src="https://www.dischem.co.za/media/wysiwyg/5f50bbfe39aad_app-store-1.jpg" alt="Download on App Store" loading="lazy">
-          </a>
-          <a href="https://play.google.com" target="_blank">
-            <img src="https://www.dischem.co.za/media/wysiwyg/5f50bbffb14e4_google-play-logo.jpg" alt="Get it on Google Play" loading="lazy">
-          </a>
-        </div>
-        <div class="footer-social-row">
-          <h4 style="margin-bottom:12px;padding-bottom:0;text-transform:none;font-size:14px">Follow Us</h4>
-          <div class="footer-social-links">
-            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <hr class="footer-bottom-divider">
-
-    <div class="footer-bottom-logos">
-      <img alt="PCI Logo" src="https://www.dischem.co.za/api/wysiwyg/63983e5dc8e20_PCI-Logo.png">
-      <img alt="Mastercard Logo" src="https://www.dischem.co.za/api/wysiwyg/63983e5ce1eec_Mastercard-Logo.png">
-      <img alt="Visa Logo" src="https://www.dischem.co.za/api/wysiwyg/63983e5e200d6_Visa-Logo.png">
-      <img alt="American Express Logo" src="https://www.dischem.co.za/api/wysiwyg/63983e5ade878_American-Express-Logo.png">
-      <img alt="PayFast Logo" src="https://www.dischem.co.za/api/wysiwyg/Byte_2_.png">
-    </div>
-
-    <div class="footer-disclaimer">
+<div class="footer-inner">
+<div class="footer-grid">
+<!-- COLUMN 1: Customer Service -->
+<div class="footer-col">
+<h4 class="">Customer Service</h4>
+<ul class="footer-links">
+<li class=""><a class="" href="index.html?filter=all#ga">› Delivery Options</a></li>
+<li class=""><a class="" href="index.html#contact">› Payment Options</a></li>
+<li class=""><a class="" href="index.html#contact">› Contact Us</a></li>
+<li class=""><a class="" href="blog.html">› Ask an Expert</a></li>
+</ul>
+<div class="footer-careline">
+<p class="">Careline Support</p>
+<a class="" href="tel:+27118883000">+27 (0) 11 888 3000</a>
+</div>
+</div>
+<!-- COLUMN 2: Legal -->
+<div class="footer-col">
+<h4 class="">Legal &amp; Policies</h4>
+<ul class="footer-links">
+<li class=""><a class="" href="index.html#contact">› Terms &amp; Conditions</a></li>
+<li class=""><a class="" href="index.html#contact">› Privacy Policy</a></li>
+<li class=""><a class="" href="index.html#contact">› Disclaimer</a></li>
+<li class=""><a class="" href="index.html#contact">› FAQ</a></li>
+<li class=""><a class="" href="index.html#contact">› PAIA &amp; POPIA Manual</a></li>
+</ul>
+</div>
+<!-- COLUMN 3: About -->
+<div class="footer-col">
+<h4 class="">About Earth Inventory</h4>
+<ul class="footer-links">
+<li class=""><a class="" href="blog.html">› Investor Relations</a></li>
+<li class=""><a class="" href="blog.html">› About Our Group</a></li>
+<li class=""><a class="" href="blog.html">› Careers</a></li>
+<li class=""><a class="" href="blog.html">› Wellness Foundation</a></li>
+</ul>
+</div>
+<!-- COLUMN 4: Download App & Follow -->
+<div class="footer-col">
+<h4 class="">Download Our App</h4>
+<div class="footer-app-badges">
+<a href="https://itunes.apple.com/za" target="_blank">
+<img alt="Download on App Store" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkpaiU0fS1W-yReA3M7p4KNSPzZ61OVUp3IbBL-jgpkIEQxX8DMXC24Q-Hf9stKG4mHSTxUTj1RLSlcJ5m2JSyVyjGbpx04NYv1YUDY2CSk_K52fSM0_tzgF6qy32TMYi47Mmu8wuLeB5gwQj-k-Hzh1wG47_kFcBitEi-qyvib41nSbDYUpX3HEw3mbhXMtreWUR9mOdVJ5VY3HWW2l0p_k8qxxlgqcINGyDDjYKJloLy360bQwDD"/>
+</a>
+<a href="https://play.google.com" target="_blank">
+<img alt="Get it on Google Play" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArLu45Rm-ziV-99gs2nNnWcXRsCPNdAXSnSqHmN7jin1GqZTbayop1uuF5B83Rqtibf8sEhcXmxfBKZbJU8BQnwqR7YogaKP4NBJeUxccmPtKZgh__il6QyOTuHmydr-nIIR5jYwEx0C6ZAa18Zw3AN8vhzEmsEkCkoXqjSWBcHKfFbsMxVMaECeuOruLWOkmXPgb-cNjKE0eZRPXpZ0rWbmgLU7l-RKFF58-zxyBr_2BDT52VDRB2"/>
+</a>
+</div>
+<div class="footer-social-row">
+<h4 class="" style="margin-bottom:12px;padding-bottom:0;text-transform:none;font-size:14px">Follow Us</h4>
+<div class="footer-social-links">
+<a aria-label="Facebook" href="#"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+<a aria-label="Instagram" href="#"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></a>
+<a aria-label="YouTube" href="#"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
+</div>
+</div>
+</div>
+</div>
+<hr class="footer-bottom-divider"/>
+<div class="footer-bottom-logos">
+<img alt="PCI Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7_fPO_ts2LYNnY6O3prwuMwh0BOHjyEka6nu6nQtuUQQ95V78ozt4bHCqGM0woI7Mg-vm4qXkbILa8LtDGC3eKTXGf1JTpB3XjHdoxlY4GOW3abiTCrIGBfwkDzb4YRltcCB_Y2s4KKVf1VLRZqPRI31cg_BK41_KvPI3bomUVTk2qI54fp_PV1znt1h-5_LFff2r4THX971TWzuyzOuNYfHtge1w0ZO7Uta6PMgkMk6HPDWgnlDe"/>
+<img alt="Mastercard Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUL8foBr9ZkdDer921uRpRPMUK16AF03wjhBuxd7r_9JF_XlX0tUS49mkaJyxaBU17skxkLbYDi28Ao3aft_qm-Wuh16b_w4IIAoL1O4xTCwCYiZx8wvwNdkZ3xvrVHfvKSx9qRykrIS-mHR--b2jrgjGcw9d5IaM6rUASCTeOKwF3QoHyJ9PMzIQdU37pN0C-Q6D5VMzDOM9oAiR_LQa3sj503RUdsKcP2x3sVZEOqzyS4kB_RfrL"/>
+<img alt="Visa Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZvOcf21kwKT_rtkta8ZviTn1zhiMeSsj8dUYE3zgo0PSAyDhpQ6UabXUGFoZIViCOU7oqpTZ4nwtIvc-oyVmO1P-xG2D2giwKOgchNfhCcU5-W6Yzvgg7v1OmzRvr-r-G3yIaZ0hXw2k1zxLz6UxJFhzoZLmN4f_qNbHa8yNig8QPjqkv1_QJ18GP6B0e3YS67SJjnXj82pqToTuL_cZzh5803xPr7cNLGbE_n5hLE0mjKXyliROn"/>
+<img alt="American Express Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcr2xWRPJEEJQjNa5k-ukuyd4pUuVkxOCh-yKx9wi7eFqcM05NiFAi05DTeZU9Z8a1ufcoMrlU-NADfl8kfJlBqhSJ0o5G-ywAgtgLxoPCwfCZmg4YAWaEZLKw2SQlfbo5Drd56LfLM38e9WKre87Y14oLA0cKIADiZe9dkBcFphH6r-n-HNc9HmeQ84pljZpCTZZNBbacS--jBzH8nnubM7YyZDdlS_2SNwnx7VD0FJabVO_x6ck5"/>
+<img alt="PayFast Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh4bx2bb9_k7OGP1t6a28uWAJ1w2xdZ6hXwVmNqVaNaXWRqfyyQblXV8K84gdBPQXEWdOE5tB5M3bZZaOsinqlPj5n8ZlCM1UsiEdWRzARoh4ASvl9JRWv1Dr3dW5USWrhk_flZK8FZvbhCj5Tohk3Lr7oy1pRtB-fmJiDLnhc9-ve_smwMG4C5TaU0brsGc-BpCmBUcVGuM5YRgZJRPFcErCBgIDf-EPYM9JvqglXWXnf8n6EMfPX"/>
+</div>
+<div class="footer-disclaimer">
       *Disclaimer: Products are not intended to diagnose, treat, cure, or prevent any disease. Registered traditional medicines are used in accordance with established therapeutic principles. Consult your health professional.
     </div>
-
-    <div class="footer-copyright">
-      Copyright &copy; 2026 Earth Inventory (Pty) Ltd / Tangren Pharmaceutical Group. All rights reserved.
+<div class="footer-copyright">
+      Copyright © 2026 Earth Inventory (Pty) Ltd / Tangren Pharmaceutical Group. All rights reserved.
     </div>
-  </div>
+</div>
 </footer>
-
-</body>
-</html>
+</body></html>
