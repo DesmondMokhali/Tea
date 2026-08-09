@@ -1,510 +1,463 @@
 <!DOCTYPE html>
-
-<html lang="en"><head>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<html lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Synergistic Bundles &amp; Protocols | Earth Inventory</title>
 <meta content="Curated TCM daily regimens combining traditional teas and micro-pills for maximum cellular synergy." name="description"/>
+
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&amp;family=Montserrat:wght@600;700;800;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://unpkg.com/lucide-static@latest/font/lucide.css" rel="stylesheet"/>
-<!-- Supabase JS Client -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet"/>
+
+<!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
       theme: {
         extend: {
-          "colors": {
-                  "on-primary-container": "#82a48d",
-                  "surface": "#fdf9ed",
-                  "forest-muted": "#2a5040",
-                  "tertiary": "#00250c",
-                  "secondary-fixed-dim": "#eabf8b",
-                  "pulse-red": "#ff5c5c",
-                  "background": "#fdf9ed",
-                  "surface-container": "#f2eee2",
-                  "primary-fixed": "#c7ebd1",
-                  "sage-light": "#9abf9d",
-                  "on-surface-variant": "#424843",
-                  "error": "#ba1a1a",
-                  "surface-variant": "#e6e2d7",
-                  "on-error-container": "#93000a",
-                  "primary-container": "#1b3a28",
-                  "inverse-surface": "#323129",
-                  "secondary-container": "#ffd39c",
-                  "surface-dim": "#dedace",
-                  "inverse-on-surface": "#f5f1e5",
-                  "surface-bright": "#fdf9ed",
-                  "on-secondary-fixed": "#2a1800",
-                  "parchment-dark": "#e8e0cc",
-                  "surface-tint": "#456551",
-                  "surface-container-highest": "#e6e2d7",
-                  "outline-variant": "#c2c8c1",
-                  "surface-container-low": "#f7f3e7",
-                  "on-background": "#1c1c15",
-                  "inverse-primary": "#accfb6",
-                  "on-primary": "#ffffff",
-                  "on-surface": "#1c1c15",
-                  "tertiary-fixed-dim": "#a1d3a5",
-                  "on-tertiary-container": "#78a87d",
-                  "surface-container-high": "#ece8dc",
-                  "on-secondary-container": "#79592e",
-                  "tertiary-fixed": "#bcefc0",
-                  "error-container": "#ffdad6",
-                  "outline": "#727972",
-                  "secondary-fixed": "#ffddb6",
-                  "on-primary-fixed": "#012111",
-                  "timber-muted": "#3d5c44",
-                  "on-secondary-fixed-variant": "#5e4118",
-                  "tertiary-container": "#0d3c1c",
-                  "primary-fixed-dim": "#accfb6",
-                  "gold-light": "#dab882",
-                  "timber-text": "#182415",
-                  "secondary": "#79582d",
-                  "on-primary-fixed-variant": "#2e4d3a",
-                  "on-secondary": "#ffffff",
-                  "on-tertiary-fixed-variant": "#23502d",
-                  "surface-container-lowest": "#ffffff",
-                  "on-tertiary-fixed": "#00210a",
-                  "on-error": "#ffffff",
-                  "primary": "#042414",
-                  "on-tertiary": "#ffffff"
+          colors: {
+            "c": "#f6f2e6",
+            "cd": "#e8e0cc",
+            "f": "#1b3a28",
+            "fm": "#2a5040",
+            "fl": "#3a6852",
+            "g": "#c8a06e",
+            "gl": "#dab882",
+            "gp": "#f0e0c4",
+            "s": "#6a9970",
+            "sl": "#9abf9d",
+            "t": "#182415",
+            "tm": "#3d5c44",
+            "tl": "#7a9280",
+            "pulse-red": "#ba1a1a"
           },
-          "borderRadius": {
-                  "DEFAULT": "0.25rem",
-                  "lg": "0.5rem",
-                  "xl": "0.75rem",
-                  "full": "9999px"
+          borderRadius: {
+            "brand": "12px"
           },
-          "spacing": {
-                  "container-max": "1280px",
-                  "gutter-mobile": "16px",
-                  "section-padding-lg": "80px",
-                  "base": "4px",
-                  "gutter-desktop": "32px",
-                  "section-padding-sm": "40px"
-          },
-          "fontFamily": {
-                  "headline-brand": ["Cormorant Garamond", "serif"],
-                  "headline-section": ["Playfair Display", "serif"],
-                  "caption": ["DM Sans", "sans-serif"],
-                  "body-md": ["DM Sans", "sans-serif"],
-                  "display-lg-mobile": ["Playfair Display", "serif"],
-                  "body-lg": ["DM Sans", "sans-serif"],
-                  "display-lg": ["Playfair Display", "serif"],
-                  "label-caps": ["Montserrat", "sans-serif"],
-                  "button-text": ["Montserrat", "sans-serif"],
-                  "serif": ["Cormorant Garamond", "serif"],
-                  "sans": ["DM Sans", "sans-serif"],
-          },
-          "fontSize": {
-                  "headline-brand": ["26px", { "lineHeight": "1.0", "fontWeight": "600" }],
-                  "headline-section": ["30px", { "lineHeight": "1.2", "fontWeight": "700" }],
-                  "caption": ["12px", { "lineHeight": "1.4", "fontWeight": "500" }],
-                  "body-md": ["14px", { "lineHeight": "1.65", "fontWeight": "400" }],
-                  "display-lg-mobile": ["32px", { "lineHeight": "1.15", "fontWeight": "800" }],
-                  "body-lg": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
-                  "display-lg": ["48px", { "lineHeight": "1.1", "fontWeight": "800" }],
-                  "label-caps": ["11px", { "lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "800" }],
-                  "button-text": ["14px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "700" }]
+          fontFamily: {
+            "headline-brand": ["Cormorant Garamond", "serif"],
+            "headline-section": ["Playfair Display", "serif"],
+            "sans": ["DM Sans", "sans-serif"],
+            "button-text": ["Montserrat", "sans-serif"]
           }
         }
       }
     }
   </script>
+
 <style>
+    /* Design Tokens per Brand Guidelines */
     :root {
-      --f: #1b3a28; /* Updated to primary-container */
-      --fm: #2a5040;
-      --fl: #3a6852;
-      --g: #dab882;
-      --gl: #eabf8b;
-      --gp: #f0e0c4;
-      --c: #fdf9ed;
-      --cd: #e8e0cc;
-      --s: #9abf9d;
-      --sl: #bcefc0;
-      --t: #1c1c15;
-      --tm: #3d5c44;
-      --tl: #78a87d;
-      --w: #fdf9ed;
-      --tr: .3s cubic-bezier(.4,0,.2,1);
-      --header-bg: var(--f);
-      --header-border: rgba(255,255,255,0.08);
-      --search-bg: rgba(255,255,255,0.1);
+      --c: #f6f2e6;        /* Primary Cream Page Background */
+      --cd: #e8e0cc;       /* Secondary Cream Cards/Surfaces */
+      --f: #1b3a28;        /* Forest Green Primary */
+      --fm: #2a5040;       /* Muted Forest */
+      --fl: #3a6852;       /* Light Forest */
+      --g: #c8a06e;        /* Primary Gold */
+      --gl: #dab882;       /* Light Gold */
+      --gp: #f0e0c4;       /* Pale Gold */
+      --s: #6a9970;        /* Sage Green */
+      --sl: #9abf9d;       /* Light Sage */
+      --t: #182415;        /* Dark Text */
+      --tm: #3d5c44;       /* Medium Text */
+      --tl: #7a9280;       /* Light Text */
+      --r: 12px;           /* Standard Border Radius */
+      --tr: 0.24s cubic-bezier(0.4, 0, 0.2, 1);
+      
+      /* Tinted Forest Shadows */
+      --sh0: 0 2px 12px rgba(27, 58, 40, 0.07);
+      --sh1: 0 4px 28px rgba(27, 58, 40, 0.13);
+      --sh2: 0 12px 56px rgba(27, 58, 40, 0.20);
     }
     
-    /* Utility Bar & Header Styles */
-    .top-bar { background: var(--f); color: rgba(255,255,255,0.80); font-size: 11.5px; height: 36px; display: flex; align-items: center; border-bottom: 1px solid var(--header-border); font-family: 'DM Sans', sans-serif; letter-spacing: 0.02em; }
-    .top-bar-inner { width: 100%; max-width: 1440px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; }
+    body {
+      background-color: var(--c);
+      color: var(--t);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* Slim Very Dark Green Utility Bar */
+    .top-bar { 
+      background: #112519; 
+      color: rgba(255,255,255,0.85); 
+      font-size: 11.5px; 
+      height: 32px; 
+      display: flex; 
+      align-items: center; 
+      border-bottom: 1px solid rgba(255,255,255,0.08); 
+      font-family: 'DM Sans', sans-serif; 
+    }
+    .top-bar-inner { max-width: 1440px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; width: 100%; }
     .top-bar-left, .top-bar-right { display: flex; align-items: center; gap: 14px; }
-    .top-bar-right a { color: rgba(255,255,255,0.80); text-decoration: none; transition: color var(--tr); }
+    .top-bar-right a { color: rgba(255,255,255,0.85); text-decoration: none; transition: color var(--tr); }
     .top-bar-right a:hover { color: var(--gl); }
     .bar-sep { color: rgba(255,255,255,0.2); }
 
-    .main-header { background: var(--header-bg); border-bottom: 1px solid var(--header-border); padding: 16px 24px; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.05); font-family: 'DM Sans', sans-serif; }
+    /* Sticky Dark Forest Header */
+    .main-header { 
+      background: var(--f); 
+      border-bottom: 1px solid rgba(255,255,255,0.1); 
+      padding: 14px 24px; 
+      position: sticky; 
+      top: 0; 
+      z-index: 100; 
+      box-shadow: var(--sh0); 
+    }
     .main-header-inner { max-width: 1440px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 48px; }
     .main-header .nlogo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
-    .main-header .nlogo .ntext b { font-family: 'Cormorant Garamond', serif; line-height: 0.9; margin-bottom: 2px; font-size: 28px; font-weight: 600; color: #fff; letter-spacing: 0.02em; display: block; }
+    .main-header .nlogo .ntext b { font-family: 'Cormorant Garamond', serif; line-height: 0.9; margin-bottom: 2px; font-size: 28px; font-weight: 600; color: #f6f2e6; letter-spacing: 0.02em; display: block; }
     .main-header .nlogo .ntext small { font-size: 10px; color: var(--gl); letter-spacing: 0.15em; text-transform: uppercase; }
     
     .header-search-wrap { flex: 1; max-width: 800px; position: relative; display: flex; align-items: center; }
-    .header-search-wrap input { width: 100%; background: #fff; border: 1px solid transparent; border-radius: 4px; padding: 12px 110px 12px 48px; font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--t); outline: none; transition: all var(--tr); }
-    .header-search-wrap input::placeholder { color: var(--outline); }
-    .header-search-wrap input:focus { border-color: var(--g); box-shadow: 0 0 0 4px rgba(218,184,130,0.2); }
-    .header-search-wrap .search-icon { position: absolute; left: 18px; color: var(--outline); display: flex; align-items: center; pointer-events: none; }
-    .header-search-wrap .search-icon svg { width: 20px; height: 20px; }
-    .header-search-wrap .search-btn { position: absolute; right: 4px; background: var(--f); color: #fff; border: none; border-radius: 4px; padding: 8px 24px; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; transition: all var(--tr); }
-    .header-search-wrap .search-btn:hover { background: var(--fm); }
+    .header-search-wrap input { width: 100%; background: var(--c); border: 1px solid transparent; border-radius: var(--r); padding: 10px 110px 10px 44px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--t); outline: none; transition: all var(--tr); }
+    .header-search-wrap input::placeholder { color: var(--tl); }
+    .header-search-wrap input:focus { border-color: var(--g); box-shadow: 0 0 0 3px rgba(200, 160, 110, 0.25); }
+    .header-search-wrap .search-icon { position: absolute; left: 14px; color: var(--tm); display: flex; align-items: center; pointer-events: none; }
+    .header-search-wrap .search-icon svg { width: 18px; height: 18px; }
+    .header-search-wrap .search-btn { position: absolute; right: 4px; background: var(--g); color: var(--f); border: none; border-radius: 8px; padding: 6px 18px; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; cursor: pointer; transition: all var(--tr); }
+    .header-search-wrap .search-btn:hover { background: var(--gl); }
 
-    .header-actions { display: flex; align-items: center; gap: 32px; flex-shrink: 0; }
+    .header-actions { display: flex; align-items: center; gap: 28px; flex-shrink: 0; }
     .action-link { display: flex; flex-direction: column; align-items: center; gap: 4px; color: #fff; text-decoration: none; font-size: 12px; font-weight: 500; transition: color var(--tr); }
     .action-link:hover { color: var(--gl); }
-    .action-link svg { width: 24px; height: 24px; color: #fff; }
+    .action-link svg { width: 22px; height: 22px; color: #fff; }
     .action-link:hover svg { color: var(--gl); }
     
     .header-cart-btn { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; color: #fff; text-decoration: none; font-size: 12px; font-weight: 500; transition: color var(--tr); cursor: pointer; }
     .header-cart-btn:hover { color: var(--gl); }
-    .header-cart-btn svg { width: 24px; height: 24px; color: #fff; }
+    .header-cart-btn svg { width: 22px; height: 22px; color: #fff; }
     .header-cart-btn:hover svg { color: var(--gl); }
-    .cart-badge { position: absolute; top: -6px; right: -10px; background: var(--pulse-red); color: #fff; font-size: 11px; font-weight: 700; min-width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; padding: 0 4px; border: 2px solid var(--f); }
+    .cart-badge { position: absolute; top: -6px; right: -10px; background: #ba1a1a; color: #fff; font-size: 10px; font-weight: 700; min-width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; padding: 0 4px; border: 2px solid var(--f); }
 
-    .category-nav { background: #fff; border-bottom: 1px solid var(--cd); padding: 0 24px; font-family: 'DM Sans', sans-serif; }
-    .category-nav-inner { max-width: 1440px; margin: 0 auto; display: flex; gap: 40px; align-items: center; }
-    .cat-link { color: var(--t); text-decoration: none; font-size: 15px; font-weight: 500; padding: 16px 0; transition: color var(--tr); letter-spacing: 0.01em; position: relative; }
-    .cat-link:hover { color: var(--f); }
+    .category-nav { background: var(--cd); border-bottom: 1px solid rgba(27, 58, 40, 0.1); padding: 0 24px; }
+    .category-nav-inner { max-width: 1440px; margin: 0 auto; display: flex; gap: 36px; align-items: center; }
+    .cat-link { color: var(--t); text-decoration: none; font-size: 14px; font-weight: 500; padding: 14px 0; transition: color var(--tr); letter-spacing: 0.01em; position: relative; }
+    .cat-link:hover { color: var(--fm); }
     .cat-link.active { color: var(--f); font-weight: 700; }
-    .cat-link.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--g); }
+    .cat-link.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--g); border-radius: 2px 2px 0 0; }
 
     .hamburger-btn { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 4px; }
-    .hamburger-btn svg { width: 28px; height: 28px; }
-    .mobile-search-row { display: none; background: var(--f); padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .mobile-menu-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 300; opacity: 0; pointer-events: none; transition: opacity var(--tr); backdrop-filter: blur(4px); }
-    .mobile-menu-overlay.on { opacity: 1; pointer-events: all; }
-    .mobile-menu-drawer { position: fixed; top: 0; left: -320px; width: 320px; height: 100vh; background: var(--c); z-index: 310; box-shadow: 4px 0 30px rgba(0,0,0,0.2); display: flex; flex-direction: column; transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-    .mobile-menu-drawer.on { left: 0; }
-    .mobile-menu-hdr { padding: 24px; border-bottom: 1px solid var(--cd); display: flex; align-items: center; justify-content: space-between; background: var(--f); }
-    .mobile-menu-hdr h3 { font-family: 'Cormorant Garamond', serif; line-height: 1; color: var(--gl); font-size: 22px; }
-    .mobile-menu-close { background: none; border: none; font-size: 28px; color: var(--gl); cursor: pointer; }
-    .mobile-menu-body { padding: 24px; display: flex; flex-direction: column; gap: 20px; overflow-y: auto; }
-    .mobile-menu-body a { color: var(--t); text-decoration: none; font-size: 16px; font-weight: 500; padding: 8px 0; border-bottom: 1px solid var(--cd); }
-    .mobile-menu-body a:hover { color: var(--g); }
-    .mobile-menu-section { display: flex; flex-direction: column; gap: 12px; padding-left: 16px; border-left: 2px solid var(--cd); margin: 8px 0; }
-    .mobile-menu-section-title { font-size: 12px; text-transform: uppercase; color: var(--tm); font-weight: 700; letter-spacing: 0.1em; font-family: 'Montserrat', sans-serif; }
 
     @media (max-width: 1024px) {
       .top-bar, .category-nav, .header-search-wrap { display: none; }
       .hamburger-btn { display: block; }
       .main-header { padding: 12px 16px; }
       .main-header-inner { gap: 16px; justify-content: space-between; }
-      .mobile-search-row { display: block; position: sticky; top: 68px; z-index: 90; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
-      .mobile-search-row .header-search-wrap { display: flex; max-width: 100%; }
-      .header-actions { gap: 20px; }
-      .action-link span, .header-cart-btn span.cart-label { display: none; }
-      .cart-badge { top: -4px; right: -8px; }
+      .header-actions { gap: 16px; }
     }
 
-    /* ── Filter Sidebar & Layout ── */
-    .layout-container { max-width: 1440px; margin: 0 auto; padding: 32px 24px; display: flex; gap: 40px; align-items: flex-start; }
-    .sidebar-filters { width: 280px; flex-shrink: 0; display: flex; flex-direction: column; gap: 24px; position: sticky; top: 120px; max-height: calc(100vh - 140px); overflow-y: auto; scrollbar-width: thin; padding-right: 12px; }
-    .sidebar-filters::-webkit-scrollbar { width: 6px; }
-    .sidebar-filters::-webkit-scrollbar-thumb { background: var(--outline-variant); border-radius: 4px; }
-    .filter-group { border-bottom: 1px solid var(--outline-variant); padding-bottom: 24px; }
+    /* Trust Bar in Dark Cream */
+    .integrated-trust-bar { background: var(--cd); border-bottom: 1px solid rgba(27, 58, 40, 0.08); padding: 14px 24px; }
+    .integrated-trust-inner { max-width: 1440px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: clamp(20px, 4vw, 56px); flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--t); font-weight: 600; white-space: nowrap; }
+    .trust-icon { width: 30px; height: 30px; background: var(--c); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(27, 58, 40, 0.1); color: var(--g); }
+    .trust-icon svg { width: 16px; height: 16px; }
+
+    /* Layout & Sidebar Filters */
+    .layout-container { max-width: 1440px; margin: 0 auto; padding: 28px 24px; display: flex; gap: 36px; align-items: flex-start; }
+    .sidebar-filters { width: 260px; flex-shrink: 0; display: flex; flex-direction: column; gap: 20px; position: sticky; top: 110px; max-height: calc(100vh - 130px); overflow-y: auto; padding-right: 8px; }
+    .filter-group { border-bottom: 1px solid rgba(27, 58, 40, 0.12); padding-bottom: 20px; }
     .filter-group:last-child { border-bottom: none; }
-    .filter-title { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 700; color: var(--f); margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-    .filter-list { display: flex; flex-direction: column; gap: 12px; }
-    .filter-checkbox { display: flex; align-items: center; gap: 12px; cursor: pointer; font-size: 14px; color: var(--t); font-weight: 500; }
-    .filter-checkbox input { appearance: none; width: 18px; height: 18px; border: 1.5px solid var(--outline); border-radius: 4px; background: #fff; cursor: pointer; transition: all 0.2s; position: relative; }
+    .filter-title { font-size: 15px; font-weight: 700; color: var(--f); margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+    .filter-list { display: flex; flex-direction: column; gap: 10px; }
+    .filter-checkbox { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 13.5px; color: var(--t); font-weight: 500; }
+    .filter-checkbox input { appearance: none; width: 18px; height: 18px; border: 1.5px solid var(--tm); border-radius: 4px; background: var(--c); cursor: pointer; transition: all 0.2s; position: relative; }
     .filter-checkbox input:checked { background: var(--f); border-color: var(--f); }
-    .filter-checkbox input:checked::after { content: ''; position: absolute; left: 5px; top: 2px; width: 5px; height: 10px; border: solid white; border-width: 0 2px 2px 0; transform: rotate(45deg); }
-    .filter-checkbox input:focus-visible { outline: 2px solid var(--g); outline-offset: 2px; }
+    .filter-checkbox input:checked::after { content: ''; position: absolute; left: 5px; top: 2px; width: 5px; height: 9px; border: solid white; border-width: 0 2px 2px 0; transform: rotate(45deg); }
     
     .main-content { flex: 1; min-width: 0; }
-    .content-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--outline-variant); flex-wrap: wrap; gap: 16px; }
+    .content-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid rgba(27, 58, 40, 0.12); flex-wrap: wrap; gap: 16px; }
     .content-title h1 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 700; color: var(--f); margin: 0; }
-    .content-title span { font-size: 14px; color: var(--tm); font-family: 'DM Sans', sans-serif; font-weight: 500; }
-    .sort-dropdown { display: flex; align-items: center; gap: 12px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--t); font-weight: 500; }
-    .sort-dropdown select { border: 1px solid var(--outline-variant); border-radius: 4px; padding: 8px 32px 8px 12px; background: #fff; font-family: inherit; font-size: inherit; color: inherit; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231c1c15%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"); background-repeat: no-repeat; background-position: right 12px top 50%; background-size: 10px auto; }
-    .sort-dropdown select:focus { outline: none; border-color: var(--f); box-shadow: 0 0 0 2px rgba(27,58,40,0.1); }
+    .content-title span { font-size: 13px; color: var(--tm); font-weight: 500; }
+    
+    .sort-dropdown { display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: var(--t); font-weight: 500; }
+    .sort-dropdown select { border: 1px solid rgba(27, 58, 40, 0.15); border-radius: 8px; padding: 6px 30px 6px 12px; background: var(--cd); font-family: inherit; font-size: inherit; color: inherit; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23182415%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"); background-repeat: no-repeat; background-position: right 10px top 50%; background-size: 10px auto; }
 
-    /* ── Product Grid ── */
-    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+    /* Secondary Cream Product Cards & Tinted Shadows */
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
     
-    .product-card { background: #fff; border: 1px solid var(--outline-variant); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease; position: relative; }
-    .product-card:hover { border-color: var(--f); box-shadow: 0 12px 24px rgba(0,0,0,0.08); transform: translateY(-4px); }
+    .product-card { 
+      background: var(--cd); 
+      border: 1px solid rgba(27, 58, 40, 0.08); 
+      border-radius: var(--r); 
+      overflow: hidden; 
+      display: flex; 
+      flex-direction: column; 
+      transition: all var(--tr); 
+      position: relative; 
+      box-shadow: var(--sh0); 
+    }
+    .product-card:hover { 
+      border-color: rgba(27, 58, 40, 0.2); 
+      box-shadow: var(--sh1); 
+      transform: translateY(-3px); 
+    }
     
-    .card-image-wrap { position: relative; padding-top: 100%; background: #f9f9f9; overflow: hidden; }
-    .card-image-wrap img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; padding: 24px; transition: transform 0.5s ease; mix-blend-mode: multiply; }
-    .product-card:hover .card-image-wrap img { transform: scale(1.05); }
+    .card-image-wrap { position: relative; padding-top: 90%; background: var(--c); overflow: hidden; }
+    .card-image-wrap img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; padding: 16px; transition: transform 0.4s ease; mix-blend-mode: multiply; }
+    .product-card:hover .card-image-wrap img { transform: scale(1.04); }
     
-    .card-badges { position: absolute; top: 12px; left: 12px; display: flex; flex-direction: column; gap: 8px; z-index: 10; }
-    .badge { padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; font-family: 'Montserrat', sans-serif; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .card-badges { position: absolute; top: 10px; left: 10px; display: flex; flex-direction: column; gap: 6px; z-index: 10; }
+    .badge { padding: 4px 8px; border-radius: 6px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; font-family: 'Montserrat', sans-serif; box-shadow: var(--sh0); }
     .badge.expert { background: var(--f); color: #fff; display: flex; align-items: center; gap: 4px; }
-    .badge.expert svg { width: 12px; height: 12px; }
-    .badge.save { background: var(--pulse-red); color: #fff; }
+    .badge.expert svg { width: 12px; height: 12px; color: var(--gl); }
+    .badge.save { background: #ba1a1a; color: #fff; }
     
-    .quick-view-btn { position: absolute; bottom: -48px; left: 50%; transform: translateX(-50%); background: rgba(255,255,255,0.95); color: var(--f); font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; padding: 10px 24px; border-radius: 24px; opacity: 0; transition: all 0.3s ease; border: 1px solid var(--outline-variant); cursor: pointer; white-space: nowrap; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .quick-view-btn { position: absolute; bottom: -48px; left: 50%; transform: translateX(-50%); background: var(--c); color: var(--f); font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; padding: 8px 20px; border-radius: 20px; opacity: 0; transition: all var(--tr); border: 1px solid rgba(27, 58, 40, 0.15); cursor: pointer; white-space: nowrap; box-shadow: var(--sh1); }
     .quick-view-btn:hover { background: var(--f); color: #fff; border-color: var(--f); }
-    .product-card:hover .quick-view-btn { bottom: 16px; opacity: 1; }
+    .product-card:hover .quick-view-btn { bottom: 12px; opacity: 1; }
 
-    .card-content { padding: 20px; display: flex; flex-direction: column; flex: 1; }
-    .card-brand { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--tm); font-family: 'Montserrat', sans-serif; font-weight: 700; margin-bottom: 8px; }
-    .card-title { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 600; color: var(--t); margin-bottom: 12px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 44px; }
+    .card-content { padding: 16px; display: flex; flex-direction: column; flex: 1; }
+    .card-brand { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--tm); font-family: 'Montserrat', sans-serif; font-weight: 700; margin-bottom: 6px; }
+    .card-title { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; color: var(--t); margin-bottom: 8px; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 40px; }
     
-    .card-rating { display: flex; align-items: center; gap: 4px; margin-bottom: 16px; }
-    .stars { color: var(--g); font-size: 14px; letter-spacing: 2px; }
-    .rating-count { font-size: 12px; color: var(--tm); font-weight: 500; font-family: 'DM Sans', sans-serif; margin-left: 4px; }
+    .card-rating { display: flex; align-items: center; gap: 4px; margin-bottom: 12px; }
+    .stars { color: var(--g); font-size: 13px; letter-spacing: 1px; }
+    .rating-count { font-size: 11.5px; color: var(--tm); font-weight: 500; margin-left: 2px; }
 
-    .card-price-row { display: flex; align-items: baseline; gap: 12px; margin-top: auto; margin-bottom: 16px; }
-    .price-current { font-family: 'DM Sans', sans-serif; font-size: 22px; font-weight: 700; color: var(--f); }
-    .price-old { font-size: 13px; color: var(--outline); text-decoration: line-through; font-weight: 500; }
+    .card-price-row { display: flex; align-items: baseline; gap: 10px; margin-top: auto; margin-bottom: 14px; }
+    .price-current { font-size: 20px; font-weight: 700; color: var(--f); }
+    .price-old { font-size: 12.5px; color: var(--tl); text-decoration: line-through; font-weight: 500; }
     
-    .add-to-cart-btn { width: 100%; background: var(--primary-fixed); color: var(--f); border: none; border-radius: 4px; padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; justify-content: center; align-items: center; gap: 8px; }
-    .add-to-cart-btn:hover { background: var(--f); color: #fff; }
-    .add-to-cart-btn svg { width: 16px; height: 16px; }
+    /* Primary Gold Button Style */
+    .add-to-cart-btn { 
+      width: 100%; 
+      background: var(--g); 
+      color: var(--f); 
+      border: none; 
+      border-radius: var(--r); 
+      padding: 10px; 
+      font-family: 'Montserrat', sans-serif; 
+      font-size: 12.5px; 
+      font-weight: 700; 
+      cursor: pointer; 
+      transition: all var(--tr); 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      gap: 8px; 
+    }
+    .add-to-cart-btn:hover { background: var(--gl); color: var(--f); }
+    .add-to-cart-btn svg { width: 15px; height: 15px; }
 
     @media (max-width: 768px) {
       .layout-container { flex-direction: column; padding: 16px; }
-      .sidebar-filters { width: 100%; position: static; max-height: none; padding-right: 0; display: none; /* Hide on mobile by default */ }
-      .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+      .sidebar-filters { display: none; }
+      .product-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
       .card-content { padding: 12px; }
-      .card-title { font-size: 14px; }
-      .price-current { font-size: 18px; }
-      .add-to-cart-btn { padding: 10px; font-size: 12px; }
-      .quick-view-btn { display: none; }
+      .card-title { font-size: 13.5px; }
+      .price-current { font-size: 17px; }
+      .add-to-cart-btn { padding: 8px; font-size: 11px; }
     }
 
-    /* ── TRUST BAR (Integrated) ── */
-    .integrated-trust-bar { background: var(--surface-container-low); border-top: 1px solid var(--outline-variant); border-bottom: 1px solid var(--outline-variant); padding: 16px 24px; }
-    .integrated-trust-inner { max-width: 1440px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: clamp(24px, 4vw, 64px); flex-wrap: wrap; }
-    .trust-item { display: flex; align-items: center; gap: 12px; font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--t); font-weight: 600; white-space: nowrap; }
-    .trust-icon { width: 32px; height: 32px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid var(--outline-variant); color: var(--f); }
-    .trust-icon svg { width: 16px; height: 16px; }
-
-    /* Footer CSS */
-    .site-footer { background: var(--f); color: rgba(255,255,255,0.7); padding: 80px 24px 40px; font-family: 'DM Sans', sans-serif; }
+    /* Footer */
+    .site-footer { background: var(--f); color: rgba(255,255,255,0.7); padding: 60px 24px 30px; font-family: 'DM Sans', sans-serif; }
     .footer-inner { max-width: 1440px; margin: 0 auto; }
-    .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 60px; margin-bottom: 60px; }
-    @media (max-width: 768px) { .footer-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; } }
-    .footer-col h4 { color: #fff; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.1em; }
+    .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 40px; }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: repeat(1, 1fr); gap: 30px; } }
+    .footer-col h4 { color: #fff; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.1em; }
     .footer-links { list-style: none; padding: 0; margin: 0; }
-    .footer-links li { margin-bottom: 16px; font-size: 14px; }
+    .footer-links li { margin-bottom: 12px; font-size: 13.5px; }
     .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; transition: all var(--tr); }
     .footer-links a:hover { color: var(--gl); }
-    .footer-social-links { display: flex; gap: 16px; margin-top: 24px; }
-    .footer-social-links a { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: all var(--tr); }
+    .footer-social-links { display: flex; gap: 12px; margin-top: 20px; }
+    .footer-social-links a { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: #fff; transition: all var(--tr); }
     .footer-social-links a:hover { background: var(--g); color: var(--f); }
-    .footer-social-links svg { width: 18px; height: 18px; }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; display: flex; flex-direction: column; align-items: center; gap: 24px; }
-    .footer-payment-icons { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; opacity: 0.6; filter: grayscale(1); transition: all var(--tr); }
-    .footer-payment-icons:hover { opacity: 1; filter: none; }
-    .footer-payment-icons img { height: 24px; width: auto; }
+    .footer-social-links svg { width: 16px; height: 16px; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
     .footer-copyright { font-size: 12px; text-align: center; }
   </style>
 </head>
-<body class="bg-surface text-on-background font-sans antialiased selection:bg-gold-light selection:text-primary">
-<!-- TOP BAR -->
+<body class="selection:bg-gl selection:text-f">
+
+<!-- TOP UTILITY BAR -->
 <div class="top-bar">
-<div class="top-bar-inner">
-<div class="top-bar-left">
-<span class=""><svg aria-hidden="true" class="lucide lucide-phone w-3.5 h-3.5 inline mr-1.5 text-gold-light" data-lucide="phone" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>Careline: +27 (0) 11 888 3000</span>
-<span class="bar-sep">|</span>
-<span class=""><svg aria-hidden="true" class="lucide lucide-truck w-3.5 h-3.5 inline mr-1.5 text-gold-light" data-lucide="truck" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path><path d="M15 18H9"></path><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path><circle cx="17" cy="18" r="2"></circle><circle cx="7" cy="18" r="2"></circle></svg>Free Express Shipping Over R500</span>
+  <div class="top-bar-inner">
+    <div class="top-bar-left">
+      <span><svg aria-hidden="true" class="lucide lucide-phone w-3.5 h-3.5 inline mr-1 text-g" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>Careline: +27 (0) 11 888 3000</span>
+      <span class="bar-sep">|</span>
+      <span><svg aria-hidden="true" class="lucide lucide-truck w-3.5 h-3.5 inline mr-1 text-g" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path><path d="M15 18H9"></path><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path><circle cx="17" cy="18" r="2"></circle><circle cx="7" cy="18" r="2"></circle></svg>FREE Courier Delivery</span>
+    </div>
+    <div class="top-bar-right">
+      <a href="#">Track Order</a>
+      <span class="bar-sep">|</span>
+      <a href="#">Store Locator</a>
+      <span class="bar-sep">|</span>
+      <a href="#">Contact Us</a>
+    </div>
+  </div>
 </div>
-<div class="top-bar-right">
-<a class="" href="#">Track Order</a>
-<span class="bar-sep">|</span>
-<a class="" href="#">Store Locator</a>
-<span class="bar-sep">|</span>
-<a class="" href="#">Contact Us</a>
-</div>
-</div>
-</div>
+
 <!-- MAIN HEADER -->
 <header class="main-header">
-<div class="main-header-inner">
-<button class="hamburger-btn" onclick="toggleMobileMenu(true)">
-<svg aria-hidden="true" class="lucide lucide-menu" data-lucide="menu" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
-</button>
-<a class="nlogo" href="index.html">
-<img alt="Earth Inventory" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRudCtg7dS6OBeRS2nA8Ehf1hD3Ngv61VUvYc-psnlJJXoES0YcLAGdUfsyZTELUKGaaL2d2emYwtJ7AhVSCkK0HcKANfei7brHsURtx5TBTLbnlCg_s3kV03ETFlEyeIODlxWWmC-WUwNAcNWS5fq9bVnIoJQYrjyi_2ccS1qK7fNy4QerBQz7UXi6viJDAMRFLunLtaErtDqxFnAliakY6_MTp9ZcGs1m4FggPPjmm4i5CTqfa_Y" style="height:48px;width:48px;object-fit:contain;filter:invert(1) brightness(2);"/>
-<div class="ntext"><b>Earth Inventory</b><small>Botanical Apothecary</small></div>
-</a>
-<div class="header-search-wrap">
-<span class="search-icon"><svg aria-hidden="true" class="lucide lucide-search" data-lucide="search" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg></span>
-<input id="si" onkeydown="if(event.key==='Enter') window.location.href='index.html?q='+encodeURIComponent(this.value)+'#ga'" placeholder="What are you looking for?" type="text"/>
-<button class="search-btn" onclick="window.location.href='index.html?q='+encodeURIComponent(document.getElementById('si').value)+'#ga'">Search</button>
-</div>
-<div class="header-actions">
-<a class="action-link" href="#">
-<svg aria-hidden="true" class="lucide lucide-user" data-lucide="user" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-<span class="">Sign In / Register</span>
-</a>
-<a class="header-cart-btn" href="basket-v2.html">
-<div style="position: relative;">
-<svg aria-hidden="true" class="lucide lucide-shopping-cart" data-lucide="shopping-cart" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
-<span class="cart-badge" id="cnt">0</span>
-</div>
-<span class="cart-label">Cart</span>
-</a>
-</div>
-</div>
+  <div class="main-header-inner">
+    <button class="hamburger-btn">
+      <svg aria-hidden="true" class="lucide lucide-menu" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
+    </button>
+    <a class="nlogo" href="index.html">
+      <img alt="Earth Inventory" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRudCtg7dS6OBeRS2nA8Ehf1hD3Ngv61VUvYc-psnlJJXoES0YcLAGdUfsyZTELUKGaaL2d2emYwtJ7AhVSCkK0HcKANfei7brHsURtx5TBTLbnlCg_s3kV03ETFlEyeIODlxWWmC-WUwNAcNWS5fq9bVnIoJQYrjyi_2ccS1qK7fNy4QerBQz7UXi6viJDAMRFLunLtaErtDqxFnAliakY6_MTp9ZcGs1m4FggPPjmm4i5CTqfa_Y" style="height:44px;width:44px;object-fit:contain;filter:invert(1) brightness(2);"/>
+      <div class="ntext"><b>Earth Inventory</b><small>Traditional Chinese Wellness</small></div>
+    </a>
+    <div class="header-search-wrap">
+      <span class="search-icon"><svg aria-hidden="true" class="lucide lucide-search" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg></span>
+      <input id="si" placeholder="What are you looking for?" type="text"/>
+      <button class="search-btn">Search</button>
+    </div>
+    <div class="header-actions">
+      <a class="action-link" href="#">
+        <svg aria-hidden="true" class="lucide lucide-user" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span>Account</span>
+      </a>
+      <a class="header-cart-btn" href="basket-v2.html">
+        <div style="position: relative;">
+          <svg aria-hidden="true" class="lucide lucide-shopping-cart" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
+          <span class="cart-badge" id="cnt">0</span>
+        </div>
+        <span class="cart-label">Cart</span>
+      </a>
+    </div>
+  </div>
 </header>
-<!-- MOBILE SEARCH ROW -->
-<div class="mobile-search-row">
-<div class="header-search-wrap">
-<span class="search-icon"><svg aria-hidden="true" class="lucide lucide-search" data-lucide="search" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg></span>
-<input id="si-mobile" onkeydown="if(event.key==='Enter') window.location.href='index.html?q='+encodeURIComponent(this.value)+'#ga'" placeholder="What are you looking for?" type="text"/>
-</div>
-</div>
+
 <!-- CATEGORY NAV -->
 <nav class="category-nav">
-<div class="category-nav-inner">
-<a class="cat-link" href="index.html">Home</a>
-<a class="cat-link" href="index.html?filter=all#ga">All Products</a>
-<a class="cat-link active" href="collections-specials-and-bundles.html">Targeted Bundles</a>
-<a class="cat-link" href="index.html?filter=teas#ga">Herbal Teas</a>
-<a class="cat-link" href="index.html?filter=pills#ga">Micro-Pills</a>
-<a class="cat-link" href="blog.html">Wellness Blog</a>
-</div>
+  <div class="category-nav-inner">
+    <a class="cat-link" href="index.html">Home</a>
+    <a class="cat-link" href="index.html?filter=all#ga">All Products</a>
+    <a class="cat-link active" href="collections-specials-and-bundles.html">Targeted Bundles</a>
+    <a class="cat-link" href="index.html?filter=teas#ga">Herbal Teas</a>
+    <a class="cat-link" href="index.html?filter=pills#ga">Micro-Pills</a>
+    <a class="cat-link" href="blog.html">Wellness Blog</a>
+  </div>
 </nav>
+
 <!-- INTEGRATED TRUST BAR -->
 <div class="integrated-trust-bar">
-<div class="integrated-trust-inner">
-<div class="trust-item">
-<div class="trust-icon"><svg aria-hidden="true" class="lucide lucide-shield-check" data-lucide="shield-check" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2-1 4-2 7-2 2.5 0 4.5 1 6.5 2a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg></div>
-    Expert Recommended
-  </div>
-<div class="trust-item">
-<div class="trust-icon"><svg aria-hidden="true" class="lucide lucide-leaf" data-lucide="leaf" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg></div>
-    100% Natural Herbs
-  </div>
-<div class="trust-item">
-<div class="trust-icon"><svg aria-hidden="true" class="lucide lucide-truck" data-lucide="truck" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path><path d="M15 18H9"></path><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path><circle cx="17" cy="18" r="2"></circle><circle cx="7" cy="18" r="2"></circle></svg></div>
-    Free Delivery Over R500
+  <div class="integrated-trust-inner">
+    <div class="trust-item">
+      <div class="trust-icon"><svg aria-hidden="true" class="lucide lucide-leaf" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg></div>
+      100% Natural Herbs
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><svg aria-hidden="true" class="lucide lucide-shield-check" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2-1 4-2 7-2 2.5 0 4.5 1 6.5 2a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg></div>
+      Specialist Formulated
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><svg aria-hidden="true" class="lucide lucide-truck" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path><path d="M15 18H9"></path><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path><circle cx="17" cy="18" r="2"></circle><circle cx="7" cy="18" r="2"></circle></svg></div>
+      FREE Courier Delivery
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><svg aria-hidden="true" class="lucide lucide-award" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 22 12 17 17 22 15.79 13.88"></polyline></svg></div>
+      Scientifically Researched
+    </div>
   </div>
 </div>
-</div>
+
 <!-- MAIN LAYOUT -->
 <main class="layout-container">
-<!-- SIDEBAR FILTERS -->
-<aside class="sidebar-filters">
-<div class="filter-group">
-<div class="filter-title">Health Concern <svg aria-hidden="true" class="lucide lucide-chevron-up" data-lucide="chevron-up" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m18 15-6-6-6 6"></path></svg></div>
-<div class="filter-list">
-<label class="filter-checkbox"><input checked="" name="concern" type="checkbox" value="all"/> All Protocols</label>
-<label class="filter-checkbox"><input name="concern" type="checkbox" value="detox"/> Detox &amp; Cleanse</label>
-<label class="filter-checkbox"><input name="concern" type="checkbox" value="heart"/> Heart Health</label>
-<label class="filter-checkbox"><input name="concern" type="checkbox" value="weight"/> Weight Management</label>
-<label class="filter-checkbox"><input name="concern" type="checkbox" value="immunity"/> Immunity</label>
-<label class="filter-checkbox"><input name="concern" type="checkbox" value="sleep"/> Sleep &amp; Calm</label>
-<label class="filter-checkbox"><input name="concern" type="checkbox" value="digestion"/> Digestive</label>
-</div>
-</div>
-<div class="filter-group">
-<div class="filter-title">Product Type <svg aria-hidden="true" class="lucide lucide-chevron-up" data-lucide="chevron-up" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m18 15-6-6-6 6"></path></svg></div>
-<div class="filter-list">
-<label class="filter-checkbox"><input name="type" type="checkbox" value="teas"/> Herbal Teas</label>
-<label class="filter-checkbox"><input name="type" type="checkbox" value="pills"/> Micro-Pills</label>
-<label class="filter-checkbox"><input name="type" type="checkbox" value="bundles"/> Combo Bundles</label>
-</div>
-</div>
-<div class="filter-group">
-<div class="filter-title">Price Range <svg aria-hidden="true" class="lucide lucide-chevron-up" data-lucide="chevron-up" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m18 15-6-6-6 6"></path></svg></div>
-<div class="filter-list">
-<label class="filter-checkbox"><input name="price" type="checkbox" value="0-500"/> Under R500</label>
-<label class="filter-checkbox"><input name="price" type="checkbox" value="500-1000"/> R500 - R1000</label>
-<label class="filter-checkbox"><input name="price" type="checkbox" value="1000+"/> Over R1000</label>
-</div>
-</div>
-</aside>
-<!-- MAIN CONTENT AREA -->
-<div class="main-content">
-<div class="content-header">
-<div class="content-title">
-<h1>Targeted Protocols</h1>
-<span id="bfc">15 Products</span>
-</div>
-<div class="sort-dropdown">
-<label for="sort-select">Sort By:</label>
-<select id="sort-select">
-<option value="recommended">Recommended</option>
-<option value="price-low">Price: Low to High</option>
-<option value="price-high">Price: High to Low</option>
-<option value="newest">Newest Arrivals</option>
-</select>
-</div>
-</div>
-<div class="product-grid" id="bundles-grid">
-<!-- Rendered via JS -->
-</div>
-</div>
+  <!-- SIDEBAR FILTERS -->
+  <aside class="sidebar-filters">
+    <div class="filter-group">
+      <div class="filter-title">Health Concern <svg aria-hidden="true" class="lucide lucide-chevron-up" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m18 15-6-6-6 6"></path></svg></div>
+      <div class="filter-list">
+        <label class="filter-checkbox"><input checked="" name="concern" type="checkbox" value="all"/> All Protocols</label>
+        <label class="filter-checkbox"><input name="concern" type="checkbox" value="detox"/> Detox &amp; Cleanse</label>
+        <label class="filter-checkbox"><input name="concern" type="checkbox" value="heart"/> Heart Health</label>
+        <label class="filter-checkbox"><input name="concern" type="checkbox" value="weight"/> Weight Management</label>
+        <label class="filter-checkbox"><input name="concern" type="checkbox" value="immunity"/> Immunity</label>
+        <label class="filter-checkbox"><input name="concern" type="checkbox" value="sleep"/> Sleep &amp; Calm</label>
+        <label class="filter-checkbox"><input name="concern" type="checkbox" value="digestion"/> Digestive</label>
+      </div>
+    </div>
+    <div class="filter-group">
+      <div class="filter-title">Product Type <svg aria-hidden="true" class="lucide lucide-chevron-up" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m18 15-6-6-6 6"></path></svg></div>
+      <div class="filter-list">
+        <label class="filter-checkbox"><input name="type" type="checkbox" value="teas"/> Herbal Teas</label>
+        <label class="filter-checkbox"><input name="type" type="checkbox" value="pills"/> Micro-Pills</label>
+        <label class="filter-checkbox"><input name="type" type="checkbox" value="bundles"/> Combo Bundles</label>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT AREA -->
+  <div class="main-content">
+    <div class="content-header">
+      <div class="content-title">
+        <h1>Targeted Protocols</h1>
+        <span id="bfc">8 Special Bundles Available</span>
+      </div>
+      <div class="sort-dropdown">
+        <label for="sort-select">Sort By:</label>
+        <select id="sort-select">
+          <option value="recommended">Recommended</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="newest">Newest Arrivals</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="product-grid" id="bundles-grid">
+      <!-- Dynamic Javascript Content -->
+    </div>
+  </div>
 </main>
-<!-- FULL FOOTER -->
+
+<!-- FOOTER -->
 <footer class="site-footer">
-<div class="footer-inner">
-<div class="footer-grid">
-<!-- COLUMN 1: Customer Service -->
-<div class="footer-col">
-<h4 class="">Customer Service</h4>
-<ul class="footer-links">
-<li class=""><a href="#">Delivery Options</a></li>
-<li class=""><a href="#">Payment Options</a></li>
-<li class=""><a href="#">Returns &amp; Refunds</a></li>
-<li class=""><a href="#">Track Your Order</a></li>
-<li class=""><a href="#">Contact Us</a></li>
-</ul>
-</div>
-<!-- COLUMN 2: Legal -->
-<div class="footer-col">
-<h4 class="">Legal &amp; Policies</h4>
-<ul class="footer-links">
-<li class=""><a href="#">Terms &amp; Conditions</a></li>
-<li class=""><a href="#">Privacy Policy</a></li>
-<li class=""><a href="#">Disclaimer</a></li>
-<li class=""><a href="#">PAIA &amp; POPIA Manual</a></li>
-</ul>
-</div>
-<!-- COLUMN 3: About -->
-<div class="footer-col">
-<h4 class="">About Earth Inventory</h4>
-<ul class="footer-links">
-<li class=""><a href="#">Our Story</a></li>
-<li class=""><a href="#">Quality Standards</a></li>
-<li class=""><a href="#">Store Locator</a></li>
-<li class=""><a href="#">Careers</a></li>
-</ul>
-</div>
-<!-- COLUMN 4: Contact & Social -->
-<div class="footer-col">
-<h4 class="">Connect With Us</h4>
-<ul class="footer-links" style="margin-bottom: 24px;">
-<li>Careline: <a href="tel:+27118883000" style="color: #fff; font-weight: bold;">+27 (0) 11 888 3000</a></li>
-<li>Email: <a href="mailto:info@earthinventory.co.za" style="color: #fff;">info@earthinventory.co.za</a></li>
-</ul>
-<div class="footer-social-links">
-<a aria-label="Facebook" href="#"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-<a aria-label="Instagram" href="#"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></a>
-</div>
-</div>
-</div>
-<div class="footer-bottom">
-<div class="footer-payment-icons">
-<img alt="Visa Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmpZyZeZHfvPgpo3BmSJ-3h7k3in2sXj1-hcEjC3Xzw9a9jNHVmiThSGq2p8zmXdqheip8QyZl1TUdcHJVxhZWuS7SDuQMbVSQ61P70L-KsCXwJUYrMHrT-o8ivT5pWicC42DAzKHkQ4DMKGlcBHOjMEgbCucadLwLuOTiccS1o2pKPbtU3LeRm0AHLQqYHUPy0JZeNgPz8e-tjyIUlJjNgSI5_7P_yZmdZarCbN3KsKAfzWbVZ2dh"/>
-<img alt="Mastercard Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDX4UZ7c-7Z-iDfO-cZA_jPruuUwpknD8V1jm82ZxxSAcNrsJNQsfdzBZK17h_p4ZQmFHnBrV1phaWAGMDA20HyzB5qQ2HQKP77tHZ0RvABmbrnAsmm6B1QSIkH1KB5bd4HujF4DLo5TAgXO5e1rcEaal66075Qc02x2XEc4IRGEbFpBKp-t6eT6o3xBBPMZK-j0epzaM8mc1coAesJMwymDQuKVNsbNVL38ZtLdLCoWr8cXcwLYKJg"/>
-<img alt="PayFast Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsLjoF4_J2OlgSbzKj84_LSGVECAHylviC3tcLpZHJgO8iUwPFKnT3aDqh4mL1d7XIjCVM7DMelXHqFK9bcZ6k59k_nsA6UU1v2Cdy2-3LXir7aeNCpy5goPV5nTVAFo9fw81BGTaIsEUYvnAbRFVtVNiZgykWQaO75hey6g-C4a9MpqGRe2X385LfBAtojSJGdbNmag7NLbyEvyHSp1zHTUINzb8bcCG9IPxjCwnzyEgRkNRNjdkf"/>
-</div>
-<div class="footer-copyright">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Customer Service</h4>
+        <ul class="footer-links">
+          <li><a href="#">Delivery Options</a></li>
+          <li><a href="#">Payment Options</a></li>
+          <li><a href="#">Returns &amp; Refunds</a></li>
+          <li><a href="#">Track Your Order</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal &amp; Policies</h4>
+        <ul class="footer-links">
+          <li><a href="#">Terms &amp; Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Disclaimer</a></li>
+          <li><a href="#">PAIA &amp; POPIA Manual</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>About Earth Inventory</h4>
+        <ul class="footer-links">
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Quality Standards</a></li>
+          <li><a href="#">Store Locator</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect With Us</h4>
+        <ul class="footer-links" style="margin-bottom: 20px;">
+          <li>Careline: <a href="tel:+27118883000" style="color: #fff; font-weight: bold;">+27 (0) 11 888 3000</a></li>
+          <li>Email: <a href="mailto:info@earthinventory.co.za" style="color: #fff;">info@earthinventory.co.za</a></li>
+        </ul>
+        <div class="footer-social-links">
+          <a aria-label="Facebook" href="#"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+          <a aria-label="Instagram" href="#"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">
         Copyright © 2026 Earth Inventory. All rights reserved. *Products are not intended to diagnose, treat, cure, or prevent any disease.
       </div>
-</div>
-</div>
+    </div>
+  </div>
 </footer>
-<!-- DATA & EXECUTION SCRIPT -->
+
 <script>
     const BUNDLES_DATA = [
       {
@@ -514,7 +467,7 @@
         brand: "Earth Inventory",
         price: 799.95,
         value: 920.00,
-        badge: "Expert Recommended",
+        badge: "Specialist Formulated",
         expertBadge: true,
         images: ["assets/bundle_images/1. 24-Hour High-Performance Engine.jpeg"]
       },
@@ -604,7 +557,7 @@
       grid.innerHTML = items.map(b => {
         let badgesHtml = '';
         if (b.expertBadge) {
-          badgesHtml += `<span class="badge expert"><svg aria-hidden="true" class="lucide lucide-shield-check" data-lucide="shield-check" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2-1 4-2 7-2 2.5 0 4.5 1 6.5 2a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg> Pharmacy Choice</span>`;
+          badgesHtml += `<span class="badge expert"><svg aria-hidden="true" class="lucide lucide-shield-check" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2-1 4-2 7-2 2.5 0 4.5 1 6.5 2a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg> Specialist Formulated</span>`;
         }
         if (b.badge && !b.expertBadge) {
           badgesHtml += `<span class="badge save">${b.badge}</span>`;
@@ -619,7 +572,7 @@
           </div>
           <div class="card-content">
             <div class="card-brand">${b.brand}</div>
-            <h3 class="card-title"><a href="products-bundle-detail.html?bundle=${b.slug}" class="hover:text-primary no-underline text-inherit">${b.name}</a></h3>
+            <h3 class="card-title"><a href="products-bundle-detail.html?bundle=${b.slug}" class="hover:text-fl no-underline text-inherit">${b.name}</a></h3>
             <div class="card-rating">
               <div class="stars">★★★★★</div>
               <span class="rating-count">(4.9)</span>
@@ -629,7 +582,7 @@
               ${b.value > b.price ? `<span class="price-old">R${b.value.toFixed(2)}</span>` : ''}
             </div>
             <button class="add-to-cart-btn" onclick="alert('Added to cart')">
-              <svg aria-hidden="true" class="lucide lucide-shopping-cart" data-lucide="shopping-cart" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
+              <svg aria-hidden="true" class="lucide lucide-shopping-cart" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
               Add to Cart
             </button>
           </div>
@@ -640,26 +593,11 @@
     }
 
     renderGrid(BUNDLES_DATA);
+</script>
 
-  </script>
-<!-- Lucide SVG Icons -->
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <script>
-    if (typeof lucide !== 'undefined') lucide.createIcons();
-    
-    function toggleMobileMenu(open) {
-      const overlay = document.getElementById('mobile-menu-overlay');
-      const drawer  = document.getElementById('mobile-menu-drawer');
-      if (!overlay || !drawer) return;
-      if (open) {
-        overlay.classList.add('on');
-        drawer.classList.add('on');
-        document.body.style.overflow = 'hidden';
-      } else {
-        overlay.classList.remove('on');
-        drawer.classList.remove('on');
-        document.body.style.overflow = '';
-      }
-    }
-  </script>
-</body></html>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+</body>
+</html>
