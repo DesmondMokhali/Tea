@@ -29,445 +29,78 @@
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-height:1.6;overflow-x:hidden}
 
-/* ─────────────────────────────────────────────────────────────
-   ✦  PREMIUM HEADER & NAVIGATION  ✦
-───────────────────────────────────────────────────────────── */
-:root {
-  --header-bg: var(--f);
-  --header-border: rgba(255, 255, 255, 0.1);
-  --header-text: var(--gl);
-  --search-bg: rgba(255, 255, 255, 0.08);
-}
 
-/* ── Top Utility Bar ── */
-.top-bar {
-  background: #112519;
-  color: rgba(255,255,255,0.70);
-  font-size: 11.5px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-.top-bar-inner {
-  width: 100%;
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0 24px;
-  display: flex;
-  justify-content: space-between;
-}
-.top-bar-left, .top-bar-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.top-bar-right a {
-  color: rgba(255,255,255,0.70);
-  text-decoration: none;
-  transition: color var(--tr);
-}
-.top-bar-right a:hover {
-  color: var(--gl);
-}
-.bar-sep {
-  color: rgba(255,255,255,0.15);
-}
+/* Bundle-page visual system dependencies */
+:root{--outline:#727972;--outline-variant:#c2c8c1;--surface-container-low:#f7f3e7;}
 
-/* ── Main Header ── */
-.main-header {
-  background: var(--header-bg);
-  border-bottom: 1px solid var(--header-border);
-  padding: 12px 24px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 24px rgba(0,0,0,0.2);
-}
-.main-header-inner {
-  max-width: 1300px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-}
+/* Utility Bar & Header Styles */
+.top-bar { background: var(--f); color: rgba(255,255,255,0.80); font-size: 11.5px; height: 36px; display: flex; align-items: center; border-bottom: 1px solid var(--header-border); font-family: 'DM Sans', sans-serif; letter-spacing: 0.02em; }
+.top-bar-inner { width: 100%; max-width: 1440px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; }
+.top-bar-left, .top-bar-right { display: flex; align-items: center; gap: 14px; }
+.top-bar-right a { color: rgba(255,255,255,0.80); text-decoration: none; transition: color var(--tr); }
+.top-bar-right a:hover { color: var(--gl); }
+.bar-sep { color: rgba(255,255,255,0.2); }
 
-/* Logo customizations (matches original gold/green) */
-.main-header .nlogo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-}
-.main-header .nlogo .ntext b {
-  font-family: 'Cormorant Garamond', serif;
-  line-height: 0.9;
-  margin-bottom: 2px;
-  font-size: 26px;
-  font-weight: 600;
-  color: var(--gl);
-  letter-spacing: 0.04em;
-  display: block;
-}
-.main-header .nlogo .ntext small {
-  font-size: 9.5px;
-  color: var(--sl);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-.main-header .nlogo .nmark {
-  width: 34px;
-  height: 34px;
-  background: var(--g);
-  color: var(--f);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
-  flex-shrink: 0;
-}
+.main-header { background: var(--header-bg); border-bottom: 1px solid var(--header-border); padding: 16px 24px; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.05); font-family: 'DM Sans', sans-serif; }
+.main-header-inner { max-width: 1440px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 48px; }
+.main-header .nlogo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
+.main-header .nlogo .ntext b { font-family: 'Cormorant Garamond', serif; line-height: 0.9; margin-bottom: 2px; font-size: 28px; font-weight: 600; color: #fff; letter-spacing: 0.02em; display: block; }
+.main-header .nlogo .ntext small { font-size: 10px; color: var(--gl); letter-spacing: 0.15em; text-transform: uppercase; }
 
-/* Central Search Bar */
-.header-search-wrap {
-  flex: 1;
-  max-width: 580px;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-.header-search-wrap input {
-  width: 100%;
-  background: var(--search-bg);
-  border: 1.5px solid rgba(255,255,255,0.15);
-  border-radius: 24px;
-  padding: 10px 100px 10px 42px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13.5px;
-  color: #fff;
-  outline: none;
-  transition: all var(--tr);
-}
-.header-search-wrap input::placeholder {
-  color: rgba(255,255,255,0.4);
-}
-.header-search-wrap input:focus {
-  background: rgba(255,255,255,0.12);
-  border-color: var(--g);
-  box-shadow: 0 0 0 3px rgba(200,160,110,0.15);
-}
-.header-search-wrap .search-icon {
-  position: absolute;
-  left: 16px;
-  color: rgba(255,255,255,0.4);
-  display: flex;
-  align-items: center;
-  pointer-events: none;
-}
-.header-search-wrap .search-icon svg {
-  width: 15px;
-  height: 15px;
-}
-.header-search-wrap .search-btn {
-  position: absolute;
-  right: 5px;
-  background: var(--g);
-  color: var(--f);
-  border: none;
-  border-radius: 20px;
-  padding: 6px 16px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all var(--tr);
-}
-.header-search-wrap .search-btn:hover {
-  background: var(--gl);
-}
+.header-search-wrap { flex: 1; max-width: 800px; position: relative; display: flex; align-items: center; }
+.header-search-wrap input { width: 100%; background: #fff; border: 1px solid transparent; border-radius: 4px; padding: 12px 110px 12px 48px; font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--t); outline: none; transition: all var(--tr); }
+.header-search-wrap input::placeholder { color: var(--outline); }
+.header-search-wrap input:focus { border-color: var(--g); box-shadow: 0 0 0 4px rgba(218,184,130,0.2); }
+.header-search-wrap .search-icon { position: absolute; left: 18px; color: var(--outline); display: flex; align-items: center; pointer-events: none; }
+.header-search-wrap .search-icon svg { width: 20px; height: 20px; }
+.header-search-wrap .search-btn { position: absolute; right: 4px; background: var(--f); color: #fff; border: none; border-radius: 4px; padding: 8px 24px; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; transition: all var(--tr); }
+.header-search-wrap .search-btn:hover { background: var(--fm); }
 
-/* Header Action Buttons */
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-.action-link {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: rgba(255,255,255,0.85);
-  text-decoration: none;
-  font-size: 13.5px;
-  font-weight: 600;
-  transition: color var(--tr);
-}
-.action-link:hover {
-  color: var(--gl);
-}
-.action-link svg {
-  width: 18px;
-  height: 18px;
-  color: var(--gl);
-}
+.header-actions { display: flex; align-items: center; gap: 32px; flex-shrink: 0; }
+.action-link { display: flex; flex-direction: column; align-items: center; gap: 4px; color: #fff; text-decoration: none; font-size: 12px; font-weight: 500; transition: color var(--tr); }
+.action-link:hover { color: var(--gl); }
+.action-link svg { width: 24px; height: 24px; color: #fff; }
+.action-link:hover svg { color: var(--gl); }
 
-/* Premium Cart Button */
-.header-cart-btn {
-  background: var(--g);
-  color: var(--f);
-  border: none;
-  border-radius: 28px;
-  padding: 8px 18px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  transition: all var(--tr);
-}
-.header-cart-btn:hover {
-  background: var(--gl);
-  transform: translateY(-1px);
-}
-.cart-icon-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-.cart-icon-wrap svg {
-  width: 18px;
-  height: 18px;
-  color: var(--f);
-}
-.cart-badge {
-  position: absolute;
-  top: -8px;
-  right: -10px;
-  background: var(--f);
-  color: var(--g);
-  font-size: 9px;
-  font-weight: 700;
-  min-width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 4px;
-  border: 1px solid var(--g);
-  transition: transform 0.2s ease;
-}
-.cart-btn-text {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  line-height: 1.1;
-}
-.cart-label {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: rgba(27,58,40,0.7);
-}
-.cart-total {
-  font-size: 12.5px;
-  font-weight: 700;
-  color: var(--f);
-}
+.header-cart-btn { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; color: #fff; text-decoration: none; font-size: 12px; font-weight: 500; transition: color var(--tr); cursor: pointer; }
+.header-cart-btn:hover { color: var(--gl); }
+.header-cart-btn svg { width: 24px; height: 24px; color: #fff; }
+.header-cart-btn:hover svg { color: var(--gl); }
+.cart-badge { position: absolute; top: -6px; right: -10px; background: var(--pulse-red); color: #fff; font-size: 11px; font-weight: 700; min-width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; padding: 0 4px; border: 2px solid var(--f); }
 
-/* ── Category Navigation Bar ── */
-.category-nav {
-  background: #e8e0cd;
-  border-bottom: 1px solid rgba(0,0,0,0.12);
-  padding: 10px 24px;
-}
-.category-nav-inner {
-  max-width: 1300px;
-  margin: 0 auto;
-  display: flex;
-  gap: 28px;
-  align-items: center;
-}
-.cat-link {
-  color: var(--f);
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 700;
-  transition: color var(--tr);
-}
-.cat-link:hover {
-  color: var(--s);
-}
+.category-nav { background: #fff; border-bottom: 1px solid var(--cd); padding: 0 24px; font-family: 'DM Sans', sans-serif; }
+.category-nav-inner { max-width: 1440px; margin: 0 auto; display: flex; gap: 40px; align-items: center; }
+.cat-link { color: var(--t); text-decoration: none; font-size: 15px; font-weight: 500; padding: 16px 0; transition: color var(--tr); letter-spacing: 0.01em; position: relative; }
+.cat-link:hover { color: var(--f); }
+.cat-link.active { color: var(--f); font-weight: 700; }
+.cat-link.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--g); }
 
-/* Category Nav Dropdown */
-.category-nav .nav-dropdown {
-  position: relative;
-}
-.category-nav .nav-dropbtn {
-  color: var(--f);
-  font-size: 13px;
-  font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  transition: color var(--tr);
-}
-.category-nav .nav-dropdown:hover .nav-dropbtn {
-  color: var(--s);
-}
+.hamburger-btn { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 4px; }
+.hamburger-btn svg { width: 28px; height: 28px; }
+.mobile-search-row { display: none; background: var(--f); padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.mobile-menu-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 300; opacity: 0; pointer-events: none; transition: opacity var(--tr); backdrop-filter: blur(4px); }
+.mobile-menu-overlay.on { opacity: 1; pointer-events: all; }
+.mobile-menu-drawer { position: fixed; top: 0; left: -320px; width: 320px; height: 100vh; background: var(--c); z-index: 310; box-shadow: 4px 0 30px rgba(0,0,0,0.2); display: flex; flex-direction: column; transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+.mobile-menu-drawer.on { left: 0; }
+.mobile-menu-hdr { padding: 24px; border-bottom: 1px solid var(--cd); display: flex; align-items: center; justify-content: space-between; background: var(--f); }
+.mobile-menu-hdr h3 { font-family: 'Cormorant Garamond', serif; line-height: 1; color: var(--gl); font-size: 22px; }
+.mobile-menu-close { background: none; border: none; font-size: 28px; color: var(--gl); cursor: pointer; }
+.mobile-menu-body { padding: 24px; display: flex; flex-direction: column; gap: 20px; overflow-y: auto; }
+.mobile-menu-body a { color: var(--t); text-decoration: none; font-size: 16px; font-weight: 500; padding: 8px 0; border-bottom: 1px solid var(--cd); }
+.mobile-menu-body a:hover { color: var(--g); }
+.mobile-menu-section { display: flex; flex-direction: column; gap: 12px; padding-left: 16px; border-left: 2px solid var(--cd); margin: 8px 0; }
+.mobile-menu-section-title { font-size: 12px; text-transform: uppercase; color: var(--tm); font-weight: 700; letter-spacing: 0.1em; font-family: 'Montserrat', sans-serif; }
 
-/* Mobile Hamburger */
-.hamburger-btn {
-  display: none;
-  background: none;
-  border: none;
-  color: var(--gl);
-  cursor: pointer;
-  padding: 4px;
-}
-.hamburger-btn svg {
-  width: 24px;
-  height: 24px;
-}
-
-/* Mobile Search Row (Hidden on Desktop) */
-.mobile-search-row {
-  display: none;
-  background: var(--f);
-  padding: 8px 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-/* Mobile Drawer Menu */
-.mobile-menu-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 300;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--tr);
-}
-.mobile-menu-overlay.on {
-  opacity: 1;
-  pointer-events: all;
-}
-.mobile-menu-drawer {
-  position: fixed;
-  top: 0;
-  left: -280px;
-  width: 280px;
-  height: 100vh;
-  background: var(--f);
-  z-index: 310;
-  box-shadow: 4px 0 24px rgba(0,0,0,0.3);
-  display: flex;
-  flex-direction: column;
-  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.mobile-menu-drawer.on {
-  left: 0;
-}
-.mobile-menu-hdr {
-  padding: 16px 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.mobile-menu-hdr h3 {
-  font-family: 'Cormorant Garamond', serif;
-  line-height: 0.9;
-  margin-bottom: 2px;
-  color: var(--gl);
-  font-size: 18px;
-}
-.mobile-menu-close {
-  background: none;
-  border: none;
-  font-size: 24px;
-  color: var(--sl);
-  cursor: pointer;
-}
-.mobile-menu-body {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  overflow-y: auto;
-}
-.mobile-menu-body a {
-  color: rgba(255,255,255,0.85);
-  text-decoration: none;
-  font-size: 14.5px;
-  font-weight: 600;
-  padding: 6px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-.mobile-menu-body a:hover {
-  color: var(--gl);
-}
-.mobile-menu-section {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding-left: 12px;
-  border-left: 2px solid rgba(255,255,255,0.15);
-  margin: 6px 0;
-}
-.mobile-menu-section-title {
-  font-size: 11px;
-  text-transform: uppercase;
-  color: var(--sl);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-}
-
-/* ── RESPONSIVE MEDIA QUERIES ── */
-@media (max-width: 991px) {
-  .header-search-wrap {
-    max-width: 400px;
-  }
-}
-
-@media (max-width: 768px) {
-  .top-bar, .category-nav, .header-actions .action-link {
-    display: none;
-  }
-  .hamburger-btn {
-    display: block;
-  }
-  .main-header {
-    padding: 10px 16px;
-    top: 0;
-  }
-  .main-header-inner {
-    gap: 12px;
-  }
-  .main-header .header-search-wrap {
-    display: none;
-  }
-  .mobile-search-row {
-    display: block;
-    position: sticky;
-    top: 60px;
-    z-index: 90;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  }
-  .mobile-search-row .header-search-wrap {
-    display: flex;
-    max-width: 100%;
-  }
-  .header-actions {
-    gap: 12px;
-  }
-  .header-cart-btn {
-    padding: 6px 12px;
-  }
-  .cart-btn-text {
-    display: none; /* Only show icon/badge on mobile */
-  }
+@media (max-width: 1024px) {
+  .top-bar, .category-nav, .header-search-wrap { display: none; }
+  .hamburger-btn { display: block; }
+  .main-header { padding: 12px 16px; }
+  .main-header-inner { gap: 16px; justify-content: space-between; }
+  .mobile-search-row { display: block; position: sticky; top: 68px; z-index: 90; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+  .mobile-search-row .header-search-wrap { display: flex; max-width: 100%; }
+  .header-actions { gap: 20px; }
+  .action-link span, .header-cart-btn span.cart-label { display: none; }
+  .cart-badge { top: -4px; right: -8px; }
 }
 
 
@@ -1911,6 +1544,32 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
   0%, 100% { box-shadow: 0 0 0 3px rgba(126,203,143,0.3); }
   50% { box-shadow: 0 0 0 6px rgba(126,203,143,0.1); }
 }
+
+/* ── HOMEPAGE BUNDLE-STYLE COLLECTION CONTROLS ── */
+.homepage-layout{max-width:1440px;margin:0 auto;padding:32px 24px 64px;display:flex;gap:40px;align-items:flex-start}
+.homepage-sidebar{width:280px;flex-shrink:0;display:flex;flex-direction:column;gap:24px;position:sticky;top:120px;max-height:calc(100vh - 140px);overflow-y:auto;scrollbar-width:thin;padding-right:12px}
+.home-filter-group{border-bottom:1px solid var(--outline-variant);padding-bottom:24px}
+.home-filter-title{font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;color:var(--f);margin-bottom:16px;display:flex;justify-content:space-between;align-items:center}
+.home-filter-title svg{width:16px;height:16px}
+.home-filter-list{display:flex;flex-direction:column;gap:4px}
+.home-filter-btn{width:100%;border:0;background:transparent;text-align:left;padding:8px 10px;border-radius:5px;color:var(--t);font:500 14px 'DM Sans',sans-serif;cursor:pointer;transition:all .2s ease}
+.home-filter-btn:hover{background:var(--surface-container-low);color:var(--f)}
+.home-filter-btn.active{background:var(--f);color:#fff;font-weight:700}
+.homepage-products{flex:1;min-width:0}
+.homepage-content-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--outline-variant);flex-wrap:wrap;gap:16px}
+.homepage-content-header h2{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:var(--f);margin:0}
+.homepage-content-header span{font-size:14px;color:var(--tm);font-weight:500}
+.home-sort{display:flex;align-items:center;gap:12px;font:500 14px 'DM Sans',sans-serif;color:var(--t)}
+.home-sort select{border:1px solid var(--outline-variant);border-radius:4px;padding:8px 34px 8px 12px;background:#fff;color:var(--t);font:inherit}
+.home-js-controls{display:none}
+.home-product-grid{grid-template-columns:repeat(auto-fill,minmax(236px,1fr));gap:18px}
+.integrated-trust-bar{background:var(--surface-container-low);border-top:1px solid var(--outline-variant);border-bottom:1px solid var(--outline-variant);padding:16px 24px}
+.integrated-trust-inner{max-width:1440px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:clamp(24px,4vw,64px);flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:12px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--t);font-weight:600;white-space:nowrap}
+.trust-icon{width:32px;height:32px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid var(--outline-variant);color:var(--f)}
+.trust-icon svg{width:16px;height:16px}
+@media(max-width:768px){.homepage-layout{flex-direction:column;padding:16px}.homepage-sidebar{width:100%;position:static;max-height:none;padding-right:0}.home-product-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}.homepage-content-header h2{font-size:28px}.integrated-trust-inner{gap:16px 24px}.trust-item{font-size:12px}}
+
 </style>
 
 </head>
@@ -1937,41 +1596,53 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
 </div>
 
 <!-- ── MAIN HEADER ── -->
+<!-- ── TOP UTILITY BAR — MATCHES BUNDLE PAGE ── -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-bar-left">
+      <span><i data-lucide="phone" style="width:14px;height:14px;vertical-align:-2px;margin-right:5px;color:var(--gl)"></i>Careline: +27 (0) 11 888 3000</span>
+      <span class="bar-sep">|</span>
+      <span><i data-lucide="truck" style="width:14px;height:14px;vertical-align:-2px;margin-right:5px;color:var(--gl)"></i>Free Express Shipping Over R500</span>
+    </div>
+    <div class="top-bar-right">
+      <a href="#">Track Order</a>
+      <span class="bar-sep">|</span>
+      <a href="#">Store Locator</a>
+      <span class="bar-sep">|</span>
+      <a href="#contact">Contact Us</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── MAIN HEADER — MATCHES BUNDLE PAGE ── -->
 <header class="main-header">
   <div class="main-header-inner">
-    <!-- Hamburger Button (Mobile Only) -->
     <button class="hamburger-btn" onclick="toggleMobileMenu(true)">
       <i data-lucide="menu"></i>
     </button>
 
-    <!-- Brand Logo -->
     <a class="nlogo" href="index.html">
-      <img src="assets/logo/ei_logo_e2dbc7.svg" alt="Earth Inventory" style="height:56px;width:56px;object-fit:contain;">
+      <img src="assets/logo/ei_logo_e2dbc7.svg" alt="Earth Inventory" style="height:48px;width:48px;object-fit:contain;">
       <div class="ntext"><b>Earth Inventory</b><small>Traditional Chinese Wellness</small></div>
     </a>
 
-    <!-- Large Central Search Bar -->
     <div class="header-search-wrap">
       <span class="search-icon"><i data-lucide="search"></i></span>
-      <input type="text" id="si" placeholder="Search products, remedies, ingredients..." oninput="doSearch(this.value)">
+      <input type="text" id="si" placeholder="What are you looking for?" oninput="doSearch(this.value)" onkeydown="if(event.key==='Enter') doSearch(this.value)">
       <button class="search-btn" onclick="doSearch(document.getElementById('si').value)">Search</button>
     </div>
 
-    <!-- Actions -->
     <div class="header-actions">
-      <a href="#" class="action-link" onclick="alert('Benefit Rewards Card & Accounts coming soon!')">
+      <a href="#" class="action-link" onclick="alert('Benefit Rewards Card & Accounts coming soon!');return false;">
         <i data-lucide="user"></i>
-        <span class="action-text">Account</span>
+        <span>Account</span>
       </a>
       <a href="basket-v2.html" class="header-cart-btn">
-        <div class="cart-icon-wrap">
+        <div style="position:relative;">
           <i data-lucide="shopping-cart"></i>
           <span class="cart-badge" id="cnt">0</span>
         </div>
-        <div class="cart-btn-text">
-          <span class="cart-label">Basket</span>
-          <span class="cart-total" id="header-cart-total">R0.00</span>
-        </div>
+        <span class="cart-label">Cart</span>
       </a>
     </div>
   </div>
@@ -1981,25 +1652,19 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
 <div class="mobile-search-row">
   <div class="header-search-wrap">
     <span class="search-icon"><i data-lucide="search"></i></span>
-    <input type="text" id="si-mobile" placeholder="Search products, remedies..." oninput="doSearch(this.value); document.getElementById('si').value = this.value;">
+    <input type="text" id="si-mobile" placeholder="What are you looking for?" oninput="doSearch(this.value);document.getElementById('si').value=this.value" onkeydown="if(event.key==='Enter') doSearch(this.value)">
   </div>
 </div>
 
-<!-- ── CATEGORY NAVIGATION BAR ── -->
+<!-- ── CATEGORY NAVIGATION — MATCHES BUNDLE PAGE ── -->
 <nav class="category-nav">
   <div class="category-nav-inner">
-    <a href="index.html" class="cat-link">Home</a>
-    <div class="nav-dropdown">
-      <a href="index.html?filter=all#ga" class="nav-dropbtn">Products <i data-lucide="chevron-down" style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-left:3px"></i></a>
-      <div class="nav-dropdown-content">
-        <a href="index.html?filter=all#ga">All Products</a>
-        <a href="index.html?filter=teas#ga">Herbal Teas</a>
-        <a href="index.html?filter=pills#ga">Herbal Pills</a>
-      </div>
-    </div>
+    <a href="index.html" class="cat-link active">Home</a>
+    <a href="index.html?filter=all#ga" class="cat-link">All Products</a>
+    <a href="collections-specials-and-bundles.html" class="cat-link">Targeted Bundles</a>
+    <a href="index.html?filter=teas#ga" class="cat-link">Herbal Teas</a>
+    <a href="index.html?filter=pills#ga" class="cat-link">Micro-Pills</a>
     <a href="blog.html" class="cat-link">Wellness Blog</a>
-    <a href="collections-specials-and-bundles.html" class="cat-link" style="color: #a84b24; font-weight: 800;">Bundle Specials</a>
-    <a href="index.html#contact" class="cat-link">Contact Us</a>
   </div>
 </nav>
 
@@ -2012,19 +1677,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
   </div>
   <div class="mobile-menu-body">
     <a href="index.html" onclick="toggleMobileMenu(false)">Home</a>
-    <div class="mobile-menu-section">
-      <div class="mobile-menu-section-title">Products</div>
-      <a href="index.html?filter=all#ga" onclick="toggleMobileMenu(false)">All Products</a>
-      <a href="index.html?filter=teas#ga" onclick="toggleMobileMenu(false)">Herbal Teas</a>
-      <a href="index.html?filter=pills#ga" onclick="toggleMobileMenu(false)">Herbal Pills</a>
-    </div>
+    <a href="index.html?filter=all#ga" onclick="toggleMobileMenu(false)">All Products</a>
+    <a href="collections-specials-and-bundles.html" onclick="toggleMobileMenu(false)">Targeted Bundles</a>
+    <a href="index.html?filter=teas#ga" onclick="toggleMobileMenu(false)">Herbal Teas</a>
+    <a href="index.html?filter=pills#ga" onclick="toggleMobileMenu(false)">Micro-Pills</a>
     <a href="blog.html" onclick="toggleMobileMenu(false)">Wellness Blog</a>
-    <a href="collections-specials-and-bundles.html" onclick="toggleMobileMenu(false)" style="color: var(--g); font-weight: bold;">Bundle Specials</a>
-    <a href="index.html#contact" onclick="toggleMobileMenu(false)">Contact Us</a>
   </div>
 </div>
 
-<!-- ── HERO CAROUSEL ── -->
 <section class="hero-carousel" id="hero-carousel">
   <div class="hero-track" id="hero-track">
 
@@ -2208,27 +1868,86 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
   </div>
 </section>
 
-<div class="tbar">
-  <div class="titem"><i data-lucide="leaf" style="width:15px;height:15px;color:var(--s)"></i> 100% Natural Herbs</div>
-  <div class="titem"><i data-lucide="award" style="width:15px;height:15px;color:var(--g)"></i> Specialist Formulated</div>
-  <div class="titem"><i data-lucide="truck" style="width:15px;height:15px;color:var(--s)"></i> FREE Courier Delivery on All Orders</div>
-  <div class="titem"><i data-lucide="flask-conical" style="width:15px;height:15px;color:var(--g)"></i> Scientifically Researched</div>
-  <div class="titem"><i data-lucide="recycle" style="width:15px;height:15px;color:var(--s)"></i> Eco-Friendly Packaging</div>
+<!-- ── INTEGRATED TRUST BAR — SAME ICON TREATMENT AS BUNDLE PAGE ── -->
+<div class="integrated-trust-bar">
+  <div class="integrated-trust-inner">
+    <div class="trust-item">
+      <div class="trust-icon"><i data-lucide="leaf"></i></div>
+      100% Natural Herbs
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><i data-lucide="shield-check"></i></div>
+      Specialist Formulated
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><i data-lucide="truck"></i></div>
+      FREE Courier Delivery
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><i data-lucide="flask-conical"></i></div>
+      Scientifically Researched
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><i data-lucide="sparkles"></i></div>
+      Traditional Chinese Wellness
+    </div>
+  </div>
 </div>
 
-<div class="fsec" id="ga">
-  <div class="fhead">
-    <h2 class="ftitle">Our Collection</h2>
-    <div style="display:flex;gap:8px;background:var(--cd);padding:4px;border-radius:20px;align-items:center;">
-      <button class="type-btn on" id="type-all" onclick="setType('all')">All Products</button>
-      <button class="type-btn" id="type-teas" onclick="setType('teas')">Herbal Teas</button>
-      <button class="type-btn" id="type-pills" onclick="setType('pills')">Herbal Pills</button>
+<!-- ── PRODUCT COLLECTION — BUNDLE PAGE REFERENCE LAYOUT ── -->
+<main class="homepage-layout" id="ga">
+  <aside class="homepage-sidebar">
+    <div class="home-filter-group">
+      <div class="home-filter-title">Health Concern <i data-lucide="chevron-up"></i></div>
+      <div class="home-filter-list">
+        <button type="button" class="home-filter-btn active" onclick="setFilter('all')">All Products</button>
+        <button type="button" class="home-filter-btn" onclick="setFilter('detox')">Detox &amp; Cleanse</button>
+        <button type="button" class="home-filter-btn" onclick="setFilter('heart')">Heart Health</button>
+        <button type="button" class="home-filter-btn" onclick="setFilter('weight')">Weight Management</button>
+        <button type="button" class="home-filter-btn" onclick="setFilter('immunity')">Immunity</button>
+        <button type="button" class="home-filter-btn" onclick="setFilter('women')">Women's Wellness</button>
+        <button type="button" class="home-filter-btn" onclick="setFilter('men')">Men's Wellness</button>
+        <button type="button" class="home-filter-btn" onclick="setFilter('sleep')">Sleep &amp; Calm</button>
+        <button type="button" class="home-filter-btn" onclick="setFilter('resp')">Respiratory</button>
+        <button type="button" class="home-filter-btn" onclick="setFilter('digest')">Digestive</button>
+      </div>
     </div>
-    <span class="fcount" id="fc">0 products</span>
-  </div>
-  <div class="fbar" id="fb"></div>
-</div>
-<div class="gsec"><div class="grid" id="pg"></div></div>
+
+    <div class="home-filter-group">
+      <div class="home-filter-title">Product Type <i data-lucide="chevron-up"></i></div>
+      <div class="home-filter-list">
+        <button type="button" class="home-filter-btn" onclick="setType('all')">All Products</button>
+        <button type="button" class="home-filter-btn" onclick="setType('teas')">Herbal Teas</button>
+        <button type="button" class="home-filter-btn" onclick="setType('pills')">Micro-Pills</button>
+      </div>
+    </div>
+  </aside>
+
+  <section class="homepage-products">
+    <div class="homepage-content-header">
+      <div>
+        <h2>Our Collection</h2>
+        <span id="fc">0 products</span>
+      </div>
+      <div class="home-sort">
+        <label for="home-sort-select">Sort By:</label>
+        <select id="home-sort-select">
+          <option value="earth-inventory">Earth Inventory</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Hidden compatibility controls used by the existing homepage filtering logic. -->
+    <div class="home-js-controls" aria-hidden="true">
+      <div id="fb"></div>
+      <button id="type-all" class="type-btn on" onclick="setType('all')"></button>
+      <button id="type-teas" class="type-btn" onclick="setType('teas')"></button>
+      <button id="type-pills" class="type-btn" onclick="setType('pills')"></button>
+    </div>
+
+    <div class="grid home-product-grid" id="pg"></div>
+  </section>
+</main>
 
 <!-- MODAL -->
 <div class="mov" id="mo" onclick="ovClick(event)">
@@ -6822,6 +6541,10 @@ function buildFilters(){
 function setFilter(id){
   activeCat=id;
   document.querySelectorAll('.fchip').forEach((c,i)=>c.classList.toggle('on',CATS[i].id===id));
+  document.querySelectorAll('.home-filter-btn').forEach(btn=>btn.classList.remove('active'));
+  const map={all:'All Products',detox:'Detox & Cleanse',heart:'Heart Health',weight:'Weight Management',immunity:'Immunity',women:"Women's Wellness",men:"Men's Wellness",sleep:'Sleep & Calm',resp:'Respiratory',digest:'Digestive'};
+  const target=[...document.querySelectorAll('.home-filter-group:first-child .home-filter-btn')].find(btn=>btn.textContent.trim()===map[id]);
+  if(target) target.classList.add('active');
   renderGrid();
 }
 
