@@ -2000,8 +2000,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
       </div>
       <div class="home-sort">
         <label for="home-sort-select">Sort By:</label>
-        <select id="home-sort-select">
+        <select id="home-sort-select" onchange="renderGrid()">
           <option value="earth-inventory">Earth Inventory</option>
+          <option value="alphabetical">Alphabetical (A-Z)</option>
+          <option value="price-asc">Price (Low to High)</option>
+          <option value="price-desc">Price (High to Low)</option>
+          <option value="newest">Newest Arrivals</option>
         </select>
       </div>
     </div>
@@ -6678,11 +6682,28 @@ function starsStr(r){
 function catLabel(id){return CATS.find(c=>c.id===id)?.l.replace(/^[^a-zA-Z]+/,'').trim()||id}
 
 function renderGrid(){
-  const items=filtered();
+  let items=filtered();
+  
+  // Apply sorting
+  const sortSelect = document.getElementById('home-sort-select');
+  if (sortSelect) {
+    const sortVal = sortSelect.value;
+    if (sortVal === 'alphabetical') {
+      items.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
+    } else if (sortVal === 'price-asc') {
+      items.sort((a, b) => (a.retail_price || 0) - (b.retail_price || 0));
+    } else if (sortVal === 'price-desc') {
+      items.sort((a, b) => (b.retail_price || 0) - (a.retail_price || 0));
+    } else if (sortVal === 'newest') {
+      // Prioritize items with 'New' badge
+      items.sort((a, b) => (b.b === 'New' ? 1 : 0) - (a.b === 'New' ? 1 : 0));
+    }
+  }
+
   const pg=document.getElementById('pg');
-  const typeWord = activeType === 'teas' ? 'tea' : (activeType === 'pills' ? 'pill' : 'product');
+  const typeWord = activeTypes.has('teas') && activeTypes.size === 1 ? 'tea' : (activeTypes.has('pills') && activeTypes.size === 1 ? 'pill' : 'product');
   document.getElementById('fc').textContent=`${items.length} ${typeWord}${items.length!==1?'s':''}`;
-  if(!items.length){pg.innerHTML='<div class="nores"><h3>No teas found</h3><p>Try a different search or filter.</p></div>';return;}
+  if(!items.length){pg.innerHTML='<div class="nores"><h3>No products found</h3><p>Try a different search or filter.</p></div>';return;}
   pg.innerHTML=items.map((p,vi)=>{
     const i=vi;
     const idx=P.indexOf(p);
