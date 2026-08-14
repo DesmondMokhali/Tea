@@ -1026,10 +1026,33 @@ function render() {
         const bName   = item._bundleName  || 'Ritual Bundle';
         // Use _bundleId as the canonical key — cast to string so onclick literal matches
         const bKey = String(item._bundleId);
+
+        // Map bundle IDs to actual local image files
+        const BUNDLE_IMAGES = {
+          1: "assets/bundle_images/1. 24-Hour High-Performance Engine.jpeg",
+          2: "assets/bundle_images/2. Comprehensive Metabolic & Weight Flush.jpeg",
+          3: "assets/bundle_images/15. Weekend Recovery & Ultimate Organ Shield.jpeg",
+          4: "assets/bundle_images/7. Womb Wellness & Cycle Restoration Ritual.jpeg",
+          5: "assets/bundle_images/10. Golden Years Joint & Mobility Rescue.jpeg",
+          6: "assets/bundle_images/6. Whole-Body Longevity & Organ Shield.jpeg",
+          7: "assets/bundle_images/3. Ultimate Stress, Anxiety & Mood Fortress.jpeg",
+          8: "assets/bundle_images/4. Chronic Sinus & Deep Respiratory Shield.jpeg",
+          12: "assets/bundle_images/12. Ultimate Blood Sugar & Craving Control.jpeg",
+          13: "assets/bundle_images/13. Advanced Cystic Acne & Flawless Skin Ritual.jpeg",
+          14: "assets/bundle_images/14. Chronic Vascular & Blood Pressure Loop.jpeg",
+          15: "assets/bundle_images/15. Weekend Recovery & Ultimate Organ Shield.jpeg"
+        };
+        const bImage = BUNDLE_IMAGES[item._bundleId] || '';
+
         return `
         <div class="basket-item">
-          <div class="item-thumb" style="background:var(--cs,#1b3a28);display:flex;align-items:center;justify-content:center;">
-            <svg class="icon" width="28" height="28" style="color:#c8a06e"><use href="#ico-leaf"/></svg>
+          <div class="item-thumb" style="display:flex;align-items:center;justify-content:center;overflow:hidden;">
+            ${bImage ? `
+              <img src="${bImage}" alt="${bName}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            ` : ''}
+            <div style="display:${bImage ? 'none' : 'flex'};align-items:center;justify-content:center;width:100%;height:100%;background:var(--cs,#1b3a28);">
+              <svg class="icon" width="28" height="28" style="color:#c8a06e"><use href="#ico-leaf"/></svg>
+            </div>
           </div>
           <div class="item-info">
             <span class="item-cat" style="color:#c8a06e;font-weight:700">Ritual Bundle</span>
