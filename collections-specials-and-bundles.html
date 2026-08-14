@@ -243,9 +243,50 @@
     .add-to-cart-btn:hover { background: var(--gl); color: var(--f); }
     .add-to-cart-btn svg { width: 15px; height: 15px; }
 
+    @media(max-width:768px) {
+      .integrated-trust-bar { padding: 10px 16px; }
+      .integrated-trust-inner { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; gap: 24px; }
+      .integrated-trust-inner::-webkit-scrollbar { display: none; }
+      .trust-item { flex-shrink: 0; }
+    }
+
     @media (max-width: 768px) {
-      .layout-container { flex-direction: column; padding: 16px; }
-      .sidebar-filters { display: none; }
+      .layout-container { flex-direction: column; padding: 16px; gap: 16px; }
+      .sidebar-filters { 
+        display: flex; 
+        width: 100%; 
+        position: static; 
+        max-height: none; 
+        flex-direction: column; 
+        gap: 10px; 
+        padding-right: 0;
+      }
+      .filter-group {
+        background: var(--cd);
+        border: 1px solid rgba(27, 58, 40, 0.12);
+        border-radius: 8px;
+        padding: 0;
+        margin-bottom: 0;
+        overflow: hidden;
+      }
+      .filter-title {
+        margin-bottom: 0;
+        padding: 12px 16px;
+        background: rgba(27, 58, 40, 0.04);
+        user-select: none;
+      }
+      .filter-title svg { transform: rotate(180deg); transition: transform var(--tr); }
+      .filter-list {
+        display: none;
+        padding: 12px 16px;
+        border-top: 1px solid rgba(27, 58, 40, 0.08);
+        flex-direction: column;
+        gap: 10px;
+        max-height: 260px;
+        overflow-y: auto;
+      }
+      .filter-group.open .filter-list { display: flex; }
+      .filter-group.open .filter-title svg { transform: rotate(0deg); }
       .product-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
       .card-content { padding: 12px; }
       .card-title { font-size: 13.5px; }
@@ -361,7 +402,7 @@
   <!-- SIDEBAR FILTERS -->
   <aside class="sidebar-filters">
     <div class="filter-group">
-      <div class="filter-title">Health Concern <svg aria-hidden="true" class="lucide lucide-chevron-up" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m18 15-6-6-6 6"></path></svg></div>
+      <div class="filter-title" onclick="this.parentElement.classList.toggle('open')">Health Concern <svg aria-hidden="true" class="lucide lucide-chevron-up" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m18 15-6-6-6 6"></path></svg></div>
       <div class="filter-list">
         <label class="filter-checkbox"><input checked="" name="concern" type="checkbox" value="all"/> All Protocols</label>
         <label class="filter-checkbox"><input name="concern" type="checkbox" value="detox"/> Detox &amp; Cleanse</label>
@@ -373,7 +414,7 @@
       </div>
     </div>
     <div class="filter-group">
-      <div class="filter-title">Product Type <svg aria-hidden="true" class="lucide lucide-chevron-up" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m18 15-6-6-6 6"></path></svg></div>
+      <div class="filter-title" onclick="this.parentElement.classList.toggle('open')">Product Type <svg aria-hidden="true" class="lucide lucide-chevron-up" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m18 15-6-6-6 6"></path></svg></div>
       <div class="filter-list">
         <label class="filter-checkbox"><input name="type" type="checkbox" value="teas"/> Herbal Teas</label>
         <label class="filter-checkbox"><input name="type" type="checkbox" value="pills"/> Micro-Pills</label>

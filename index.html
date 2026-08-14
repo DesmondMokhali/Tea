@@ -739,6 +739,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
     .trust-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--t); font-weight: 600; white-space: nowrap; }
     .trust-icon { width: 30px; height: 30px; background: var(--c); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(27, 58, 40, 0.1); color: var(--g); }
     .trust-icon svg { width: 16px; height: 16px; }
+    
+    @media(max-width:768px) {
+      .integrated-trust-bar { padding: 10px 16px; }
+      .integrated-trust-inner { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; gap: 24px; }
+      .integrated-trust-inner::-webkit-scrollbar { display: none; }
+      .trust-item { flex-shrink: 0; }
+    }
 /* Old aliases kept for compatibility */
 .tbar{display:none}
 .titem{display:none}
@@ -770,10 +777,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
 .homepage-layout { max-width: 1440px; margin: 0 auto; padding: 28px 24px 64px; display: flex; gap: 36px; align-items: flex-start; }
 .homepage-sidebar { width: 260px; flex-shrink: 0; display: flex; flex-direction: column; gap: 20px; position: sticky; top: 110px; max-height: calc(100vh - 130px); overflow-y: auto; padding-right: 8px; }
 .homepage-products { flex: 1; min-width: 0; }
-.home-filter-group { border-bottom: 1px solid rgba(27, 58, 40, 0.12); padding-bottom: 20px; }
+.home-filter-group { border-bottom: 1px solid rgba(27, 58, 40, 0.12); padding-bottom: 20px; transition: all var(--tr); }
 .home-filter-group:last-child { border-bottom: none; }
 .home-filter-title { font-size: 15px; font-weight: 700; color: var(--f); margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: 'DM Sans', sans-serif; }
-.home-filter-title svg { width: 16px; height: 16px; }
+.home-filter-title svg, .home-filter-title i { width: 16px; height: 16px; transition: transform var(--tr); }
 .home-filter-list { display: flex; flex-direction: column; gap: 4px; }
 .home-filter-btn { width: 100%; border: 0; background: transparent; text-align: left; padding: 8px 10px; border-radius: 8px; font-size: 13.5px; color: var(--t); font-weight: 500; cursor: pointer; transition: all var(--tr); font-family: 'DM Sans', sans-serif; }
 .home-filter-btn:hover { background: var(--cd); color: var(--f); }
@@ -794,9 +801,34 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
 .home-js-controls { display: none; }
 
 @media(max-width:768px) {
-  .homepage-layout { flex-direction: column; padding: 16px; }
-  .homepage-sidebar { width: 100%; position: static; max-height: none; flex-direction: row; flex-wrap: wrap; gap: 8px; }
-  .home-filter-group { border-bottom: none; padding-bottom: 0; }
+  .homepage-layout { flex-direction: column; padding: 16px; gap: 16px; }
+  .homepage-sidebar { width: 100%; position: static; max-height: none; display: flex; flex-direction: column; gap: 10px; padding-right: 0; }
+  .home-filter-group { 
+    background: var(--cd); 
+    border: 1px solid rgba(27, 58, 40, 0.12); 
+    border-radius: 8px; 
+    padding: 0; 
+    margin-bottom: 0; 
+    overflow: hidden; 
+  }
+  .home-filter-title { 
+    margin-bottom: 0; 
+    padding: 12px 16px; 
+    background: rgba(27, 58, 40, 0.04); 
+    user-select: none;
+  }
+  .home-filter-title svg, .home-filter-title i { transform: rotate(180deg); }
+  .home-filter-list { 
+    display: none; 
+    padding: 10px 14px; 
+    border-top: 1px solid rgba(27, 58, 40, 0.08); 
+    flex-direction: column; 
+    gap: 4px;
+    max-height: 260px;
+    overflow-y: auto;
+  }
+  .home-filter-group.open .home-filter-list { display: flex; }
+  .home-filter-group.open .home-filter-title svg, .home-filter-group.open .home-filter-title i { transform: rotate(0deg); }
   .home-product-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
 }
 
@@ -1969,7 +2001,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
 <main class="homepage-layout" id="ga">
   <aside class="homepage-sidebar">
     <div class="home-filter-group">
-      <div class="home-filter-title">Health Concern <i data-lucide="chevron-up"></i></div>
+      <div class="home-filter-title" onclick="this.parentElement.classList.toggle('open')">Health Concern <i data-lucide="chevron-up"></i></div>
       <div class="home-filter-list">
         <label class="home-filter-label"><input type="checkbox" value="detox" class="cat-cb" onchange="updateFilters()"> Detox &amp; Cleanse</label>
         <label class="home-filter-label"><input type="checkbox" value="heart" class="cat-cb" onchange="updateFilters()"> Heart Health</label>
@@ -1984,7 +2016,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
     </div>
 
     <div class="home-filter-group">
-      <div class="home-filter-title">Product Type <i data-lucide="chevron-up"></i></div>
+      <div class="home-filter-title" onclick="this.parentElement.classList.toggle('open')">Product Type <i data-lucide="chevron-up"></i></div>
       <div class="home-filter-list">
         <label class="home-filter-label"><input type="checkbox" value="teas" class="type-cb" onchange="updateFilters()"> Herbal Teas</label>
         <label class="home-filter-label"><input type="checkbox" value="pills" class="type-cb" onchange="updateFilters()"> Micro-Pills</label>
