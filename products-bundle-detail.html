@@ -342,14 +342,14 @@ html{scroll-behavior:smooth}
 <div class="bg-white border border-outline-variant rounded-lg p-6 overflow-hidden" style="border-left:4px solid #1b3a28;">
 <h3 class="font-headline-section text-xl text-primary-container mb-4 flex items-center gap-2"><i data-lucide="list-checks" style="width:20px;height:20px;color:#1b3a28;"></i> Key Features &amp; Benefits</h3>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div class="flex items-start gap-3 p-3 bg-surface border border-outline-variant rounded-sm">
+<div class="flex items-start gap-3 p-3 border rounded-sm" style="background:#e8dfcd; border-color:rgba(27, 58, 40, 0.15);">
 <span class="text-primary-container font-bold mt-0.5"><i data-lucide="check-circle" style="width:18px;height:18px;"></i></span>
 <div>
 <h4 class="font-body-md text-sm font-bold text-on-background mb-1">Targeted Relief</h4>
 <p class="font-caption text-xs text-on-surface-variant" id="benefit-desc-1">Eliminates brain fog and reliance on stimulants.</p>
 </div>
 </div>
-<div class="flex items-start gap-3 p-3 bg-surface border border-outline-variant rounded-sm">
+<div class="flex items-start gap-3 p-3 border rounded-sm" style="background:#e8dfcd; border-color:rgba(27, 58, 40, 0.15);">
 <span class="text-primary-container font-bold mt-0.5"><i data-lucide="check-circle" style="width:18px;height:18px;"></i></span>
 <div>
 <h4 class="font-body-md text-sm font-bold text-on-background mb-1">Synergistic TCM Combination</h4>
@@ -394,7 +394,7 @@ html{scroll-behavior:smooth}
 <p class="font-caption text-xs text-on-surface-variant">Based on 128 verified purchases</p>
 </div>
 </div>
-<div class="p-4 bg-surface border border-outline-variant rounded-sm mt-4">
+<div class="p-4 border rounded-sm mt-4" style="background:#e8dfcd; border-color:rgba(27, 58, 40, 0.15);">
 <div class="flex items-center justify-between mb-1.5">
 <span class="font-body-md text-sm font-bold text-on-background">Amanda K.</span>
 <span class="text-gold-light text-xs">★★★★★</span>
@@ -984,6 +984,8 @@ function toggleMobileMenu(open) {
               }
             }
           });
+          // Re-render cross sell so they use live prices from database
+          renderCrossSell(currentBundleKey);
         }
       } catch (err) {
         console.error('[Bundle Detail] Unexpected price fetch error:', err);
