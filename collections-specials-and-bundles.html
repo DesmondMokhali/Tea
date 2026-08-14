@@ -298,7 +298,7 @@
       <svg aria-hidden="true" class="lucide lucide-menu" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
     </button>
     <a class="nlogo" href="index.html">
-      <img alt="Earth Inventory" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRudCtg7dS6OBeRS2nA8Ehf1hD3Ngv61VUvYc-psnlJJXoES0YcLAGdUfsyZTELUKGaaL2d2emYwtJ7AhVSCkK0HcKANfei7brHsURtx5TBTLbnlCg_s3kV03ETFlEyeIODlxWWmC-WUwNAcNWS5fq9bVnIoJQYrjyi_2ccS1qK7fNy4QerBQz7UXi6viJDAMRFLunLtaErtDqxFnAliakY6_MTp9ZcGs1m4FggPPjmm4i5CTqfa_Y" style="height:44px;width:44px;object-fit:contain;filter:invert(1) brightness(2);"/>
+      <img src="assets/logo/ei_logo_e2dbc7.svg" alt="Earth Inventory" style="height:48px;width:48px;object-fit:contain;">
       <div class="ntext"><b>Earth Inventory</b><small>Traditional Chinese Wellness</small></div>
     </a>
     <div class="header-search-wrap">
@@ -469,7 +469,9 @@
         value: 920.00,
         badge: "Specialist Formulated",
         expertBadge: true,
-        images: ["assets/bundle_images/1. 24-Hour High-Performance Engine.jpeg"]
+        images: ["assets/bundle_images/1. 24-Hour High-Performance Engine.jpeg"],
+        concern: ["immunity"],
+        type: ["teas", "pills", "bundles"]
       },
       {
         id: 2,
@@ -480,7 +482,9 @@
         value: 1150.00,
         badge: "Save R150",
         expertBadge: false,
-        images: ["assets/bundle_images/2. Comprehensive Metabolic & Weight Flush.jpeg"]
+        images: ["assets/bundle_images/2. Comprehensive Metabolic & Weight Flush.jpeg"],
+        concern: ["weight", "digestion"],
+        type: ["teas", "pills", "bundles"]
       },
       {
         id: 3,
@@ -491,7 +495,9 @@
         value: 805.00,
         badge: "",
         expertBadge: true,
-        images: ["assets/bundle_images/15. Weekend Recovery & Ultimate Organ Shield.jpeg"]
+        images: ["assets/bundle_images/15. Weekend Recovery & Ultimate Organ Shield.jpeg"],
+        concern: ["detox", "immunity"],
+        type: ["teas", "pills", "bundles"]
       },
       {
         id: 4,
@@ -502,7 +508,9 @@
         value: 1127.00,
         badge: "Best Seller",
         expertBadge: false,
-        images: ["assets/bundle_images/7. Womb Wellness & Cycle Restoration Ritual.jpeg"]
+        images: ["assets/bundle_images/7. Womb Wellness & Cycle Restoration Ritual.jpeg"],
+        concern: ["detox", "immunity"],
+        type: ["teas", "pills", "bundles"]
       },
       {
         id: 5,
@@ -513,7 +521,9 @@
         value: 1208.00,
         badge: "",
         expertBadge: true,
-        images: ["assets/bundle_images/10. Golden Years Joint & Mobility Rescue.jpeg"]
+        images: ["assets/bundle_images/10. Golden Years Joint & Mobility Rescue.jpeg"],
+        concern: ["heart"],
+        type: ["teas", "pills", "bundles"]
       },
       {
         id: 6,
@@ -524,7 +534,9 @@
         value: 1725.00,
         badge: "Save R225",
         expertBadge: false,
-        images: ["assets/bundle_images/6. Whole-Body Longevity & Organ Shield.jpeg"]
+        images: ["assets/bundle_images/6. Whole-Body Longevity & Organ Shield.jpeg"],
+        concern: ["immunity", "heart"],
+        type: ["teas", "pills", "bundles"]
       },
       {
         id: 7,
@@ -535,7 +547,9 @@
         value: 500.00,
         badge: "",
         expertBadge: true,
-        images: ["assets/bundle_images/3. Ultimate Stress, Anxiety & Mood Fortress.jpeg"]
+        images: ["assets/bundle_images/3. Ultimate Stress, Anxiety & Mood Fortress.jpeg"],
+        concern: ["sleep"],
+        type: ["teas", "pills", "bundles"]
       },
       {
         id: 8,
@@ -546,7 +560,9 @@
         value: 500.00,
         badge: "",
         expertBadge: false,
-        images: ["assets/bundle_images/4. Chronic Sinus & Deep Respiratory Shield.jpeg"]
+        images: ["assets/bundle_images/4. Chronic Sinus & Deep Respiratory Shield.jpeg"],
+        concern: ["immunity"],
+        type: ["teas", "pills", "bundles"]
       }
     ];
 
@@ -554,10 +570,15 @@
       const grid = document.getElementById('bundles-grid');
       const items = dataToRender || BUNDLES_DATA;
 
+      if (items.length === 0) {
+        grid.innerHTML = `<div class="col-span-full py-16 text-center text-timber-muted font-body-md"><h3>No matching protocols found</h3><p class="mt-2 text-xs">Try selecting different filters.</p></div>`;
+        return;
+      }
+
       grid.innerHTML = items.map(b => {
         let badgesHtml = '';
         if (b.expertBadge) {
-          badgesHtml += `<span class="badge expert"><svg aria-hidden="true" class="lucide lucide-shield-check" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2-1 4-2 7-2 2.5 0 4.5 1 6.5 2a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg> Specialist Formulated</span>`;
+          badgesHtml += `<span class="badge expert"><i data-lucide="shield-check" style="width:12px;height:12px;display:inline-block;vertical-align:-1px;"></i> Specialist Formulated</span>`;
         }
         if (b.badge && !b.expertBadge) {
           badgesHtml += `<span class="badge save">${b.badge}</span>`;
@@ -581,8 +602,8 @@
               <span class="price-current">R${b.price.toFixed(2)}</span>
               ${b.value > b.price ? `<span class="price-old">R${b.value.toFixed(2)}</span>` : ''}
             </div>
-            <button class="add-to-cart-btn" onclick="alert('Added to cart')">
-              <svg aria-hidden="true" class="lucide lucide-shopping-cart" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
+            <button class="add-to-cart-btn" onclick="addBundleToCart(${b.id})">
+              <i data-lucide="shopping-cart"></i>
               Add to Cart
             </button>
           </div>
@@ -592,7 +613,106 @@
       if (typeof lucide !== 'undefined') lucide.createIcons();
     }
 
+    function addBundleToCart(bundleId) {
+      const b = BUNDLES_DATA.find(x => x.id === bundleId);
+      if (!b) return;
+      let basket = JSON.parse(localStorage.getItem('tangren_cart') || '[]');
+      const existingBundle = basket.find(x => x._bundleId === b.id);
+      if (existingBundle) {
+        existingBundle.qty += 1;
+      } else {
+        basket.push({
+          id: b.id,
+          _bundleId: b.id,
+          _bundleName: b.name,
+          _bundlePrice: b.price,
+          qty: 1
+        });
+      }
+      localStorage.setItem('tangren_cart', JSON.stringify(basket));
+      updateCartCountBadge();
+      alert(`"${b.name}" has been added to your basket!`);
+    }
+
+    function updateCartCountBadge() {
+      const basket = JSON.parse(localStorage.getItem('tangren_cart') || '[]');
+      const count = basket.reduce((acc, item) => acc + item.qty, 0);
+      const cntEl = document.getElementById('cnt');
+      if (cntEl) cntEl.textContent = count;
+    }
+
+    function applyFilters() {
+      const checkedConcerns = [...document.querySelectorAll('input[name="concern"]:checked')].map(i => i.value);
+      const checkedTypes = [...document.querySelectorAll('input[name="type"]:checked')].map(i => i.value);
+      const sortVal = document.getElementById('sort-select').value;
+
+      let filtered = [...BUNDLES_DATA];
+
+      // Filter by Concern
+      if (checkedConcerns.length > 0 && !checkedConcerns.includes('all')) {
+        filtered = filtered.filter(b => b.concern && b.concern.some(c => checkedConcerns.includes(c)));
+      }
+
+      // Filter by Type
+      if (checkedTypes.length > 0) {
+        filtered = filtered.filter(b => b.type && b.type.some(t => checkedTypes.includes(t)));
+      }
+
+      // Sort
+      if (sortVal === 'price-low') {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (sortVal === 'price-high') {
+        filtered.sort((a, b) => b.price - a.price);
+      } else if (sortVal === 'newest') {
+        filtered.sort((a, b) => b.id - a.id);
+      } else {
+        // recommended
+        filtered.sort((a, b) => a.id - b.id);
+      }
+
+      // Update Count text
+      const countEl = document.getElementById('bfc');
+      if (countEl) {
+        countEl.textContent = `${filtered.length} Special Bundle${filtered.length !== 1 ? 's' : ''} Available`;
+      }
+
+      renderGrid(filtered);
+    }
+
+    // Bind event listeners
+    const concernInputs = document.querySelectorAll('input[name="concern"]');
+    concernInputs.forEach(input => {
+      input.addEventListener('change', (e) => {
+        if (e.target.value === 'all' && e.target.checked) {
+          concernInputs.forEach(other => {
+            if (other.value !== 'all') other.checked = false;
+          });
+        } else if (e.target.value !== 'all' && e.target.checked) {
+          const allInput = [...concernInputs].find(i => i.value === 'all');
+          if (allInput) allInput.checked = false;
+        }
+        const anyChecked = [...concernInputs].some(i => i.checked);
+        if (!anyChecked) {
+          const allInput = [...concernInputs].find(i => i.value === 'all');
+          if (allInput) allInput.checked = true;
+        }
+        applyFilters();
+      });
+    });
+
+    const typeInputs = document.querySelectorAll('input[name="type"]');
+    typeInputs.forEach(input => {
+      input.addEventListener('change', applyFilters);
+    });
+
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) {
+      sortSelect.addEventListener('change', applyFilters);
+    }
+
+    // Initialize Page
     renderGrid(BUNDLES_DATA);
+    updateCartCountBadge();
 </script>
 
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
