@@ -830,6 +830,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
   .home-filter-group.open .home-filter-list { display: flex; }
   .home-filter-group.open .home-filter-title svg, .home-filter-group.open .home-filter-title i { transform: rotate(0deg); }
   .home-product-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+  .cbody { padding: 12px; }
+  .cname { font-size: 13.5px; }
+  .cprice { font-size: 17px; }
+  .catcbtn { padding: 8px 10px; font-size: 11px; gap: 6px; }
+  .catcbtn svg, .catcbtn i { width: 13px; height: 13px; }
 }
 
 /* —— CARD (matches bundles page product-card) —— */
@@ -866,11 +871,29 @@ body{font-family:'DM Sans',sans-serif;background:var(--c);color:var(--t);line-he
 .crat { display: flex; align-items: center; gap: 5px; margin-bottom: 10px; font-size: 11.5px; color: var(--tl); }
 .cstars { color: var(--g); font-size: 13px; letter-spacing: 1px; }
 
-.cfoot { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid rgba(27, 58, 40, 0.08); }
+.cfoot { display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 10px; border-top: 1px solid rgba(27, 58, 40, 0.08); }
+.card-price-row { display: flex; align-items: baseline; gap: 8px; }
 .cprice { font-family: 'DM Sans', sans-serif; font-size: 20px; font-weight: 700; color: var(--f); }
-.catcbtn { background: var(--g); color: var(--f); border: none; border-radius: var(--r); padding: 8px 16px; font-size: 12.5px; font-family: 'Montserrat', sans-serif; font-weight: 700; cursor: pointer; transition: all var(--tr); }
-.catcbtn:hover { background: var(--gl); }
+.catcbtn { 
+  width: 100%; 
+  background: var(--g); 
+  color: var(--f); 
+  border: none; 
+  border-radius: var(--r); 
+  padding: 10px; 
+  font-size: 12.5px; 
+  font-family: 'Montserrat', sans-serif; 
+  font-weight: 700; 
+  cursor: pointer; 
+  transition: all var(--tr); 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  gap: 8px; 
+}
+.catcbtn:hover { background: var(--gl); color: var(--f); }
 .catcbtn.ok { background: var(--s); color: #fff; }
+.catcbtn svg, .catcbtn i { width: 15px; height: 15px; }
 
 .nores{text-align:center;padding:60px 24px;grid-column:1/-1;color:var(--tl)}
 .nores h3{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--tm);margin-bottom:8px}
@@ -6753,8 +6776,13 @@ function renderGrid(){
         <div class="ctag">${p.t || ''}</div>
         <div class="crat"><span class="cstars">${'★'.repeat(Math.round(p.r || 4))}</span><span>${p.r || 4} (${p.rv || 0})</span></div>
         <div class="cfoot">
-          <span class="cprice">R${p.retail_price.toFixed(2)}</span>
-          <button class="catcbtn${cart.some(item => item.id === p.external_id) ? ' ok' : ''}" id="cb${idx}" onclick="addCard(event,${idx})">${cart.some(item => item.id === p.external_id) ? '✓ Added' : 'Add to Cart'}</button>
+          <div class="card-price-row">
+            <span class="cprice">R${p.retail_price.toFixed(2)}</span>
+          </div>
+          <button class="catcbtn${cart.some(item => item.id === p.external_id) ? ' ok' : ''}" id="cb${idx}" onclick="addCard(event,${idx})">
+            <i data-lucide="${cart.some(item => item.id === p.external_id) ? 'check' : 'shopping-cart'}"></i>
+            <span>${cart.some(item => item.id === p.external_id) ? 'Added' : 'Add to Cart'}</span>
+          </button>
         </div>
       </div>
     </div>`;
@@ -7004,8 +7032,11 @@ function updateCart() {
     const p = P[idx];
     if (!p) return;
     const inCart = cart.some(i => i.id === p.external_id);
-    btn.textContent = inCart ? '✓ Added' : 'Add to Cart';
+    btn.innerHTML = inCart 
+      ? '<i data-lucide="check"></i> <span>Added</span>' 
+      : '<i data-lucide="shopping-cart"></i> <span>Add to Cart</span>';
     btn.classList.toggle('ok', inCart);
+    lucide.createIcons({nameAttr:'data-lucide',attrs:{class:''},nodes:[btn]});
   });
 
   // Update detail modal button if it is open
