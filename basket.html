@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shopping Basket | Earth Inventory</title>
+  <meta name="description" content="Review your Tangren Herbal Wellness basket and proceed to checkout. Free delivery on orders over R500." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- SVG Icon Sprite -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="ico-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+    </symbol>
+    <symbol id="ico-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      <polyline points="9 12 11 14 15 10"/>
+    </symbol>
+    <symbol id="ico-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </symbol>
+    <symbol id="ico-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+    </symbol>
+    <symbol id="ico-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/>
+    </symbol>
+    <symbol id="ico-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+    </symbol>
+    <symbol id="ico-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+    </symbol>
+    <symbol id="ico-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+    </symbol>
+    <symbol id="ico-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+    </symbol>
+    <symbol id="ico-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </symbol>
+    <symbol id="ico-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+      <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+    </symbol>
+    <symbol id="ico-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+      <line x1="5" y1="12" x2="19" y2="12"/>
+    </symbol>
+    <symbol id="ico-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 18 15 12 9 6"/>
+    </symbol>
+    <symbol id="ico-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2 22l10-10M14 8c0 0-2 8-12 14 0 0 8-4 12-14 2-5 0-8 0-8s3 3 0 8z"/>
+    </symbol>
+  </svg>
+
+  <style>
+    /* ── RESET & THEME VARIABLES ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --f:       #1b3a28;        /* Deep Forest Green */
+      --fm:      #2a5040;       /* Medium Forest */
+      --fl:      #3a6852;       /* Light Forest */
+      --g:       #c8a06e;       /* Classic Accent Gold */
+      --gl:      #dab882;       /* Light Gold Accent */
+      --gp:      #f0e0c4;       /* Pale Gold Accent */
+      --c:       #f7f2e6;       /* Site Warm Cream Background */
+      --cd:      #e8e0cc;      /* Darker Cream Accent */
+      --s:       #6a9970;       /* Sage Green Accent */
+      --sl:      #9abf9d;       /* Soft Sage Accent */
+      --t:       #182415;       /* Main Text Color */
+      --tm:      #3d5c44;      /* Medium Contrast Sage Text */
+      --tl:      #7a9280;      /* Low Contrast Sage Text */
+      --w:       #ffffff;       /* Pure White Card Base */
+      --red:     #c0392b;      /* Elegant Red for warnings/delete */
+      --tr:      0.24s cubic-bezier(0.4, 0, 0.2, 1);
+      --sh:      0 8px 32px rgba(27,58,40,0.06);
+      --sh-hover:0 12px 48px rgba(27,58,40,0.12);
+      --radius:  12px;
+      --radius-sm:8px;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      background: var(--c);
+      color: var(--t);
+      font-size: 14.5px;
+      line-height: 1.6;
+      min-height: 100vh;
+      width: 100%;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    svg.icon { display: inline-block; vertical-align: middle; flex-shrink: 0; }
+
+    /* ── SCROLLBARS ── */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--c); }
+    ::-webkit-scrollbar-thumb { background: var(--cd); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--g); }
+
+    /* ── PREMIUM HEADER UTILITY BAR ── */
+    .top-bar {
+      background: #112519;
+      color: rgba(255,255,255,0.7);
+      font-size: 11.5px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── MAIN HEADER / NAVBAR ── */
+    .main-header {
+      background: var(--f);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 10px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 24px rgba(0,0,0,0.15);
+    }
+    .main-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .nlogo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nmark {
+      width: 36px;
+      height: 36px;
+      background: var(--g);
+      color: var(--f);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    .ntext b {
+      font-family: 'Cormorant Garamond', serif;
+  line-height: 0.9;
+  margin-bottom: 2px;
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--gl);
+      letter-spacing: 0.04em;
+      display: block;
+      line-height: 1.1;
+    }
+    .ntext small {
+      font-size: 9.5px;
+      color: var(--sl);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    
+    .nav-actions { display: flex; align-items: center; gap: 16px; }
+    .nav-back-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--gp);
+      font-size: 13px;
+      font-weight: 600;
+      transition: color var(--tr);
+    }
+    .nav-back-link:hover { color: var(--gl); }
+
+    .header-cart-btn {
+      background: var(--g);
+      color: var(--f);
+      border-radius: 28px;
+      padding: 6px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      transition: all var(--tr);
+      font-size: 13px;
+    }
+    .header-cart-btn:hover { background: var(--gl); transform: translateY(-1px); }
+    .cart-badge {
+      background: var(--f);
+      color: var(--g);
+      font-size: 9px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 50%;
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 24px 0;
+      font-size: 12px;
+      color: var(--tl);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .breadcrumb a { color: var(--tm); transition: color var(--tr); }
+    .breadcrumb a:hover { color: var(--f); text-decoration: underline; }
+
+    /* ── PAGE LAYOUT ── */
+    .page-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 24px 100px;
+    }
+    .page-head {
+      margin-bottom: 20px;
+    }
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+  line-height: 0.9;
+  margin-bottom: 2px;
+      font-size: 30px;
+      color: var(--f);
+      font-weight: 700;
+    }
+    .page-desc {
+      font-size: 13px;
+      color: var(--tm);
+      margin-top: 4px;
+    }
+
+    .basket-grid {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 28px;
+      align-items: start;
+    }
+    .sidebar-col {
+      position: sticky;
+      top: 96px; /* Offset below sticky header */
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    @media(max-width:900px){
+      .basket-grid { grid-template-columns: 1fr; gap: 0; }
+      .sidebar-col { display: none; }
+    }
+
+    /* ── PREMIUM CARDS ── */
+    .card {
+      background: var(--w);
+      border-radius: var(--radius);
+      border: 1px solid var(--cd);
+      box-shadow: var(--sh);
+      overflow: hidden;
+      margin-bottom: 20px;
+      transition: box-shadow var(--tr);
+    }
+    .card:hover { box-shadow: var(--sh-hover); }
+    .card-hdr {
+      background: var(--w);
+      padding: 16px 24px;
+      border-bottom: 1.5px solid var(--c);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .card-hdr h2 {
+      font-family: 'Cormorant Garamond', serif;
+  line-height: 0.9;
+  margin-bottom: 2px;
+      font-size: 18px;
+      color: var(--f);
+      font-weight: 700;
+    }
+    .item-count-badge {
+      background: var(--c);
+      color: var(--tm);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    /* ── DELIVERY BAR BANNER ── */
+    .delivery-banner {
+      border-radius: var(--radius);
+      padding: 14px 20px;
+      margin-bottom: 20px;
+      border: 1.5px solid transparent;
+      transition: all var(--tr);
+    }
+    .delivery-banner.pending {
+      background: var(--c);
+      border-color: var(--cd);
+    }
+    .delivery-banner.ok {
+      background: #eef7f2;
+      border-color: var(--s);
+    }
+    .delivery-banner-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--f);
+    }
+    .delivery-banner.ok .delivery-banner-row { color: #166534; }
+    .delivery-bar-track {
+      height: 5px;
+      background: var(--cd);
+      border-radius: 99px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+    .delivery-bar-fill {
+      height: 100%;
+      background: var(--g);
+      border-radius: 99px;
+      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .delivery-banner.ok .delivery-bar-fill { background: var(--s); }
+
+    /* ── BASKET ITEMS ── */
+    .basket-item {
+      display: flex;
+      gap: 20px;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--c);
+      transition: background var(--tr);
+    }
+    .basket-item:last-child { border-bottom: none; }
+    .basket-item:hover { background: #faf9f6; }
+    
+    .item-thumb {
+      width: 96px;
+      height: 96px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--cd);
+      background: var(--c);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .item-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 6px;
+    }
+
+    .item-info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .item-cat {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--s);
+    }
+    .item-name {
+      font-family: 'Cormorant Garamond', serif;
+  line-height: 0.9;
+  margin-bottom: 2px;
+      font-size: 16px;
+      color: var(--f);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    .item-unit {
+      font-size: 12px;
+      color: var(--tl);
+    }
+
+    .item-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 12px;
+      gap: 12px;
+    }
+    .qty-ctrl {
+      display: flex;
+      align-items: center;
+      border: 1.5px solid var(--cd);
+      border-radius: var(--radius-sm);
+      background: var(--w);
+      overflow: hidden;
+    }
+    .qty-btn {
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--f);
+      transition: background var(--tr);
+    }
+    .qty-btn:hover { background: var(--c); }
+    .qty-num {
+      min-width: 36px;
+      text-align: center;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--f);
+      border-left: 1.5px solid var(--cd);
+      border-right: 1.5px solid var(--cd);
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .item-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+    .item-total {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--f);
+    }
+    .item-remove {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--tl);
+      transition: color var(--tr);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .item-remove:hover { color: var(--red); }
+
+    /* ── MOBILE ITEM LAYOUT REFLOW ── */
+    @media(max-width:700px) {
+      /* Thumbnail shrinks, info fills remaining width */
+      .basket-item   { padding: 14px 16px; gap: 12px; align-items: flex-start; }
+      .item-thumb    { width: 72px; height: 72px; flex-shrink: 0; }
+      .item-info     { min-width: 0; flex: 1; }
+      .item-name     { font-size: 14px; }
+      .item-cat      { font-size: 9.5px; }
+      .item-unit     { font-size: 11.5px; }
+
+      /* Controls row: qty stepper LEFT, price RIGHT — same row */
+      .item-controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding-top: 10px;
+        flex-wrap: nowrap;   /* never wrap — keeps price visible */
+      }
+      .item-right    { flex-direction: row; align-items: center; gap: 10px; }
+      .item-total    { font-size: 14px; }
+      .item-remove   { font-size: 11px; gap: 3px; }
+
+      .qty-btn  { width: 30px; height: 30px; }
+      .qty-num  { min-width: 28px; height: 30px; font-size: 12.5px; }
+    }
+    @media(max-width:400px) {
+      .basket-item   { padding: 12px 14px; gap: 10px; }
+      .item-thumb    { width: 60px; height: 60px; }
+      .item-name     { font-size: 13px; }
+      .item-total    { font-size: 13px; }
+      .qty-btn  { width: 28px; height: 28px; }
+      .qty-num  { min-width: 26px; height: 28px; font-size: 12px; }
+    }
+
+    /* ── CARD BODY PADDING ── */
+    .card-body { padding: 20px 24px; }
+
+    /* ── CROSS-SELL SLIDER ── */
+    .cross-hdr h3 {
+      font-family: 'Cormorant Garamond', serif;
+  line-height: 0.9;
+  margin-bottom: 2px;
+      font-size: 18px;
+      color: var(--f);
+      font-weight: 700;
+    }
+    .cross-hdr p {
+      font-size: 12.5px;
+      color: var(--tm);
+      margin-top: 2px;
+    }
+    .cross-slider {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      padding: 12px 0 6px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .cross-slider::-webkit-scrollbar { display: none; }
+    .swipe-hint {
+      font-size: 11px;
+      color: var(--tl);
+      text-align: center;
+      margin-top: 8px;
+      letter-spacing: 0.04em;
+    }
+    .cross-card {
+      flex: 0 0 160px;
+      scroll-snap-align: start;
+      background: var(--w);
+      border: 1px solid var(--cd);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all var(--tr);
+    }
+    .cross-card:hover { transform: translateY(-3px); box-shadow: var(--sh-hover); border-color: var(--g); }
+    .cross-img {
+      height: 110px;
+      background: var(--c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .cross-img img { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
+    .cross-badge {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      font-size: 8.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 2.5px 6.5px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }
+    .b-pop { background: #fef3c7; color: #92400e; }
+    .b-new { background: #dbeafe; color: #1e40af; }
+    .b-best { background: #eef7f2; color: #15803d; }
+    .cross-info {
+      padding: 10px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .cross-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--f);
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      height: 32px;
+    }
+    .cross-price {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--f);
+    }
+    .cross-btn {
+      margin-top: auto;
+      width: 100%;
+      background: var(--f);
+      color: var(--gp);
+      border-radius: 6px;
+      padding: 7px 4px;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: all var(--tr);
+    }
+    .cross-btn:hover { background: var(--g); color: var(--f); }
+
+    /* ── PROMO CODE UI ── */
+    .promo-hdr {
+      font-family: 'Cormorant Garamond', serif;
+  line-height: 0.9;
+  margin-bottom: 2px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--f);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .promo-row { display: flex; gap: 10px; }
+    .promo-input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1.5px solid var(--cd);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-family: inherit;
+      outline: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: border-color var(--tr);
+    }
+    .promo-input:focus { border-color: var(--g); }
+    .promo-btn {
+      padding: 10px 20px;
+      background: var(--f);
+      color: var(--gp);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 700;
+      transition: all var(--tr);
+    }
+    .promo-btn:hover { background: var(--g); color: var(--f); }
+    .promo-err { font-size: 11px; color: var(--red); margin-top: 5px; font-weight: 600; display: none; }
+    .promo-hint { font-size: 11px; color: var(--tl); margin-top: 6px; }
+
+    .promo-applied {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: #eef7f2;
+      border: 1.5px solid var(--s);
+      border-radius: var(--radius-sm);
+    }
+    .promo-applied-label { font-size: 13.5px; font-weight: 700; color: #166534; display: flex; align-items: center; gap: 6px; }
+    .promo-applied-sub { font-size: 11.5px; color: #3d5c44; }
+    .promo-rm { color: #166534; transition: color var(--tr); }
+    .promo-rm:hover { color: var(--red); }
+
+    /* ── TRUST BADGES STACK ── */
+    .trust-stack { display: flex; flex-direction: column; gap: 12px; }
+    .trust-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 14px 18px;
+      background: var(--w);
+      border: 1px solid var(--cd);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--sh);
+      transition: all var(--tr);
+    }
+    .trust-item:hover { box-shadow: var(--sh-hover); transform: translateY(-1px); }
+    .trust-icon {
+      width: 38px;
+      height: 38px;
+      background: #faf2e6;
+      color: var(--g);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .trust-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--f); margin-bottom: 2px; }
+    .trust-desc { font-size: 12px; color: var(--tm); line-height: 1.5; }
+
+    /* ── ORDER SUMMARY SIDEBAR ── */
+    .summary-card {
+      background: var(--w);
+      border: 1px solid var(--cd);
+      border-radius: var(--radius);
+      box-shadow: var(--sh-hover);
+      overflow: hidden;
+      position: sticky;
+      top: 86px;
+      margin-bottom: 16px;
+    }
+    .summary-hdr {
+      background: var(--f);
+      color: var(--gl);
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .summary-hdr h3 { font-family: 'Cormorant Garamond', serif;
+  line-height: 0.9;
+  margin-bottom: 2px; font-size: 18px; font-weight: 700; }
+    .summary-hdr p { font-size: 11px; color: var(--sl); margin-top: 1px; }
+    
+    .summary-body { padding: 18px 20px; }
+    .sum-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 9px 0;
+      font-size: 13.5px;
+      border-bottom: 1px solid var(--c);
+    }
+    .sum-row:last-of-type { border-bottom: none; }
+    .sum-row-lbl { color: var(--tm); }
+    .sum-row-val { font-weight: 600; color: var(--f); }
+    .sum-row-val.free { color: var(--s); font-weight: 700; }
+    .sum-row-val.discount { color: var(--s); }
+    
+    .sum-divider { height: 1.5px; background: var(--c); margin: 8px 0; }
+    .sum-total-row { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0 4px; }
+    .sum-total-lbl { font-family: 'Cormorant Garamond', serif;
+  line-height: 0.9;
+  margin-bottom: 2px; font-size: 16px; color: var(--f); font-weight: 700; }
+    .sum-total-val { font-family: 'Montserrat', sans-serif; font-size: 24px; color: var(--f); font-weight: 800; }
+
+    .chk-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: var(--f);
+      color: var(--gl);
+      border-radius: var(--radius-sm);
+      padding: 15px;
+      font-size: 14.5px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 16px;
+      transition: all var(--tr);
+    }
+    .chk-btn:hover { background: var(--g); color: var(--f); box-shadow: 0 6px 20px rgba(200,160,110,0.25); }
+    
+    .sum-secure {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--tl);
+      margin-top: 12px;
+    }
+
+    /* ── EMPTY STATE ── */
+    .empty-state {
+      padding: 64px 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .empty-icon-wrap {
+      width: 72px;
+      height: 72px;
+      background: var(--c);
+      color: var(--g);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+    .empty-state h3 { font-family: 'Cormorant Garamond', serif;
+  line-height: 0.9;
+  margin-bottom: 2px; font-size: 22px; color: var(--f); }
+    .empty-state p { font-size: 13.5px; color: var(--tm); max-width: 280px; }
+    .empty-shop-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--f);
+      color: var(--gp);
+      padding: 12px 28px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 13.5px;
+      margin-top: 8px;
+      transition: all var(--tr);
+    }
+    .empty-shop-btn:hover { background: var(--g); color: var(--f); }
+
+    /* ── MOBILE STICKY BAR ── */
+    .mob-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      background: var(--w);
+      border-top: 1px solid var(--cd);
+      padding: 12px 20px;
+      box-shadow: 0 -4px 20px rgba(27,58,40,0.1);
+    }
+    @media(max-width:900px){ .mob-bar { display: block; } }
+
+    /* ══════════════════════════════════════════════
+       COMPREHENSIVE MOBILE RESPONSIVE OVERHAUL
+    ══════════════════════════════════════════════ */
+
+    /* ── Tablet & Small Desktop ── */
+    @media(max-width:900px){
+      .page-wrap    { padding: 14px 16px 110px; }
+      .breadcrumb   { padding: 12px 16px 0; font-size: 11.5px; }
+      .card-hdr     { padding: 14px 18px; }
+      .card-body    { padding: 16px 18px; }
+      .basket-item  { padding: 16px 18px; }
+      .page-title   { font-size: 26px; }
+      .delivery-banner { padding: 12px 16px; margin-bottom: 16px; }
+      .card         { margin-bottom: 14px; }
+      .cross-card   { flex: 0 0 148px; }
+    }
+
+    /* ── Mobile ── */
+    @media(max-width:600px){
+      .top-bar      { font-size: 10.5px; padding: 0 12px; letter-spacing: 0.02em; }
+      .main-header  { padding: 8px 14px; }
+      .ntext small  { display: none; }
+      .nav-back-link span { display: none; }
+      .nav-back-link { gap: 4px; }
+      .page-wrap    { padding: 12px 14px 110px; }
+      .breadcrumb   { padding: 10px 14px 0; }
+      .page-title   { font-size: 22px; }
+      .page-desc    { font-size: 12px; }
+      .page-head    { margin-bottom: 14px; }
+      .delivery-banner { padding: 10px 14px; margin-bottom: 14px; }
+      .delivery-banner-row { font-size: 12.5px; }
+      .card-hdr     { padding: 12px 16px; }
+      .card-hdr h2  { font-size: 16px; }
+      .card-body    { padding: 14px 16px; }
+      .basket-item  { padding: 14px 16px; gap: 12px; }
+      .item-thumb   { width: 72px; height: 72px; border-radius: 8px; }
+      .item-cat     { font-size: 9.5px; }
+      .item-name    { font-size: 14px; }
+      .item-unit    { font-size: 11.5px; }
+      .item-controls{ padding-top: 10px; }
+      .qty-btn      { width: 30px; height: 30px; }
+      .qty-num      { min-width: 30px; height: 30px; font-size: 12.5px; }
+      .item-total   { font-size: 15px; }
+      .item-remove  { font-size: 11.5px; }
+      .cross-card   { flex: 0 0 136px; }
+      .cross-img    { height: 96px; }
+      .cross-info   { padding: 8px; }
+      .cross-name   { font-size: 11.5px; }
+      .cross-price  { font-size: 12.5px; }
+      .cross-btn    { font-size: 10.5px; padding: 6px; }
+      .promo-row    { flex-direction: column; }
+      .promo-btn    { width: 100%; padding: 11px; text-align: center; }
+      .promo-input  { width: 100%; }
+      .trust-item   { padding: 12px 14px; gap: 10px; }
+      .trust-icon   { width: 32px; height: 32px; }
+      .trust-title  { font-size: 11px; }
+      .trust-desc   { font-size: 11px; }
+      /* Show mobile trust badges via CSS (belt-and-braces) */
+      #trust-mobile-wrap { display: block !important; }
+      /* Compact 2-column trust grid on mobile */
+      #trust-mobile.trust-stack {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      #trust-mobile .trust-item:last-child {
+        grid-column: 1 / -1;   /* full-width last badge */
+      }
+      /* Reduce bottom padding — 80px is plenty for sticky bar */
+      .page-wrap { padding-bottom: 84px !important; }
+      .mob-bar      { padding: 10px 14px; }
+      .mob-bar-inner{ gap: 10px; }
+      .mob-total-val{ font-size: 18px; }
+      .mob-chk-btn  { padding: 12px 10px; font-size: 12.5px; }
+    }
+
+    /* ── Small Mobile (≤ 400px) ── */
+    @media(max-width:400px){
+      .page-wrap    { padding: 10px 12px 110px; }
+      .breadcrumb   { padding: 8px 12px 0; }
+      .main-header  { padding: 8px 12px; }
+      .ntext b      { font-size: 14px; }
+      .nmark        { width: 30px; height: 30px; }
+      .basket-item  { padding: 12px 14px; gap: 10px; }
+      .item-thumb   { width: 60px; height: 60px; }
+      .item-name    { font-size: 13.5px; }
+      .qty-btn      { width: 28px; height: 28px; }
+      .qty-num      { min-width: 28px; height: 28px; font-size: 12px; }
+      .item-total   { font-size: 14px; }
+      .cross-card   { flex: 0 0 120px; }
+      .cross-img    { height: 84px; }
+    }
+
+    /* ── iOS safe area for sticky bar ── */
+    @supports(padding-bottom: env(safe-area-inset-bottom)){
+      .mob-bar {
+        padding-bottom: calc(10px + env(safe-area-inset-bottom));
+      }
+      body {
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+    }
+    .mob-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .mob-total-lbl { font-size: 11px; color: var(--tl); text-transform: uppercase; letter-spacing: 0.05em; }
+    .mob-total-val { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 800; color: var(--f); }
+    .mob-chk-btn {
+      flex: 1;
+      background: var(--f);
+      color: var(--gl);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all var(--tr);
+      text-align: center;
+    }
+    .mob-chk-btn:hover { background: var(--g); color: var(--f); }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed;
+      bottom: 86px;
+      left: 50%;
+      transform: translateX(-50%) translateY(12px);
+      background: var(--f);
+      color: var(--gl);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 700;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s, transform 0.25s;
+      white-space: nowrap;
+      z-index: 999;
+      box-shadow: var(--shadow-lg);
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- Top Utility Bar -->
+<div class="top-bar">
+  <svg class="icon" width="13" height="13"><use href="#ico-truck"/></svg>
+  Free courier delivery on orders over R500 &nbsp;&bull;&nbsp; Nationwide South Africa
+</div>
+
+<!-- Main Header -->
+<header class="main-header">
+  <div class="main-header-inner">
+    <a href="index.html" class="nlogo">
+      <img src="assets/logo/ei_logo.svg" alt="Earth Inventory" style="height:56px;width:56px;object-fit:contain;filter:invert(1) brightness(2);">
+      <div class="ntext">
+        <b>Earth Inventory</b>
+        <small>Traditional Wellness</small>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <a href="index.html" class="nav-back-link">
+        <svg class="icon" width="14" height="14"><use href="#ico-arrow-left"/></svg>
+        Continue Shopping
+      </a>
+      <div class="header-cart-btn">
+        <svg class="icon" width="16" height="16"><use href="#ico-cart"/></svg>
+        <span class="cart-badge" id="nav-count">0</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a>
+  <svg class="icon" width="10" height="10" style="color:var(--tl)"><use href="#ico-chevron-right"/></svg>
+  <span>Shopping Basket</span>
+</div>
+
+<!-- Page Body -->
+<div class="page-wrap">
+  <div class="page-head">
+    <h1 class="page-title">Your Basket</h1>
+    <p class="page-desc" id="page-sub">Review your items and proceed to complete your order details.</p>
+  </div>
+
+  <div class="basket-grid">
+    <!-- LEFT COLUMN -->
+    <div class="main-col">
+      <!-- Free Delivery Progress -->
+      <div class="delivery-banner pending" id="delivery-banner">
+        <div class="delivery-banner-row">
+          <svg class="icon" width="16" height="16" id="delivery-icon"><use href="#ico-truck"/></svg>
+          <span id="delivery-text">Spend R500 more to get FREE courier delivery.</span>
+        </div>
+        <div class="delivery-bar-track">
+          <div class="delivery-bar-fill" id="delivery-fill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <!-- Items List -->
+      <div class="card">
+        <div class="card-hdr">
+          <h2>Items Summary</h2>
+          <span class="item-count-badge" id="item-badge">0 Items</span>
+        </div>
+        <div id="basket-items-container"></div>
+      </div>
+
+      <!-- Cross-Sells -->
+      <div class="card" id="cross-section" style="display:none;">
+        <div class="card-body">
+          <div class="cross-hdr">
+            <h3>Recommended Pairings</h3>
+            <p>Add these matching wellness selections to your basket</p>
+          </div>
+          <div class="cross-slider" id="cross-slider"></div>
+          <p class="swipe-hint">← Swipe to explore more options →</p>
+        </div>
+      </div>
+
+      <!-- Promo Code & Benefits -->
+      <div class="card">
+        <div class="card-body">
+          <div class="promo-hdr">
+            <svg class="icon" width="15" height="15" style="color:var(--g)"><use href="#ico-tag"/></svg>
+            Promotional &amp; Benefit Codes
+          </div>
+          <div id="promo-ui"></div>
+          
+          <!-- Trust Badges Under Promo Code Card -->
+          <div class="trust-stack" style="margin-top: 24px; border-top: 1px solid var(--cd); padding-top: 20px;">
+            <div class="trust-item">
+              <div class="trust-icon"><svg class="icon" width="16" height="16"><use href="#ico-truck"/></svg></div>
+              <div>
+                <div class="trust-title">Fast Courier Delivery</div>
+                <div class="trust-desc">Delivered to your door in 3-5 working days. Trackable nationwide shipping.</div>
+              </div>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon"><svg class="icon" width="16" height="16"><use href="#ico-shield"/></svg></div>
+              <div>
+                <div class="trust-title">7-Day Quality Guarantee</div>
+                <div class="trust-desc">Seals checked and protected. Satisfaction exchanges within 7 days.</div>
+              </div>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon"><svg class="icon" width="16" height="16"><use href="#ico-chat"/></svg></div>
+              <div>
+                <div class="trust-title">WhatsApp Support</div>
+                <div class="trust-desc">Direct line with our experts for dosing information and inquiries.</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR (Desktop) -->
+    <div class="sidebar-col">
+      <!-- Order Summary Card -->
+      <div class="summary-card">
+        <div class="summary-hdr">
+          <h3>Order Summary</h3>
+          <p>Finalize and secure your checkout</p>
+        </div>
+        <div class="summary-body">
+          <div class="sum-row">
+            <span class="sum-row-lbl">Items Subtotal</span>
+            <span class="sum-row-val" id="s-subtotal">R0.00</span>
+          </div>
+          <div class="sum-row" id="s-disc-row" style="display:none;">
+            <span class="sum-row-lbl">Promo Discount</span>
+            <span class="sum-row-val discount" id="s-disc">-R0.00</span>
+          </div>
+          <div class="sum-row">
+            <span class="sum-row-lbl">Delivery Charge</span>
+            <span class="sum-row-val" id="s-delivery">R75.00</span>
+          </div>
+          <div class="sum-divider"></div>
+          <div class="sum-total-row">
+            <span class="sum-total-lbl">Total Price</span>
+            <span class="sum-total-val" id="s-total">R0.00</span>
+          </div>
+          <button class="chk-btn" onclick="proceedToCheckout()">
+            Proceed to Checkout
+            <svg class="icon" width="16" height="16"><use href="#ico-chevron-right"/></svg>
+          </button>
+          <div class="sum-secure">
+            <svg class="icon" width="12" height="12"><use href="#ico-lock"/></svg>
+            SSL Secure Order Encryption
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Sticky Bottom Action Bar (Mobile Only) -->
+<div class="mob-bar" id="mob-bar" style="display:none;">
+  <div class="mob-bar-inner">
+    <div>
+      <div class="mob-total-lbl">Est. Total</div>
+      <div class="mob-total-val" id="mob-total">R0.00</div>
+    </div>
+    <button class="mob-chk-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+  </div>
+</div>
+
+<!-- Toast Alert -->
+<div class="toast" id="toast"></div>
+
+<script>
+// SVG helper utility
+const SVG = id => `<svg class="icon" width="14" height="14"><use href="#${id}"/></svg>`;
+
+// Business Rules Setup
+const FREE_THRESHOLD = 500;
+const DELIVERY_FEE   = 75;
+const PROMOS = { TANGREN10: 0.10, HERB15: 0.15 };
+
+// Database seed catalog
+const CAT = [
+  { id:'TG-TEA-001', name:'Abdomen Slimming Tea',     price:100, img:'images/abdomen_slimming_tea.png',      cat:'Herbal Tea'  },
+  { id:'TG-TEA-003', name:'Anti Stress Sleeping Tea',  price:100, img:'images/anti_stress_sleeping_tea.png', cat:'Herbal Tea'  },
+  { id:'TG-TEA-010', name:'Coughing Tea',              price:100, img:'images/coughing_tea.png',             cat:'Herbal Tea'  },
+  { id:'TG-PILL-001',name:'Gan Mao Ling',              price:100, img:'images/gan_mao_ling.png',             cat:'Herbal Pill' },
+  { id:'TG-TEA-011', name:'Detox Tea',                 price:100, img:'images/detox_tea.png',                cat:'Herbal Tea'  },
+  { id:'TG-TEA-012', name:'Digestive Tea',             price:100, img:'images/digestive_tea.png',            cat:'Herbal Tea'  },
+  { id:'TG-TEA-013', name:'Ginseng Tea',               price:100, img:'images/ginseng_tea.png',              cat:'Herbal Tea'  },
+  { id:'TG-TEA-014', name:'Liver Care Tea',            price:100, img:'images/liver_care_tea.png',           cat:'Herbal Tea'  },
+  { id:'TG-TEA-015', name:'Kidney Care Tea',           price:100, img:'images/kidney_care_tea.png',          cat:'Herbal Tea'  },
+  { id:'TG-PILL-002',name:'Liu Wei Di Huang Wan',      price:100, img:'images/liu_wei_di_huang_wan.png',     cat:'Herbal Pill' },
+  { id:'TG-PILL-003',name:'Xiao Yao Wan',              price:100, img:'images/xiao_yao_wan.png',             cat:'Herbal Pill' },
+  { id:'TG-TEA-016', name:'Heart Care Tea',            price:100, img:'images/heart_care_tea.png',           cat:'Herbal Tea'  },
+];
+const CROSS_IDS    = ['TG-TEA-011','TG-TEA-013','TG-TEA-014','TG-TEA-015','TG-PILL-002','TG-PILL-003','TG-TEA-016'];
+const CROSS_BADGES = { 'TG-TEA-013':'Popular','TG-PILL-002':'Best Seller','TG-TEA-011':'New','TG-TEA-016':'Popular' };
+
+// Initial States loaded from site cache
+let basket       = JSON.parse(localStorage.getItem('tg_basket') || 'null')
+                   || [{id:'TG-TEA-001',qty:2},{id:'TG-TEA-010',qty:1},{id:'TG-PILL-001',qty:1}];
+let promoCode    = null;
+let promoDisc    = 0;
+
+const byId = id => CAT.find(p => p.id === id);
+const save = ()  => localStorage.setItem('tg_basket', JSON.stringify(basket));
+
+// Calculations
+function calc() {
+  const sub      = basket.reduce((s,i) => s + (byId(i.id)?.price||0)*i.qty, 0);
+  const discAmt  = Math.round(sub * promoDisc);
+  const after    = sub - discAmt;
+  const delivery = after >= FREE_THRESHOLD ? 0 : DELIVERY_FEE;
+  const total    = after + delivery;
+  const remain   = Math.max(0, FREE_THRESHOLD - after);
+  return { sub, discAmt, after, delivery, total, remain };
+}
+
+// Render dynamic components
+function render() {
+  const { sub, discAmt, after, delivery, total, remain } = calc();
+  const totalQty = basket.reduce((s,i) => s+i.qty, 0);
+
+  // Navbar counts
+  document.getElementById('nav-count').textContent = totalQty;
+
+  // Header and subtitles
+  document.getElementById('page-sub').textContent =
+    totalQty===0 ? 'Your shopping basket is currently empty.'
+                 : `Review your ${totalQty} traditional herbal selection${totalQty!==1?'s':''} below.`;
+
+  document.getElementById('item-badge').textContent =
+    `${basket.length} Product${basket.length!==1?'s':''}`;
+
+  // Delivery banner logic
+  const pct    = Math.min(100, Math.round((after/FREE_THRESHOLD)*100));
+  const banner = document.getElementById('delivery-banner');
+  const icon   = document.getElementById('delivery-icon');
+  document.getElementById('delivery-fill').style.width = pct+'%';
+  if (delivery===0) {
+    banner.className = 'delivery-banner ok';
+    icon.innerHTML   = '<use href="#ico-check-circle"/>';
+    document.getElementById('delivery-text').textContent = 'Congratulations! Your order qualifies for FREE delivery.';
+  } else {
+    banner.className = 'delivery-banner pending';
+    icon.innerHTML   = '<use href="#ico-truck"/>';
+    document.getElementById('delivery-text').textContent = `Spend R${remain} more to get FREE courier delivery.`;
+  }
+
+  // Render basket items
+  const con = document.getElementById('basket-items-container');
+  if (basket.length===0) {
+    con.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon-wrap">
+          <svg class="icon" width="28" height="28"><use href="#ico-cart"/></svg>
+        </div>
+        <h3>Your basket is empty</h3>
+        <p>Explore our premium traditional formulations and teas to add wellness remedies to your cart.</p>
+        <a href="index.html" class="empty-shop-btn">
+          ${SVG('ico-arrow-left')} Back to Catalogue
+        </a>
+      </div>`;
+  } else {
+    con.innerHTML = basket.map(item => {
+      const p = byId(item.id); if(!p) return '';
+      return `
+      <div class="basket-item">
+        <div class="item-thumb">
+          <img src="${p.img}" alt="${p.name}"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="item-thumb-fallback" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;">
+            <svg class="icon" width="24" height="24" style="color:var(--cd);"><use href="#ico-leaf"/></svg>
+          </div>
+        </div>
+        <div class="item-info">
+          <span class="item-cat">${p.cat}</span>
+          <div class="item-name">${p.name}</div>
+          <div class="item-unit">R${p.price.toFixed(2)}</div>
+          <div class="item-controls">
+            <div class="qty-ctrl">
+              <button class="qty-btn" onclick="changeQty('${item.id}',-1)" aria-label="Decrease quantity">
+                <svg class="icon" width="11" height="11"><use href="#ico-minus"/></svg>
+              </button>
+              <span class="qty-num">${item.qty}</span>
+              <button class="qty-btn" onclick="changeQty('${item.id}',1)" aria-label="Increase quantity">
+                <svg class="icon" width="11" height="11"><use href="#ico-plus"/></svg>
+              </button>
+            </div>
+            <div class="item-right">
+              <span class="item-total">R${(p.price*item.qty).toFixed(2)}</span>
+              <button class="item-remove" onclick="removeItem('${item.id}')">
+                <svg class="icon" width="12" height="12"><use href="#ico-trash"/></svg> Remove
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  // Cross-sellings
+  const inCart  = new Set(basket.map(i=>i.id));
+  const crosses = CROSS_IDS.filter(id=>!inCart.has(id)).map(id=>byId(id)).filter(Boolean).slice(0,8);
+  const cs      = document.getElementById('cross-section');
+  cs.style.display = (crosses.length && basket.length) ? 'block' : 'none';
+  document.getElementById('cross-slider').innerHTML = crosses.map(p => {
+    const b    = CROSS_BADGES[p.id];
+    const bcls = b==='Popular'?'b-pop':b==='Best Seller'?'b-best':b==='New'?'b-new':'';
+    return `
+    <div class="cross-card">
+      <div class="cross-img">
+        <img src="${p.img}" alt="${p.name}" onerror="this.style.display='none'"/>
+        ${b?`<span class="cross-badge ${bcls}">${b}</span>`:''}
+      </div>
+      <div class="cross-info">
+        <div class="cross-name">${p.name}</div>
+        <div class="cross-price">R${p.price.toFixed(2)}</div>
+        <button class="cross-btn" id="xb-${p.id}" onclick="addCross('${p.id}')">
+          ${SVG('ico-plus')} Add
+        </button>
+      </div>
+    </div>`;
+  }).join('');
+
+  // Promo code
+  renderPromo();
+
+  // Mobile trust badges
+      // (Bypassed since they are statically placed in the promo card section now)
+
+  // Summaries
+  document.getElementById('s-subtotal').textContent = 'R'+sub.toFixed(2);
+  if (discAmt>0) {
+    document.getElementById('s-disc-row').style.display = 'flex';
+    document.getElementById('s-disc').textContent = '-R'+discAmt.toFixed(2);
+  } else {
+    document.getElementById('s-disc-row').style.display = 'none';
+  }
+  
+  const sDelEl = document.getElementById('s-delivery');
+  if (delivery===0) { 
+    sDelEl.textContent='FREE (Spend R500+)'; 
+    sDelEl.className='sum-row-val free'; 
+  } else { 
+    sDelEl.textContent='R'+delivery.toFixed(2); 
+    sDelEl.className='sum-row-val'; 
+  }
+  document.getElementById('s-total').textContent = 'R'+total.toFixed(2);
+
+  // Mobile bar
+  document.getElementById('mob-total').textContent = 'R'+total.toFixed(2);
+  const mb = document.getElementById('mob-bar');
+  mb.style.display = basket.length ? 'block' : 'none';
+}
+
+function renderPromo() {
+  const ui = document.getElementById('promo-ui');
+  if (promoCode) {
+    ui.innerHTML = `
+      <div class="promo-applied">
+        <div>
+          <div class="promo-applied-label">
+            ${SVG('ico-check-circle')} ${promoCode} applied
+          </div>
+          <div class="promo-applied-sub">${Math.round(promoDisc*100)}% discount has been applied.</div>
+        </div>
+        <button class="promo-rm" onclick="removePromo()" title="Remove promo code">
+          <svg class="icon" width="14" height="14"><use href="#ico-x"/></svg>
+        </button>
+      </div>`;
+  } else {
+    ui.innerHTML = `
+      <div class="promo-row">
+        <input type="text" class="promo-input" id="promo-input" placeholder="Enter promo code"
+          maxlength="20" onkeydown="if(event.key==='Enter')applyPromo()" />
+        <button class="promo-btn" onclick="applyPromo()">Apply Code</button>
+      </div>
+      <p class="promo-err" id="promo-err"></p>
+      <p class="promo-hint">Use <strong>TANGREN10</strong> for 10% off or <strong>HERB15</strong> for 15% off.</p>`;
+  }
+}
+
+// ── ACTIONS ──────────────────────────────────────────────────────────────────
+function changeQty(id, d) {
+  const it = basket.find(i=>i.id===id); if(!it) return;
+  if (it.qty+d < 1) { removeItem(id); return; }
+  it.qty += d; save(); render();
+}
+
+function removeItem(id) {
+  basket = basket.filter(i=>i.id!==id); save(); render();
+  toast('Item removed from basket');
+}
+
+function addCross(id) {
+  const ex = basket.find(i=>i.id===id);
+  if (ex) ex.qty++; else basket.push({id, qty:1});
+  save(); render(); toast('Added to basket');
+}
+
+function applyPromo() {
+  const inp = document.getElementById('promo-input'); if(!inp) return;
+  const code = inp.value.trim().toUpperCase();
+  const err  = document.getElementById('promo-err');
+  if (!code) return;
+  if (PROMOS[code]!==undefined) {
+    promoCode=code; promoDisc=PROMOS[code];
+    render(); toast(`${code} applied — ${Math.round(promoDisc*100)}% off!`);
+  } else {
+    if (err) { err.textContent='Invalid promo code. Please try again.'; err.style.display='block'; }
+  }
+}
+
+function removePromo() { promoCode=null; promoDisc=0; render(); }
+
+function proceedToCheckout() {
+  if (basket.length===0) { toast('Your basket is empty!'); return; }
+  window.location.href = 'index.html?openCheckout=true';
+}
+
+function toast(msg) {
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2800);
+}
+
+// ── INIT ─────────────────────────────────────────────────────────────────────
+render();
+window.addEventListener('resize', render);
+</script>
+</body>
+</html>

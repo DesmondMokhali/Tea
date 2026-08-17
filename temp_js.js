@@ -1,0 +1,3789 @@
+
+const CATS=[
+  {id:'all',l:'All Teas',ico:'grid-3x3'},
+  {id:'detox',l:'Detox & Cleanse',ico:'leaf'},
+  {id:'heart',l:'Heart Health',ico:'heart'},
+  {id:'weight',l:'Weight Management',ico:'scale'},
+  {id:'immunity',l:'Immunity',ico:'shield'},
+  {id:'women',l:'Women\'s Wellness',ico:'flower-2'},
+  {id:'men',l:'Men\'s Wellness',ico:'dumbbell'},
+  {id:'sleep',l:'Sleep & Calm',ico:'moon'},
+  {id:'resp',l:'Respiratory',ico:'wind'},
+  {id:'digest',l:'Digestive',ico:'wheat'},
+];
+const TESTIS=[
+  ['"My skin improved visibly after 3 weeks on this blend — remarkable quality."','— Sarah K.'],
+  ['"I felt real results in under a month. Whole family drinks it now."','— James T.'],
+  ['"Such a gentle yet effective blend. I look forward to it every morning."','— Michelle L.'],
+  ['"The finest herbal tea I\'ve ever tried. Noticeable difference in energy."','— David W.'],
+  ['"Tastes wonderful and my wellness has genuinely improved since starting."','— Priya M.'],
+  ['"A calming ritual I can\'t imagine my evenings without now."','— Lisa C.'],
+  ['"I feel lighter and more energised. The quality of herbs is exceptional."','— Amanda R.'],
+];
+
+const tcmCatalogDetails = {
+  "ANTI-CANCER TEA": {
+        img: "ANTI-CANCER_TEA.png",
+    "t": "Immune-Fortifying Herbal Shield",
+    "cat": "immunity",
+    "ing": [
+      "Akebia Fruit",
+      "Oldenlandia",
+      "Chinese Lobelia",
+      "Licorice",
+      "Oolong Tea",
+      "Cape Jasmine Fruit",
+      "Green Tea"
+    ],
+    "ben": [
+      "Supports immune defence",
+      "Anti-inflammatory properties",
+      "Clears heat and toxins",
+      "Rich in antioxidants",
+      "Promotes cellular health"
+    ],
+    "ind": "For those seeking to strengthen immune resilience and support overall cellular wellbeing through traditional Chinese herbalism.",
+    "use": "Steep 1 bag in hot water (90–95°C) for 5–7 minutes. Drink warm. 1–2 times daily. Consistent daily use recommended.",
+    "ch": [
+      "Immune Support",
+      "Antioxidant",
+      "Detox",
+      "Herbal Blend"
+    ]
+  },
+  "ANTI-STRESS SLEEPING TEA": {
+        img: "ANTI-STRESS_SLEEPING_TEA.png",
+    "t": "Calm Your Mind, Sleep Deeply",
+    "cat": "sleep",
+    "ing": [
+      "Ganoderma lucidum",
+      "Tuber Fleece Flower Stem",
+      "Blighted Wheat",
+      "Red Dates",
+      "Licorice",
+      "Glossy Privet Fruit"
+    ],
+    "ben": [
+      "Calms the mind and spirit",
+      "Reduces insomnia",
+      "Eases mental stress",
+      "Promotes deep restful sleep",
+      "Balances the nervous system"
+    ],
+    "ind": "Suitable for people with mental stress and difficulty falling asleep. Can be used nightly as a bedtime ritual.",
+    "use": "Take 1 bag, 1–2 times per day. Best enjoyed warm, 30–60 minutes before bedtime. Steep for 5 minutes.",
+    "ch": [
+      "Deep Sleep",
+      "Stress Relief",
+      "Calm Mind",
+      "Anti-Insomnia"
+    ]
+  },
+  "ANTI-VIRUS TEA": {
+        img: "ANTI-VIRUS_TEA.png",
+    "t": "Fortify Your Natural Defences",
+    "cat": "immunity",
+    "ing": [
+      "Honeysuckle Flower",
+      "Dandelion",
+      "Isatidis Root",
+      "Astragalus Root",
+      "Reed Rhizome",
+      "Licorice",
+      "Green Tea"
+    ],
+    "ben": [
+      "Antiviral & antibacterial action",
+      "Boosts immune system",
+      "Clears heat and toxins",
+      "Reduces inflammation",
+      "Supports upper respiratory health"
+    ],
+    "ind": "Ideal for those seeking to strengthen immunity year-round, especially during cold and flu season.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm, 1–2 times daily. Especially beneficial during illness-prone seasons.",
+    "ch": [
+      "Antiviral",
+      "Immune Boost",
+      "Detox",
+      "Green Tea Base"
+    ]
+  },
+  "BALSAM PEAR TEA": {
+    "t": "Blood Sugar Balance & Detox",
+    "cat": "weight",
+    "ing": [
+      "Bitter Melon (Balsam Pear)"
+    ],
+    "ben": [
+      "Helps regulate blood sugar levels",
+      "Supports cancer-fighting properties",
+      "Reduces cholesterol",
+      "Aids healthy weight management",
+      "Clears heat and detoxifies",
+      "Nourishes eyes and reduces bad breath"
+    ],
+    "ind": "Suitable for those managing blood sugar, weight, or cholesterol. Low in calories and high in fibre. Ideal for health-conscious individuals.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm or chilled. 1–2 times daily, preferably before meals.",
+    "ch": [
+      "Blood Sugar",
+      "Detox",
+      "Weight Support",
+      "Anti-Cancer"
+    ]
+  },
+  "BARLEY GRASS JUICE": {
+    "t": "Green Superfood Nutrient Boost",
+    "cat": "immunity",
+    "ing": [
+      "Young Barley Grass (powder)"
+    ],
+    "ben": [
+      "Rich in vitamins A, B1, B2, B3, B6, C, E, K",
+      "Strengthens immune system",
+      "Cleanses and detoxifies the body",
+      "Supports healthy blood sugar levels",
+      "Promotes heart health",
+      "Aids healthy weight management"
+    ],
+    "ind": "Suitable for all ages seeking a natural green superfood. Ideal before or after meals. Mix as a drink, not steeped.",
+    "use": "Empty 1 sachet into a cup. Add 150–200 ml warm water (50°C) and stir well. Take 1–2 times per day, before or after meals.",
+    "ch": [
+      "Superfood",
+      "Detox",
+      "Immune Boost",
+      "Blood Sugar"
+    ]
+  },
+  "BLACK TEA": {
+    "t": "Antioxidant-Rich Classic Brew",
+    "cat": "heart",
+    "ing": [
+      "Camellia sinensis (Black Tea Leaves)"
+    ],
+    "ben": [
+      "Strong antioxidant properties",
+      "Supports heart health",
+      "Lowers LDL cholesterol",
+      "Improves gut microbiome",
+      "Reduces blood pressure",
+      "Lowers blood sugar levels",
+      "Anti-ageing benefits"
+    ],
+    "ind": "Suitable for all ages. One of the world's most consumed beverages, ideal as a daily health-supporting brew.",
+    "use": "Steep 1 bag in freshly boiled water for 3–5 minutes. Can be enjoyed with or without milk. Up to 3 cups daily.",
+    "ch": [
+      "Antioxidant",
+      "Heart Health",
+      "Anti-Ageing",
+      "Gut Health"
+    ]
+  },
+  "BLOOD CLEANING TEA": {
+    "t": "Detoxify & Revitalise Your Blood",
+    "cat": "detox",
+    "ing": [
+      "Rhubarb",
+      "Immature Bitter Orange",
+      "Chrysanthemum Flower",
+      "Tree Peony Bark"
+    ],
+    "ben": [
+      "Detoxifies and clears heat",
+      "Promotes healthy blood circulation",
+      "Removes blood stasis",
+      "Strengthens immune system",
+      "Supports healthy metabolism"
+    ],
+    "ind": "Used for fatigue, weak immunity, joint and muscle pain, constipation, dark urine, and acne caused by internal heat.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Best taken in the morning.",
+    "ch": [
+      "Blood Detox",
+      "Circulation",
+      "Immunity",
+      "Anti-Acne"
+    ]
+  },
+  "BLOOD TONIC TEA": {
+    "t": "Nourish & Replenish Your Blood",
+    "cat": "women",
+    "ing": [
+      "Angelica Root",
+      "Rhizoma Chuanxiong",
+      "Radix Angelicae Dahuricae",
+      "Prepared Rehmannia Root",
+      "Red Date",
+      "Codonopsis Root",
+      "Green Tea"
+    ],
+    "ben": [
+      "Nourishes and replenishes blood",
+      "Supports healthy circulation",
+      "Strengthens Qi and energy",
+      "Traditional blood tonic formula",
+      "Promotes vitality and wellbeing"
+    ],
+    "ind": "Ideal for those experiencing fatigue, blood deficiency, or those recovering from illness. Particularly beneficial for women.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily, best taken in the morning or afternoon.",
+    "ch": [
+      "Blood Tonic",
+      "Qi Support",
+      "Energy",
+      "Women's Health"
+    ]
+  },
+  "CASSIA TEA": {
+    "t": "Liver Nourisher & Eye Brightener",
+    "cat": "detox",
+    "ing": [
+      "Cassia Seeds",
+      "Chrysanthemum Flower",
+      "Honeysuckle Flower",
+      "Green Tea"
+    ],
+    "ben": [
+      "Cleanses liver & detoxifies",
+      "Nourishes and brightens eyes",
+      "Lowers cholesterol",
+      "Softens blood vessels",
+      "Controls water retention",
+      "Strengthens immune system",
+      "Supports healthy bowel movement"
+    ],
+    "ind": "Ideal for those prone to hypertension, puffiness, constipation, or those looking to support liver and eye health with regular use.",
+    "use": "Steep 1 bag in hot water (95°C) for 5–7 minutes. Drink warm. 1–2 times daily. Best taken in the morning.",
+    "ch": [
+      "Liver Cleanse",
+      "Eye Health",
+      "Cholesterol",
+      "Green Tea Base"
+    ]
+  },
+  "CHRYSANTHEMUM PLUS TEA": {
+    "t": "Cool, Cleanse & Clear Heat",
+    "cat": "detox",
+    "ing": [
+      "Chrysanthemum Flower",
+      "Selfheal Spike Flower",
+      "Mulberry Leaves"
+    ],
+    "ben": [
+      "Clears heat and detoxifies",
+      "Removes internal dampness",
+      "Prevents sunstroke",
+      "Soothes sore throat and bitter mouth",
+      "Improves acne and skin boils"
+    ],
+    "ind": "People with excess heat in the body, bitter mouth, sore throat, skin boils, or acne. Suitable in warm climates or summer months.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Can also be brewed cool for a refreshing summer drink. 1–2 times daily.",
+    "ch": [
+      "Heat Clearing",
+      "Detox",
+      "Skin Health",
+      "Anti-Sunstroke"
+    ]
+  },
+  "CONSTIPATION TEA": {
+    "t": "Gentle Bowel Relief & Cleanse",
+    "cat": "digest",
+    "ing": [
+      "Cistanche",
+      "Cassia Seed",
+      "Radish Seed",
+      "Green Tea"
+    ],
+    "ben": [
+      "Moistens the intestines",
+      "Relieves constipation gently",
+      "Clears heat and detoxifies",
+      "Soothes dry, hard stools",
+      "Freshens breath"
+    ],
+    "ind": "For middle-aged and older adults experiencing heat-type constipation, including hard dry stools, dark urine, or dry bad-smelling mouth.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1 time daily, preferably in the evening before bed.",
+    "ch": [
+      "Constipation Relief",
+      "Bowel Health",
+      "Gentle Detox",
+      "Green Tea"
+    ]
+  },
+  "COOLING TEA": {
+    "t": "Expel Heat & Refresh from Within",
+    "cat": "detox",
+    "ing": [
+      "Lotus Seeds",
+      "Bamboo Leaves",
+      "Chrysanthemum Flower",
+      "Dandelion",
+      "Honeysuckle Flower",
+      "Cassia Seed"
+    ],
+    "ben": [
+      "Detoxifies and expels internal heat",
+      "Prevents sunstroke",
+      "Relieves thirst",
+      "Soothes sore throat",
+      "Prevents arteriosclerosis",
+      "Strengthens immunity to respiratory illness"
+    ],
+    "ind": "Ideal for hot weather, spring/autumn throat discomfort, internal heat, or anyone seeking a refreshing detox drink.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Can be served chilled. 1–2 times daily. Excellent as a summer daily tea.",
+    "ch": [
+      "Cooling",
+      "Detox",
+      "Sunstroke Prevention",
+      "Sore Throat"
+    ]
+  },
+  "COUGHING TEA": {
+    "t": "Soothe Your Lungs, Calm the Cough",
+    "cat": "resp",
+    "ing": [
+      "Radix Pseudostellariae",
+      "Perilla Leaves",
+      "Winter Mulberry Leaf",
+      "Perillae Stem"
+    ],
+    "ben": [
+      "Promotes dispersing function of the lung",
+      "Reduces phlegm",
+      "Relieves cough and asthma",
+      "Soothes respiratory tract",
+      "Suitable for all ages"
+    ],
+    "ind": "For people of any age experiencing cough, excess phlegm, mild asthma, or respiratory discomfort. Gentle enough for children.",
+    "use": "Steep 1 bag in hot water for 5 minutes. Drink warm. 2–3 times daily during cough episodes, or 1 time daily for prevention.",
+    "ch": [
+      "Cough Relief",
+      "Lung Health",
+      "Phlegm Reduction",
+      "All Ages"
+    ]
+  },
+  "DEALCOHOLIC TEA": {
+    "t": "Protect Your Liver After Alcohol",
+    "cat": "detox",
+    "ing": [
+      "Hangzhou Chrysanthemum",
+      "Wild Radix Puerariae",
+      "Mulberry Seed",
+      "Cassia Seed",
+      "Green Tea"
+    ],
+    "ben": [
+      "Decomposes alcohol in the body",
+      "Protects the liver from alcohol damage",
+      "Reduces side effects of drinking",
+      "Clears liver heat",
+      "Supports detoxification"
+    ],
+    "ind": "Ideal for those who drink alcohol regularly or occasionally. Best taken before or after drinking to support liver health.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. Take 1 bag before or after drinking. Also suitable for daily liver support.",
+    "ch": [
+      "Liver Protection",
+      "After-Alcohol",
+      "Detox",
+      "Green Tea"
+    ]
+  },
+  "DETOX TEA": {
+    "t": "Deep Cleanse from the Inside Out",
+    "cat": "detox",
+    "ing": [
+      "Pharbitis Seed",
+      "Cassia Seed",
+      "Radish Seed",
+      "Lotus Seed",
+      "Rhubarb",
+      "Senna Leaves",
+      "Green Tea"
+    ],
+    "ben": [
+      "Cleanses intestines deeply",
+      "Detoxifies and purifies",
+      "Nourishes facial skin",
+      "Clears stomach and intestinal heat",
+      "Eliminates bad breath",
+      "Relieves bloating"
+    ],
+    "ind": "For those experiencing internal toxin build-up, bad breath, bloating, dull skin, or digestive sluggishness.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. Start with 1 time daily. Not for prolonged daily use — use for 7–14 day cycles.",
+    "ch": [
+      "Deep Detox",
+      "Gut Cleanse",
+      "Skin Glow",
+      "Breath Freshener"
+    ]
+  },
+  "DIGESTIVE TEA": {
+    "t": "Gentle Post-Meal Digestive Aid",
+    "cat": "digest",
+    "ing": [
+      "Parched Malt",
+      "Parched Hawthorn Fruit",
+      "Parched Medicated Leaven"
+    ],
+    "ben": [
+      "Aids digestion after heavy meals",
+      "Reduces bloating and discomfort",
+      "Stimulates digestive enzymes",
+      "Suitable for all ages",
+      "Gentle and effective"
+    ],
+    "ind": "For people of any age experiencing digestive discomfort, bloating, or heaviness after meals. Safe for daily use.",
+    "use": "Steep 1 bag in hot water for 5 minutes. Drink warm after meals. 1–2 times daily, particularly after lunch or dinner.",
+    "ch": [
+      "Digestion Aid",
+      "Post-Meal",
+      "Bloating Relief",
+      "All Ages"
+    ]
+  },
+  "FEMALE INFLAMMATION TEA": {
+    "t": "Soothe Female Inflammatory Conditions",
+    "cat": "women",
+    "ing": [
+      "Scabrous Gentian Root",
+      "Angelica Root",
+      "Amur Cork-Tree Bark",
+      "Atractylodis Rhizome",
+      "Atractylodis Lancea",
+      "Tangerine Peel",
+      "Green Tea"
+    ],
+    "ben": [
+      "Reduces female inflammation",
+      "Clears internal dampness",
+      "Supports pelvic health",
+      "Anti-inflammatory action",
+      "Strengthens female reproductive system"
+    ],
+    "ind": "For women experiencing inflammation, pelvic discomfort, or related conditions. Formulated specifically for female health concerns.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Consult a practitioner for chronic conditions.",
+    "ch": [
+      "Women's Health",
+      "Anti-Inflammatory",
+      "Pelvic Health",
+      "Green Tea"
+    ]
+  },
+  "FIVE SEEDS TEA": {
+    "t": "Natural Seeds Blend for Skin & Gut",
+    "cat": "digest",
+    "ing": [
+      "Perilla Seeds",
+      "Radish Seeds",
+      "Cassia Seeds",
+      "Raisin Tree Seeds",
+      "Muskmelon Seeds"
+    ],
+    "ben": [
+      "Relieves constipation naturally",
+      "Nourishes and brightens skin",
+      "Detoxifies the body",
+      "Reduces bad breath",
+      "Clears acne and pigmentation",
+      "Reduces abdominal distension"
+    ],
+    "ind": "For people with constipation causing bad breath, abdominal distension, acne, pigmentation, or pimples.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1 time daily, best in the morning on an empty stomach.",
+    "ch": [
+      "Constipation Relief",
+      "Skin Nourishing",
+      "Detox",
+      "Acne Support"
+    ]
+  },
+  "ABDOMEN SLIMMING TEA": {
+    "t": "Targeted Abdominal Fat Reduction",
+    "cat": "weight",
+    "ing": [
+      "Tangerine Peel",
+      "Hawthorn Fruits",
+      "Wax Gourd Rind",
+      "Fried Cassia Seeds",
+      "Rhizoma Alismatis",
+      "Radix Polygoni Multiflori",
+      "Fructus Ligustri Lucidi",
+      "Lotus Leaves",
+      "Green Tea"
+    ],
+    "ben": [
+      "Targets abdominal fat specifically",
+      "Lowers blood lipid levels",
+      "Supports healthy weight loss",
+      "Improves metabolism",
+      "Rich in traditional slimming herbs",
+      "Reduces water retention"
+    ],
+    "ind": "For those with simple obesity, particularly belly fat, and hyperlipidaemia. Works best alongside a balanced diet.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily, best before meals for optimal effect.",
+    "ch": [
+      "Belly Fat",
+      "Weight Loss",
+      "Lipid Reduction",
+      "Green Tea"
+    ]
+  },
+  "GINKGO TEA": {
+    "t": "Brain, Heart & Circulation Support",
+    "cat": "heart",
+    "ing": [
+      "Ginkgo Leaves",
+      "Cassia Seed",
+      "Green Tea"
+    ],
+    "ben": [
+      "Reduces blood lipids",
+      "Lowers cholesterol",
+      "Softens blood vessels",
+      "Reduces blood pressure",
+      "Promotes blood circulation to heart and brain",
+      "Strengthens immune system",
+      "Improves memory and concentration"
+    ],
+    "ind": "For improving and preventing heart problems, stroke, brain thrombus, memory loss, and Alzheimer's dementia. Ideal for middle-aged and older adults.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Best taken consistently over several weeks.",
+    "ch": [
+      "Brain Health",
+      "Heart Health",
+      "Memory",
+      "Cholesterol"
+    ]
+  },
+  "GINSENG DATE TEA": {
+    "t": "Qi & Blood Nourishing Blend",
+    "cat": "immunity",
+    "ing": [
+      "Ginseng Root",
+      "Astragalus Root",
+      "Wolfberry Fruit",
+      "Red Date"
+    ],
+    "ben": [
+      "Nourishes Qi and blood",
+      "Strengthens the body",
+      "Enhances immune function",
+      "Boosts energy and vitality",
+      "Combats fatigue",
+      "Supports adrenal health"
+    ],
+    "ind": "Ideal for elderly or weakened individuals, those fatigued from work, or anyone experiencing low energy and immunity.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Excellent as a daily energy-supporting morning tea.",
+    "ch": [
+      "Energy Boost",
+      "Qi Nourishing",
+      "Immunity",
+      "Fatigue Relief"
+    ]
+  },
+  "GINSENG TEA (SACHETS)": {
+        img: "GINSENG_TEA_(SACHETS).png",
+    "t": "Honeyed Ginseng for Vitality",
+    "cat": "immunity",
+    "ing": [
+      "Panax Ginseng",
+      "Radix Ophiopogonis",
+      "Cane Sugar",
+      "Honey"
+    ],
+    "ben": [
+      "Strengthens immunity",
+      "Enhances mental and physical function",
+      "Improves erectile dysfunction",
+      "Increases general sense of wellbeing",
+      "Rich and honeyed flavour"
+    ],
+    "ind": "For those seeking a premium immunity boost, enhanced mental clarity, physical stamina, or general sense of vitality.",
+    "use": "Mix 1 sachet with 300–500 ml boiling water and drink warmly. 1–2 times daily. Can be served hot or chilled.",
+    "ch": [
+      "Premium Ginseng",
+      "Vitality",
+      "Immunity",
+      "Mental Clarity"
+    ]
+  },
+  "GINSENG TEA (TEA BAGS)": {
+        img: "GINSENG_TEA_(TEA_BAGS).png",
+    "t": "Classic Ginseng for Energy & Immunity",
+    "cat": "immunity",
+    "ing": [
+      "Ginseng Root",
+      "Milkvetch Root",
+      "Chinese Angelica"
+    ],
+    "ben": [
+      "Stimulates mental and physical activity",
+      "Nourishes blood",
+      "Strengthens immune system",
+      "Relieves fatigue",
+      "Improves appetite and energy"
+    ],
+    "ind": "For fatigue, poor appetite, weak immunity, shortness of breath, night sweats, cold extremities, and chronic fatigue.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Consistent use for best results.",
+    "ch": [
+      "Ginseng",
+      "Energy",
+      "Immune Boost",
+      "Blood Nourishing"
+    ]
+  },
+  "GREEN TEA": {
+    "t": "4,000 Years of Proven Wellness",
+    "cat": "immunity",
+    "ing": [
+      "Camellia sinensis (Green Tea Leaves)"
+    ],
+    "ben": [
+      "Reduces risk of esophageal cancer",
+      "Inhibits cancer cell growth",
+      "Lowers LDL cholesterol",
+      "Improves HDL to LDL ratio",
+      "Supports cardiovascular health",
+      "Boosts immune function",
+      "Anti-inflammatory"
+    ],
+    "ind": "Suitable for all ages. One of the world's most researched health-supporting beverages. Ideal as a daily wellness tea.",
+    "use": "Steep 1 bag in water at 80°C (not boiling) for 2–3 minutes. Avoid over-steeping. 2–3 cups daily recommended.",
+    "ch": [
+      "Antioxidant",
+      "Heart Health",
+      "Cancer Support",
+      "All Ages"
+    ]
+  },
+  "GUAVA TEA": {
+    "t": "Blood Sugar Balance & Gut Health",
+    "cat": "heart",
+    "ing": [
+      "Guava Leaf",
+      "Bitter Gourd",
+      "Ophiopogon Tuber",
+      "Green Tea"
+    ],
+    "ben": [
+      "Supports blood sugar regulation",
+      "Promotes gut health",
+      "Anti-diabetic properties",
+      "Reduces inflammation",
+      "Rich in antioxidants"
+    ],
+    "ind": "Ideal for those managing blood sugar levels or seeking gut health support. Safe for regular daily use.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily, ideally after meals.",
+    "ch": [
+      "Blood Sugar",
+      "Gut Health",
+      "Anti-Diabetic",
+      "Green Tea"
+    ]
+  },
+  "GYNOSTEMMA TEA": {
+    "t": "Heart & Artery Protection",
+    "cat": "heart",
+    "ing": [
+      "Gynostemma Pentaphyllum"
+    ],
+    "ben": [
+      "Contains 3x the active compounds of ginseng",
+      "Lowers lipid peroxide levels",
+      "Increases myocardial antioxidant enzymes",
+      "Protects cardiac muscle",
+      "Reduces arteriosclerosis plaque formation"
+    ],
+    "ind": "For heart health, cardiovascular protection, and those seeking to prevent arteriosclerosis. Suitable for middle-aged and older adults.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily for sustained cardiovascular benefits.",
+    "ch": [
+      "Heart Protection",
+      "Arteries",
+      "Antioxidant",
+      "Pure Herb"
+    ]
+  },
+  "HEART CARE TEA": {
+    "t": "Complete Cardiac Support Formula",
+    "cat": "heart",
+    "ing": [
+      "Salvia Miltiorrhiza",
+      "Panax Ginseng",
+      "Panax Notoginseng Flower",
+      "Rhizoma Chuanxiong",
+      "Green Tea"
+    ],
+    "ben": [
+      "Comprehensive heart care formula",
+      "Promotes healthy blood circulation",
+      "Strengthens cardiac muscle",
+      "Reduces blood viscosity",
+      "Supports heart rhythm",
+      "Prevents coronary artery disease"
+    ],
+    "ind": "For those with heart health concerns, cardiovascular risk, or those seeking to maintain strong heart function as they age.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Consistent use over weeks recommended.",
+    "ch": [
+      "Cardiac Care",
+      "Circulation",
+      "Heart Muscle",
+      "Green Tea"
+    ]
+  },
+  "HYPERTENSION TEA": {
+    "t": "Naturally Lower Blood Pressure",
+    "cat": "heart",
+    "ing": [
+      "Cassia Seed",
+      "Hawthorn Fruit",
+      "Lotus Leaves",
+      "Chrysanthemum Flower",
+      "Green Tea"
+    ],
+    "ben": [
+      "Lowers blood pressure effectively",
+      "Reduces serum cholesterol",
+      "Inhibits fat absorption in intestine",
+      "Reduces fat synthesis in liver",
+      "Prevents cholesterol accumulation in vessels"
+    ],
+    "ind": "For middle-aged and older people with hypertension or high blood lipids. Long-lasting effect with regular use.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Best results with consistent long-term use.",
+    "ch": [
+      "Blood Pressure",
+      "Cholesterol",
+      "Heart Health",
+      "Green Tea"
+    ]
+  },
+  "JOINT CARE TEA": {
+    "t": "Soothe Joints, Restore Movement",
+    "cat": "men",
+    "ing": [
+      "Rhizoma Cibotii",
+      "Acanthopanacis Root Bark",
+      "Radix Millettiae Speciosae",
+      "Flemingia prostrata",
+      "Scurf Pea Berry",
+      "Fennel Fruit",
+      "Salted Eucommia Bark",
+      "Green Tea"
+    ],
+    "ben": [
+      "Relieves joint pain and stiffness",
+      "Strengthens tendons and bones",
+      "Improves joint mobility",
+      "Reduces inflammation in joints",
+      "Supports connective tissue"
+    ],
+    "ind": "For those experiencing joint pain, stiffness, arthritis, or mobility issues. Suitable for active individuals and older adults.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Allow 2–4 weeks to notice sustained benefits.",
+    "ch": [
+      "Joint Pain",
+      "Arthritis",
+      "Bone Health",
+      "Mobility"
+    ]
+  },
+  "KIDNEY CARE TEA": {
+    "t": "Strengthen & Warm the Kidneys",
+    "cat": "men",
+    "ing": [
+      "Morinda Root",
+      "Cistanche",
+      "Salted Eucommia Bark",
+      "Psoraliae Fruit",
+      "Epimedium",
+      "Cinnamon Bark",
+      "Fried Ginger",
+      "Green Tea"
+    ],
+    "ben": [
+      "Strengthens kidney Yang",
+      "Warms the kidneys",
+      "Improves energy and vitality",
+      "Supports adrenal function",
+      "Reduces cold extremities",
+      "Improves lower back strength"
+    ],
+    "ind": "For those with kidney Yang deficiency, fatigue, cold limbs, lower back weakness, or reduced vitality.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Best taken in the morning.",
+    "ch": [
+      "Kidney Yang",
+      "Vitality",
+      "Warm Energy",
+      "Men's Health"
+    ]
+  },
+  "KUDING TEA": {
+    "t": "The Bitter Brain & Blood Tonic",
+    "cat": "heart",
+    "ing": [
+      "Broadleaf Holly Leaf"
+    ],
+    "ben": [
+      "Promotes blood circulation",
+      "Lowers blood pressure",
+      "Lowers blood lipids including cholesterol",
+      "Disperses wind-heat",
+      "Clears eyes and head",
+      "Resolves toxin",
+      "Calms fidgets",
+      "Transforms phlegm and alleviates cough",
+      "Improves mental focus and memory",
+      "Maintains healthy body weight"
+    ],
+    "ind": "For preventing heart and brain deterioration, maintaining body weight, treating colds, rhinitis, itching eyes, headache, and bronchitis.",
+    "use": "Steep 1 bag in hot water for 3–5 minutes. Caution: very bitter taste. Start with short steeping time. 1–2 times daily.",
+    "ch": [
+      "Brain Clarity",
+      "Blood Pressure",
+      "Memory",
+      "Pure Herb"
+    ]
+  },
+  "LIBIDO UP TEA": {
+    "t": "Natural Vitality & Desire Support",
+    "cat": "men",
+    "ing": [
+      "Salt Fried Chive Seed",
+      "Psoraliae Fruit",
+      "Complanate Astragalus Seed",
+      "Rosa Laevigata",
+      "Salted Fenugreek Seed",
+      "Chinese Dodder Seeds",
+      "Alpinia Fruit",
+      "Green Tea"
+    ],
+    "ben": [
+      "Increases libido naturally",
+      "Strengthens kidney Yang",
+      "Supports sexual health",
+      "Improves stamina and energy",
+      "Nourishes Qi and essence"
+    ],
+    "ind": "For those experiencing reduced libido, fatigue, or weakened vitality. Safe traditional herbal formula for adults.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Best results with consistent use over 4+ weeks.",
+    "ch": [
+      "Libido",
+      "Vitality",
+      "Men's Health",
+      "Kidney Yang"
+    ]
+  },
+  "LIVER CARE TEA": {
+    "t": "Protect & Strengthen Your Liver",
+    "cat": "detox",
+    "ing": [
+      "Chinese Date",
+      "Oriental Wormwood",
+      "Green Tea"
+    ],
+    "ben": [
+      "Cleans liver heat",
+      "Dispels stagnation",
+      "Protects and strengthens the liver",
+      "Prevents hepatitis with regular use",
+      "Suitable for both men and women"
+    ],
+    "ind": "For all ages and genders to protect and strengthen the liver. Ideal for those exposed to alcohol, medications, or environmental toxins.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Safe for regular long-term use.",
+    "ch": [
+      "Liver Protection",
+      "Detox",
+      "Anti-Hepatitis",
+      "Green Tea"
+    ]
+  },
+  "LUNG CLEANING TEA": {
+    "t": "Clear Phlegm, Soothe Respiratory Tract",
+    "cat": "resp",
+    "ing": [
+      "Bamboo Leaves",
+      "Loquat Leaves",
+      "Honeysuckle Flower",
+      "Reed Rhizome",
+      "Platycodon Root",
+      "Green Tea"
+    ],
+    "ben": [
+      "Clears lung heat",
+      "Reduces phlegm",
+      "Stops coughing",
+      "Produces saliva and slakes thirst",
+      "Relieves dysphoria",
+      "Soothes throat"
+    ],
+    "ind": "For lung heat, excessive phlegm, persistent cough, throat irritation, or general respiratory discomfort.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 2–3 times daily during acute symptoms, 1 time for maintenance.",
+    "ch": [
+      "Lung Cleanse",
+      "Phlegm",
+      "Cough Relief",
+      "Green Tea"
+    ]
+  },
+  "MENOPAUSE TEA": {
+    "t": "Hormonal Balance & Calm During Transition",
+    "cat": "women",
+    "ing": [
+      "Angelica Root",
+      "Anemarrhena Rhizome",
+      "Baical Skullcap Root",
+      "White Peony Root",
+      "Bupleurum Root",
+      "Radix Ophiopogonis",
+      "Green Tea"
+    ],
+    "ben": [
+      "Balances oestrogen levels",
+      "Reduces stress and irritability",
+      "Improves mental clarity",
+      "Eases hot flushes",
+      "Supports emotional wellbeing",
+      "Reduces menopause-related discomfort"
+    ],
+    "ind": "For women going through perimenopause or menopause experiencing stress, irritability, hot flushes, or mood changes.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Consistent use over weeks recommended.",
+    "ch": [
+      "Menopause",
+      "Hormonal Balance",
+      "Stress Relief",
+      "Women's Health"
+    ]
+  },
+  "MENSTRUATION REGULATING TEA": {
+    "t": "Harmonise Your Cycle Naturally",
+    "cat": "women",
+    "ing": [
+      "Rose",
+      "Rosa Chinensis",
+      "Angelica Root",
+      "Chuanxiong",
+      "Motherwort",
+      "Jasmine Tea"
+    ],
+    "ben": [
+      "Regulates menstruation",
+      "Promotes healthy blood circulation",
+      "Relieves period pain",
+      "Supports hormonal balance",
+      "Fragrant floral flavour"
+    ],
+    "ind": "For women with irregular periods (menoxenia), painful periods (dysmenorrhea), or scanty menstrual flow (hypomenorrhea).",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily, especially in the 2 weeks before your cycle.",
+    "ch": [
+      "Period Regulation",
+      "Pain Relief",
+      "Circulation",
+      "Women's Health"
+    ]
+  },
+  "MORINGA TEA": {
+    "t": "The Miracle Tree in Your Cup",
+    "cat": "immunity",
+    "ing": [
+      "Moringa Oleifeva Leaves",
+      "Green Tea"
+    ],
+    "ben": [
+      "Rich source of protein and amino acids",
+      "Contains important minerals and vitamins",
+      "Rich in beta-carotene",
+      "Antioxidant-rich phenolics",
+      "Strengthens immune system",
+      "Supports energy and vitality"
+    ],
+    "ind": "Suitable for all ages seeking a nutrient-dense superfood tea. Known as the \"Miracle Tree\" for its exceptional nutritional profile.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Can be enjoyed at any time of day.",
+    "ch": [
+      "Superfood",
+      "Protein-Rich",
+      "Immune Boost",
+      "Nutrient Dense"
+    ]
+  },
+  "OOLONG TEA": {
+    "t": "Semi-Fermented Balance of Green & Black",
+    "cat": "weight",
+    "ing": [
+      "Oolong Tea Leaves"
+    ],
+    "ben": [
+      "Anti-fatigue and energising",
+      "Supports weight loss",
+      "Anti-cancer properties",
+      "Lowers blood lipids",
+      "Anti-ageing benefits",
+      "Balances metabolism"
+    ],
+    "ind": "Suitable for all ages. A special semi-fermented Chinese tea that bridges the benefits of green and black tea.",
+    "use": "Steep 1 bag in hot water at 90°C for 3–5 minutes. Can be re-steeped 2–3 times. 2–3 cups daily.",
+    "ch": [
+      "Weight Loss",
+      "Anti-Ageing",
+      "Energy",
+      "Blood Lipids"
+    ]
+  },
+  "PROSTATE CARE TEA": {
+    "t": "Natural Prostate Health Support",
+    "cat": "men",
+    "ing": [
+      "Plantago Seeds",
+      "Cyathula Root",
+      "Ophiopogon Tuber",
+      "Vaccaria Seeds",
+      "Tree Peony Root Bark",
+      "Notoginseng Root",
+      "Licorice Root",
+      "Green Tea"
+    ],
+    "ben": [
+      "Supports prostate health",
+      "Promotes healthy urinary flow",
+      "Reduces prostate inflammation",
+      "Nourishes kidney Yin",
+      "Improves urinary comfort"
+    ],
+    "ind": "For men experiencing prostate-related discomfort, urinary flow issues, or those seeking prostate health maintenance.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Consistent use over 4+ weeks for best results.",
+    "ch": [
+      "Prostate Health",
+      "Urinary Flow",
+      "Men's Wellness",
+      "Green Tea"
+    ]
+  },
+  "QUIT SMOKING TEA": {
+    "t": "Restore Lung Health After Smoking",
+    "cat": "resp",
+    "ing": [
+      "Wax Gourd Seeds",
+      "Perilla Leaf",
+      "White Mustard Seeds",
+      "Thinleaf Milkwort Root",
+      "Lily Bulbs",
+      "Platycodon Root",
+      "Common Coltsfoot Flower",
+      "Ganoderma Lucidum"
+    ],
+    "ben": [
+      "Calms mind and relieves dysphoria",
+      "Promotes fluid production",
+      "Nourishes the lung",
+      "Repairs lung damage from smoking",
+      "Suitable for air pollution exposure"
+    ],
+    "ind": "For smokers or those regularly exposed to air pollution. Supports lung recovery and soothes respiratory irritation.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Best results with consistent use over several weeks.",
+    "ch": [
+      "Lung Repair",
+      "Quit Smoking",
+      "Air Pollution",
+      "Respiratory"
+    ]
+  },
+  "RED FLOWER GREEN TEA": {
+    "t": "Promote Circulation & Prevent Clots",
+    "cat": "heart",
+    "ing": [
+      "Safflower",
+      "Green Tea",
+      "Chinese Angelica",
+      "Salvia Root",
+      "Ligusticum wallichii"
+    ],
+    "ben": [
+      "Promotes blood circulation",
+      "Dispels blood stasis",
+      "Softens blood vessels",
+      "Prevents thrombus formation",
+      "Sweet natural herbal fragrance"
+    ],
+    "ind": "For those with hyperlipidaemia, hypertension, history of stroke, or poor circulation. Pleasant sweet floral flavour.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Can be enjoyed for its pleasant flavour daily.",
+    "ch": [
+      "Circulation",
+      "Anti-Thrombosis",
+      "Vessel Health",
+      "Blood Stasis"
+    ]
+  },
+  "SEX TEA": {
+    "t": "Nourish Kidney & Strengthen Vigour",
+    "cat": "men",
+    "ing": [
+      "Platycodon Root",
+      "Cynomorium",
+      "Epimedium Root",
+      "Black Tea"
+    ],
+    "ben": [
+      "Nourishes the kidneys",
+      "Produces vigour and vitality",
+      "Strengthens Yang energy",
+      "Improves male sexual activity",
+      "Traditional kidney tonic formula"
+    ],
+    "ind": "For weak sexual activity, impotence, and early ejaculation. Traditional Chinese medicine formula for male sexual health.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1 time daily. Consistent use over 4+ weeks recommended.",
+    "ch": [
+      "Male Vitality",
+      "Kidney Tonic",
+      "Yang Energy",
+      "Black Tea Base"
+    ]
+  },
+  "SKIN LIGHTENING TEA": {
+    "t": "Radiant, Even-Toned Complexion",
+    "cat": "women",
+    "ing": [
+      "Peach Flower",
+      "Rose Flower",
+      "Angelica Root",
+      "Fragrant Solomon's Seal Root",
+      "Green Tea"
+    ],
+    "ben": [
+      "Lightens and brightens skin tone",
+      "Promotes blood circulation to skin",
+      "Nourishes and moisturises",
+      "Anti-ageing properties",
+      "Fragrant floral aroma",
+      "Reduces pigmentation and spots"
+    ],
+    "ind": "For women seeking a brighter, more even skin tone, or those with pigmentation, dull skin, or signs of ageing.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Best results visible after 4–6 weeks of consistent use.",
+    "ch": [
+      "Skin Brightening",
+      "Anti-Pigmentation",
+      "Anti-Ageing",
+      "Floral Blend"
+    ]
+  },
+  "SLIM TEA": {
+    "t": "Accelerate Fat Burning & Tone Skin",
+    "cat": "weight",
+    "ing": [
+      "Cassia Seed",
+      "Hawthorn Fruit",
+      "Perilla Fruit",
+      "Hangzhou Chrysanthemum Flower",
+      "Cyclocarya Leaves",
+      "Green Tea"
+    ],
+    "ben": [
+      "Contains lipid decomposition enzyme",
+      "Accelerates fat decomposition",
+      "Reduces body weight and blood lipids",
+      "Nourishes skin as weight reduces",
+      "Prevents wrinkles during weight loss",
+      "Aids digestion of high-fat food"
+    ],
+    "ind": "For those who are overweight or have high blood lipid levels. Unique formula that also nourishes skin while slimming.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily, best before meals. Combine with balanced diet.",
+    "ch": [
+      "Fat Burning",
+      "Weight Loss",
+      "Skin Toning",
+      "Lipid Reduction"
+    ]
+  },
+  "SUGAR BALANCE TEA": {
+    "t": "Pancreas Support & Insulin Function",
+    "cat": "heart",
+    "ing": [
+      "Milkvetch Root",
+      "Cyclocarya Leaves",
+      "Chinese Yam",
+      "Green Tea"
+    ],
+    "ben": [
+      "Defends and supports pancreatic function",
+      "Activates Islet cells",
+      "Improves Islet function",
+      "Enhances insulin secretion",
+      "Promotes glucose utilisation",
+      "Strengthens kidney, spleen, and lung"
+    ],
+    "ind": "Effective for diabetes patients. Suitable for long-term use as a comprehensive blood sugar management support.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. For diabetes, use alongside prescribed medication.",
+    "ch": [
+      "Blood Sugar",
+      "Diabetes Support",
+      "Pancreas",
+      "Insulin"
+    ]
+  },
+  "THREE FLOWERS TEA": {
+    "t": "Heart-Clearing Triple Floral Blend",
+    "cat": "immunity",
+    "ing": [
+      "Wild Chrysanthemum Flower",
+      "Honeysuckle Flower",
+      "Fructus Gardeniae",
+      "Cane Sugar"
+    ],
+    "ben": [
+      "Clears the heart and detoxifies",
+      "Relieves sore throat",
+      "Prevents flu and colds",
+      "Lowers blood pressure",
+      "Refreshing and fragrant taste"
+    ],
+    "ind": "Suitable for any age. Ideal as a daily wellness tea for throat care, immunity, and general health maintenance.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm or chilled. 1–2 times daily. Naturally sweet flavour.",
+    "ch": [
+      "Detox",
+      "Sore Throat",
+      "Flu Prevention",
+      "All Ages"
+    ]
+  },
+  "WALNUT TEA": {
+    "t": "Nourish Heart & Brain for Peak Function",
+    "cat": "heart",
+    "ing": [
+      "Walnut Kernel",
+      "Gynostemma Pentaphyllum",
+      "Green Tea"
+    ],
+    "ben": [
+      "Nourishes heart function",
+      "Supports brain health and memory",
+      "Rich in energy and health-benefiting nutrients",
+      "Contains minerals, antioxidants and vitamins",
+      "Promotes mental clarity"
+    ],
+    "ind": "For those seeking to nourish heart and brain function, improve memory, or boost mental and physical energy levels.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. An excellent morning tea for mental focus.",
+    "ch": [
+      "Brain Health",
+      "Heart Nourishing",
+      "Memory",
+      "Energy"
+    ]
+  },
+  "WHITE GOURD SLIM TEA": {
+    "t": "Weight Loss & Lipid Reduction",
+    "cat": "weight",
+    "ing": [
+      "Fleeceflower Root",
+      "White Gourd Peel",
+      "Pagodatree Pod",
+      "Hawthorn Fruit",
+      "Oolong Tea"
+    ],
+    "ben": [
+      "Promotes weight loss",
+      "Lowers blood lipid levels",
+      "Reduces water retention",
+      "Supports healthy metabolism",
+      "Gentle cleansing action"
+    ],
+    "ind": "For those with simple obesity or hyperlipidaemia. A gentler slimming option with natural gourd and fleeceflower.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily, best before meals.",
+    "ch": [
+      "Weight Loss",
+      "Lipid Reduction",
+      "Slimming",
+      "Oolong Base"
+    ]
+  },
+  "WOMB CARE TEA": {
+    "t": "Nurture & Protect the Womb",
+    "cat": "women",
+    "ing": [
+      "Asian Motherwort",
+      "Angelica Root",
+      "Rhizoma Chuanxiong",
+      "Licorice Root",
+      "Green Tea"
+    ],
+    "ben": [
+      "Nourishes and protects the uterus",
+      "Promotes healthy circulation in pelvic area",
+      "Regulates menstruation",
+      "Reduces menstrual cramping",
+      "Strengthens female reproductive health"
+    ],
+    "ind": "For women seeking to support uterine health, ease menstrual discomfort, or maintain healthy reproductive function.",
+    "use": "Steep 1 bag in hot water for 5–7 minutes. Drink warm. 1–2 times daily. Best taken consistently over several weeks.",
+    "ch": [
+      "Uterine Health",
+      "Pelvic Circulation",
+      "Menstrual Support",
+      "Women's Wellness"
+    ]
+  },
+  "AN SHEN BU XIN WAN (CALM SHEN/SPIRIT)": {
+        img: "AN_SHEN_BU_XIN_WAN_(CALM_SHENSPIRIT).png",
+    "t": "CALM SHEN/SPIRIT",
+    "cat": "sleep",
+    "ing": [
+      "AN SHEN BU XIN WAN"
+    ],
+    "ben": [
+      "Calms the mind & spirit",
+      "Restores normal sleep rhythm",
+      "Nourishes Heart Yin & blood",
+      "Alleviates irritability"
+    ],
+    "ind": "calms the spirit and restores normal sleep rhythm by nourishing Heart Yin and blood.  feeling of your heart pounding and having a hard time falling asleep are common symptoms. It is also used for mood...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Sleep Support"
+    ]
+  },
+  "BA ZHEN WAN (EIGHT TONIC PILLS)": {
+        img: "BA_ZHEN_WAN_(EIGHT_TONIC_PILLS).png",
+    "t": "EIGHT TONIC PILLS",
+    "cat": "digest",
+    "ing": [
+      "BA ZHEN WAN"
+    ],
+    "ben": [
+      "Aids digestion",
+      "Removes food stagnation",
+      "Harmonizes the stomach",
+      "Relieves bloating & reflux"
+    ],
+    "ind": "It nourishes both Blood and Qi. It is used for deficiency of Qi and Blood, sallow complexion, poor appetite, weak arms and legs, hypermenorrhea.",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Digest Support"
+    ]
+  },
+  "BA ZHENG WAN (Clean Urine)": {
+        img: "BA_ZHENG_WAN_(Clean_Urine).png",
+    "t": "Clean Urine",
+    "cat": "heart",
+    "ing": [
+      "BA ZHENG WAN"
+    ],
+    "ben": [
+      "Promotes blood circulation",
+      "Softens blood vessels",
+      "Relieves joint & back pain",
+      "Supports normal blood pressure"
+    ],
+    "ind": "It can clear Heat, purge Fire and support urine flow. It is used for the Lin Syndrome presenting with urgent urination, difficulty and pain in micturition，scanty dark and turbid urine, heavy feeling i...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Heart Support"
+    ]
+  },
+  "BAN LONG WAN (Tonify Prime Yang)": {
+        img: "BAN_LONG_WAN_(Tonify_Prime_Yang).png",
+    "t": "Tonify Prime Yang",
+    "cat": "men",
+    "ing": [
+      "BAN LONG WAN"
+    ],
+    "ben": [
+      "Tonifies Kidney Yang",
+      "Supports male reproductive health",
+      "Boosts energy & performance",
+      "Strengthens bones and tendons"
+    ],
+    "ind": "It warms and nourishes primary/Yuan Yang, prolong life. It is used for deficiency of Yuan Yang, symptoms include back and knee ache, impotence and early ejaculation, increased urination, tinnitus, fat...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Men Support"
+    ]
+  },
+  "BAO HE WAN (Digestion Aid)": {
+        img: "BAO_HE_WAN_(Digestion_Aid).png",
+    "t": "Digestion Aid",
+    "cat": "digest",
+    "ing": [
+      "BAO HE WAN"
+    ],
+    "ben": [
+      "Aids digestion",
+      "Removes food stagnation",
+      "Harmonizes the stomach",
+      "Relieves bloating & reflux"
+    ],
+    "ind": "It helps to digest food, transmit stagnation, and harmonize stomach. It is used for food stagnation, abdominal distention, esophageal reflux, and no appetite for food.",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Digest Support"
+    ]
+  },
+  "BAN XIA XIE XIN WAN (Harmonize Stomach)": {
+        img: "BAN_XIA_XIE_XIN_WAN_(Harmonize_Stomach).png",
+    "t": "Harmonize Stomach",
+    "cat": "digest",
+    "ing": [
+      "BAN XIA XIE XIN WAN"
+    ],
+    "ben": [
+      "Aids digestion",
+      "Removes food stagnation",
+      "Harmonizes the stomach",
+      "Relieves bloating & reflux"
+    ],
+    "ind": "Ban Xia Xie Xin Tang Pill is used for “Pi syndrome\" (痞症disharmony between the stomach and the spleen) marked by the focal distention or fullness in the stomach, along with various stomach discomforts....",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Digest Support"
+    ]
+  },
+  "Bi Yan Wan (Rhinitis Pills)": {
+        img: "Bi_Yan_Wan_(Rhinitis_Pills).png",
+    "t": "Rhinitis Pills",
+    "cat": "resp",
+    "ing": [
+      "Bi Yan Wan"
+    ],
+    "ben": [
+      "Clears nasal passages",
+      "Expels wind and heat toxins",
+      "Transforms phlegm & stops cough",
+      "Supports respiratory health"
+    ],
+    "ind": "helps the nasal airflow by dispersing Wind and expelling toxins. Moreover, it transforms mucus. It can be used for Rhinitis, Allergic Rhinitis, Chronic Rhinitis and Nasosinusitis.",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Resp Support"
+    ]
+  },
+  "BU ZHONG YI QI WAN (Tonify Center Qi)": {
+        img: "BU_ZHONG_YI_QI_WAN_(Tonify_Center_Qi).png",
+    "t": "Tonify Center Qi",
+    "cat": "women",
+    "ing": [
+      "BU ZHONG YI QI WAN"
+    ],
+    "ben": [
+      "Nourishes Spleen & Blood",
+      "Regulates menstruation",
+      "Alleviates period pain",
+      "Supports gynecological health"
+    ],
+    "ind": "can nourish the spleen and promote Qi due to the Qi deficiency. The central Qi provides the vital energy of the body including the internal organs and physical activities. When Qi is weak, the organs ...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Women Support"
+    ]
+  },
+  "CHAI HU SHU GAN WAN (Liver Harmonize)": {
+        img: "CHAI_HU_SHU_GAN_WAN_(Liver_Harmonize).png",
+    "t": "Liver Harmonize",
+    "cat": "women",
+    "ing": [
+      "CHAI HU SHU GAN WAN"
+    ],
+    "ben": [
+      "Nourishes Spleen & Blood",
+      "Regulates menstruation",
+      "Alleviates period pain",
+      "Supports gynecological health"
+    ],
+    "ind": "It is used for Liver Qi stagnation, includes distending discomfort along the sides of the body, deep breathing, short temper, chest distention, and frequent belching. It can be used for premenstrual s...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Women Support"
+    ]
+  },
+  "CHUAN XIN LIAN KANG YAN WAN (Anti-Inflammation)": {
+        img: "CHUAN_XIN_LIAN_KANG_YAN_WAN_(Anti-Inflammation).png",
+    "t": "Anti-Inflammation",
+    "cat": "resp",
+    "ing": [
+      "CHUAN XIN LIAN KANG YAN WAN"
+    ],
+    "ben": [
+      "Clears nasal passages",
+      "Expels wind and heat toxins",
+      "Transforms phlegm & stops cough",
+      "Supports respiratory health"
+    ],
+    "ind": "It clears heat, resolves toxin, cools blood, disperses swelling, supports the body's immune function.  It is for San Jiao Heat, acute toxin inflammations on the blood, lymph, or organ level. It can be...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Resp Support"
+    ]
+  },
+  "CHUAN XIONG CHA TIAO WAN (Head Clear)": {
+        img: "CHUAN_XIONG_CHA_TIAO_WAN_(Head_Clear).png",
+    "t": "Head Clear",
+    "cat": "heart",
+    "ing": [
+      "CHUAN XIONG CHA TIAO WAN"
+    ],
+    "ben": [
+      "Promotes blood circulation",
+      "Softens blood vessels",
+      "Relieves joint & back pain",
+      "Supports normal blood pressure"
+    ],
+    "ind": "It is indicated for conditions in which external Wind has disrupted the flow of Qi energy in the channels or meridians and thus obstructs the clear Yang Qi and causes discomfort. It drives wind from t...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Heart Support"
+    ]
+  },
+  "DA BU YIN WAN (Nourish Yin Plus)": {
+        img: "DA_BU_YIN_WAN_(Nourish_Yin_Plus).png",
+    "t": "Nourish Yin Plus",
+    "cat": "sleep",
+    "ing": [
+      "DA BU YIN WAN"
+    ],
+    "ben": [
+      "Calms the mind & spirit",
+      "Restores normal sleep rhythm",
+      "Nourishes Heart Yin & blood",
+      "Alleviates irritability"
+    ],
+    "ind": "It can nourish Yin and clear fire. It is used for Yin deficient heat, symptoms include tidal fever and night sweat, cough, tinnitus.",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Sleep Support"
+    ]
+  },
+  "DANG GUI WAN (Angelica Pills)": {
+        img: "DANG_GUI_WAN_(Angelica_Pills).png",
+    "t": "Angelica Pills",
+    "cat": "women",
+    "ing": [
+      "DANG GUI WAN"
+    ],
+    "ben": [
+      "Nourishes Spleen & Blood",
+      "Regulates menstruation",
+      "Alleviates period pain",
+      "Supports gynecological health"
+    ],
+    "ind": "It can activate blood and tonify blood, regulate menstruation and stop pain. It is used for blood deficiency, irregular menstruation and period pain.",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Women Support"
+    ]
+  },
+  "DU HUO JI SHENG WAN (Joint & Back Aid)": {
+        img: "DU_HUO_JI_SHENG_WAN_(Joint_&_Back_Aid).png",
+    "t": "Joint & Back Aid",
+    "cat": "sleep",
+    "ing": [
+      "DU HUO JI SHENG WAN"
+    ],
+    "ben": [
+      "Calms the mind & spirit",
+      "Restores normal sleep rhythm",
+      "Nourishes Heart Yin & blood",
+      "Alleviates irritability"
+    ],
+    "ind": "It nourishes the Blood, soothes the sinews, and expels Wind and Dampness. | It acts to expel wind and remove dampness, remove obstruction in Qi and blood circulation. It is used for chronic lower back...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Sleep Support"
+    ]
+  },
+  "ER CHEN WAN (Phlegm/Dampness)": {
+        img: "ER_CHEN_WAN_(PhlegmDampness).png",
+    "t": "Phlegm/Dampness",
+    "cat": "resp",
+    "ing": [
+      "ER CHEN WAN"
+    ],
+    "ben": [
+      "Clears nasal passages",
+      "Expels wind and heat toxins",
+      "Transforms phlegm & stops cough",
+      "Supports respiratory health"
+    ],
+    "ind": "It can dry dampness and dissolve phlegm, regulate Qi and harmonize stomach. It is used for Damp-Phlegm syndrome, symptoms include a large amount of Phlegm, nausea, vomiting, uncomfortable stomach, hea...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Resp Support"
+    ]
+  },
+  "FANG FENG TONG SHENG WAN (Clear Heat)": {
+        img: "FANG_FENG_TONG_SHENG_WAN_(Clear_Heat).png",
+    "t": "Clear Heat",
+    "cat": "sleep",
+    "ing": [
+      "FANG FENG TONG SHENG WAN"
+    ],
+    "ben": [
+      "Calms the mind & spirit",
+      "Restores normal sleep rhythm",
+      "Nourishes Heart Yin & blood",
+      "Alleviates irritability"
+    ],
+    "ind": "It disperses wind, releases the exterior, drains heat and unblocks the bowels. It is used for external cold with internal heat, excess syndrome at exterior and interior, fear cold, high fever, headach...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Sleep Support"
+    ]
+  },
+  "FU ZHENG FANG (Immune Aid)": {
+        img: "FU_ZHENG_FANG_(Immune_Aid).png",
+    "t": "Immune Aid",
+    "cat": "digest",
+    "ing": [
+      "FU ZHENG FANG"
+    ],
+    "ben": [
+      "Aids digestion",
+      "Removes food stagnation",
+      "Harmonizes the stomach",
+      "Relieves bloating & reflux"
+    ],
+    "ind": "It nourishes Qi and Yin, strengthen Spleen and harmonize Stomach, removes tumor and stasis, and helps to strengthen Zheng Qi (immunity). It is mainly used for cancer, viral or bacterial infections and...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Digest Support"
+    ]
+  },
+  "FU ZI LI ZHONG WAN (Warm Middle)": {
+        img: "FU_ZI_LI_ZHONG_WAN_(Warm_Middle).png",
+    "t": "Warm Middle",
+    "cat": "digest",
+    "ing": [
+      "FU ZI LI ZHONG WAN"
+    ],
+    "ben": [
+      "Aids digestion",
+      "Removes food stagnation",
+      "Harmonizes the stomach",
+      "Relieves bloating & reflux"
+    ],
+    "ind": "It warms the \"Middle Energizer\" and strengthens the Spleen, stop diarrhea and pain. It is used for deficiency cold of spleen and stomach, cold pain in the abdomen, vomit and diarrhea, cold hands and f...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Digest Support"
+    ]
+  },
+  "GAN MAO LING (Common Cold)": {
+        img: "GAN_MAO_LING_(Common_Cold).png",
+    "t": "Common Cold",
+    "cat": "resp",
+    "ing": [
+      "GAN MAO LING"
+    ],
+    "ben": [
+      "Clears nasal passages",
+      "Expels wind and heat toxins",
+      "Transforms phlegm & stops cough",
+      "Supports respiratory health"
+    ],
+    "ind": "It can clear heat and remove toxicity, dispel wind-heat. It used for wind-heat type common cold and early stage of febrile disease. It can also be used for supporting the health of the immune, nervous...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Resp Support"
+    ]
+  },
+  "GUAN JIE YAN WAN (Joint Health)": {
+        img: "GUAN_JIE_YAN_WAN_(Joint_Health).png",
+    "t": "Joint Health",
+    "cat": "heart",
+    "ing": [
+      "GUAN JIE YAN WAN"
+    ],
+    "ben": [
+      "Promotes blood circulation",
+      "Softens blood vessels",
+      "Relieves joint & back pain",
+      "Supports normal blood pressure"
+    ],
+    "ind": "It tonifies Qi and Blood, dispels Wind, Cold and Dampness, and supports a healthy knee function. It is used for of Bi syndrome, which manifest as soreness or stiffness of the knees and loin, or limite...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Heart Support"
+    ]
+  },
+  "GUI PI WAN (Spleen Aid)": {
+        img: "GUI_PI_WAN_(Spleen_Aid).png",
+    "t": "Spleen Aid",
+    "cat": "sleep",
+    "ing": [
+      "GUI PI WAN"
+    ],
+    "ben": [
+      "Calms the mind & spirit",
+      "Restores normal sleep rhythm",
+      "Nourishes Heart Yin & blood",
+      "Alleviates irritability"
+    ],
+    "ind": "It strengthens the Spleen and the Heart. It is used to nourish the Blood, replenish Qi, and calm the mind in cases of overwork or stress. Heart and Spleen deficiency signs are: 1. difficulty in stayin...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Sleep Support"
+    ]
+  },
+  "GUI ZHI FU LING WAN (Uterus Stagnation)": {
+        img: "GUI_ZHI_FU_LING_WAN_(Uterus_Stagnation).png",
+    "t": "Uterus Stagnation",
+    "cat": "women",
+    "ing": [
+      "GUI ZHI FU LING WAN"
+    ],
+    "ben": [
+      "Nourishes Spleen & Blood",
+      "Regulates menstruation",
+      "Alleviates period pain",
+      "Supports gynecological health"
+    ],
+    "ind": "It helps for promoting Blood circulation, removes Blood Stasis and eliminating mass.  It is used for uterine fibroids, polyps, ovarian cysts, endometriosis and pelvic inflammatory disease. It is mostl...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Women Support"
+    ]
+  },
+  "HUAI JIAO WAN (Sophora Fruit Pills)": {
+        img: "HUAI_JIAO_WAN_(Sophora_Fruit_Pills).png",
+    "t": "Sophora Fruit Pills",
+    "cat": "heart",
+    "ing": [
+      "HUAI JIAO WAN"
+    ],
+    "ben": [
+      "Promotes blood circulation",
+      "Softens blood vessels",
+      "Relieves joint & back pain",
+      "Supports normal blood pressure"
+    ],
+    "ind": "It stops itching and pain, subsides swell, expels damp toxin, cleans intestine and expels wind, colds the Blood and stops bleeding. It is used for intestinal wind and hematochezia, bleeding hemorrhoid...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Heart Support"
+    ]
+  },
+  "HUO XIANG ZHENG QI WAN (Regulate Stomach)": {
+        img: "HUO_XIANG_ZHENG_QI_WAN_(Regulate_Stomach).png",
+    "t": "Regulate Stomach",
+    "cat": "digest",
+    "ing": [
+      "HUO XIANG ZHENG QI WAN"
+    ],
+    "ben": [
+      "Aids digestion",
+      "Removes food stagnation",
+      "Harmonizes the stomach",
+      "Relieves bloating & reflux"
+    ],
+    "ind": "It can relieve the exterior syndrome, transform dampness, regulate Qi, and harmonize the middle Jiao. It is used to regulate the digestive system and maintain normal bowel functions. It can also be us...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Digest Support"
+    ]
+  },
+  "JIA WEI XIAO YAO WAN (Ease Life Plus)": {
+        img: "JIA_WEI_XIAO_YAO_WAN_(Ease_Life_Plus).png",
+    "t": "Ease Life Plus",
+    "cat": "women",
+    "ing": [
+      "JIA WEI XIAO YAO WAN"
+    ],
+    "ben": [
+      "Nourishes Spleen & Blood",
+      "Regulates menstruation",
+      "Alleviates period pain",
+      "Supports gynecological health"
+    ],
+    "ind": "It can smooth Liver, clear heat, tonify Spleen and nourish blood. It is used for Live Qi stagnation, blood deficiency, Liver- Spleen disharmony , symptoms include hypochondrium distending pain, dizzin...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Women Support"
+    ]
+  },
+  "JIANG DAN GU CHUAN WAN (Lower Cholesterol)": {
+        img: "JIANG_DAN_GU_CHUAN_WAN_(Lower_Cholesterol).png",
+    "t": "Lower Cholesterol",
+    "cat": "heart",
+    "ing": [
+      "JIANG DAN GU CHUAN WAN"
+    ],
+    "ben": [
+      "Promotes blood circulation",
+      "Softens blood vessels",
+      "Relieves joint & back pain",
+      "Supports normal blood pressure"
+    ],
+    "ind": "It helps removing blood stasis and dredging collaterals. It is used for maintaining healthy cholesterol and triglycerides within the normal range.",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Heart Support"
+    ]
+  },
+  "JIANG YA WAN (Hypertension Pills)": {
+        img: "JIANG_YA_WAN_(Hypertension_Pills).png",
+    "t": "Hypertension Pills",
+    "cat": "sleep",
+    "ing": [
+      "JIANG YA WAN"
+    ],
+    "ben": [
+      "Calms the mind & spirit",
+      "Restores normal sleep rhythm",
+      "Nourishes Heart Yin & blood",
+      "Alleviates irritability"
+    ],
+    "ind": "It helps to calm the liver, subdue the Yang, enrich the Yin, and support healthy blood pressure. It is used for treating hypertension, chronic headache and migraine, dizziness and vertigo, eye redness...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Sleep Support"
+    ]
+  },
+  "JIE GENG WAN (Platycodon Pills)": {
+        img: "JIE_GENG_WAN_(Platycodon_Pills).png",
+    "t": "Platycodon Pills",
+    "cat": "resp",
+    "ing": [
+      "JIE GENG WAN"
+    ],
+    "ben": [
+      "Clears nasal passages",
+      "Expels wind and heat toxins",
+      "Transforms phlegm & stops cough",
+      "Supports respiratory health"
+    ],
+    "ind": "It eliminates phlegm and pus, clears deficiency fire, and clears toxins. It is used for Phlegm Stagnation in the chest with Deficiency Fire Rising. Symptoms include, Coughing, Swelling and pain of the...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Resp Support"
+    ]
+  },
+  "JIN GUI SHEN QI WAN (Kidney Yang)": {
+        img: "JIN_GUI_SHEN_QI_WAN_(Kidney_Yang).png",
+    "t": "Kidney Yang",
+    "cat": "sleep",
+    "ing": [
+      "JIN GUI SHEN QI WAN"
+    ],
+    "ben": [
+      "Calms the mind & spirit",
+      "Restores normal sleep rhythm",
+      "Nourishes Heart Yin & blood",
+      "Alleviates irritability"
+    ],
+    "ind": "It eliminates phlegm and pus, clears deficiency fire, and clears toxins. It is used for Phlegm Stagnation in the chest with Deficiency Fire Rising. Symptoms include, Coughing, Swelling and pain of the...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Sleep Support"
+    ]
+  },
+  "JIN SUO GU JING WAN (Control Emission)": {
+        img: "JIN_SUO_GU_JING_WAN_(Control_Emission).png",
+    "t": "Control Emission",
+    "cat": "women",
+    "ing": [
+      "JIN SUO GU JING WAN"
+    ],
+    "ben": [
+      "Nourishes Spleen & Blood",
+      "Regulates menstruation",
+      "Alleviates period pain",
+      "Supports gynecological health"
+    ],
+    "ind": "It is specific for male sexual dysfunction, including premature ejaculation, impotence, and nocturnal emissions. It works by strengthening the deepest reserves of energy in the body – those of the Kid...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Women Support"
+    ]
+  },
+  "JIU WEI QIANG HUO WAN (Dispel Wind-Cold)": {
+        img: "JIU_WEI_QIANG_HUO_WAN_(Dispel_Wind-Cold).png",
+    "t": "Dispel Wind-Cold",
+    "cat": "heart",
+    "ing": [
+      "JIU WEI QIANG HUO WAN"
+    ],
+    "ben": [
+      "Promotes blood circulation",
+      "Softens blood vessels",
+      "Relieves joint & back pain",
+      "Supports normal blood pressure"
+    ],
+    "ind": "It dispels Wind, relieve exterior syndrome, expel Cold and dispel Dampness. It is used for fear of Cold, fever without sweating, head heaviness and ache and painful limbs caused by Wind-Cold and Dampn...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Heart Support"
+    ]
+  },
+  "KANG GU ZENG SHENG WAN (Anti Hyperosteogeny)": {
+        img: "KANG_GU_ZENG_SHENG_WAN_(Anti_Hyperosteogeny).png",
+    "t": "Anti Hyperosteogeny",
+    "cat": "sleep",
+    "ing": [
+      "KANG GU ZENG SHENG WAN"
+    ],
+    "ben": [
+      "Calms the mind & spirit",
+      "Restores normal sleep rhythm",
+      "Nourishes Heart Yin & blood",
+      "Alleviates irritability"
+    ],
+    "ind": "It tonifies liver and kidneys, strengthens tendons and bones, dispels wind-damp, invigorates the blood, unblocks the channels and collaterals. It is used for Hyperosteogeny in elderly people.  It can ...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Sleep Support"
+    ]
+  },
+  "LI DAN PAI SHI WAN (Gallstone)": {
+        img: "LI_DAN_PAI_SHI_WAN_(Gallstone).png",
+    "t": "Gallstone",
+    "cat": "digest",
+    "ing": [
+      "LI DAN PAI SHI WAN"
+    ],
+    "ben": [
+      "Aids digestion",
+      "Removes food stagnation",
+      "Harmonizes the stomach",
+      "Relieves bloating & reflux"
+    ],
+    "ind": "It can clear heat and dampness, clean gallbladder and expel stone. It is used for hypochondriac pain caused by damp-heat toxin and Qi stagnation, swollen gallbladder and pain, fever, yellow urine, con...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Digest Support"
+    ]
+  },
+  "LI DAN WAN (Gallbladder Heat)": {
+        img: "LI_DAN_WAN_(Gallbladder_Heat).png",
+    "t": "Gallbladder Heat",
+    "cat": "detox",
+    "ing": [
+      "LI DAN WAN"
+    ],
+    "ben": [
+      "Dispels wind-heat",
+      "Clears head & eyes",
+      "Detoxifies the body",
+      "Restores balance"
+    ],
+    "ind": "It clears heat from the Gallbladder. It is used for cholecystitis and cholelithiasis.",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Detox Support"
+    ]
+  },
+  "LI ZHONG WAN (Regulate Middle)": {
+        img: "LI_ZHONG_WAN_(Regulate_Middle).png",
+    "t": "Regulate Middle",
+    "cat": "digest",
+    "ing": [
+      "LI ZHONG WAN"
+    ],
+    "ben": [
+      "Aids digestion",
+      "Removes food stagnation",
+      "Harmonizes the stomach",
+      "Relieves bloating & reflux"
+    ],
+    "ind": "It can warm the middle Jiao and expel cold, tonify Qi and Spleen. It is used for deficiency and Cold in Spleen and Stomach, vomiting and stomach ache, no appetite, cold stomach and gastroenteritis, in...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Digest Support"
+    ]
+  },
+  "LIAN QIAO BAI DU WAN (Skin Detox)": {
+        img: "LIAN_QIAO_BAI_DU_WAN_(Skin_Detox).png",
+    "t": "Skin Detox",
+    "cat": "heart",
+    "ing": [
+      "LIAN QIAO BAI DU WAN"
+    ],
+    "ben": [
+      "Promotes blood circulation",
+      "Softens blood vessels",
+      "Relieves joint & back pain",
+      "Supports normal blood pressure"
+    ],
+    "ind": "It clears heat, removes toxicity, relieves swelling and pain, cools the Blood, and stops itching. It is used for boil and furunculosis, inflammation or suppuration of the skin, heat and fever, suppura...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Heart Support"
+    ]
+  },
+  "LIU WEI DI HUANG WAN (Nourish Yin)": {
+        img: "LIU_WEI_DI_HUANG_WAN_(Nourish_Yin).png",
+    "t": "Nourish Yin",
+    "cat": "men",
+    "ing": [
+      "LIU WEI DI HUANG WAN"
+    ],
+    "ben": [
+      "Tonifies Kidney Yang",
+      "Supports male reproductive health",
+      "Boosts energy & performance",
+      "Strengthens bones and tendons"
+    ],
+    "ind": "helps for the Yin deficiency of the kidney, liver and spleen with the symptom of weakness and soreness of the loins and the limbs, emission and sweating, impotence, burning soles or palms, lightheaded...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Men Support"
+    ]
+  },
+  "LONG DAN XIE GAN WAN (Purge Damp-Heat)": {
+        img: "LONG_DAN_XIE_GAN_WAN_(Purge_Damp-Heat).png",
+    "t": "Purge Damp-Heat",
+    "cat": "women",
+    "ing": [
+      "LONG DAN XIE GAN WAN"
+    ],
+    "ben": [
+      "Nourishes Spleen & Blood",
+      "Regulates menstruation",
+      "Alleviates period pain",
+      "Supports gynecological health"
+    ],
+    "ind": "It can clear excess heat from the Liver and Gallbladder and purge Damp-Heat. | It is used for Damp-Heat syndrome, symptoms include dizziness, red eyes, tinnitus, deafness, flank pain, bitter taste in ...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Women Support"
+    ]
+  },
+  "MAI WEI DI HUANG WAN (Nourish Lung & Kidney)": {
+        img: "MAI_WEI_DI_HUANG_WAN_(Nourish_Lung_&_Kidney).png",
+    "t": "Nourish Lung & Kidney",
+    "cat": "sleep",
+    "ing": [
+      "MAI WEI DI HUANG WAN"
+    ],
+    "ben": [
+      "Calms the mind & spirit",
+      "Restores normal sleep rhythm",
+      "Nourishes Heart Yin & blood",
+      "Alleviates irritability"
+    ],
+    "ind": "It nourishes the Kidney and Lung. It can be used for Yin deficiency of Lung and Kidney, tidal fever and night sweating, dry throat, dizziness and tinnitus, soreness and weakness of waist and knees. It...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Sleep Support"
+    ]
+  },
+  "MING MU DI HUANG WAN (Eye Bright)": {
+        img: "MING_MU_DI_HUANG_WAN_(Eye_Bright).png",
+    "t": "Eye Bright",
+    "cat": "detox",
+    "ing": [
+      "MING MU DI HUANG WAN"
+    ],
+    "ben": [
+      "Dispels wind-heat",
+      "Clears head & eyes",
+      "Detoxifies the body",
+      "Restores balance"
+    ],
+    "ind": "supports eye health and supports vision and restores and strengthens Kidney and Liver Yin. It is used for blurred vision and other eye discomforts, such as increased sensitivity to light, becoming tea...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Detox Support"
+    ]
+  },
+  "MU XIANG SHUN QI WAN (Reduce Bloating)": {
+        img: "MU_XIANG_SHUN_QI_WAN_(Reduce_Bloating).png",
+    "t": "Reduce Bloating",
+    "cat": "digest",
+    "ing": [
+      "MU XIANG SHUN QI WAN"
+    ],
+    "ben": [
+      "Aids digestion",
+      "Removes food stagnation",
+      "Harmonizes the stomach",
+      "Relieves bloating & reflux"
+    ],
+    "ind": "It can move Qi and resolve dampness, strengthen the Spleen and harmonize the Stomach. It is used to treat Pi symptoms in the chest, abdominal distention and ache, vomiting and nausea, belching and poo...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Digest Support"
+    ]
+  },
+  "PIAN TOU TONG WAN (Migraine Pill)": {
+        img: "PIAN_TOU_TONG_WAN_(Migraine_Pill).png",
+    "t": "Migraine Pill",
+    "cat": "heart",
+    "ing": [
+      "PIAN TOU TONG WAN"
+    ],
+    "ben": [
+      "Promotes blood circulation",
+      "Softens blood vessels",
+      "Relieves joint & back pain",
+      "Supports normal blood pressure"
+    ],
+    "ind": "is a herbal formula helps to expel Wind and supports normal head comfort. It is used for migraine and headache. It can also helps for joint pain.",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Heart Support"
+    ]
+  },
+  "QI JU DI HUANG WAN (Nourish Yin & Eye)": {
+        img: "QI_JU_DI_HUANG_WAN_(Nourish_Yin_&_Eye).png",
+    "t": "Nourish Yin & Eye",
+    "cat": "heart",
+    "ing": [
+      "QI JU DI HUANG WAN"
+    ],
+    "ben": [
+      "Promotes blood circulation",
+      "Softens blood vessels",
+      "Relieves joint & back pain",
+      "Supports normal blood pressure"
+    ],
+    "ind": "It nourishes Liver Yin and Blood, nourishes Kidney Yin, benefits the eyes. It is used for dry eyes with diminished vision, tearing with exposure to wind, photophobia, eye pain.",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Heart Support"
+    ]
+  },
+  "QIAN LIE SHU WAN (Prostate Health)": {
+        img: "QIAN_LIE_SHU_WAN_(Prostate_Health).png",
+    "t": "Prostate Health",
+    "cat": "men",
+    "ing": [
+      "QIAN LIE SHU WAN"
+    ],
+    "ben": [
+      "Tonifies Kidney Yang",
+      "Supports male reproductive health",
+      "Boosts energy & performance",
+      "Strengthens bones and tendons"
+    ],
+    "ind": "It tonifies the Kidneys and supports prostate and urinary health, clears deficiency heat, drains dampness and promotes urination. It can be used for chronic prostatitis, benign prostatic hyperplasia a...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Men Support"
+    ]
+  },
+  "QING QI HUA TAN WAN (Phlegm Clear)": {
+        img: "QING_QI_HUA_TAN_WAN_(Phlegm_Clear).png",
+    "t": "Phlegm Clear",
+    "cat": "sleep",
+    "ing": [
+      "QING QI HUA TAN WAN"
+    ],
+    "ben": [
+      "Calms the mind & spirit",
+      "Restores normal sleep rhythm",
+      "Nourishes Heart Yin & blood",
+      "Alleviates irritability"
+    ],
+    "ind": "It clears heat from the lung and dissolves phlegm, direct Qi downward and calm the respiratory tract. It is used for clearing phlegm and supporting respiratory health, for cases that the tongue is red...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Sleep Support"
+    ]
+  },
+  "QING RE AN CHUANG WAN (Acne & Boil)": {
+        img: "QING_RE_AN_CHUANG_WAN_(Acne_&_Boil).png",
+    "t": "Acne & Boil",
+    "cat": "digest",
+    "ing": [
+      "QING RE AN CHUANG WAN"
+    ],
+    "ben": [
+      "Aids digestion",
+      "Removes food stagnation",
+      "Harmonizes the stomach",
+      "Relieves bloating & reflux"
+    ],
+    "ind": "It can clear heat and detoxify, cool blood and remove stasis, purge fire and move bowels. It is used for treating acne, boil, furuncle, etc.",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Digest Support"
+    ]
+  },
+  "SHAO FU ZHU YU WAN (Abdominal Stasis)": {
+        img: "SHAO_FU_ZHU_YU_WAN_(Abdominal_Stasis).png",
+    "t": "Abdominal Stasis",
+    "cat": "women",
+    "ing": [
+      "SHAO FU ZHU YU WAN"
+    ],
+    "ben": [
+      "Nourishes Spleen & Blood",
+      "Regulates menstruation",
+      "Alleviates period pain",
+      "Supports gynecological health"
+    ],
+    "ind": "It circulation and Qi flow to resolve blood stasis. It is for warming the uterus, expelling the source of external cold, and promoting blood. It removes blood stasis in the lower abdomen and warms men...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Women Support"
+    ]
+  },
+  "SHEN JING SHUAI RUO WAN (Brain Tonic Pills)": {
+        img: "SHEN_JING_SHUAI_RUO_WAN_(Brain_Tonic_Pills).png",
+    "t": "Brain Tonic Pills",
+    "cat": "sleep",
+    "ing": [
+      "SHEN JING SHUAI RUO WAN"
+    ],
+    "ben": [
+      "Calms the mind & spirit",
+      "Restores normal sleep rhythm",
+      "Nourishes Heart Yin & blood",
+      "Alleviates irritability"
+    ],
+    "ind": "This formula can tonify the Kidney and essence, reinforce intelligence and calm mind. It is used for impaired concentration, dizziness, insomnia, dreaminess, upset, tiredness and faintness.",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Sleep Support"
+    ]
+  },
+  "SHEN LING BAI ZHU WAN (Consolidate Digestion)": {
+        img: "SHEN_LING_BAI_ZHU_WAN_(Consolidate_Digestion).png",
+    "t": "Consolidate Digestion",
+    "cat": "sleep",
+    "ing": [
+      "SHEN LING BAI ZHU WAN"
+    ],
+    "ben": [
+      "Calms the mind & spirit",
+      "Restores normal sleep rhythm",
+      "Nourishes Heart Yin & blood",
+      "Alleviates irritability"
+    ],
+    "ind": "It helps to tonify Spleen and Stomach, enhance Lung Qi. It is used for Spleen and Stomach Qi Deficiency, poor appetite, diarrhea, short breath and cough, weak extremities and fatigue. Chronic Fatigue ...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Sleep Support"
+    ]
+  },
+  "SHENG MAI WAN (Generate Pulse)": {
+        img: "SHENG_MAI_WAN_(Generate_Pulse).png",
+    "t": "Generate Pulse",
+    "cat": "sleep",
+    "ing": [
+      "SHENG MAI WAN"
+    ],
+    "ben": [
+      "Calms the mind & spirit",
+      "Restores normal sleep rhythm",
+      "Nourishes Heart Yin & blood",
+      "Alleviates irritability"
+    ],
+    "ind": "It can tonify Qi, nourish Yin and generate body fluid. It is used for Qi and Yin deficiency, palpitation, short breath and spontaneous sweating. It can also support physical power, and suit for exerci...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Sleep Support"
+    ]
+  },
+  "SHOU WU WAN ( Fo Ti Hair Tonic)": {
+        img: "SHOU_WU_WAN_(_Fo_Ti_Hair_Tonic).png",
+    "t": "Fo Ti Hair Tonic",
+    "cat": "heart",
+    "ing": [
+      "SHOU WU WAN"
+    ],
+    "ben": [
+      "Promotes blood circulation",
+      "Softens blood vessels",
+      "Relieves joint & back pain",
+      "Supports normal blood pressure"
+    ],
+    "ind": "He Shou Wu may support hair growth, support hair original color, and support bones and muscles associated with aging. This formulation is used to further enhance the action of He Shou Wu. It can nouri...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Heart Support"
+    ]
+  },
+  "SI JUN ZI WAN (Four Gentlemen)": {
+        img: "SI_JUN_ZI_WAN_(Four_Gentlemen).png",
+    "t": "Four Gentlemen",
+    "cat": "digest",
+    "ing": [
+      "SI JUN ZI WAN"
+    ],
+    "ben": [
+      "Aids digestion",
+      "Removes food stagnation",
+      "Harmonizes the stomach",
+      "Relieves bloating & reflux"
+    ],
+    "ind": "It can tonify Qi and Spleen. It is used for Qi Deficiency in Stomach and Spleen, symptoms include sallow complexion, weak voice, short breath and fatigue, poor appetite and loose stool, pale tongue, w...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Digest Support"
+    ]
+  },
+  "SI MIAO WAN (Clear Dampness)": {
+        img: "SI_MIAO_WAN_(Clear_Dampness).png",
+    "t": "Clear Dampness",
+    "cat": "heart",
+    "ing": [
+      "SI MIAO WAN"
+    ],
+    "ben": [
+      "Promotes blood circulation",
+      "Softens blood vessels",
+      "Relieves joint & back pain",
+      "Supports normal blood pressure"
+    ],
+    "ind": "It clears Heat and eliminates Dampness, helps to regulate blood flow in the lower extremities, metabolize fluids and support normal joint function. It is used for damp-heat in lower body, such as stif...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Heart Support"
+    ]
+  },
+  "SI WU TANG WAN (Nourish Blood)": {
+        img: "SI_WU_TANG_WAN_(Nourish_Blood).png",
+    "t": "Nourish Blood",
+    "cat": "women",
+    "ing": [
+      "SI WU TANG WAN"
+    ],
+    "ben": [
+      "Nourishes Spleen & Blood",
+      "Regulates menstruation",
+      "Alleviates period pain",
+      "Supports gynecological health"
+    ],
+    "ind": "Si Wu Tang has the effect of nourishing Blood and regulating menstruation. It is widely used in Blood Deficiency and Blood Stasis Syndromes. It is used for anemia, hypermenorrhea, irregular menstruati...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Women Support"
+    ]
+  },
+  "TAO HONG SI WU WAN (Blood Deficiency & Stagnation)": {
+        img: "TAO_HONG_SI_WU_WAN_(Blood_Deficiency_&_Stagnation).png",
+    "t": "Blood Deficiency & Stagnation",
+    "cat": "sleep",
+    "ing": [
+      "TAO HONG SI WU WAN"
+    ],
+    "ben": [
+      "Calms the mind & spirit",
+      "Restores normal sleep rhythm",
+      "Nourishes Heart Yin & blood",
+      "Alleviates irritability"
+    ],
+    "ind": "It tonifies and invigorates the blood, regulates blood circulation, breaks up blood stagnation, regulates menstruation, alleviates pain. It can be used for inflammation, hyperlipidemia, anemia, fatigu...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Sleep Support"
+    ]
+  },
+  "TE XIAO BI MIN GAN WAN (Nasal Allergy)": {
+        img: "TE_XIAO_BI_MIN_GAN_WAN_(Nasal_Allergy).png",
+    "t": "Nasal Allergy",
+    "cat": "resp",
+    "ing": [
+      "TE XIAO BI MIN GAN WAN"
+    ],
+    "ben": [
+      "Clears nasal passages",
+      "Expels wind and heat toxins",
+      "Transforms phlegm & stops cough",
+      "Supports respiratory health"
+    ],
+    "ind": "Nasal Allergy is specially formulated for supporting clear and healthy nasal passages. It disperses Wind and expels toxins. The herbs in this special formula dissolve phlegm, clear discharge and suppo...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Resp Support"
+    ]
+  },
+  "TE XIAO JING ZHUI TONG WAN (Neck Relief)": {
+        img: "TE_XIAO_JING_ZHUI_TONG_WAN_(Neck_Relief).png",
+    "t": "Neck Relief",
+    "cat": "heart",
+    "ing": [
+      "TE XIAO JING ZHUI TONG WAN"
+    ],
+    "ben": [
+      "Promotes blood circulation",
+      "Softens blood vessels",
+      "Relieves joint & back pain",
+      "Supports normal blood pressure"
+    ],
+    "ind": "It helps to improve Qi (energy) flow, relax muscles and tendons and activate the energy channels (meridians). It is used to support the muscles and tendons around the neck, relief neck pain.",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Heart Support"
+    ]
+  },
+  "TIAN MA GOU TENG WAN (Liver Wind Clear)": {
+        img: "TIAN_MA_GOU_TENG_WAN_(Liver_Wind_Clear).png",
+    "t": "Liver Wind Clear",
+    "cat": "sleep",
+    "ing": [
+      "TIAN MA GOU TENG WAN"
+    ],
+    "ben": [
+      "Calms the mind & spirit",
+      "Restores normal sleep rhythm",
+      "Nourishes Heart Yin & blood",
+      "Alleviates irritability"
+    ],
+    "ind": "It calms the liver and extinguishes wind. It alleviates symptoms associated with internal liver wind. It can be used for dizziness, hypertension, headache, eyelid twitch, vertigo, stroke, neurasthenia...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Sleep Support"
+    ]
+  },
+  "TIAN WANG BU XIN WAN (Nourish Heart Yin)": {
+        img: "TIAN_WANG_BU_XIN_WAN_(Nourish_Heart_Yin).png",
+    "t": "Nourish Heart Yin",
+    "cat": "sleep",
+    "ing": [
+      "TIAN WANG BU XIN WAN"
+    ],
+    "ben": [
+      "Calms the mind & spirit",
+      "Restores normal sleep rhythm",
+      "Nourishes Heart Yin & blood",
+      "Alleviates irritability"
+    ],
+    "ind": "It helps for nourishing Yin and blood, and tonifying the heart to tranquilize the mind. It is used to replenish the Blood and Yin, and support Heart functions. It calms the mind and supports a restful...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Sleep Support"
+    ]
+  },
+  "TIAO JING CU YUN WAN (Fertility Aid)": {
+        img: "TIAO_JING_CU_YUN_WAN_(Fertility_Aid).png",
+    "t": "Fertility Aid",
+    "cat": "women",
+    "ing": [
+      "TIAO JING CU YUN WAN"
+    ],
+    "ben": [
+      "Nourishes Spleen & Blood",
+      "Regulates menstruation",
+      "Alleviates period pain",
+      "Supports gynecological health"
+    ],
+    "ind": "It warms the kidney and invigorate the spleen, and regulate menstruation. It is used for infertility,  irregular menstruation, dysmenorrhea, amenorrhea and sterility caused by yang deficiency in the s...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Women Support"
+    ]
+  },
+  "TONG JING WAN (Period Pain Pills)": {
+        img: "TONG_JING_WAN_(Period_Pain_Pills).png",
+    "t": "Period Pain Pills",
+    "cat": "women",
+    "ing": [
+      "TONG JING WAN"
+    ],
+    "ben": [
+      "Nourishes Spleen & Blood",
+      "Regulates menstruation",
+      "Alleviates period pain",
+      "Supports gynecological health"
+    ],
+    "ind": "It can warm channels and expel cold, invigorate blood circulation and remove stasis. It is used for period pain and support a smooth menstruation.",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Women Support"
+    ]
+  },
+  "WEN JING WAN (Warm Mense)": {
+        img: "WEN_JING_WAN_(Warm_Mense).png",
+    "t": "Warm Mense",
+    "cat": "women",
+    "ing": [
+      "WEN JING WAN"
+    ],
+    "ben": [
+      "Nourishes Spleen & Blood",
+      "Regulates menstruation",
+      "Alleviates period pain",
+      "Supports gynecological health"
+    ],
+    "ind": "It can promote blood circulation and remove blood stasis, warm and unblock meridians, regulate Qi and relieve pain. It is used for period pain and irregular menstruation with Cold syndrome. Symptoms i...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Women Support"
+    ]
+  },
+  "WU JI BAI FENG WAN (Lady's Tonic)": {
+        img: "WU_JI_BAI_FENG_WAN_(Lady's_Tonic).png",
+    "t": "Lady's Tonic",
+    "cat": "women",
+    "ing": [
+      "WU JI BAI FENG WAN"
+    ],
+    "ben": [
+      "Nourishes Spleen & Blood",
+      "Regulates menstruation",
+      "Alleviates period pain",
+      "Supports gynecological health"
+    ],
+    "ind": "It replenishes the body's Qi, nourishes the blood, and supports the normal menstrual cycle. It is the most popular herbal supplement used by women in China to maintain overall health. It helps for wea...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Women Support"
+    ]
+  },
+  "WU LING WAN (Edema Relief)": {
+        img: "WU_LING_WAN_(Edema_Relief).png",
+    "t": "Edema Relief",
+    "cat": "heart",
+    "ing": [
+      "WU LING WAN"
+    ],
+    "ben": [
+      "Promotes blood circulation",
+      "Softens blood vessels",
+      "Relieves joint & back pain",
+      "Supports normal blood pressure"
+    ],
+    "ind": "It can clear dampness and promote diuresis. It is used for stagnated fluid syndrome. It can be used for acute and chronic nephritis, edema, ascites due to cirrhosis, cardiac edema, acute enteritis, re...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Heart Support"
+    ]
+  },
+  "WU ZI YAN ZONG WAN (Men's Fertility)": {
+        img: "WU_ZI_YAN_ZONG_WAN_(Men's_Fertility).png",
+    "t": "Men's Fertility",
+    "cat": "women",
+    "ing": [
+      "WU ZI YAN ZONG WAN"
+    ],
+    "ben": [
+      "Nourishes Spleen & Blood",
+      "Regulates menstruation",
+      "Alleviates period pain",
+      "Supports gynecological health"
+    ],
+    "ind": "is indicated in China Pharmacopoeia1 for tonifying the kidney and nourishing Jing. It is suitable for use in the case of the kidney deficiency presented with lower back weakness, dribbling in urinatio...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Women Support"
+    ]
+  },
+  "XIANG SHA LIU JUN WAN (Stomach Harmonize)": {
+        img: "XIANG_SHA_LIU_JUN_WAN_(Stomach_Harmonize).png",
+    "t": "Stomach Harmonize",
+    "cat": "digest",
+    "ing": [
+      "XIANG SHA LIU JUN WAN"
+    ],
+    "ben": [
+      "Aids digestion",
+      "Removes food stagnation",
+      "Harmonizes the stomach",
+      "Relieves bloating & reflux"
+    ],
+    "ind": "It can strengthen the Spleen, harmonize the Stomach, and tonify Qi. It is used for Spleen and Stomach Qi deficiency with damp-cold stagnation affecting the middle jiao (middle burner). Signs and sympt...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Digest Support"
+    ]
+  },
+  "XIANG SHA YANG WEI WAN (Stomach Tonic)": {
+        img: "XIANG_SHA_YANG_WEI_WAN_(Stomach_Tonic).png",
+    "t": "Stomach Tonic",
+    "cat": "digest",
+    "ing": [
+      "XIANG SHA YANG WEI WAN"
+    ],
+    "ben": [
+      "Aids digestion",
+      "Removes food stagnation",
+      "Harmonizes the stomach",
+      "Relieves bloating & reflux"
+    ],
+    "ind": "warms the Middle Energizer to harmonize the Stomach. | It is for warming Stomach and regulating Stomach Qi | It improves the functionality of the digestive system. | It can be used for acid reflux, fu...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Digest Support"
+    ]
+  },
+  "XIAO CHAI HU TANG WAN (Shaoyang Harmonize)": {
+        img: "XIAO_CHAI_HU_TANG_WAN_(Shaoyang_Harmonize).png",
+    "t": "Shaoyang Harmonize",
+    "cat": "digest",
+    "ing": [
+      "XIAO CHAI HU TANG WAN"
+    ],
+    "ben": [
+      "Aids digestion",
+      "Removes food stagnation",
+      "Harmonizes the stomach",
+      "Relieves bloating & reflux"
+    ],
+    "ind": "This product is used for ShaoYang pattern, with symptoms include a feeling of both chills and heat, a feeling of rib-sides fullness, a bitter taste in the mouth, reduced appetite, and short temper.",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Digest Support"
+    ]
+  },
+  "XIAO HUO LUO WAN (Unblock Meridian)": {
+        img: "XIAO_HUO_LUO_WAN_(Unblock_Meridian).png",
+    "t": "Unblock Meridian",
+    "cat": "resp",
+    "ing": [
+      "XIAO HUO LUO WAN"
+    ],
+    "ben": [
+      "Clears nasal passages",
+      "Expels wind and heat toxins",
+      "Transforms phlegm & stops cough",
+      "Supports respiratory health"
+    ],
+    "ind": "It invigorates the blood, unblocks the channels, dispels wind and dampness and transforms phlegm to relieve numbness and discomfort. It can be used for windstroke, Osteoarthritis, Peripheral nerve dis...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Resp Support"
+    ]
+  },
+  "XIAO YAO WAN (Ease Life)": {
+        img: "XIAO_YAO_WAN_(Ease_Life).png",
+    "t": "Ease Life",
+    "cat": "women",
+    "ing": [
+      "XIAO YAO WAN"
+    ],
+    "ben": [
+      "Nourishes Spleen & Blood",
+      "Regulates menstruation",
+      "Alleviates period pain",
+      "Supports gynecological health"
+    ],
+    "ind": "It nourishes the Liver and smooth Liver Qi. It is used for irregular, late or lack of menstruation, premenstrual tension, PMS, infertility, low libido and many other diseases including depression. It ...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Women Support"
+    ]
+  },
+  "XUE FU ZHU YU WAN (Blood Stasis)": {
+        img: "XUE_FU_ZHU_YU_WAN_(Blood_Stasis).png",
+    "t": "Blood Stasis",
+    "cat": "sleep",
+    "ing": [
+      "XUE FU ZHU YU WAN"
+    ],
+    "ben": [
+      "Calms the mind & spirit",
+      "Restores normal sleep rhythm",
+      "Nourishes Heart Yin & blood",
+      "Alleviates irritability"
+    ],
+    "ind": "It helps for promoting Blood circulation and removing Blood Stasis, moving Qi and relieving pain. It was originally intended to treat cardiovascular system disorders. Now it is widely used in various ...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Sleep Support"
+    ]
+  },
+  "YANG XUE SHENG FA WAN (Hair Grow Pills)": {
+        img: "YANG_XUE_SHENG_FA_WAN_(Hair_Grow_Pills).png",
+    "t": "Hair Grow Pills",
+    "cat": "sleep",
+    "ing": [
+      "YANG XUE SHENG FA WAN"
+    ],
+    "ben": [
+      "Calms the mind & spirit",
+      "Restores normal sleep rhythm",
+      "Nourishes Heart Yin & blood",
+      "Alleviates irritability"
+    ],
+    "ind": "It can nourish the Blood, expel Wind, tonify Kidney and replenish Essence. It is used for hair loss due to deficiency of blood and kidney essence, symptoms include loose hair root or sparse hair loss,...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Sleep Support"
+    ]
+  },
+  "YOU GUI WAN (Tonify Kidney Yang)": {
+    "t": "Tonify Kidney Yang",
+    "cat": "men",
+    "ing": [
+      "YOU GUI WAN"
+    ],
+    "ben": [
+      "Tonifies Kidney Yang",
+      "Supports male reproductive health",
+      "Boosts energy & performance",
+      "Strengthens bones and tendons"
+    ],
+    "ind": "It can warm and tonify Kidney Yang, replenish sperm and stop  spermatorrhea. It is used for Kidney Yang deficiency, Life-gate fire deficiency, symptoms include cold and sore in waist and knee, lassitu...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Men Support"
+    ]
+  },
+  "YU PING FENG WAN (Protective Screen)": {
+        img: "YU_PING_FENG_WAN_(Protective_Screen).png",
+    "t": "Protective Screen",
+    "cat": "immunity",
+    "ing": [
+      "YU PING FENG WAN"
+    ],
+    "ben": [
+      "Clears heat & toxins",
+      "Cools blood & dispels swelling",
+      "Supports immune system defence",
+      "Anti-inflammatory action"
+    ],
+    "ind": "It can tonify Qi (vital energy), consolidate the body's external surface, and stop perspiration. It is used for weak external body, spontaneous sweating, susceptibility to Wind evils, , and pale compl...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Immunity Support"
+    ]
+  },
+  "ZHEN ZHU AN CHUANG WAN (Pearl Skin)": {
+        img: "ZHEN_ZHU_AN_CHUANG_WAN_(Pearl_Skin).png",
+    "t": "Pearl Skin",
+    "cat": "detox",
+    "ing": [
+      "ZHEN ZHU AN CHUANG WAN"
+    ],
+    "ben": [
+      "Dispels wind-heat",
+      "Clears head & eyes",
+      "Detoxifies the body",
+      "Restores balance"
+    ],
+    "ind": "It is suitable for a range of skin issues that manifest in itching, redness. The redness is related to heat, and the tendency to present with a greasy complexion and pustules is associated with dampne...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Detox Support"
+    ]
+  },
+  "ZHI BAI DI HUANG WAN (Yin Deficiency & Heat)": {
+        img: "ZHI_BAI_DI_HUANG_WAN_(Yin_Deficiency_&_Heat).png",
+    "t": "Yin Deficiency & Heat",
+    "cat": "sleep",
+    "ing": [
+      "ZHI BAI DI HUANG WAN"
+    ],
+    "ben": [
+      "Calms the mind & spirit",
+      "Restores normal sleep rhythm",
+      "Nourishes Heart Yin & blood",
+      "Alleviates irritability"
+    ],
+    "ind": "It nourishes Yin and clears heat. It is used for Yin deficiency with heat, hot flashes and night sweat, dry mouth and thirsty, scanty dark urine. It can be used for menopause-associated night sweats o...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Sleep Support"
+    ]
+  },
+  "ZHI KE DING CHUAN WAN (Wheeze & Cough)": {
+        img: "ZHI_KE_DING_CHUAN_WAN_(Wheeze_&_Cough).png",
+    "t": "Wheeze & Cough",
+    "cat": "resp",
+    "ing": [
+      "ZHI KE DING CHUAN WAN"
+    ],
+    "ben": [
+      "Clears nasal passages",
+      "Expels wind and heat toxins",
+      "Transforms phlegm & stops cough",
+      "Supports respiratory health"
+    ],
+    "ind": "It disseminates Lung Qi and relieves cough, clears Heat Phlegm and replenishes Lung and Spleen. It is suitable for chronic cough, bronchitis and asthma, accompanied by the symptoms of thick yellow phl...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Resp Support"
+    ]
+  },
+  "ZHI YANG WAN (Anti Itching)": {
+        img: "ZHI_YANG_WAN_(Anti_Itching).png",
+    "t": "Anti Itching",
+    "cat": "detox",
+    "ing": [
+      "ZHI YANG WAN"
+    ],
+    "ben": [
+      "Dispels wind-heat",
+      "Clears head & eyes",
+      "Detoxifies the body",
+      "Restores balance"
+    ],
+    "ind": "It can moisten skin and stop itching. It can be used for itch skin, neurodermatitis, seborrheic dermatitis, eczema, etc.",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Detox Support"
+    ]
+  },
+  "ZHUANG YANG WAN (Tonify Yang)": {
+        img: "ZHUANG_YANG_WAN_(Tonify_Yang).png",
+    "t": "Tonify Yang",
+    "cat": "men",
+    "ing": [
+      "ZHUANG YANG WAN"
+    ],
+    "ben": [
+      "Tonifies Kidney Yang",
+      "Supports male reproductive health",
+      "Boosts energy & performance",
+      "Strengthens bones and tendons"
+    ],
+    "ind": "It can tonify Yang energy and support male vitality. It is used for deficiency of the Kidney Yang, symptoms include low-back and knee weakness, cold limbs, impotency and premature ejaculation. It also...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Men Support"
+    ]
+  },
+  "ZHUANG YAO JIAN SHEN WAN (Strengthen Waist)": {
+    "t": "Strengthen Waist",
+    "cat": "sleep",
+    "ing": [
+      "ZHUANG YAO JIAN SHEN WAN"
+    ],
+    "ben": [
+      "Calms the mind & spirit",
+      "Restores normal sleep rhythm",
+      "Nourishes Heart Yin & blood",
+      "Alleviates irritability"
+    ],
+    "ind": "It nourishes the Kidneys, strengthens the muscles and strengthens the bones. It is used for chronic waist, leg or joint pain caused by a Deficiency of Kidney Qi. It is commonly seen in elderly people ...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Sleep Support"
+    ]
+  },
+  "ZUO GU SHEN JING TONG WAN (Sciatic Pain)": {
+        img: "ZUO_GU_SHEN_JING_TONG_WAN_(Sciatic_Pain).png",
+    "t": "Sciatic Pain",
+    "cat": "sleep",
+    "ing": [
+      "ZUO GU SHEN JING TONG WAN"
+    ],
+    "ben": [
+      "Calms the mind & spirit",
+      "Restores normal sleep rhythm",
+      "Nourishes Heart Yin & blood",
+      "Alleviates irritability"
+    ],
+    "ind": "It is specifically formulated to support sciatic nerve function. | It works by dredging the meridians and removing obstructions from the channels while relaxing the tendons and muscles, strengthening ...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Sleep Support"
+    ]
+  },
+  "ZUO GUI WAN (Nourish Kidney Yin)": {
+    "t": "Nourish Kidney Yin",
+    "cat": "sleep",
+    "ing": [
+      "ZUO GUI WAN"
+    ],
+    "ben": [
+      "Calms the mind & spirit",
+      "Restores normal sleep rhythm",
+      "Nourishes Heart Yin & blood",
+      "Alleviates irritability"
+    ],
+    "ind": "It can nourish Yin and tonify Kidney. It is used for Kidney Yin deficiency, symptoms include weakness of the loins and the knees, tidal fever, night sweating, lassitude, dry mouth. It can also support...",
+    "use": "Take 8 pills each time, 3 times daily with warm water, or as directed by a practitioner.",
+    "ch": [
+      "Traditional Herbs",
+      "Concentrated Pills",
+      "Sleep Support"
+    ]
+  }
+};
+
+window.P = [];
+
+// ── STATE ──────────────────────────────────────────────────────────────────
+let activeType='all', activeCat='all', searchQ='', cart=[], openIdx=null;
+try {
+  const savedCart = localStorage.getItem('tangren_cart');
+  if (savedCart) {
+    cart = JSON.parse(savedCart);
+  }
+} catch (e) {
+  cart = [];
+}
+
+// ── DYNAMIC CATALOG LOAD ───────────────────────────────────────────────────
+async function loadDynamicCatalog() {
+  try {
+    const res = await fetch('products.json', { cache: 'no-cache' });
+    if (!res.ok) {
+      throw new Error(`products.json not found (HTTP ${res.status}). Check the file exists in the repo root.`);
+    }
+    let data;
+    try {
+      data = await res.json();
+    } catch (parseErr) {
+      throw new Error(`products.json is not valid JSON: ${parseErr.message}`);
+    }
+    
+    // Handle Make.com format {"products": [...]} or pure array
+    if (data && typeof data === 'object' && !Array.isArray(data) && Array.isArray(data.products)) {
+      data = data.products;
+    }
+
+    if (!Array.isArray(data)) {
+      throw new Error(`products.json must be a JSON array, got: ${typeof data}`);
+    }
+    
+    // Filter out any null, invalid entries, header rows, or empty spreadsheet rows
+    data = data.filter(item => {
+      if (!item || typeof item !== 'object') return false;
+      const nameVal = item["Product"] || item["n"] || item["product"] || item[0];
+      if (typeof nameVal === 'string' && nameVal.toLowerCase().trim() === 'product') return false;
+      
+      // Also drop completely empty rows that have no valid string identifiers
+      const hasAnyValidString = Object.values(item).some(v => typeof v === 'string' && v.trim().length > 1);
+      return hasAnyValidString;
+    });
+
+    if (data.length === 0) {
+      throw new Error('products.json is an empty array — no products to display.');
+    }
+    
+    // Debugger: Log the first item to see exact keys passed by Make.com
+    console.log("[Tangren Sample Item]:", data[0]);
+    
+    // Map raw Make.com data and merge with tcmCatalogDetails
+    window.P = data.map(item => {
+      // 1. Get the clean product name using multiple fallbacks
+      let name = item["Product"] || item["n"] || item["product"] || item[0] || item["0"];
+      if (!name) {
+        // Fallback to the first string value found in the object keys
+        const firstStringVal = Object.values(item).find(v => typeof v === 'string' && isNaN(Number(v)) && v.length > 2);
+        name = firstStringVal || "Unknown Product";
+      }
+      
+      // 2. Normalize the name and fix known Make.com typos for flawless dictionary/image lookups
+      const aliases = {
+        'ANI-CANCER TEA': 'ANTI-CANCER TEA',
+        'BALSAM PEAR TEA (BITTER MELON TEA)': 'BALSAM PEAR TEA',
+        'FLOS CHRYSANTHEMI TEA': 'CHRYSANTHEMUM PLUS TEA'
+      };
+      name = aliases[name] || name;
+      
+      const lookupKey = name.toUpperCase().trim();
+      const details = (typeof tcmCatalogDetails !== 'undefined' && tcmCatalogDetails[lookupKey]) ? tcmCatalogDetails[lookupKey] : {};
+
+      // 3. Safely handle the price and completely strip out any "R" currency markers
+      let rawPrice = item["Retail price"] || item.p || item[1] || item["1"] || 0;
+      if (typeof rawPrice === 'string') {
+        rawPrice = rawPrice.replace(/[Rr\s]/g, ''); // Strips "R", "r", and spaces
+      }
+      const cleanPrice = parseFloat(rawPrice) || 0;
+      
+      // 4. Strip parentheses (and contents), keep hyphens, remove other special characters, lowercase
+      const safeNameForUrl = name
+        .replace(/\s*\([^)]*\)/g, '') // Strip parentheses and everything inside them
+        .replace(/[^a-zA-Z0-9 -]/g, '') // Remove symbols like &, ., , — but KEEP hyphens
+        .trim() // Remove trailing or leading spaces
+        .replace(/\s+/g, '_') // Replace inner spaces with underscores
+        .toLowerCase(); // Lowercase to match filenames on GitHub Pages
+        
+      const imagePath = `assets/images/${safeNameForUrl}.png`;
+      
+      // 4. Build the final clean product object for layout templates
+      return {
+        n: name,
+        t: details.t || item.t || "Traditional Herbal Formula",
+        cat: details.cat || item.cat || "general",
+        p: cleanPrice, // Pure number for .toFixed(2)
+        r: details.r || item.r || 4.5,
+        rv: details.rv || item.rv || 12,
+        b: details.b || item.b || null,
+        img: imagePath,
+        ing: details.ing || item.ing || [],
+        ben: details.ben || item.ben || [],
+        ind: details.ind || item.ind || "Formulated to support holistic wellbeing.",
+        use: details.use || item.use || "Consult packaging for traditional preparation.",
+        ch: details.ch || item.ch || ["TCM", "Herbal"]
+      };
+    });
+
+    // Initialize catalog rendering and filters once window.P is populated
+    buildFilters();
+    updateCart();
+
+    // Read ?filter= param from URL and activate the correct tab
+    const urlParams = new URLSearchParams(window.location.search);
+    const filterParam = urlParams.get('filter');
+    const searchParam = urlParams.get('search');
+    const showCartParam = urlParams.get('showCart');
+
+    if (showCartParam) {
+      setTimeout(() => { showCart(); }, 150);
+    }
+
+    if (filterParam === 'teas' || filterParam === 'pills' || filterParam === 'all') {
+      setType(filterParam);
+    } else {
+      renderGrid();
+    }
+
+    if (searchParam) {
+      const searchInput = document.getElementById('si');
+      const mobileSearchInput = document.getElementById('si-mobile');
+      if (searchInput) searchInput.value = searchParam;
+      if (mobileSearchInput) mobileSearchInput.value = searchParam;
+      doSearch(searchParam);
+    }
+  } catch (error) {
+    console.error('[Tangren] Failed to load dynamic catalog:', error.message);
+    // Show a loading error state in the product grid
+    const pg = document.getElementById('pg');
+    if (pg) {
+      pg.innerHTML = `<div class="nores"><h3>Catalog Unavailable</h3><p>Could not load products. Please refresh the page or try again shortly.</p><small style="opacity:.5">${error.message}</small></div>`;
+    }
+  }
+}
+
+// ── INIT ───────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded',()=>{
+  // Fetch dynamic products catalog
+  loadDynamicCatalog();
+
+  // Toggle nav dropdowns on click/tap (especially for touch screens)
+  document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+    const btn = dropdown.querySelector('.nav-dropbtn');
+    if (btn) {
+      btn.addEventListener('click', (e) => {
+        // Toggle dropdown if we are on a touch-capable screen or mobile width
+        if (window.innerWidth <= 991 || ('ontouchstart' in window)) {
+          e.preventDefault();
+          e.stopPropagation();
+          const isOpen = dropdown.classList.contains('open');
+          document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+          if (!isOpen) {
+            dropdown.classList.add('open');
+          }
+        }
+      });
+    }
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+      dropdown.classList.remove('open');
+    });
+  });
+
+  // Intercept links with query filters to dynamically filter same-page without a reload
+  document.addEventListener('click', e => {
+    const link = e.target.closest('a');
+    if (link) {
+      try {
+        const url = new URL(link.href, window.location.href);
+        const onSamePage = url.pathname === window.location.pathname || 
+                           (url.pathname.endsWith('index.html') && window.location.pathname === '/') ||
+                           (window.location.pathname.endsWith('index.html') && url.pathname === '/');
+        if (onSamePage) {
+          const filter = url.searchParams.get('filter');
+          if (filter) {
+            e.preventDefault();
+            // Close dropdown and mobile menu drawer
+            document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+            if (typeof toggleMobileMenu === 'function') toggleMobileMenu(false);
+            
+            setType(filter);
+            // Scroll to grid (#ga)
+            const target = document.getElementById('ga');
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        }
+      } catch (err) {}
+    }
+  });
+});
+
+function buildFilters(){
+  const fb=document.getElementById('fb');
+  fb.innerHTML=CATS.map(c=>`<button class="fchip${c.id==='all'?' on':''}" onclick="setFilter('${c.id}')"><i data-lucide="${c.ico}" style="width:13px;height:13px"></i> ${c.l}</button>`).join('');
+  lucide.createIcons({nameAttr:'data-lucide',attrs:{class:''},nodes:[fb]});
+}
+
+function setFilter(id){
+  activeCat=id;
+  document.querySelectorAll('.fchip').forEach((c,i)=>c.classList.toggle('on',CATS[i].id===id));
+  renderGrid();
+}
+
+function setType(type){
+  activeType=type;
+  document.getElementById('type-all').classList.toggle('on', type === 'all');
+  document.getElementById('type-teas').classList.toggle('on', type === 'teas');
+  document.getElementById('type-pills').classList.toggle('on', type === 'pills');
+  
+  // Reset category filter to 'all' to avoid showing empty categories
+  setFilter('all'); 
+  renderGrid();
+}
+
+function doSearch(q){searchQ=q.toLowerCase().trim();renderGrid()}
+
+function filtered(){
+  return P.filter(p=>{
+    const matchesType = activeType === 'all' || 
+                        (activeType === 'teas' && !p.isPill) || 
+                        (activeType === 'pills' && p.isPill);
+    const inCat = activeCat === 'all' || p.cat === activeCat;
+    const inQ = !searchQ || 
+                p.n.toLowerCase().includes(searchQ) || 
+                p.t.toLowerCase().includes(searchQ) || 
+                p.ing.some(i => i.toLowerCase().includes(searchQ)) || 
+                (p.ch && p.ch.some(c => c.toLowerCase().includes(searchQ)));
+    return matchesType && inCat && inQ;
+  });
+}
+
+function starsStr(r){
+  const full=Math.floor(r),half=r-full>=0.5;
+  return '★'.repeat(full)+(half?'½':'')+'☆'.repeat(5-full-(half?1:0));
+}
+
+function catLabel(id){return CATS.find(c=>c.id===id)?.l.replace(/^[^a-zA-Z]+/,'').trim()||id}
+
+function renderGrid(){
+  const items=filtered();
+  const pg=document.getElementById('pg');
+  const typeWord = activeType === 'teas' ? 'tea' : (activeType === 'pills' ? 'pill' : 'product');
+  document.getElementById('fc').textContent=`${items.length} ${typeWord}${items.length!==1?'s':''}`;
+  if(!items.length){pg.innerHTML='<div class="nores"><h3>No teas found</h3><p>Try a different search or filter.</p></div>';return;}
+  pg.innerHTML=items.map((p,vi)=>{
+    const i=vi;
+    const idx=P.indexOf(p);
+    const delay=Math.min(i*35,400);
+    return `<div class="card" style="animation-delay:${delay}ms" onclick="openModal(${idx})">
+      ${p.b?`<span class="cbadge ${p.b==='Bestseller'?'bs':p.b==='New'?'nw':'pr'}">${p.b}</span>`:''}
+      <div class="cimgw">
+        <img class="cimg" src="${p.img}" alt="${p.n}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="cfall" style="display:none"><i data-lucide="coffee" style="width:36px;height:36px;color:var(--fm)"></i></div>
+      </div>
+      <div class="cbody">
+        <div class="ccat">${catLabel(p.cat)}</div>
+        <div class="cname">${p.n}</div>
+        <div class="ctag">${p.t}</div>
+        <div class="crat"><span class="cstars">${'★'.repeat(Math.round(p.r))}</span><span>${p.r} (${p.rv})</span></div>
+        <div class="cfoot">
+          <span class="cprice">R${p.p.toFixed(2)}</span>
+          <button class="catcbtn${cart.some(item => item.idx === idx) ? ' ok' : ''}" id="cb${idx}" onclick="addCard(event,${idx})">${cart.some(item => item.idx === idx) ? '✓ Added' : 'Add to Cart'}</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  lucide.createIcons({nameAttr:'data-lucide',attrs:{class:''},nodes:[pg]});
+}
+
+function openProductDetailByName(name) {
+  if (!name) return;
+  const q = name.trim().toUpperCase();
+  // Try exact start match first (avoids TE XIAO BI MIN matching before TE XIAO JING ZHUI)
+  let idx = P.findIndex(p => p && p.n && p.n.trim().toUpperCase().startsWith(q));
+  // Fallback: any substring match
+  if (idx === -1) {
+    idx = P.findIndex(p => p && p.n && p.n.trim().toUpperCase().includes(q));
+  }
+  if (idx !== -1) {
+    openModal(idx);
+  } else {
+    console.warn('[Hero] Product not found for:', name);
+  }
+}
+
+// ── MODAL ──────────────────────────────────────────────────────────────────
+function openModal(idx){
+  const p=P[idx];openIdx=idx;
+  document.getElementById('mi').src=p.img;
+  document.getElementById('mi').style.display='block';
+  document.getElementById('mf').style.display='none';
+  document.getElementById('mcat').textContent=catLabel(p.cat);
+  document.getElementById('mtt').textContent=p.n;
+  document.getElementById('mtag').textContent=p.t;
+  document.getElementById('mst').textContent='★'.repeat(Math.round(p.r));
+  document.getElementById('mrav').textContent=`${p.r} · ${p.rv} reviews`;
+  document.getElementById('mpr').textContent=`R${p.p.toFixed(2)}`;
+  const stocks=[14,7,23,11,19,8,31,16];
+  document.getElementById('mstk').textContent=`Only ${stocks[idx%stocks.length]} left!`;
+  document.getElementById('mch').innerHTML=(p.ch||[]).map(c=>`<span class="mchip">${c}</span>`).join('');
+  document.getElementById('il').innerHTML=p.ing.map(i=>`<li class="iitem"><div class="idot"></div><span>${i}</span></li>`).join('');
+  document.getElementById('bl').innerHTML=p.ben.map(b=>`<li class="bitem"><span class="bchk">✓</span><span>${b}</span></li>`).join('');
+  document.getElementById('ub').innerHTML=p.use;
+  document.getElementById('wb').innerHTML=p.ind;
+  const ti=TESTIS[idx%TESTIS.length];
+  document.getElementById('tq').textContent=ti[0];
+  document.getElementById('ta').textContent=ti[1];
+  const mac=document.getElementById('mac');
+  const inCart = cart.some(item => item.idx === idx);
+  mac.innerHTML=inCart?'<i data-lucide="check" style="width:15px;height:15px;display:inline;vertical-align:-2px"></i> Added to Cart':'<i data-lucide="shopping-cart" style="width:15px;height:15px;display:inline;vertical-align:-2px"></i> Add to Cart';
+  mac.classList.toggle('ok',inCart);
+  tab('ing',null);
+  setTimeout(()=>lucide.createIcons({nameAttr:'data-lucide',attrs:{class:''},nodes:[document.getElementById('mo')]}),10);
+  document.getElementById('mo').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('mo').classList.remove('on');document.body.style.overflow='';}
+function ovClick(e){if(e.target===document.getElementById('mo'))closeModal();}
+
+function tab(id,btn){
+  document.querySelectorAll('#mtabs .tbtn').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.tpanel').forEach(p=>p.classList.remove('on'));
+  const target=btn||document.querySelector(`#mtabs [data-tab="${id}"]`);
+  if(target)target.classList.add('on');
+  document.getElementById('tp-'+id).classList.add('on');
+}
+
+// ── CART DRAWER & CHECKOUT ─────────────────────────────────────────────────
+function toggleCart(isOpen) {
+  const dr = document.getElementById('cart-dr');
+  const ov = document.getElementById('cart-ov');
+  if (isOpen) {
+    updateCart();
+    dr.classList.add('on');
+    ov.classList.add('on');
+    document.body.style.overflow = 'hidden';
+  } else {
+    dr.classList.remove('on');
+    ov.classList.remove('on');
+    // Only restore scroll if detail modal is not open
+    if (!document.getElementById('mo').classList.contains('on') && !document.getElementById('chk-mo').classList.contains('on')) {
+      document.body.style.overflow = '';
+    }
+  }
+}
+
+function updateCart() {
+  const list = document.getElementById('cart-items-list');
+  const cntBadge = document.getElementById('cnt');
+  const subtotalVal = document.getElementById('cart-subtotal');
+  const totalVal = document.getElementById('cart-total');
+  const footerActions = document.getElementById('cart-footer-actions');
+
+  // Badge count is total quantities
+  const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+  cntBadge.textContent = totalQty;
+  const headerTotal = document.getElementById('header-cart-total');
+  if (headerTotal) {
+    if (cart.length === 0) {
+      headerTotal.textContent = 'R0.00';
+    }
+  }
+  
+  // Animate badge briefly
+  cntBadge.style.transform = 'scale(1.2)';
+  setTimeout(() => { cntBadge.style.transform = ''; }, 200);
+
+  let subtotal = 0;
+  
+  if (cart.length === 0) {
+    list.innerHTML = `
+      <div class="cart-empty">
+        <span class="cart-empty-icon"><i data-lucide="shopping-bag" style="width:40px;height:40px;color:var(--tl)"></i></span>
+        <p>Your cart is empty.</p>
+        <button class="btno" style="color: var(--f); border-color: var(--f);" onclick="toggleCart(false)">Start Shopping</button>
+      </div>
+    `;
+    subtotalVal.textContent = 'R0.00';
+    totalVal.textContent = 'R0.00';
+    footerActions.style.display = 'none';
+    document.getElementById('synergy-widget').style.display = 'block';
+    renderSynergy();
+    
+    // Save to localStorage
+    localStorage.setItem('tangren_cart', JSON.stringify([]));
+    localStorage.setItem('tangren_cart_total', '0.00');
+    localStorage.setItem('tangren_cart_qty', '0');
+  } else {
+    footerActions.style.display = 'block';
+    list.innerHTML = cart.map(item => {
+      const p = P[item.idx];
+      const itemTotal = p.p * item.qty;
+      subtotal += itemTotal;
+      return `
+        <div class="cart-item">
+          <img class="cart-item-img" src="${p.img}" alt="${p.n}" onerror="this.src='';this.style.background='var(--c)'">
+          <div class="cart-item-info">
+            <div class="cart-item-name">${p.n}</div>
+            <div class="cart-item-price">R${p.p.toFixed(2)}</div>
+            <div class="cart-item-ctrls">
+              <button class="qty-btn" onclick="changeQty(${item.idx}, -1)" title="Decrease quantity"><i data-lucide="minus" style="width:10px;height:10px"></i></button>
+              <span class="qty-val">${item.qty}</span>
+              <button class="qty-btn" onclick="changeQty(${item.idx}, 1)" title="Increase quantity"><i data-lucide="plus" style="width:10px;height:10px"></i></button>
+            </div>
+          </div>
+          <button class="cart-item-del" onclick="removeFromCart(${item.idx})" title="Remove item"><i data-lucide="trash-2" style="width:14px;height:14px"></i></button>
+        </div>
+      `;
+    }).join('');
+
+    // Shipping: R75 flat rate, free over R500
+    const SHIPPING_THRESHOLD = 500;
+    const SHIPPING_COST = 75;
+    const shippingEl = document.getElementById('cart-shipping-status');
+    let shipping = 0;
+    if (subtotal >= SHIPPING_THRESHOLD) {
+      shippingEl.innerHTML = 'FREE <i data-lucide="gift" style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-left:3px"></i>';
+      shippingEl.style.color = 'var(--s)';
+      shippingEl.style.fontWeight = '600';
+      shipping = 0;
+    } else {
+      shippingEl.textContent = `R${SHIPPING_COST.toFixed(2)}`;
+      shippingEl.style.color = '';
+      shippingEl.style.fontWeight = '';
+      shipping = SHIPPING_COST;
+    }
+    subtotalVal.textContent = `R${subtotal.toFixed(2)}`;
+    if (headerTotal) headerTotal.textContent = `R${subtotal.toFixed(2)}`;
+    totalVal.textContent = `R${(subtotal + shipping).toFixed(2)}`;
+    
+    // Save to localStorage
+    localStorage.setItem('tangren_cart', JSON.stringify(cart));
+    localStorage.setItem('tangren_cart_total', subtotal.toFixed(2));
+    localStorage.setItem('tangren_cart_qty', totalQty.toString());
+    
+    renderSynergy();
+  }
+  
+  // Re-initialize all Lucide icons inside the cart drawer
+  const cartDrawer = document.getElementById('cart-dr');
+  if (cartDrawer) {
+    lucide.createIcons({nameAttr:'data-lucide',attrs:{class:''},nodes:[cartDrawer]});
+  }
+
+  // Update button states on the main grid dynamically
+  document.querySelectorAll('.catcbtn').forEach(btn => {
+    const idx = parseInt(btn.id.replace('cb', ''), 10);
+    const inCart = cart.some(i => i.idx === idx);
+    btn.textContent = inCart ? '✓ Added' : 'Add to Cart';
+    btn.classList.toggle('ok', inCart);
+  });
+
+  // Update detail modal button if it is open
+  if (openIdx !== null) {
+    const mac = document.getElementById('mac');
+    if (mac) {
+      const inCart = cart.some(i => i.idx === openIdx);
+      mac.innerHTML = inCart ? '<i data-lucide="check" style="width:15px;height:15px;display:inline;vertical-align:-2px"></i> Added to Cart' : '<i data-lucide="shopping-cart" style="width:15px;height:15px;display:inline;vertical-align:-2px"></i> Add to Cart';
+      mac.classList.toggle('ok', inCart);
+      lucide.createIcons({nameAttr:'data-lucide',attrs:{class:''},nodes:[mac]});
+    }
+  }
+}
+
+function changeQty(idx, delta) {
+  const item = cart.find(i => i.idx === idx);
+  if (item) {
+    item.qty += delta;
+    if (item.qty <= 0) {
+      removeFromCart(idx);
+    } else {
+      updateCart();
+    }
+  }
+}
+
+function removeFromCart(idx) {
+  cart = cart.filter(i => i.idx !== idx);
+  updateCart();
+}
+
+function addToCart(idx) {
+  const item = cart.find(i => i.idx === idx);
+  if (item) {
+    item.qty += 1;
+  } else {
+    cart.push({ idx: idx, qty: 1 });
+  }
+  updateCart();
+  showToast(`${P[idx].n} added to cart!`);
+}
+
+function addCard(e, idx) {
+  e.stopPropagation();
+  addToCart(idx);
+}
+
+function addFromModal() {
+  if (openIdx !== null) {
+    addToCart(openIdx);
+  }
+}
+
+function showCart() {
+  toggleCart(true);
+}
+
+// ── CHECKOUT FLOW ──
+function openCheckout() {
+  toggleCart(false);
+  document.getElementById('checkout-content').style.display = 'block';
+  document.getElementById('checkout-success').style.display = 'none';
+  
+  // Reset form fields
+  document.getElementById('c-name').value = '';
+  document.getElementById('c-email').value = '';
+  document.getElementById('c-address').value = '';
+  document.getElementById('c-zip').value = '';
+  document.getElementById('c-city').value = '';
+  
+  // Render Summary
+  const summary = document.getElementById('chk-summary');
+  let subtotal = 0;
+  
+  // Shipping: R75 flat rate, free over R500
+  const SHIP_THRESH = 500;
+  const SHIP_COST = 75;
+  
+  summary.innerHTML = cart.map(item => {
+    const p = P[item.idx];
+    const total = p.p * item.qty;
+    subtotal += total;
+    return `
+      <div class="order-summary-item">
+        <span>${p.n} (x${item.qty})</span>
+        <span>R${total.toFixed(2)}</span>
+      </div>
+    `;
+  }).join('');
+  
+  let chkShipping = 0;
+  if (subtotal >= SHIP_THRESH) {
+    document.getElementById('chk-shipping').textContent = 'FREE 🎉';
+    document.getElementById('chk-shipping').style.color = 'var(--s)';
+    document.getElementById('chk-shipping').style.fontWeight = '600';
+    chkShipping = 0;
+  } else {
+    document.getElementById('chk-shipping').textContent = `R${SHIP_COST.toFixed(2)}`;
+    document.getElementById('chk-shipping').style.color = '';
+    document.getElementById('chk-shipping').style.fontWeight = '';
+    chkShipping = SHIP_COST;
+  }
+  document.getElementById('chk-subtotal').textContent = `R${subtotal.toFixed(2)}`;
+  document.getElementById('chk-total').textContent = `R${(subtotal + chkShipping).toFixed(2)}`;
+  
+  document.getElementById('chk-mo').classList.add('on');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCheckout() {
+  document.getElementById('chk-mo').classList.remove('on');
+  document.body.style.overflow = '';
+}
+
+function chkOvClick(e) {
+  if (e.target === document.getElementById('chk-mo')) closeCheckout();
+}
+
+function submitOrder(e) {
+  e.preventDefault();
+  
+  // Perform order placement animation/state
+  document.getElementById('checkout-content').style.display = 'none';
+  document.getElementById('checkout-success').style.display = 'block';
+  lucide.createIcons({nameAttr:'data-lucide',attrs:{class:''},nodes:[document.getElementById('checkout-success')]});
+  
+  // Clear cart
+  cart = [];
+  updateCart();
+}
+
+let toastTimer;
+function showToast(msg){
+  clearTimeout(toastTimer);
+  const t=document.getElementById('toast');
+  document.getElementById('tmsg').textContent=msg;
+  t.classList.add('show');
+  toastTimer=setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+// keyboard close
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') {
+    closeModal();
+    closeCheckout();
+    toggleCart(false);
+  }
+});
+
+
+
+// ── SYNERGY PAIRING ──
+const SYNERGY_BUNDLES = [
+  {
+    label: 'Sleep & Calm',
+    icon: 'moon',
+    tag: 'Complete Sleep Routine',
+    teaQ: 'ANTI-STRESS SLEEPING',
+    pillQ: 'AN SHEN BU XIN'
+  },
+  {
+    label: 'Detox & Cleanse',
+    icon: 'droplet',
+    tag: 'Complete Cleansing Routine',
+    teaQ: 'BLOOD CLEAN',
+    pillQ: 'BA ZHENG'
+  },
+  {
+    label: 'Vitality & Energy',
+    icon: 'zap',
+    tag: 'Complete Energy Routine',
+    teaQ: 'GINSENG DATE',
+    pillQ: 'BAN LONG'
+  }
+];
+
+function findPIdx(partial) {
+  const q = partial.toLowerCase();
+  return P.findIndex(p => p && p.n && p.n.toLowerCase().includes(q));
+}
+
+function renderSynergy() {
+  const sw = document.getElementById('synergy-widget');
+  const sc = document.getElementById('syn-cards');
+  if (!sw || !sc) return;
+  const bundles = SYNERGY_BUNDLES.map(b => {
+    return { b, ti: findPIdx(b.teaQ), pi: findPIdx(b.pillQ) };
+  }).filter(({ ti, pi }) => ti !== -1 && pi !== -1);
+  if (bundles.length === 0) { sw.style.display = 'none'; return; }
+  sw.style.display = 'block';
+  sc.innerHTML = bundles.map(({ b, ti, pi }) => {
+    const tea = P[ti], pill = P[pi];
+    const combined = (tea.p + pill.p).toFixed(2);
+    const bothAdded = cart.some(i => i.idx === ti) && cart.some(i => i.idx === pi);
+    const shortTea = tea.n.split(' ').slice(0, 4).join(' ');
+    const shortPill = pill.n.split(' ').slice(0, 3).join(' ');
+    return `
+      <div class="syn-card">
+        <div class="syn-imgs">
+          <img class="syn-img" src="${tea.img}" alt="${tea.n}" onerror="this.style.opacity='.35'">
+          <img class="syn-img" src="${pill.img}" alt="${pill.n}" onerror="this.style.opacity='.35'">
+        </div>
+        <div class="syn-info">
+          <div class="syn-badge"><i data-lucide="${b.icon}" style="width:10px;height:10px;vertical-align:-1px;margin-right:3px"></i> ${b.label}</div>
+          <div class="syn-names">${shortTea} + ${shortPill}</div>
+          <div class="syn-price">Bundle: R${combined}</div>
+        </div>
+        <button class="syn-btn${bothAdded ? ' added' : ''}" onclick="addBundle(${ti},${pi},this)">
+          ${bothAdded ? '✓ Added' : 'Add Both'}
+        </button>
+      </div>
+    `;
+  }).join('');
+}
+
+function addBundle(ti, pi, btn) {
+  addToCart(ti);
+  addToCart(pi);
+  if (btn) { btn.textContent = '\u2713 Added'; btn.classList.add('added'); }
+  showToast(`Bundle added to cart!`);
+}
+
+
+
+// ── HERO CAROUSEL ──
+let _hIdx = 0;
+const _hTotal = 6;
+let _hAuto;
+function heroGoTo(idx) {
+  _hIdx = (idx + _hTotal) % _hTotal;
+  const track = document.getElementById('hero-track');
+  if (track) track.style.transform = 'translateX(-' + (_hIdx * 100) + '%)';
+  document.querySelectorAll('.hero-dot').forEach(function(d, i){ d.classList.toggle('active', i === _hIdx); });
+  clearInterval(_hAuto);
+  _hAuto = setInterval(function(){ heroMove(1); }, 10000);
+}
+function heroMove(dir) { heroGoTo(_hIdx + dir); }
+document.addEventListener('DOMContentLoaded', function() {
+  _hAuto = setInterval(function(){ heroMove(1); }, 10000);
+  var carousel = document.getElementById('hero-carousel');
+  if (carousel) {
+    var _sx = 0;
+    carousel.addEventListener('touchstart', function(e){ _sx = e.touches[0].clientX; }, { passive: true });
+    carousel.addEventListener('touchend', function(e){
+      var dx = e.changedTouches[0].clientX - _sx;
+      if (Math.abs(dx) > 50) heroMove(dx < 0 ? 1 : -1);
+    }, { passive: true });
+  }
+});
+
+// ── BUNDLE ADD HELPER ──
+function addBundleByNames() {
+  var names = Array.prototype.slice.call(arguments);
+  if (typeof P === 'undefined') { window.location.href = 'index.html'; return; }
+  var added = 0;
+  names.forEach(function(name) {
+    var idx = P.findIndex(function(p){ return p && p.n && p.n.toUpperCase().indexOf(name.toUpperCase()) > -1; });
+    if (idx > -1) { addToCart(idx); added++; }
+  });
+  if (added > 0) {
+    showToast('Bundle added to cart!');
+    setTimeout(function(){ showCart(); }, 500);
+  } else {
+    showToast('Opening store \u2014 bundle ready to add!');
+  }
+}
+
+// ── MOBILE MENU FUNCTION ──
+function toggleMobileMenu(isOpen) {
+  const overlay = document.getElementById('mobile-menu-overlay');
+  const drawer = document.getElementById('mobile-menu-drawer');
+  if (overlay && drawer) {
+    if (isOpen) {
+      overlay.classList.add('on');
+      drawer.classList.add('on');
+      document.body.style.overflow = 'hidden';
+    } else {
+      overlay.classList.remove('on');
+      drawer.classList.remove('on');
+      document.body.style.overflow = '';
+    }
+  }
+}
+
+// Initialize Lucide Icons
+if(typeof lucide!=='undefined') lucide.createIcons();
